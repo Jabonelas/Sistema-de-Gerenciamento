@@ -71,17 +71,65 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CadastroDespesas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroDespesas.Designer.cs">
+      <DependentUpon>CadastroDespesas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroEmpresa.Designer.cs">
+      <DependentUpon>CadastroEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroGrupoDeMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroGrupoDeMaterial.Designer.cs">
+      <DependentUpon>CadastroGrupoDeMaterial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroUsuario.Designer.cs">
+      <DependentUpon>CadastroUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PesquisarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PesquisarCliente.Designer.cs">
+      <DependentUpon>PesquisarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroCliente.Designer.cs">
+      <DependentUpon>CadastroCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="CadastroProduto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CadastroProduto.Designer.cs">
       <DependentUpon>CadastroProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="PesquisarContasAPagar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PesquisarContasAPagar.Designer.cs">
+      <DependentUpon>PesquisarContasAPagar.cs</DependentUpon>
+    </Compile>
     <Compile Include="PesquisarProduto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PesquisarProduto.Designer.cs">
       <DependentUpon>PesquisarProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sair.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Sair.Designer.cs">
+      <DependentUpon>Sair.cs</DependentUpon>
     </Compile>
     <Compile Include="TelaAdministrador.cs">
       <SubType>Form</SubType>
@@ -91,11 +139,35 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CadastroDespesas.resx">
+      <DependentUpon>CadastroDespesas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroEmpresa.resx">
+      <DependentUpon>CadastroEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroGrupoDeMaterial.resx">
+      <DependentUpon>CadastroGrupoDeMaterial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroUsuario.resx">
+      <DependentUpon>CadastroUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PesquisarCliente.resx">
+      <DependentUpon>PesquisarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroCliente.resx">
+      <DependentUpon>CadastroCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CadastroProduto.resx">
       <DependentUpon>CadastroProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PesquisarContasAPagar.resx">
+      <DependentUpon>PesquisarContasAPagar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PesquisarProduto.resx">
       <DependentUpon>PesquisarProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Sair.resx">
+      <DependentUpon>Sair.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TelaAdministrador.resx">
       <DependentUpon>TelaAdministrador.cs</DependentUpon>
@@ -171,6 +243,63 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\sair.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mao.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\servico.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\adicionar-produto2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\descricao-do-produto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\equipe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\receptor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\entregador1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carrinho-de-compras.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\despesas1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\servico1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vendas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\moeda-de-dinheiro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sair1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\venda-rapida.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Receber.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pagar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notas-de-banco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notas-de-receber.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
