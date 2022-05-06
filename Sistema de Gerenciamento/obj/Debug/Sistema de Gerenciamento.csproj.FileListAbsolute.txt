@@ -29,3 +29,5 @@ C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\ob
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.CadastroDespesas.resources
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.PesquisarContasAPagar.resources
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.CadastroGrupoDeMaterial.resources
+C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.CadastroFornecedor.resources
+C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\bin\Debug\Bunifu.UI.WinForms.BunifuRadioButton.dll

@@ -46,6 +46,9 @@
     <Reference Include="Bunifu.UI.WinForms.BunifuLabel">
       <HintPath>..\..\..\..\Downloads\Bunifu_Framework__Bunifu_DataViz\Bunifu UI WinForms 1.11.5.1\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuLabel.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuRadioButton">
+      <HintPath>..\..\..\..\Downloads\Bunifu_Framework__Bunifu_DataViz\Bunifu UI WinForms 1.11.5.1\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuRadioButton.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuTextbox">
       <HintPath>..\..\..\..\Downloads\Bunifu_Framework__Bunifu_DataViz\Bunifu UI WinForms 1.11.5.1\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuTextbox.dll</HintPath>
     </Reference>
@@ -71,6 +74,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdicionarNoBanco.cs" />
+    <Compile Include="ConectarBanco.cs" />
     <Compile Include="CadastroDespesas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +87,12 @@
     </Compile>
     <Compile Include="CadastroEmpresa.Designer.cs">
       <DependentUpon>CadastroEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CadastroFornecedor.Designer.cs">
+      <DependentUpon>CadastroFornecedor.cs</DependentUpon>
     </Compile>
     <Compile Include="CadastroGrupoDeMaterial.cs">
       <SubType>Form</SubType>
@@ -95,6 +106,7 @@
     <Compile Include="CadastroUsuario.Designer.cs">
       <DependentUpon>CadastroUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="MensagensErro.cs" />
     <Compile Include="PesquisarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,11 +151,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ManipulacaoTextBox.cs" />
     <EmbeddedResource Include="CadastroDespesas.resx">
       <DependentUpon>CadastroDespesas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CadastroEmpresa.resx">
       <DependentUpon>CadastroEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CadastroFornecedor.resx">
+      <DependentUpon>CadastroFornecedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CadastroGrupoDeMaterial.resx">
       <DependentUpon>CadastroGrupoDeMaterial.cs</DependentUpon>

@@ -31,14 +31,14 @@ namespace Sistema_de_Gerenciamento
 
         private void btnCadastroCliente_Click(object sender, EventArgs e)
         {
-            CadastroCliente cadastroCliente = new CadastroCliente(this, "Cliente");
+            CadastroCliente cadastroCliente = new CadastroCliente();
             cadastroCliente.ShowDialog();
         }
 
         private void btnFornecedor_Click(object sender, EventArgs e)
         {
-            CadastroCliente cadastroCliente = new CadastroCliente(this, "Fornecedor");
-            cadastroCliente.ShowDialog();
+            CadastroFornecedor cadastroFornecedor = new CadastroFornecedor();
+            cadastroFornecedor.ShowDialog();
         }
 
         private void btnSair_Click(object sender, EventArgs e)
@@ -73,12 +73,10 @@ namespace Sistema_de_Gerenciamento
 
         private void TelaAdministrador_Load(object sender, EventArgs e)
         {
-
         }
 
         private void tabCadastro_Click(object sender, EventArgs e)
         {
-
         }
     }
 }
