@@ -12,6 +12,11 @@ namespace Sistema_de_Gerenciamento
 {
     public class ManipulacaoTextBox
     {
+        //TextBox Bunifu prenchimento obrigatorio
+        //TextBox guna preenchimento opcional
+
+        #region Verificação de preenchimento dos TextBox
+
         public bool VerificarPreenchimentoTextBox(Form _form)
         {
             try
@@ -49,6 +54,10 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
+        #endregion Verificação de preenchimento dos TextBox
+
+        #region Limpando dados dos TextBox
+
         public void ApagandoTextBox(Form _form)
         {
             foreach (Control componente in _form.Controls)
@@ -58,6 +67,7 @@ namespace Sistema_de_Gerenciamento
                 if (tipoComponente.Name == "BunifuTextBox")
                 {
                     BunifuTextBox textBox = (BunifuTextBox)componente;
+
                     textBox.Text = string.Empty;
                 }
                 else if (tipoComponente.Name == "RichTextBox")
@@ -68,7 +78,13 @@ namespace Sistema_de_Gerenciamento
                 {
                     componente.Text = string.Empty;
                 }
+                else if (tipoComponente.Name == "GunaTextBox")
+                {
+                    componente.Text = string.Empty;
+                }
             }
         }
+
+        #endregion Limpando dados dos TextBox
     }
 }
