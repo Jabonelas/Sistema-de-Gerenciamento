@@ -77,119 +77,120 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdicionarNoBanco.cs" />
-    <Compile Include="ConectarBanco.cs" />
-    <Compile Include="CadastroDespesas.cs">
+    <Compile Include="Classes\AdicionarNoBanco.cs" />
+    <Compile Include="Classes\AtualizacaoNoBanco.cs" />
+    <Compile Include="Classes\ConectarBanco.cs" />
+    <Compile Include="Forms\CadastroDespesas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CadastroDespesas.Designer.cs">
+    <Compile Include="Forms\CadastroDespesas.Designer.cs">
       <DependentUpon>CadastroDespesas.cs</DependentUpon>
     </Compile>
-    <Compile Include="CadastroEmpresa.cs">
+    <Compile Include="Forms\CadastroEmpresa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CadastroEmpresa.Designer.cs">
+    <Compile Include="Forms\CadastroEmpresa.Designer.cs">
       <DependentUpon>CadastroEmpresa.cs</DependentUpon>
     </Compile>
-    <Compile Include="CadastroFornecedor.cs">
+    <Compile Include="Forms\CadastroFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CadastroFornecedor.Designer.cs">
+    <Compile Include="Forms\CadastroFornecedor.Designer.cs">
       <DependentUpon>CadastroFornecedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="CadastroGrupoDeMaterial.cs">
+    <Compile Include="Forms\CadastroGrupoDeMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CadastroGrupoDeMaterial.Designer.cs">
+    <Compile Include="Forms\CadastroGrupoDeMaterial.Designer.cs">
       <DependentUpon>CadastroGrupoDeMaterial.cs</DependentUpon>
     </Compile>
-    <Compile Include="CadastroUsuario.cs">
+    <Compile Include="Forms\CadastroUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CadastroUsuario.Designer.cs">
+    <Compile Include="Forms\CadastroUsuario.Designer.cs">
       <DependentUpon>CadastroUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Global.cs" />
-    <Compile Include="MensagensErro.cs" />
-    <Compile Include="PesquisarCliente.cs">
+    <Compile Include="Classes\Global.cs" />
+    <Compile Include="Classes\MensagensErro.cs" />
+    <Compile Include="Forms\PesquisarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PesquisarCliente.Designer.cs">
+    <Compile Include="Forms\PesquisarCliente.Designer.cs">
       <DependentUpon>PesquisarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="CadastroCliente.cs">
+    <Compile Include="Forms\CadastroCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CadastroCliente.Designer.cs">
+    <Compile Include="Forms\CadastroCliente.Designer.cs">
       <DependentUpon>CadastroCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="CadastroProduto.cs">
+    <Compile Include="Forms\CadastroProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CadastroProduto.Designer.cs">
+    <Compile Include="Forms\CadastroProduto.Designer.cs">
       <DependentUpon>CadastroProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="PesquisarContasAPagar.cs">
+    <Compile Include="Forms\PesquisarContasAPagar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PesquisarContasAPagar.Designer.cs">
+    <Compile Include="Forms\PesquisarContasAPagar.Designer.cs">
       <DependentUpon>PesquisarContasAPagar.cs</DependentUpon>
     </Compile>
-    <Compile Include="PesquisarProduto.cs">
+    <Compile Include="Forms\PesquisarProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PesquisarProduto.Designer.cs">
+    <Compile Include="Forms\PesquisarProduto.Designer.cs">
       <DependentUpon>PesquisarProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Sair.cs">
+    <Compile Include="Forms\Sair.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Sair.Designer.cs">
+    <Compile Include="Forms\Sair.Designer.cs">
       <DependentUpon>Sair.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaAdministrador.cs">
+    <Compile Include="Forms\TelaAdministrador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaAdministrador.Designer.cs">
+    <Compile Include="Forms\TelaAdministrador.Designer.cs">
       <DependentUpon>TelaAdministrador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ManipulacaoTextBox.cs" />
-    <EmbeddedResource Include="CadastroDespesas.resx">
+    <Compile Include="Classes\ManipulacaoTextBox.cs" />
+    <EmbeddedResource Include="Forms\CadastroDespesas.resx">
       <DependentUpon>CadastroDespesas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CadastroEmpresa.resx">
+    <EmbeddedResource Include="Forms\CadastroEmpresa.resx">
       <DependentUpon>CadastroEmpresa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CadastroFornecedor.resx">
+    <EmbeddedResource Include="Forms\CadastroFornecedor.resx">
       <DependentUpon>CadastroFornecedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CadastroGrupoDeMaterial.resx">
+    <EmbeddedResource Include="Forms\CadastroGrupoDeMaterial.resx">
       <DependentUpon>CadastroGrupoDeMaterial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CadastroUsuario.resx">
+    <EmbeddedResource Include="Forms\CadastroUsuario.resx">
       <DependentUpon>CadastroUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PesquisarCliente.resx">
+    <EmbeddedResource Include="Forms\PesquisarCliente.resx">
       <DependentUpon>PesquisarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CadastroCliente.resx">
+    <EmbeddedResource Include="Forms\CadastroCliente.resx">
       <DependentUpon>CadastroCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CadastroProduto.resx">
+    <EmbeddedResource Include="Forms\CadastroProduto.resx">
       <DependentUpon>CadastroProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PesquisarContasAPagar.resx">
+    <EmbeddedResource Include="Forms\PesquisarContasAPagar.resx">
       <DependentUpon>PesquisarContasAPagar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PesquisarProduto.resx">
+    <EmbeddedResource Include="Forms\PesquisarProduto.resx">
       <DependentUpon>PesquisarProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Sair.resx">
+    <EmbeddedResource Include="Forms\Sair.resx">
       <DependentUpon>Sair.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaAdministrador.resx">
+    <EmbeddedResource Include="Forms\TelaAdministrador.resx">
       <DependentUpon>TelaAdministrador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -321,8 +322,6 @@
   <ItemGroup>
     <None Include="Resources\notas-de-receber.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -530,7 +530,7 @@
             this.txtDataEmissao.IconRight = null;
             this.txtDataEmissao.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDataEmissao.Lines = new string[0];
-            this.txtDataEmissao.Location = new System.Drawing.Point(482, 198);
+            this.txtDataEmissao.Location = new System.Drawing.Point(484, 198);
             this.txtDataEmissao.MaxLength = 10;
             this.txtDataEmissao.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtDataEmissao.Modified = false;
@@ -577,6 +577,7 @@
             this.txtDataEmissao.UseSystemPasswordChar = false;
             this.txtDataEmissao.WordWrap = true;
             this.txtDataEmissao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDataEmissao_KeyPress);
+            this.txtDataEmissao.Leave += new System.EventHandler(this.txtDataEmissao_Leave);
             // 
             // label10
             // 
@@ -906,6 +907,7 @@
             this.txtDataNascimento.UseSystemPasswordChar = false;
             this.txtDataNascimento.WordWrap = true;
             this.txtDataNascimento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDataNascimento_KeyPress);
+            this.txtDataNascimento.Leave += new System.EventHandler(this.txtDataNascimento_Leave);
             // 
             // label20
             // 
@@ -991,6 +993,7 @@
             this.txtCEP.UseSystemPasswordChar = false;
             this.txtCEP.WordWrap = true;
             this.txtCEP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCEP_KeyPress);
+            this.txtCEP.Leave += new System.EventHandler(this.txtCEP_Leave);
             // 
             // txtEndereco
             // 
@@ -1300,6 +1303,7 @@
             "Divorciado(a)",
             "Solteiro(a)",
             "Viuvo(a)",
+            "--------------",
             ""});
             this.cmbEstadoCivil.Location = new System.Drawing.Point(23, 362);
             this.cmbEstadoCivil.Name = "cmbEstadoCivil";
@@ -1347,7 +1351,7 @@
             this.txtCelular.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCelular.Lines = new string[0];
             this.txtCelular.Location = new System.Drawing.Point(23, 410);
-            this.txtCelular.MaxLength = 14;
+            this.txtCelular.MaxLength = 15;
             this.txtCelular.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtCelular.Modified = false;
             this.txtCelular.Multiline = false;
@@ -1393,6 +1397,7 @@
             this.txtCelular.UseSystemPasswordChar = false;
             this.txtCelular.WordWrap = true;
             this.txtCelular.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCelular_KeyPress);
+            this.txtCelular.Leave += new System.EventHandler(this.txtCelular_Leave);
             // 
             // txtObservacoes
             // 
@@ -1973,6 +1978,7 @@
             this.txtRG.UseSystemPasswordChar = false;
             this.txtRG.WordWrap = true;
             this.txtRG.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRG_KeyPress_1);
+            this.txtRG.Leave += new System.EventHandler(this.txtRG_Leave);
             // 
             // txtCPF_CNPJ
             // 
@@ -2048,6 +2054,7 @@
             this.txtCPF_CNPJ.UseSystemPasswordChar = false;
             this.txtCPF_CNPJ.WordWrap = true;
             this.txtCPF_CNPJ.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCPF_CNPJ_KeyPress_1);
+            this.txtCPF_CNPJ.Leave += new System.EventHandler(this.txtCPF_CNPJ_Leave);
             // 
             // label22
             // 
@@ -2110,6 +2117,7 @@
             "SP",
             "SE",
             "TO",
+            "--",
             ""});
             this.cmbIns_Est.Location = new System.Drawing.Point(593, 200);
             this.cmbIns_Est.Name = "cmbIns_Est";
@@ -2145,25 +2153,27 @@
             "SJT",
             "CC",
             "PIPC",
+            "----",
             ""});
             this.cmbEmissor.Location = new System.Drawing.Point(416, 200);
             this.cmbEmissor.Name = "cmbEmissor";
             this.cmbEmissor.OnHoverItemBaseColor = System.Drawing.Color.DodgerBlue;
             this.cmbEmissor.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.cmbEmissor.Size = new System.Drawing.Size(52, 24);
+            this.cmbEmissor.Size = new System.Drawing.Size(54, 24);
             this.cmbEmissor.TabIndex = 152;
             // 
             // txtTel_Residencial
             // 
             this.txtTel_Residencial.BaseColor = System.Drawing.Color.White;
             this.txtTel_Residencial.BorderColor = System.Drawing.Color.Silver;
+            this.txtTel_Residencial.BorderSize = 1;
             this.txtTel_Residencial.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTel_Residencial.FocusedBaseColor = System.Drawing.Color.White;
-            this.txtTel_Residencial.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.txtTel_Residencial.FocusedBorderColor = System.Drawing.Color.DodgerBlue;
             this.txtTel_Residencial.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtTel_Residencial.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTel_Residencial.Location = new System.Drawing.Point(196, 410);
-            this.txtTel_Residencial.MaxLength = 14;
+            this.txtTel_Residencial.MaxLength = 15;
             this.txtTel_Residencial.Name = "txtTel_Residencial";
             this.txtTel_Residencial.PasswordChar = '\0';
             this.txtTel_Residencial.SelectedText = "";
@@ -2171,14 +2181,16 @@
             this.txtTel_Residencial.Size = new System.Drawing.Size(172, 28);
             this.txtTel_Residencial.TabIndex = 144;
             this.txtTel_Residencial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_Residencial_KeyPress);
+            this.txtTel_Residencial.Leave += new System.EventHandler(this.txtTel_Residencial_Leave);
             // 
             // txtComplemento
             // 
             this.txtComplemento.BaseColor = System.Drawing.Color.White;
             this.txtComplemento.BorderColor = System.Drawing.Color.Silver;
+            this.txtComplemento.BorderSize = 1;
             this.txtComplemento.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtComplemento.FocusedBaseColor = System.Drawing.Color.White;
-            this.txtComplemento.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.txtComplemento.FocusedBorderColor = System.Drawing.Color.DodgerBlue;
             this.txtComplemento.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtComplemento.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtComplemento.Location = new System.Drawing.Point(416, 245);
@@ -2263,6 +2275,7 @@
             this.txtSaldo.TextPlaceholder = "";
             this.txtSaldo.UseSystemPasswordChar = false;
             this.txtSaldo.WordWrap = true;
+            this.txtSaldo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSaldo_KeyPress);
             // 
             // cmbTipo
             // 
@@ -2314,11 +2327,11 @@
             this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(20, 182);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(621, 15);
+            this.label2.Size = new System.Drawing.Size(618, 15);
             this.label2.TabIndex = 154;
             this.label2.Text = "Tipo                                                                             " +
     "       RG                                  Emissor         Data Emissão         " +
-    "     Ins. Est.";
+    "    Ins. Est.";
             // 
             // label21
             // 

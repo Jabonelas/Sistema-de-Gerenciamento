@@ -1,5 +1,6 @@
 ﻿using Bunifu.UI.WinForms;
 using Guna.UI.WinForms;
+using Sistema_de_Gerenciamento.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,6 +22,8 @@ namespace Sistema_de_Gerenciamento
 
         private MensagensErro Erro = new MensagensErro();
 
+        private AtualizacaoNoBanco Atualizar = new AtualizacaoNoBanco();
+
         public CadastroCliente()
         {
             InitializeComponent();
@@ -31,6 +35,8 @@ namespace Sistema_de_Gerenciamento
         private void btnCadastroProduto_Click(object sender, EventArgs e)
         {
             TextBox.ApagandoTextBox(this);
+
+            lblTipoDeCliente.Text = "CPF / CNPJ";
         }
 
         #endregion Botao Novo
@@ -50,7 +56,7 @@ namespace Sistema_de_Gerenciamento
                         txtCPF_CNPJ.Text,
                         txtRG.Text,
                         cmbEmissor.Text,
-                        Convert.ToDateTime(txtDataEmissao.Text),
+                        txtDataEmissao.Text,
                         cmbIns_Est.Text,
                         txtCEP.Text,
                         txtEndereco.Text,
@@ -59,16 +65,17 @@ namespace Sistema_de_Gerenciamento
                         txtCidade.Text,
                         cmbUF.Text,
                         txtNaturalidade.Text,
-                        Convert.ToDateTime(txtDataNascimento.Text),
+                        txtDataNascimento.Text,
                         cmbEstadoCivil.Text,
-                        Convert.ToDecimal(txtCredito.Text),
-                        Convert.ToDecimal(txtSaldo.Text),
+                        Convert.ToDecimal(txtCredito.Text.Replace("R$ ", "")),
+                        Convert.ToDecimal(txtSaldo.Text.Replace("R$ ", "")),
                         cmbBloqueio.Text,
                         txtCelular.Text,
                         txtTel_Residencial.Text,
                         txtEmail.Text,
-                        txtObservacoes.Text
-                                                );
+                        txtObservacoes.Text);
+
+                    MessageBox.Show("salvo com sucesso");
                 }
                 else
                 {
@@ -87,6 +94,31 @@ namespace Sistema_de_Gerenciamento
 
         private void btnAlterarCliente_Click(object sender, EventArgs e)
         {
+            Atualizar.Atualizar(Convert.ToInt32(txtCodigo.Text),
+                        Convert.ToDateTime(txtDataCadastro.Text),
+                        txtNome.Text,
+                        cmbTipo.Text,
+                        txtCPF_CNPJ.Text,
+                        txtRG.Text,
+                        cmbEmissor.Text,
+                        txtDataEmissao.Text,
+                        cmbIns_Est.Text,
+                        txtCEP.Text,
+                        txtEndereco.Text,
+                        txtComplemento.Text,
+                        txtBairro.Text,
+                        txtCidade.Text,
+                        cmbUF.Text,
+                        txtNaturalidade.Text,
+                        txtDataNascimento.Text,
+                        cmbEstadoCivil.Text,
+                        Convert.ToDecimal(txtCredito.Text.Replace("R$ ", "")),
+                        Convert.ToDecimal(txtSaldo.Text.Replace("R$ ", "")),
+                        cmbBloqueio.Text,
+                        txtCelular.Text,
+                        txtTel_Residencial.Text,
+                        txtEmail.Text,
+                        txtObservacoes.Text);
         }
 
         #endregion Botao Alterar
@@ -139,6 +171,14 @@ namespace Sistema_de_Gerenciamento
                 Global.tipoDeCliente = "Pess. Fisica";
 
                 lblTipoDeCliente.Text = "CPF";
+
+                txtRG.Text = string.Empty;
+                cmbEmissor.Text = string.Empty;
+                txtDataEmissao.Text = string.Empty;
+                cmbIns_Est.Text = string.Empty;
+                txtNaturalidade.Text = string.Empty;
+                txtDataNascimento.Text = string.Empty;
+                cmbEstadoCivil.Text = string.Empty;
             }
             else if (cmbTipo.Text == "Pess. Juridica")
             {
@@ -146,13 +186,13 @@ namespace Sistema_de_Gerenciamento
 
                 lblTipoDeCliente.Text = "CNPJ";
 
-                //txtRG.Text = "------------";
-                //cmbEmissor.Text = "casa";
-                //cmbEmissor.Text = "casa";
-                //txtDataEmissao.Text = "---------";
-                //cmbIns_Est.Text = "casa";
-
-                //testando.Items = "adca";
+                txtRG.Text = "---------------";
+                cmbEmissor.Text = "----";
+                txtDataEmissao.Text = "----------";
+                cmbIns_Est.Text = "--";
+                txtNaturalidade.Text = "----------";
+                txtDataNascimento.Text = "----------";
+                cmbEstadoCivil.Text = "--------------";
             }
         }
 
@@ -232,6 +272,21 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
+        private void txtCPF_CNPJ_Leave(object sender, EventArgs e)
+        {
+            if (txtCPF_CNPJ.Text.Length != txtCPF_CNPJ.MaxLength && txtCPF_CNPJ.Text.Length != 0)
+            {
+                txtCPF_CNPJ.BorderColorActive = Color.Red;
+
+                MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
+                txtCPF_CNPJ.Focus();
+            }
+            else if (txtCPF_CNPJ.Text.Length == txtCPF_CNPJ.MaxLength)
+            {
+                txtCPF_CNPJ.BorderColorActive = Color.DodgerBlue;
+            }
+        }
+
         #endregion TextBox CPF e CNPJ
 
         #region TextBox RG
@@ -269,6 +324,21 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
+        private void txtRG_Leave(object sender, EventArgs e)
+        {
+            if (txtRG.Text.Length != txtRG.MaxLength && txtRG.Text.Length != 0)
+            {
+                txtRG.BorderColorActive = Color.Red;
+
+                MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
+                txtRG.Focus();
+            }
+            else if (txtRG.Text.Length == txtRG.MaxLength)
+            {
+                txtRG.BorderColorActive = Color.DodgerBlue;
+            }
+        }
+
         #endregion TextBox RG
 
         #region TextBox Data de Emissao
@@ -301,6 +371,21 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
+        private void txtDataEmissao_Leave(object sender, EventArgs e)
+        {
+            if (txtDataEmissao.Text.Length != txtDataEmissao.MaxLength && txtDataEmissao.Text.Length != 0)
+            {
+                txtDataEmissao.BorderColorActive = Color.Red;
+
+                MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
+                txtDataEmissao.Focus();
+            }
+            else if (txtDataEmissao.Text.Length == txtDataEmissao.MaxLength)
+            {
+                txtDataEmissao.BorderColorActive = Color.DodgerBlue;
+            }
+        }
+
         #endregion TextBox Data de Emissao
 
         #region TextBox Data de Nascimento
@@ -330,6 +415,21 @@ namespace Sistema_de_Gerenciamento
                         txtDataNascimento.SelectionStart = 6;
                         break;
                 }
+            }
+        }
+
+        private void txtDataNascimento_Leave(object sender, EventArgs e)
+        {
+            if (txtDataNascimento.Text.Length != txtDataNascimento.MaxLength && txtDataNascimento.Text.Length != 0)
+            {
+                txtDataNascimento.BorderColorActive = Color.Red;
+
+                MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
+                txtDataNascimento.Focus();
+            }
+            else if (txtDataNascimento.Text.Length == txtDataNascimento.MaxLength)
+            {
+                txtDataNascimento.BorderColorActive = Color.DodgerBlue;
             }
         }
 
@@ -372,6 +472,21 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
+        private void txtCEP_Leave(object sender, EventArgs e)
+        {
+            if (txtCEP.Text.Length != txtCEP.MaxLength && txtCEP.Text.Length != 0)
+            {
+                txtCEP.BorderColorActive = Color.Red;
+
+                MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
+                txtCEP.Focus();
+            }
+            else if (txtCEP.Text.Length == txtCEP.MaxLength)
+            {
+                txtCEP.BorderColorActive = Color.DodgerBlue;
+            }
+        }
+
         #endregion TextBox CEP
 
         #region TextBox Celular
@@ -402,6 +517,21 @@ namespace Sistema_de_Gerenciamento
                         txtCelular.SelectionStart = 11;
                         break;
                 }
+            }
+        }
+
+        private void txtCelular_Leave(object sender, EventArgs e)
+        {
+            if (txtCelular.Text.Length != txtCelular.MaxLength && txtCelular.Text.Length != 0)
+            {
+                txtCelular.BorderColorActive = Color.Red;
+
+                MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
+                txtCelular.Focus();
+            }
+            else if (txtCelular.Text.Length == txtCelular.MaxLength)
+            {
+                txtCelular.BorderColorActive = Color.DodgerBlue;
             }
         }
 
@@ -438,62 +568,86 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
+        private void txtTel_Residencial_Leave(object sender, EventArgs e)
+        {
+            if (txtTel_Residencial.Text.Length != txtTel_Residencial.MaxLength && txtTel_Residencial.Text.Length != 0)
+            {
+                txtTel_Residencial.FocusedBorderColor = Color.Red;
+
+                MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
+                txtTel_Residencial.Focus();
+            }
+            else if (txtTel_Residencial.Text.Length == txtTel_Residencial.MaxLength)
+            {
+                txtTel_Residencial.FocusedBorderColor = Color.DodgerBlue;
+            }
+        }
+
         #endregion TextBox Tel. Residencial
+
+        #region TextBox Credito
 
         private void txtCredito_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            try
             {
+                txtCredito.MaxLength = 10;
+
+                if (Char.IsDigit(e.KeyChar) || e.KeyChar.Equals((char)Keys.Back))
+                {
+                    if (txtCredito.Text.Length <= 13 || e.KeyChar.Equals((char)Keys.Back))
+                    {
+                        TextBox textbox = (TextBox)sender;
+                        string testoDoTextBox = Regex.Replace(textbox.Text, "[^0-9]", string.Empty);
+                        if (testoDoTextBox == string.Empty)
+                        {
+                            testoDoTextBox = "00";
+                        }
+
+                        testoDoTextBox += e.KeyChar;
+                        textbox.Text = String.Format("R$ {0:#,##0.00}", double.Parse(testoDoTextBox) / 100);
+                        textbox.Select(textbox.Text.Length, 0);
+                    }
+                }
                 e.Handled = true;
             }
-
-            if (char.IsNumber(e.KeyChar) == true)
+            catch (Exception)
             {
-                //"R$ 1.000,00"
-                //        "R$ 200,00"
-                //        "R$ 20,00"
-
-                if (txtCredito.TextLength == 11)
-                {
-                    switch (txtCredito.TextLength)
-                    {
-                        case 0:
-                            txtCredito.Text = "R$ ";
-                            txtCredito.SelectionStart = 3;
-                            break;
-
-                        case 5:
-                            txtCredito.Text = txtCredito.Text + ".";
-                            txtCredito.SelectionStart = 6;
-                            break;
-
-                        case 9:
-                            txtCredito.Text = txtCredito.Text + ",";
-                            txtCredito.SelectionStart = 10;
-                            break;
-                    }
-                }
-                else if (txtCredito.TextLength >= 7)
-                {
-                    switch (txtCredito.TextLength)
-                    {
-                        case 0:
-                            txtCredito.Text = "R$ ";
-                            txtCredito.SelectionStart = 3;
-                            break;
-
-                        //case 5:
-                        //    txtCredito.Text = txtCredito.Text + ".";
-                        //    txtCredito.SelectionStart = 6;
-                        //    break;
-
-                        case 4:
-                            txtCredito.Text = txtCredito.Text + ",";
-                            txtCredito.SelectionStart = 5;
-                            break;
-                    }
-                }
             }
         }
+
+        #endregion TextBox Credito
+
+        #region TextBox Saldo
+
+        private void txtSaldo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (Char.IsDigit(e.KeyChar) || e.KeyChar.Equals((char)Keys.Back))
+                {
+                    if (txtSaldo.Text.Length <= 13 || e.KeyChar.Equals((char)Keys.Back))
+                    {
+                        TextBox textbox = (TextBox)sender;
+                        string textoDoTextBox = Regex.Replace(textbox.Text, "[^0-9]", string.Empty);
+                        if (textoDoTextBox == string.Empty)
+                        {
+                            textoDoTextBox = "00";
+                        }
+
+                        textoDoTextBox += e.KeyChar;
+                        textbox.Text = String.Format("R$ {0:#,##0.00}", double.Parse(textoDoTextBox) / 100);
+                        textbox.Select(textbox.Text.Length, 0);
+                    }
+                }
+
+                e.Handled = true;
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        #endregion TextBox Saldo
     }
 }
