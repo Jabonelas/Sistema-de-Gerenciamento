@@ -40,6 +40,9 @@
     <Reference Include="Bunifu.UI.WinForms.BunifuDataGridView">
       <HintPath>..\..\..\..\Downloads\Bunifu_Framework__Bunifu_DataViz\Bunifu UI WinForms 1.11.5.1\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuDataGridView.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuGroupBox">
+      <HintPath>..\..\..\..\Downloads\Bunifu_Framework__Bunifu_DataViz\Bunifu UI WinForms 1.11.5.1\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuGroupBox.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuImageButton">
       <HintPath>..\..\..\..\Downloads\Bunifu_Framework__Bunifu_DataViz\Bunifu UI WinForms 1.11.5.1\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuImageButton.dll</HintPath>
     </Reference>
@@ -79,7 +82,10 @@
   <ItemGroup>
     <Compile Include="Classes\AdicionarNoBanco.cs" />
     <Compile Include="Classes\AtualizacaoNoBanco.cs" />
+    <Compile Include="Classes\BuscarNoBanco.cs" />
     <Compile Include="Classes\ConectarBanco.cs" />
+    <Compile Include="Classes\ExcluirNoBanco.cs" />
+    <Compile Include="Classes\VerificacaoDeExistencia.cs" />
     <Compile Include="Forms\CadastroDespesas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,12 @@
     </Compile>
     <Compile Include="Classes\Global.cs" />
     <Compile Include="Classes\MensagensErro.cs" />
+    <Compile Include="Forms\Alerta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Alerta.Designer.cs">
+      <DependentUpon>Alerta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PesquisarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -171,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CadastroUsuario.resx">
       <DependentUpon>CadastroUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Alerta.resx">
+      <DependentUpon>Alerta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PesquisarCliente.resx">
       <DependentUpon>PesquisarCliente.cs</DependentUpon>
@@ -322,6 +337,20 @@
   <ItemGroup>
     <None Include="Resources\notas-de-receber.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\camera_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\camera1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\camera2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imagem-do-usuario-com-fundo-preto.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

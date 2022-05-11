@@ -123,6 +123,46 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap camera {
+            get {
+                object obj = ResourceManager.GetObject("camera", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap camera_50px {
+            get {
+                object obj = ResourceManager.GetObject("camera_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap camera1 {
+            get {
+                object obj = ResourceManager.GetObject("camera1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap camera2 {
+            get {
+                object obj = ResourceManager.GetObject("camera2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap carrinho_de_compras {
             get {
                 object obj = ResourceManager.GetObject("carrinho-de-compras", resourceCulture);
@@ -226,6 +266,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         internal static System.Drawing.Bitmap fornecedor {
             get {
                 object obj = ResourceManager.GetObject("fornecedor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imagem_do_usuario_com_fundo_preto {
+            get {
+                object obj = ResourceManager.GetObject("imagem-do-usuario-com-fundo-preto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

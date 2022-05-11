@@ -219,6 +219,7 @@
             this.bntSair.TextMarginLeft = 0;
             this.bntSair.TextPadding = new System.Windows.Forms.Padding(0);
             this.bntSair.UseDefaultRadiusAndThickness = true;
+            this.bntSair.Click += new System.EventHandler(this.bntSair_Click);
             // 
             // panel5
             // 

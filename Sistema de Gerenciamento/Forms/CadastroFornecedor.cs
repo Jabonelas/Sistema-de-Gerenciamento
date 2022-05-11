@@ -17,6 +17,9 @@ namespace Sistema_de_Gerenciamento
             InitializeComponent();
         }
 
-       
+        private void bntSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

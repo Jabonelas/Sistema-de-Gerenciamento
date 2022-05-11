@@ -2118,7 +2118,7 @@
             this.btnSair.IconRightCursor = System.Windows.Forms.Cursors.Default;
             this.btnSair.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
             this.btnSair.IconSize = 25;
-            this.btnSair.IdleBorderColor = System.Drawing.Color.Black;
+            this.btnSair.IdleBorderColor = System.Drawing.Color.Transparent;
             this.btnSair.IdleBorderRadius = 1;
             this.btnSair.IdleBorderThickness = 1;
             this.btnSair.IdleFillColor = System.Drawing.Color.Transparent;
@@ -2144,7 +2144,7 @@
             this.btnSair.onHoverState.ForeColor = System.Drawing.Color.White;
             this.btnSair.onHoverState.IconLeftImage = null;
             this.btnSair.onHoverState.IconRightImage = null;
-            this.btnSair.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.btnSair.OnIdleState.BorderColor = System.Drawing.Color.Transparent;
             this.btnSair.OnIdleState.BorderRadius = 1;
             this.btnSair.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             this.btnSair.OnIdleState.BorderThickness = 1;
@@ -2209,7 +2209,7 @@
             this.bunifuButton15.IconRightCursor = System.Windows.Forms.Cursors.Default;
             this.bunifuButton15.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
             this.bunifuButton15.IconSize = 25;
-            this.bunifuButton15.IdleBorderColor = System.Drawing.Color.Black;
+            this.bunifuButton15.IdleBorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton15.IdleBorderRadius = 1;
             this.bunifuButton15.IdleBorderThickness = 1;
             this.bunifuButton15.IdleFillColor = System.Drawing.Color.Transparent;
@@ -2235,7 +2235,7 @@
             this.bunifuButton15.onHoverState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton15.onHoverState.IconLeftImage = null;
             this.bunifuButton15.onHoverState.IconRightImage = null;
-            this.bunifuButton15.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.bunifuButton15.OnIdleState.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton15.OnIdleState.BorderRadius = 1;
             this.bunifuButton15.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             this.bunifuButton15.OnIdleState.BorderThickness = 1;
@@ -2299,7 +2299,7 @@
             this.bunifuButton14.IconRightCursor = System.Windows.Forms.Cursors.Default;
             this.bunifuButton14.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
             this.bunifuButton14.IconSize = 25;
-            this.bunifuButton14.IdleBorderColor = System.Drawing.Color.Black;
+            this.bunifuButton14.IdleBorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton14.IdleBorderRadius = 1;
             this.bunifuButton14.IdleBorderThickness = 1;
             this.bunifuButton14.IdleFillColor = System.Drawing.Color.Transparent;
@@ -2325,7 +2325,7 @@
             this.bunifuButton14.onHoverState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton14.onHoverState.IconLeftImage = null;
             this.bunifuButton14.onHoverState.IconRightImage = null;
-            this.bunifuButton14.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.bunifuButton14.OnIdleState.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton14.OnIdleState.BorderRadius = 1;
             this.bunifuButton14.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             this.bunifuButton14.OnIdleState.BorderThickness = 1;
@@ -2389,7 +2389,7 @@
             this.bunifuButton13.IconRightCursor = System.Windows.Forms.Cursors.Default;
             this.bunifuButton13.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
             this.bunifuButton13.IconSize = 25;
-            this.bunifuButton13.IdleBorderColor = System.Drawing.Color.Black;
+            this.bunifuButton13.IdleBorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton13.IdleBorderRadius = 1;
             this.bunifuButton13.IdleBorderThickness = 1;
             this.bunifuButton13.IdleFillColor = System.Drawing.Color.Transparent;
@@ -2415,7 +2415,7 @@
             this.bunifuButton13.onHoverState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton13.onHoverState.IconLeftImage = null;
             this.bunifuButton13.onHoverState.IconRightImage = null;
-            this.bunifuButton13.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.bunifuButton13.OnIdleState.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton13.OnIdleState.BorderRadius = 1;
             this.bunifuButton13.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             this.bunifuButton13.OnIdleState.BorderThickness = 1;
@@ -2479,7 +2479,7 @@
             this.bunifuButton12.IconRightCursor = System.Windows.Forms.Cursors.Default;
             this.bunifuButton12.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
             this.bunifuButton12.IconSize = 25;
-            this.bunifuButton12.IdleBorderColor = System.Drawing.Color.Black;
+            this.bunifuButton12.IdleBorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton12.IdleBorderRadius = 1;
             this.bunifuButton12.IdleBorderThickness = 1;
             this.bunifuButton12.IdleFillColor = System.Drawing.Color.Transparent;
@@ -2505,7 +2505,7 @@
             this.bunifuButton12.onHoverState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton12.onHoverState.IconLeftImage = null;
             this.bunifuButton12.onHoverState.IconRightImage = null;
-            this.bunifuButton12.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.bunifuButton12.OnIdleState.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton12.OnIdleState.BorderRadius = 1;
             this.bunifuButton12.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             this.bunifuButton12.OnIdleState.BorderThickness = 1;
@@ -2569,7 +2569,7 @@
             this.bunifuButton11.IconRightCursor = System.Windows.Forms.Cursors.Default;
             this.bunifuButton11.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
             this.bunifuButton11.IconSize = 25;
-            this.bunifuButton11.IdleBorderColor = System.Drawing.Color.Black;
+            this.bunifuButton11.IdleBorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton11.IdleBorderRadius = 1;
             this.bunifuButton11.IdleBorderThickness = 1;
             this.bunifuButton11.IdleFillColor = System.Drawing.Color.Transparent;
@@ -2595,7 +2595,7 @@
             this.bunifuButton11.onHoverState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton11.onHoverState.IconLeftImage = null;
             this.bunifuButton11.onHoverState.IconRightImage = null;
-            this.bunifuButton11.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.bunifuButton11.OnIdleState.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton11.OnIdleState.BorderRadius = 1;
             this.bunifuButton11.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             this.bunifuButton11.OnIdleState.BorderThickness = 1;
@@ -2659,7 +2659,7 @@
             this.bunifuButton9.IconRightCursor = System.Windows.Forms.Cursors.Default;
             this.bunifuButton9.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
             this.bunifuButton9.IconSize = 25;
-            this.bunifuButton9.IdleBorderColor = System.Drawing.Color.Black;
+            this.bunifuButton9.IdleBorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton9.IdleBorderRadius = 1;
             this.bunifuButton9.IdleBorderThickness = 1;
             this.bunifuButton9.IdleFillColor = System.Drawing.Color.Transparent;
@@ -2685,7 +2685,7 @@
             this.bunifuButton9.onHoverState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton9.onHoverState.IconLeftImage = null;
             this.bunifuButton9.onHoverState.IconRightImage = null;
-            this.bunifuButton9.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.bunifuButton9.OnIdleState.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton9.OnIdleState.BorderRadius = 1;
             this.bunifuButton9.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             this.bunifuButton9.OnIdleState.BorderThickness = 1;
@@ -2749,7 +2749,7 @@
             this.bunifuButton7.IconRightCursor = System.Windows.Forms.Cursors.Default;
             this.bunifuButton7.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
             this.bunifuButton7.IconSize = 25;
-            this.bunifuButton7.IdleBorderColor = System.Drawing.Color.Black;
+            this.bunifuButton7.IdleBorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton7.IdleBorderRadius = 1;
             this.bunifuButton7.IdleBorderThickness = 1;
             this.bunifuButton7.IdleFillColor = System.Drawing.Color.Transparent;
@@ -2775,7 +2775,7 @@
             this.bunifuButton7.onHoverState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton7.onHoverState.IconLeftImage = null;
             this.bunifuButton7.onHoverState.IconRightImage = null;
-            this.bunifuButton7.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.bunifuButton7.OnIdleState.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton7.OnIdleState.BorderRadius = 1;
             this.bunifuButton7.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             this.bunifuButton7.OnIdleState.BorderThickness = 1;
@@ -2839,7 +2839,7 @@
             this.bunifuButton6.IconRightCursor = System.Windows.Forms.Cursors.Default;
             this.bunifuButton6.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
             this.bunifuButton6.IconSize = 25;
-            this.bunifuButton6.IdleBorderColor = System.Drawing.Color.Black;
+            this.bunifuButton6.IdleBorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton6.IdleBorderRadius = 1;
             this.bunifuButton6.IdleBorderThickness = 1;
             this.bunifuButton6.IdleFillColor = System.Drawing.Color.Transparent;
@@ -2865,7 +2865,7 @@
             this.bunifuButton6.onHoverState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton6.onHoverState.IconLeftImage = null;
             this.bunifuButton6.onHoverState.IconRightImage = null;
-            this.bunifuButton6.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.bunifuButton6.OnIdleState.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton6.OnIdleState.BorderRadius = 1;
             this.bunifuButton6.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             this.bunifuButton6.OnIdleState.BorderThickness = 1;
@@ -2929,7 +2929,7 @@
             this.bunifuButton3.IconRightCursor = System.Windows.Forms.Cursors.Default;
             this.bunifuButton3.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
             this.bunifuButton3.IconSize = 25;
-            this.bunifuButton3.IdleBorderColor = System.Drawing.Color.Black;
+            this.bunifuButton3.IdleBorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton3.IdleBorderRadius = 1;
             this.bunifuButton3.IdleBorderThickness = 1;
             this.bunifuButton3.IdleFillColor = System.Drawing.Color.Transparent;
@@ -2955,7 +2955,7 @@
             this.bunifuButton3.onHoverState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton3.onHoverState.IconLeftImage = null;
             this.bunifuButton3.onHoverState.IconRightImage = null;
-            this.bunifuButton3.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.bunifuButton3.OnIdleState.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton3.OnIdleState.BorderRadius = 1;
             this.bunifuButton3.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             this.bunifuButton3.OnIdleState.BorderThickness = 1;
@@ -3019,7 +3019,7 @@
             this.bunifuButton2.IconRightCursor = System.Windows.Forms.Cursors.Default;
             this.bunifuButton2.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
             this.bunifuButton2.IconSize = 25;
-            this.bunifuButton2.IdleBorderColor = System.Drawing.Color.Black;
+            this.bunifuButton2.IdleBorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton2.IdleBorderRadius = 1;
             this.bunifuButton2.IdleBorderThickness = 1;
             this.bunifuButton2.IdleFillColor = System.Drawing.Color.Transparent;
@@ -3045,7 +3045,7 @@
             this.bunifuButton2.onHoverState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton2.onHoverState.IconLeftImage = null;
             this.bunifuButton2.onHoverState.IconRightImage = null;
-            this.bunifuButton2.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.bunifuButton2.OnIdleState.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuButton2.OnIdleState.BorderRadius = 1;
             this.bunifuButton2.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             this.bunifuButton2.OnIdleState.BorderThickness = 1;

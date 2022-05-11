@@ -9,5 +9,7 @@ namespace Sistema_de_Gerenciamento
     internal static class Global
     {
         public static string tipoDeCliente = string.Empty;
+
+        public static string tipoDoAlerta = string.Empty;
     }
 }

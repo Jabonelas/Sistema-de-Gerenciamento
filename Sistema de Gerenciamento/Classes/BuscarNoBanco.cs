@@ -1,0 +1,98 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Bunifu.UI.WinForms;
+
+namespace Sistema_de_Gerenciamento.Classes
+{
+    internal class BuscarNoBanco : ConectarBanco
+    {
+        private MensagensErro Erro = new MensagensErro();
+
+        private CadastroCliente cadastroCliente;
+
+        #region Buscar Cliente
+
+        public bool BuscarCadastroCliente(string _codigoCliente, string _cPF_CNPJ, string _rG, string _nomeCliente, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select cc_id,cc_codigo_cliente,cc_data_cadastro,cc_nome_cliente,cc_tipo,cc_cpf_cnpj,cc_rg,cc_emissor," +
+                        "cc_data_emissao,cc_ins_est,cc_cep,cc_endereco,cc_complemento,cc_bairro,cc_cidade,cc_uf,cc_naturalidade,cc_data_nasc," +
+                        "cc_estado_civil,cc_credito,cc_saldo,cc_bloqueio,cc_celular,cc_tel_residencial,cc_email,cc_observacoes " +
+                        "from tb_CadastroClientes where cc_codigo_cliente = @codigoCliente or cc_cpf_cnpj = @cPF_CNPJ or cc_rg = @rG " +
+                        "or cc_nome_cliente = @nomeCliente";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigoCliente", _codigoCliente);
+                    adapter.SelectCommand.Parameters.AddWithValue("@cPF_CNPJ", _cPF_CNPJ);
+                    adapter.SelectCommand.Parameters.AddWithValue("@rG", _rG);
+                    adapter.SelectCommand.Parameters.AddWithValue("@nomeCliente", _nomeCliente);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscsarClienteNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Buscar Cliente
+
+        public void BuscarImagemCliente(int _cc_id)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ic_imagem from tb_ImagemCliente where ic_id = @cc_id";
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+                    cmd.Parameters.AddWithValue("@cc_id", _cc_id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                    }
+                    byte[] img = (byte[])(reader["ic_imagem"]);
+                    MemoryStream ms = new MemoryStream(img);
+
+                    cadastroCliente.pcbCliente.Image = System.Drawing.Image.FromStream(ms);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscsarClienteNoBanco(ex);
+            }
+        }
+    }
+}

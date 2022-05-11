@@ -32,3 +32,5 @@ C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\ob
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.exe
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.pdb
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\bin\Debug\Bunifu.UI.WinForms.BunifuSeparator.dll
+C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Alerta.resources
+C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\bin\Debug\Bunifu.UI.WinForms.BunifuGroupBox.dll

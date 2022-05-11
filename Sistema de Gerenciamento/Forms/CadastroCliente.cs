@@ -1,6 +1,7 @@
 ﻿using Bunifu.UI.WinForms;
 using Guna.UI.WinForms;
 using Sistema_de_Gerenciamento.Classes;
+using Sistema_de_Gerenciamento.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,6 +25,10 @@ namespace Sistema_de_Gerenciamento
 
         private AtualizacaoNoBanco Atualizar = new AtualizacaoNoBanco();
 
+        private VerificacaoDeExistencia VerificarExistencia = new VerificacaoDeExistencia();
+
+        private ExcluirNoBanco Excluir = new ExcluirNoBanco();
+
         public CadastroCliente()
         {
             InitializeComponent();
@@ -45,37 +50,49 @@ namespace Sistema_de_Gerenciamento
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            //Global.tipoDoAlerta = "Inclusao";
+
+            //Alerta buscarCliente = new Alerta();
+            //buscarCliente.Show();
+
             try
             {
                 if (TextBox.VerificarPreenchimentoTextBox(this) == false)
                 {
-                    Salvar.Inseir(Convert.ToInt32(txtCodigo.Text),
-                        Convert.ToDateTime(txtDataCadastro.Text),
-                        txtNome.Text,
-                        cmbTipo.Text,
-                        txtCPF_CNPJ.Text,
-                        txtRG.Text,
-                        cmbEmissor.Text,
-                        txtDataEmissao.Text,
-                        cmbIns_Est.Text,
-                        txtCEP.Text,
-                        txtEndereco.Text,
-                        txtComplemento.Text,
-                        txtBairro.Text,
-                        txtCidade.Text,
-                        cmbUF.Text,
-                        txtNaturalidade.Text,
-                        txtDataNascimento.Text,
-                        cmbEstadoCivil.Text,
-                        Convert.ToDecimal(txtCredito.Text.Replace("R$ ", "")),
-                        Convert.ToDecimal(txtSaldo.Text.Replace("R$ ", "")),
-                        cmbBloqueio.Text,
-                        txtCelular.Text,
-                        txtTel_Residencial.Text,
-                        txtEmail.Text,
-                        txtObservacoes.Text);
+                    if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == false)
+                    {
+                        Salvar.InserirCadastroCliente(Convert.ToInt32(txtCodigo.Text),
+                       Convert.ToDateTime(txtDataCadastro.Text),
+                       txtNome.Text,
+                       cmbTipo.Text,
+                       txtCPF_CNPJ.Text,
+                       txtRG.Text,
+                       cmbEmissor.Text,
+                       txtDataEmissao.Text,
+                       cmbIns_Est.Text,
+                       txtCEP.Text,
+                       txtEndereco.Text,
+                       txtComplemento.Text,
+                       txtBairro.Text,
+                       txtCidade.Text,
+                       cmbUF.Text,
+                       txtNaturalidade.Text,
+                       txtDataNascimento.Text,
+                       cmbEstadoCivil.Text,
+                       Convert.ToDecimal(txtCredito.Text.Replace("R$ ", "")),
+                       Convert.ToDecimal(txtSaldo.Text.Replace("R$ ", "")),
+                       cmbBloqueio.Text,
+                       txtCelular.Text,
+                       txtTel_Residencial.Text,
+                       txtEmail.Text,
+                       txtObservacoes.Text);
 
-                    MessageBox.Show("salvo com sucesso");
+                        Salvar.InserirImagemNoCadastroCliente(pcbCliente.Image);
+                    }
+                    else if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == true)
+                    {
+                        MessageBox.Show("Cliente Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
@@ -94,31 +111,59 @@ namespace Sistema_de_Gerenciamento
 
         private void btnAlterarCliente_Click(object sender, EventArgs e)
         {
-            Atualizar.Atualizar(Convert.ToInt32(txtCodigo.Text),
-                        Convert.ToDateTime(txtDataCadastro.Text),
-                        txtNome.Text,
-                        cmbTipo.Text,
-                        txtCPF_CNPJ.Text,
-                        txtRG.Text,
-                        cmbEmissor.Text,
-                        txtDataEmissao.Text,
-                        cmbIns_Est.Text,
-                        txtCEP.Text,
-                        txtEndereco.Text,
-                        txtComplemento.Text,
-                        txtBairro.Text,
-                        txtCidade.Text,
-                        cmbUF.Text,
-                        txtNaturalidade.Text,
-                        txtDataNascimento.Text,
-                        cmbEstadoCivil.Text,
-                        Convert.ToDecimal(txtCredito.Text.Replace("R$ ", "")),
-                        Convert.ToDecimal(txtSaldo.Text.Replace("R$ ", "")),
-                        cmbBloqueio.Text,
-                        txtCelular.Text,
-                        txtTel_Residencial.Text,
-                        txtEmail.Text,
-                        txtObservacoes.Text);
+            //Global.tipoDoAlerta = "Atualizacao";
+
+            //Alerta buscarCliente = new Alerta();
+            //buscarCliente.Show();
+
+            try
+            {
+                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                {
+                    if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == true)
+                    {
+                        Atualizar.AtualizarCadastroCliente(Convert.ToInt32(txtCodigo.Text),
+                                    Convert.ToDateTime(txtDataCadastro.Text),
+                                    txtNome.Text,
+                                    cmbTipo.Text,
+                                    txtCPF_CNPJ.Text,
+                                    txtRG.Text,
+                                    cmbEmissor.Text,
+                                    txtDataEmissao.Text,
+                                    cmbIns_Est.Text,
+                                    txtCEP.Text,
+                                    txtEndereco.Text,
+                                    txtComplemento.Text,
+                                    txtBairro.Text,
+                                    txtCidade.Text,
+                                    cmbUF.Text,
+                                    txtNaturalidade.Text,
+                                    txtDataNascimento.Text,
+                                    cmbEstadoCivil.Text,
+                                    Convert.ToDecimal(txtCredito.Text.Replace("R$ ", "")),
+                                    Convert.ToDecimal(txtSaldo.Text.Replace("R$ ", "")),
+                                    cmbBloqueio.Text,
+                                    txtCelular.Text,
+                                    txtTel_Residencial.Text,
+                                    txtEmail.Text,
+                                    txtObservacoes.Text);
+
+                        Atualizar.AtualizarImagemNoCadastroCliente(pcbCliente.Image, Convert.ToInt32(lblcc_id.Text));
+                    }
+                    else if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == false)
+                    {
+                        MessageBox.Show("Cliente Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Preenchimento Dos Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarCadastroCliente(ex);
+            }
         }
 
         #endregion Botao Alterar
@@ -127,7 +172,7 @@ namespace Sistema_de_Gerenciamento
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-            PesquisarCliente buscarCliente = new PesquisarCliente();
+            PesquisarCliente buscarCliente = new PesquisarCliente(this);
             buscarCliente.ShowDialog();
         }
 
@@ -137,6 +182,33 @@ namespace Sistema_de_Gerenciamento
 
         private void btnExcluirCliente_Click(object sender, EventArgs e)
         {
+            //Global.tipoDoAlerta = "Exclusao";
+
+            //Alerta buscarCliente = new Alerta();
+            //buscarCliente.Show();
+
+            try
+            {
+                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                {
+                    if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == true)
+                    {
+                        Excluir.ExcluirCadastroCliente(txtCPF_CNPJ.Text);
+                    }
+                    else if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == false)
+                    {
+                        MessageBox.Show("Cliente Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoExluirCadastroCliente(ex);
+            }
         }
 
         #endregion Botao Excluir
@@ -162,7 +234,7 @@ namespace Sistema_de_Gerenciamento
 
         #endregion TextBox Codigo
 
-        #region TextBox Tipo
+        #region ComboBox Tipo
 
         private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -196,7 +268,7 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion TextBox Tipo
+        #endregion ComboBox Tipo
 
         #region TextBox CPF e CNPJ
 
@@ -281,7 +353,7 @@ namespace Sistema_de_Gerenciamento
                 MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
                 txtCPF_CNPJ.Focus();
             }
-            else if (txtCPF_CNPJ.Text.Length == txtCPF_CNPJ.MaxLength)
+            else if (txtCPF_CNPJ.Text.Length == txtCPF_CNPJ.MaxLength || txtCPF_CNPJ.Text.Length == 0)
             {
                 txtCPF_CNPJ.BorderColorActive = Color.DodgerBlue;
             }
@@ -333,7 +405,7 @@ namespace Sistema_de_Gerenciamento
                 MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
                 txtRG.Focus();
             }
-            else if (txtRG.Text.Length == txtRG.MaxLength)
+            else if (txtRG.Text.Length == txtRG.MaxLength || txtRG.Text.Length == 0)
             {
                 txtRG.BorderColorActive = Color.DodgerBlue;
             }
@@ -373,16 +445,32 @@ namespace Sistema_de_Gerenciamento
 
         private void txtDataEmissao_Leave(object sender, EventArgs e)
         {
+            //Verificação se o campo do totalmente preenchido
             if (txtDataEmissao.Text.Length != txtDataEmissao.MaxLength && txtDataEmissao.Text.Length != 0)
             {
                 txtDataEmissao.BorderColorActive = Color.Red;
 
-                MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
+                MessageBox.Show("Por Favor Preencha o Campo Corretamente!", "Atencao!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtDataEmissao.Focus();
             }
-            else if (txtDataEmissao.Text.Length == txtDataEmissao.MaxLength)
+            else if (txtDataEmissao.Text.Length == txtDataEmissao.MaxLength || txtDataEmissao.Text.Length == 0)
             {
                 txtDataEmissao.BorderColorActive = Color.DodgerBlue;
+            }
+            //Verificação se o campo foi preenchido com um formato valido
+            if (txtDataEmissao.Text.Length == txtDataEmissao.MaxLength)
+            {
+                DateTime time;
+                if (DateTime.TryParse(txtDataEmissao.Text, out time))
+                {
+                    txtDataEmissao.BorderColorActive = Color.DodgerBlue;
+                }
+                else
+                {
+                    txtDataEmissao.BorderColorActive = Color.Red;
+                    MessageBox.Show($"Data Errada: {txtDataEmissao.Text}", "Atencao!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtDataEmissao.Focus();
+                }
             }
         }
 
@@ -420,16 +508,32 @@ namespace Sistema_de_Gerenciamento
 
         private void txtDataNascimento_Leave(object sender, EventArgs e)
         {
+            //Verificação se o campo do totalmente preenchido
             if (txtDataNascimento.Text.Length != txtDataNascimento.MaxLength && txtDataNascimento.Text.Length != 0)
             {
                 txtDataNascimento.BorderColorActive = Color.Red;
 
-                MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
+                MessageBox.Show("Por Favor Preencha o Campo Data Nasc. Corretamente!");
                 txtDataNascimento.Focus();
             }
-            else if (txtDataNascimento.Text.Length == txtDataNascimento.MaxLength)
+            else if (txtDataNascimento.Text.Length == txtDataNascimento.MaxLength || txtDataNascimento.Text.Length == 0)
             {
                 txtDataNascimento.BorderColorActive = Color.DodgerBlue;
+            }
+            //Verificação se o campo foi preenchido com um formato valido
+            if (txtDataNascimento.Text.Length == txtDataNascimento.MaxLength)
+            {
+                DateTime time;
+                if (DateTime.TryParse(txtDataNascimento.Text, out time))
+                {
+                    txtDataNascimento.BorderColorActive = Color.DodgerBlue;
+                }
+                else
+                {
+                    txtDataNascimento.BorderColorActive = Color.Red;
+                    MessageBox.Show($"Data Errada: {txtDataNascimento.Text}", "Atencao!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtDataNascimento.Focus();
+                }
             }
         }
 
@@ -481,7 +585,7 @@ namespace Sistema_de_Gerenciamento
                 MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
                 txtCEP.Focus();
             }
-            else if (txtCEP.Text.Length == txtCEP.MaxLength)
+            else if (txtCEP.Text.Length == txtCEP.MaxLength || txtCEP.Text.Length == 0)
             {
                 txtCEP.BorderColorActive = Color.DodgerBlue;
             }
@@ -529,7 +633,7 @@ namespace Sistema_de_Gerenciamento
                 MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
                 txtCelular.Focus();
             }
-            else if (txtCelular.Text.Length == txtCelular.MaxLength)
+            else if (txtCelular.Text.Length == txtCelular.MaxLength || txtCelular.Text.Length == 0)
             {
                 txtCelular.BorderColorActive = Color.DodgerBlue;
             }
@@ -577,7 +681,7 @@ namespace Sistema_de_Gerenciamento
                 MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
                 txtTel_Residencial.Focus();
             }
-            else if (txtTel_Residencial.Text.Length == txtTel_Residencial.MaxLength)
+            else if (txtTel_Residencial.Text.Length == txtTel_Residencial.MaxLength || txtTel_Residencial.Text.Length == 0)
             {
                 txtTel_Residencial.FocusedBorderColor = Color.DodgerBlue;
             }
@@ -649,5 +753,20 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion TextBox Saldo
+
+        #region Botao Inserir Imagem
+
+        private void btnInserirImagem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog abrirPesquisa = new OpenFileDialog();
+
+            abrirPesquisa.Filter = "Abrir Imagem (*.jpg; *.png; *.gif) |*.jpg; *.png; *.gif ";
+            if (abrirPesquisa.ShowDialog() == DialogResult.OK)
+            {
+                pcbCliente.Image = Image.FromFile(abrirPesquisa.FileName);
+            }
+        }
+
+        #endregion Botao Inserir Imagem
     }
 }

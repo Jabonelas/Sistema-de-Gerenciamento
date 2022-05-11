@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,9 @@ namespace Sistema_de_Gerenciamento.Classes
     {
         private MensagensErro Erro = new MensagensErro();
 
-        public void Atualizar(int _codigoCliente, DateTime _dataCadastro, string _nomeCliente, string _tipo, string _cPF_CNPJ,
+        #region Atualizar Cadastro Cliente
+
+        public void AtualizarCadastroCliente(int _codigoCliente, DateTime _dataCadastro, string _nomeCliente, string _tipo, string _cPF_CNPJ,
           string _rG, string _emissor, string _dataEmissao, string _ins_Est, string _cEP, string _endereco, string _complemento,
           string _bairro, string _cidade, string _uF, string _naturalidade, string _dataNasc, string _estadoCivil, decimal _credito,
           decimal _saldo, string _bloqueio, string _celular, string _tel_Residencial, string _email, string _observacoes)
@@ -21,13 +24,32 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update CadastroClientes set CodigoCliente =@CodigoCliente,DataCadastro=@DataCadastro," +
-                        "NomeCliente=@NomeCliente,Tipo=@Tipo," +
-                        "RG=@RG,Emissor=@Emissor,DataEmissao=@DataEmissao,Ins_Est=@Ins_Est,CEP=@CEP,Endereco=@Endereco," +
-                        "Complemento=@Complemento,Bairro=@Bairro,Cidade=@Cidade,UF=@UF,Naturalidade=@Naturalidade," +
-                        "DataNasc=@DataNasc,EstadoCivil=@EstadoCivil,Credito=@Credito,Saldo=@Saldo,Bloqueio=@Bloqueio," +
-                        "Celular=@Celular,Tel_Residencial=@Tel_Residencial,Email=@Email,Observacoes=@Observacoes " +
-                        "where CPF_CNPJ=@CPF_CNPJ";
+                    string query = "update tb_CadastroClientes set " +
+                        "cc_codigo_cliente=@CodigoCliente," +
+                        "cc_data_cadastro=@DataCadastro," +
+                        "cc_nome_cliente=@NomeCliente," +
+                        "cc_tipo=@Tipo," +
+                        "cc_rg=@RG," +
+                        "cc_emissor=@Emissor," +
+                        "cc_data_emissao=@DataEmissao," +
+                        "cc_ins_est=@Ins_Est," +
+                        "cc_cep=@CEP," +
+                        "cc_endereco=@Endereco," +
+                        "cc_complemento=@Complemento," +
+                        "cc_bairro=@Bairro," +
+                        "cc_cidade=@Cidade," +
+                        "cc_uf=@UF," +
+                        "cc_naturalidade=@Naturalidade," +
+                        "cc_data_nasc=@DataNasc," +
+                        "cc_estado_civil=@EstadoCivil," +
+                        "cc_credito=@Credito," +
+                        "cc_saldo=@Saldo," +
+                        "cc_bloqueio=@Bloqueio," +
+                        "cc_celular=@Celular," +
+                        "cc_tel_residencial=@Tel_Residencial," +
+                        "cc_email=@Email," +
+                        "cc_observacoes=@Observacoes " +
+                        "where cc_cpf_cnpj=@CPF_CNPJ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@CodigoCliente", SqlDbType.Int).Value = _codigoCliente;
@@ -64,5 +86,36 @@ namespace Sistema_de_Gerenciamento.Classes
                 Erro.ErroAoAtualizarClienteNoBanco(ex);
             }
         }
+
+        #endregion Atualizar Cadastro Cliente
+
+        #region Atualizar Imagem Cliente
+
+        public void AtualizarImagemNoCadastroCliente(Image _imagem, int _cc_id)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_ImagemCliente set ic_imagem=@imagem where ic_id = @cc_id ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    byte[] arr;
+                    ImageConverter converter = new ImageConverter();
+                    arr = (byte[])converter.ConvertTo(_imagem, typeof(byte[]));
+                    adapter.SelectCommand.Parameters.Add("@imagem", SqlDbType.Image).Value = arr;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cc_id", SqlDbType.VarChar).Value = _cc_id;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarImagemClienteNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Imagem Cliente
     }
 }
