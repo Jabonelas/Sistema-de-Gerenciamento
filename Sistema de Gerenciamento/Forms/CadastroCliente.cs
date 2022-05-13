@@ -12,6 +12,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Correios;
 
 namespace Sistema_de_Gerenciamento
 {
@@ -29,6 +30,8 @@ namespace Sistema_de_Gerenciamento
 
         private ExcluirNoBanco Excluir = new ExcluirNoBanco();
 
+        private BuscarNoBanco Buscar = new BuscarNoBanco();
+
         public CadastroCliente()
         {
             InitializeComponent();
@@ -42,6 +45,8 @@ namespace Sistema_de_Gerenciamento
             TextBox.ApagandoTextBox(this);
 
             lblTipoDeCliente.Text = "CPF / CNPJ";
+
+            pcbCliente.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\imagem-do-usuario-com-fundo-preto.png");
         }
 
         #endregion Botao Novo
@@ -50,18 +55,13 @@ namespace Sistema_de_Gerenciamento
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            //Global.tipoDoAlerta = "Inclusao";
-
-            //Alerta buscarCliente = new Alerta();
-            //buscarCliente.Show();
-
             try
             {
                 if (TextBox.VerificarPreenchimentoTextBox(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == false)
                     {
-                        Salvar.InserirCadastroCliente(Convert.ToInt32(txtCodigo.Text),
+                        Salvar.InserirCadastroCliente(
                        Convert.ToDateTime(txtDataCadastro.Text),
                        txtNome.Text,
                        cmbTipo.Text,
@@ -72,6 +72,7 @@ namespace Sistema_de_Gerenciamento
                        cmbIns_Est.Text,
                        txtCEP.Text,
                        txtEndereco.Text,
+                       Convert.ToInt32(txtNumero.Text),
                        txtComplemento.Text,
                        txtBairro.Text,
                        txtCidade.Text,
@@ -88,6 +89,14 @@ namespace Sistema_de_Gerenciamento
                        txtObservacoes.Text);
 
                         Salvar.InserirImagemNoCadastroCliente(pcbCliente.Image);
+
+                        txtCodigo.Text = Buscar.BuscarCodigoCliente(txtCPF_CNPJ.Text).ToString();
+
+                        //Chamar o forms de alerta de inclusao com sucesso
+                        Global.tipoDoAlerta = "Inclusao";
+
+                        Alerta buscarCliente = new Alerta();
+                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == true)
                     {
@@ -107,22 +116,17 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Botao Salvar
 
-        #region Botao Alterar
+        #region Botao Atualizar
 
-        private void btnAlterarCliente_Click(object sender, EventArgs e)
+        private void btnAtualizarCliente_Click(object sender, EventArgs e)
         {
-            //Global.tipoDoAlerta = "Atualizacao";
-
-            //Alerta buscarCliente = new Alerta();
-            //buscarCliente.Show();
-
             try
             {
                 if (TextBox.VerificarPreenchimentoTextBox(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == true)
                     {
-                        Atualizar.AtualizarCadastroCliente(Convert.ToInt32(txtCodigo.Text),
+                        Atualizar.AtualizarCadastroCliente(
                                     Convert.ToDateTime(txtDataCadastro.Text),
                                     txtNome.Text,
                                     cmbTipo.Text,
@@ -133,6 +137,7 @@ namespace Sistema_de_Gerenciamento
                                     cmbIns_Est.Text,
                                     txtCEP.Text,
                                     txtEndereco.Text,
+                                    Convert.ToInt32(txtNumero.Text),
                                     txtComplemento.Text,
                                     txtBairro.Text,
                                     txtCidade.Text,
@@ -148,7 +153,13 @@ namespace Sistema_de_Gerenciamento
                                     txtEmail.Text,
                                     txtObservacoes.Text);
 
-                        Atualizar.AtualizarImagemNoCadastroCliente(pcbCliente.Image, Convert.ToInt32(lblcc_id.Text));
+                        Atualizar.AtualizarImagemNoCadastroCliente(pcbCliente.Image, Convert.ToInt32(txtCodigo.Text));
+
+                        //Chamar o forms de alerta de atualizacao com sucesso
+                        Global.tipoDoAlerta = "Atualizacao";
+
+                        Alerta buscarCliente = new Alerta();
+                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == false)
                     {
@@ -166,7 +177,7 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Alterar
+        #endregion Botao Atualizar
 
         #region Botao Buscar
 
@@ -182,11 +193,6 @@ namespace Sistema_de_Gerenciamento
 
         private void btnExcluirCliente_Click(object sender, EventArgs e)
         {
-            //Global.tipoDoAlerta = "Exclusao";
-
-            //Alerta buscarCliente = new Alerta();
-            //buscarCliente.Show();
-
             try
             {
                 if (TextBox.VerificarPreenchimentoTextBox(this) == false)
@@ -194,6 +200,12 @@ namespace Sistema_de_Gerenciamento
                     if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == true)
                     {
                         Excluir.ExcluirCadastroCliente(txtCPF_CNPJ.Text);
+
+                        //Chamar o forms de alerta de exclusao com sucesso
+                        Global.tipoDoAlerta = "Exclusao";
+
+                        Alerta buscarCliente = new Alerta();
+                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == false)
                     {
@@ -221,6 +233,21 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Botao Sair
+
+        #region Botao Inserir Imagem
+
+        private void btnInserirImagem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog abrirPesquisa = new OpenFileDialog();
+
+            abrirPesquisa.Filter = "Abrir Imagem (*.jpg; *.png; *.gif) |*.jpg; *.png; *.gif ";
+            if (abrirPesquisa.ShowDialog() == DialogResult.OK)
+            {
+                pcbCliente.Image = Image.FromFile(abrirPesquisa.FileName);
+            }
+        }
+
+        #endregion Botao Inserir Imagem
 
         #region TextBox Codigo
 
@@ -350,7 +377,8 @@ namespace Sistema_de_Gerenciamento
             {
                 txtCPF_CNPJ.BorderColorActive = Color.Red;
 
-                MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
+                MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 txtCPF_CNPJ.Focus();
             }
             else if (txtCPF_CNPJ.Text.Length == txtCPF_CNPJ.MaxLength || txtCPF_CNPJ.Text.Length == 0)
@@ -402,7 +430,8 @@ namespace Sistema_de_Gerenciamento
             {
                 txtRG.BorderColorActive = Color.Red;
 
-                MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
+                MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 txtRG.Focus();
             }
             else if (txtRG.Text.Length == txtRG.MaxLength || txtRG.Text.Length == 0)
@@ -451,6 +480,7 @@ namespace Sistema_de_Gerenciamento
                 txtDataEmissao.BorderColorActive = Color.Red;
 
                 MessageBox.Show("Por Favor Preencha o Campo Corretamente!", "Atencao!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 txtDataEmissao.Focus();
             }
             else if (txtDataEmissao.Text.Length == txtDataEmissao.MaxLength || txtDataEmissao.Text.Length == 0)
@@ -468,7 +498,9 @@ namespace Sistema_de_Gerenciamento
                 else
                 {
                     txtDataEmissao.BorderColorActive = Color.Red;
+
                     MessageBox.Show($"Data Errada: {txtDataEmissao.Text}", "Atencao!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                     txtDataEmissao.Focus();
                 }
             }
@@ -513,7 +545,8 @@ namespace Sistema_de_Gerenciamento
             {
                 txtDataNascimento.BorderColorActive = Color.Red;
 
-                MessageBox.Show("Por Favor Preencha o Campo Data Nasc. Corretamente!");
+                MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 txtDataNascimento.Focus();
             }
             else if (txtDataNascimento.Text.Length == txtDataNascimento.MaxLength || txtDataNascimento.Text.Length == 0)
@@ -578,16 +611,42 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCEP_Leave(object sender, EventArgs e)
         {
-            if (txtCEP.Text.Length != txtCEP.MaxLength && txtCEP.Text.Length != 0)
+            try
             {
-                txtCEP.BorderColorActive = Color.Red;
+                if (txtCEP.Text.Length != txtCEP.MaxLength && txtCEP.Text.Length != 0)
+                {
+                    txtCEP.BorderColorActive = Color.Red;
 
-                MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
-                txtCEP.Focus();
+                    MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    txtCEP.Focus();
+                }
+                else if (txtCEP.Text.Length == txtCEP.MaxLength || txtCEP.Text.Length == 0)
+                {
+                    txtCEP.BorderColorActive = Color.DodgerBlue;
+
+                    //Api dos Correios
+                    CorreiosApi correiosApi = new CorreiosApi();
+                    var retorno = correiosApi.consultaCEP(txtCEP.Text);
+
+                    if (retorno == null)
+                    {
+                        MessageBox.Show("CEP Não Encontrado", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        txtCEP.Focus();
+
+                        return;
+                    }
+
+                    txtEndereco.Text = retorno.end;
+                    txtComplemento.Text = retorno.complemento;
+                    txtBairro.Text = retorno.bairro;
+                    txtCidade.Text = retorno.cidade;
+                    cmbUF.Text = retorno.uf;
+                }
             }
-            else if (txtCEP.Text.Length == txtCEP.MaxLength || txtCEP.Text.Length == 0)
+            catch (Exception)
             {
-                txtCEP.BorderColorActive = Color.DodgerBlue;
             }
         }
 
@@ -630,7 +689,8 @@ namespace Sistema_de_Gerenciamento
             {
                 txtCelular.BorderColorActive = Color.Red;
 
-                MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
+                MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 txtCelular.Focus();
             }
             else if (txtCelular.Text.Length == txtCelular.MaxLength || txtCelular.Text.Length == 0)
@@ -678,7 +738,8 @@ namespace Sistema_de_Gerenciamento
             {
                 txtTel_Residencial.FocusedBorderColor = Color.Red;
 
-                MessageBox.Show("Por Favor Preencha o Campo Corretamente!");
+                MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
                 txtTel_Residencial.Focus();
             }
             else if (txtTel_Residencial.Text.Length == txtTel_Residencial.MaxLength || txtTel_Residencial.Text.Length == 0)
@@ -754,19 +815,28 @@ namespace Sistema_de_Gerenciamento
 
         #endregion TextBox Saldo
 
-        #region Botao Inserir Imagem
+        #region TextBox Cidade
 
-        private void btnInserirImagem_Click(object sender, EventArgs e)
+        private void txtCidade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            OpenFileDialog abrirPesquisa = new OpenFileDialog();
-
-            abrirPesquisa.Filter = "Abrir Imagem (*.jpg; *.png; *.gif) |*.jpg; *.png; *.gif ";
-            if (abrirPesquisa.ShowDialog() == DialogResult.OK)
+            if (Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
             {
-                pcbCliente.Image = Image.FromFile(abrirPesquisa.FileName);
+                e.Handled = true;
             }
         }
 
-        #endregion Botao Inserir Imagem
+        #endregion TextBox Cidade
+
+        #region TextBox Naturalidade
+
+        private void txtNaturalidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        #endregion TextBox Naturalidade
     }
 }

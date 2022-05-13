@@ -72,7 +72,7 @@
             this.cmbTipo = new Guna.UI.WinForms.GunaComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.bunifuGroupBox1 = new Bunifu.UI.WinForms.BunifuGroupBox();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cc_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NomeCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,6 +83,7 @@
             this.Ins_Est = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CEP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Endereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Complemento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Bairro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,7 +98,6 @@
             this.Tel_Residencial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.E_mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Observacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fk_imagem_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarCliente)).BeginInit();
             this.bunifuGroupBox1.SuspendLayout();
@@ -557,7 +557,7 @@
             this.gdvPesquisarCliente.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gdvPesquisarCliente.ColumnHeadersHeight = 40;
             this.gdvPesquisarCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Codigo,
+            this.cc_id,
             this.DataCadastro,
             this.NomeCliente,
             this.Tipo,
@@ -568,6 +568,7 @@
             this.Ins_Est,
             this.CEP,
             this.Endereco,
+            this.Numero,
             this.Complemento,
             this.Bairro,
             this.Cidade,
@@ -582,7 +583,6 @@
             this.Tel_Residencial,
             this.E_mail,
             this.Observacoes,
-            this.ID,
             this.fk_imagem_id});
             this.gdvPesquisarCliente.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.gdvPesquisarCliente.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
@@ -734,7 +734,7 @@
             this.bunifuButton3.BackColor1 = System.Drawing.Color.Transparent;
             this.bunifuButton3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuButton3.BackgroundImage")));
             this.bunifuButton3.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.bunifuButton3.ButtonText = "Exportar para o Execel \r\nRelação dos Produtos";
+            this.bunifuButton3.ButtonText = "Exportar para o Execel \r\nRelação dos Clientes";
             this.bunifuButton3.ButtonTextMarginLeft = 0;
             this.bunifuButton3.ColorContrastOnClick = 45;
             this.bunifuButton3.ColorContrastOnHover = 45;
@@ -823,7 +823,7 @@
             this.bunifuButton2.BackColor1 = System.Drawing.Color.Transparent;
             this.bunifuButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuButton2.BackgroundImage")));
             this.bunifuButton2.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.bunifuButton2.ButtonText = "Imprimir Relação dos Produtos";
+            this.bunifuButton2.ButtonText = "Imprimir Relação dos Clientes";
             this.bunifuButton2.ButtonTextMarginLeft = 0;
             this.bunifuButton2.ColorContrastOnClick = 45;
             this.bunifuButton2.ColorContrastOnHover = 45;
@@ -1052,13 +1052,12 @@
             this.bunifuGroupBox1.TabIndex = 168;
             this.bunifuGroupBox1.TabStop = false;
             // 
-            // Codigo
+            // cc_id
             // 
-            this.Codigo.DataPropertyName = "cc_codigo_cliente";
-            this.Codigo.FillWeight = 90.2098F;
-            this.Codigo.HeaderText = "Código ";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
+            this.cc_id.DataPropertyName = "cc_id";
+            this.cc_id.HeaderText = "Codigo ";
+            this.cc_id.Name = "cc_id";
+            this.cc_id.ReadOnly = true;
             // 
             // DataCadastro
             // 
@@ -1138,6 +1137,14 @@
             this.Endereco.Name = "Endereco";
             this.Endereco.ReadOnly = true;
             this.Endereco.Visible = false;
+            // 
+            // Numero
+            // 
+            this.Numero.DataPropertyName = "cc_numero";
+            this.Numero.HeaderText = "Numero";
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
+            this.Numero.Visible = false;
             // 
             // Complemento
             // 
@@ -1251,14 +1258,6 @@
             this.Observacoes.ReadOnly = true;
             this.Observacoes.Visible = false;
             // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "cc_id";
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            // 
             // fk_imagem_id
             // 
             this.fk_imagem_id.DataPropertyName = "fk_imagem_id";
@@ -1321,7 +1320,7 @@
         public Guna.UI.WinForms.GunaComboBox cmbTipo;
         private System.Windows.Forms.Label label1;
         private Bunifu.UI.WinForms.BunifuGroupBox bunifuGroupBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cc_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomeCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
@@ -1332,6 +1331,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Ins_Est;
         private System.Windows.Forms.DataGridViewTextBoxColumn CEP;
         private System.Windows.Forms.DataGridViewTextBoxColumn Endereco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Complemento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Bairro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cidade;
@@ -1346,7 +1346,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Tel_Residencial;
         private System.Windows.Forms.DataGridViewTextBoxColumn E_mail;
         private System.Windows.Forms.DataGridViewTextBoxColumn Observacoes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn fk_imagem_id;
     }
 }

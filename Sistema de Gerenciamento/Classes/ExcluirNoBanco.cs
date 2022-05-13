@@ -12,6 +12,8 @@ namespace Sistema_de_Gerenciamento.Classes
     {
         private MensagensErro Erro = new MensagensErro();
 
+        #region Excluir Cadastro Cliente
+
         public void ExcluirCadastroCliente(string _cPF_CNPJ)
         {
             try
@@ -32,5 +34,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 Erro.ErroAoExluirlienteNoBanco(ex);
             }
         }
+
+        #endregion Excluir Cadastro Cliente
     }
 }

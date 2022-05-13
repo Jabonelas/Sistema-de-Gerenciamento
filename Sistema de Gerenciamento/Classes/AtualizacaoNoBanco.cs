@@ -15,8 +15,8 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Atualizar Cadastro Cliente
 
-        public void AtualizarCadastroCliente(int _codigoCliente, DateTime _dataCadastro, string _nomeCliente, string _tipo, string _cPF_CNPJ,
-          string _rG, string _emissor, string _dataEmissao, string _ins_Est, string _cEP, string _endereco, string _complemento,
+        public void AtualizarCadastroCliente(DateTime _dataCadastro, string _nomeCliente, string _tipo, string _cPF_CNPJ,
+          string _rG, string _emissor, string _dataEmissao, string _ins_Est, string _cEP, string _endereco, int _numero, string _complemento,
           string _bairro, string _cidade, string _uF, string _naturalidade, string _dataNasc, string _estadoCivil, decimal _credito,
           decimal _saldo, string _bloqueio, string _celular, string _tel_Residencial, string _email, string _observacoes)
         {
@@ -25,7 +25,6 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "update tb_CadastroClientes set " +
-                        "cc_codigo_cliente=@CodigoCliente," +
                         "cc_data_cadastro=@DataCadastro," +
                         "cc_nome_cliente=@NomeCliente," +
                         "cc_tipo=@Tipo," +
@@ -35,6 +34,7 @@ namespace Sistema_de_Gerenciamento.Classes
                         "cc_ins_est=@Ins_Est," +
                         "cc_cep=@CEP," +
                         "cc_endereco=@Endereco," +
+                        "cc_numero=@numero," +
                         "cc_complemento=@Complemento," +
                         "cc_bairro=@Bairro," +
                         "cc_cidade=@Cidade," +
@@ -52,7 +52,6 @@ namespace Sistema_de_Gerenciamento.Classes
                         "where cc_cpf_cnpj=@CPF_CNPJ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@CodigoCliente", SqlDbType.Int).Value = _codigoCliente;
                     adapter.SelectCommand.Parameters.AddWithValue("@DataCadastro", SqlDbType.Date).Value = _dataCadastro;
                     adapter.SelectCommand.Parameters.AddWithValue("@NomeCliente", SqlDbType.VarChar).Value = _nomeCliente;
                     adapter.SelectCommand.Parameters.AddWithValue("@Tipo", SqlDbType.VarChar).Value = _tipo;
@@ -63,6 +62,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@Ins_Est", SqlDbType.VarChar).Value = _ins_Est;
                     adapter.SelectCommand.Parameters.AddWithValue("@CEP", SqlDbType.VarChar).Value = _cEP;
                     adapter.SelectCommand.Parameters.AddWithValue("@Endereco", SqlDbType.VarChar).Value = _endereco;
+                    adapter.SelectCommand.Parameters.AddWithValue("@numero", SqlDbType.Int).Value = _numero;
                     adapter.SelectCommand.Parameters.AddWithValue("@Complemento", SqlDbType.VarChar).Value = _complemento;
                     adapter.SelectCommand.Parameters.AddWithValue("@Bairro", SqlDbType.VarChar).Value = _bairro;
                     adapter.SelectCommand.Parameters.AddWithValue("@Cidade", SqlDbType.VarChar).Value = _cidade;
@@ -117,5 +117,86 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Atualizar Imagem Cliente
+
+        #region Atualizar Cadastro Fornecedor
+
+        public void AtualizarCadastroFornecedor(string _razaoSocial, string _cnpj, string _nomeFantasia,
+                   string _cep, string _endereco, string _complemento, int _numero, string _bairro, string _cidade, string _uf,
+                   string _telefone, string _email, string _observacoes)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_CadastroFornecedor set " +
+                        "cf_razao_social=@razaoSocial," +
+                        "cf_cnpj=@cnpj," +
+                        "cf_nome_fantasia=@nomeFantasia," +
+                        "cf_cep=@cep," +
+                        "cf_endereco=@endereco," +
+                        "cf_complemento=@complemento," +
+                        "cf_numero=@numero," +
+                        "cf_bairro=@bairro," +
+                        "cf_cidade=@cidade," +
+                        "cf_uf=@uf," +
+                        "cf_telefone=@telefone," +
+                        "cf_email=@email," +
+                        "cf_observacoes=@Observacoes " +
+                        "where cf_cnpj=@cnpj";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@razaoSocial", SqlDbType.Date).Value = _razaoSocial;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cnpj", SqlDbType.VarChar).Value = _cnpj;
+                    adapter.SelectCommand.Parameters.AddWithValue("@nomeFantasia", SqlDbType.VarChar).Value = _nomeFantasia;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cep", SqlDbType.VarChar).Value = _cep;
+                    adapter.SelectCommand.Parameters.AddWithValue("@endereco", SqlDbType.VarChar).Value = _endereco;
+                    adapter.SelectCommand.Parameters.AddWithValue("@complemento", SqlDbType.VarChar).Value = _complemento;
+                    adapter.SelectCommand.Parameters.AddWithValue("@numero", SqlDbType.VarChar).Value = _numero;
+                    adapter.SelectCommand.Parameters.AddWithValue("@bairro", SqlDbType.VarChar).Value = _bairro;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cidade", SqlDbType.VarChar).Value = _cidade;
+                    adapter.SelectCommand.Parameters.AddWithValue("@uf", SqlDbType.VarChar).Value = _uf;
+                    adapter.SelectCommand.Parameters.AddWithValue("@telefone", SqlDbType.Int).Value = _telefone;
+                    adapter.SelectCommand.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = _email;
+                    adapter.SelectCommand.Parameters.AddWithValue("@observacoes", SqlDbType.VarChar).Value = _observacoes;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarFornecedorNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Cadastro Fornecedor
+
+        #region Atualizar Imagem Fornecedor
+
+        public void AtualizarImagemNoCadastroFornecedor(Image _imagem, int _cf_id)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_ImagemFornecedor set if_imagem=@imagem where if_id = @cf_id ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    byte[] arr;
+                    ImageConverter converter = new ImageConverter();
+                    arr = (byte[])converter.ConvertTo(_imagem, typeof(byte[]));
+                    adapter.SelectCommand.Parameters.Add("@imagem", SqlDbType.Image).Value = arr;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cf_id", SqlDbType.VarChar).Value = _cf_id;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarImagemFornecedorNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Imagem Fornecedor
     }
 }

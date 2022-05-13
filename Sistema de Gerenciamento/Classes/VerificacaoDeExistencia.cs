@@ -12,6 +12,8 @@ namespace Sistema_de_Gerenciamento.Classes
     {
         private MensagensErro Erro = new MensagensErro();
 
+        #region Cadastro Cliente
+
         public bool VerificarExistenciaDeCPF_CNPJ_Cliente(string _cPF_CNPJ)
         {
             try
@@ -46,5 +48,46 @@ namespace Sistema_de_Gerenciamento.Classes
                 return false;
             }
         }
+
+        #endregion Cadastro Cliente
+
+        #region Fornecedor
+
+        public bool VerificarExistenciaDeCNPJFornecedor(string _cNPJ)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    bool isExist = false;
+                    string query = "select cf_cnpj from tb_CadastroFornecedor where cf_cnpj = @CNPJ";
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+                    cmd.Parameters.AddWithValue("@CNPJ", _cNPJ);
+                    SqlDataReader reader;
+                    reader = cmd.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        isExist = true;
+                    }
+                    else
+                    {
+                        isExist = false;
+                    }
+
+                    return isExist;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoVerificarExistenciaDeFornecedorNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Fornecedor
     }
 }

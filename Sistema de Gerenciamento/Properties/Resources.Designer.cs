@@ -103,6 +103,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap atualizar {
+            get {
+                object obj = ResourceManager.GetObject("atualizar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bin {
             get {
                 object obj = ResourceManager.GetObject("bin", resourceCulture);
@@ -193,6 +203,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete {
+            get {
+                object obj = ResourceManager.GetObject("delete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap descricao_do_produto {
             get {
                 object obj = ResourceManager.GetObject("descricao-do-produto", resourceCulture);
@@ -276,6 +296,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         internal static System.Drawing.Bitmap imagem_do_usuario_com_fundo_preto {
             get {
                 object obj = ResourceManager.GetObject("imagem-do-usuario-com-fundo-preto", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imagem_do_usuario_com_fundo_preto1 {
+            get {
+                object obj = ResourceManager.GetObject("imagem-do-usuario-com-fundo-preto1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -416,6 +446,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         internal static System.Drawing.Bitmap salve_ {
             get {
                 object obj = ResourceManager.GetObject("salve-", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Salvo {
+            get {
+                object obj = ResourceManager.GetObject("Salvo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

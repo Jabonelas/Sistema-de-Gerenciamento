@@ -61,6 +61,8 @@ namespace Sistema_de_Gerenciamento
             cadastroCliente.cmbIns_Est.Text = gdvPesquisarCliente.SelectedCells[9].Value.ToString();
             cadastroCliente.txtCEP.Text = gdvPesquisarCliente.SelectedCells[10].Value.ToString();
             cadastroCliente.txtEndereco.Text = gdvPesquisarCliente.SelectedCells[11].Value.ToString();
+            //cadastroCliente.txtNumero.Text = gdvPesquisarCliente.SelectedCells[11].Value.ToString();
+           
             cadastroCliente.txtComplemento.Text = gdvPesquisarCliente.SelectedCells[12].Value.ToString();
             cadastroCliente.txtBairro.Text = gdvPesquisarCliente.SelectedCells[13].Value.ToString();
             cadastroCliente.txtCidade.Text = gdvPesquisarCliente.SelectedCells[14].Value.ToString();
@@ -87,7 +89,6 @@ namespace Sistema_de_Gerenciamento
         {
             int indice = 0;
 
-            cadastroCliente.lblcc_id.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
             cadastroCliente.txtCodigo.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
             cadastroCliente.txtDataCadastro.Text = (((DateTime)gdvPesquisarCliente.SelectedCells[indice += 1].Value).ToShortDateString());
             cadastroCliente.txtNome.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
@@ -101,6 +102,9 @@ namespace Sistema_de_Gerenciamento
             cadastroCliente.cmbIns_Est.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
             cadastroCliente.txtCEP.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
             cadastroCliente.txtEndereco.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+            
+            cadastroCliente.txtNumero.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
             cadastroCliente.txtComplemento.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
             cadastroCliente.txtBairro.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
             cadastroCliente.txtCidade.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
@@ -118,7 +122,7 @@ namespace Sistema_de_Gerenciamento
             cadastroCliente.txtEmail.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
             cadastroCliente.txtObservacoes.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
 
-            Buscar.BuscarImagemCliente(Convert.ToInt32(cadastroCliente.lblcc_id.Text));
+            cadastroCliente.pcbCliente.Image = Buscar.BuscarImagemCliente(Convert.ToInt32(cadastroCliente.txtCodigo.Text));
 
             //cadastroCliente.txtCodigo.Text = gdvPesquisarCliente.SelectedCells[2].Value.ToString();
             //cadastroCliente.txtDataCadastro.Text = gdvPesquisarCliente.SelectedCells[3].Value.ToString();
