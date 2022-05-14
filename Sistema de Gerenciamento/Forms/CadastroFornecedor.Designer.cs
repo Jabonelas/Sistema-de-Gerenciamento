@@ -423,7 +423,7 @@
             this.txtTelefone.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTelefone.Lines = new string[0];
             this.txtTelefone.Location = new System.Drawing.Point(18, 357);
-            this.txtTelefone.MaxLength = 32767;
+            this.txtTelefone.MaxLength = 17;
             this.txtTelefone.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtTelefone.Modified = false;
             this.txtTelefone.Multiline = false;
@@ -468,6 +468,8 @@
             this.txtTelefone.TextPlaceholder = "";
             this.txtTelefone.UseSystemPasswordChar = false;
             this.txtTelefone.WordWrap = true;
+            this.txtTelefone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefone_KeyPress);
+            this.txtTelefone.Leave += new System.EventHandler(this.txtTelefone_Leave);
             // 
             // txtNomeFantasia
             // 
@@ -497,7 +499,7 @@
             this.txtNomeFantasia.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNomeFantasia.Lines = new string[0];
             this.txtNomeFantasia.Location = new System.Drawing.Point(191, 197);
-            this.txtNomeFantasia.MaxLength = 32767;
+            this.txtNomeFantasia.MaxLength = 100;
             this.txtNomeFantasia.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtNomeFantasia.Modified = false;
             this.txtNomeFantasia.Multiline = false;
@@ -571,7 +573,7 @@
             this.txtEmail.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEmail.Lines = new string[0];
             this.txtEmail.Location = new System.Drawing.Point(213, 357);
-            this.txtEmail.MaxLength = 32767;
+            this.txtEmail.MaxLength = 100;
             this.txtEmail.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtEmail.Modified = false;
             this.txtEmail.Multiline = false;
@@ -645,7 +647,7 @@
             this.txtEndereco.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEndereco.Lines = new string[0];
             this.txtEndereco.Location = new System.Drawing.Point(148, 248);
-            this.txtEndereco.MaxLength = 32767;
+            this.txtEndereco.MaxLength = 100;
             this.txtEndereco.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtEndereco.Modified = false;
             this.txtEndereco.Multiline = false;
@@ -719,7 +721,7 @@
             this.txtCEP.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCEP.Lines = new string[0];
             this.txtCEP.Location = new System.Drawing.Point(18, 248);
-            this.txtCEP.MaxLength = 32767;
+            this.txtCEP.MaxLength = 9;
             this.txtCEP.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtCEP.Modified = false;
             this.txtCEP.Multiline = false;
@@ -764,6 +766,8 @@
             this.txtCEP.TextPlaceholder = "";
             this.txtCEP.UseSystemPasswordChar = false;
             this.txtCEP.WordWrap = true;
+            this.txtCEP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCEP_KeyPress);
+            this.txtCEP.Leave += new System.EventHandler(this.txtCEP_Leave);
             // 
             // txtNumero
             // 
@@ -793,7 +797,7 @@
             this.txtNumero.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNumero.Lines = new string[0];
             this.txtNumero.Location = new System.Drawing.Point(18, 304);
-            this.txtNumero.MaxLength = 32767;
+            this.txtNumero.MaxLength = 4;
             this.txtNumero.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtNumero.Modified = false;
             this.txtNumero.Multiline = false;
@@ -838,6 +842,7 @@
             this.txtNumero.TextPlaceholder = "";
             this.txtNumero.UseSystemPasswordChar = false;
             this.txtNumero.WordWrap = true;
+            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 
             // txtCidade
             // 
@@ -867,7 +872,7 @@
             this.txtCidade.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCidade.Lines = new string[0];
             this.txtCidade.Location = new System.Drawing.Point(230, 304);
-            this.txtCidade.MaxLength = 32767;
+            this.txtCidade.MaxLength = 50;
             this.txtCidade.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtCidade.Modified = false;
             this.txtCidade.Multiline = false;
@@ -912,6 +917,7 @@
             this.txtCidade.TextPlaceholder = "";
             this.txtCidade.UseSystemPasswordChar = false;
             this.txtCidade.WordWrap = true;
+            this.txtCidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCidade_KeyPress);
             // 
             // txtBairro
             // 
@@ -941,7 +947,7 @@
             this.txtBairro.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtBairro.Lines = new string[0];
             this.txtBairro.Location = new System.Drawing.Point(90, 304);
-            this.txtBairro.MaxLength = 32767;
+            this.txtBairro.MaxLength = 50;
             this.txtBairro.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtBairro.Modified = false;
             this.txtBairro.Multiline = false;
@@ -1060,6 +1066,8 @@
             this.txtCNPJ.TextPlaceholder = "";
             this.txtCNPJ.UseSystemPasswordChar = false;
             this.txtCNPJ.WordWrap = true;
+            this.txtCNPJ.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCNPJ_KeyPress);
+            this.txtCNPJ.Leave += new System.EventHandler(this.txtCNPJ_Leave);
             // 
             // pcbFornecedor
             // 
@@ -1102,7 +1110,7 @@
             this.txtRazaoSocial.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRazaoSocial.Lines = new string[0];
             this.txtRazaoSocial.Location = new System.Drawing.Point(129, 146);
-            this.txtRazaoSocial.MaxLength = 32767;
+            this.txtRazaoSocial.MaxLength = 100;
             this.txtRazaoSocial.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtRazaoSocial.Modified = false;
             this.txtRazaoSocial.Multiline = false;
@@ -1916,6 +1924,7 @@
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnCadastroProduto);
             this.Name = "CadastroFornecedor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Fornecedor";
             ((System.ComponentModel.ISupportInitialize)(this.pcbFornecedor)).EndInit();
             this.ResumeLayout(false);
@@ -1936,19 +1945,10 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnAlterar;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnSalvar;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnCadastroProduto;
-        private Bunifu.UI.WinForms.BunifuTextBox txtTelefone;
         private System.Windows.Forms.Label label5;
-        private Bunifu.UI.WinForms.BunifuTextBox txtNomeFantasia;
-        private Bunifu.UI.WinForms.BunifuTextBox txtEmail;
         private System.Windows.Forms.Label label32;
-        private Guna.UI.WinForms.GunaComboBox cmbUF;
-        private Bunifu.UI.WinForms.BunifuTextBox txtEndereco;
-        private Bunifu.UI.WinForms.BunifuTextBox txtCEP;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label20;
-        private Bunifu.UI.WinForms.BunifuTextBox txtNumero;
-        private Bunifu.UI.WinForms.BunifuTextBox txtCidade;
-        private Bunifu.UI.WinForms.BunifuTextBox txtBairro;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
@@ -1957,11 +1957,8 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private Bunifu.UI.WinForms.BunifuTextBox txtCNPJ;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private Guna.UI.WinForms.GunaPictureBox pcbFornecedor;
-        private Bunifu.UI.WinForms.BunifuTextBox txtRazaoSocial;
         private System.Windows.Forms.Label label1;
         private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator1;
         private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator2;
@@ -1972,5 +1969,17 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnInserirImagem;
         private System.Windows.Forms.Label label6;
         public Guna.UI.WinForms.GunaTextBox txtCodigo;
+        public Guna.UI.WinForms.GunaPictureBox pcbFornecedor;
+        public Bunifu.UI.WinForms.BunifuTextBox txtTelefone;
+        public Bunifu.UI.WinForms.BunifuTextBox txtNomeFantasia;
+        public Bunifu.UI.WinForms.BunifuTextBox txtEmail;
+        public Guna.UI.WinForms.GunaComboBox cmbUF;
+        public Bunifu.UI.WinForms.BunifuTextBox txtEndereco;
+        public Bunifu.UI.WinForms.BunifuTextBox txtCEP;
+        public Bunifu.UI.WinForms.BunifuTextBox txtNumero;
+        public Bunifu.UI.WinForms.BunifuTextBox txtCidade;
+        public Bunifu.UI.WinForms.BunifuTextBox txtBairro;
+        public Bunifu.UI.WinForms.BunifuTextBox txtCNPJ;
+        public Bunifu.UI.WinForms.BunifuTextBox txtRazaoSocial;
     }
 }

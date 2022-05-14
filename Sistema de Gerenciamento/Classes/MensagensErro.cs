@@ -82,9 +82,24 @@ namespace Sistema_de_Gerenciamento
 
         #region Excluir No Banco
 
-        public void ErroAoExluirlienteNoBanco(Exception _e)
+        public void ErroAoExluirCadastroClienteNoBanco(Exception _e)
         {
             MessageBox.Show($"(EXC-CL01) Erro ao Excluir Cadastro Cliente \n\nErro: {_e}", "Erro Excluir Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoExluirImagemClienteNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(EXC-CL02) Erro ao Excluir Imagem Cliente \n\nErro: {_e}", "Erro Excluir Imagem Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoExluirCadastroFornecedorNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(EXC-FN01) Erro ao Excluir Cadastro Fornecedor \n\nErro: {_e}", "Erro Excluir Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoExluirImagemFornecedorNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(EXC-FN02) Erro ao Excluir Imagem Fornecedor \n\nErro: {_e}", "Erro Excluir Imagem Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Excluir No Banco

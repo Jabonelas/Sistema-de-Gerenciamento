@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace Sistema_de_Gerenciamento.Forms
 {
-    public partial class Alerta : Form
+    public partial class Aviso : Form
     {
         private double incrementando = 0.01;
         private double decrementando = 1;
         private double tempoDeExibicao = 1;
         private int mover = 1;
 
-        public Alerta()
+        public Aviso()
         {
             InitializeComponent();
 

@@ -1,6 +1,6 @@
 ﻿namespace Sistema_de_Gerenciamento.Forms
 {
-    partial class Alerta
+    partial class Aviso
     {
         /// <summary>
         /// Required designer variable.
@@ -76,15 +76,15 @@
             // 
             // timerAparecer
             // 
-            this.timerAparecer.Interval = 300;
+            this.timerAparecer.Interval = 125;
             this.timerAparecer.Tick += new System.EventHandler(this.timerAparecer_Tick);
             // 
             // timerDesaparecer
             // 
-            this.timerDesaparecer.Interval = 300;
+            this.timerDesaparecer.Interval = 150;
             this.timerDesaparecer.Tick += new System.EventHandler(this.timerDesaparecer_Tick);
             // 
-            // Alerta
+            // Aviso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -95,7 +95,7 @@
             this.Controls.Add(this.lblAlerta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(750, 600);
-            this.Name = "Alerta";
+            this.Name = "Aviso";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

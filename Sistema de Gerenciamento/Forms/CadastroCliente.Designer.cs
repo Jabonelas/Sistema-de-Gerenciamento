@@ -2459,6 +2459,7 @@
             this.Controls.Add(this.bunifuSeparator1);
             this.Controls.Add(this.bunifuSeparator2);
             this.Name = "CadastroCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Cliente";
             ((System.ComponentModel.ISupportInitialize)(this.pcbCliente)).EndInit();
             this.ResumeLayout(false);

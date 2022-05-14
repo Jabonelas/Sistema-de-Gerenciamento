@@ -64,14 +64,6 @@
             this.txtCodigoCliente = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.gdvPesquisarCliente = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.bunifuButton3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.bunifuButton2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.btnSelecionar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
-            this.cmbTipo = new Guna.UI.WinForms.GunaComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.bunifuGroupBox1 = new Bunifu.UI.WinForms.BunifuGroupBox();
             this.cc_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NomeCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -99,6 +91,14 @@
             this.E_mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Observacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fk_imagem_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.bunifuButton3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.bunifuButton2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.btnSelecionar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.cmbTipo = new Guna.UI.WinForms.GunaComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bunifuGroupBox1 = new Bunifu.UI.WinForms.BunifuGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarCliente)).BeginInit();
             this.bunifuGroupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -199,9 +199,9 @@
             this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(549, 9);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 15);
+            this.label6.Size = new System.Drawing.Size(41, 15);
             this.label6.TabIndex = 12;
-            this.label6.Text = "Nome:";
+            this.label6.Text = "Nome";
             // 
             // txtCPF_CNPJ
             // 
@@ -285,9 +285,9 @@
             this.lblTipoDeCliente.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTipoDeCliente.Location = new System.Drawing.Point(134, 2);
             this.lblTipoDeCliente.Name = "lblTipoDeCliente";
-            this.lblTipoDeCliente.Size = new System.Drawing.Size(69, 15);
+            this.lblTipoDeCliente.Size = new System.Drawing.Size(65, 15);
             this.lblTipoDeCliente.TabIndex = 11;
-            this.lblTipoDeCliente.Text = "CPF / CNPJ:";
+            this.lblTipoDeCliente.Text = "CPF / CNPJ";
             // 
             // txtNome
             // 
@@ -446,9 +446,9 @@
             this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(420, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(26, 15);
+            this.label5.Size = new System.Drawing.Size(22, 15);
             this.label5.TabIndex = 13;
-            this.label5.Text = "RG:";
+            this.label5.Text = "RG";
             // 
             // txtCodigoCliente
             // 
@@ -531,9 +531,9 @@
             this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(12, 9);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(48, 15);
+            this.label8.Size = new System.Drawing.Size(44, 15);
             this.label8.TabIndex = 18;
-            this.label8.Text = "Código:";
+            this.label8.Text = "Código";
             // 
             // gdvPesquisarCliente
             // 
@@ -629,6 +629,220 @@
             this.gdvPesquisarCliente.TabIndex = 20;
             this.gdvPesquisarCliente.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.gdvPesquisarCliente.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gdvPesquisarCliente_MouseDoubleClick_1);
+            // 
+            // cc_id
+            // 
+            this.cc_id.DataPropertyName = "cc_id";
+            this.cc_id.HeaderText = "Codigo ";
+            this.cc_id.Name = "cc_id";
+            this.cc_id.ReadOnly = true;
+            // 
+            // DataCadastro
+            // 
+            this.DataCadastro.DataPropertyName = "cc_data_cadastro";
+            this.DataCadastro.HeaderText = "DataCadastro";
+            this.DataCadastro.Name = "DataCadastro";
+            this.DataCadastro.ReadOnly = true;
+            this.DataCadastro.Visible = false;
+            // 
+            // NomeCliente
+            // 
+            this.NomeCliente.DataPropertyName = "cc_nome_cliente";
+            this.NomeCliente.HeaderText = "Nome";
+            this.NomeCliente.Name = "NomeCliente";
+            this.NomeCliente.ReadOnly = true;
+            // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "cc_tipo";
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            this.Tipo.Visible = false;
+            // 
+            // CPF_CNPJ
+            // 
+            this.CPF_CNPJ.DataPropertyName = "cc_cpf_cnpj";
+            this.CPF_CNPJ.FillWeight = 82.36105F;
+            this.CPF_CNPJ.HeaderText = "CPF / CNPJ";
+            this.CPF_CNPJ.Name = "CPF_CNPJ";
+            this.CPF_CNPJ.ReadOnly = true;
+            // 
+            // RG
+            // 
+            this.RG.DataPropertyName = "cc_rg";
+            this.RG.FillWeight = 73.62543F;
+            this.RG.HeaderText = "RG";
+            this.RG.Name = "RG";
+            this.RG.ReadOnly = true;
+            // 
+            // Emissor
+            // 
+            this.Emissor.DataPropertyName = "cc_emissor";
+            this.Emissor.HeaderText = "Emissor";
+            this.Emissor.Name = "Emissor";
+            this.Emissor.ReadOnly = true;
+            this.Emissor.Visible = false;
+            // 
+            // DataEmissao
+            // 
+            this.DataEmissao.DataPropertyName = "cc_data_emissao";
+            this.DataEmissao.HeaderText = "Data Emissao";
+            this.DataEmissao.Name = "DataEmissao";
+            this.DataEmissao.ReadOnly = true;
+            this.DataEmissao.Visible = false;
+            // 
+            // Ins_Est
+            // 
+            this.Ins_Est.DataPropertyName = "cc_ins_est";
+            this.Ins_Est.HeaderText = "Ins Est";
+            this.Ins_Est.Name = "Ins_Est";
+            this.Ins_Est.ReadOnly = true;
+            this.Ins_Est.Visible = false;
+            // 
+            // CEP
+            // 
+            this.CEP.DataPropertyName = "cc_cep";
+            this.CEP.HeaderText = "CEP";
+            this.CEP.Name = "CEP";
+            this.CEP.ReadOnly = true;
+            this.CEP.Visible = false;
+            // 
+            // Endereco
+            // 
+            this.Endereco.DataPropertyName = "cc_endereco";
+            this.Endereco.HeaderText = "Endereco";
+            this.Endereco.Name = "Endereco";
+            this.Endereco.ReadOnly = true;
+            this.Endereco.Visible = false;
+            // 
+            // Numero
+            // 
+            this.Numero.DataPropertyName = "cc_numero";
+            this.Numero.HeaderText = "Numero";
+            this.Numero.Name = "Numero";
+            this.Numero.ReadOnly = true;
+            this.Numero.Visible = false;
+            // 
+            // Complemento
+            // 
+            this.Complemento.DataPropertyName = "cc_complemento";
+            this.Complemento.HeaderText = "Complemento";
+            this.Complemento.Name = "Complemento";
+            this.Complemento.ReadOnly = true;
+            this.Complemento.Visible = false;
+            // 
+            // Bairro
+            // 
+            this.Bairro.DataPropertyName = "cc_bairro";
+            this.Bairro.HeaderText = "Bairro";
+            this.Bairro.Name = "Bairro";
+            this.Bairro.ReadOnly = true;
+            this.Bairro.Visible = false;
+            // 
+            // Cidade
+            // 
+            this.Cidade.DataPropertyName = "cc_cidade";
+            this.Cidade.HeaderText = "Cidade";
+            this.Cidade.Name = "Cidade";
+            this.Cidade.ReadOnly = true;
+            this.Cidade.Visible = false;
+            // 
+            // UF
+            // 
+            this.UF.DataPropertyName = "cc_uf";
+            this.UF.HeaderText = "UF";
+            this.UF.Name = "UF";
+            this.UF.ReadOnly = true;
+            this.UF.Visible = false;
+            // 
+            // Naturalidade
+            // 
+            this.Naturalidade.DataPropertyName = "cc_naturalidade";
+            this.Naturalidade.HeaderText = "Naturalidade";
+            this.Naturalidade.Name = "Naturalidade";
+            this.Naturalidade.ReadOnly = true;
+            this.Naturalidade.Visible = false;
+            // 
+            // DatasNasc
+            // 
+            this.DatasNasc.DataPropertyName = "cc_data_nasc";
+            this.DatasNasc.HeaderText = "Data Nasc";
+            this.DatasNasc.Name = "DatasNasc";
+            this.DatasNasc.ReadOnly = true;
+            this.DatasNasc.Visible = false;
+            // 
+            // EstadoCivil
+            // 
+            this.EstadoCivil.DataPropertyName = "cc_estado_civil";
+            this.EstadoCivil.HeaderText = "Estado Civil";
+            this.EstadoCivil.Name = "EstadoCivil";
+            this.EstadoCivil.ReadOnly = true;
+            this.EstadoCivil.Visible = false;
+            // 
+            // Credito
+            // 
+            this.Credito.DataPropertyName = "cc_credito";
+            this.Credito.HeaderText = "Credito";
+            this.Credito.Name = "Credito";
+            this.Credito.ReadOnly = true;
+            this.Credito.Visible = false;
+            // 
+            // Saldo
+            // 
+            this.Saldo.DataPropertyName = "cc_saldo";
+            this.Saldo.HeaderText = "Saldo";
+            this.Saldo.Name = "Saldo";
+            this.Saldo.ReadOnly = true;
+            this.Saldo.Visible = false;
+            // 
+            // Bloqueio
+            // 
+            this.Bloqueio.DataPropertyName = "cc_bloqueio";
+            this.Bloqueio.HeaderText = "Bloqueio";
+            this.Bloqueio.Name = "Bloqueio";
+            this.Bloqueio.ReadOnly = true;
+            this.Bloqueio.Visible = false;
+            // 
+            // Celular
+            // 
+            this.Celular.DataPropertyName = "cc_celular";
+            this.Celular.FillWeight = 63.90272F;
+            this.Celular.HeaderText = "Celular";
+            this.Celular.Name = "Celular";
+            this.Celular.ReadOnly = true;
+            // 
+            // Tel_Residencial
+            // 
+            this.Tel_Residencial.DataPropertyName = "cc_tel_residencial";
+            this.Tel_Residencial.HeaderText = "Tel. Residencial";
+            this.Tel_Residencial.Name = "Tel_Residencial";
+            this.Tel_Residencial.ReadOnly = true;
+            this.Tel_Residencial.Visible = false;
+            // 
+            // E_mail
+            // 
+            this.E_mail.DataPropertyName = "cc_email";
+            this.E_mail.FillWeight = 159.6714F;
+            this.E_mail.HeaderText = "E-mail";
+            this.E_mail.Name = "E_mail";
+            this.E_mail.ReadOnly = true;
+            // 
+            // Observacoes
+            // 
+            this.Observacoes.DataPropertyName = "cc_observacoes";
+            this.Observacoes.HeaderText = "Observacoes";
+            this.Observacoes.Name = "Observacoes";
+            this.Observacoes.ReadOnly = true;
+            this.Observacoes.Visible = false;
+            // 
+            // fk_imagem_id
+            // 
+            this.fk_imagem_id.DataPropertyName = "fk_imagem_id";
+            this.fk_imagem_id.HeaderText = "Imagem_id";
+            this.fk_imagem_id.Name = "fk_imagem_id";
+            this.fk_imagem_id.ReadOnly = true;
+            this.fk_imagem_id.Visible = false;
             // 
             // btnFechar
             // 
@@ -1032,9 +1246,9 @@
             this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(135, 11);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 15);
+            this.label1.Size = new System.Drawing.Size(30, 15);
             this.label1.TabIndex = 161;
-            this.label1.Text = "Tipo:";
+            this.label1.Text = "Tipo";
             // 
             // bunifuGroupBox1
             // 
@@ -1051,220 +1265,6 @@
             this.bunifuGroupBox1.Size = new System.Drawing.Size(282, 56);
             this.bunifuGroupBox1.TabIndex = 168;
             this.bunifuGroupBox1.TabStop = false;
-            // 
-            // cc_id
-            // 
-            this.cc_id.DataPropertyName = "cc_id";
-            this.cc_id.HeaderText = "Codigo ";
-            this.cc_id.Name = "cc_id";
-            this.cc_id.ReadOnly = true;
-            // 
-            // DataCadastro
-            // 
-            this.DataCadastro.DataPropertyName = "cc_data_cadastro";
-            this.DataCadastro.HeaderText = "DataCadastro";
-            this.DataCadastro.Name = "DataCadastro";
-            this.DataCadastro.ReadOnly = true;
-            this.DataCadastro.Visible = false;
-            // 
-            // NomeCliente
-            // 
-            this.NomeCliente.DataPropertyName = "cc_nome_cliente";
-            this.NomeCliente.HeaderText = "Nome";
-            this.NomeCliente.Name = "NomeCliente";
-            this.NomeCliente.ReadOnly = true;
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "cc_tipo";
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
-            this.Tipo.Visible = false;
-            // 
-            // CPF_CNPJ
-            // 
-            this.CPF_CNPJ.DataPropertyName = "cc_cpf_cnpj";
-            this.CPF_CNPJ.FillWeight = 82.36105F;
-            this.CPF_CNPJ.HeaderText = "CPF / CNPJ";
-            this.CPF_CNPJ.Name = "CPF_CNPJ";
-            this.CPF_CNPJ.ReadOnly = true;
-            // 
-            // RG
-            // 
-            this.RG.DataPropertyName = "cc_rg";
-            this.RG.FillWeight = 73.62543F;
-            this.RG.HeaderText = "RG";
-            this.RG.Name = "RG";
-            this.RG.ReadOnly = true;
-            // 
-            // Emissor
-            // 
-            this.Emissor.DataPropertyName = "cc_emissor";
-            this.Emissor.HeaderText = "Emissor";
-            this.Emissor.Name = "Emissor";
-            this.Emissor.ReadOnly = true;
-            this.Emissor.Visible = false;
-            // 
-            // DataEmissao
-            // 
-            this.DataEmissao.DataPropertyName = "cc_data_emissao";
-            this.DataEmissao.HeaderText = "Data Emissao";
-            this.DataEmissao.Name = "DataEmissao";
-            this.DataEmissao.ReadOnly = true;
-            this.DataEmissao.Visible = false;
-            // 
-            // Ins_Est
-            // 
-            this.Ins_Est.DataPropertyName = "cc_ins_est";
-            this.Ins_Est.HeaderText = "Ins Est";
-            this.Ins_Est.Name = "Ins_Est";
-            this.Ins_Est.ReadOnly = true;
-            this.Ins_Est.Visible = false;
-            // 
-            // CEP
-            // 
-            this.CEP.DataPropertyName = "cc_cep";
-            this.CEP.HeaderText = "CEP";
-            this.CEP.Name = "CEP";
-            this.CEP.ReadOnly = true;
-            this.CEP.Visible = false;
-            // 
-            // Endereco
-            // 
-            this.Endereco.DataPropertyName = "cc_endereco";
-            this.Endereco.HeaderText = "Endereco";
-            this.Endereco.Name = "Endereco";
-            this.Endereco.ReadOnly = true;
-            this.Endereco.Visible = false;
-            // 
-            // Numero
-            // 
-            this.Numero.DataPropertyName = "cc_numero";
-            this.Numero.HeaderText = "Numero";
-            this.Numero.Name = "Numero";
-            this.Numero.ReadOnly = true;
-            this.Numero.Visible = false;
-            // 
-            // Complemento
-            // 
-            this.Complemento.DataPropertyName = "cc_complemento";
-            this.Complemento.HeaderText = "Complemento";
-            this.Complemento.Name = "Complemento";
-            this.Complemento.ReadOnly = true;
-            this.Complemento.Visible = false;
-            // 
-            // Bairro
-            // 
-            this.Bairro.DataPropertyName = "cc_bairro";
-            this.Bairro.HeaderText = "Bairro";
-            this.Bairro.Name = "Bairro";
-            this.Bairro.ReadOnly = true;
-            this.Bairro.Visible = false;
-            // 
-            // Cidade
-            // 
-            this.Cidade.DataPropertyName = "cc_cidade";
-            this.Cidade.HeaderText = "Cidade";
-            this.Cidade.Name = "Cidade";
-            this.Cidade.ReadOnly = true;
-            this.Cidade.Visible = false;
-            // 
-            // UF
-            // 
-            this.UF.DataPropertyName = "cc_uf";
-            this.UF.HeaderText = "UF";
-            this.UF.Name = "UF";
-            this.UF.ReadOnly = true;
-            this.UF.Visible = false;
-            // 
-            // Naturalidade
-            // 
-            this.Naturalidade.DataPropertyName = "cc_naturalidade";
-            this.Naturalidade.HeaderText = "Naturalidade";
-            this.Naturalidade.Name = "Naturalidade";
-            this.Naturalidade.ReadOnly = true;
-            this.Naturalidade.Visible = false;
-            // 
-            // DatasNasc
-            // 
-            this.DatasNasc.DataPropertyName = "cc_data_nasc";
-            this.DatasNasc.HeaderText = "Data Nasc";
-            this.DatasNasc.Name = "DatasNasc";
-            this.DatasNasc.ReadOnly = true;
-            this.DatasNasc.Visible = false;
-            // 
-            // EstadoCivil
-            // 
-            this.EstadoCivil.DataPropertyName = "cc_estado_civil";
-            this.EstadoCivil.HeaderText = "Estado Civil";
-            this.EstadoCivil.Name = "EstadoCivil";
-            this.EstadoCivil.ReadOnly = true;
-            this.EstadoCivil.Visible = false;
-            // 
-            // Credito
-            // 
-            this.Credito.DataPropertyName = "cc_credito";
-            this.Credito.HeaderText = "Credito";
-            this.Credito.Name = "Credito";
-            this.Credito.ReadOnly = true;
-            this.Credito.Visible = false;
-            // 
-            // Saldo
-            // 
-            this.Saldo.DataPropertyName = "cc_saldo";
-            this.Saldo.HeaderText = "Saldo";
-            this.Saldo.Name = "Saldo";
-            this.Saldo.ReadOnly = true;
-            this.Saldo.Visible = false;
-            // 
-            // Bloqueio
-            // 
-            this.Bloqueio.DataPropertyName = "cc_bloqueio";
-            this.Bloqueio.HeaderText = "Bloqueio";
-            this.Bloqueio.Name = "Bloqueio";
-            this.Bloqueio.ReadOnly = true;
-            this.Bloqueio.Visible = false;
-            // 
-            // Celular
-            // 
-            this.Celular.DataPropertyName = "cc_celular";
-            this.Celular.FillWeight = 63.90272F;
-            this.Celular.HeaderText = "Celular";
-            this.Celular.Name = "Celular";
-            this.Celular.ReadOnly = true;
-            // 
-            // Tel_Residencial
-            // 
-            this.Tel_Residencial.DataPropertyName = "cc_tel_residencial";
-            this.Tel_Residencial.HeaderText = "Tel. Residencial";
-            this.Tel_Residencial.Name = "Tel_Residencial";
-            this.Tel_Residencial.ReadOnly = true;
-            this.Tel_Residencial.Visible = false;
-            // 
-            // E_mail
-            // 
-            this.E_mail.DataPropertyName = "cc_email";
-            this.E_mail.FillWeight = 159.6714F;
-            this.E_mail.HeaderText = "E-mail";
-            this.E_mail.Name = "E_mail";
-            this.E_mail.ReadOnly = true;
-            // 
-            // Observacoes
-            // 
-            this.Observacoes.DataPropertyName = "cc_observacoes";
-            this.Observacoes.HeaderText = "Observacoes";
-            this.Observacoes.Name = "Observacoes";
-            this.Observacoes.ReadOnly = true;
-            this.Observacoes.Visible = false;
-            // 
-            // fk_imagem_id
-            // 
-            this.fk_imagem_id.DataPropertyName = "fk_imagem_id";
-            this.fk_imagem_id.HeaderText = "Imagem_id";
-            this.fk_imagem_id.Name = "fk_imagem_id";
-            this.fk_imagem_id.ReadOnly = true;
-            this.fk_imagem_id.Visible = false;
             // 
             // PesquisarCliente
             // 

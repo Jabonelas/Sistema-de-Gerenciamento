@@ -124,14 +124,6 @@ Apos preencher o campo "CEP" pressione o botão "preender com CEP" para auto com
 </value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="txtNumero.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAADIAAAAcCAYAAAAjmez3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABaSURBVFhH7c/BCcAACATB678qxTJSRgpIECxilVvw4+tG
-        p6qqJyK+jdfbhyH1Y2u9fRiGIDKEliG0DKFlCC1DaBlCyxBahtAyhJYhtG5CMvPtx8br7cO4kPQDsuUD
-        BgUVmhoAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="btnInserirImagem.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIYAAAAnCAYAAADKOTDaAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -362,6 +354,14 @@ Apos preencher o campo "CEP" pressione o botão "preender com CEP" para auto com
         jh8Q/IDgBwQ/IPgBwQ8IfkDwA4IfEPyA4AcEPyBsxw8IfkDwA4IfEPyA4AcEPyD4AcEPCH5A8AOCHxCM
         McYYY4wxxhhjjDHGGGOMMcYYY4wxxhhjjDHGGGOMMcYYY4wxxhhjjDHGGGOMMcYYY4wxxhhjjDHGGGP+
         Q0qV+hdpzTVUjZjESgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="txtNumero.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADIAAAAcCAYAAAAjmez3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABaSURBVFhH7c/BCcAACATB678qxTJSRgpIECxilVvw4+tG
+        p6qqJyK+jdfbhyH1Y2u9fRiGIDKEliG0DKFlCC1DaBlCyxBahtAyhJYhtG5CMvPtx8br7cO4kPQDsuUD
+        BgUVmhoAAAAASUVORK5CYII=
 </value>
   </data>
 </root>

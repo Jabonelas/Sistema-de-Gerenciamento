@@ -95,7 +95,7 @@ namespace Sistema_de_Gerenciamento
                         //Chamar o forms de alerta de inclusao com sucesso
                         Global.tipoDoAlerta = "Inclusao";
 
-                        Alerta buscarCliente = new Alerta();
+                        Aviso buscarCliente = new Aviso();
                         buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == true)
@@ -158,7 +158,7 @@ namespace Sistema_de_Gerenciamento
                         //Chamar o forms de alerta de atualizacao com sucesso
                         Global.tipoDoAlerta = "Atualizacao";
 
-                        Alerta buscarCliente = new Alerta();
+                        Aviso buscarCliente = new Aviso();
                         buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == false)
@@ -201,10 +201,12 @@ namespace Sistema_de_Gerenciamento
                     {
                         Excluir.ExcluirCadastroCliente(txtCPF_CNPJ.Text);
 
+                        Excluir.ExcluirImagemCliente(Convert.ToInt32(txtCodigo.Text));
+
                         //Chamar o forms de alerta de exclusao com sucesso
                         Global.tipoDoAlerta = "Exclusao";
 
-                        Alerta buscarCliente = new Alerta();
+                        Aviso buscarCliente = new Aviso();
                         buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == false)
