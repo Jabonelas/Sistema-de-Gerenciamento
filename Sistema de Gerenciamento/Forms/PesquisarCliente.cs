@@ -52,32 +52,63 @@ namespace Sistema_de_Gerenciamento
         {
             if (gdvPesquisarCliente.RowCount >= 1)
             {
-                cadastroCliente.txtCodigo.Text = gdvPesquisarCliente.SelectedCells[1].Value.ToString();
-                cadastroCliente.txtDataCadastro.Text = gdvPesquisarCliente.SelectedCells[2].Value.ToString();
-                cadastroCliente.txtNome.Text = gdvPesquisarCliente.SelectedCells[3].Value.ToString();
-                cadastroCliente.cmbTipo.Text = gdvPesquisarCliente.SelectedCells[4].Value.ToString();
-                cadastroCliente.txtCPF_CNPJ.Text = gdvPesquisarCliente.SelectedCells[5].Value.ToString();
-                cadastroCliente.txtRG.Text = gdvPesquisarCliente.SelectedCells[6].Value.ToString();
-                cadastroCliente.cmbEmissor.Text = gdvPesquisarCliente.SelectedCells[7].Value.ToString();
-                cadastroCliente.txtDataEmissao.Text = gdvPesquisarCliente.SelectedCells[8].Value.ToString();
-                cadastroCliente.cmbIns_Est.Text = gdvPesquisarCliente.SelectedCells[9].Value.ToString();
-                cadastroCliente.txtCEP.Text = gdvPesquisarCliente.SelectedCells[10].Value.ToString();
-                cadastroCliente.txtEndereco.Text = gdvPesquisarCliente.SelectedCells[11].Value.ToString();
+                int indice = 0;
 
-                cadastroCliente.txtComplemento.Text = gdvPesquisarCliente.SelectedCells[12].Value.ToString();
-                cadastroCliente.txtBairro.Text = gdvPesquisarCliente.SelectedCells[13].Value.ToString();
-                cadastroCliente.txtCidade.Text = gdvPesquisarCliente.SelectedCells[14].Value.ToString();
-                cadastroCliente.cmbUF.Text = gdvPesquisarCliente.SelectedCells[15].Value.ToString();
-                cadastroCliente.txtNaturalidade.Text = gdvPesquisarCliente.SelectedCells[16].Value.ToString();
-                cadastroCliente.txtDataNascimento.Text = gdvPesquisarCliente.SelectedCells[17].Value.ToString();
-                cadastroCliente.cmbEstadoCivil.Text = gdvPesquisarCliente.SelectedCells[18].Value.ToString();
-                cadastroCliente.txtCredito.Text = gdvPesquisarCliente.SelectedCells[19].Value.ToString();
-                cadastroCliente.txtSaldo.Text = gdvPesquisarCliente.SelectedCells[20].Value.ToString();
-                cadastroCliente.cmbBloqueio.Text = gdvPesquisarCliente.SelectedCells[21].Value.ToString();
-                cadastroCliente.txtCelular.Text = gdvPesquisarCliente.SelectedCells[22].Value.ToString();
-                cadastroCliente.txtTel_Residencial.Text = gdvPesquisarCliente.SelectedCells[23].Value.ToString();
-                cadastroCliente.txtEmail.Text = gdvPesquisarCliente.SelectedCells[24].Value.ToString();
-                cadastroCliente.txtObservacoes.Text = gdvPesquisarCliente.SelectedCells[25].Value.ToString();
+                cadastroCliente.txtCodigo.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtDataCadastro.Text = (((DateTime)gdvPesquisarCliente.SelectedCells[indice += 1].Value).ToShortDateString());
+
+                cadastroCliente.txtNome.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.cmbTipo.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtCPF_CNPJ.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtRG.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.cmbEmissor.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+                string dataEmissao = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString() == "----------" ? "----------" : Convert.ToDateTime(gdvPesquisarCliente.SelectedCells[indice].Value).ToShortDateString();
+
+                cadastroCliente.txtDataEmissao.Text = dataEmissao;
+
+                cadastroCliente.cmbIns_Est.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtCEP.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtEndereco.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtNumero.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtComplemento.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtBairro.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtCidade.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.cmbUF.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtNaturalidade.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+                string dataNascimento = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString() == "----------" ? "----------" : Convert.ToDateTime(gdvPesquisarCliente.SelectedCells[indice].Value).ToShortDateString();
+
+                cadastroCliente.txtDataNascimento.Text = dataNascimento;
+
+                cadastroCliente.cmbEstadoCivil.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtCredito.Text = ("R$ " + gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString());
+
+                cadastroCliente.txtSaldo.Text = ("R$ " + gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString());
+
+                cadastroCliente.cmbBloqueio.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtCelular.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtTel_Residencial.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtEmail.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtObservacoes.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.pcbCliente.Image = Buscar.BuscarImagemCliente(Convert.ToInt32(cadastroCliente.txtCodigo.Text));
 
                 this.Close();
             }
@@ -94,36 +125,57 @@ namespace Sistema_de_Gerenciamento
                 int indice = 0;
 
                 cadastroCliente.txtCodigo.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
-                cadastroCliente.txtDataCadastro.Text = (((DateTime)gdvPesquisarCliente.SelectedCells[indice += 1].Value).ToShortDateString());
-                cadastroCliente.txtNome.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
-                cadastroCliente.cmbTipo.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
-                cadastroCliente.txtCPF_CNPJ.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
-                cadastroCliente.txtRG.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
-                cadastroCliente.cmbEmissor.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
 
+                cadastroCliente.txtDataCadastro.Text = (((DateTime)gdvPesquisarCliente.SelectedCells[indice += 1].Value).ToShortDateString());
+
+                cadastroCliente.txtNome.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.cmbTipo.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtCPF_CNPJ.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtRG.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.cmbEmissor.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
                 string dataEmissao = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString() == "----------" ? "----------" : Convert.ToDateTime(gdvPesquisarCliente.SelectedCells[indice].Value).ToShortDateString();
+
                 cadastroCliente.txtDataEmissao.Text = dataEmissao;
+
                 cadastroCliente.cmbIns_Est.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
                 cadastroCliente.txtCEP.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
                 cadastroCliente.txtEndereco.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
 
                 cadastroCliente.txtNumero.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
 
                 cadastroCliente.txtComplemento.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
-                cadastroCliente.txtBairro.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
-                cadastroCliente.txtCidade.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
-                cadastroCliente.cmbUF.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
-                cadastroCliente.txtNaturalidade.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
 
+                cadastroCliente.txtBairro.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtCidade.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.cmbUF.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtNaturalidade.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
                 string dataNascimento = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString() == "----------" ? "----------" : Convert.ToDateTime(gdvPesquisarCliente.SelectedCells[indice].Value).ToShortDateString();
+
                 cadastroCliente.txtDataNascimento.Text = dataNascimento;
+
                 cadastroCliente.cmbEstadoCivil.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
-                cadastroCliente.txtCredito.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
-                cadastroCliente.txtSaldo.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
+                cadastroCliente.txtCredito.Text = ("R$ " + gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString());
+
+                cadastroCliente.txtSaldo.Text = ("R$ " + gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString());
+
                 cadastroCliente.cmbBloqueio.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
                 cadastroCliente.txtCelular.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
                 cadastroCliente.txtTel_Residencial.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
                 cadastroCliente.txtEmail.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
+
                 cadastroCliente.txtObservacoes.Text = gdvPesquisarCliente.SelectedCells[indice += 1].Value.ToString();
 
                 cadastroCliente.pcbCliente.Image = Buscar.BuscarImagemCliente(Convert.ToInt32(cadastroCliente.txtCodigo.Text));

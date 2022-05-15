@@ -1,4 +1,5 @@
-﻿using Sistema_de_Gerenciamento.Classes;
+﻿using Newtonsoft.Json;
+using Sistema_de_Gerenciamento.Classes;
 using Sistema_de_Gerenciamento.Forms;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,10 @@ namespace Sistema_de_Gerenciamento
         private ExcluirNoBanco Excluir = new ExcluirNoBanco();
 
         private BuscarNoBanco Buscar = new BuscarNoBanco();
+
+        private ApiCorreios Api = new ApiCorreios();
+
+        private int cont = 0;
 
         public CadastroFornecedor()
         {
@@ -313,7 +318,7 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        private void txtCEP_Leave(object sender, EventArgs e)
+        private async void txtCEP_Leave(object sender, EventArgs e)
         {
             try
             {
@@ -327,12 +332,43 @@ namespace Sistema_de_Gerenciamento
                 }
                 else if (txtCEP.Text.Length == txtCEP.MaxLength || txtCEP.Text.Length == 0)
                 {
-                    txtCEP.BorderColorActive = Color.DodgerBlue;
+                    await Api.APICorreios((txtCEP.Text).Replace("-", ""));
+
+                    foreach (var item in Api.RetornoApi())
+                    {
+                        if (item.Uf != null)
+                        {
+                            txtEndereco.Text = item.Logradouro;
+                            txtComplemento.Text = item.Complemento;
+                            txtBairro.Text = item.Bairro;
+                            txtCidade.Text = item.Localidade;
+                            cmbUF.Text = item.Uf;
+
+                            Api.ZerarLista();
+
+                            txtCEP.BorderColorActive = Color.DodgerBlue;
+                        }
+                        else
+                        {
+                            //txtCEP.Focus();
+
+                            Api.ZerarLista();
+
+                            if (cont == 0)
+                            {
+                                MessageBox.Show("CEP Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                cont++;
+                            }
+
+                            break;
+                        }
+                    }
                 }
             }
             catch (Exception)
             {
             }
+            cont = 0;
         }
 
         #endregion TextBox CEP

@@ -74,6 +74,9 @@
       <HintPath>..\..\..\..\Downloads\Guna Framework UI Lastest Version + Cracked\Guna_UI_Framework_Ultimate_2.0.0.1_Downloadly.ir\Guna UI Framework Ultimate 2.0.0.1\Guna UI Framework Ultimate v2.0.0.1 Lib-Master\Guna.UI2 WinForms\.net 4.0\Guna.UI2.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -91,10 +94,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\AdicionarNoBanco.cs" />
+    <Compile Include="Classes\ApiCorreios.cs" />
     <Compile Include="Classes\AtualizacaoNoBanco.cs" />
     <Compile Include="Classes\BuscarNoBanco.cs" />
     <Compile Include="Classes\ConectarBanco.cs" />
     <Compile Include="Classes\ExcluirNoBanco.cs" />
+    <Compile Include="Classes\Temperatures.cs" />
     <Compile Include="Classes\VerificacaoDeExistencia.cs" />
     <Compile Include="Forms\CadastroDespesas.cs">
       <SubType>Form</SubType>

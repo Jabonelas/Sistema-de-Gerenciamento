@@ -75,12 +75,15 @@ namespace Sistema_de_Gerenciamento.Forms
                 cadastroFornecedor.txtNumero.Text = gdvPesquisarFornecedor.SelectedCells[indice += 1].Value.ToString();
 
                 cadastroFornecedor.txtBairro.Text = gdvPesquisarFornecedor.SelectedCells[indice += 1].Value.ToString();
+
                 cadastroFornecedor.txtCidade.Text = gdvPesquisarFornecedor.SelectedCells[indice += 1].Value.ToString();
 
                 cadastroFornecedor.cmbUF.Text = gdvPesquisarFornecedor.SelectedCells[indice += 1].Value.ToString();
 
                 cadastroFornecedor.txtTelefone.Text = gdvPesquisarFornecedor.SelectedCells[indice += 1].Value.ToString();
+
                 cadastroFornecedor.txtEmail.Text = gdvPesquisarFornecedor.SelectedCells[indice += 1].Value.ToString();
+
                 cadastroFornecedor.txtObservacoes.Text = gdvPesquisarFornecedor.SelectedCells[indice += 1].Value.ToString();
 
                 cadastroFornecedor.pcbFornecedor.Image = Buscar.BuscarImagemFornecedor(Convert.ToInt32(cadastroFornecedor.txtCodigo.Text));
@@ -118,15 +121,18 @@ namespace Sistema_de_Gerenciamento.Forms
                 cadastroFornecedor.txtNumero.Text = gdvPesquisarFornecedor.SelectedCells[indice += 1].Value.ToString();
 
                 cadastroFornecedor.txtBairro.Text = gdvPesquisarFornecedor.SelectedCells[indice += 1].Value.ToString();
+
                 cadastroFornecedor.txtCidade.Text = gdvPesquisarFornecedor.SelectedCells[indice += 1].Value.ToString();
 
                 cadastroFornecedor.cmbUF.Text = gdvPesquisarFornecedor.SelectedCells[indice += 1].Value.ToString();
 
                 cadastroFornecedor.txtTelefone.Text = gdvPesquisarFornecedor.SelectedCells[indice += 1].Value.ToString();
+
                 cadastroFornecedor.txtEmail.Text = gdvPesquisarFornecedor.SelectedCells[indice += 1].Value.ToString();
+
                 cadastroFornecedor.txtObservacoes.Text = gdvPesquisarFornecedor.SelectedCells[indice += 1].Value.ToString();
 
-                //cadastroFornecedor.pcbFornecedor.Image = Buscar.BuscarImagemFornecedor(Convert.ToInt32(cadastroFornecedor.txtCodigo.Text));
+                cadastroFornecedor.pcbFornecedor.Image = Buscar.BuscarImagemFornecedor(Convert.ToInt32(cadastroFornecedor.txtCodigo.Text));
 
                 this.Close();
             }

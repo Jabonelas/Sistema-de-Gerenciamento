@@ -32,6 +32,8 @@ namespace Sistema_de_Gerenciamento
 
         private BuscarNoBanco Buscar = new BuscarNoBanco();
 
+        private ApiCorreios Api = new ApiCorreios();
+
         public CadastroCliente()
         {
             InitializeComponent();
@@ -611,7 +613,7 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        private void txtCEP_Leave(object sender, EventArgs e)
+        private async void txtCEP_Leave(object sender, EventArgs e)
         {
             try
             {
@@ -625,26 +627,38 @@ namespace Sistema_de_Gerenciamento
                 }
                 else if (txtCEP.Text.Length == txtCEP.MaxLength || txtCEP.Text.Length == 0)
                 {
-                    txtCEP.BorderColorActive = Color.DodgerBlue;
+                    await Api.APICorreios((txtCEP.Text).Replace("-", ""));
 
-                    //Api dos Correios
-                    CorreiosApi correiosApi = new CorreiosApi();
-                    var retorno = correiosApi.consultaCEP(txtCEP.Text);
+                    int cont = 0;
 
-                    if (retorno == null)
+                    foreach (var item in Api.RetornoApi())
                     {
-                        MessageBox.Show("CEP Não Encontrado", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        if (item.Uf != null)
+                        {
+                            txtEndereco.Text = item.Logradouro;
+                            txtComplemento.Text = item.Complemento;
+                            txtBairro.Text = item.Bairro;
+                            txtCidade.Text = item.Localidade;
+                            cmbUF.Text = item.Uf;
 
-                        txtCEP.Focus();
+                            Api.ZerarLista();
 
-                        return;
+                            txtCEP.BorderColorActive = Color.DodgerBlue;
+                        }
+                        else
+                        {
+                            txtCEP.Focus();
+                            Api.ZerarLista();
+
+                            if (cont == 0)
+                            {
+                                MessageBox.Show("CEP Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                cont++;
+                            }
+
+                            break;
+                        }
                     }
-
-                    txtEndereco.Text = retorno.end;
-                    txtComplemento.Text = retorno.complemento;
-                    txtBairro.Text = retorno.bairro;
-                    txtCidade.Text = retorno.cidade;
-                    cmbUF.Text = retorno.uf;
                 }
             }
             catch (Exception)

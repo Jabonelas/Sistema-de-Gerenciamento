@@ -38,3 +38,5 @@ C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\bi
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\bin\Debug\Correios.pdb
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Aviso.resources
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.PesquisarFornecedor.resources
+C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\bin\Debug\Newtonsoft.Json.dll
+C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\bin\Debug\Newtonsoft.Json.xml

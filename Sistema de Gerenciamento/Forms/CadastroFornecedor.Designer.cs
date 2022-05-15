@@ -423,7 +423,7 @@
             this.txtTelefone.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTelefone.Lines = new string[0];
             this.txtTelefone.Location = new System.Drawing.Point(18, 357);
-            this.txtTelefone.MaxLength = 17;
+            this.txtTelefone.MaxLength = 15;
             this.txtTelefone.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtTelefone.Modified = false;
             this.txtTelefone.Multiline = false;
