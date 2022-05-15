@@ -1857,6 +1857,7 @@
             this.txtCodigo.BorderColor = System.Drawing.Color.DimGray;
             this.txtCodigo.BorderSize = 1;
             this.txtCodigo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCodigo.Enabled = false;
             this.txtCodigo.FocusedBaseColor = System.Drawing.Color.White;
             this.txtCodigo.FocusedBorderColor = System.Drawing.Color.DodgerBlue;
             this.txtCodigo.FocusedForeColor = System.Drawing.SystemColors.ControlText;

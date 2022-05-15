@@ -79,7 +79,7 @@ namespace Sistema_de_Gerenciamento.Forms
             else if (Global.tipoDoAlerta == "Atualizacao")
             {
                 //this.BackColor = Color.Blue;
-                lblInformacao.Text = "Atualizacão Realizada \nCom Sucesso!";
+                lblInformacao.Text = "Atualização Realizada \nCom Sucesso!";
                 pcbImagem.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\atualizar.png");
             }
             else if (Global.tipoDoAlerta == "Exclusao")
@@ -87,6 +87,12 @@ namespace Sistema_de_Gerenciamento.Forms
                 //this.BackColor = Color.Red;
                 lblInformacao.Text = "Exclusão Realizada \nCom Sucesso!";
                 pcbImagem.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\delete.png");
+            }
+            else if (Global.tipoDoAlerta == "Exportacao")
+            {
+                //this.BackColor = Color.Red;
+                lblInformacao.Text = "Planilha Salva \nCom Sucesso!";
+                pcbImagem.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\Salvo.png");
             }
         }
     }

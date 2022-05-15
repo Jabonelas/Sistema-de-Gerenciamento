@@ -17,6 +17,8 @@ namespace Sistema_de_Gerenciamento
 
         private BuscarNoBanco Buscar = new BuscarNoBanco();
 
+        private MensagensErro Erro = new MensagensErro();
+
         public PesquisarCliente(CadastroCliente _cadastroCliente)
         {
             InitializeComponent();
@@ -368,5 +370,33 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion ComboBox Tipo
+
+        #region Botao Exportar Para Excel
+
+        private void btnExportarParaExcel_Click(object sender, EventArgs e)
+        {
+            if (gdvPesquisarCliente.RowCount > 0)
+            {
+                try
+                {
+                    SaveFileDialog openFileDialog = new SaveFileDialog();
+                    openFileDialog.InitialDirectory = "c:\\";
+                    openFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx|Excel 2007 (*.xls)|*.xls";
+                    openFileDialog.FilterIndex = 1;
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        DataTable dt = ExportarExcel.DataGridView_To_Datatable(gdvPesquisarCliente);
+                        dt.exportToExcel(openFileDialog.FileName);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Erro.ErroAoExportarDadosExecel(ex);
+                }
+            }
+        }
+
+        #endregion Botao Exportar Para Excel
     }
 }

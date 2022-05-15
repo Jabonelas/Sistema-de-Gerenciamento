@@ -162,10 +162,84 @@ namespace Sistema_de_Gerenciamento
             }
             catch (Exception ex)
             {
-                Erro.ErroAoCadastroFornecedor(ex);
+                Erro.ErroAoAdicionarImagemFornecedorNoBanco(ex);
             }
         }
 
         #endregion Inserir Imagem Cadastro Fornecedor
+
+        #region Cadastro Produto
+
+        public void InserirCadastroProduto(string _decricao, int _un, decimal _valor_custo, decimal _porcentagem, decimal _valor_venda,
+                    decimal _lucro, decimal _preco_atacado, string _grupo, string _sub_grupo, string _fonecedor, decimal _estoque_minimo, string _garantia,
+                    string _marca, string _referencia, DateTime _validade, decimal _comissao, string _observacao)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "insert into tb_CadastroProdutos (cp_decricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda,cp_lucro," +
+                        "cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo,cp_garantia,cp_marca,cp_referencia,cp_validade," +
+                        "cp_comissao,cp_observacao,) " +
+                        "values (@decricao,@un,@valorCusto,@porcentagem,@valorVenda,@lucro,@precoAtacado,@grupo,@subGrupo,@fonecedor," +
+                        "@estoqueMinimo,@garantia,@marca,@referencia,@validade,@comissao,@observacao)";
+
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+                    cmd.Parameters.AddWithValue("@decricao", SqlDbType.Date).Value = _decricao;
+                    cmd.Parameters.AddWithValue("@un", SqlDbType.Date).Value = _un;
+                    cmd.Parameters.AddWithValue("@valorCusto", SqlDbType.VarChar).Value = _valor_custo;
+                    cmd.Parameters.AddWithValue("@porcentagem", SqlDbType.VarChar).Value = _porcentagem;
+                    cmd.Parameters.AddWithValue("@valorVenda", SqlDbType.VarChar).Value = _valor_venda;
+                    cmd.Parameters.AddWithValue("@lucro", SqlDbType.VarChar).Value = _lucro;
+                    cmd.Parameters.AddWithValue("@precoAtacado", SqlDbType.VarChar).Value = _preco_atacado;
+                    cmd.Parameters.AddWithValue("@grupo", SqlDbType.VarChar).Value = _grupo;
+                    cmd.Parameters.AddWithValue("@subGrupo", SqlDbType.VarChar).Value = _sub_grupo;
+                    cmd.Parameters.AddWithValue("@fonecedor", SqlDbType.VarChar).Value = _fonecedor;
+                    cmd.Parameters.AddWithValue("@estoqueMinimo", SqlDbType.VarChar).Value = _estoque_minimo;
+                    cmd.Parameters.AddWithValue("@garantia", SqlDbType.Int).Value = _garantia;
+                    cmd.Parameters.AddWithValue("@marca", SqlDbType.VarChar).Value = _marca;
+                    cmd.Parameters.AddWithValue("@referencia", SqlDbType.VarChar).Value = _referencia;
+                    cmd.Parameters.AddWithValue("@validade", SqlDbType.VarChar).Value = _validade;
+                    cmd.Parameters.AddWithValue("@comissao", SqlDbType.VarChar).Value = _comissao;
+                    cmd.Parameters.AddWithValue("@observacao", SqlDbType.VarChar).Value = _observacao;
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAdicionarProdutoNoBanco(ex);
+            }
+        }
+
+        #endregion Cadastro Produto
+
+        #region Inserir Imagem Cadastro Produto
+
+        public void InserirImagemNoCadastroProduto(Image _imagem)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "insert into tb_ImagemProdutos (ip_imagem) values (@imagem)";
+
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+
+                    byte[] arr;
+                    ImageConverter converter = new ImageConverter();
+                    arr = (byte[])converter.ConvertTo(_imagem, typeof(byte[]));
+                    cmd.Parameters.Add("@imagem", SqlDbType.Image).Value = arr;
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAdicionarImagemProdutoNoBanco(ex);
+            }
+        }
+
+        #endregion Inserir Imagem Cadastro Produto
     }
 }

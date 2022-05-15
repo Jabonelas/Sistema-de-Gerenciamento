@@ -51,7 +51,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Cadastro Cliente
 
-        #region Fornecedor
+        #region Cadastro Fornecedor
 
         public bool VerificarExistenciaDeCNPJFornecedor(string _cNPJ)
         {
@@ -88,6 +88,45 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
-        #endregion Fornecedor
+        #endregion Cadastro Fornecedor
+
+        #region Cadastro Produto
+
+        public bool VerificarExistenciaDeDescricaoProduto(string _descricao)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    bool isExist = false;
+                    string query = "select cp_descricao from tb_CadastroProdutos where cp_descricao = @descicao";
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+                    cmd.Parameters.AddWithValue("@descricao", _descricao);
+                    SqlDataReader reader;
+                    reader = cmd.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        isExist = true;
+                    }
+                    else
+                    {
+                        isExist = false;
+                    }
+
+                    return isExist;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoVerificarExistenciaDeProdutoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Cadastro Produto
     }
 }

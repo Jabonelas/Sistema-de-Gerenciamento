@@ -31,7 +31,7 @@ namespace Sistema_de_Gerenciamento
 
         private ApiCorreios Api = new ApiCorreios();
 
-        private int cont = 0;
+        private int qntCEPexecutado = 0;
 
         public CadastroFornecedor()
         {
@@ -64,44 +64,51 @@ namespace Sistema_de_Gerenciamento
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+            try
             {
-                if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == false)
+                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
                 {
-                    Salvar.InserirCadastroForncedor(
-                    txtRazaoSocial.Text,
-                    Convert.ToDateTime(txtDataCadastro.Text),
-                    txtCNPJ.Text,
-                    txtNomeFantasia.Text,
-                    txtCEP.Text,
-                    txtEndereco.Text,
-                    txtComplemento.Text,
-                    Convert.ToInt32(txtNumero.Text),
-                    txtBairro.Text,
-                    txtCidade.Text,
-                    cmbUF.Text,
-                    txtTelefone.Text,
-                    txtEmail.Text,
-                    txtObservacoes.Text);
+                    if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == false)
+                    {
+                        Salvar.InserirCadastroForncedor(
+                        txtRazaoSocial.Text,
+                        Convert.ToDateTime(txtDataCadastro.Text),
+                        txtCNPJ.Text,
+                        txtNomeFantasia.Text,
+                        txtCEP.Text,
+                        txtEndereco.Text,
+                        txtComplemento.Text,
+                        Convert.ToInt32(txtNumero.Text),
+                        txtBairro.Text,
+                        txtCidade.Text,
+                        cmbUF.Text,
+                        txtTelefone.Text,
+                        txtEmail.Text,
+                        txtObservacoes.Text);
 
-                    Salvar.InserirImagemNoCadastroFornecedor(pcbFornecedor.Image);
+                        Salvar.InserirImagemNoCadastroFornecedor(pcbFornecedor.Image);
 
-                    txtCodigo.Text = Buscar.BuscarCodigoFornecedor(txtCNPJ.Text).ToString();
+                        txtCodigo.Text = Buscar.BuscarCodigoFornecedor(txtCNPJ.Text).ToString();
 
-                    //Chamar o forms de alerta de inclusao com sucesso
-                    Global.tipoDoAlerta = "Inclusao";
+                        //Chamar o forms de alerta de inclusao com sucesso
+                        Global.tipoDoAlerta = "Inclusao";
 
-                    Aviso buscarCliente = new Aviso();
-                    buscarCliente.Show();
+                        Aviso buscarCliente = new Aviso();
+                        buscarCliente.Show();
+                    }
+                    else if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == true)
+                    {
+                        MessageBox.Show("Fornecedor Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
-                else if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == true)
+                else
                 {
-                    MessageBox.Show("Fornecedor Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Erro.ErroAoCadastroFornecedor(ex);
             }
         }
 
@@ -151,7 +158,7 @@ namespace Sistema_de_Gerenciamento
             }
             catch (Exception ex)
             {
-                Erro.ErroAoAtualizarCadastroCliente(ex);
+                Erro.ErroAoAtualizarCadastroFornecedor(ex);
             }
         }
 
@@ -199,7 +206,7 @@ namespace Sistema_de_Gerenciamento
             }
             catch (Exception ex)
             {
-                Erro.ErroAoExluirCadastroCliente(ex);
+                Erro.ErroAoExluirCadastroFornecedor(ex);
             }
         }
 
@@ -320,55 +327,61 @@ namespace Sistema_de_Gerenciamento
 
         private async void txtCEP_Leave(object sender, EventArgs e)
         {
-            try
+            if (qntCEPexecutado == 0)
             {
-                if (txtCEP.Text.Length != txtCEP.MaxLength && txtCEP.Text.Length != 0)
+                qntCEPexecutado++;
+
+                try
                 {
-                    txtCEP.BorderColorActive = Color.Red;
-
-                    MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                    txtCEP.Focus();
-                }
-                else if (txtCEP.Text.Length == txtCEP.MaxLength || txtCEP.Text.Length == 0)
-                {
-                    await Api.APICorreios((txtCEP.Text).Replace("-", ""));
-
-                    foreach (var item in Api.RetornoApi())
+                    if (txtCEP.Text.Length != txtCEP.MaxLength && txtCEP.Text.Length != 0)
                     {
-                        if (item.Uf != null)
+                        txtCEP.BorderColorActive = Color.Red;
+
+                        MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        txtCEP.Focus();
+                    }
+                    else if (txtCEP.Text.Length == txtCEP.MaxLength || txtCEP.Text.Length == 0)
+                    {
+                        await Api.APICorreios((txtCEP.Text).Replace("-", ""));
+
+                        foreach (var item in Api.RetornoApi())
                         {
-                            txtEndereco.Text = item.Logradouro;
-                            txtComplemento.Text = item.Complemento;
-                            txtBairro.Text = item.Bairro;
-                            txtCidade.Text = item.Localidade;
-                            cmbUF.Text = item.Uf;
-
-                            Api.ZerarLista();
-
-                            txtCEP.BorderColorActive = Color.DodgerBlue;
-                        }
-                        else
-                        {
-                            //txtCEP.Focus();
-
-                            Api.ZerarLista();
-
-                            if (cont == 0)
+                            if (item.Uf != null)
                             {
-                                MessageBox.Show("CEP Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                cont++;
-                            }
+                                txtEndereco.Text = item.Logradouro;
+                                txtComplemento.Text = item.Complemento;
+                                txtBairro.Text = item.Bairro;
+                                txtCidade.Text = item.Localidade;
+                                cmbUF.Text = item.Uf;
 
-                            break;
+                                Api.ZerarLista();
+
+                                txtCEP.BorderColorActive = Color.DodgerBlue;
+                            }
+                            else
+                            {
+                                txtCEP.Focus();
+
+                                Api.ZerarLista();
+
+                                MessageBox.Show("CEP Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                                break;
+                            }
                         }
                     }
                 }
+                catch (Exception)
+                {
+                }
             }
-            catch (Exception)
+            else
             {
+                qntCEPexecutado = 0;
             }
-            cont = 0;
+
+            //txtCEP.Focus();
         }
 
         #endregion TextBox CEP

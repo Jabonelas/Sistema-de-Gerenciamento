@@ -63,6 +63,8 @@ namespace Sistema_de_Gerenciamento
                 {
                     if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == false)
                     {
+                        Salvar.InserirImagemNoCadastroCliente(pcbCliente.Image);
+
                         Salvar.InserirCadastroCliente(
                        Convert.ToDateTime(txtDataCadastro.Text),
                        txtNome.Text,
@@ -89,8 +91,6 @@ namespace Sistema_de_Gerenciamento
                        txtTel_Residencial.Text,
                        txtEmail.Text,
                        txtObservacoes.Text);
-
-                        Salvar.InserirImagemNoCadastroCliente(pcbCliente.Image);
 
                         txtCodigo.Text = Buscar.BuscarCodigoCliente(txtCPF_CNPJ.Text).ToString();
 

@@ -17,6 +17,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private BuscarNoBanco Buscar = new BuscarNoBanco();
 
+        private MensagensErro Erro = new MensagensErro();
+
         public PesquisarFornecedor(CadastroFornecedor _cadastroFornecedor)
         {
             InitializeComponent();
@@ -211,5 +213,33 @@ namespace Sistema_de_Gerenciamento.Forms
         }
 
         #endregion TextBox Codigo
+
+        #region Botao Exportar Para Excel
+
+        private void btnExportarParaExcel_Click(object sender, EventArgs e)
+        {
+            if (gdvPesquisarFornecedor.RowCount > 0)
+            {
+                try
+                {
+                    SaveFileDialog openFileDialog = new SaveFileDialog();
+                    openFileDialog.InitialDirectory = "c:\\";
+                    openFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx|Excel 2007 (*.xls)|*.xls";
+                    openFileDialog.FilterIndex = 1;
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        DataTable dt = ExportarExcel.DataGridView_To_Datatable(gdvPesquisarFornecedor);
+                        dt.exportToExcel(openFileDialog.FileName);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Erro.ErroAoExportarDadosExecel(ex);
+                }
+            }
+        }
+
+        #endregion Botao Exportar Para Excel
     }
 }

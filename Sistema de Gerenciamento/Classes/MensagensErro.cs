@@ -18,7 +18,7 @@ namespace Sistema_de_Gerenciamento
 
         public void ErroAoAtualizarCadastroCliente(Exception _e)
         {
-            MessageBox.Show($"(CAD-CL02) Erro ao AtualizarCadastroCliente Cadastro Cliente \n\nErro: {_e}", "Erro AtualizarCadastroCliente Cadastro Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(CAD-CL02) Erro ao Atualizar Cadastro Cliente \n\nErro: {_e}", "Erro Atualizar Cadastro Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoExluirCadastroCliente(Exception _e)
@@ -35,7 +35,36 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(CAD-FN01) Erro ao Cadastrar Fornecedor \n\nErro: {_e}", "Erro Cadastro Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoAtualizarCadastroFornecedor(Exception _e)
+        {
+            MessageBox.Show($"(CAD-FN02) Erro ao Atualizar Cadastro Fornecedor \n\nErro: {_e}", "Erro Atualizar Cadastro Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoExluirCadastroFornecedor(Exception _e)
+        {
+            MessageBox.Show($"(CAD-FN03) Erro ao Excluir Cadastro Fornecedor \n\nErro: {_e}", "Erro Excluir Cadastro Forncedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Cadastro Fornecedor
+
+        #region Cadastro Produto
+
+        public void ErroAoCadastroProduto(Exception _e)
+        {
+            MessageBox.Show($"(CAD-PR01) Erro ao Cadastrar Produto \n\nErro: {_e}", "Erro Cadastro Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAtualizarCadastroProduto(Exception _e)
+        {
+            MessageBox.Show($"(CAD-PR02) Erro ao Atualizar Cadastro Produto \n\nErro: {_e}", "Erro Atualizar Cadastro Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoExluirCadastroProduto(Exception _e)
+        {
+            MessageBox.Show($"(CAD-PR03) Erro ao Excluir Cadastro Produto \n\nErro: {_e}", "Erro Excluir Cadastro Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Cadastro Produto
 
         #region Inserir No Banco
 
@@ -52,6 +81,21 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoAdicionarFornecedorNoBanco(Exception _e)
         {
             MessageBox.Show($"(INS-CL03) Erro ao Inserir Cadastro Fornecedor \n\nErro: {_e}", "Erro Inserir Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAdicionarImagemFornecedorNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(INS-CL04) Erro ao Inserir Imagem No Cadastro Fornecedor \n\nErro: {_e}", "Erro Inserir Imagem Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAdicionarProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(INS-CL05) Erro ao Inserir Cadastro Produto \n\nErro: {_e}", "Erro Inserir Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAdicionarImagemProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(INS-CL06) Erro ao Inserir Imagem No Cadastro Produto \n\nErro: {_e}", "Erro Inserir Imagem Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Inserir No Banco
@@ -150,6 +194,20 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(EXI-FN01) Erro ao Verificar Existencia de Fornecedor \n\nErro: {_e}", "Erro Verificar Existencia de Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoVerificarExistenciaDeProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(EXI-PR01) Erro ao Verificar Existencia de Produto \n\nErro: {_e}", "Erro Verificar Existencia de Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Verificar Existencia No Banco
+
+        #region Exportar Dados para o Excel
+
+        public void ErroAoExportarDadosExecel(Exception _e)
+        {
+            MessageBox.Show($"(EDE-EX01) Erro ao Exportar Dados Para o Excel \n\nErro: {_e}", "Erro Exportar Dados!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Exportar Dados para o Excel
     }
 }

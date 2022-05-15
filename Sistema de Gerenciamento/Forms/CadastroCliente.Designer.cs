@@ -433,6 +433,7 @@
             // 
             // txtDataCadastro
             // 
+            this.txtDataCadastro.Enabled = false;
             this.txtDataCadastro.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDataCadastro.Location = new System.Drawing.Point(153, 146);
             this.txtDataCadastro.Name = "txtDataCadastro";
@@ -2312,6 +2313,7 @@
             this.txtCodigo.BorderColor = System.Drawing.Color.DimGray;
             this.txtCodigo.BorderSize = 1;
             this.txtCodigo.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCodigo.Enabled = false;
             this.txtCodigo.FocusedBaseColor = System.Drawing.Color.White;
             this.txtCodigo.FocusedBorderColor = System.Drawing.Color.DodgerBlue;
             this.txtCodigo.FocusedForeColor = System.Drawing.SystemColors.ControlText;
