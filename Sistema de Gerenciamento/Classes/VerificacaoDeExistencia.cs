@@ -99,7 +99,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     bool isExist = false;
-                    string query = "select cp_descricao from tb_CadastroProdutos where cp_descricao = @descicao";
+                    string query = "select cp_descricao from tb_CadastroProdutos where cp_descricao = @descricao";
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
                     cmd.Parameters.AddWithValue("@descricao", _descricao);
                     SqlDataReader reader;

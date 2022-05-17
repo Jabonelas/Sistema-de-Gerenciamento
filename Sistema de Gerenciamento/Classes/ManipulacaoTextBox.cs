@@ -44,6 +44,14 @@ namespace Sistema_de_Gerenciamento
                             break;
                         }
                     }
+                    else if (tipoComponente.Name == "ComboBox")
+                    {
+                        if (componente.Text == string.Empty)
+                        {
+                            isVazio = true;
+                            break;
+                        }
+                    }
                 }
                 return isVazio;
             }
@@ -79,6 +87,10 @@ namespace Sistema_de_Gerenciamento
                     componente.Text = string.Empty;
                 }
                 else if (tipoComponente.Name == "GunaTextBox")
+                {
+                    componente.Text = string.Empty;
+                }
+                else if (tipoComponente.Name == "ComboBox")
                 {
                     componente.Text = string.Empty;
                 }

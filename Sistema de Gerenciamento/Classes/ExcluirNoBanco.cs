@@ -111,5 +111,55 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Excluir Imagem Fornecedor
+
+        #region Excluir Cadastro Produto
+
+        public void ExcluirCadastroProduto(string _descricao)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "delete tb_CadastroProdutos where cp_descricao = @descricao";
+
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+
+                    cmd.Parameters.AddWithValue("@descricao", SqlDbType.VarChar).Value = _descricao;
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoExluirCadastroProdutoNoBanco(ex);
+            }
+        }
+
+        #endregion Excluir Cadastro Produto
+
+        #region Excluir Imagem Produto
+
+        public void ExcluirImagemProduto(int _codigo)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "delete tb_ImagemProdutos where ip_id = @codigo";
+
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+
+                    cmd.Parameters.AddWithValue("@codigo", SqlDbType.VarChar).Value = _codigo;
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoExluirImagemProdutoNoBanco(ex);
+            }
+        }
+
+        #endregion Excluir Imagem Produto
     }
 }

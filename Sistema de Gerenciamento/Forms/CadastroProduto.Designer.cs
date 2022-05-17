@@ -89,13 +89,9 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.gunaComboBox4 = new Guna.UI.WinForms.GunaComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.gunaComboBox3 = new Guna.UI.WinForms.GunaComboBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.gunaComboBox2 = new Guna.UI.WinForms.GunaComboBox();
-            this.cmbUn = new Guna.UI.WinForms.GunaComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -134,6 +130,10 @@
             this.btnSalvar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnCadastroProduto = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.cmbFornecedor = new System.Windows.Forms.ComboBox();
+            this.cmbSubGrupo = new System.Windows.Forms.ComboBox();
+            this.cmbGrupo = new System.Windows.Forms.ComboBox();
+            this.cmbUn = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcbProduto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -293,24 +293,6 @@
             this.label16.TabIndex = 80;
             this.label16.Text = "Marca";
             // 
-            // gunaComboBox4
-            // 
-            this.gunaComboBox4.BackColor = System.Drawing.Color.Transparent;
-            this.gunaComboBox4.BaseColor = System.Drawing.Color.White;
-            this.gunaComboBox4.BorderColor = System.Drawing.Color.Silver;
-            this.gunaComboBox4.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.gunaComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.gunaComboBox4.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaComboBox4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaComboBox4.ForeColor = System.Drawing.Color.Black;
-            this.gunaComboBox4.FormattingEnabled = true;
-            this.gunaComboBox4.Location = new System.Drawing.Point(314, 260);
-            this.gunaComboBox4.Name = "gunaComboBox4";
-            this.gunaComboBox4.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.gunaComboBox4.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.gunaComboBox4.Size = new System.Drawing.Size(213, 24);
-            this.gunaComboBox4.TabIndex = 79;
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -331,24 +313,6 @@
             this.label14.TabIndex = 77;
             this.label14.Text = "Fornecedor";
             // 
-            // gunaComboBox3
-            // 
-            this.gunaComboBox3.BackColor = System.Drawing.Color.Transparent;
-            this.gunaComboBox3.BaseColor = System.Drawing.Color.White;
-            this.gunaComboBox3.BorderColor = System.Drawing.Color.Silver;
-            this.gunaComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.gunaComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.gunaComboBox3.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaComboBox3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaComboBox3.ForeColor = System.Drawing.Color.Black;
-            this.gunaComboBox3.FormattingEnabled = true;
-            this.gunaComboBox3.Location = new System.Drawing.Point(154, 260);
-            this.gunaComboBox3.Name = "gunaComboBox3";
-            this.gunaComboBox3.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.gunaComboBox3.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.gunaComboBox3.Size = new System.Drawing.Size(142, 24);
-            this.gunaComboBox3.TabIndex = 76;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -358,51 +322,6 @@
             this.label13.Size = new System.Drawing.Size(65, 15);
             this.label13.TabIndex = 75;
             this.label13.Text = "Sub-Grupo";
-            // 
-            // gunaComboBox2
-            // 
-            this.gunaComboBox2.BackColor = System.Drawing.Color.Transparent;
-            this.gunaComboBox2.BaseColor = System.Drawing.Color.White;
-            this.gunaComboBox2.BorderColor = System.Drawing.Color.Silver;
-            this.gunaComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.gunaComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.gunaComboBox2.FocusedColor = System.Drawing.Color.Empty;
-            this.gunaComboBox2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gunaComboBox2.ForeColor = System.Drawing.Color.Black;
-            this.gunaComboBox2.FormattingEnabled = true;
-            this.gunaComboBox2.Location = new System.Drawing.Point(21, 260);
-            this.gunaComboBox2.Name = "gunaComboBox2";
-            this.gunaComboBox2.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.gunaComboBox2.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.gunaComboBox2.Size = new System.Drawing.Size(117, 24);
-            this.gunaComboBox2.TabIndex = 74;
-            // 
-            // cmbUn
-            // 
-            this.cmbUn.BackColor = System.Drawing.Color.Transparent;
-            this.cmbUn.BaseColor = System.Drawing.Color.White;
-            this.cmbUn.BorderColor = System.Drawing.Color.Silver;
-            this.cmbUn.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbUn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbUn.FocusedColor = System.Drawing.Color.Empty;
-            this.cmbUn.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbUn.ForeColor = System.Drawing.Color.Black;
-            this.cmbUn.FormattingEnabled = true;
-            this.cmbUn.Items.AddRange(new object[] {
-            "M",
-            "cm",
-            "UN",
-            "KG",
-            "g",
-            "L",
-            "ml",
-            ""});
-            this.cmbUn.Location = new System.Drawing.Point(21, 209);
-            this.cmbUn.Name = "cmbUn";
-            this.cmbUn.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.cmbUn.OnHoverItemForeColor = System.Drawing.Color.White;
-            this.cmbUn.Size = new System.Drawing.Size(52, 24);
-            this.cmbUn.TabIndex = 72;
             // 
             // label12
             // 
@@ -521,9 +440,9 @@
             this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(18, 137);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 15);
+            this.label1.Size = new System.Drawing.Size(44, 15);
             this.label1.TabIndex = 51;
-            this.label1.Text = "Cod. Barras";
+            this.label1.Text = "Codigo";
             // 
             // txtCodigo
             // 
@@ -1134,7 +1053,7 @@
             this.txtPrecoAtacado.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPrecoAtacado.Lines = new string[0];
             this.txtPrecoAtacado.Location = new System.Drawing.Point(512, 207);
-            this.txtPrecoAtacado.MaxLength = 32767;
+            this.txtPrecoAtacado.MaxLength = 6;
             this.txtPrecoAtacado.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtPrecoAtacado.Modified = false;
             this.txtPrecoAtacado.Multiline = false;
@@ -1255,6 +1174,7 @@
             this.txtPorcentagem.UseSystemPasswordChar = false;
             this.txtPorcentagem.WordWrap = true;
             this.txtPorcentagem.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPorcentagem_KeyPress);
+            this.txtPorcentagem.Leave += new System.EventHandler(this.txtPorcentagem_Leave);
             // 
             // txtValorDeCusto
             // 
@@ -1688,6 +1608,7 @@
             this.btnExcluir.TextMarginLeft = 0;
             this.btnExcluir.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnExcluir.UseDefaultRadiusAndThickness = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnBuscarProduto
             // 
@@ -1869,6 +1790,7 @@
             this.btnAlterar.TextMarginLeft = 0;
             this.btnAlterar.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnAlterar.UseDefaultRadiusAndThickness = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnSalvar
             // 
@@ -2061,17 +1983,69 @@
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuSeparator1.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded;
             this.bunifuSeparator1.LineThickness = 3;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(12, 116);
+            this.bunifuSeparator1.Location = new System.Drawing.Point(70, 137);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
             this.bunifuSeparator1.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.bunifuSeparator1.Size = new System.Drawing.Size(776, 20);
             this.bunifuSeparator1.TabIndex = 159;
+            // 
+            // cmbFornecedor
+            // 
+            this.cmbFornecedor.BackColor = System.Drawing.Color.White;
+            this.cmbFornecedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFornecedor.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFornecedor.FormattingEnabled = true;
+            this.cmbFornecedor.Location = new System.Drawing.Point(314, 260);
+            this.cmbFornecedor.Name = "cmbFornecedor";
+            this.cmbFornecedor.Size = new System.Drawing.Size(213, 23);
+            this.cmbFornecedor.TabIndex = 171;
+            // 
+            // cmbSubGrupo
+            // 
+            this.cmbSubGrupo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSubGrupo.FormattingEnabled = true;
+            this.cmbSubGrupo.Location = new System.Drawing.Point(154, 260);
+            this.cmbSubGrupo.Name = "cmbSubGrupo";
+            this.cmbSubGrupo.Size = new System.Drawing.Size(142, 23);
+            this.cmbSubGrupo.TabIndex = 172;
+            // 
+            // cmbGrupo
+            // 
+            this.cmbGrupo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbGrupo.FormattingEnabled = true;
+            this.cmbGrupo.Location = new System.Drawing.Point(21, 261);
+            this.cmbGrupo.Name = "cmbGrupo";
+            this.cmbGrupo.Size = new System.Drawing.Size(117, 23);
+            this.cmbGrupo.TabIndex = 173;
+            // 
+            // cmbUn
+            // 
+            this.cmbUn.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUn.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbUn.FormattingEnabled = true;
+            this.cmbUn.Items.AddRange(new object[] {
+            "M",
+            "cm",
+            "UN",
+            "KG",
+            "g",
+            "L",
+            "ml",
+            ""});
+            this.cmbUn.Location = new System.Drawing.Point(21, 207);
+            this.cmbUn.Name = "cmbUn";
+            this.cmbUn.Size = new System.Drawing.Size(62, 23);
+            this.cmbUn.TabIndex = 174;
             // 
             // CadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 479);
+            this.Controls.Add(this.cmbUn);
+            this.Controls.Add(this.cmbGrupo);
+            this.Controls.Add(this.cmbSubGrupo);
+            this.Controls.Add(this.cmbFornecedor);
             this.Controls.Add(this.btnInserirImagem);
             this.Controls.Add(this.txtObservacoes);
             this.Controls.Add(this.txtReferencia);
@@ -2094,14 +2068,10 @@
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.gunaComboBox4);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.gunaComboBox3);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.gunaComboBox2);
             this.Controls.Add(this.txtEstoqueMinimo);
-            this.Controls.Add(this.cmbUn);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -2164,26 +2134,15 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label20;
-        private Bunifu.UI.WinForms.BunifuTextBox txtValidade;
-        private Bunifu.UI.WinForms.BunifuTextBox txtMarca;
-        private Bunifu.UI.WinForms.BunifuTextBox txtGarantia;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
-        private Guna.UI.WinForms.GunaComboBox gunaComboBox4;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private Guna.UI.WinForms.GunaComboBox gunaComboBox3;
         private System.Windows.Forms.Label label13;
-        private Guna.UI.WinForms.GunaComboBox gunaComboBox2;
-        private Bunifu.UI.WinForms.BunifuTextBox txtEstoqueMinimo;
-        private Guna.UI.WinForms.GunaComboBox cmbUn;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
-        private Bunifu.UI.WinForms.BunifuTextBox txtPrecoAtacado;
-        private Bunifu.UI.WinForms.BunifuTextBox txtPorcentagem;
-        private Bunifu.UI.WinForms.BunifuTextBox txtValorDeCusto;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -2191,8 +2150,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private Guna.UI.WinForms.GunaPictureBox pcbProduto;
-        private Bunifu.UI.WinForms.BunifuTextBox txtDescricao;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator1;
@@ -2202,8 +2159,21 @@
         public Guna.UI.WinForms.GunaTextBox txtLucro;
         public Guna.UI.WinForms.GunaTextBox txtReferencia;
         private System.Windows.Forms.Label label19;
-        private Bunifu.UI.WinForms.BunifuTextBox txtComissao;
         public System.Windows.Forms.RichTextBox txtObservacoes;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnInserirImagem;
+        public Bunifu.UI.WinForms.BunifuTextBox txtValidade;
+        public Bunifu.UI.WinForms.BunifuTextBox txtMarca;
+        public Bunifu.UI.WinForms.BunifuTextBox txtGarantia;
+        public Bunifu.UI.WinForms.BunifuTextBox txtEstoqueMinimo;
+        public Bunifu.UI.WinForms.BunifuTextBox txtPrecoAtacado;
+        public Bunifu.UI.WinForms.BunifuTextBox txtPorcentagem;
+        public Bunifu.UI.WinForms.BunifuTextBox txtValorDeCusto;
+        public Guna.UI.WinForms.GunaPictureBox pcbProduto;
+        public Bunifu.UI.WinForms.BunifuTextBox txtDescricao;
+        public Bunifu.UI.WinForms.BunifuTextBox txtComissao;
+        public System.Windows.Forms.ComboBox cmbFornecedor;
+        public System.Windows.Forms.ComboBox cmbSubGrupo;
+        public System.Windows.Forms.ComboBox cmbGrupo;
+        public System.Windows.Forms.ComboBox cmbUn;
     }
 }

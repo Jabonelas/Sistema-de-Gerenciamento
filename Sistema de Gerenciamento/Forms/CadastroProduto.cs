@@ -32,17 +32,222 @@ namespace Sistema_de_Gerenciamento
         public CadastroProduto()
         {
             InitializeComponent();
+
+            // Preencher o combobox de grupo
+            cmbGrupo.Items.Clear();
+
+            foreach (var item in Buscar.BuscarGrupoProduto())
+            {
+                cmbGrupo.Items.Add(item);
+            }
+
+            // Preencher o combobox de sub-grupo
+            cmbSubGrupo.Items.Clear();
+
+            foreach (var item in Buscar.BuscarSubGrupoProduto())
+            {
+                cmbSubGrupo.Items.Add(item);
+            }
+
+            // Preencher o combobox de fornecedor
+            cmbFornecedor.Items.Clear();
+
+            foreach (var item in Buscar.BuscarListaForcedor())
+            {
+                cmbFornecedor.Items.Add(item);
+            }
         }
+
+        #region Botao Novo
+
+        private void btnCadastroProduto_Click(object sender, EventArgs e)
+        {
+            TextBox.ApagandoTextBox(this);
+
+            // Preencher o combobox de grupo
+            cmbGrupo.Items.Clear();
+
+            foreach (var item in Buscar.BuscarGrupoProduto())
+            {
+                cmbGrupo.Items.Add(item);
+            }
+
+            // Preencher o combobox de sub-grupo
+            cmbSubGrupo.Items.Clear();
+
+            foreach (var item in Buscar.BuscarSubGrupoProduto())
+            {
+                cmbSubGrupo.Items.Add(item);
+            }
+
+            // Preencher o combobox de fornecedor
+            cmbFornecedor.Items.Clear();
+
+            foreach (var item in Buscar.BuscarListaForcedor())
+            {
+                cmbFornecedor.Items.Add(item);
+            }
+        }
+
+        #endregion Botao Novo
+
+        #region Botao Salvar
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                {
+                    if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == false)
+                    {
+                        Salvar.InserirImagemNoCadastroProduto(pcbProduto.Image);
+
+                        Salvar.InserirCadastroProduto(txtDescricao.Text,
+                        cmbUn.Text,
+                        Convert.ToDecimal(txtValorDeCusto.Text.Replace("R$ ", string.Empty)),
+                        Convert.ToDecimal(txtPorcentagem.Text.Replace(" %", string.Empty)),
+                        Convert.ToDecimal(txtValorVenda.Text.Replace("R$ ", string.Empty)),
+                        Convert.ToDecimal(txtLucro.Text.Replace("R$ ", string.Empty)),
+                        Convert.ToDecimal(txtPrecoAtacado.Text.Replace("R$ ", string.Empty)),
+                        cmbGrupo.Text,
+                        cmbSubGrupo.Text,
+                        cmbFornecedor.Text,
+                        Convert.ToDecimal(txtEstoqueMinimo.Text),
+                        txtGarantia.Text,
+                        txtMarca.Text,
+                        txtReferencia.Text,
+                        Convert.ToDateTime(txtValidade.Text),
+                        Convert.ToDecimal(txtComissao.Text.Replace(" %", string.Empty)),
+                        txtObservacoes.Text);
+
+                        txtCodigo.Text = Buscar.BuscarCodigoBarras(txtDescricao.Text).ToString();
+
+                        //Chamar o forms de alerta de inclusao com sucesso
+                        Global.tipoDoAlerta = "Inclusao";
+
+                        Aviso buscarCliente = new Aviso();
+                        buscarCliente.Show();
+                    }
+                    else if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == true)
+                    {
+                        MessageBox.Show("Produto Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoCadastroProduto(ex);
+            }
+        }
+
+        #endregion Botao Salvar
+
+        #region Botao Atualizar
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                {
+                    if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == true)
+                    {
+                        Atualizar.AtualizarCadastroProduto(txtDescricao.Text,
+                        cmbUn.Text,
+                        Convert.ToDecimal(txtValorDeCusto.Text.Replace("R$ ", string.Empty)),
+                        Convert.ToDecimal(txtPorcentagem.Text.Replace(" %", string.Empty)),
+                        Convert.ToDecimal(txtValorVenda.Text.Replace("R$ ", string.Empty)),
+                        Convert.ToDecimal(txtLucro.Text.Replace("R$ ", string.Empty)),
+                        Convert.ToDecimal(txtPrecoAtacado.Text.Replace("R$ ", string.Empty)),
+                        cmbGrupo.Text,
+                        cmbSubGrupo.Text,
+                        cmbFornecedor.Text,
+                        Convert.ToDecimal(txtEstoqueMinimo.Text),
+                        txtGarantia.Text,
+                        txtMarca.Text,
+                        txtReferencia.Text,
+                        Convert.ToDateTime(txtValidade.Text),
+                        Convert.ToDecimal(txtComissao.Text.Replace(" %", string.Empty)),
+                        txtObservacoes.Text);
+
+                        Atualizar.AtualizarImagemNoCadastroProduto(pcbProduto.Image, Convert.ToInt32(txtCodigo.Text));
+
+                        //Chamar o forms de alerta de atualizacao com sucesso
+                        Global.tipoDoAlerta = "Atualizacao";
+
+                        Aviso buscarCliente = new Aviso();
+                        buscarCliente.Show();
+                    }
+                    else if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == false)
+                    {
+                        MessageBox.Show("Produto Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Preenchimento Dos Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarCadastroProduto(ex);
+            }
+        }
+
+        #endregion Botao Atualizar
 
         #region Botao Buscar
 
         private void btnBuscarProduto_Click(object sender, EventArgs e)
         {
-            PesquisarProduto buscarProduto = new PesquisarProduto();
+            PesquisarProduto buscarProduto = new PesquisarProduto(this);
             buscarProduto.ShowDialog();
         }
 
         #endregion Botao Buscar
+
+        #region Botao Excluir
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                {
+                    if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == true)
+                    {
+                        Excluir.ExcluirCadastroProduto(txtDescricao.Text);
+
+                        Excluir.ExcluirImagemProduto(Convert.ToInt32(txtCodigo.Text));
+
+                        //Chamar o forms de alerta de exclusao com sucesso
+                        Global.tipoDoAlerta = "Exclusao";
+
+                        Aviso buscarCliente = new Aviso();
+                        buscarCliente.Show();
+                    }
+                    else if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == false)
+                    {
+                        MessageBox.Show("Produto Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoExluirCadastroProduto(ex);
+            }
+        }
+
+        #endregion Botao Excluir
 
         #region Botao Sair
 
@@ -52,15 +257,6 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Botao Sair
-
-        #region Botao Novo
-
-        private void btnCadastroProduto_Click(object sender, EventArgs e)
-        {
-            TextBox.ApagandoTextBox(this);
-        }
-
-        #endregion Botao Novo
 
         #region Botao Inserir Imagem
 
@@ -110,7 +306,7 @@ namespace Sistema_de_Gerenciamento
 
         #endregion TextBox Valor de Custo
 
-        #region TextBox Procentagem
+        #region TextBox Porcentagem
 
         private void txtPorcentagem_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -144,15 +340,50 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion TextBox Procentagem
+        private void txtPorcentagem_Leave(object sender, EventArgs e)
+        {
+            if (txtValorDeCusto.Text != String.Empty)
+            {
+                decimal valorDeCusto = Convert.ToDecimal(txtValorDeCusto.Text.Replace("R$ ", string.Empty));
+                decimal porcentagem = Convert.ToDecimal(txtPorcentagem.Text.Replace(" %", string.Empty));
+                decimal lucro = (valorDeCusto * porcentagem / 100);
+
+                txtValorVenda.Text = ($"R$ {(valorDeCusto + lucro).ToString("N2")}");
+
+                txtLucro.Text = ($"R$ {(lucro).ToString("N2")}");
+            }
+        }
+
+        #endregion TextBox Porcentagem
 
         #region TextBox Preco aPrazo e Atacado
 
         private void txtPrecoAPrazoAtacado_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            try
             {
+                txtValorDeCusto.MaxLength = 10;
+
+                if (Char.IsDigit(e.KeyChar) || e.KeyChar.Equals((char)Keys.Back))
+                {
+                    if (txtValorDeCusto.Text.Length <= 13 || e.KeyChar.Equals((char)Keys.Back))
+                    {
+                        TextBox textbox = (TextBox)sender;
+                        string testoDoTextBox = Regex.Replace(textbox.Text, "[^0-9]", string.Empty);
+                        if (testoDoTextBox == string.Empty)
+                        {
+                            testoDoTextBox = "00";
+                        }
+
+                        testoDoTextBox += e.KeyChar;
+                        textbox.Text = String.Format("R$ {0:#,##0.00}", double.Parse(testoDoTextBox) / 100);
+                        textbox.Select(textbox.Text.Length, 0);
+                    }
+                }
                 e.Handled = true;
+            }
+            catch (Exception)
+            {
             }
         }
 
@@ -292,65 +523,5 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion TextBox Estoque Minimo
-
-        private void btnSalvar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
-                {
-                    if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == false)
-                    {
-                        Salvar.InserirImagemNoCadastroCliente(pcbCliente.Image);
-
-                        Salvar.InserirCadastroCliente(
-                       txtDescricao.Text,
-                       cmbUn.Text,
-                       txtValorDeCusto.Text,
-                       txtRG.Text,
-                       cmbEmissor.Text,
-                       txtDataEmissao.Text,
-                       cmbIns_Est.Text,
-                       txtCEP.Text,
-                       txtEndereco.Text,
-                       Convert.ToInt32(txtNumero.Text),
-                       txtComplemento.Text,
-                       txtBairro.Text,
-                       txtCidade.Text,
-                       cmbUF.Text,
-                       txtNaturalidade.Text,
-                       txtDataNascimento.Text,
-                       cmbEstadoCivil.Text,
-                       Convert.ToDecimal(txtCredito.Text.Replace("R$ ", "")),
-                       Convert.ToDecimal(txtSaldo.Text.Replace("R$ ", "")),
-                       cmbBloqueio.Text,
-                       txtCelular.Text,
-                       txtTel_Residencial.Text,
-                       txtEmail.Text,
-                       txtObservacoes.Text);
-
-                        txtCodigo.Text = Buscar.BuscarCodigoCliente(txtCPF_CNPJ.Text).ToString();
-
-                        //Chamar o forms de alerta de inclusao com sucesso
-                        Global.tipoDoAlerta = "Inclusao";
-
-                        Aviso buscarCliente = new Aviso();
-                        buscarCliente.Show();
-                    }
-                    else if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtDescricao.Text) == true)
-                    {
-                        MessageBox.Show("Produto Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoCadastroProduto(ex);
-            }
-        }
     }
 }

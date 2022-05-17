@@ -122,6 +122,16 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(ATU-FN02) Erro ao Atualizar Imagem do Fornecedor \n\nErro: {_e}", "Erro Atualizacao Imagem Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoAtualizarProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-PR01) Erro ao Atualizar Cadastro de Produto \n\nErro: {_e}", "Erro Atualizacao Cadastro Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAtualizarImagemProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-PR02) Erro ao Atualizar Imagem do Produto \n\nErro: {_e}", "Erro Atualizacao Imagem Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Atualizacao Do Banco
 
         #region Excluir No Banco
@@ -146,38 +156,68 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(EXC-FN02) Erro ao Excluir Imagem Fornecedor \n\nErro: {_e}", "Erro Excluir Imagem Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoExluirCadastroProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(EXC-PR01) Erro ao Excluir Cadastro Produto \n\nErro: {_e}", "Erro Excluir Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoExluirImagemProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(EXC-PR02) Erro ao Excluir Imagem Produto \n\nErro: {_e}", "Erro Excluir Imagem Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Excluir No Banco
 
         #region Buscar No Banco
 
-        public void ErroAoBuscsarClienteNoBanco(Exception _e)
+        public void ErroAoBuscarClienteNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-CL01) Erro ao Realizar Busca de Cliente \n\nErro: {_e}", "Erro Busca Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoBuscsarImagemClienteNoBanco(Exception _e)
+        public void ErroAoBuscarImagemClienteNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-CL02) Erro ao Realizar Busca de Imagem do Cliente \n\nErro: {_e}", "Erro Busca Imagem Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoBuscsarCodigoClienteNoBanco(Exception _e)
+        public void ErroAoBuscarCodigoClienteNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-CL03) Erro ao Realizar Busca de Codigo do Cliente \n\nErro: {_e}", "Erro Busca Codigo Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoBuscsarFornecedorNoBanco(Exception _e)
+        public void ErroAoBuscarFornecedorNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-FN01) Erro ao Realizar Busca de Fornecedor \n\nErro: {_e}", "Erro Busca Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoBuscsarImagemFornecedorNoBanco(Exception _e)
+        public void ErroAoBuscarImagemFornecedorNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-FN02) Erro ao Realizar Busca de Imagem do Fornecedor \n\nErro: {_e}", "Erro Busca Imagem Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoBuscsarCodigoFornecedorNoBanco(Exception _e)
+        public void ErroAoBuscarCodigoFornecedorNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-FN03) Erro ao Realizar Busca de Codigo do Fornecedor \n\nErro: {_e}", "Erro Busca Codigo Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarListaFornecedorNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-FN04) Erro ao Realizar Busca dos Fornecedores \n\nErro: {_e}", "Erro Busca Fornecedores!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCodigoBarrasProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR03) Erro ao Realizar Busca de Codigo de Barras do Produto \n\nErro: {_e}", "Erro Busca Codigo de Barras Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarGrupoProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR04) Erro ao Realizar Busca de Grupo do Produto \n\nErro: {_e}", "Erro Busca Grupo Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarSubGrupoProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR04) Erro ao Realizar Busca de Sub-Grupo do Produto \n\nErro: {_e}", "Erro Busca Sub-Grupo Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Buscar No Banco

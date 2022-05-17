@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using Bunifu.UI.WinForms;
 
 namespace Sistema_de_Gerenciamento.Classes
@@ -61,7 +62,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscsarClienteNoBanco(ex);
+                Erro.ErroAoBuscarClienteNoBanco(ex);
 
                 return false;
             }
@@ -100,7 +101,7 @@ namespace Sistema_de_Gerenciamento.Classes
             catch (Exception ex)
             {
                 return null;
-                Erro.ErroAoBuscsarImagemClienteNoBanco(ex);
+                Erro.ErroAoBuscarImagemClienteNoBanco(ex);
             }
         }
 
@@ -127,7 +128,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscsarCodigoClienteNoBanco(ex);
+                Erro.ErroAoBuscarCodigoClienteNoBanco(ex);
                 return 0;
             }
         }
@@ -174,7 +175,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscsarFornecedorNoBanco(ex);
+                Erro.ErroAoBuscarFornecedorNoBanco(ex);
 
                 return false;
             }
@@ -214,7 +215,7 @@ namespace Sistema_de_Gerenciamento.Classes
             catch (Exception ex)
             {
                 return null;
-                Erro.ErroAoBuscsarImagemFornecedorNoBanco(ex);
+                Erro.ErroAoBuscarImagemFornecedorNoBanco(ex);
             }
         }
 
@@ -241,11 +242,225 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscsarCodigoFornecedorNoBanco(ex);
+                Erro.ErroAoBuscarCodigoFornecedorNoBanco(ex);
                 return 0;
             }
         }
 
         #endregion Buscar Codigo Fornecedor
+
+        #region Buscar Codigo de Barras Produto
+
+        public int BuscarCodigoBarras(string _descricao)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select cp_id from tb_CadastroProdutos where cp_descricao = @descricao";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@descricao", _descricao);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    dr.Read();
+
+                    int x = dr.GetInt32(0);
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarCodigoBarrasProdutoNoBanco(ex);
+                return 0;
+            }
+        }
+
+        #endregion Buscar Codigo de Barras Produto
+
+        #region Buscar Grupo Produto
+
+        public List<string> BuscarGrupoProduto()
+        {
+            try
+            {
+                List<string> Grupo = new List<string>();
+
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select distinct cp_grupo from tb_CadastroProdutos";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        Grupo.Add(dr.GetString(0));
+                    }
+
+                    return Grupo;
+                }
+            }
+            catch (Exception ex)
+            {
+                return new List<string>();
+
+                Erro.ErroAoBuscarGrupoProdutoNoBanco(ex);
+            }
+        }
+
+        #endregion Buscar Grupo Produto
+
+        #region Buscar Sub-Grupo Produto
+
+        public List<string> BuscarSubGrupoProduto()
+        {
+            try
+            {
+                List<string> SubGrupo = new List<string>();
+
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select distinct cp_sub_grupo from tb_CadastroProdutos";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        SubGrupo.Add(dr.GetString(0));
+                    }
+
+                    return SubGrupo;
+                }
+            }
+            catch (Exception ex)
+            {
+                return new List<string>();
+
+                Erro.ErroAoBuscarSubGrupoProdutoNoBanco(ex);
+            }
+        }
+
+        #endregion Buscar Sub-Grupo Produto
+
+        #region Buscar Lista Fornecedor
+
+        public List<string> BuscarListaForcedor()
+        {
+            try
+            {
+                List<string> ListaFornecedor = new List<string>();
+
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select distinct cf_nome_fantasia from tb_CadastroFornecedor";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        ListaFornecedor.Add(dr.GetString(0));
+                    }
+
+                    return ListaFornecedor;
+                }
+            }
+            catch (Exception ex)
+            {
+                return new List<string>();
+
+                Erro.ErroAoBuscarListaFornecedorNoBanco(ex);
+            }
+        }
+
+        #endregion Buscar Lista Fornecedor
+
+        #region Buscar Produto
+
+        public bool BuscarCadastroProduto(string _cp_id, string _descricao, string _grupo, string _subGrupo, string _marca, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select cc_id,cc_data_cadastro,cc_nome_cliente,cc_tipo,cc_cpf_cnpj,cc_rg,cc_emissor," +
+                        "cc_data_emissao,cc_ins_est,cc_cep,cc_endereco,cc_numero,cc_complemento,cc_bairro,cc_cidade,cc_uf," +
+                        "cc_naturalidade,cc_data_nasc,cc_estado_civil,cc_credito,cc_saldo,cc_bloqueio,cc_celular,cc_tel_residencial," +
+                        "cc_email,cc_observacoes " +
+                        "from tb_CadastroClientes where or cc_nome_cliente like @nomeCliente";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@cp_id", _cp_id);
+                    adapter.SelectCommand.Parameters.AddWithValue("@descricao", _descricao);
+                    adapter.SelectCommand.Parameters.AddWithValue("@grupo", _grupo);
+                    adapter.SelectCommand.Parameters.AddWithValue("@subGrupo", _subGrupo);
+                    adapter.SelectCommand.Parameters.AddWithValue("@marca", _marca);
+                    //adapter.SelectCommand.Parameters.AddWithValue("@marca", string.Format("%{0}%", _nomeCliente));
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarClienteNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Buscar Produto
+
+        #region Buscar Imagem Produto
+
+        public Image BuscarImagemProduto(int _cc_id)
+        {
+            Image a;
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ic_imagem from tb_ImagemCliente where ic_id = @cc_id";
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+                    cmd.Parameters.AddWithValue("@cc_id", _cc_id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                    }
+                    byte[] img = (byte[])(reader["ic_imagem"]);
+                    MemoryStream ms = new MemoryStream(img);
+
+                    a = System.Drawing.Image.FromStream(ms);
+                    return a;
+
+                    //cadastroCliente.pcbCliente.Image = System.Drawing.Image.FromStream(ms);
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+                Erro.ErroAoBuscarImagemClienteNoBanco(ex);
+            }
+        }
+
+        #endregion Buscar Imagem Produto
     }
 }

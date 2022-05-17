@@ -198,5 +198,109 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Atualizar Imagem Fornecedor
+
+        #region Atualizar Cadastro Produto
+
+        public void AtualizarCadastroProduto(string _descricao,
+        string _un,
+        decimal _valor_custo,
+        decimal _porcentagem,
+        decimal _valor_venda,
+        decimal _lucro,
+        decimal _preco_atacado,
+        string _grupo,
+        string _sub_grupo,
+        string _fonecedor,
+        decimal _estoque_minimo,
+        string _garantia,
+        string _marca,
+        string _referencia,
+        DateTime _validade,
+        decimal _comissao,
+        string _observacao)
+
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_CadastroProdutos set " +
+                        "cp_descricao=@descricao," +
+                        "cp_un=@un," +
+                        "cp_valor_custo=@valorCusto," +
+                        "cp_porcentagem=@porcentagem," +
+                        "cp_valor_venda=@valorVenda," +
+                        "cp_lucro=@lucro," +
+                        "cp_preco_atacado=@precoAtacado," +
+                        "cp_grupo=@grupo," +
+                        "cp_sub_grupo=@subGrupo," +
+                        "cp_fonecedor=@fonecedor," +
+                        "cp_estoque_minimo=@estoqueMinimo," +
+                        "cp_garantia=@garantia," +
+                        "cp_marca=@marca," +
+                        "cp_referencia=@referencia," +
+                        "cp_validade=@validade," +
+                        "cp_comissao=@comissao," +
+                        "cp_observacao=@observacao " +
+                        "where cp_descricao=@descricao";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@descricao", SqlDbType.VarChar).Value = _descricao;
+                    adapter.SelectCommand.Parameters.AddWithValue("@un", SqlDbType.VarChar).Value = _un;
+                    adapter.SelectCommand.Parameters.AddWithValue("@valorCusto", SqlDbType.Decimal).Value = _valor_custo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@porcentagem", SqlDbType.Decimal).Value = _porcentagem;
+                    adapter.SelectCommand.Parameters.AddWithValue("@valorVenda", SqlDbType.Decimal).Value = _valor_venda;
+                    adapter.SelectCommand.Parameters.AddWithValue("@lucro", SqlDbType.Decimal).Value = _lucro;
+                    adapter.SelectCommand.Parameters.AddWithValue("@precoAtacado", SqlDbType.Decimal).Value = _preco_atacado;
+                    adapter.SelectCommand.Parameters.AddWithValue("@grupo", SqlDbType.VarChar).Value = _grupo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@subGrupo", SqlDbType.VarChar).Value = _sub_grupo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@fonecedor", SqlDbType.VarChar).Value = _fonecedor;
+                    adapter.SelectCommand.Parameters.AddWithValue("@estoqueMinimo", SqlDbType.Decimal).Value = _estoque_minimo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@garantia", SqlDbType.VarChar).Value = _garantia;
+                    adapter.SelectCommand.Parameters.AddWithValue("@marca", SqlDbType.VarChar).Value = _marca;
+                    adapter.SelectCommand.Parameters.AddWithValue("@referencia", SqlDbType.VarChar).Value = _referencia;
+                    adapter.SelectCommand.Parameters.AddWithValue("@validade", SqlDbType.Date).Value = _validade;
+                    adapter.SelectCommand.Parameters.AddWithValue("@comissao", SqlDbType.Decimal).Value = _comissao;
+                    adapter.SelectCommand.Parameters.AddWithValue("@observacao", SqlDbType.VarChar).Value = _observacao;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarProdutoNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Cadastro Produto
+
+        #region Atualizar Imagem Produto
+
+        public void AtualizarImagemNoCadastroProduto(Image _imagem, int _cp_id)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_ImagemProdutos set ip_imagem=@imagem where ip_id = @cp_id ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    byte[] arr;
+                    ImageConverter converter = new ImageConverter();
+                    arr = (byte[])converter.ConvertTo(_imagem, typeof(byte[]));
+                    adapter.SelectCommand.Parameters.Add("@imagem", SqlDbType.Image).Value = arr;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cp_id", SqlDbType.VarChar).Value = _cp_id;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarImagemProdutoNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Imagem Produto
     }
 }
