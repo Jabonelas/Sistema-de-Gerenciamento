@@ -185,7 +185,7 @@
             this.btnPesquisar.OnPressedState.IconLeftImage = null;
             this.btnPesquisar.OnPressedState.IconRightImage = null;
             this.btnPesquisar.Size = new System.Drawing.Size(187, 39);
-            this.btnPesquisar.TabIndex = 17;
+            this.btnPesquisar.TabIndex = 5;
             this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnPesquisar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnPesquisar.TextMarginLeft = 0;
@@ -197,7 +197,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(549, 9);
+            this.label6.Location = new System.Drawing.Point(140, 9);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(41, 15);
             this.label6.TabIndex = 12;
@@ -230,7 +230,7 @@
             this.txtCPF_CNPJ.IconRight = null;
             this.txtCPF_CNPJ.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCPF_CNPJ.Lines = new string[0];
-            this.txtCPF_CNPJ.Location = new System.Drawing.Point(269, 27);
+            this.txtCPF_CNPJ.Location = new System.Drawing.Point(596, 27);
             this.txtCPF_CNPJ.MaxLength = 18;
             this.txtCPF_CNPJ.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtCPF_CNPJ.Modified = false;
@@ -268,7 +268,7 @@
             this.txtCPF_CNPJ.ShortcutsEnabled = true;
             this.txtCPF_CNPJ.Size = new System.Drawing.Size(138, 28);
             this.txtCPF_CNPJ.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtCPF_CNPJ.TabIndex = 14;
+            this.txtCPF_CNPJ.TabIndex = 3;
             this.txtCPF_CNPJ.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCPF_CNPJ.TextMarginBottom = 0;
             this.txtCPF_CNPJ.TextMarginLeft = 3;
@@ -283,7 +283,7 @@
             // 
             this.lblTipoDeCliente.AutoSize = true;
             this.lblTipoDeCliente.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoDeCliente.Location = new System.Drawing.Point(134, 2);
+            this.lblTipoDeCliente.Location = new System.Drawing.Point(135, 2);
             this.lblTipoDeCliente.Name = "lblTipoDeCliente";
             this.lblTipoDeCliente.Size = new System.Drawing.Size(65, 15);
             this.lblTipoDeCliente.TabIndex = 11;
@@ -316,7 +316,7 @@
             this.txtNome.IconRight = null;
             this.txtNome.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNome.Lines = new string[0];
-            this.txtNome.Location = new System.Drawing.Point(552, 27);
+            this.txtNome.Location = new System.Drawing.Point(143, 27);
             this.txtNome.MaxLength = 32767;
             this.txtNome.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtNome.Modified = false;
@@ -354,7 +354,7 @@
             this.txtNome.ShortcutsEnabled = true;
             this.txtNome.Size = new System.Drawing.Size(310, 28);
             this.txtNome.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtNome.TabIndex = 16;
+            this.txtNome.TabIndex = 1;
             this.txtNome.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNome.TextMarginBottom = 0;
             this.txtNome.TextMarginLeft = 3;
@@ -391,7 +391,7 @@
             this.txtRG.IconRight = null;
             this.txtRG.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtRG.Lines = new string[0];
-            this.txtRG.Location = new System.Drawing.Point(423, 27);
+            this.txtRG.Location = new System.Drawing.Point(747, 27);
             this.txtRG.MaxLength = 12;
             this.txtRG.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtRG.Modified = false;
@@ -429,7 +429,7 @@
             this.txtRG.ShortcutsEnabled = true;
             this.txtRG.Size = new System.Drawing.Size(115, 28);
             this.txtRG.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtRG.TabIndex = 15;
+            this.txtRG.TabIndex = 4;
             this.txtRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtRG.TextMarginBottom = 0;
             this.txtRG.TextMarginLeft = 3;
@@ -444,7 +444,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(420, 9);
+            this.label5.Location = new System.Drawing.Point(744, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(22, 15);
             this.label5.TabIndex = 13;
@@ -515,7 +515,7 @@
             this.txtCodigoCliente.ShortcutsEnabled = true;
             this.txtCodigoCliente.Size = new System.Drawing.Size(111, 28);
             this.txtCodigoCliente.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtCodigoCliente.TabIndex = 19;
+            this.txtCodigoCliente.TabIndex = 0;
             this.txtCodigoCliente.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCodigoCliente.TextMarginBottom = 0;
             this.txtCodigoCliente.TextMarginLeft = 3;
@@ -624,9 +624,8 @@
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gdvPesquisarCliente.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.gdvPesquisarCliente.RowTemplate.Height = 40;
-            this.gdvPesquisarCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gdvPesquisarCliente.Size = new System.Drawing.Size(850, 276);
-            this.gdvPesquisarCliente.TabIndex = 20;
+            this.gdvPesquisarCliente.TabIndex = 6;
             this.gdvPesquisarCliente.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.gdvPesquisarCliente.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gdvPesquisarCliente_MouseDoubleClick_1);
             // 
@@ -658,7 +657,6 @@
             this.Tipo.HeaderText = "Tipo";
             this.Tipo.Name = "Tipo";
             this.Tipo.ReadOnly = true;
-            this.Tipo.Visible = false;
             // 
             // CPF_CNPJ
             // 
@@ -926,7 +924,7 @@
             this.btnFechar.OnPressedState.IconLeftImage = null;
             this.btnFechar.OnPressedState.IconRightImage = null;
             this.btnFechar.Size = new System.Drawing.Size(187, 39);
-            this.btnFechar.TabIndex = 24;
+            this.btnFechar.TabIndex = 10;
             this.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnFechar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnFechar.TextMarginLeft = 0;
@@ -1016,7 +1014,7 @@
             this.btnExportarParaExcel.OnPressedState.IconLeftImage = null;
             this.btnExportarParaExcel.OnPressedState.IconRightImage = null;
             this.btnExportarParaExcel.Size = new System.Drawing.Size(187, 39);
-            this.btnExportarParaExcel.TabIndex = 23;
+            this.btnExportarParaExcel.TabIndex = 9;
             this.btnExportarParaExcel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnExportarParaExcel.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnExportarParaExcel.TextMarginLeft = 0;
@@ -1106,7 +1104,7 @@
             this.btnImprimir.OnPressedState.IconLeftImage = null;
             this.btnImprimir.OnPressedState.IconRightImage = null;
             this.btnImprimir.Size = new System.Drawing.Size(187, 39);
-            this.btnImprimir.TabIndex = 22;
+            this.btnImprimir.TabIndex = 8;
             this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnImprimir.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnImprimir.TextMarginLeft = 0;
@@ -1195,7 +1193,7 @@
             this.btnSelecionar.OnPressedState.IconLeftImage = null;
             this.btnSelecionar.OnPressedState.IconRightImage = null;
             this.btnSelecionar.Size = new System.Drawing.Size(187, 39);
-            this.btnSelecionar.TabIndex = 21;
+            this.btnSelecionar.TabIndex = 7;
             this.btnSelecionar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSelecionar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnSelecionar.TextMarginLeft = 0;
@@ -1233,19 +1231,19 @@
             "Pess. Fisica",
             "Pess. Juridica",
             ""});
-            this.cmbTipo.Location = new System.Drawing.Point(138, 29);
+            this.cmbTipo.Location = new System.Drawing.Point(465, 29);
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.OnHoverItemBaseColor = System.Drawing.Color.DodgerBlue;
             this.cmbTipo.OnHoverItemForeColor = System.Drawing.Color.White;
             this.cmbTipo.Size = new System.Drawing.Size(117, 24);
-            this.cmbTipo.TabIndex = 160;
+            this.cmbTipo.TabIndex = 2;
             this.cmbTipo.SelectedIndexChanged += new System.EventHandler(this.cmbTipo_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(135, 11);
+            this.label1.Location = new System.Drawing.Point(462, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(30, 15);
             this.label1.TabIndex = 161;
@@ -1261,7 +1259,7 @@
             this.bunifuGroupBox1.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.bunifuGroupBox1.LabelIndent = 10;
             this.bunifuGroupBox1.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
-            this.bunifuGroupBox1.Location = new System.Drawing.Point(132, 9);
+            this.bunifuGroupBox1.Location = new System.Drawing.Point(458, 8);
             this.bunifuGroupBox1.Name = "bunifuGroupBox1";
             this.bunifuGroupBox1.Size = new System.Drawing.Size(282, 56);
             this.bunifuGroupBox1.TabIndex = 168;

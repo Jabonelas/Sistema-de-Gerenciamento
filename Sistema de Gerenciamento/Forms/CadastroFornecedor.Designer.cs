@@ -231,7 +231,7 @@
             this.cmbUF.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.cmbUF.OnHoverItemForeColor = System.Drawing.Color.White;
             this.cmbUF.Size = new System.Drawing.Size(52, 24);
-            this.cmbUF.TabIndex = 100;
+            this.cmbUF.TabIndex = 9;
             // 
             // label21
             // 
@@ -460,7 +460,7 @@
             this.txtTelefone.ShortcutsEnabled = true;
             this.txtTelefone.Size = new System.Drawing.Size(178, 28);
             this.txtTelefone.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtTelefone.TabIndex = 105;
+            this.txtTelefone.TabIndex = 10;
             this.txtTelefone.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtTelefone.TextMarginBottom = 0;
             this.txtTelefone.TextMarginLeft = 3;
@@ -536,7 +536,7 @@
             this.txtNomeFantasia.ShortcutsEnabled = true;
             this.txtNomeFantasia.Size = new System.Drawing.Size(441, 28);
             this.txtNomeFantasia.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtNomeFantasia.TabIndex = 103;
+            this.txtNomeFantasia.TabIndex = 2;
             this.txtNomeFantasia.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNomeFantasia.TextMarginBottom = 0;
             this.txtNomeFantasia.TextMarginLeft = 3;
@@ -610,7 +610,7 @@
             this.txtEmail.ShortcutsEnabled = true;
             this.txtEmail.Size = new System.Drawing.Size(419, 28);
             this.txtEmail.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtEmail.TabIndex = 102;
+            this.txtEmail.TabIndex = 11;
             this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtEmail.TextMarginBottom = 0;
             this.txtEmail.TextMarginLeft = 3;
@@ -684,7 +684,7 @@
             this.txtEndereco.ShortcutsEnabled = true;
             this.txtEndereco.Size = new System.Drawing.Size(249, 28);
             this.txtEndereco.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtEndereco.TabIndex = 99;
+            this.txtEndereco.TabIndex = 4;
             this.txtEndereco.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtEndereco.TextMarginBottom = 0;
             this.txtEndereco.TextMarginLeft = 3;
@@ -758,7 +758,7 @@
             this.txtCEP.ShortcutsEnabled = true;
             this.txtCEP.Size = new System.Drawing.Size(117, 28);
             this.txtCEP.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtCEP.TabIndex = 98;
+            this.txtCEP.TabIndex = 3;
             this.txtCEP.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCEP.TextMarginBottom = 0;
             this.txtCEP.TextMarginLeft = 3;
@@ -834,7 +834,7 @@
             this.txtNumero.ShortcutsEnabled = true;
             this.txtNumero.Size = new System.Drawing.Size(50, 28);
             this.txtNumero.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtNumero.TabIndex = 94;
+            this.txtNumero.TabIndex = 6;
             this.txtNumero.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNumero.TextMarginBottom = 0;
             this.txtNumero.TextMarginLeft = 3;
@@ -909,7 +909,7 @@
             this.txtCidade.ShortcutsEnabled = true;
             this.txtCidade.Size = new System.Drawing.Size(142, 28);
             this.txtCidade.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtCidade.TabIndex = 93;
+            this.txtCidade.TabIndex = 8;
             this.txtCidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCidade.TextMarginBottom = 0;
             this.txtCidade.TextMarginLeft = 3;
@@ -984,7 +984,7 @@
             this.txtBairro.ShortcutsEnabled = true;
             this.txtBairro.Size = new System.Drawing.Size(117, 28);
             this.txtBairro.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtBairro.TabIndex = 92;
+            this.txtBairro.TabIndex = 7;
             this.txtBairro.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtBairro.TextMarginBottom = 0;
             this.txtBairro.TextMarginLeft = 3;
@@ -1058,7 +1058,7 @@
             this.txtCNPJ.ShortcutsEnabled = true;
             this.txtCNPJ.Size = new System.Drawing.Size(152, 28);
             this.txtCNPJ.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtCNPJ.TabIndex = 82;
+            this.txtCNPJ.TabIndex = 1;
             this.txtCNPJ.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCNPJ.TextMarginBottom = 0;
             this.txtCNPJ.TextMarginLeft = 3;
@@ -1147,7 +1147,7 @@
             this.txtRazaoSocial.ShortcutsEnabled = true;
             this.txtRazaoSocial.Size = new System.Drawing.Size(366, 28);
             this.txtRazaoSocial.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtRazaoSocial.TabIndex = 77;
+            this.txtRazaoSocial.TabIndex = 0;
             this.txtRazaoSocial.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtRazaoSocial.TextMarginBottom = 0;
             this.txtRazaoSocial.TextMarginLeft = 3;
@@ -1239,7 +1239,7 @@
             this.bntSair.OnPressedState.IconLeftImage = null;
             this.bntSair.OnPressedState.IconRightImage = null;
             this.bntSair.Size = new System.Drawing.Size(88, 80);
-            this.bntSair.TabIndex = 49;
+            this.bntSair.TabIndex = 19;
             this.bntSair.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntSair.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.bntSair.TextMarginLeft = 0;
@@ -1330,7 +1330,7 @@
             this.btnExcluir.OnPressedState.IconLeftImage = null;
             this.btnExcluir.OnPressedState.IconRightImage = null;
             this.btnExcluir.Size = new System.Drawing.Size(88, 80);
-            this.btnExcluir.TabIndex = 48;
+            this.btnExcluir.TabIndex = 18;
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluir.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnExcluir.TextMarginLeft = 0;
@@ -1421,7 +1421,7 @@
             this.btnBuscarFornecedor.OnPressedState.IconLeftImage = null;
             this.btnBuscarFornecedor.OnPressedState.IconRightImage = null;
             this.btnBuscarFornecedor.Size = new System.Drawing.Size(88, 80);
-            this.btnBuscarFornecedor.TabIndex = 47;
+            this.btnBuscarFornecedor.TabIndex = 17;
             this.btnBuscarFornecedor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBuscarFornecedor.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnBuscarFornecedor.TextMarginLeft = 0;
@@ -1512,7 +1512,7 @@
             this.btnAlterar.OnPressedState.IconLeftImage = null;
             this.btnAlterar.OnPressedState.IconRightImage = null;
             this.btnAlterar.Size = new System.Drawing.Size(88, 80);
-            this.btnAlterar.TabIndex = 46;
+            this.btnAlterar.TabIndex = 16;
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAlterar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnAlterar.TextMarginLeft = 0;
@@ -1603,7 +1603,7 @@
             this.btnSalvar.OnPressedState.IconLeftImage = null;
             this.btnSalvar.OnPressedState.IconRightImage = null;
             this.btnSalvar.Size = new System.Drawing.Size(88, 80);
-            this.btnSalvar.TabIndex = 45;
+            this.btnSalvar.TabIndex = 15;
             this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalvar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnSalvar.TextMarginLeft = 0;
@@ -1694,7 +1694,7 @@
             this.btnCadastroProduto.OnPressedState.IconLeftImage = null;
             this.btnCadastroProduto.OnPressedState.IconRightImage = null;
             this.btnCadastroProduto.Size = new System.Drawing.Size(88, 80);
-            this.btnCadastroProduto.TabIndex = 44;
+            this.btnCadastroProduto.TabIndex = 14;
             this.btnCadastroProduto.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCadastroProduto.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnCadastroProduto.TextMarginLeft = 0;
@@ -1739,7 +1739,7 @@
             this.txtComplemento.SelectedText = "";
             this.txtComplemento.ShortcutsEnabled = false;
             this.txtComplemento.Size = new System.Drawing.Size(220, 28);
-            this.txtComplemento.TabIndex = 163;
+            this.txtComplemento.TabIndex = 5;
             // 
             // txtObservacoes
             // 
@@ -1748,7 +1748,7 @@
             this.txtObservacoes.Name = "txtObservacoes";
             this.txtObservacoes.ShortcutsEnabled = false;
             this.txtObservacoes.Size = new System.Drawing.Size(614, 50);
-            this.txtObservacoes.TabIndex = 164;
+            this.txtObservacoes.TabIndex = 12;
             this.txtObservacoes.Text = "";
             // 
             // btnInserirImagem
@@ -1833,7 +1833,7 @@
             this.btnInserirImagem.OnPressedState.IconLeftImage = null;
             this.btnInserirImagem.OnPressedState.IconRightImage = null;
             this.btnInserirImagem.Size = new System.Drawing.Size(134, 39);
-            this.btnInserirImagem.TabIndex = 165;
+            this.btnInserirImagem.TabIndex = 13;
             this.btnInserirImagem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnInserirImagem.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnInserirImagem.TextMarginLeft = 0;
@@ -1924,6 +1924,7 @@
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnCadastroProduto);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CadastroFornecedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Fornecedor";

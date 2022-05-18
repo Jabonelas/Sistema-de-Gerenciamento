@@ -29,11 +29,55 @@ namespace Sistema_de_Gerenciamento
 
         private void btnPesquisar_Click_1(object sender, EventArgs e)
         {
-            bool isCadastroExiste = Buscar.BuscarCadastroCliente(txtCodigoCliente.Text, txtCPF_CNPJ.Text, txtRG.Text, txtNome.Text, gdvPesquisarCliente);
-
-            if (isCadastroExiste == false)
+            if (txtCodigoCliente.Text != string.Empty)
             {
-                MessageBox.Show("Cliente Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                bool isCadastroExiste = Buscar.BuscarCadastroClientePorCodigo(txtCodigoCliente.Text, gdvPesquisarCliente);
+
+                if (isCadastroExiste == false)
+                {
+                    MessageBox.Show("Cliente Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else if (txtCPF_CNPJ.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarCadastroClienteCPF_CNPJ(txtCPF_CNPJ.Text, gdvPesquisarCliente);
+
+                if (isCadastroExiste == false)
+                {
+                    MessageBox.Show("Cliente Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else if (txtRG.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarCadastroClienteRG(txtRG.Text, gdvPesquisarCliente);
+
+                if (isCadastroExiste == false)
+                {
+                    MessageBox.Show("Cliente Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else if (txtNome.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarCadastroClienteNome(txtNome.Text, gdvPesquisarCliente);
+
+                if (isCadastroExiste == false)
+                {
+                    MessageBox.Show("Cliente Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                DialogResult OpcaoDoUsuario = new DialogResult();
+                OpcaoDoUsuario = MessageBox.Show("Deseja Exibir Todos Os Clientes?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (OpcaoDoUsuario == DialogResult.Yes)
+                {
+                    bool isCadastroExiste = Buscar.BuscarCadastroClienteTudo(gdvPesquisarCliente);
+
+                    if (isCadastroExiste == false)
+                    {
+                        MessageBox.Show("Cliente Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
         }
 
@@ -204,73 +248,86 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCPF_CNPJ_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            if (cmbTipo.Text != string.Empty)
             {
-                e.Handled = true;
-            }
-
-            if (cmbTipo.Text == "Pess. Fisica")
-            {
-                txtCPF_CNPJ.MaxLength = 14;
-
-                if (char.IsNumber(e.KeyChar) == true)
+                if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
                 {
-                    switch (txtCPF_CNPJ.TextLength)
+                    e.Handled = true;
+                }
+
+                if (cmbTipo.Text == "Pess. Fisica")
+                {
+                    txtCPF_CNPJ.MaxLength = 14;
+
+                    if (char.IsNumber(e.KeyChar) == true)
                     {
-                        case 0:
-                            txtCPF_CNPJ.Text = "";
-                            break;
+                        switch (txtCPF_CNPJ.TextLength)
+                        {
+                            case 0:
+                                txtCPF_CNPJ.Text = "";
+                                break;
 
-                        case 3:
-                            txtCPF_CNPJ.Text = txtCPF_CNPJ.Text + ".";
-                            txtCPF_CNPJ.SelectionStart = 4;
-                            break;
+                            case 3:
+                                txtCPF_CNPJ.Text = txtCPF_CNPJ.Text + ".";
+                                txtCPF_CNPJ.SelectionStart = 4;
+                                break;
 
-                        case 7:
-                            txtCPF_CNPJ.Text = txtCPF_CNPJ.Text + ".";
-                            txtCPF_CNPJ.SelectionStart = 8;
-                            break;
+                            case 7:
+                                txtCPF_CNPJ.Text = txtCPF_CNPJ.Text + ".";
+                                txtCPF_CNPJ.SelectionStart = 8;
+                                break;
 
-                        case 11:
-                            txtCPF_CNPJ.Text = txtCPF_CNPJ.Text + "-";
-                            txtCPF_CNPJ.SelectionStart = 12;
-                            break;
+                            case 11:
+                                txtCPF_CNPJ.Text = txtCPF_CNPJ.Text + "-";
+                                txtCPF_CNPJ.SelectionStart = 12;
+                                break;
+                        }
+                    }
+                }
+                else if (cmbTipo.Text == "Pess. Juridica")
+                {
+                    txtCPF_CNPJ.MaxLength = 18;
+
+                    if (char.IsNumber(e.KeyChar) == true)
+                    {
+                        switch (txtCPF_CNPJ.TextLength)
+                        {
+                            case 0:
+                                txtCPF_CNPJ.Text = "";
+                                break;
+
+                            case 2:
+                                txtCPF_CNPJ.Text = txtCPF_CNPJ.Text + ".";
+                                txtCPF_CNPJ.SelectionStart = 3;
+                                break;
+
+                            case 6:
+                                txtCPF_CNPJ.Text = txtCPF_CNPJ.Text + ".";
+                                txtCPF_CNPJ.SelectionStart = 7;
+                                break;
+
+                            case 10:
+                                txtCPF_CNPJ.Text = txtCPF_CNPJ.Text + "/";
+                                txtCPF_CNPJ.SelectionStart = 11;
+                                break;
+
+                            case 15:
+                                txtCPF_CNPJ.Text = txtCPF_CNPJ.Text + "-";
+                                txtCPF_CNPJ.SelectionStart = 16;
+                                break;
+                        }
                     }
                 }
             }
-            else if (cmbTipo.Text == "Pess. Juridica")
+            else
             {
-                txtCPF_CNPJ.MaxLength = 18;
-
-                if (char.IsNumber(e.KeyChar) == true)
+                DialogResult OpcaoDoUsuario = new DialogResult();
+                OpcaoDoUsuario = MessageBox.Show("Por Favor Defina o Tipo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (OpcaoDoUsuario == DialogResult.OK)
                 {
-                    switch (txtCPF_CNPJ.TextLength)
-                    {
-                        case 0:
-                            txtCPF_CNPJ.Text = "";
-                            break;
-
-                        case 2:
-                            txtCPF_CNPJ.Text = txtCPF_CNPJ.Text + ".";
-                            txtCPF_CNPJ.SelectionStart = 3;
-                            break;
-
-                        case 6:
-                            txtCPF_CNPJ.Text = txtCPF_CNPJ.Text + ".";
-                            txtCPF_CNPJ.SelectionStart = 7;
-                            break;
-
-                        case 10:
-                            txtCPF_CNPJ.Text = txtCPF_CNPJ.Text + "/";
-                            txtCPF_CNPJ.SelectionStart = 11;
-                            break;
-
-                        case 15:
-                            txtCPF_CNPJ.Text = txtCPF_CNPJ.Text + "-";
-                            txtCPF_CNPJ.SelectionStart = 16;
-                            break;
-                    }
+                    cmbTipo.Focus();
                 }
+                txtCPF_CNPJ.Text = "";
             }
         }
 
@@ -394,6 +451,10 @@ namespace Sistema_de_Gerenciamento
                 {
                     Erro.ErroAoExportarDadosExecel(ex);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Primeiro Realizar a Pesquisa!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

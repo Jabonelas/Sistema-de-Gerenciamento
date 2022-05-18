@@ -251,7 +251,7 @@
             this.cmbUF.OnHoverItemBaseColor = System.Drawing.Color.DodgerBlue;
             this.cmbUF.OnHoverItemForeColor = System.Drawing.Color.White;
             this.cmbUF.Size = new System.Drawing.Size(52, 24);
-            this.cmbUF.TabIndex = 117;
+            this.cmbUF.TabIndex = 13;
             // 
             // cmbBloqueio
             // 
@@ -273,7 +273,7 @@
             this.cmbBloqueio.OnHoverItemBaseColor = System.Drawing.Color.DodgerBlue;
             this.cmbBloqueio.OnHoverItemForeColor = System.Drawing.Color.White;
             this.cmbBloqueio.Size = new System.Drawing.Size(128, 24);
-            this.cmbBloqueio.TabIndex = 125;
+            this.cmbBloqueio.TabIndex = 19;
             // 
             // cmbEstadoCivil
             // 
@@ -298,7 +298,7 @@
             this.cmbEstadoCivil.OnHoverItemBaseColor = System.Drawing.Color.DodgerBlue;
             this.cmbEstadoCivil.OnHoverItemForeColor = System.Drawing.Color.White;
             this.cmbEstadoCivil.Size = new System.Drawing.Size(117, 24);
-            this.cmbEstadoCivil.TabIndex = 126;
+            this.cmbEstadoCivil.TabIndex = 16;
             // 
             // label33
             // 
@@ -318,7 +318,7 @@
             this.txtObservacoes.Name = "txtObservacoes";
             this.txtObservacoes.ShortcutsEnabled = false;
             this.txtObservacoes.Size = new System.Drawing.Size(529, 50);
-            this.txtObservacoes.TabIndex = 137;
+            this.txtObservacoes.TabIndex = 23;
             this.txtObservacoes.Text = "";
             // 
             // panel6
@@ -429,7 +429,7 @@
             this.cmbIns_Est.OnHoverItemBaseColor = System.Drawing.Color.DodgerBlue;
             this.cmbIns_Est.OnHoverItemForeColor = System.Drawing.Color.White;
             this.cmbIns_Est.Size = new System.Drawing.Size(44, 24);
-            this.cmbIns_Est.TabIndex = 153;
+            this.cmbIns_Est.TabIndex = 6;
             // 
             // txtDataCadastro
             // 
@@ -466,7 +466,7 @@
             this.cmbEmissor.OnHoverItemBaseColor = System.Drawing.Color.DodgerBlue;
             this.cmbEmissor.OnHoverItemForeColor = System.Drawing.Color.White;
             this.cmbEmissor.Size = new System.Drawing.Size(54, 24);
-            this.cmbEmissor.TabIndex = 152;
+            this.cmbEmissor.TabIndex = 4;
             // 
             // txtTel_Residencial
             // 
@@ -485,7 +485,7 @@
             this.txtTel_Residencial.SelectedText = "";
             this.txtTel_Residencial.ShortcutsEnabled = false;
             this.txtTel_Residencial.Size = new System.Drawing.Size(172, 28);
-            this.txtTel_Residencial.TabIndex = 144;
+            this.txtTel_Residencial.TabIndex = 21;
             this.txtTel_Residencial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_Residencial_KeyPress);
             this.txtTel_Residencial.Leave += new System.EventHandler(this.txtTel_Residencial_Leave);
             // 
@@ -506,7 +506,7 @@
             this.txtComplemento.SelectedText = "";
             this.txtComplemento.ShortcutsEnabled = false;
             this.txtComplemento.Size = new System.Drawing.Size(191, 28);
-            this.txtComplemento.TabIndex = 143;
+            this.txtComplemento.TabIndex = 10;
             // 
             // cmbTipo
             // 
@@ -528,7 +528,7 @@
             this.cmbTipo.OnHoverItemBaseColor = System.Drawing.Color.DodgerBlue;
             this.cmbTipo.OnHoverItemForeColor = System.Drawing.Color.White;
             this.cmbTipo.Size = new System.Drawing.Size(117, 24);
-            this.cmbTipo.TabIndex = 149;
+            this.cmbTipo.TabIndex = 1;
             this.cmbTipo.SelectedIndexChanged += new System.EventHandler(this.cmbTipo_SelectedIndexChanged);
             // 
             // label1
@@ -657,7 +657,7 @@
             this.btnInserirImagem.OnPressedState.IconLeftImage = null;
             this.btnInserirImagem.OnPressedState.IconRightImage = null;
             this.btnInserirImagem.Size = new System.Drawing.Size(134, 39);
-            this.btnInserirImagem.TabIndex = 160;
+            this.btnInserirImagem.TabIndex = 24;
             this.btnInserirImagem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnInserirImagem.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnInserirImagem.TextMarginLeft = 0;
@@ -730,7 +730,7 @@
             this.txtRG.ShortcutsEnabled = false;
             this.txtRG.Size = new System.Drawing.Size(105, 28);
             this.txtRG.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtRG.TabIndex = 155;
+            this.txtRG.TabIndex = 3;
             this.txtRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtRG.TextMarginBottom = 0;
             this.txtRG.TextMarginLeft = 3;
@@ -806,7 +806,7 @@
             this.txtCPF_CNPJ.ShortcutsEnabled = false;
             this.txtCPF_CNPJ.Size = new System.Drawing.Size(138, 28);
             this.txtCPF_CNPJ.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtCPF_CNPJ.TabIndex = 148;
+            this.txtCPF_CNPJ.TabIndex = 2;
             this.txtCPF_CNPJ.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCPF_CNPJ.TextMarginBottom = 0;
             this.txtCPF_CNPJ.TextMarginLeft = 3;
@@ -882,7 +882,7 @@
             this.txtSaldo.ShortcutsEnabled = false;
             this.txtSaldo.Size = new System.Drawing.Size(175, 28);
             this.txtSaldo.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtSaldo.TabIndex = 151;
+            this.txtSaldo.TabIndex = 18;
             this.txtSaldo.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtSaldo.TextMarginBottom = 0;
             this.txtSaldo.TextMarginLeft = 3;
@@ -957,7 +957,7 @@
             this.txtCelular.ShortcutsEnabled = false;
             this.txtCelular.Size = new System.Drawing.Size(158, 28);
             this.txtCelular.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtCelular.TabIndex = 129;
+            this.txtCelular.TabIndex = 20;
             this.txtCelular.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCelular.TextMarginBottom = 0;
             this.txtCelular.TextMarginLeft = 3;
@@ -1033,7 +1033,7 @@
             this.txtCredito.ShortcutsEnabled = false;
             this.txtCredito.Size = new System.Drawing.Size(142, 28);
             this.txtCredito.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtCredito.TabIndex = 123;
+            this.txtCredito.TabIndex = 17;
             this.txtCredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCredito.TextMarginBottom = 0;
             this.txtCredito.TextMarginLeft = 3;
@@ -1108,7 +1108,7 @@
             this.txtEmail.ShortcutsEnabled = false;
             this.txtEmail.Size = new System.Drawing.Size(248, 28);
             this.txtEmail.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtEmail.TabIndex = 122;
+            this.txtEmail.TabIndex = 22;
             this.txtEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtEmail.TextMarginBottom = 0;
             this.txtEmail.TextMarginLeft = 3;
@@ -1182,7 +1182,7 @@
             this.txtEndereco.ShortcutsEnabled = false;
             this.txtEndereco.Size = new System.Drawing.Size(221, 28);
             this.txtEndereco.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtEndereco.TabIndex = 116;
+            this.txtEndereco.TabIndex = 8;
             this.txtEndereco.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtEndereco.TextMarginBottom = 0;
             this.txtEndereco.TextMarginLeft = 3;
@@ -1256,7 +1256,7 @@
             this.txtCEP.ShortcutsEnabled = false;
             this.txtCEP.Size = new System.Drawing.Size(117, 28);
             this.txtCEP.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtCEP.TabIndex = 115;
+            this.txtCEP.TabIndex = 7;
             this.txtCEP.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCEP.TextMarginBottom = 0;
             this.txtCEP.TextMarginLeft = 3;
@@ -1332,7 +1332,7 @@
             this.txtDataNascimento.ShortcutsEnabled = false;
             this.txtDataNascimento.Size = new System.Drawing.Size(103, 28);
             this.txtDataNascimento.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtDataNascimento.TabIndex = 104;
+            this.txtDataNascimento.TabIndex = 15;
             this.txtDataNascimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtDataNascimento.TextMarginBottom = 0;
             this.txtDataNascimento.TextMarginLeft = 3;
@@ -1408,7 +1408,7 @@
             this.txtNaturalidade.ShortcutsEnabled = false;
             this.txtNaturalidade.Size = new System.Drawing.Size(124, 28);
             this.txtNaturalidade.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtNaturalidade.TabIndex = 103;
+            this.txtNaturalidade.TabIndex = 14;
             this.txtNaturalidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNaturalidade.TextMarginBottom = 0;
             this.txtNaturalidade.TextMarginLeft = 3;
@@ -1483,7 +1483,7 @@
             this.txtCidade.ShortcutsEnabled = false;
             this.txtCidade.Size = new System.Drawing.Size(142, 28);
             this.txtCidade.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtCidade.TabIndex = 102;
+            this.txtCidade.TabIndex = 12;
             this.txtCidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCidade.TextMarginBottom = 0;
             this.txtCidade.TextMarginLeft = 3;
@@ -1558,7 +1558,7 @@
             this.txtBairro.ShortcutsEnabled = false;
             this.txtBairro.Size = new System.Drawing.Size(117, 28);
             this.txtBairro.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtBairro.TabIndex = 101;
+            this.txtBairro.TabIndex = 11;
             this.txtBairro.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtBairro.TextMarginBottom = 0;
             this.txtBairro.TextMarginLeft = 3;
@@ -1632,7 +1632,7 @@
             this.txtDataEmissao.ShortcutsEnabled = false;
             this.txtDataEmissao.Size = new System.Drawing.Size(96, 28);
             this.txtDataEmissao.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtDataEmissao.TabIndex = 89;
+            this.txtDataEmissao.TabIndex = 5;
             this.txtDataEmissao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtDataEmissao.TextMarginBottom = 0;
             this.txtDataEmissao.TextMarginLeft = 3;
@@ -1721,7 +1721,7 @@
             this.txtNome.ShortcutsEnabled = false;
             this.txtNome.Size = new System.Drawing.Size(359, 28);
             this.txtNome.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtNome.TabIndex = 77;
+            this.txtNome.TabIndex = 0;
             this.txtNome.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNome.TextMarginBottom = 0;
             this.txtNome.TextMarginLeft = 3;
@@ -1814,7 +1814,7 @@
             this.bntSairCliente.OnPressedState.IconLeftImage = null;
             this.bntSairCliente.OnPressedState.IconRightImage = null;
             this.bntSairCliente.Size = new System.Drawing.Size(88, 80);
-            this.bntSairCliente.TabIndex = 38;
+            this.bntSairCliente.TabIndex = 30;
             this.bntSairCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntSairCliente.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.bntSairCliente.TextMarginLeft = 0;
@@ -1905,7 +1905,7 @@
             this.btnExcluirCliente.OnPressedState.IconLeftImage = null;
             this.btnExcluirCliente.OnPressedState.IconRightImage = null;
             this.btnExcluirCliente.Size = new System.Drawing.Size(88, 80);
-            this.btnExcluirCliente.TabIndex = 35;
+            this.btnExcluirCliente.TabIndex = 29;
             this.btnExcluirCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluirCliente.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnExcluirCliente.TextMarginLeft = 0;
@@ -1996,7 +1996,7 @@
             this.btnBuscarCliente.OnPressedState.IconLeftImage = null;
             this.btnBuscarCliente.OnPressedState.IconRightImage = null;
             this.btnBuscarCliente.Size = new System.Drawing.Size(88, 80);
-            this.btnBuscarCliente.TabIndex = 34;
+            this.btnBuscarCliente.TabIndex = 28;
             this.btnBuscarCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBuscarCliente.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnBuscarCliente.TextMarginLeft = 0;
@@ -2087,7 +2087,7 @@
             this.btnAlterarCliente.OnPressedState.IconLeftImage = null;
             this.btnAlterarCliente.OnPressedState.IconRightImage = null;
             this.btnAlterarCliente.Size = new System.Drawing.Size(88, 80);
-            this.btnAlterarCliente.TabIndex = 33;
+            this.btnAlterarCliente.TabIndex = 27;
             this.btnAlterarCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAlterarCliente.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnAlterarCliente.TextMarginLeft = 0;
@@ -2178,7 +2178,7 @@
             this.btnSalvarCliente.OnPressedState.IconLeftImage = null;
             this.btnSalvarCliente.OnPressedState.IconRightImage = null;
             this.btnSalvarCliente.Size = new System.Drawing.Size(88, 80);
-            this.btnSalvarCliente.TabIndex = 32;
+            this.btnSalvarCliente.TabIndex = 26;
             this.btnSalvarCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalvarCliente.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnSalvarCliente.TextMarginLeft = 0;
@@ -2269,7 +2269,7 @@
             this.btnNovoCliente.OnPressedState.IconLeftImage = null;
             this.btnNovoCliente.OnPressedState.IconRightImage = null;
             this.btnNovoCliente.Size = new System.Drawing.Size(88, 80);
-            this.btnNovoCliente.TabIndex = 31;
+            this.btnNovoCliente.TabIndex = 25;
             this.btnNovoCliente.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNovoCliente.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnNovoCliente.TextMarginLeft = 0;
@@ -2393,7 +2393,7 @@
             this.txtNumero.ShortcutsEnabled = false;
             this.txtNumero.Size = new System.Drawing.Size(50, 28);
             this.txtNumero.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtNumero.TabIndex = 165;
+            this.txtNumero.TabIndex = 9;
             this.txtNumero.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNumero.TextMarginBottom = 0;
             this.txtNumero.TextMarginLeft = 3;
@@ -2401,6 +2401,7 @@
             this.txtNumero.TextPlaceholder = "";
             this.txtNumero.UseSystemPasswordChar = false;
             this.txtNumero.WordWrap = true;
+            this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 
             // CadastroCliente
             // 
@@ -2460,6 +2461,7 @@
             this.Controls.Add(this.btnNovoCliente);
             this.Controls.Add(this.bunifuSeparator1);
             this.Controls.Add(this.bunifuSeparator2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CadastroCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Cliente";

@@ -13,6 +13,8 @@ namespace Sistema_de_Gerenciamento.Classes
     {
         private MensagensErro Erro = new MensagensErro();
 
+        #region Atualizar Cliente
+
         #region Atualizar Cadastro Cliente
 
         public void AtualizarCadastroCliente(DateTime _dataCadastro, string _nomeCliente, string _tipo, string _cPF_CNPJ,
@@ -118,6 +120,10 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Atualizar Imagem Cliente
 
+        #endregion Atualizar Cliente
+
+        #region Atualizar Fornecedor
+
         #region Atualizar Cadastro Fornecedor
 
         public void AtualizarCadastroFornecedor(string _razaoSocial, string _cnpj, string _nomeFantasia,
@@ -198,6 +204,10 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Atualizar Imagem Fornecedor
+
+        #endregion Atualizar Fornecedor
+
+        #region Atualizar Produto
 
         #region Atualizar Cadastro Produto
 
@@ -302,5 +312,7 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Atualizar Imagem Produto
+
+        #endregion Atualizar Produto
     }
 }

@@ -12,6 +12,8 @@ namespace Sistema_de_Gerenciamento.Classes
     {
         private MensagensErro Erro = new MensagensErro();
 
+        #region Excluir Cliente
+
         #region Excluir Cadastro Cliente
 
         public void ExcluirCadastroCliente(string _cPF_CNPJ)
@@ -61,6 +63,10 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Excluir Imagem Cliente
+
+        #endregion Excluir Cliente
+
+        #region Excluir Forncedor
 
         #region Excluir Cadastro Fornecedor
 
@@ -112,6 +118,10 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Excluir Imagem Fornecedor
 
+        #endregion Excluir Forncedor
+
+        #region Excluir Produto
+
         #region Excluir Cadastro Produto
 
         public void ExcluirCadastroProduto(string _descricao)
@@ -161,5 +171,33 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Excluir Imagem Produto
+
+        #endregion Excluir Produto
+
+        #region Excluir Grupo Material
+
+        public void ExcluirCadastroGrupoMaterial(string _grupo, string _subGrupo)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "delete tb_CadastroGrupoMaterial where cg_grupo = @grupo and cg_sub_grupo = @subGrupo";
+
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+
+                    cmd.Parameters.AddWithValue("@grupo", SqlDbType.VarChar).Value = _grupo;
+                    cmd.Parameters.AddWithValue("@subGrupo", SqlDbType.VarChar).Value = _subGrupo;
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoExluirCadastroGrupoMaterialNoBanco(ex);
+            }
+        }
+
+        #endregion Excluir Grupo Material
     }
 }

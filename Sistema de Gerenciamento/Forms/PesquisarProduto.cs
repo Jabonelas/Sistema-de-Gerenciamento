@@ -69,6 +69,8 @@ namespace Sistema_de_Gerenciamento
 
                 cadastroProduto.txtObservacoes.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
 
+                cadastroProduto.pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(cadastroProduto.txtCodigo.Text));
+
                 this.Close();
             }
         }
@@ -119,6 +121,8 @@ namespace Sistema_de_Gerenciamento
 
                 cadastroProduto.txtObservacoes.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
 
+                cadastroProduto.pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(cadastroProduto.txtCodigo.Text));
+
                 this.Close();
             }
         }
@@ -129,12 +133,65 @@ namespace Sistema_de_Gerenciamento
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            //bool isCadastroExiste = Buscar.BuscarCadastroCliente(txtCodigoCliente.Text, txtCPF_CNPJ.Text, txtRG.Text, txtNome.Text, gdvPesquisarCliente);
+            if (txtCodigoProduto.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarCadastroProdutoPorCodigo(Convert.ToInt32(txtCodigoProduto.Text), gdvPesquisarProduto);
 
-            //if (iscadastroexiste == false)
-            //{
-            //    messagebox.show("cliente não encontrado ", "não encontrado!", messageboxbuttons.ok, messageboxicon.information);
-            //}
+                if (isCadastroExiste == false)
+                {
+                    MessageBox.Show("Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else if (txtDescicao.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarCadastroProdutoPorDescricao(txtDescicao.Text, gdvPesquisarProduto);
+
+                if (isCadastroExiste == false)
+                {
+                    MessageBox.Show("Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else if (txtGrupo.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarCadastroProdutoPorGrupo(txtGrupo.Text, gdvPesquisarProduto);
+
+                if (isCadastroExiste == false)
+                {
+                    MessageBox.Show("Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else if (txtSubGrupo.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarCadastroProdutoPorSubGrupo(txtSubGrupo.Text, gdvPesquisarProduto);
+
+                if (isCadastroExiste == false)
+                {
+                    MessageBox.Show("Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else if (txtMarca.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarCadastroProdutoPorMarca(txtMarca.Text, gdvPesquisarProduto);
+
+                if (isCadastroExiste == false)
+                {
+                    MessageBox.Show("Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                DialogResult OpcaoDoUsuario = new DialogResult();
+                OpcaoDoUsuario = MessageBox.Show("Deseja Exibir Todos Os Produtos?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (OpcaoDoUsuario == DialogResult.Yes)
+                {
+                    bool isCadastroExiste = Buscar.BuscarCadastroProdutoTudo(gdvPesquisarProduto);
+
+                    if (isCadastroExiste == false)
+                    {
+                        MessageBox.Show("Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
         }
 
         #endregion Botao Pesquisar
@@ -172,8 +229,24 @@ namespace Sistema_de_Gerenciamento
                     Erro.ErroAoExportarDadosExecel(ex);
                 }
             }
+            else
+            {
+                MessageBox.Show("Primeiro Realizar a Pesquisa!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         #endregion Botao Exportar
+
+        #region TextBox Codigo
+
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        #endregion TextBox Codigo
     }
 }

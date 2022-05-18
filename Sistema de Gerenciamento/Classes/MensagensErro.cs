@@ -66,6 +66,24 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Cadastro Produto
 
+        #region Cadastro Grupo Material
+
+        public void ErroAoCadastroGrupoMaterial(Exception _e)
+        {
+            MessageBox.Show($"(CAD-GR01) Erro ao Cadastrar Grupo de Material \n\nErro: {_e}", "Erro Cadastro Grupo Material!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Cadastro Grupo Material
+
+        #region Cadastro Empresa
+
+        public void ErroAoCadastroEmpresa(Exception _e)
+        {
+            MessageBox.Show($"(CAD-EM01) Erro ao Cadastrar Empresa \n\nErro: {_e}", "Erro Cadastro Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Cadastro Empresa
+
         #region Inserir No Banco
 
         public void ErroAoAdicionarClienteNoBanco(Exception _e)
@@ -80,22 +98,32 @@ namespace Sistema_de_Gerenciamento
 
         public void ErroAoAdicionarFornecedorNoBanco(Exception _e)
         {
-            MessageBox.Show($"(INS-CL03) Erro ao Inserir Cadastro Fornecedor \n\nErro: {_e}", "Erro Inserir Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(INS-FN01) Erro ao Inserir Cadastro Fornecedor \n\nErro: {_e}", "Erro Inserir Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoAdicionarImagemFornecedorNoBanco(Exception _e)
         {
-            MessageBox.Show($"(INS-CL04) Erro ao Inserir Imagem No Cadastro Fornecedor \n\nErro: {_e}", "Erro Inserir Imagem Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(INS-FN02) Erro ao Inserir Imagem No Cadastro Fornecedor \n\nErro: {_e}", "Erro Inserir Imagem Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoAdicionarProdutoNoBanco(Exception _e)
         {
-            MessageBox.Show($"(INS-CL05) Erro ao Inserir Cadastro Produto \n\nErro: {_e}", "Erro Inserir Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(INS-PR01) Erro ao Inserir Cadastro Produto \n\nErro: {_e}", "Erro Inserir Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoAdicionarImagemProdutoNoBanco(Exception _e)
         {
-            MessageBox.Show($"(INS-CL06) Erro ao Inserir Imagem No Cadastro Produto \n\nErro: {_e}", "Erro Inserir Imagem Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(INS-PR02) Erro ao Inserir Imagem No Cadastro Produto \n\nErro: {_e}", "Erro Inserir Imagem Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAdicionarGrupoMaterialNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(INS-GR01) Erro ao Inserir Grupo de Material \n\nErro: {_e}", "Erro Inserir Grupo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAdicionarEmpresaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(INS-EM01) Erro ao Inserir Empresa \n\nErro: {_e}", "Erro Inserir Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Inserir No Banco
@@ -166,10 +194,16 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(EXC-PR02) Erro ao Excluir Imagem Produto \n\nErro: {_e}", "Erro Excluir Imagem Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoExluirCadastroGrupoMaterialNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(EXC-GR02) Erro ao Excluir Grupo Material \n\nErro: {_e}", "Erro Excluir Grupo Materail!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Excluir No Banco
 
         #region Buscar No Banco
 
+        //Cliente
         public void ErroAoBuscarClienteNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-CL01) Erro ao Realizar Busca de Cliente \n\nErro: {_e}", "Erro Busca Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -185,6 +219,7 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-CL03) Erro ao Realizar Busca de Codigo do Cliente \n\nErro: {_e}", "Erro Busca Codigo Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        //Fornecedor
         public void ErroAoBuscarFornecedorNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-FN01) Erro ao Realizar Busca de Fornecedor \n\nErro: {_e}", "Erro Busca Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -205,7 +240,8 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-FN04) Erro ao Realizar Busca dos Fornecedores \n\nErro: {_e}", "Erro Busca Fornecedores!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoBuscarCodigoBarrasProdutoNoBanco(Exception _e)
+        //Produto
+        public void ErroAoBuscarCodigoProdutoNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-PR03) Erro ao Realizar Busca de Codigo de Barras do Produto \n\nErro: {_e}", "Erro Busca Codigo de Barras Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -218,6 +254,16 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoBuscarSubGrupoProdutoNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-PR04) Erro ao Realizar Busca de Sub-Grupo do Produto \n\nErro: {_e}", "Erro Busca Sub-Grupo Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR05) Erro ao Realizar Busca do Produto \n\nErro: {_e}", "Erro Busca Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarImagemProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR06) Erro ao Realizar Busca de Imagem do Produto \n\nErro: {_e}", "Erro Busca Imagem Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Buscar No Banco
@@ -237,6 +283,11 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoVerificarExistenciaDeProdutoNoBanco(Exception _e)
         {
             MessageBox.Show($"(EXI-PR01) Erro ao Verificar Existencia de Produto \n\nErro: {_e}", "Erro Verificar Existencia de Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoVerificarExistenciaEmpresaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(EXI-EM01) Erro ao Verificar Existencia de Empresa \n\nErro: {_e}", "Erro Verificar Existencia de Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Verificar Existencia No Banco

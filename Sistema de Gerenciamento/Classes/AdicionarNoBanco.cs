@@ -13,10 +13,12 @@ namespace Sistema_de_Gerenciamento
     {
         private MensagensErro Erro = new MensagensErro();
 
+        #region Inserir Cliente
+
         #region Inserir Cadastro Cliente
 
-        public void InserirCadastroCliente(DateTime _dataCadastro, string _nomeCliente, string _tipo, string _cPF_CNPJ,
-        string _rG, string _emissor, string _dataEmissao, string _ins_Est, string _cEP, string _endereco, int _numero, string _complemento,
+        public void InserirCadastroCliente(DateTime _dataCadastro, string _nomeCliente, string _tipo, string _cpf_cnpj,
+        string _rg, string _emissor, string _dataEmissao, string _ins_Est, string _cep, string _endereco, int _numero, string _complemento,
         string _bairro, string _cidade, string _uF, string _naturalidade, string _dataNasc, string _estadoCivil, decimal _credito,
         decimal _saldo, string _bloqueio, string _celular, string _tel_Residencial, string _email, string _observacoes)
         {
@@ -28,20 +30,20 @@ namespace Sistema_de_Gerenciamento
                         "cc_tipo,cc_cpf_cnpj,cc_rg,cc_emissor,cc_data_emissao,cc_ins_est,cc_cep,cc_endereco," +
                         "cc_numero,cc_complemento,cc_bairro,cc_cidade,cc_uf,cc_naturalidade,cc_data_nasc," +
                         "cc_estado_civil,cc_credito,cc_saldo,cc_bloqueio,cc_celular,cc_tel_residencial,cc_email,cc_observacoes) " +
-                        "values (@DataCadastro,@NomeCliente,@Tipo,@CPF_CNPJ," +
-                        "@RG,@Emissor,@DataEmissao,@Ins_Est,@CEP,@Endereco,@numero,@Complemento,@Bairro,@Cidade,@UF,@Naturalidade," +
+                        "values (@DataCadastro,@NomeCliente,@Tipo,@cpf_cnpj," +
+                        "@rg,@Emissor,@DataEmissao,@Ins_Est,@cep,@Endereco,@numero,@Complemento,@Bairro,@Cidade,@UF,@Naturalidade," +
                         "@DataNasc,@EstadoCivil,@Credito,@Saldo,@Bloqueio,@Celular,@Tel_Residencial,@Email,@Observacoes)";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
                     cmd.Parameters.AddWithValue("@DataCadastro", SqlDbType.Date).Value = _dataCadastro;
                     cmd.Parameters.AddWithValue("@NomeCliente", SqlDbType.VarChar).Value = _nomeCliente;
                     cmd.Parameters.AddWithValue("@Tipo", SqlDbType.VarChar).Value = _tipo;
-                    cmd.Parameters.AddWithValue("@CPF_CNPJ", SqlDbType.VarChar).Value = _cPF_CNPJ;
-                    cmd.Parameters.AddWithValue("@RG", SqlDbType.VarChar).Value = _rG;
+                    cmd.Parameters.AddWithValue("@cpf_cnpj", SqlDbType.VarChar).Value = _cpf_cnpj;
+                    cmd.Parameters.AddWithValue("@rg", SqlDbType.VarChar).Value = _rg;
                     cmd.Parameters.AddWithValue("@Emissor", SqlDbType.VarChar).Value = _emissor;
                     cmd.Parameters.AddWithValue("@DataEmissao", SqlDbType.VarChar).Value = _dataEmissao;
                     cmd.Parameters.AddWithValue("@Ins_Est", SqlDbType.VarChar).Value = _ins_Est;
-                    cmd.Parameters.AddWithValue("@CEP", SqlDbType.VarChar).Value = _cEP;
+                    cmd.Parameters.AddWithValue("@cep", SqlDbType.VarChar).Value = _cep;
                     cmd.Parameters.AddWithValue("@Endereco", SqlDbType.VarChar).Value = _endereco;
                     cmd.Parameters.AddWithValue("@numero", SqlDbType.Int).Value = _numero;
                     cmd.Parameters.AddWithValue("@Complemento", SqlDbType.VarChar).Value = _complemento;
@@ -97,6 +99,10 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Inserir Imagem Cadastro Cliente
+
+        #endregion Inserir Cliente
+
+        #region Inserir Fornecedor
 
         #region Cadastro Fornecedor
 
@@ -167,6 +173,10 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Inserir Imagem Cadastro Fornecedor
+
+        #endregion Inserir Fornecedor
+
+        #region Inserir Produto
 
         #region Cadastro Produto
 
@@ -286,5 +296,79 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Inserir Imagem Cadastro Produto
+
+        #endregion Inserir Produto
+
+        #region Inserir Grupo de Material
+
+        public void InserirGrupoMaterial(string _grupo, string _subGrupo)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query =
+                        "insert into tb_CadastroGrupoMaterial (cg_grupo,cg_sub_grupo) values(@grupo,@subGrupo)";
+
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+                    cmd.Parameters.AddWithValue("@grupo", SqlDbType.Date).Value = _grupo;
+                    cmd.Parameters.AddWithValue("@subGrupo", SqlDbType.VarChar).Value = _subGrupo;
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAdicionarGrupoMaterialNoBanco(ex);
+            }
+        }
+
+        #endregion Inserir Grupo de Material
+
+        #region Inserir Empresa
+
+        public void InserirEmpresa(string _razaoSocial, string _cnpj, string _nomeFantasia, string _cep, string _endereco, string _complemento,
+        string _bairro, string _uf, string _numero, string _telefone, string _email, string _textoPadraoSO, Image _imagem)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query =
+                        "insert into tb_CadastroEmpresa (ce_razao_social,ce_cnpj,ce_nome_fantasia,ce_cep,ce_endereco,ce_complemento," +
+                        "ce_bairro,ce_cidade,ce_uf,ce_numero,ce_telefone,ce_email,ce_texto_padrao_os,ce_imagem)" +
+                        " values(@razaoSocial,@cnpj,@nomeFantasia,@cep,@endereco,@complemento,@bairro,@uf,@numero,@telefone," +
+                        "@email,@textoPadraoSO,@imagem)";
+
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+
+                    cmd.Parameters.AddWithValue("@razaoSocial", SqlDbType.Date).Value = _razaoSocial;
+                    cmd.Parameters.AddWithValue("@cnpj", SqlDbType.VarChar).Value = _cnpj;
+                    cmd.Parameters.AddWithValue("@nomeFantasia", SqlDbType.Date).Value = _nomeFantasia;
+                    cmd.Parameters.AddWithValue("@cep", SqlDbType.VarChar).Value = _cep;
+                    cmd.Parameters.AddWithValue("@endereco", SqlDbType.Date).Value = _endereco;
+                    cmd.Parameters.AddWithValue("@complemento", SqlDbType.VarChar).Value = _complemento;
+                    cmd.Parameters.AddWithValue("@bairro", SqlDbType.Date).Value = _bairro;
+                    cmd.Parameters.AddWithValue("@uf", SqlDbType.VarChar).Value = _uf;
+                    cmd.Parameters.AddWithValue("@numero", SqlDbType.Date).Value = _numero;
+                    cmd.Parameters.AddWithValue("@telefone", SqlDbType.VarChar).Value = _telefone;
+                    cmd.Parameters.AddWithValue("@email", SqlDbType.Date).Value = _email;
+                    cmd.Parameters.AddWithValue("@textoPadraoSO", SqlDbType.VarChar).Value = _textoPadraoSO;
+
+                    byte[] arr;
+                    ImageConverter converter = new ImageConverter();
+                    arr = (byte[])converter.ConvertTo(_imagem, typeof(byte[]));
+                    cmd.Parameters.Add("@imagem", SqlDbType.Image).Value = arr;
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAdicionarEmpresaNoBanco(ex);
+            }
+        }
+
+        #endregion Inserir Empresa
     }
 }

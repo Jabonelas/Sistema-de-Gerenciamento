@@ -178,7 +178,7 @@
             this.btnFechar.OnPressedState.IconLeftImage = null;
             this.btnFechar.OnPressedState.IconRightImage = null;
             this.btnFechar.Size = new System.Drawing.Size(187, 39);
-            this.btnFechar.TabIndex = 181;
+            this.btnFechar.TabIndex = 8;
             this.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnFechar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnFechar.TextMarginLeft = 0;
@@ -268,7 +268,7 @@
             this.btnExportarParaExcel.OnPressedState.IconLeftImage = null;
             this.btnExportarParaExcel.OnPressedState.IconRightImage = null;
             this.btnExportarParaExcel.Size = new System.Drawing.Size(187, 39);
-            this.btnExportarParaExcel.TabIndex = 180;
+            this.btnExportarParaExcel.TabIndex = 7;
             this.btnExportarParaExcel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnExportarParaExcel.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnExportarParaExcel.TextMarginLeft = 0;
@@ -358,7 +358,7 @@
             this.bunifuButton2.OnPressedState.IconLeftImage = null;
             this.bunifuButton2.OnPressedState.IconRightImage = null;
             this.bunifuButton2.Size = new System.Drawing.Size(187, 39);
-            this.bunifuButton2.TabIndex = 179;
+            this.bunifuButton2.TabIndex = 6;
             this.bunifuButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuButton2.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.bunifuButton2.TextMarginLeft = 0;
@@ -447,7 +447,7 @@
             this.btnSelecionar.OnPressedState.IconLeftImage = null;
             this.btnSelecionar.OnPressedState.IconRightImage = null;
             this.btnSelecionar.Size = new System.Drawing.Size(187, 39);
-            this.btnSelecionar.TabIndex = 178;
+            this.btnSelecionar.TabIndex = 5;
             this.btnSelecionar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnSelecionar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnSelecionar.TextMarginLeft = 0;
@@ -534,17 +534,16 @@
             this.gdvPesquisarFornecedor.RowTemplate.Height = 40;
             this.gdvPesquisarFornecedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gdvPesquisarFornecedor.Size = new System.Drawing.Size(850, 276);
-            this.gdvPesquisarFornecedor.TabIndex = 177;
+            this.gdvPesquisarFornecedor.TabIndex = 4;
             this.gdvPesquisarFornecedor.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.gdvPesquisarFornecedor.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gdvPesquisarFornecedor_MouseDoubleClick);
             // 
             // cf_id
             // 
             this.cf_id.DataPropertyName = "cf_id";
-            this.cf_id.HeaderText = "cf_id";
+            this.cf_id.HeaderText = "Codigo";
             this.cf_id.Name = "cf_id";
             this.cf_id.ReadOnly = true;
-            this.cf_id.Visible = false;
             // 
             // cf_razao_social
             // 
@@ -552,6 +551,7 @@
             this.cf_razao_social.HeaderText = "Razao Social";
             this.cf_razao_social.Name = "cf_razao_social";
             this.cf_razao_social.ReadOnly = true;
+            this.cf_razao_social.Visible = false;
             // 
             // cf_data_cadastro
             // 
@@ -718,7 +718,7 @@
             this.txtCodigoFornecedor.ShortcutsEnabled = true;
             this.txtCodigoFornecedor.Size = new System.Drawing.Size(111, 28);
             this.txtCodigoFornecedor.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtCodigoFornecedor.TabIndex = 176;
+            this.txtCodigoFornecedor.TabIndex = 0;
             this.txtCodigoFornecedor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCodigoFornecedor.TextMarginBottom = 0;
             this.txtCodigoFornecedor.TextMarginLeft = 3;
@@ -820,7 +820,7 @@
             this.btnPesquisar.OnPressedState.IconLeftImage = null;
             this.btnPesquisar.OnPressedState.IconRightImage = null;
             this.btnPesquisar.Size = new System.Drawing.Size(187, 39);
-            this.btnPesquisar.TabIndex = 174;
+            this.btnPesquisar.TabIndex = 3;
             this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnPesquisar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnPesquisar.TextMarginLeft = 0;
@@ -903,7 +903,7 @@
             this.txtCNPJ.ShortcutsEnabled = true;
             this.txtCNPJ.Size = new System.Drawing.Size(182, 28);
             this.txtCNPJ.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtCNPJ.TabIndex = 171;
+            this.txtCNPJ.TabIndex = 1;
             this.txtCNPJ.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCNPJ.TextMarginBottom = 0;
             this.txtCNPJ.TextMarginLeft = 3;
@@ -979,7 +979,7 @@
             this.txtNomeFantasia.ShortcutsEnabled = true;
             this.txtNomeFantasia.Size = new System.Drawing.Size(310, 28);
             this.txtNomeFantasia.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtNomeFantasia.TabIndex = 173;
+            this.txtNomeFantasia.TabIndex = 2;
             this.txtNomeFantasia.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtNomeFantasia.TextMarginBottom = 0;
             this.txtNomeFantasia.TextMarginLeft = 3;
@@ -1016,6 +1016,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtCNPJ);
             this.Controls.Add(this.txtNomeFantasia);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "PesquisarFornecedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisar Fornecedor";

@@ -64,6 +64,8 @@ namespace Sistema_de_Gerenciamento
         {
             TextBox.ApagandoTextBox(this);
 
+            pcbProduto.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\camera3.png");
+
             // Preencher o combobox de grupo
             cmbGrupo.Items.Clear();
 
@@ -121,7 +123,7 @@ namespace Sistema_de_Gerenciamento
                         Convert.ToDecimal(txtComissao.Text.Replace(" %", string.Empty)),
                         txtObservacoes.Text);
 
-                        txtCodigo.Text = Buscar.BuscarCodigoBarras(txtDescricao.Text).ToString();
+                        txtCodigo.Text = Buscar.BuscarCodigoProduto(txtDescricao.Text).ToString();
 
                         //Chamar o forms de alerta de inclusao com sucesso
                         Global.tipoDoAlerta = "Inclusao";
@@ -523,5 +525,7 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion TextBox Estoque Minimo
+
+        
     }
 }

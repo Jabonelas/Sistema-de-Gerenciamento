@@ -854,5 +854,17 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion TextBox Naturalidade
+
+        #region TextBox Numero
+
+        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        #endregion TextBox Numero
     }
 }

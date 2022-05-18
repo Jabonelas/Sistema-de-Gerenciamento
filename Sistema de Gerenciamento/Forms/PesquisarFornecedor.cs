@@ -30,12 +30,46 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            bool isCadastroExiste = Buscar.BuscarCadastroFornecedor(txtCodigoFornecedor.Text,
-                txtCNPJ.Text, txtNomeFantasia.Text, gdvPesquisarFornecedor);
-
-            if (isCadastroExiste == false)
+            if (txtCodigoFornecedor.Text != string.Empty)
             {
-                MessageBox.Show("Fornecedor Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                bool isCadastroExiste = Buscar.BuscarCadastroFornecedorPorCodigo(txtCodigoFornecedor.Text, gdvPesquisarFornecedor);
+
+                if (isCadastroExiste == false)
+                {
+                    MessageBox.Show("Fornecedor Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else if (txtCNPJ.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarCadastroFornecedorPorCNPJ(txtCNPJ.Text, gdvPesquisarFornecedor);
+
+                if (isCadastroExiste == false)
+                {
+                    MessageBox.Show("Fornecedor Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else if (txtNomeFantasia.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarCadastroFornecedorPorNomeFantasia(txtNomeFantasia.Text, gdvPesquisarFornecedor);
+
+                if (isCadastroExiste == false)
+                {
+                    MessageBox.Show("Fornecedor Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                DialogResult OpcaoDoUsuario = new DialogResult();
+                OpcaoDoUsuario = MessageBox.Show("Deseja Exibir Todos Os Fornecedores?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (OpcaoDoUsuario == DialogResult.Yes)
+                {
+                    bool isCadastroExiste = Buscar.BuscarCadastroFornecedorTudo(gdvPesquisarFornecedor);
+
+                    if (isCadastroExiste == false)
+                    {
+                        MessageBox.Show("Fornecedor Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
         }
 
@@ -238,8 +272,14 @@ namespace Sistema_de_Gerenciamento.Forms
                     Erro.ErroAoExportarDadosExecel(ex);
                 }
             }
+            else
+            {
+                MessageBox.Show("Primeiro Realizar a Pesquisa!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         #endregion Botao Exportar Para Excel
+
+     
     }
 }

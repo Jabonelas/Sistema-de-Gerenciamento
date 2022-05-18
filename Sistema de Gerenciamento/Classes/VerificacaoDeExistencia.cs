@@ -53,16 +53,16 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Cadastro Fornecedor
 
-        public bool VerificarExistenciaDeCNPJFornecedor(string _cNPJ)
+        public bool VerificarExistenciaDeCNPJFornecedor(string _cnpj)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     bool isExist = false;
-                    string query = "select cf_cnpj from tb_CadastroFornecedor where cf_cnpj = @CNPJ";
+                    string query = "select cf_cnpj from tb_CadastroFornecedor where cf_cnpj = @cnpj";
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
-                    cmd.Parameters.AddWithValue("@CNPJ", _cNPJ);
+                    cmd.Parameters.AddWithValue("@cnpj", _cnpj);
                     SqlDataReader reader;
                     reader = cmd.ExecuteReader();
 
@@ -128,5 +128,83 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Cadastro Produto
+
+        #region Cadastro Grupo Material
+
+        public bool VerificarExistenciaSubGrupo(string _subGrupo)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    bool isExist = false;
+                    string query = "select cg_sub_grupo from tb_CadastroGrupoMaterial where cg_sub_grupo = @subGrupo";
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+                    cmd.Parameters.AddWithValue("@subGrupo", _subGrupo);
+                    SqlDataReader reader;
+                    reader = cmd.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        isExist = true;
+                    }
+                    else
+                    {
+                        isExist = false;
+                    }
+
+                    return isExist;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoVerificarExistenciaDeProdutoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Cadastro Grupo Material
+
+        #region Cadastro Empresa
+
+        public bool VerificarExistenciaEmpresa(string _cnpj)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    bool isExist = false;
+                    string query = "select ce_cnpj from tb_CadastroEmpresa where ce_cnpj = @cnpj";
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+                    cmd.Parameters.AddWithValue("@cnpj", _cnpj);
+                    SqlDataReader reader;
+                    reader = cmd.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        isExist = true;
+                    }
+                    else
+                    {
+                        isExist = false;
+                    }
+
+                    return isExist;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoVerificarExistenciaEmpresaNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Cadastro Empresa
     }
 }
