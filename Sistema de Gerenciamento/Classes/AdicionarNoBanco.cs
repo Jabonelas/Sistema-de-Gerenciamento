@@ -327,8 +327,8 @@ namespace Sistema_de_Gerenciamento
 
         #region Inserir Empresa
 
-        public void InserirEmpresa(string _razaoSocial, string _cnpj, string _nomeFantasia, string _cep, string _endereco, string _complemento,
-        string _bairro, string _uf, string _numero, string _telefone, string _email, string _textoPadraoSO, Image _imagem)
+        public void InserirCadastroEmpresa(string _razaoSocial, string _cnpj, string _nomeFantasia, string _cep, string _endereco, string _complemento,
+        string _bairro, string _cidade, string _uf, int _numero, string _telefone, string _email, string _textoPadraoSO, Image _imagem)
         {
             try
             {
@@ -337,22 +337,23 @@ namespace Sistema_de_Gerenciamento
                     string query =
                         "insert into tb_CadastroEmpresa (ce_razao_social,ce_cnpj,ce_nome_fantasia,ce_cep,ce_endereco,ce_complemento," +
                         "ce_bairro,ce_cidade,ce_uf,ce_numero,ce_telefone,ce_email,ce_texto_padrao_os,ce_imagem)" +
-                        " values(@razaoSocial,@cnpj,@nomeFantasia,@cep,@endereco,@complemento,@bairro,@uf,@numero,@telefone," +
+                        " values(@razaoSocial,@cnpj,@nomeFantasia,@cep,@endereco,@complemento,@bairro,@cidade,@uf,@numero,@telefone," +
                         "@email,@textoPadraoSO,@imagem)";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
 
-                    cmd.Parameters.AddWithValue("@razaoSocial", SqlDbType.Date).Value = _razaoSocial;
+                    cmd.Parameters.AddWithValue("@razaoSocial", SqlDbType.VarChar).Value = _razaoSocial;
                     cmd.Parameters.AddWithValue("@cnpj", SqlDbType.VarChar).Value = _cnpj;
-                    cmd.Parameters.AddWithValue("@nomeFantasia", SqlDbType.Date).Value = _nomeFantasia;
+                    cmd.Parameters.AddWithValue("@nomeFantasia", SqlDbType.VarChar).Value = _nomeFantasia;
                     cmd.Parameters.AddWithValue("@cep", SqlDbType.VarChar).Value = _cep;
-                    cmd.Parameters.AddWithValue("@endereco", SqlDbType.Date).Value = _endereco;
+                    cmd.Parameters.AddWithValue("@endereco", SqlDbType.VarChar).Value = _endereco;
                     cmd.Parameters.AddWithValue("@complemento", SqlDbType.VarChar).Value = _complemento;
-                    cmd.Parameters.AddWithValue("@bairro", SqlDbType.Date).Value = _bairro;
+                    cmd.Parameters.AddWithValue("@bairro", SqlDbType.VarChar).Value = _bairro;
+                    cmd.Parameters.AddWithValue("@cidade", SqlDbType.VarChar).Value = _cidade;
                     cmd.Parameters.AddWithValue("@uf", SqlDbType.VarChar).Value = _uf;
-                    cmd.Parameters.AddWithValue("@numero", SqlDbType.Date).Value = _numero;
+                    cmd.Parameters.AddWithValue("@numero", SqlDbType.Int).Value = _numero;
                     cmd.Parameters.AddWithValue("@telefone", SqlDbType.VarChar).Value = _telefone;
-                    cmd.Parameters.AddWithValue("@email", SqlDbType.Date).Value = _email;
+                    cmd.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = _email;
                     cmd.Parameters.AddWithValue("@textoPadraoSO", SqlDbType.VarChar).Value = _textoPadraoSO;
 
                     byte[] arr;
@@ -370,5 +371,55 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Inserir Empresa
+
+        #region Inserir Usuario
+
+        public void InserirUsuario(string _usuario, string _senha)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "insert into tb_CadastroUsuario (cu_usuario,cu_senha) values(@usuario,@senha)";
+
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+                    cmd.Parameters.AddWithValue("@usuario", SqlDbType.Date).Value = _usuario;
+                    cmd.Parameters.AddWithValue("@senha", SqlDbType.VarChar).Value = _senha;
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAdicionarUsuarioNoBanco(ex);
+            }
+        }
+
+        #endregion Inserir Usuario
+
+        #region Inserir Despesa
+
+        public void InserirCadastroDespesa(string _descricao, string _tipo)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "insert into tb_CadastroDespesa (cd_descricao,cd_tipo) values(@descricao,@tipo)";
+
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+                    cmd.Parameters.AddWithValue("@descricao", SqlDbType.Date).Value = _descricao;
+                    cmd.Parameters.AddWithValue("@tipo", SqlDbType.VarChar).Value = _tipo;
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAdicionarDespesaNoBanco(ex);
+            }
+        }
+
+        #endregion Inserir Despesa
     }
 }

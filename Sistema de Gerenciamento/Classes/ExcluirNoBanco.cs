@@ -199,5 +199,31 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Excluir Grupo Material
+
+        #region Excluir Despesa
+
+        public void ExcluirCadastroDespesa(int _cd_id, string _descricao)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "delete tb_CadastroDespesa where cd_id = @cd_id and cd_descricao = @descricao";
+
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+
+                    cmd.Parameters.AddWithValue("@cd_id", SqlDbType.VarChar).Value = _cd_id;
+                    cmd.Parameters.AddWithValue("@descricao", SqlDbType.VarChar).Value = _descricao;
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoExluirCadastroGrupoMaterialNoBanco(ex);
+            }
+        }
+
+        #endregion Excluir Despesa
     }
 }

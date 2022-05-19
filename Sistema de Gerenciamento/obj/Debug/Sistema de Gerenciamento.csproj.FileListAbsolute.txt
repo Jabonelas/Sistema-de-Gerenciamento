@@ -41,3 +41,4 @@ C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\bi
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\bin\Debug\Newtonsoft.Json.xml
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.csproj.ResolveComReference.cache
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.PesquisarProduto.resources
+C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.PesquisarDespesa.resources

@@ -81,6 +81,9 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties47 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties48 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnAlterar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -118,7 +121,25 @@
             this.btnInserirImagem = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.bunifuSeparator2 = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.gdvPesquisarEmpresa = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.lblce_id = new System.Windows.Forms.Label();
+            this.ce_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_razao_social = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_cnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_nome_fantasia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_cep = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_endereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_complemento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_bairro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_uf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_texto_padrao_os = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_imagem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEmpresa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarEmpresa)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -226,6 +247,7 @@
             this.btnAlterar.TextMarginLeft = 0;
             this.btnAlterar.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnAlterar.UseDefaultRadiusAndThickness = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnSalvar
             // 
@@ -521,7 +543,7 @@
             this.txtTelefone.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTelefone.Lines = new string[0];
             this.txtTelefone.Location = new System.Drawing.Point(16, 367);
-            this.txtTelefone.MaxLength = 50;
+            this.txtTelefone.MaxLength = 15;
             this.txtTelefone.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtTelefone.Modified = false;
             this.txtTelefone.Multiline = false;
@@ -1349,7 +1371,7 @@
             this.txtCNPJ.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCNPJ.Lines = new string[0];
             this.txtCNPJ.Location = new System.Drawing.Point(16, 207);
-            this.txtCNPJ.MaxLength = 50;
+            this.txtCNPJ.MaxLength = 18;
             this.txtCNPJ.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtCNPJ.Modified = false;
             this.txtCNPJ.Multiline = false;
@@ -1636,11 +1658,205 @@
             this.bunifuSeparator2.Size = new System.Drawing.Size(776, 20);
             this.bunifuSeparator2.TabIndex = 160;
             // 
+            // gdvPesquisarEmpresa
+            // 
+            this.gdvPesquisarEmpresa.AllowCustomTheming = false;
+            this.gdvPesquisarEmpresa.AllowUserToAddRows = false;
+            this.gdvPesquisarEmpresa.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.gdvPesquisarEmpresa.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gdvPesquisarEmpresa.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gdvPesquisarEmpresa.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gdvPesquisarEmpresa.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.gdvPesquisarEmpresa.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gdvPesquisarEmpresa.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.gdvPesquisarEmpresa.ColumnHeadersHeight = 40;
+            this.gdvPesquisarEmpresa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ce_id,
+            this.ce_razao_social,
+            this.ce_cnpj,
+            this.ce_nome_fantasia,
+            this.ce_cep,
+            this.ce_endereco,
+            this.ce_complemento,
+            this.ce_bairro,
+            this.ce_cidade,
+            this.ce_uf,
+            this.ce_numero,
+            this.ce_telefone,
+            this.ce_email,
+            this.ce_texto_padrao_os,
+            this.ce_imagem});
+            this.gdvPesquisarEmpresa.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            this.gdvPesquisarEmpresa.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gdvPesquisarEmpresa.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.gdvPesquisarEmpresa.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.gdvPesquisarEmpresa.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.gdvPesquisarEmpresa.CurrentTheme.BackColor = System.Drawing.Color.White;
+            this.gdvPesquisarEmpresa.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.gdvPesquisarEmpresa.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            this.gdvPesquisarEmpresa.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            this.gdvPesquisarEmpresa.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.gdvPesquisarEmpresa.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.gdvPesquisarEmpresa.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.gdvPesquisarEmpresa.CurrentTheme.Name = null;
+            this.gdvPesquisarEmpresa.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.gdvPesquisarEmpresa.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gdvPesquisarEmpresa.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.gdvPesquisarEmpresa.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.gdvPesquisarEmpresa.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gdvPesquisarEmpresa.DefaultCellStyle = dataGridViewCellStyle3;
+            this.gdvPesquisarEmpresa.EnableHeadersVisualStyles = false;
+            this.gdvPesquisarEmpresa.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.gdvPesquisarEmpresa.HeaderBackColor = System.Drawing.Color.DodgerBlue;
+            this.gdvPesquisarEmpresa.HeaderBgColor = System.Drawing.Color.Empty;
+            this.gdvPesquisarEmpresa.HeaderForeColor = System.Drawing.Color.White;
+            this.gdvPesquisarEmpresa.Location = new System.Drawing.Point(349, 22);
+            this.gdvPesquisarEmpresa.Name = "gdvPesquisarEmpresa";
+            this.gdvPesquisarEmpresa.ReadOnly = true;
+            this.gdvPesquisarEmpresa.RowHeadersVisible = false;
+            this.gdvPesquisarEmpresa.RowHeadersWidth = 50;
+            this.gdvPesquisarEmpresa.RowTemplate.Height = 40;
+            this.gdvPesquisarEmpresa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gdvPesquisarEmpresa.Size = new System.Drawing.Size(428, 84);
+            this.gdvPesquisarEmpresa.TabIndex = 161;
+            this.gdvPesquisarEmpresa.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            this.gdvPesquisarEmpresa.Visible = false;
+            // 
+            // lblce_id
+            // 
+            this.lblce_id.AutoSize = true;
+            this.lblce_id.Location = new System.Drawing.Point(346, 6);
+            this.lblce_id.Name = "lblce_id";
+            this.lblce_id.Size = new System.Drawing.Size(13, 13);
+            this.lblce_id.TabIndex = 162;
+            this.lblce_id.Text = "1";
+            this.lblce_id.Visible = false;
+            // 
+            // ce_id
+            // 
+            this.ce_id.HeaderText = "ce_id";
+            this.ce_id.Name = "ce_id";
+            this.ce_id.ReadOnly = true;
+            // 
+            // ce_razao_social
+            // 
+            this.ce_razao_social.HeaderText = "ce_razao_social";
+            this.ce_razao_social.Name = "ce_razao_social";
+            this.ce_razao_social.ReadOnly = true;
+            // 
+            // ce_cnpj
+            // 
+            this.ce_cnpj.HeaderText = "ce_cnpj";
+            this.ce_cnpj.Name = "ce_cnpj";
+            this.ce_cnpj.ReadOnly = true;
+            // 
+            // ce_nome_fantasia
+            // 
+            this.ce_nome_fantasia.DataPropertyName = "ce_nome_fantasia";
+            this.ce_nome_fantasia.HeaderText = "ce_nome_fantasia";
+            this.ce_nome_fantasia.Name = "ce_nome_fantasia";
+            this.ce_nome_fantasia.ReadOnly = true;
+            // 
+            // ce_cep
+            // 
+            this.ce_cep.DataPropertyName = "ce_cep";
+            this.ce_cep.HeaderText = "ce_cep";
+            this.ce_cep.Name = "ce_cep";
+            this.ce_cep.ReadOnly = true;
+            // 
+            // ce_endereco
+            // 
+            this.ce_endereco.DataPropertyName = "ce_endereco";
+            this.ce_endereco.HeaderText = "ce_endereco";
+            this.ce_endereco.Name = "ce_endereco";
+            this.ce_endereco.ReadOnly = true;
+            // 
+            // ce_complemento
+            // 
+            this.ce_complemento.DataPropertyName = "ce_complemento";
+            this.ce_complemento.HeaderText = "ce_complemento";
+            this.ce_complemento.Name = "ce_complemento";
+            this.ce_complemento.ReadOnly = true;
+            // 
+            // ce_bairro
+            // 
+            this.ce_bairro.DataPropertyName = "ce_bairro";
+            this.ce_bairro.HeaderText = "ce_bairro";
+            this.ce_bairro.Name = "ce_bairro";
+            this.ce_bairro.ReadOnly = true;
+            // 
+            // ce_cidade
+            // 
+            this.ce_cidade.DataPropertyName = "ce_cidade";
+            this.ce_cidade.HeaderText = "ce_cidade";
+            this.ce_cidade.Name = "ce_cidade";
+            this.ce_cidade.ReadOnly = true;
+            // 
+            // ce_uf
+            // 
+            this.ce_uf.DataPropertyName = "ce_uf";
+            this.ce_uf.HeaderText = "ce_uf";
+            this.ce_uf.Name = "ce_uf";
+            this.ce_uf.ReadOnly = true;
+            // 
+            // ce_numero
+            // 
+            this.ce_numero.DataPropertyName = "ce_numero";
+            this.ce_numero.HeaderText = "ce_numero";
+            this.ce_numero.Name = "ce_numero";
+            this.ce_numero.ReadOnly = true;
+            // 
+            // ce_telefone
+            // 
+            this.ce_telefone.DataPropertyName = "ce_telefone";
+            this.ce_telefone.HeaderText = "ce_telefone";
+            this.ce_telefone.Name = "ce_telefone";
+            this.ce_telefone.ReadOnly = true;
+            // 
+            // ce_email
+            // 
+            this.ce_email.DataPropertyName = "ce_email";
+            this.ce_email.HeaderText = "ce_email";
+            this.ce_email.Name = "ce_email";
+            this.ce_email.ReadOnly = true;
+            // 
+            // ce_texto_padrao_os
+            // 
+            this.ce_texto_padrao_os.DataPropertyName = "ce_texto_padrao_os";
+            this.ce_texto_padrao_os.HeaderText = "ce_texto_padrao_os";
+            this.ce_texto_padrao_os.Name = "ce_texto_padrao_os";
+            this.ce_texto_padrao_os.ReadOnly = true;
+            // 
+            // ce_imagem
+            // 
+            this.ce_imagem.DataPropertyName = "ce_imagem";
+            this.ce_imagem.HeaderText = "ce_imagem";
+            this.ce_imagem.Name = "ce_imagem";
+            this.ce_imagem.ReadOnly = true;
+            // 
             // CadastroEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 516);
+            this.Controls.Add(this.lblce_id);
+            this.Controls.Add(this.gdvPesquisarEmpresa);
             this.Controls.Add(this.bunifuSeparator2);
             this.Controls.Add(this.bunifuSeparator1);
             this.Controls.Add(this.btnInserirImagem);
@@ -1678,10 +1894,13 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnSalvar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "CadastroEmpresa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Empresa";
+            this.Load += new System.EventHandler(this.CadastroEmpresa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbEmpresa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarEmpresa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1726,5 +1945,22 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnInserirImagem;
         private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator1;
         private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator2;
+        private Bunifu.UI.WinForms.BunifuDataGridView gdvPesquisarEmpresa;
+        private System.Windows.Forms.Label lblce_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_razao_social;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_cnpj;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_nome_fantasia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_cep;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_endereco;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_complemento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_bairro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_cidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_uf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_telefone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_texto_padrao_os;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_imagem;
     }
 }

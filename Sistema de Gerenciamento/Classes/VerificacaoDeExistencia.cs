@@ -168,18 +168,18 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Cadastro Grupo Material
 
-        #region Cadastro Empresa
+        #region Cadastro Usuario
 
-        public bool VerificarExistenciaEmpresa(string _cnpj)
+        public bool VerificarExistenciaDoUsuario(string _usuario)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     bool isExist = false;
-                    string query = "select ce_cnpj from tb_CadastroEmpresa where ce_cnpj = @cnpj";
+                    string query = "select cu_usuario from tb_CadastroUsuario where cu_usuario = @usuario";
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
-                    cmd.Parameters.AddWithValue("@cnpj", _cnpj);
+                    cmd.Parameters.AddWithValue("@usuario", _usuario);
                     SqlDataReader reader;
                     reader = cmd.ExecuteReader();
 
@@ -199,12 +199,51 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoVerificarExistenciaEmpresaNoBanco(ex);
+                Erro.ErroAoVerificarExistenciaDeUsuarioNoBanco(ex);
 
                 return false;
             }
         }
 
-        #endregion Cadastro Empresa
+        #endregion Cadastro Usuario
+
+        #region Cadastro Despesas
+
+        public bool VerificarExistenciaDeDespesa(string _descricao)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    bool isExist = false;
+                    string query = "select cd_descricao from tb_CadastroDespesa where cd_descricao = @cd_descricao";
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+                    cmd.Parameters.AddWithValue("@cd_descricao", _descricao);
+                    SqlDataReader reader;
+                    reader = cmd.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        isExist = true;
+                    }
+                    else
+                    {
+                        isExist = false;
+                    }
+
+                    return isExist;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoVerificarExistenciaDeClienteNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Cadastro Despesas
     }
 }

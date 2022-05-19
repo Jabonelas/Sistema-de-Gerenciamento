@@ -112,7 +112,7 @@ namespace Sistema_de_Gerenciamento
             }
             catch (Exception ex)
             {
-                Erro.ErroAoExluirCadastroCliente(ex);
+                Erro.ErroAoExluirCadastroGrupoMaterialNoBanco(ex);
             }
         }
 

@@ -14,6 +14,12 @@ namespace Sistema_de_Gerenciamento
 {
     public partial class CadastroEmpresa : Form
     {
+        private AdicionarNoBanco Salvar = new AdicionarNoBanco();
+
+        private BuscarNoBanco Buscar = new BuscarNoBanco();
+
+        private AtualizacaoNoBanco Atualizar = new AtualizacaoNoBanco();
+
         private MensagensErro Erro = new MensagensErro();
 
         private ManipulacaoTextBox TextBox = new ManipulacaoTextBox();
@@ -88,7 +94,8 @@ namespace Sistema_de_Gerenciamento
             {
                 txtTelefone.BorderColorActive = Color.Red;
 
-                MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
 
                 txtTelefone.Focus();
             }
@@ -105,6 +112,11 @@ namespace Sistema_de_Gerenciamento
         private void txtCNPJ_KeyPress(object sender, KeyPressEventArgs e)
         {
             txtCNPJ.MaxLength = 18;
+
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -143,7 +155,8 @@ namespace Sistema_de_Gerenciamento
             {
                 txtCNPJ.BorderColorActive = Color.Red;
 
-                MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
 
                 txtCNPJ.Focus();
             }
@@ -188,7 +201,8 @@ namespace Sistema_de_Gerenciamento
                 {
                     txtCEP.BorderColorActive = Color.Red;
 
-                    MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
 
                     txtCEP.Focus();
                 }
@@ -219,7 +233,8 @@ namespace Sistema_de_Gerenciamento
 
                             if (cont == 0)
                             {
-                                MessageBox.Show("CEP Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("CEP Não Encontrado!", "Atenção!", MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
                                 cont++;
                             }
 
@@ -247,18 +262,31 @@ namespace Sistema_de_Gerenciamento
 
         #endregion TextBox Numero
 
+        #region Botao Salvar
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             try
             {
                 if (TextBox.VerificarPreenchimentoTextBox(this) == false)
                 {
-                    if (VerificarExistencia.VerificarExistenciaEmpresa(txtCNPJ.Text) == false)
+                    if (txtCNPJ.Text == string.Empty)
                     {
-                        Salvar.InserirCadastroCliente(
-                       Convert.ToDateTime(
-
-                       pcbEmpresa.Image);
+                        Salvar.InserirCadastroEmpresa(
+                            txtRazaoSocial.Text,
+                            txtCNPJ.Text,
+                            txtNomeFantasia.Text,
+                            txtCEP.Text,
+                            txtEndereco.Text,
+                            txtComplemento.Text,
+                            txtBairro.Text,
+                            txtCidade.Text,
+                            cmbUF.Text,
+                            Convert.ToInt32(txtNumero.Text),
+                            txtTelefone.Text,
+                            txtEmail.Text,
+                            txtTextPadrao.Text,
+                            pcbEmpresa.Image);
 
                         //Chamar o forms de alerta de inclusao com sucesso
                         Global.tipoDoAlerta = "Inclusao";
@@ -266,14 +294,16 @@ namespace Sistema_de_Gerenciamento
                         Aviso buscarCliente = new Aviso();
                         buscarCliente.Show();
                     }
-                    else if (VerificarExistencia.VerificarExistenciaEmpresa(txtCNPJ.Text) == true)
+                    else
                     {
-                        MessageBox.Show("Empresa Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Empresa Já Cadastrada! \nSe Deseja Realizar Alteração Click Em Altera!", "Atenção!", MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
@@ -281,5 +311,93 @@ namespace Sistema_de_Gerenciamento
                 Erro.ErroAoCadastroEmpresa(ex);
             }
         }
+
+        #endregion Botao Salvar
+
+        #region Load
+
+        private void CadastroEmpresa_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                bool isCadastroExiste = Buscar.BuscarCadastroEmpresa(Convert.ToInt32(lblce_id.Text), gdvPesquisarEmpresa);
+
+                if (gdvPesquisarEmpresa.RowCount >= 1)
+                {
+                    int indice = 3;
+                    txtRazaoSocial.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
+                    txtCNPJ.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
+                    txtNomeFantasia.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
+                    txtCEP.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
+                    txtEndereco.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
+                    txtComplemento.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
+                    txtBairro.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
+                    txtCidade.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
+                    cmbUF.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
+                    txtNumero.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
+                    txtTelefone.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
+                    txtEmail.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
+                    txtTextPadrao.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
+
+                    pcbEmpresa.Image = Buscar.BuscarImagemEmpresa(Convert.ToInt32(lblce_id.Text));
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoCarregarDadosEmpresa(ex);
+            }
+        }
+
+        #endregion Load
+
+        #region Botao Alterar
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                {
+                    if (txtCNPJ.Text != string.Empty)
+                    {
+                        Atualizar.AtualizarCadastroEmpresa(
+                            txtRazaoSocial.Text,
+                            txtCNPJ.Text,
+                            txtNomeFantasia.Text,
+                            txtCEP.Text,
+                            txtEndereco.Text,
+                            txtComplemento.Text,
+                            txtBairro.Text,
+                            txtCidade.Text,
+                            cmbUF.Text,
+                            Convert.ToInt32(txtNumero.Text),
+                            txtTelefone.Text,
+                            txtEmail.Text,
+                            txtTextPadrao.Text,
+                            Convert.ToInt32(lblce_id.Text)
+
+                            );
+
+                        Atualizar.AtualizarImagemNoCadastroEmpresa(pcbEmpresa.Image, Convert.ToInt32(lblce_id.Text));
+
+                        //Chamar o forms de alerta de atualizacao com sucesso
+                        Global.tipoDoAlerta = "Atualizacao";
+
+                        Aviso buscarCliente = new Aviso();
+                        buscarCliente.Show();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Preenchimento Dos Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarCadastroEmpresa(ex);
+            }
+        }
+
+        #endregion Botao Alterar
     }
 }

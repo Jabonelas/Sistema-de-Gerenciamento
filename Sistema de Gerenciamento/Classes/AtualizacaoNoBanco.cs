@@ -314,5 +314,147 @@ namespace Sistema_de_Gerenciamento.Classes
         #endregion Atualizar Imagem Produto
 
         #endregion Atualizar Produto
+
+        #region Atualizar Empresa
+
+        #region Atualizar Cadastro Empresa
+
+        public void AtualizarCadastroEmpresa(string _razaoSocial, string _cnpj, string _nomeFantasia, string _cep, string _endereco, string _complemento,
+            string _bairro, string _cidade, string _uf, int _numero, string _telefone, string _email, string _textoPadraoSO, int _ce_id)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_CadastroEmpresa set " +
+                        "ce_razao_social=@razaoSocial," +
+                        "ce_cnpj=@cnpj," +
+                        "ce_nome_fantasia=@nomeFantasia," +
+                        "ce_cep=@cep," +
+                        "ce_endereco=@endereco," +
+                        "ce_complemento=@complemento," +
+                        "ce_bairro=@bairro," +
+                        "ce_cidade=@cidade," +
+                        "ce_uf=@uf," +
+                        "ce_numero=@numero," +
+                        "ce_telefone=@telefone," +
+                        "ce_email=@email," +
+                        "ce_texto_padrao_os=@textoPadraoSO " +
+                        "where ce_id = @ce_id ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@razaoSocial", SqlDbType.VarChar).Value = _razaoSocial;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cnpj", SqlDbType.VarChar).Value = _cnpj;
+                    adapter.SelectCommand.Parameters.AddWithValue("@nomeFantasia", SqlDbType.VarChar).Value = _nomeFantasia;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cep", SqlDbType.VarChar).Value = _cep;
+                    adapter.SelectCommand.Parameters.AddWithValue("@endereco", SqlDbType.VarChar).Value = _endereco;
+                    adapter.SelectCommand.Parameters.AddWithValue("@complemento", SqlDbType.VarChar).Value = _complemento;
+                    adapter.SelectCommand.Parameters.AddWithValue("@bairro", SqlDbType.VarChar).Value = _bairro;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cidade", SqlDbType.VarChar).Value = _cidade;
+                    adapter.SelectCommand.Parameters.AddWithValue("@uf", SqlDbType.VarChar).Value = _uf;
+                    adapter.SelectCommand.Parameters.AddWithValue("@numero", SqlDbType.Int).Value = _numero;
+                    adapter.SelectCommand.Parameters.AddWithValue("@telefone", SqlDbType.VarChar).Value = _telefone;
+                    adapter.SelectCommand.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = _email;
+                    adapter.SelectCommand.Parameters.AddWithValue("@textoPadraoSO", SqlDbType.VarChar).Value = _textoPadraoSO;
+                    adapter.SelectCommand.Parameters.AddWithValue("@ce_id", SqlDbType.Int).Value = _ce_id;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarEmpresaNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Cadastro Empresa
+
+        #region Atualizar Imagem Empresa
+
+        public void AtualizarImagemNoCadastroEmpresa(Image _imagem, int _ce_id)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_CadastroEmpresa set ce_imagem = @imagem where ce_id = @ce_id ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    byte[] arr;
+                    ImageConverter converter = new ImageConverter();
+                    arr = (byte[])converter.ConvertTo(_imagem, typeof(byte[]));
+                    adapter.SelectCommand.Parameters.Add("@imagem", SqlDbType.Image).Value = arr;
+                    adapter.SelectCommand.Parameters.AddWithValue("@ce_id", SqlDbType.VarChar).Value = _ce_id;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarImagemEmpresaNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Imagem Empresa
+
+        #endregion Atualizar Empresa
+
+        #region Atualizar Usuario
+
+        public void AtualizarCadastroUsuario(string _usuario, string _senha)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_CadastroUsuario set " +
+                        "cu_usuario = @usuario," +
+                        "cu_senha = @senha " +
+                        "where cu_usuario = @usuario ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@usuario", SqlDbType.VarChar).Value = _usuario;
+                    adapter.SelectCommand.Parameters.AddWithValue("@senha", SqlDbType.VarChar).Value = _senha;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarUsuarioNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Usuario
+
+        #region Atualizar Despesa
+
+        public void AtualizarCadastroDespesa(int _cd_id, string _descricao, string _tipo)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_CadastroDespesa set " +
+                                   "cd_descricao = @descricao," +
+                                   "cd_tipo = @tipo " +
+                                   "where cd_id = @cd_id";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@cd_id", SqlDbType.Int).Value = _cd_id;
+                    adapter.SelectCommand.Parameters.AddWithValue("@descricao", SqlDbType.VarChar).Value = _descricao;
+                    adapter.SelectCommand.Parameters.AddWithValue("@tipo", SqlDbType.VarChar).Value = _tipo;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarDespesaNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Despesa
     }
 }

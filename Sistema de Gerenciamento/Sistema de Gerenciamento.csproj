@@ -165,6 +165,12 @@
     <Compile Include="Forms\PesquisarContasAPagar.Designer.cs">
       <DependentUpon>PesquisarContasAPagar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PesquisarDespesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PesquisarDespesa.Designer.cs">
+      <DependentUpon>PesquisarDespesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PesquisarFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -221,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PesquisarContasAPagar.resx">
       <DependentUpon>PesquisarContasAPagar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PesquisarDespesa.resx">
+      <DependentUpon>PesquisarDespesa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PesquisarFornecedor.resx">
       <DependentUpon>PesquisarFornecedor.cs</DependentUpon>

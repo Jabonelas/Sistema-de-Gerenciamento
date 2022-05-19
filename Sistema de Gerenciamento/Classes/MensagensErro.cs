@@ -82,9 +82,54 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(CAD-EM01) Erro ao Cadastrar Empresa \n\nErro: {_e}", "Erro Cadastro Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoCarregarDadosEmpresa(Exception _e)
+        {
+            MessageBox.Show($"(CAD-EM02) Erro ao Carregar Dados da Empresa \n\nErro: {_e}", "Erro Carregar Dados Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAtualizarCadastroEmpresa(Exception _e)
+        {
+            MessageBox.Show($"(CAD-EM03) Erro ao Atualizar Empresa \n\nErro: {_e}", "Erro Atualizar Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Cadastro Empresa
 
+        #region Cadastro Usuario
+
+        public void ErroAoCadastroUsuario(Exception _e)
+        {
+            MessageBox.Show($"(CAD-US01) Erro ao Cadastrar Usuario \n\nErro: {_e}", "Erro Cadastro Usuario!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAtualizarCadastroUsuario(Exception _e)
+        {
+            MessageBox.Show($"(CAD-EM03) Erro ao Atualizar Usuario \n\nErro: {_e}", "Erro Atualizar Usuario!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Cadastro Usuario
+
+        #region Cadastro Despesa
+
+        public void ErroAoInserirCadastroDespesa(Exception _e)
+        {
+            MessageBox.Show($"(CAD-DE01) Erro ao Inserir Despesa \n\nErro: {_e}", "Erro Inserir Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAtualizarCadastroDespesa(Exception _e)
+        {
+            MessageBox.Show($"(CAD-DE02) Erro ao Atualizar Cadastro Despesa \n\nErro: {_e}", "Erro Atualizar Cadastro Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoExluirCadastroDespesa(Exception _e)
+        {
+            MessageBox.Show($"(CAD-DE03) Erro ao Excluir Cadastro Despesa \n\nErro: {_e}", "Erro Excluir Cadastro Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Cadastro Despesa
+
         #region Inserir No Banco
+
+        #region Cliente
 
         public void ErroAoAdicionarClienteNoBanco(Exception _e)
         {
@@ -96,6 +141,10 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(INS-CL02) Erro ao Inserir Imagem No Cadastro Cliente \n\nErro: {_e}", "Erro Inserir Imagem Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        #endregion Cliente
+
+        #region Forncedor
+
         public void ErroAoAdicionarFornecedorNoBanco(Exception _e)
         {
             MessageBox.Show($"(INS-FN01) Erro ao Inserir Cadastro Fornecedor \n\nErro: {_e}", "Erro Inserir Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -105,6 +154,10 @@ namespace Sistema_de_Gerenciamento
         {
             MessageBox.Show($"(INS-FN02) Erro ao Inserir Imagem No Cadastro Fornecedor \n\nErro: {_e}", "Erro Inserir Imagem Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        #endregion Forncedor
+
+        #region Produto
 
         public void ErroAoAdicionarProdutoNoBanco(Exception _e)
         {
@@ -116,19 +169,49 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(INS-PR02) Erro ao Inserir Imagem No Cadastro Produto \n\nErro: {_e}", "Erro Inserir Imagem Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        #endregion Produto
+
+        #region Grupo
+
         public void ErroAoAdicionarGrupoMaterialNoBanco(Exception _e)
         {
             MessageBox.Show($"(INS-GR01) Erro ao Inserir Grupo de Material \n\nErro: {_e}", "Erro Inserir Grupo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        #endregion Grupo
+
+        #region Empresa
 
         public void ErroAoAdicionarEmpresaNoBanco(Exception _e)
         {
             MessageBox.Show($"(INS-EM01) Erro ao Inserir Empresa \n\nErro: {_e}", "Erro Inserir Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        #endregion Empresa
+
+        #region Usuario
+
+        public void ErroAoAdicionarUsuarioNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(INS-EM01) Erro ao Inserir Empresa \n\nErro: {_e}", "Erro Inserir Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Usuario
+
+        #region Despesa
+
+        public void ErroAoAdicionarDespesaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(INS-DE01) Erro ao Inserir Despesa \n\nErro: {_e}", "Erro Inserir Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Despesa
+
         #endregion Inserir No Banco
 
         #region Atualizacao Do Banco
+
+        #region Cliente
 
         public void ErroAoAtualizarClienteNoBanco(Exception _e)
         {
@@ -140,6 +223,10 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(ATU-CL02) Erro ao Atualizar Imagem do Cliente \n\nErro: {_e}", "Erro Atualizacao Imagem Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        #endregion Cliente
+
+        #region Fornecedor
+
         public void ErroAoAtualizarFornecedorNoBanco(Exception _e)
         {
             MessageBox.Show($"(ATU-FN01) Erro ao Atualizar Cadastro de Fornecedor \n\nErro: {_e}", "Erro Atualizacao Cadastro Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -150,9 +237,13 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(ATU-FN02) Erro ao Atualizar Imagem do Fornecedor \n\nErro: {_e}", "Erro Atualizacao Imagem Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        #endregion Fornecedor
+
+        #region Produto
+
         public void ErroAoAtualizarProdutoNoBanco(Exception _e)
         {
-            MessageBox.Show($"(ATU-PR01) Erro ao Atualizar Cadastro de Produto \n\nErro: {_e}", "Erro Atualizacao Cadastro Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(ATU-PR01) Erro ao Atualizar Cadastro do Produto \n\nErro: {_e}", "Erro Atualizacao Cadastro Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoAtualizarImagemProdutoNoBanco(Exception _e)
@@ -160,9 +251,45 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(ATU-PR02) Erro ao Atualizar Imagem do Produto \n\nErro: {_e}", "Erro Atualizacao Imagem Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        #endregion Produto
+
+        #region Empresa
+
+        public void ErroAoAtualizarEmpresaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-EM01) Erro ao Atualizar Cadastro da Empresa \n\nErro: {_e}", "Erro Atualizacao Cadastro Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAtualizarImagemEmpresaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-EM02) Erro ao Atualizar Imagem da Empresa \n\nErro: {_e}", "Erro Atualizacao Imagem Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Empresa
+
+        #region Usuario
+
+        public void ErroAoAtualizarUsuarioNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-US01) Erro ao Atualizar Cadastro do Usuario \n\nErro: {_e}", "Erro Atualizacao Cadasto Usuario!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Usuario
+
+        #region Despesa
+
+        public void ErroAoAtualizarDespesaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-DE01) Erro ao Atualizar Cadastro de Despesa \n\nErro: {_e}", "Erro Atualizacao Cadasto Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Despesa
+
         #endregion Atualizacao Do Banco
 
         #region Excluir No Banco
+
+        #region Cliente
 
         public void ErroAoExluirCadastroClienteNoBanco(Exception _e)
         {
@@ -174,6 +301,10 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(EXC-CL02) Erro ao Excluir Imagem Cliente \n\nErro: {_e}", "Erro Excluir Imagem Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        #endregion Cliente
+
+        #region Fornecedor
+
         public void ErroAoExluirCadastroFornecedorNoBanco(Exception _e)
         {
             MessageBox.Show($"(EXC-FN01) Erro ao Excluir Cadastro Fornecedor \n\nErro: {_e}", "Erro Excluir Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -183,6 +314,10 @@ namespace Sistema_de_Gerenciamento
         {
             MessageBox.Show($"(EXC-FN02) Erro ao Excluir Imagem Fornecedor \n\nErro: {_e}", "Erro Excluir Imagem Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        #endregion Fornecedor
+
+        #region Produto
 
         public void ErroAoExluirCadastroProdutoNoBanco(Exception _e)
         {
@@ -194,16 +329,32 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(EXC-PR02) Erro ao Excluir Imagem Produto \n\nErro: {_e}", "Erro Excluir Imagem Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        #endregion Produto
+
+        #region Grupo
+
         public void ErroAoExluirCadastroGrupoMaterialNoBanco(Exception _e)
         {
-            MessageBox.Show($"(EXC-GR02) Erro ao Excluir Grupo Material \n\nErro: {_e}", "Erro Excluir Grupo Materail!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(EXC-GR01) Erro ao Excluir Grupo Material \n\nErro: {_e}", "Erro Excluir Grupo Materail!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        #endregion Grupo
+
+        #region Despesa
+
+        public void ErroAoExluirCadastroDespesaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(EXC-DE01) Erro ao Excluir Despesa \n\nErro: {_e}", "Erro Excluir Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Despesa
 
         #endregion Excluir No Banco
 
         #region Buscar No Banco
 
-        //Cliente
+        #region Cliente
+
         public void ErroAoBuscarClienteNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-CL01) Erro ao Realizar Busca de Cliente \n\nErro: {_e}", "Erro Busca Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -219,7 +370,10 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-CL03) Erro ao Realizar Busca de Codigo do Cliente \n\nErro: {_e}", "Erro Busca Codigo Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        //Fornecedor
+        #endregion Cliente
+
+        #region Fornecedor
+
         public void ErroAoBuscarFornecedorNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-FN01) Erro ao Realizar Busca de Fornecedor \n\nErro: {_e}", "Erro Busca Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -240,7 +394,10 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-FN04) Erro ao Realizar Busca dos Fornecedores \n\nErro: {_e}", "Erro Busca Fornecedores!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        //Produto
+        #endregion Fornecedor
+
+        #region Produto
+
         public void ErroAoBuscarCodigoProdutoNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-PR03) Erro ao Realizar Busca de Codigo de Barras do Produto \n\nErro: {_e}", "Erro Busca Codigo de Barras Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -266,29 +423,70 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-PR06) Erro ao Realizar Busca de Imagem do Produto \n\nErro: {_e}", "Erro Busca Imagem Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        #endregion Produto
+
+        #region Empresa
+
+        public void ErroAoBuscarEmpresaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EM01) Erro ao Realizar Busca de Cadastro da Empresa \n\nErro: {_e}", "Erro Busca Cadastro Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarImagemEmpresaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EM02) Erro ao Realizar Busca de Imagem da Emrpesa \n\nErro: {_e}", "Erro Busca Imagem Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Empresa
+
+        #region Despesa
+
+        public void ErroAoBuscarCodigoDespesaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE01) Erro ao Realizar Busca de Cadastro de Despesa \n\nErro: {_e}", "Erro Busca Cadastro Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Despesa
+
         #endregion Buscar No Banco
 
         #region Verificar Existencia No Banco
+
+        #region Cliente
 
         public void ErroAoVerificarExistenciaDeClienteNoBanco(Exception _e)
         {
             MessageBox.Show($"(EXI-CL01) Erro ao Verificar Existencia de Cliente \n\nErro: {_e}", "Erro Verificar Existencia de Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        #endregion Cliente
+
+        #region Fornecedor
+
         public void ErroAoVerificarExistenciaDeFornecedorNoBanco(Exception _e)
         {
             MessageBox.Show($"(EXI-FN01) Erro ao Verificar Existencia de Fornecedor \n\nErro: {_e}", "Erro Verificar Existencia de Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        #endregion Fornecedor
+
+        #region Produto
 
         public void ErroAoVerificarExistenciaDeProdutoNoBanco(Exception _e)
         {
             MessageBox.Show($"(EXI-PR01) Erro ao Verificar Existencia de Produto \n\nErro: {_e}", "Erro Verificar Existencia de Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoVerificarExistenciaEmpresaNoBanco(Exception _e)
+        #endregion Produto
+
+        #region Usuario
+
+        public void ErroAoVerificarExistenciaDeUsuarioNoBanco(Exception _e)
         {
-            MessageBox.Show($"(EXI-EM01) Erro ao Verificar Existencia de Empresa \n\nErro: {_e}", "Erro Verificar Existencia de Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(EXI-PR01) Erro ao Verificar Existencia de Usuario \n\nErro: {_e}", "Erro Verificar Existencia de Usuario!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        #endregion Usuario
 
         #endregion Verificar Existencia No Banco
 
