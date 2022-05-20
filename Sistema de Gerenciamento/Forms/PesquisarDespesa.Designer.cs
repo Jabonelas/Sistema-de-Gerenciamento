@@ -63,6 +63,9 @@
             this.txtDescricao = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtTipo = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.cd_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cd_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cd_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarDespesa)).BeginInit();
             this.SuspendLayout();
             // 
@@ -259,6 +262,7 @@
             this.btnExportarParaExcel.TextMarginLeft = 0;
             this.btnExportarParaExcel.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnExportarParaExcel.UseDefaultRadiusAndThickness = true;
+            this.btnExportarParaExcel.Click += new System.EventHandler(this.btnExportarParaExcel_Click);
             // 
             // btnImprimir
             // 
@@ -437,6 +441,7 @@
             this.btnSelecionar.TextMarginLeft = 0;
             this.btnSelecionar.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnSelecionar.UseDefaultRadiusAndThickness = true;
+            this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
             // 
             // gdvPesquisarDespesa
             // 
@@ -459,6 +464,10 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gdvPesquisarDespesa.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gdvPesquisarDespesa.ColumnHeadersHeight = 40;
+            this.gdvPesquisarDespesa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cd_id,
+            this.cd_descricao,
+            this.cd_tipo});
             this.gdvPesquisarDespesa.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.gdvPesquisarDespesa.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.gdvPesquisarDespesa.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -490,7 +499,7 @@
             this.gdvPesquisarDespesa.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.gdvPesquisarDespesa.HeaderBgColor = System.Drawing.Color.Empty;
             this.gdvPesquisarDespesa.HeaderForeColor = System.Drawing.Color.White;
-            this.gdvPesquisarDespesa.Location = new System.Drawing.Point(6, 145);
+            this.gdvPesquisarDespesa.Location = new System.Drawing.Point(9, 148);
             this.gdvPesquisarDespesa.Name = "gdvPesquisarDespesa";
             this.gdvPesquisarDespesa.ReadOnly = true;
             this.gdvPesquisarDespesa.RowHeadersVisible = false;
@@ -500,7 +509,7 @@
             this.gdvPesquisarDespesa.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.gdvPesquisarDespesa.RowTemplate.Height = 40;
             this.gdvPesquisarDespesa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvPesquisarDespesa.Size = new System.Drawing.Size(850, 276);
+            this.gdvPesquisarDespesa.Size = new System.Drawing.Size(850, 267);
             this.gdvPesquisarDespesa.TabIndex = 175;
             this.gdvPesquisarDespesa.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             // 
@@ -577,6 +586,7 @@
             this.txtCodigoDespesa.TextPlaceholder = "";
             this.txtCodigoDespesa.UseSystemPasswordChar = false;
             this.txtCodigoDespesa.WordWrap = true;
+            this.txtCodigoDespesa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoDespesa_KeyPress);
             // 
             // label8
             // 
@@ -676,6 +686,7 @@
             this.btnPesquisar.TextMarginLeft = 0;
             this.btnPesquisar.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnPesquisar.UseDefaultRadiusAndThickness = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // label6
             // 
@@ -845,11 +856,32 @@
             this.label5.TabIndex = 181;
             this.label5.Text = "Tipo";
             // 
+            // cd_id
+            // 
+            this.cd_id.DataPropertyName = "cd_id";
+            this.cd_id.HeaderText = "Codigo";
+            this.cd_id.Name = "cd_id";
+            this.cd_id.ReadOnly = true;
+            // 
+            // cd_descricao
+            // 
+            this.cd_descricao.DataPropertyName = "cd_descricao";
+            this.cd_descricao.HeaderText = "Descricao";
+            this.cd_descricao.Name = "cd_descricao";
+            this.cd_descricao.ReadOnly = true;
+            // 
+            // cd_tipo
+            // 
+            this.cd_tipo.DataPropertyName = "cd_tipo";
+            this.cd_tipo.HeaderText = "Tipo";
+            this.cd_tipo.Name = "cd_tipo";
+            this.cd_tipo.ReadOnly = true;
+            // 
             // PesquisarDespesa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(878, 502);
+            this.ClientSize = new System.Drawing.Size(871, 502);
             this.Controls.Add(this.bunifuSeparator1);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnExportarParaExcel);
@@ -865,6 +897,7 @@
             this.Controls.Add(this.label5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "PesquisarDespesa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisar Despesa";
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarDespesa)).EndInit();
             this.ResumeLayout(false);
@@ -886,5 +919,8 @@
         private Bunifu.UI.WinForms.BunifuTextBox txtDescricao;
         private Bunifu.UI.WinForms.BunifuTextBox txtTipo;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cd_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cd_descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cd_tipo;
     }
 }

@@ -141,6 +141,12 @@
     <Compile Include="Forms\Aviso.Designer.cs">
       <DependentUpon>Aviso.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\PesquisarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -215,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Aviso.resx">
       <DependentUpon>Aviso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PesquisarCliente.resx">
       <DependentUpon>PesquisarCliente.cs</DependentUpon>
@@ -431,6 +440,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\camera3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\equipe1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\eye_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invisible_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\equipe2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\invisible_50px1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

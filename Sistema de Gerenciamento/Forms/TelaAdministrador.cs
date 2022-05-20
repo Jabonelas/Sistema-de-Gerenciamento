@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema_de_Gerenciamento.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,39 @@ namespace Sistema_de_Gerenciamento
 {
     public partial class TelaAdministrador : Form
     {
+        private Login login;
+
+        public TelaAdministrador(Login _login)
+        {
+            InitializeComponent();
+
+            login = _login;
+        }
+
         public TelaAdministrador()
         {
             InitializeComponent();
+
+            //if (Global.tipoDeUsuario == "ADMIN")
+            //{
+            //    tabControl.Visible = true;
+            //}
+            //else
+            //{
+            //    btnVendaConsole.Location = new Point(93, 100);
+            //    btnOrdemServicoConsole.Location = new Point(245, 100);
+            //    btnProdutoConsole.Location = new Point(394, 100);
+            //    btnClienteConsole.Location = new Point(546, 100);
+            //    btnContasReceberConsole.Location = new Point(695, 100);
+
+            //    btnDevolucaoConsole.Location = new Point(6, 400);
+            //    btnDespesasConsole.Location = new Point(161, 400);
+            //    btnComprasConsole.Location = new Point(317, 400);
+            //    btnResumoVendasConsole.Location = new Point(472, 400);
+            //    btnFluxoCaixaConsole.Location = new Point(625, 400);
+            //    btnSair.Location = new Point(778, 400);
+            //    tabControl.Visible = false;
+            //}
         }
 
         private void btnCadastroProduto_Click(object sender, EventArgs e)
@@ -43,7 +74,7 @@ namespace Sistema_de_Gerenciamento
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            Sair sair = new Sair();
+            Sair sair = new Sair(this, login);
             sair.ShowDialog();
         }
 
@@ -77,6 +108,26 @@ namespace Sistema_de_Gerenciamento
 
         private void tabCadastro_Click(object sender, EventArgs e)
         {
+            if (Global.tipoDeUsuario == "ADMIN")
+            {
+                tabControl.Visible = true;
+            }
+            else
+            {
+                btnVendaConsole.Location = new Point(93, 100);
+                btnOrdemServicoConsole.Location = new Point(245, 100);
+                btnProdutoConsole.Location = new Point(394, 100);
+                btnClienteConsole.Location = new Point(546, 100);
+                btnContasReceberConsole.Location = new Point(695, 100);
+
+                btnDevolucaoConsole.Location = new Point(6, 400);
+                btnDespesasConsole.Location = new Point(161, 400);
+                btnComprasConsole.Location = new Point(317, 400);
+                btnResumoVendasConsole.Location = new Point(472, 400);
+                btnFluxoCaixaConsole.Location = new Point(625, 400);
+                btnSair.Location = new Point(778, 400);
+                tabControl.Visible = false;
+            }
         }
     }
 }

@@ -103,7 +103,12 @@ namespace Sistema_de_Gerenciamento
 
         public void ErroAoAtualizarCadastroUsuario(Exception _e)
         {
-            MessageBox.Show($"(CAD-EM03) Erro ao Atualizar Usuario \n\nErro: {_e}", "Erro Atualizar Usuario!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(CAD-US02) Erro ao Atualizar Usuario \n\nErro: {_e}", "Erro Atualizar Usuario!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCadastroUsuario(Exception _e)
+        {
+            MessageBox.Show($"(CAD-US03) Erro ao Buscar Usuario \n\nErro: {_e}", "Erro Buscar Usuario!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Cadastro Usuario
@@ -446,7 +451,36 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-DE01) Erro ao Realizar Busca de Cadastro de Despesa \n\nErro: {_e}", "Erro Busca Cadastro Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoBuscarCadastroDespesaPorCodigoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE02) Erro ao Realizar Busca de Despesa Por Codigo \n\nErro: {_e}", "Erro Busca Despesa Por Codigo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCadastroDespesaPorDescricaoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE03) Erro ao Realizar Busca de Despesa Por Descricao \n\nErro: {_e}", "Erro Busca Despesa Por Descricao!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCadastroDespesaPorTipoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE04) Erro ao Realizar Busca de Despesa Por Tipo \n\nErro: {_e}", "Erro Busca Despesa Por Tipo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCadastroTudoDespesa(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE05) Erro ao Realizar Busca de Despesa \n\nErro: {_e}", "Erro Busca Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Despesa
+
+        #region Usuairo
+
+        public void ErroAoBuscarUsuarioNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-US01) Erro ao Realizar Busca de Usuario \n\nErro: {_e}", "Erro Busca Usuario!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Usuairo
 
         #endregion Buscar No Banco
 

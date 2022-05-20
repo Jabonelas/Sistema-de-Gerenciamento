@@ -34,9 +34,6 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -54,19 +51,13 @@
             this.btnBuscarCliente = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnAlterar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnSalvar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.gdvDespesa = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtTipo = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtDescricao = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
-            this.bunifuSeparator2 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.txtCodigo = new Guna.UI.WinForms.GunaTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.gdvDespesa)).BeginInit();
             this.SuspendLayout();
             // 
             // bntSair
@@ -556,84 +547,6 @@
             this.btnSalvar.UseDefaultRadiusAndThickness = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
-            // gdvDespesa
-            // 
-            this.gdvDespesa.AllowCustomTheming = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.gdvDespesa.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.gdvDespesa.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gdvDespesa.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gdvDespesa.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.gdvDespesa.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gdvDespesa.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.gdvDespesa.ColumnHeadersHeight = 40;
-            this.gdvDespesa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Codigo,
-            this.Descricao,
-            this.Tipo});
-            this.gdvDespesa.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            this.gdvDespesa.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gdvDespesa.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.gdvDespesa.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.gdvDespesa.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.gdvDespesa.CurrentTheme.BackColor = System.Drawing.Color.White;
-            this.gdvDespesa.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.gdvDespesa.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue;
-            this.gdvDespesa.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            this.gdvDespesa.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.gdvDespesa.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.gdvDespesa.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.gdvDespesa.CurrentTheme.Name = null;
-            this.gdvDespesa.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.gdvDespesa.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gdvDespesa.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.gdvDespesa.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.gdvDespesa.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gdvDespesa.DefaultCellStyle = dataGridViewCellStyle3;
-            this.gdvDespesa.EnableHeadersVisualStyles = false;
-            this.gdvDespesa.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.gdvDespesa.HeaderBackColor = System.Drawing.Color.DodgerBlue;
-            this.gdvDespesa.HeaderBgColor = System.Drawing.Color.Empty;
-            this.gdvDespesa.HeaderForeColor = System.Drawing.Color.White;
-            this.gdvDespesa.Location = new System.Drawing.Point(15, 190);
-            this.gdvDespesa.Name = "gdvDespesa";
-            this.gdvDespesa.RowHeadersVisible = false;
-            this.gdvDespesa.RowTemplate.Height = 40;
-            this.gdvDespesa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvDespesa.Size = new System.Drawing.Size(762, 150);
-            this.gdvDespesa.TabIndex = 56;
-            this.gdvDespesa.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            // 
-            // Codigo
-            // 
-            this.Codigo.HeaderText = "Código";
-            this.Codigo.Name = "Codigo";
-            // 
-            // Descricao
-            // 
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
-            // 
-            // Tipo
-            // 
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            // 
             // txtTipo
             // 
             this.txtTipo.AcceptsReturn = false;
@@ -661,7 +574,7 @@
             this.txtTipo.IconRight = null;
             this.txtTipo.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTipo.Lines = new string[0];
-            this.txtTipo.Location = new System.Drawing.Point(622, 150);
+            this.txtTipo.Location = new System.Drawing.Point(622, 164);
             this.txtTipo.MaxLength = 50;
             this.txtTipo.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtTipo.Modified = false;
@@ -735,7 +648,7 @@
             this.txtDescricao.IconRight = null;
             this.txtDescricao.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDescricao.Lines = new string[0];
-            this.txtDescricao.Location = new System.Drawing.Point(163, 150);
+            this.txtDescricao.Location = new System.Drawing.Point(163, 164);
             this.txtDescricao.MaxLength = 100;
             this.txtDescricao.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtDescricao.Modified = false;
@@ -786,7 +699,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(619, 132);
+            this.label3.Location = new System.Drawing.Point(619, 146);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(30, 15);
             this.label3.TabIndex = 52;
@@ -796,7 +709,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(160, 132);
+            this.label2.Location = new System.Drawing.Point(160, 146);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 15);
             this.label2.TabIndex = 51;
@@ -806,7 +719,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 132);
+            this.label1.Location = new System.Drawing.Point(12, 146);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 15);
             this.label1.TabIndex = 50;
@@ -821,26 +734,11 @@
             this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuSeparator1.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded;
             this.bunifuSeparator1.LineThickness = 3;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(7, 113);
+            this.bunifuSeparator1.Location = new System.Drawing.Point(4, 120);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
             this.bunifuSeparator1.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.bunifuSeparator1.Size = new System.Drawing.Size(776, 20);
             this.bunifuSeparator1.TabIndex = 159;
-            // 
-            // bunifuSeparator2
-            // 
-            this.bunifuSeparator2.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuSeparator2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuSeparator2.BackgroundImage")));
-            this.bunifuSeparator2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuSeparator2.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
-            this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuSeparator2.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded;
-            this.bunifuSeparator2.LineThickness = 3;
-            this.bunifuSeparator2.Location = new System.Drawing.Point(8, 348);
-            this.bunifuSeparator2.Name = "bunifuSeparator2";
-            this.bunifuSeparator2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.bunifuSeparator2.Size = new System.Drawing.Size(776, 20);
-            this.bunifuSeparator2.TabIndex = 160;
             // 
             // txtCodigo
             // 
@@ -853,7 +751,7 @@
             this.txtCodigo.FocusedBorderColor = System.Drawing.Color.DodgerBlue;
             this.txtCodigo.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtCodigo.Location = new System.Drawing.Point(15, 152);
+            this.txtCodigo.Location = new System.Drawing.Point(15, 166);
             this.txtCodigo.MaxLength = 15;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.PasswordChar = '\0';
@@ -867,10 +765,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 376);
+            this.ClientSize = new System.Drawing.Size(792, 217);
             this.Controls.Add(this.txtCodigo);
-            this.Controls.Add(this.bunifuSeparator2);
-            this.Controls.Add(this.gdvDespesa);
             this.Controls.Add(this.txtTipo);
             this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.label3);
@@ -890,7 +786,6 @@
             this.Name = "CadastroDespesas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Despesas";
-            ((System.ComponentModel.ISupportInitialize)(this.gdvDespesa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -907,17 +802,12 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnBuscarCliente;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnAlterar;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnSalvar;
-        private Bunifu.UI.WinForms.BunifuDataGridView gdvDespesa;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-        private Bunifu.UI.WinForms.BunifuTextBox txtTipo;
-        private Bunifu.UI.WinForms.BunifuTextBox txtDescricao;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator1;
-        private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator2;
         public Guna.UI.WinForms.GunaTextBox txtCodigo;
+        public Bunifu.UI.WinForms.BunifuTextBox txtTipo;
+        public Bunifu.UI.WinForms.BunifuTextBox txtDescricao;
     }
 }

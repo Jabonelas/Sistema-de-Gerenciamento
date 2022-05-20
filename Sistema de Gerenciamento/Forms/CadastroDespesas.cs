@@ -42,7 +42,7 @@ namespace Sistema_de_Gerenciamento
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
-            PesquisarDespesa buscarCliente = new PesquisarDespesa();
+            PesquisarDespesa buscarCliente = new PesquisarDespesa(this);
             buscarCliente.ShowDialog();
         }
 

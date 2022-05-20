@@ -11,5 +11,7 @@ namespace Sistema_de_Gerenciamento
         public static string tipoDeCliente = string.Empty;
 
         public static string tipoDoAlerta = string.Empty;
+
+        public static string tipoDeUsuario = string.Empty;
     }
 }
