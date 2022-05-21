@@ -20,32 +20,27 @@ namespace Sistema_de_Gerenciamento
             InitializeComponent();
 
             login = _login;
-        }
 
-        public TelaAdministrador()
-        {
-            InitializeComponent();
+            if (Global.tipoDeUsuario == "ADMIN")
+            {
+                tabControl.Visible = true;
+            }
+            else
+            {
+                btnVendaConsole.Location = new Point(93, 100);
+                btnOrdemServicoConsole.Location = new Point(245, 100);
+                btnProdutoConsole.Location = new Point(394, 100);
+                btnClienteConsole.Location = new Point(546, 100);
+                btnContasReceberConsole.Location = new Point(695, 100);
 
-            //if (Global.tipoDeUsuario == "ADMIN")
-            //{
-            //    tabControl.Visible = true;
-            //}
-            //else
-            //{
-            //    btnVendaConsole.Location = new Point(93, 100);
-            //    btnOrdemServicoConsole.Location = new Point(245, 100);
-            //    btnProdutoConsole.Location = new Point(394, 100);
-            //    btnClienteConsole.Location = new Point(546, 100);
-            //    btnContasReceberConsole.Location = new Point(695, 100);
-
-            //    btnDevolucaoConsole.Location = new Point(6, 400);
-            //    btnDespesasConsole.Location = new Point(161, 400);
-            //    btnComprasConsole.Location = new Point(317, 400);
-            //    btnResumoVendasConsole.Location = new Point(472, 400);
-            //    btnFluxoCaixaConsole.Location = new Point(625, 400);
-            //    btnSair.Location = new Point(778, 400);
-            //    tabControl.Visible = false;
-            //}
+                btnDevolucaoConsole.Location = new Point(6, 400);
+                btnDespesasConsole.Location = new Point(161, 400);
+                btnComprasConsole.Location = new Point(317, 400);
+                btnResumoVendasConsole.Location = new Point(472, 400);
+                btnFluxoCaixaConsole.Location = new Point(625, 400);
+                btnSair.Location = new Point(778, 400);
+                tabControl.Visible = false;
+            }
         }
 
         private void btnCadastroProduto_Click(object sender, EventArgs e)

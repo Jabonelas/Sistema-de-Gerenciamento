@@ -17,7 +17,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private MensagensErro Erro = new MensagensErro();
 
-        private Sair Fecharprograma;
+        private Sair telaSair;
 
         private TelaAdministrador telaAdministrador;
 
@@ -25,10 +25,10 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             InitializeComponent();
 
-            Fecharprograma = new Sair(this);
+            telaSair = new Sair(this);
 
-            txtUsuario.Text = "ISRAEL";
-            txtSenha.Text = "321";
+            txtUsuario.Text = "ADMIN";
+            txtSenha.Text = "123";
         }
 
         #region Botao Login
@@ -51,11 +51,6 @@ namespace Sistema_de_Gerenciamento.Forms
                     this.Hide();
                     telaAdministrador = new TelaAdministrador(this);
                     telaAdministrador.Show();
-
-                    //TelaAdministrador buscarCliente = new TelaAdministrador(this);
-                    //buscarCliente.Refresh();
-                    //buscarCliente.Show();
-                    //this.Hide();
                 }
                 else
                 {

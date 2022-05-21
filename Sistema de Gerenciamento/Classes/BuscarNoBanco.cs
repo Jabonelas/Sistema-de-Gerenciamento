@@ -195,7 +195,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Cliente Por Nome
 
-        public bool BuscarCadastroClienteNome(string _nomeCliente, BunifuDataGridView _tabela)
+        public bool BuscarCadastroClientePorNome(string _nomeCliente, BunifuDataGridView _tabela)
         {
             try
             {
@@ -236,6 +236,32 @@ namespace Sistema_de_Gerenciamento.Classes
                 Erro.ErroAoBuscarClienteNoBanco(ex);
 
                 return false;
+            }
+        }
+
+        public int BuscarIdClientePorNome(string _nomeCliente)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select cc_id from tb_CadastroClientes where cc_nome_cliente like @nomeCliente";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@nomeCliente", string.Format("%{0}%", _nomeCliente));
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    dr.Read();
+
+                    int x = dr.GetInt32(0);
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarClienteNoBanco(ex);
+
+                return 0;
             }
         }
 
@@ -324,6 +350,39 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Imagem Cliente
+
+        #region Buscar Lista de Cliente
+
+        public List<string> BuscarListaCliente()
+
+        {
+            try
+            {
+                List<string> ListaCliente = new List<string>();
+
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select distinct cc_nome_cliente from tb_CadastroClientes";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        ListaCliente.Add(dr.GetString(0));
+                    }
+
+                    return ListaCliente;
+                }
+            }
+            catch (Exception ex)
+            {
+                return new List<string>();
+
+                Erro.ErroAoBuscarListaClienteNoBanco(ex);
+            }
+        }
+
+        #endregion Buscar Lista de Cliente
 
         #endregion Buscar Cliente
 

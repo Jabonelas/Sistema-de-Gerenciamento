@@ -58,7 +58,7 @@ namespace Sistema_de_Gerenciamento
             }
             else if (txtNome.Text != string.Empty)
             {
-                bool isCadastroExiste = Buscar.BuscarCadastroClienteNome(txtNome.Text, gdvPesquisarCliente);
+                bool isCadastroExiste = Buscar.BuscarCadastroClientePorNome(txtNome.Text, gdvPesquisarCliente);
 
                 if (isCadastroExiste == false)
                 {
