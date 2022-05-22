@@ -141,6 +141,12 @@
     <Compile Include="Forms\Aviso.Designer.cs">
       <DependentUpon>Aviso.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Compras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Compras.Designer.cs">
+      <DependentUpon>Compras.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -467,6 +473,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\add_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new_copy_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salvo1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_delete_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ticket_50px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

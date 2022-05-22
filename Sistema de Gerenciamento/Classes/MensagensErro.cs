@@ -132,6 +132,15 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Cadastro Despesa
 
+        #region Estoque Produto
+
+        public void ErroAoBuscarEstoqueProduto(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EP01) Erro ao Buscar Estoque Produto \n\nErro: {_e}", "Erro Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Estoque Produto
+
         #region Inserir No Banco
 
         #region Cliente
@@ -486,6 +495,15 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Usuairo
+
+        #region Estoque Produto
+
+        public void ErroAoBuscarEstoqueProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EP01) Erro ao Realizar Busca do Estoque Produto \n\nErro: {_e}", "Erro Busca Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Estoque Produto
 
         #endregion Buscar No Banco
 

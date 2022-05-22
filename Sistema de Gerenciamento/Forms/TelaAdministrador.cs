@@ -15,6 +15,11 @@ namespace Sistema_de_Gerenciamento
     {
         private Login login;
 
+        public TelaAdministrador()
+        {
+            InitializeComponent();
+        }
+
         public TelaAdministrador(Login _login)
         {
             InitializeComponent();
@@ -99,6 +104,12 @@ namespace Sistema_de_Gerenciamento
 
         private void TelaAdministrador_Load(object sender, EventArgs e)
         {
+        }
+
+        private void btnVendaConsole_Click(object sender, EventArgs e)
+        {
+            Venda venda = new Venda();
+            venda.ShowDialog();
         }
 
         private void tabCadastro_Click(object sender, EventArgs e)

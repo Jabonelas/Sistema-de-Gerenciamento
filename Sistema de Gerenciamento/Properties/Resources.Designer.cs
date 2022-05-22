@@ -233,6 +233,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap delete1 {
+            get {
+                object obj = ResourceManager.GetObject("delete1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap descricao_do_produto {
             get {
                 object obj = ResourceManager.GetObject("descricao-do-produto", resourceCulture);
@@ -333,6 +343,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap file_delete_50px {
+            get {
+                object obj = ResourceManager.GetObject("file_delete_50px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fornecedor {
             get {
                 object obj = ResourceManager.GetObject("fornecedor", resourceCulture);
@@ -406,6 +426,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         internal static System.Drawing.Bitmap moeda_de_dinheiro {
             get {
                 object obj = ResourceManager.GetObject("moeda-de-dinheiro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap new_copy_50px {
+            get {
+                object obj = ResourceManager.GetObject("new_copy_50px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -533,6 +563,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Salvo1 {
+            get {
+                object obj = ResourceManager.GetObject("Salvo1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap servico {
             get {
                 object obj = ResourceManager.GetObject("servico", resourceCulture);
@@ -546,6 +586,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         internal static System.Drawing.Bitmap servico1 {
             get {
                 object obj = ResourceManager.GetObject("servico1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ticket_50px {
+            get {
+                object obj = ResourceManager.GetObject("ticket_50px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -3068,6 +3068,7 @@
             this.btnVendaConsole.TextMarginLeft = 0;
             this.btnVendaConsole.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnVendaConsole.UseDefaultRadiusAndThickness = true;
+            this.btnVendaConsole.Click += new System.EventHandler(this.btnVendaConsole_Click);
             // 
             // TelaAdministrador
             // 
