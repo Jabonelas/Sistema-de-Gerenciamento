@@ -103,27 +103,26 @@ namespace Sistema_de_Gerenciamento
                 {
                     if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == false)
                     {
-                        Salvar.InserirImagemNoCadastroProduto(pcbProduto.Image);
+                        lblCodigo.Text = (Salvar.InserirImagemNoCadastroProduto(pcbProduto.Image)).ToString();
 
-                        Salvar.InserirCadastroProduto(txtDescricao.Text,
-                        cmbUn.Text,
-                        Convert.ToDecimal(txtValorDeCusto.Text.Replace("R$ ", string.Empty)),
-                        Convert.ToDecimal(txtPorcentagem.Text.Replace(" %", string.Empty)),
-                        Convert.ToDecimal(txtValorVenda.Text.Replace("R$ ", string.Empty)),
-                        Convert.ToDecimal(txtLucro.Text.Replace("R$ ", string.Empty)),
-                        Convert.ToDecimal(txtPrecoAtacado.Text.Replace("R$ ", string.Empty)),
-                        cmbGrupo.Text,
-                        cmbSubGrupo.Text,
-                        cmbFornecedor.Text,
-                        Convert.ToDecimal(txtEstoqueMinimo.Text),
-                        txtGarantia.Text,
-                        txtMarca.Text,
-                        txtReferencia.Text,
-                        Convert.ToDateTime(txtValidade.Text),
-                        Convert.ToDecimal(txtComissao.Text.Replace(" %", string.Empty)),
-                        txtObservacoes.Text);
-
-                        txtCodigo.Text = Buscar.BuscarCodigoProduto(txtDescricao.Text).ToString();
+                        txtCodigo.Text = (Salvar.InserirCadastroProduto(txtDescricao.Text,
+                            cmbUn.Text,
+                            Convert.ToDecimal(txtValorDeCusto.Text.Replace("R$ ", string.Empty)),
+                            Convert.ToDecimal(txtPorcentagem.Text.Replace(" %", string.Empty)),
+                            Convert.ToDecimal(txtValorVenda.Text.Replace("R$ ", string.Empty)),
+                            Convert.ToDecimal(txtLucro.Text.Replace("R$ ", string.Empty)),
+                            Convert.ToDecimal(txtPrecoAtacado.Text.Replace("R$ ", string.Empty)),
+                            cmbGrupo.Text,
+                            cmbSubGrupo.Text,
+                            cmbFornecedor.Text,
+                            Convert.ToDecimal(txtEstoqueMinimo.Text),
+                            txtGarantia.Text,
+                            txtMarca.Text,
+                            txtReferencia.Text,
+                            Convert.ToDateTime(txtValidade.Text),
+                            Convert.ToDecimal(txtComissao.Text.Replace(" %", string.Empty)),
+                            txtObservacoes.Text,
+                            Convert.ToInt32(lblCodigo.Text))).ToString();
 
                         //Chamar o forms de alerta de inclusao com sucesso
                         Global.tipoDoAlerta = "Inclusao";
@@ -525,7 +524,5 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion TextBox Estoque Minimo
-
-        
     }
 }

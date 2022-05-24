@@ -17,7 +17,7 @@ namespace Sistema_de_Gerenciamento
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TelaAdministrador());
+            Application.Run(new Venda());
         }
     }
 }

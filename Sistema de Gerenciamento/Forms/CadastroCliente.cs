@@ -63,36 +63,37 @@ namespace Sistema_de_Gerenciamento
                 {
                     if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == false)
                     {
-                        Salvar.InserirImagemNoCadastroCliente(pcbCliente.Image);
+                        lblCodigoCliente.Text = (Salvar.InserirImagemNoCadastroCliente(pcbCliente.Image)).ToString();
 
-                        Salvar.InserirCadastroCliente(
-                       Convert.ToDateTime(txtDataCadastro.Text),
-                       txtNome.Text,
-                       cmbTipo.Text,
-                       txtCPF_CNPJ.Text,
-                       txtRG.Text,
-                       cmbEmissor.Text,
-                       txtDataEmissao.Text,
-                       cmbIns_Est.Text,
-                       txtCEP.Text,
-                       txtEndereco.Text,
-                       Convert.ToInt32(txtNumero.Text),
-                       txtComplemento.Text,
-                       txtBairro.Text,
-                       txtCidade.Text,
-                       cmbUF.Text,
-                       txtNaturalidade.Text,
-                       txtDataNascimento.Text,
-                       cmbEstadoCivil.Text,
-                       Convert.ToDecimal(txtCredito.Text.Replace("R$ ", string.Empty)),
-                       Convert.ToDecimal(txtSaldo.Text.Replace("R$ ", string.Empty)),
-                       cmbBloqueio.Text,
-                       txtCelular.Text,
-                       txtTel_Residencial.Text,
-                       txtEmail.Text,
-                       txtObservacoes.Text);
+                        txtCodigo.Text = ((Salvar.InserirCadastroCliente(
+                            Convert.ToDateTime(txtDataCadastro.Text),
+                            txtNome.Text,
+                            cmbTipo.Text,
+                            txtCPF_CNPJ.Text,
+                            txtRG.Text,
+                            cmbEmissor.Text,
+                            txtDataEmissao.Text,
+                            cmbIns_Est.Text,
+                            txtCEP.Text,
+                            txtEndereco.Text,
+                            Convert.ToInt32(txtNumero.Text),
+                            txtComplemento.Text,
+                            txtBairro.Text,
+                            txtCidade.Text,
+                            cmbUF.Text,
+                            txtNaturalidade.Text,
+                            txtDataNascimento.Text,
+                            cmbEstadoCivil.Text,
+                            Convert.ToDecimal(txtCredito.Text.Replace("R$ ", string.Empty)),
+                            Convert.ToDecimal(txtSaldo.Text.Replace("R$ ", string.Empty)),
+                            cmbBloqueio.Text,
+                            txtCelular.Text,
+                            txtTel_Residencial.Text,
+                            txtEmail.Text,
+                            txtObservacoes.Text,
+                            Convert.ToInt32(lblCodigoCliente.Text))).ToString());
 
-                        txtCodigo.Text = Buscar.BuscarCodigoCliente(txtCPF_CNPJ.Text).ToString();
+                        //Convert.ToInt32(lblCodigoCliente.Text)).ToString());
 
                         //Chamar o forms de alerta de inclusao com sucesso
                         Global.tipoDoAlerta = "Inclusao";

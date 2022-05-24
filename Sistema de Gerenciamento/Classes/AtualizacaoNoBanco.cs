@@ -456,5 +456,114 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Atualizar Despesa
+
+        #region Atualizar Estoque Produto
+
+        #region Atualizar Estoque Produto Quantidade e Data Entrada
+
+        public void AtualizarQuantidadeEDataEntradaEstoqueProduto(int _quantidade, int _numeroNF)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_EstoqueProduto set ep_quantidade = @quantidade, " +
+                                   "ep_data_entrada = GETDATE() where ep_nf_entrada = @ne_numero_nf";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@quantidade", SqlDbType.Int).Value = _quantidade;
+                    adapter.SelectCommand.Parameters.AddWithValue("@ne_numero_nf", SqlDbType.VarChar).Value = _numeroNF;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarQuantidadeEstoqueProdutoNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Estoque Produto Quantidade e Data Entrada
+
+        #region Atualizar Estoque Produto Quando a Nota Fiscal De Entrada É Cancelada
+
+        public void AtualizarQuantidadeCanceladaEstoqueProduto(int _numeroNF)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_EstoqueProduto set ep_quantidade = 0 " +
+                                   "where ep_nf_entrada = @ep_numero_nf";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@ep_numero_nf", SqlDbType.VarChar).Value = _numeroNF;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarQuantidadeEstoqueProdutoNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Estoque Produto Quando a Nota Fiscal De Entrada É Cancelada
+
+        #endregion Atualizar Estoque Produto
+
+        #region Atualizar Nota Fiscal Entrada
+
+        #region Atualizar Data Lancamento Nota Fiscal Entrada
+
+        public void AtualizarDataLancamentoNotaFiscalEntrada(int _numeroNF)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_NotaFiscalEntrada set ne_data_lancamento = GETDATE() " +
+                                   "where ne_numero_nf = @ne_numero_nf";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@ne_numero_nf", SqlDbType.VarChar).Value = _numeroNF;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarDataLancamentoNotaFiscalEntradaNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Data Lancamento Nota Fiscal Entrada
+
+        #region Atualizar Data Lancamento Nota Fiscal Entrada Quando Cancelada
+
+        public void AtualizarDataLancamentoNotaFiscalEntradaQuandoCancelada(int _numeroNF)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_NotaFiscalEntrada set ne_data_lancamento = '' " +
+                                   "where ne_numero_nf = @ne_numero_nf";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@ne_numero_nf", SqlDbType.VarChar).Value = _numeroNF;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarDataLancamentoNotaFiscalEntradaQuandoCanceladaNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Data Lancamento Nota Fiscal Entrada Quando Cancelada
+
+        #endregion Atualizar Nota Fiscal Entrada
     }
 }

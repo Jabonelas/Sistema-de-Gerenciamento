@@ -89,7 +89,19 @@ namespace Sistema_de_Gerenciamento.Forms
 
         #region TextBox Codigo de Barras
 
-        private void txtCodBarras_Leave(object sender, EventArgs e)
+      
+
+        private void txtCodBarras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        #endregion TextBox Codigo de Barras
+
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -103,7 +115,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     txtQuantidade.Text = Buscar.BuscarEstoqueProdutoQuantidadeProdutoPorCodigoDeBarras(Convert.ToInt32(txtCodBarras.Text)).ToString();
 
-                    txtPrecoVenda.Text = Buscar.BuscarEstoqueProdutoPrecoProdutoPorCodigoDeBarras(Convert.ToInt32(txtCodBarras)).ToString();
+                    txtPrecoVenda.Text = ("R$ " + Buscar.BuscarEstoqueProdutoPrecoProdutoPorCodigoDeBarras(Convert.ToInt32(txtCodBarras.Text)).ToString("N2"));
 
                     //txtPrecoVenda.Text = (Convert.ToDecimal(txtQuantidade.Text) * Buscar.BuscarEstoqueProdutoPrecoProdutoPorCodigoDeBarras(Convert.ToInt32(txtCodBarras))).ToString();
                 }
@@ -113,15 +125,5 @@ namespace Sistema_de_Gerenciamento.Forms
                 Erro.ErroAoBuscarEstoqueProduto(ex);
             }
         }
-
-        private void txtCodBarras_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
-        }
-
-        #endregion TextBox Codigo de Barras
     }
 }

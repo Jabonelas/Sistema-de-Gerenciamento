@@ -135,5 +135,23 @@ namespace Sistema_de_Gerenciamento
                 tabControl.Visible = false;
             }
         }
+
+        private void btnComprasConsole_Click(object sender, EventArgs e)
+        {
+            Compras compras = new Compras();
+            compras.ShowDialog();
+        }
+
+        private void btnVendaMovimentacao_Click(object sender, EventArgs e)
+        {
+            Venda venda = new Venda();
+            venda.ShowDialog();
+        }
+
+        private void btnComprasMovimentacao_Click(object sender, EventArgs e)
+        {
+            Compras compras = new Compras();
+            compras.ShowDialog();
+        }
     }
 }

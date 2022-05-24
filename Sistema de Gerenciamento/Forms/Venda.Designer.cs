@@ -121,6 +121,10 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties74 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties75 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties76 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.chbVenda = new System.Windows.Forms.CheckedListBox();
             this.chbOrcamento = new System.Windows.Forms.CheckedListBox();
@@ -139,33 +143,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.gdvVenda = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.cc_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomeCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPF_CNPJ = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Emissor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataEmissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ins_Est = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CEP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Endereco = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Complemento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bairro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Naturalidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DatasNasc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EstadoCivil = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Credito = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Saldo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Bloqueio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tel_Residencial = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.E_mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Observacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fk_imagem_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -218,9 +195,21 @@
             this.txtQuantidade = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.txtCodProduto = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.bunifuDataGridView2 = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.ep_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_nf_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_codigo_barras = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_codigo_produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_unidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_valor_unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_data_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnBuscar = new Guna.UI.WinForms.GunaButton();
             ((System.ComponentModel.ISupportInitialize)(this.gdvVenda)).BeginInit();
             this.bunifuGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuDataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuDataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -353,7 +342,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(530, 153);
+            this.label6.Location = new System.Drawing.Point(547, 153);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 15);
             this.label6.TabIndex = 171;
@@ -373,7 +362,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(281, 153);
+            this.label8.Location = new System.Drawing.Point(306, 153);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 15);
             this.label8.TabIndex = 175;
@@ -383,7 +372,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(628, 153);
+            this.label9.Location = new System.Drawing.Point(637, 153);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 15);
             this.label9.TabIndex = 176;
@@ -421,33 +410,15 @@
             this.gdvVenda.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gdvVenda.ColumnHeadersHeight = 40;
             this.gdvVenda.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cc_id,
-            this.DataCadastro,
-            this.NomeCliente,
-            this.Tipo,
-            this.CPF_CNPJ,
-            this.RG,
-            this.Emissor,
-            this.DataEmissao,
-            this.Ins_Est,
-            this.CEP,
-            this.Endereco,
-            this.Numero,
-            this.Complemento,
-            this.Bairro,
-            this.Cidade,
-            this.UF,
-            this.Naturalidade,
-            this.DatasNasc,
-            this.EstadoCivil,
-            this.Credito,
-            this.Saldo,
-            this.Bloqueio,
-            this.Celular,
-            this.Tel_Residencial,
-            this.E_mail,
-            this.Observacoes,
-            this.fk_imagem_id});
+            this.ep_id,
+            this.ep_nf_entrada,
+            this.ep_codigo_barras,
+            this.ep_codigo_produto,
+            this.ep_descricao,
+            this.ep_quantidade,
+            this.ep_unidade,
+            this.ep_valor_unitario,
+            this.ep_data_entrada});
             this.gdvVenda.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.gdvVenda.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.gdvVenda.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -479,7 +450,7 @@
             this.gdvVenda.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.gdvVenda.HeaderBgColor = System.Drawing.Color.Empty;
             this.gdvVenda.HeaderForeColor = System.Drawing.Color.White;
-            this.gdvVenda.Location = new System.Drawing.Point(12, 214);
+            this.gdvVenda.Location = new System.Drawing.Point(12, 205);
             this.gdvVenda.Name = "gdvVenda";
             this.gdvVenda.ReadOnly = true;
             this.gdvVenda.RowHeadersVisible = false;
@@ -489,222 +460,9 @@
             this.gdvVenda.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.gdvVenda.RowTemplate.Height = 40;
             this.gdvVenda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvVenda.Size = new System.Drawing.Size(923, 205);
+            this.gdvVenda.Size = new System.Drawing.Size(923, 214);
             this.gdvVenda.TabIndex = 180;
             this.gdvVenda.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            // 
-            // cc_id
-            // 
-            this.cc_id.DataPropertyName = "cc_id";
-            this.cc_id.HeaderText = "Codigo ";
-            this.cc_id.Name = "cc_id";
-            this.cc_id.ReadOnly = true;
-            // 
-            // DataCadastro
-            // 
-            this.DataCadastro.DataPropertyName = "cc_data_cadastro";
-            this.DataCadastro.HeaderText = "DataCadastro";
-            this.DataCadastro.Name = "DataCadastro";
-            this.DataCadastro.ReadOnly = true;
-            this.DataCadastro.Visible = false;
-            // 
-            // NomeCliente
-            // 
-            this.NomeCliente.DataPropertyName = "cc_nome_cliente";
-            this.NomeCliente.HeaderText = "Nome";
-            this.NomeCliente.Name = "NomeCliente";
-            this.NomeCliente.ReadOnly = true;
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "cc_tipo";
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
-            // 
-            // CPF_CNPJ
-            // 
-            this.CPF_CNPJ.DataPropertyName = "cc_cpf_cnpj";
-            this.CPF_CNPJ.FillWeight = 82.36105F;
-            this.CPF_CNPJ.HeaderText = "CPF / CNPJ";
-            this.CPF_CNPJ.Name = "CPF_CNPJ";
-            this.CPF_CNPJ.ReadOnly = true;
-            // 
-            // RG
-            // 
-            this.RG.DataPropertyName = "cc_rg";
-            this.RG.FillWeight = 73.62543F;
-            this.RG.HeaderText = "RG";
-            this.RG.Name = "RG";
-            this.RG.ReadOnly = true;
-            // 
-            // Emissor
-            // 
-            this.Emissor.DataPropertyName = "cc_emissor";
-            this.Emissor.HeaderText = "Emissor";
-            this.Emissor.Name = "Emissor";
-            this.Emissor.ReadOnly = true;
-            this.Emissor.Visible = false;
-            // 
-            // DataEmissao
-            // 
-            this.DataEmissao.DataPropertyName = "cc_data_emissao";
-            this.DataEmissao.HeaderText = "Data Emissao";
-            this.DataEmissao.Name = "DataEmissao";
-            this.DataEmissao.ReadOnly = true;
-            this.DataEmissao.Visible = false;
-            // 
-            // Ins_Est
-            // 
-            this.Ins_Est.DataPropertyName = "cc_ins_est";
-            this.Ins_Est.HeaderText = "Ins Est";
-            this.Ins_Est.Name = "Ins_Est";
-            this.Ins_Est.ReadOnly = true;
-            this.Ins_Est.Visible = false;
-            // 
-            // CEP
-            // 
-            this.CEP.DataPropertyName = "cc_cep";
-            this.CEP.HeaderText = "CEP";
-            this.CEP.Name = "CEP";
-            this.CEP.ReadOnly = true;
-            this.CEP.Visible = false;
-            // 
-            // Endereco
-            // 
-            this.Endereco.DataPropertyName = "cc_endereco";
-            this.Endereco.HeaderText = "Endereco";
-            this.Endereco.Name = "Endereco";
-            this.Endereco.ReadOnly = true;
-            this.Endereco.Visible = false;
-            // 
-            // Numero
-            // 
-            this.Numero.DataPropertyName = "cc_numero";
-            this.Numero.HeaderText = "Numero";
-            this.Numero.Name = "Numero";
-            this.Numero.ReadOnly = true;
-            this.Numero.Visible = false;
-            // 
-            // Complemento
-            // 
-            this.Complemento.DataPropertyName = "cc_complemento";
-            this.Complemento.HeaderText = "Complemento";
-            this.Complemento.Name = "Complemento";
-            this.Complemento.ReadOnly = true;
-            this.Complemento.Visible = false;
-            // 
-            // Bairro
-            // 
-            this.Bairro.DataPropertyName = "cc_bairro";
-            this.Bairro.HeaderText = "Bairro";
-            this.Bairro.Name = "Bairro";
-            this.Bairro.ReadOnly = true;
-            this.Bairro.Visible = false;
-            // 
-            // Cidade
-            // 
-            this.Cidade.DataPropertyName = "cc_cidade";
-            this.Cidade.HeaderText = "Cidade";
-            this.Cidade.Name = "Cidade";
-            this.Cidade.ReadOnly = true;
-            this.Cidade.Visible = false;
-            // 
-            // UF
-            // 
-            this.UF.DataPropertyName = "cc_uf";
-            this.UF.HeaderText = "UF";
-            this.UF.Name = "UF";
-            this.UF.ReadOnly = true;
-            this.UF.Visible = false;
-            // 
-            // Naturalidade
-            // 
-            this.Naturalidade.DataPropertyName = "cc_naturalidade";
-            this.Naturalidade.HeaderText = "Naturalidade";
-            this.Naturalidade.Name = "Naturalidade";
-            this.Naturalidade.ReadOnly = true;
-            this.Naturalidade.Visible = false;
-            // 
-            // DatasNasc
-            // 
-            this.DatasNasc.DataPropertyName = "cc_data_nasc";
-            this.DatasNasc.HeaderText = "Data Nasc";
-            this.DatasNasc.Name = "DatasNasc";
-            this.DatasNasc.ReadOnly = true;
-            this.DatasNasc.Visible = false;
-            // 
-            // EstadoCivil
-            // 
-            this.EstadoCivil.DataPropertyName = "cc_estado_civil";
-            this.EstadoCivil.HeaderText = "Estado Civil";
-            this.EstadoCivil.Name = "EstadoCivil";
-            this.EstadoCivil.ReadOnly = true;
-            this.EstadoCivil.Visible = false;
-            // 
-            // Credito
-            // 
-            this.Credito.DataPropertyName = "cc_credito";
-            this.Credito.HeaderText = "Credito";
-            this.Credito.Name = "Credito";
-            this.Credito.ReadOnly = true;
-            this.Credito.Visible = false;
-            // 
-            // Saldo
-            // 
-            this.Saldo.DataPropertyName = "cc_saldo";
-            this.Saldo.HeaderText = "Saldo";
-            this.Saldo.Name = "Saldo";
-            this.Saldo.ReadOnly = true;
-            this.Saldo.Visible = false;
-            // 
-            // Bloqueio
-            // 
-            this.Bloqueio.DataPropertyName = "cc_bloqueio";
-            this.Bloqueio.HeaderText = "Bloqueio";
-            this.Bloqueio.Name = "Bloqueio";
-            this.Bloqueio.ReadOnly = true;
-            this.Bloqueio.Visible = false;
-            // 
-            // Celular
-            // 
-            this.Celular.DataPropertyName = "cc_celular";
-            this.Celular.FillWeight = 63.90272F;
-            this.Celular.HeaderText = "Celular";
-            this.Celular.Name = "Celular";
-            this.Celular.ReadOnly = true;
-            // 
-            // Tel_Residencial
-            // 
-            this.Tel_Residencial.DataPropertyName = "cc_tel_residencial";
-            this.Tel_Residencial.HeaderText = "Tel. Residencial";
-            this.Tel_Residencial.Name = "Tel_Residencial";
-            this.Tel_Residencial.ReadOnly = true;
-            this.Tel_Residencial.Visible = false;
-            // 
-            // E_mail
-            // 
-            this.E_mail.DataPropertyName = "cc_email";
-            this.E_mail.FillWeight = 159.6714F;
-            this.E_mail.HeaderText = "E-mail";
-            this.E_mail.Name = "E_mail";
-            this.E_mail.ReadOnly = true;
-            // 
-            // Observacoes
-            // 
-            this.Observacoes.DataPropertyName = "cc_observacoes";
-            this.Observacoes.HeaderText = "Observacoes";
-            this.Observacoes.Name = "Observacoes";
-            this.Observacoes.ReadOnly = true;
-            this.Observacoes.Visible = false;
-            // 
-            // fk_imagem_id
-            // 
-            this.fk_imagem_id.DataPropertyName = "fk_imagem_id";
-            this.fk_imagem_id.HeaderText = "Imagem_id";
-            this.fk_imagem_id.Name = "fk_imagem_id";
-            this.fk_imagem_id.ReadOnly = true;
-            this.fk_imagem_id.Visible = false;
             // 
             // label11
             // 
@@ -1233,7 +991,7 @@
             this.bunifuDataGridView1.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.bunifuDataGridView1.HeaderBgColor = System.Drawing.Color.Empty;
             this.bunifuDataGridView1.HeaderForeColor = System.Drawing.Color.White;
-            this.bunifuDataGridView1.Location = new System.Drawing.Point(9, 80);
+            this.bunifuDataGridView1.Location = new System.Drawing.Point(8, 81);
             this.bunifuDataGridView1.Name = "bunifuDataGridView1";
             this.bunifuDataGridView1.ReadOnly = true;
             this.bunifuDataGridView1.RowHeadersVisible = false;
@@ -1243,7 +1001,7 @@
             this.bunifuDataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.bunifuDataGridView1.RowTemplate.Height = 40;
             this.bunifuDataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.bunifuDataGridView1.Size = new System.Drawing.Size(474, 88);
+            this.bunifuDataGridView1.Size = new System.Drawing.Size(473, 88);
             this.bunifuDataGridView1.TabIndex = 218;
             this.bunifuDataGridView1.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             // 
@@ -2205,7 +1963,7 @@
             this.txtUnidade.IconRight = null;
             this.txtUnidade.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUnidade.Lines = new string[0];
-            this.txtUnidade.Location = new System.Drawing.Point(631, 171);
+            this.txtUnidade.Location = new System.Drawing.Point(640, 171);
             this.txtUnidade.MaxLength = 100;
             this.txtUnidade.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtUnidade.Modified = false;
@@ -2355,7 +2113,7 @@
             this.txtProduto.IconRight = null;
             this.txtProduto.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtProduto.Lines = new string[0];
-            this.txtProduto.Location = new System.Drawing.Point(284, 171);
+            this.txtProduto.Location = new System.Drawing.Point(309, 171);
             this.txtProduto.MaxLength = 100;
             this.txtProduto.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtProduto.Modified = false;
@@ -2476,7 +2234,6 @@
             this.txtCodBarras.UseSystemPasswordChar = false;
             this.txtCodBarras.WordWrap = true;
             this.txtCodBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodBarras_KeyPress);
-            this.txtCodBarras.Leave += new System.EventHandler(this.txtCodBarras_Leave);
             // 
             // bunifuSeparator2
             // 
@@ -3062,7 +2819,7 @@
             this.txtQuantidade.IconRight = null;
             this.txtQuantidade.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtQuantidade.Lines = new string[0];
-            this.txtQuantidade.Location = new System.Drawing.Point(533, 171);
+            this.txtQuantidade.Location = new System.Drawing.Point(550, 171);
             this.txtQuantidade.MaxLength = 100;
             this.txtQuantidade.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtQuantidade.Modified = false;
@@ -3113,7 +2870,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.Location = new System.Drawing.Point(147, 153);
+            this.label30.Location = new System.Drawing.Point(177, 153);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(79, 15);
             this.label30.TabIndex = 227;
@@ -3147,7 +2904,7 @@
             this.txtCodProduto.IconRight = null;
             this.txtCodProduto.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCodProduto.Lines = new string[0];
-            this.txtCodProduto.Location = new System.Drawing.Point(148, 171);
+            this.txtCodProduto.Location = new System.Drawing.Point(180, 171);
             this.txtCodProduto.MaxLength = 100;
             this.txtCodProduto.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtCodProduto.Modified = false;
@@ -3194,11 +2951,171 @@
             this.txtCodProduto.UseSystemPasswordChar = false;
             this.txtCodProduto.WordWrap = true;
             // 
+            // bunifuDataGridView2
+            // 
+            this.bunifuDataGridView2.AllowCustomTheming = false;
+            this.bunifuDataGridView2.AllowUserToAddRows = false;
+            this.bunifuDataGridView2.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            this.bunifuDataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            this.bunifuDataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.bunifuDataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.bunifuDataGridView2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.bunifuDataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.bunifuDataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            this.bunifuDataGridView2.ColumnHeadersHeight = 40;
+            this.bunifuDataGridView2.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            this.bunifuDataGridView2.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.bunifuDataGridView2.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.bunifuDataGridView2.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.bunifuDataGridView2.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.bunifuDataGridView2.CurrentTheme.BackColor = System.Drawing.Color.White;
+            this.bunifuDataGridView2.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.bunifuDataGridView2.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            this.bunifuDataGridView2.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            this.bunifuDataGridView2.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.bunifuDataGridView2.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.bunifuDataGridView2.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.bunifuDataGridView2.CurrentTheme.Name = null;
+            this.bunifuDataGridView2.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.bunifuDataGridView2.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.bunifuDataGridView2.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.bunifuDataGridView2.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.bunifuDataGridView2.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.bunifuDataGridView2.DefaultCellStyle = dataGridViewCellStyle11;
+            this.bunifuDataGridView2.EnableHeadersVisualStyles = false;
+            this.bunifuDataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.bunifuDataGridView2.HeaderBackColor = System.Drawing.Color.DodgerBlue;
+            this.bunifuDataGridView2.HeaderBgColor = System.Drawing.Color.Empty;
+            this.bunifuDataGridView2.HeaderForeColor = System.Drawing.Color.White;
+            this.bunifuDataGridView2.Location = new System.Drawing.Point(475, 12);
+            this.bunifuDataGridView2.Name = "bunifuDataGridView2";
+            this.bunifuDataGridView2.ReadOnly = true;
+            this.bunifuDataGridView2.RowHeadersVisible = false;
+            this.bunifuDataGridView2.RowHeadersWidth = 50;
+            this.bunifuDataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bunifuDataGridView2.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            this.bunifuDataGridView2.RowTemplate.Height = 40;
+            this.bunifuDataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.bunifuDataGridView2.Size = new System.Drawing.Size(366, 79);
+            this.bunifuDataGridView2.TabIndex = 229;
+            this.bunifuDataGridView2.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            this.bunifuDataGridView2.Visible = false;
+            // 
+            // ep_id
+            // 
+            this.ep_id.DataPropertyName = "ep_id";
+            this.ep_id.HeaderText = "ep_id";
+            this.ep_id.Name = "ep_id";
+            this.ep_id.ReadOnly = true;
+            this.ep_id.Visible = false;
+            // 
+            // ep_nf_entrada
+            // 
+            this.ep_nf_entrada.DataPropertyName = "ep_nf_entrada";
+            this.ep_nf_entrada.HeaderText = "ep_nf_entrada";
+            this.ep_nf_entrada.Name = "ep_nf_entrada";
+            this.ep_nf_entrada.ReadOnly = true;
+            this.ep_nf_entrada.Visible = false;
+            // 
+            // ep_codigo_barras
+            // 
+            this.ep_codigo_barras.DataPropertyName = "ep_codigo_barras";
+            this.ep_codigo_barras.HeaderText = "ep_codigo_barras";
+            this.ep_codigo_barras.Name = "ep_codigo_barras";
+            this.ep_codigo_barras.ReadOnly = true;
+            this.ep_codigo_barras.Visible = false;
+            // 
+            // ep_codigo_produto
+            // 
+            this.ep_codigo_produto.DataPropertyName = "ep_codigo_produto";
+            this.ep_codigo_produto.HeaderText = "Codigo Produto";
+            this.ep_codigo_produto.Name = "ep_codigo_produto";
+            this.ep_codigo_produto.ReadOnly = true;
+            // 
+            // ep_descricao
+            // 
+            this.ep_descricao.DataPropertyName = "ep_descricao";
+            this.ep_descricao.HeaderText = "Descrição Produto";
+            this.ep_descricao.Name = "ep_descricao";
+            this.ep_descricao.ReadOnly = true;
+            // 
+            // ep_quantidade
+            // 
+            this.ep_quantidade.DataPropertyName = "ep_quantidade";
+            this.ep_quantidade.HeaderText = "Quantidade";
+            this.ep_quantidade.Name = "ep_quantidade";
+            this.ep_quantidade.ReadOnly = true;
+            // 
+            // ep_unidade
+            // 
+            this.ep_unidade.DataPropertyName = "ep_unidade";
+            this.ep_unidade.HeaderText = "UN";
+            this.ep_unidade.Name = "ep_unidade";
+            this.ep_unidade.ReadOnly = true;
+            // 
+            // ep_valor_unitario
+            // 
+            this.ep_valor_unitario.DataPropertyName = "ep_valor_unitario";
+            this.ep_valor_unitario.HeaderText = "R$ Unitario";
+            this.ep_valor_unitario.Name = "ep_valor_unitario";
+            this.ep_valor_unitario.ReadOnly = true;
+            // 
+            // ep_data_entrada
+            // 
+            this.ep_data_entrada.DataPropertyName = "ep_data_entrada";
+            this.ep_data_entrada.HeaderText = "ep_data_entrada";
+            this.ep_data_entrada.Name = "ep_data_entrada";
+            this.ep_data_entrada.ReadOnly = true;
+            this.ep_data_entrada.Visible = false;
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.AnimationHoverSpeed = 0.07F;
+            this.btnBuscar.AnimationSpeed = 0.03F;
+            this.btnBuscar.BaseColor = System.Drawing.Color.Transparent;
+            this.btnBuscar.BorderColor = System.Drawing.Color.Black;
+            this.btnBuscar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnBuscar.FocusedColor = System.Drawing.Color.Empty;
+            this.btnBuscar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnBuscar.ForeColor = System.Drawing.Color.White;
+            this.btnBuscar.Image = global::Sistema_de_Gerenciamento.Properties.Resources.procurar;
+            this.btnBuscar.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnBuscar.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnBuscar.Location = new System.Drawing.Point(143, 162);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.OnHoverBaseColor = System.Drawing.Color.DodgerBlue;
+            this.btnBuscar.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnBuscar.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnBuscar.OnHoverImage = null;
+            this.btnBuscar.OnPressedColor = System.Drawing.Color.Black;
+            this.btnBuscar.Size = new System.Drawing.Size(28, 37);
+            this.btnBuscar.TabIndex = 231;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // Venda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(951, 696);
+            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.bunifuDataGridView2);
             this.Controls.Add(this.txtCodProduto);
             this.Controls.Add(this.label30);
             this.Controls.Add(this.btnSair);
@@ -3267,6 +3184,7 @@
             this.bunifuGroupBox1.ResumeLayout(false);
             this.bunifuGroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuDataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuDataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3305,33 +3223,6 @@
         public Bunifu.UI.WinForms.BunifuTextBox txtPrecoVenda;
         public Bunifu.UI.WinForms.BunifuTextBox txtUnidade;
         private Bunifu.UI.WinForms.BunifuDataGridView gdvVenda;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cc_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataCadastro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NomeCliente;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CPF_CNPJ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RG;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Emissor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataEmissao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Ins_Est;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CEP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Endereco;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Complemento;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bairro;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UF;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Naturalidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DatasNasc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EstadoCivil;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Credito;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Saldo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Bloqueio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Celular;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tel_Residencial;
-        private System.Windows.Forms.DataGridViewTextBoxColumn E_mail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Observacoes;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fk_imagem_id;
         private Guna.UI.WinForms.GunaCircleButton btnAdcionar;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
@@ -3371,5 +3262,16 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnSair;
         private System.Windows.Forms.Label label30;
         public Bunifu.UI.WinForms.BunifuTextBox txtCodProduto;
+        private Bunifu.UI.WinForms.BunifuDataGridView bunifuDataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ep_id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ep_nf_entrada;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ep_codigo_barras;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ep_codigo_produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ep_descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ep_quantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ep_unidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ep_valor_unitario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ep_data_entrada;
+        private Guna.UI.WinForms.GunaButton btnBuscar;
     }
 }

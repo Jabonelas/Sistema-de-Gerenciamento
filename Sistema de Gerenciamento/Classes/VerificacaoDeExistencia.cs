@@ -245,5 +245,87 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Cadastro Despesas
+
+        #region Estoque Produto Verificar Se Já Foi Excluido
+
+        public bool VerificarSeEstoqueFoiConsumidoExcluir(int _numeroNF)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query =
+                        "select ep_quantidade " +
+                        "from tb_EstoqueProduto " +
+                        "where ep_quantidade <> 1 and ep_nf_entrada = @numeroNF";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoVerificarSeEstoqueFoiConsumidoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Estoque Produto Verificar Se Já Foi Excluido
+
+        #region Estoque Produto Verificar Se Já Foi Dado Entrada
+
+        public bool VerificarSeEstoqueFoiConsumidoSalvar(int _numeroNF)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query =
+                        "select ep_quantidade " +
+                        "from tb_EstoqueProduto " +
+                        "where ep_quantidade >= 1 and ep_nf_entrada = @numeroNF";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoVerificarSeEstoqueFoiConsumidoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Estoque Produto Verificar Se Já Foi Dado Entrada
     }
 }

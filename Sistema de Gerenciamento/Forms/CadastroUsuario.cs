@@ -52,6 +52,9 @@ namespace Sistema_de_Gerenciamento
                             txtUsuario.Text,
                             txtSenha.Text);
 
+                        txtUsuario.Text = string.Empty;
+                        txtSenha.Text = string.Empty;
+
                         //Chamar o forms de alerta de inclusao com sucesso
                         Global.tipoDoAlerta = "Inclusao";
 
@@ -119,11 +122,6 @@ namespace Sistema_de_Gerenciamento
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
             txtUsuario.CharacterCasing = CharacterCasing.Upper;
-
-            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)Keys.Space)
-            {
-                e.Handled = true;
-            }
         }
 
         #endregion TextBox Usuario

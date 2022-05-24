@@ -70,25 +70,24 @@ namespace Sistema_de_Gerenciamento
                 {
                     if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == false)
                     {
-                        Salvar.InserirCadastroForncedor(
-                        txtRazaoSocial.Text,
-                        Convert.ToDateTime(txtDataCadastro.Text),
-                        txtCNPJ.Text,
-                        txtNomeFantasia.Text,
-                        txtCEP.Text,
-                        txtEndereco.Text,
-                        txtComplemento.Text,
-                        Convert.ToInt32(txtNumero.Text),
-                        txtBairro.Text,
-                        txtCidade.Text,
-                        cmbUF.Text,
-                        txtTelefone.Text,
-                        txtEmail.Text,
-                        txtObservacoes.Text);
+                        lblForeignKey.Text = (Salvar.InserirImagemNoCadastroFornecedor(pcbFornecedor.Image)).ToString();
 
-                        Salvar.InserirImagemNoCadastroFornecedor(pcbFornecedor.Image);
-
-                        txtCodigo.Text = Buscar.BuscarCodigoFornecedor(txtCNPJ.Text).ToString();
+                        txtCodigo.Text = (Salvar.InserirCadastroForncedor(
+                            txtRazaoSocial.Text,
+                            Convert.ToDateTime(txtDataCadastro.Text),
+                            txtCNPJ.Text,
+                            txtNomeFantasia.Text,
+                            txtCEP.Text,
+                            txtEndereco.Text,
+                            txtComplemento.Text,
+                            Convert.ToInt32(txtNumero.Text),
+                            txtBairro.Text,
+                            txtCidade.Text,
+                            cmbUF.Text,
+                            txtTelefone.Text,
+                            txtEmail.Text,
+                            txtObservacoes.Text,
+                            Convert.ToInt32(lblForeignKey.Text))).ToString();
 
                         //Chamar o forms de alerta de inclusao com sucesso
                         Global.tipoDoAlerta = "Inclusao";

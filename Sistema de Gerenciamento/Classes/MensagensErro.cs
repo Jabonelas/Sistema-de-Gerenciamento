@@ -141,6 +141,15 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Estoque Produto
 
+        #region Nota Fiscal Entrada
+
+        public void ErroAoBuscarNotaFiscalEntrada(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EP01) Erro ao Buscar Estoque Produto \n\nErro: {_e}", "Erro Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Nota Fiscal Entrada
+
         #region Inserir No Banco
 
         #region Cliente
@@ -221,6 +230,15 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Despesa
 
+        #region Estoque Produto
+
+        public void ErroAoAdicionarEstoqueProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(INS-CP01) Erro ao Inserir Estoque de Produto \n\nErro: {_e}", "Erro Inserir Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Estoque Produto
+
         #endregion Inserir No Banco
 
         #region Atualizacao Do Banco
@@ -298,6 +316,29 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Despesa
+
+        #region Estoque Produto
+
+        public void ErroAoAtualizarQuantidadeEstoqueProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-EP01) Erro ao Atualizar Quantidade de Estoque! \n\nErro: {_e}", "Erro Atualizacao Quantidade Estoque!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Estoque Produto
+
+        #region Nota Fiscal Entrada
+
+        public void ErroAoAtualizarDataLancamentoNotaFiscalEntradaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-EP01) Erro ao Atualizar Data Lancamento Nota Fiscal! \n\nErro: {_e}", "Erro Atualizacao Data Lancamento Nota Fiscal!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAtualizarDataLancamentoNotaFiscalEntradaQuandoCanceladaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-EP02) Erro ao Atualizar Data Lancamento Nota Fiscal Cancelamento! \n\nErro: {_e}", "Erro Atualizacao Data Lancamento Nota Fiscal Cancelamento!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Nota Fiscal Entrada
 
         #endregion Atualizacao Do Banco
 
@@ -379,11 +420,6 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-CL02) Erro ao Realizar Busca de Imagem do Cliente \n\nErro: {_e}", "Erro Busca Imagem Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoBuscarCodigoClienteNoBanco(Exception _e)
-        {
-            MessageBox.Show($"(BUS-CL03) Erro ao Realizar Busca de Codigo do Cliente \n\nErro: {_e}", "Erro Busca Codigo Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
         public void ErroAoBuscarListaClienteNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-CL04) Erro ao Realizar Busca de Lista do Cliente \n\nErro: {_e}", "Erro Busca Lista Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -403,11 +439,6 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-FN02) Erro ao Realizar Busca de Imagem do Fornecedor \n\nErro: {_e}", "Erro Busca Imagem Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoBuscarCodigoFornecedorNoBanco(Exception _e)
-        {
-            MessageBox.Show($"(BUS-FN03) Erro ao Realizar Busca de Codigo do Fornecedor \n\nErro: {_e}", "Erro Busca Codigo Fornecedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
         public void ErroAoBuscarListaFornecedorNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-FN04) Erro ao Realizar Busca dos Fornecedores \n\nErro: {_e}", "Erro Busca Fornecedores!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -416,11 +447,6 @@ namespace Sistema_de_Gerenciamento
         #endregion Fornecedor
 
         #region Produto
-
-        public void ErroAoBuscarCodigoProdutoNoBanco(Exception _e)
-        {
-            MessageBox.Show($"(BUS-PR03) Erro ao Realizar Busca de Codigo de Barras do Produto \n\nErro: {_e}", "Erro Busca Codigo de Barras Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
 
         public void ErroAoBuscarGrupoProdutoNoBanco(Exception _e)
         {
@@ -505,6 +531,15 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Estoque Produto
 
+        #region Compras
+
+        public void ErroAoBuscarNotaFiscalEntradaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-NE01) Erro ao Realizar Busca de Nota Fiscal Entrada \n\nErro: {_e}", "Erro Busca Nota Fiscal Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Compras
+
         #endregion Buscar No Banco
 
         #region Verificar Existencia No Banco
@@ -540,10 +575,19 @@ namespace Sistema_de_Gerenciamento
 
         public void ErroAoVerificarExistenciaDeUsuarioNoBanco(Exception _e)
         {
-            MessageBox.Show($"(EXI-PR01) Erro ao Verificar Existencia de Usuario \n\nErro: {_e}", "Erro Verificar Existencia de Usuario!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(EXI-US01) Erro ao Verificar Existencia de Usuario \n\nErro: {_e}", "Erro Verificar Existencia de Usuario!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Usuario
+
+        #region Estoque Produto
+
+        public void ErroAoVerificarSeEstoqueFoiConsumidoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(EXI-EP01) Erro ao Verificar Se Estoque Foi Consumido \n\nErro: {_e}", "Erro Verificar Se Estoque Consumido!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Estoque Produto
 
         #endregion Verificar Existencia No Banco
 

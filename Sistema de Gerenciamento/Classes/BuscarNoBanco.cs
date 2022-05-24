@@ -20,34 +20,6 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Cliente
 
-        #region Buscar Codigo Cliente
-
-        public int BuscarCodigoCliente(string _cpf_cnpj)
-        {
-            try
-            {
-                using (SqlConnection conexaoSQL = AbrirConexao())
-                {
-                    string query = "select cc_id from tb_CadastroClientes where cc_cpf_cnpj = @cpf_cnpj ";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@cpf_cnpj", _cpf_cnpj);
-
-                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
-                    dr.Read();
-
-                    int x = dr.GetInt32(0);
-                    return x;
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoBuscarCodigoClienteNoBanco(ex);
-                return 0;
-            }
-        }
-
-        #endregion Buscar Codigo Cliente
-
         #region Buscar Cliente Por Codigo
 
         public bool BuscarCadastroClientePorCodigo(string _cc_id, BunifuDataGridView _tabela)
@@ -392,34 +364,6 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Fornecedor
 
-        #region Buscar Codigo Fornecedor
-
-        public int BuscarCodigoFornecedor(string _cnpj)
-        {
-            try
-            {
-                using (SqlConnection conexaoSQL = AbrirConexao())
-                {
-                    string query = "select cf_id from tb_CadastroFornecedor where cf_cnpj = @cnpj ";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@cnpj", _cnpj);
-
-                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
-                    dr.Read();
-
-                    int x = dr.GetInt32(0);
-                    return x;
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoBuscarCodigoFornecedorNoBanco(ex);
-                return 0;
-            }
-        }
-
-        #endregion Buscar Codigo Fornecedor
-
         #region Buscar Fornecedor Por Codigo
 
         public bool BuscarCadastroFornecedorPorCodigo(string _cf_id, BunifuDataGridView _tabela)
@@ -644,34 +588,6 @@ namespace Sistema_de_Gerenciamento.Classes
         #endregion Buscar Fornecedor
 
         #region Buscar Produto
-
-        #region Buscar Codigo Produto
-
-        public int BuscarCodigoProduto(string _descricao)
-        {
-            try
-            {
-                using (SqlConnection conexaoSQL = AbrirConexao())
-                {
-                    string query = "select cp_id from tb_CadastroProdutos where cp_descricao = @descricao";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@descricao", _descricao);
-
-                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
-                    dr.Read();
-
-                    int x = dr.GetInt32(0);
-                    return x;
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoBuscarCodigoProdutoNoBanco(ex);
-                return 0;
-            }
-        }
-
-        #endregion Buscar Codigo Produto
 
         #region Buscar Lista Grupo Produto Para ComboBox
 
@@ -1723,8 +1639,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
                     dr.Read();
 
-                    int x = dr.GetInt32(0);
-                    return x;
+                    decimal x = dr.GetDecimal(0);
+                    return Convert.ToInt32(x);
                 }
             }
             catch (Exception ex)
@@ -1745,7 +1661,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query =
-                        "select * from tb_EstoqueProduto where ep_codigo_barra = @codigoBarras ";
+                        "select * from tb_EstoqueProduto where ep_codigo_barras = @codigoBarras ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@codigoBarras", ep_codigo_barras);
@@ -1753,6 +1669,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     DataTable dataTable = new DataTable();
 
                     adapter.Fill(dataTable);
+
                     _tabela.DataSource = dataTable;
                     _tabela.Refresh();
 
@@ -1782,5 +1699,128 @@ namespace Sistema_de_Gerenciamento.Classes
         #endregion Buscar Estoque Produto
 
         #endregion Buscar Vendas
+
+        #region Buscar Compra
+
+        #region Buscar Nota Fiscal Entrada
+
+        public bool BuscarNotaFiscalEntrada(int _numeroNF, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query =
+                        "select ne_numero_nf," +
+                        "ne_cnpj," +
+                        "ne_razao_social," +
+                        "ne_codigo_produto," +
+                        "ne_descricao_produto," +
+                        "ne_quantidade," +
+                        "ne_unidade," +
+                        "ne_valor_unitario," +
+                        "ne_valor_total," +
+                        "ne_data_emissao," +
+                        "ne_data_lancamento " +
+                        "from tb_NotaFiscalEntrada " +
+                        "where ne_numero_nf = @numeroNF";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarNotaFiscalEntradaNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Buscar Nota Fiscal Entrada
+
+        #region Buscar a Quantidade de Itens na Nota Fiscal
+
+        public int BuscarQuantidadeDeItensNotaFiscalEntrada(int _numeroNF)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    //string query = "select ne_numero_nf from tb_NotaFiscalEntrada where ne_numero_nf = @numeroNF ";
+                    string query = "select count (ne_numero_nf) from tb_NotaFiscalEntrada where ne_numero_nf = @numeroNF";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    dr.Read();
+
+                    int x = dr.GetInt32(0);
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarNotaFiscalEntradaNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar a Quantidade de Itens na Nota Fiscal
+
+        #region Buscar Quantidade de Cada Item da Nota Fiscal de Entrada
+
+        public int BuscarQuantidadeDeCadaItemNotaFiscalEntrada(int _numeroNF, int _indice)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ne_quantidade from tb_NotaFiscalEntrada where ne_numero_nf = @numeroNF and ne_indice = @indice ";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
+                    adapter.SelectCommand.Parameters.AddWithValue("@indice", _indice);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    dr.Read();
+
+                    decimal x = dr.GetDecimal(0);
+                    return Convert.ToInt32(x);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarNotaFiscalEntradaNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Quantidade de Cada Item da Nota Fiscal de Entrada
+
+        #endregion Buscar Compra
     }
 }
