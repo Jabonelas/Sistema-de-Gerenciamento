@@ -1654,7 +1654,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Estoque Produto
 
-        public bool BuscarEstoqueProdutoPorCodigo(string ep_codigo_barras, BunifuDataGridView _tabela)
+        public bool BuscarEstoqueProdutoPorCodigo(string ep_codigo_barras)
         {
             try
             {
@@ -1665,13 +1665,6 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@codigoBarras", ep_codigo_barras);
-
-                    DataTable dataTable = new DataTable();
-
-                    adapter.Fill(dataTable);
-
-                    _tabela.DataSource = dataTable;
-                    _tabela.Refresh();
 
                     SqlDataReader reader;
                     reader = adapter.SelectCommand.ExecuteReader();
@@ -1697,6 +1690,70 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Estoque Produto
+
+        #region Buscar Porcentagem de Desconto Geral
+
+        public decimal BuscarPorcentagemGeralEstoqueProdutoPorCodigo(string ep_codigo_barras)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query =
+                        "select ep_desconto_geral from tb_EstoqueProduto where ep_codigo_barras = @codigoBarras ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigoBarras", ep_codigo_barras);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    dr.Read();
+
+                    decimal x = dr.GetDecimal(0);
+
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarEstoqueProdutoNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Porcentagem de Desconto Geral
+
+        #region Buscar Porcentagem de Desconto Avista
+
+        public decimal BuscarPorcentagemAvistaEstoqueProdutoPorCodigo(string ep_codigo_barras)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query =
+                        "select ep_desconto_avista from tb_EstoqueProduto where ep_codigo_barras = @codigoBarras ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigoBarras", ep_codigo_barras);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    dr.Read();
+
+                    decimal x = dr.GetDecimal(0);
+
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarEstoqueProdutoNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Porcentagem de Desconto Avista
 
         #endregion Buscar Vendas
 
