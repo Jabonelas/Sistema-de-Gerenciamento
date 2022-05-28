@@ -46,7 +46,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                         Global.tipoDoAlerta = "Exportacao";
 
-                        Aviso buscarCliente = new Aviso();
+                        Forms_Aviso buscarCliente = new Forms_Aviso();
                         buscarCliente.Show();
                     }
                     catch (Exception ex)

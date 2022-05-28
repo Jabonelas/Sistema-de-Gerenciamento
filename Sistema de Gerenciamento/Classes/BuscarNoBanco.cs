@@ -16,7 +16,7 @@ namespace Sistema_de_Gerenciamento.Classes
     {
         private MensagensErro Erro = new MensagensErro();
 
-        //private CadastroCliente cadastroCliente;
+        private DadosCliente teste;
 
         #region Buscar Cliente
 
@@ -338,7 +338,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select distinct cc_nome_cliente from tb_CadastroClientes";
+                    string query = "select cc_nome_cliente from tb_CadastroClientes order by cc_nome_cliente desc";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
                     SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
@@ -352,13 +352,46 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                return new List<string>();
-
                 Erro.ErroAoBuscarListaClienteNoBanco(ex);
+
+                return new List<string>();
             }
         }
 
         #endregion Buscar Lista de Cliente
+
+        #region Buscar Cliente Por Pesquisa
+
+        public List<DadosCliente> BuscarClientePorPesquisa(string _nomeCliente)
+
+        {
+            List<DadosCliente> listaCliente = new List<DadosCliente>();
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select cc_nome_cliente,cc_id from tb_CadastroClientes where cc_nome_cliente like @nomeCliente";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@nomeCliente", string.Format("%{0}%", _nomeCliente));
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaCliente.Add(new DadosCliente(dr.GetString(0), dr.GetInt32(1)));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarListaClienteNoBanco(ex);
+            }
+
+            return listaCliente;
+        }
+
+        #endregion Buscar Cliente Por Pesquisa
 
         #endregion Buscar Cliente
 
@@ -578,8 +611,8 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                return null;
                 Erro.ErroAoBuscarImagemFornecedorNoBanco(ex);
+                return null;
             }
         }
 
@@ -663,7 +696,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select distinct cf_nome_fantasia from tb_CadastroFornecedor";
+                    string query = "select cf_nome_fantasia from tb_CadastroFornecedor";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
                     SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
@@ -1121,6 +1154,102 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Imagem Produto
 
+        #region Buscar Produto Por Pesquisa
+
+        public List<DadosProduto> BuscarProdutoPorPesquisa(string _nomeProduto)
+
+        {
+            List<DadosProduto> listaProduto = new List<DadosProduto>();
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ep_codigo_produto,ep_descricao,ep_quantidade,ep_unidade,ep_valor_unitario " +
+                                   "from tb_EstoqueProduto where ep_descricao like @nomeProduto";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@nomeProduto", string.Format("%{0}%", _nomeProduto));
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaProduto.Add(new DadosProduto(dr.GetInt32(0), dr.GetString(1),
+                            dr.GetDecimal(2), dr.GetString(3), dr.GetDecimal(4)));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarProdutoPorPesquisaNoBanco(ex);
+            }
+
+            return listaProduto;
+        }
+
+        #endregion Buscar Produto Por Pesquisa
+
+        #region Buscar Lista Produto
+
+        public List<string> BuscarListaProduto()
+
+        {
+            try
+            {
+                List<string> ListaProduto = new List<string>();
+
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ep_descricao from tb_EstoqueProduto order by ep_descricao desc";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        ListaProduto.Add(dr.GetString(0));
+                    }
+
+                    return ListaProduto;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarListaProdutoNoBanco(ex);
+
+                return new List<string>();
+            }
+        }
+
+        #endregion Buscar Lista Produto
+
+        #region Buscar O Desconto Por Item
+
+        public decimal BuscarDesontoPorItem(string _produto)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select distinct ep_desconto_por_item from tb_EstoqueProduto where ep_descricao = @produto";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@produto", _produto);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    dr.Read();
+
+                    decimal x = dr.GetDecimal(0);
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarDescontoProdutoNoBanco(ex);
+                return 0;
+            }
+        }
+
+        #endregion Buscar O Desconto Por Item
+
         #endregion Buscar Produto
 
         #region Buscar Empresa
@@ -1514,7 +1643,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Codigo de Produto Por Codigo de Barras
 
-        public int BuscarEstoqueProdutoCodigoProdutoPorCodigoDeBarras(int ep_codigo_barras)
+        public int BuscarEstoqueProdutoCodigoProdutoPorCodigoDeBarras(string ep_codigo_barras)
         {
             try
             {
@@ -1542,7 +1671,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Descricao do Produto Por Codigo de Barras
 
-        public string BuscarEstoqueProdutoDescricaoProdutoPorCodigoDeBarras(int ep_codigo_barras)
+        public string BuscarEstoqueProdutoDescricaoProdutoPorCodigoDeBarras(string ep_codigo_barras)
         {
             try
             {
@@ -1570,7 +1699,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Unidade do Produto Por Codigo de Barras
 
-        public string BuscarEstoqueProdutoUnidadeProdutoPorCodigoDeBarras(int ep_codigo_barras)
+        public string BuscarEstoqueProdutoUnidadeProdutoPorCodigoDeBarras(string ep_codigo_barras)
         {
             try
             {
@@ -1598,7 +1727,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Preco do Produto Por Codigo de Barras
 
-        public decimal BuscarEstoqueProdutoPrecoProdutoPorCodigoDeBarras(int ep_codigo_barras)
+        public decimal BuscarEstoqueProdutoPrecoProdutoPorCodigoDeBarras(string ep_codigo_barras)
         {
             try
             {
@@ -1626,7 +1755,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Quantidade Produto Por Codigo de Barras
 
-        public int BuscarEstoqueProdutoQuantidadeProdutoPorCodigoDeBarras(int ep_codigo_barras)
+        public int BuscarEstoqueProdutoQuantidadeProdutoPorCodigoDeBarras(string ep_codigo_barras)
         {
             try
             {
@@ -1700,7 +1829,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query =
-                        "select ep_desconto_geral from tb_EstoqueProduto where ep_codigo_barras = @codigoBarras ";
+                        "select ep_desconto_por_item from tb_EstoqueProduto where ep_codigo_barras = @codigoBarras ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@codigoBarras", ep_codigo_barras);
@@ -1725,17 +1854,16 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Porcentagem de Desconto Avista
 
-        public decimal BuscarPorcentagemAvistaEstoqueProdutoPorCodigo(string ep_codigo_barras)
+        public decimal BuscarPorcentagemAvistaEstoqueProdutoPorCodigo()
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query =
-                        "select ep_desconto_avista from tb_EstoqueProduto where ep_codigo_barras = @codigoBarras ";
+                        "select fn_desconto_avista from tb_Financeiro";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@codigoBarras", ep_codigo_barras);
 
                     SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
                     dr.Read();
@@ -1754,6 +1882,68 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Porcentagem de Desconto Avista
+
+        #region Buscar Porcentagem de Juros Credito
+
+        public decimal BuscarPorcentagemJurosCredito()
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query =
+                        "select fn_juros_credito from tb_Financeiro";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    dr.Read();
+
+                    decimal x = dr.GetDecimal(0);
+
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarEstoqueProdutoNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Porcentagem de Juros Credito
+
+        #region Buscar Quantidade de Parcelas Para Gerar Juros
+
+        public int BuscarQuantidadeDeParcelasParaGerarJuros()
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query =
+                        "select fn_parcelas_credito from tb_Financeiro";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    dr.Read();
+
+                    int x = dr.GetInt32(0);
+
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarEstoqueProdutoNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Quantidade de Parcelas Para Gerar Juros
 
         #endregion Buscar Vendas
 
@@ -1879,5 +2069,33 @@ namespace Sistema_de_Gerenciamento.Classes
         #endregion Buscar Quantidade de Cada Item da Nota Fiscal de Entrada
 
         #endregion Buscar Compra
+
+        #region Buscar Gerar Carne
+
+        public List<DadosCarne> BuscarGerarCarne()
+        {
+            List<DadosCarne> listaCarne = new List<DadosCarne>();
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select  fn_prazo_carne,fn_juros_carne,fn_parcelas_carne from tb_Financeiro where fn_id = 1";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        listaCarne.Add(new DadosCarne(dr.GetInt32(0), dr.GetDecimal(1), dr.GetInt32(2)));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarListaCarneProdutoNoBanco(ex);
+            }
+            return listaCarne;
+        }
+
+        #endregion Buscar Gerar Carne
     }
 }

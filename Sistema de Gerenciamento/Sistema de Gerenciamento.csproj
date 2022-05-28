@@ -239,176 +239,188 @@
     <Compile Include="Classes\AtualizacaoNoBanco.cs" />
     <Compile Include="Classes\BuscarNoBanco.cs" />
     <Compile Include="Classes\ConectarBanco.cs" />
+    <Compile Include="Classes\DadosCarne.cs" />
+    <Compile Include="Classes\DadosCliente.cs" />
+    <Compile Include="Classes\DadosProduto.cs" />
     <Compile Include="Classes\ExcluirNoBanco.cs" />
     <Compile Include="Classes\ExportarExcel.cs" />
     <Compile Include="Classes\Temperatures.cs" />
     <Compile Include="Classes\VerificacaoDeExistencia.cs" />
-    <Compile Include="Forms\CadastroDespesas.cs">
+    <Compile Include="Forms\Forms_CadastroDespesas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CadastroDespesas.Designer.cs">
-      <DependentUpon>CadastroDespesas.cs</DependentUpon>
+    <Compile Include="Forms\Forms_CadastroDespesas.Designer.cs">
+      <DependentUpon>Forms_CadastroDespesas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CadastroEmpresa.cs">
+    <Compile Include="Forms\Forms_CadastroEmpresa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CadastroEmpresa.Designer.cs">
-      <DependentUpon>CadastroEmpresa.cs</DependentUpon>
+    <Compile Include="Forms\Forms_CadastroEmpresa.Designer.cs">
+      <DependentUpon>Forms_CadastroEmpresa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CadastroFornecedor.cs">
+    <Compile Include="Forms\Forms_CadastroFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CadastroFornecedor.Designer.cs">
-      <DependentUpon>CadastroFornecedor.cs</DependentUpon>
+    <Compile Include="Forms\Forms_CadastroFornecedor.Designer.cs">
+      <DependentUpon>Forms_CadastroFornecedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CadastroGrupoDeMaterial.cs">
+    <Compile Include="Forms\Forms_CadastroGrupoDeMaterial.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CadastroGrupoDeMaterial.Designer.cs">
-      <DependentUpon>CadastroGrupoDeMaterial.cs</DependentUpon>
+    <Compile Include="Forms\Forms_CadastroGrupoDeMaterial.Designer.cs">
+      <DependentUpon>Forms_CadastroGrupoDeMaterial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CadastroUsuario.cs">
+    <Compile Include="Forms\Forms_CadastroUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CadastroUsuario.Designer.cs">
-      <DependentUpon>CadastroUsuario.cs</DependentUpon>
+    <Compile Include="Forms\Forms_CadastroUsuario.Designer.cs">
+      <DependentUpon>Forms_CadastroUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Global.cs" />
     <Compile Include="Classes\MensagensErro.cs" />
-    <Compile Include="Forms\Aviso.cs">
+    <Compile Include="Forms\Forms_Aviso.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Aviso.Designer.cs">
-      <DependentUpon>Aviso.cs</DependentUpon>
+    <Compile Include="Forms\Forms_Aviso.Designer.cs">
+      <DependentUpon>Forms_Aviso.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Compras.cs">
+    <Compile Include="Forms\Forms_Compras.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Compras.Designer.cs">
-      <DependentUpon>Compras.cs</DependentUpon>
+    <Compile Include="Forms\Forms_Compras.Designer.cs">
+      <DependentUpon>Forms_Compras.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Login.cs">
+    <Compile Include="Forms\Forms_GerarCarne.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
+    <Compile Include="Forms\Forms_GerarCarne.Designer.cs">
+      <DependentUpon>Forms_GerarCarne.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PesquisarCliente.cs">
+    <Compile Include="Forms\Forms_Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PesquisarCliente.Designer.cs">
-      <DependentUpon>PesquisarCliente.cs</DependentUpon>
+    <Compile Include="Forms\Forms_Login.Designer.cs">
+      <DependentUpon>Forms_Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CadastroCliente.cs">
+    <Compile Include="Forms\Forms_PesquisarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CadastroCliente.Designer.cs">
-      <DependentUpon>CadastroCliente.cs</DependentUpon>
+    <Compile Include="Forms\Forms_PesquisarCliente.Designer.cs">
+      <DependentUpon>Forms_PesquisarCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CadastroProduto.cs">
+    <Compile Include="Forms\Forms_CadastroCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CadastroProduto.Designer.cs">
-      <DependentUpon>CadastroProduto.cs</DependentUpon>
+    <Compile Include="Forms\Forms_CadastroCliente.Designer.cs">
+      <DependentUpon>Forms_CadastroCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PesquisarContasAPagar.cs">
+    <Compile Include="Forms\Forms_CadastroProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PesquisarContasAPagar.Designer.cs">
-      <DependentUpon>PesquisarContasAPagar.cs</DependentUpon>
+    <Compile Include="Forms\Forms_CadastroProduto.Designer.cs">
+      <DependentUpon>Forms_CadastroProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PesquisarDespesa.cs">
+    <Compile Include="Forms\Forms_PesquisarContasAPagar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PesquisarDespesa.Designer.cs">
-      <DependentUpon>PesquisarDespesa.cs</DependentUpon>
+    <Compile Include="Forms\Forms_PesquisarContasAPagar.Designer.cs">
+      <DependentUpon>Forms_PesquisarContasAPagar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PesquisarFornecedor.cs">
+    <Compile Include="Forms\Forms_PesquisarDespesa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PesquisarFornecedor.Designer.cs">
-      <DependentUpon>PesquisarFornecedor.cs</DependentUpon>
+    <Compile Include="Forms\Forms_PesquisarDespesa.Designer.cs">
+      <DependentUpon>Forms_PesquisarDespesa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\PesquisarProduto.cs">
+    <Compile Include="Forms\Forms_PesquisarFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\PesquisarProduto.Designer.cs">
-      <DependentUpon>PesquisarProduto.cs</DependentUpon>
+    <Compile Include="Forms\Forms_PesquisarFornecedor.Designer.cs">
+      <DependentUpon>Forms_PesquisarFornecedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Sair.cs">
+    <Compile Include="Forms\Forms_PesquisarProduto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Sair.Designer.cs">
-      <DependentUpon>Sair.cs</DependentUpon>
+    <Compile Include="Forms\Forms_PesquisarProduto.Designer.cs">
+      <DependentUpon>Forms_PesquisarProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TelaAdministrador.cs">
+    <Compile Include="Forms\Forms_Sair.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TelaAdministrador.Designer.cs">
-      <DependentUpon>TelaAdministrador.cs</DependentUpon>
+    <Compile Include="Forms\Forms_Sair.Designer.cs">
+      <DependentUpon>Forms_Sair.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms_TelaAdministrador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_TelaAdministrador.Designer.cs">
+      <DependentUpon>Forms_TelaAdministrador.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Program.cs" />
-    <Compile Include="Forms\Venda.cs">
+    <Compile Include="Forms\Forms_Venda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Venda.Designer.cs">
-      <DependentUpon>Venda.cs</DependentUpon>
+    <Compile Include="Forms\Forms_Venda.Designer.cs">
+      <DependentUpon>Forms_Venda.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\ManipulacaoTextBox.cs" />
-    <EmbeddedResource Include="Forms\CadastroDespesas.resx">
-      <DependentUpon>CadastroDespesas.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_CadastroDespesas.resx">
+      <DependentUpon>Forms_CadastroDespesas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CadastroEmpresa.resx">
-      <DependentUpon>CadastroEmpresa.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_CadastroEmpresa.resx">
+      <DependentUpon>Forms_CadastroEmpresa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CadastroFornecedor.resx">
-      <DependentUpon>CadastroFornecedor.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_CadastroFornecedor.resx">
+      <DependentUpon>Forms_CadastroFornecedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CadastroGrupoDeMaterial.resx">
-      <DependentUpon>CadastroGrupoDeMaterial.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_CadastroGrupoDeMaterial.resx">
+      <DependentUpon>Forms_CadastroGrupoDeMaterial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CadastroUsuario.resx">
-      <DependentUpon>CadastroUsuario.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_CadastroUsuario.resx">
+      <DependentUpon>Forms_CadastroUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Aviso.resx">
-      <DependentUpon>Aviso.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_Aviso.resx">
+      <DependentUpon>Forms_Aviso.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Compras.resx">
-      <DependentUpon>Compras.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_Compras.resx">
+      <DependentUpon>Forms_Compras.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_GerarCarne.resx">
+      <DependentUpon>Forms_GerarCarne.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PesquisarCliente.resx">
-      <DependentUpon>PesquisarCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_Login.resx">
+      <DependentUpon>Forms_Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CadastroCliente.resx">
-      <DependentUpon>CadastroCliente.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_PesquisarCliente.resx">
+      <DependentUpon>Forms_PesquisarCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CadastroProduto.resx">
-      <DependentUpon>CadastroProduto.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_CadastroCliente.resx">
+      <DependentUpon>Forms_CadastroCliente.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PesquisarContasAPagar.resx">
-      <DependentUpon>PesquisarContasAPagar.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_CadastroProduto.resx">
+      <DependentUpon>Forms_CadastroProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PesquisarDespesa.resx">
-      <DependentUpon>PesquisarDespesa.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_PesquisarContasAPagar.resx">
+      <DependentUpon>Forms_PesquisarContasAPagar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PesquisarFornecedor.resx">
-      <DependentUpon>PesquisarFornecedor.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_PesquisarDespesa.resx">
+      <DependentUpon>Forms_PesquisarDespesa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\PesquisarProduto.resx">
-      <DependentUpon>PesquisarProduto.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_PesquisarFornecedor.resx">
+      <DependentUpon>Forms_PesquisarFornecedor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Sair.resx">
-      <DependentUpon>Sair.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_PesquisarProduto.resx">
+      <DependentUpon>Forms_PesquisarProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TelaAdministrador.resx">
-      <DependentUpon>TelaAdministrador.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_Sair.resx">
+      <DependentUpon>Forms_Sair.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Venda.resx">
-      <DependentUpon>Venda.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_TelaAdministrador.resx">
+      <DependentUpon>Forms_TelaAdministrador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_Venda.resx">
+      <DependentUpon>Forms_Venda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

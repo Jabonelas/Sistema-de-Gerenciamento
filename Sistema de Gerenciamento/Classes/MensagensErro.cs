@@ -468,6 +468,26 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-PR06) Erro ao Realizar Busca de Imagem do Produto \n\nErro: {_e}", "Erro Busca Imagem Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoBuscarListaProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR07) Erro ao Realizar Busca de Lista do Produto \n\nErro: {_e}", "Erro Busca Lista Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarProdutoPorPesquisaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR08) Erro ao Realizar Busca do Produto Por Pesquisa \n\nErro: {_e}", "Erro Busca Produto Pesquisa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarDescontoProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR09) Erro ao Realizar Busca Desconto do Produto \n\nErro: {_e}", "Erro Busca Desconto Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarListaCarneProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR10) Erro ao Realizar Busca de Dados do Carne \n\nErro: {_e}", "Erro Busca Dados Carne!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Produto
 
         #region Empresa
