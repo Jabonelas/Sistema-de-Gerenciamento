@@ -9,6 +9,8 @@ namespace Sistema_de_Gerenciamento
 {
     internal class MensagensErro
     {
+        #region Forms
+
         #region Cadastro Cliente
 
         public void ErroAoCadastroCliente(Exception _e)
@@ -149,6 +151,24 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Nota Fiscal Entrada
+
+        #region Gerar Carne
+
+        public void ErroAoBuscarDadosParaPreencherTextBox(Exception _e)
+        {
+            MessageBox.Show($"(BUS-GC01) Erro ao Buscar Dados Para Preenchimento TextBox \n\nErro: {_e}", "Erro Preencher TextBox!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarJurosGerarCarne(Exception _e)
+        {
+            MessageBox.Show($"(BUS-GC02) Erro ao Buscar Juros Do Carne \n\nErro: {_e}", "Erro Buscar Juros !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Gerar Carne
+
+        #endregion Forms
+
+        #region Banco
 
         #region Inserir No Banco
 
@@ -483,11 +503,6 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-PR09) Erro ao Realizar Busca Desconto do Produto \n\nErro: {_e}", "Erro Busca Desconto Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoBuscarListaCarneProdutoNoBanco(Exception _e)
-        {
-            MessageBox.Show($"(BUS-PR10) Erro ao Realizar Busca de Dados do Carne \n\nErro: {_e}", "Erro Busca Dados Carne!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
         #endregion Produto
 
         #region Empresa
@@ -560,6 +575,15 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Compras
 
+        #region Gerar Carne
+
+        public void ErroAoBuscarListaCarneProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-GC01) Erro ao Realizar Busca de Dados do Carne \n\nErro: {_e}", "Erro Busca Dados Carne!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Gerar Carne
+
         #endregion Buscar No Banco
 
         #region Verificar Existencia No Banco
@@ -610,6 +634,8 @@ namespace Sistema_de_Gerenciamento
         #endregion Estoque Produto
 
         #endregion Verificar Existencia No Banco
+
+        #endregion Banco
 
         #region Exportar Dados para o Excel
 

@@ -37,6 +37,7 @@ namespace Sistema_de_Gerenciamento
         public Forms_CadastroCliente()
         {
             InitializeComponent();
+
             txtDataCadastro.Text = DateTime.Today.ToShortDateString();
         }
 
@@ -258,10 +259,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
         }
 
         #endregion TextBox Codigo
@@ -306,10 +304,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCPF_CNPJ_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
 
             if (cmbTipo.Text == "Pess. Fisica")
             {
@@ -398,10 +393,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtRG_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -451,10 +443,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtDataEmissao_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -517,10 +506,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtDataNascimento_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -581,10 +567,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtNome_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)Keys.Space)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
         }
 
         #endregion TextBox Nome
@@ -593,10 +576,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCEP_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -673,10 +653,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -722,10 +699,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtTel_Residencial_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -836,10 +810,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCidade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
         }
 
         #endregion TextBox Cidade
@@ -848,10 +819,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtNaturalidade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
         }
 
         #endregion TextBox Naturalidade
@@ -860,10 +828,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
         }
 
         #endregion TextBox Numero

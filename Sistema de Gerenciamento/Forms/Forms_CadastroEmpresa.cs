@@ -61,10 +61,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtTelefone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -113,10 +110,7 @@ namespace Sistema_de_Gerenciamento
         {
             txtCNPJ.MaxLength = 18;
 
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -172,10 +166,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCEP_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -254,10 +245,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
         }
 
         #endregion TextBox Numero

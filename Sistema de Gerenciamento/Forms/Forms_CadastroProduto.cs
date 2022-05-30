@@ -33,21 +33,7 @@ namespace Sistema_de_Gerenciamento
         {
             InitializeComponent();
 
-            // Preencher o combobox de grupo
-            cmbGrupo.Items.Clear();
-
-            foreach (var item in Buscar.BuscarGrupoProduto())
-            {
-                cmbGrupo.Items.Add(item);
-            }
-
-            // Preencher o combobox de sub-grupo
-            cmbSubGrupo.Items.Clear();
-
-            foreach (var item in Buscar.BuscarSubGrupoProduto())
-            {
-                cmbSubGrupo.Items.Add(item);
-            }
+            PreencherComboBoxGrupoeSub_Grup();
 
             // Preencher o combobox de fornecedor
             cmbFornecedor.Items.Clear();
@@ -66,21 +52,7 @@ namespace Sistema_de_Gerenciamento
 
             pcbProduto.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\camera3.png");
 
-            // Preencher o combobox de grupo
-            cmbGrupo.Items.Clear();
-
-            foreach (var item in Buscar.BuscarGrupoProduto())
-            {
-                cmbGrupo.Items.Add(item);
-            }
-
-            // Preencher o combobox de sub-grupo
-            cmbSubGrupo.Items.Clear();
-
-            foreach (var item in Buscar.BuscarSubGrupoProduto())
-            {
-                cmbSubGrupo.Items.Add(item);
-            }
+            PreencherComboBoxGrupoeSub_Grup();
 
             // Preencher o combobox de fornecedor
             cmbFornecedor.Items.Clear();
@@ -311,10 +283,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtPorcentagem_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
 
             try
             {
@@ -394,10 +363,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtComissao_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
 
             try
             {
@@ -430,10 +396,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtValidade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -494,10 +457,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtEstoqueMinimo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
             try
             {
                 if (Char.IsDigit(e.KeyChar) || e.KeyChar.Equals((char)Keys.Back))
@@ -524,5 +484,26 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion TextBox Estoque Minimo
+
+        #region Preenchimento ComboBox
+
+        private void PreencherComboBoxGrupoeSub_Grup()
+        {
+            List<DadosGrupoMaterial> listaGrupo = new List<DadosGrupoMaterial>();
+
+            listaGrupo = Buscar.BuscarGrupoProduto();
+
+            cmbGrupo.Items.Clear();
+
+            cmbSubGrupo.Items.Clear();
+
+            foreach (DadosGrupoMaterial item in listaGrupo)
+            {
+                cmbGrupo.Items.Add(item.grupo);
+                cmbSubGrupo.Items.Add(item.sub_grupo);
+            }
+        }
+
+        #endregion Preenchimento ComboBox
     }
 }

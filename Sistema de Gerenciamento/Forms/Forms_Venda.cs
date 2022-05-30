@@ -27,6 +27,10 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private ManipulacaoTextBox TextBox = new ManipulacaoTextBox();
 
+        private List<DadosProduto> listaProduto = new List<DadosProduto>();
+
+        private DadosProduto produto;
+
         public Forms_Venda()
         {
             InitializeComponent();
@@ -34,6 +38,13 @@ namespace Sistema_de_Gerenciamento.Forms
             txtData.Text = DateTime.Today.ToShortDateString();
 
             txtVendedor.Text = Global.tipoDeUsuario;
+
+            //cmbProduto.Items.Clear();
+
+            //foreach (var item in Buscar.BuscarListaProduto())
+            //{
+            //    cmbProduto.Items.Add(item);
+            //}
         }
 
         #region Botao Abrir Cadastro Cliente
@@ -101,12 +112,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
                         //txtTroco.Text = string.Format("{0:C}", Convert.ToDecimal(txtTotalPago.Text) - Convert.ToDecimal(txtTotalLiquido.Text)).ToString();
 
-                        txtCodBarras.Text = string.Empty;
-                        txtCodProduto.Text = string.Empty;
-                        cmbProduto.Text = string.Empty;
-                        txtQuantidade.Text = string.Empty;
-                        txtUnidade.Text = string.Empty;
-                        txtPrecoSemDesconto.Text = string.Empty;
+                        ApagandoTextbox();
                     }
                     else if (isCadastroExiste == false)
                     {
@@ -161,12 +167,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     //txtTroco.Text = string.Format("{0:C}", Convert.ToDecimal(txtTotalPago.Text) - Convert.ToDecimal(txtTotalLiquido.Text)).ToString();
 
-                    txtCodBarras.Text = string.Empty;
-                    txtCodProduto.Text = string.Empty;
-                    cmbProduto.Text = string.Empty;
-                    txtQuantidade.Text = string.Empty;
-                    txtUnidade.Text = string.Empty;
-                    txtPrecoSemDesconto.Text = string.Empty;
+                    ApagandoTextbox();
                     //}
                     //else if (isCadastroExiste == false)
                     //{
@@ -186,8 +187,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnGerarBoleto_Click(object sender, EventArgs e)
         {
-            Forms_GerarCarne gerarBoleto = new Forms_GerarCarne();
-            gerarBoleto.ShowDialog();
+            if (txtValorTotal.Text != string.Empty)
+            {
+                Forms_GerarCarne gerarBoleto = new Forms_GerarCarne(this);
+                gerarBoleto.ShowDialog();
+            }
         }
 
         #endregion Botao Gerar Boleto
@@ -257,12 +261,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     txtTotalItens.Text = gdvVenda.RowCount.ToString();
 
-                    txtCodBarras.Text = string.Empty;
-                    txtCodProduto.Text = string.Empty;
-                    cmbProduto.Text = string.Empty;
-                    txtQuantidade.Text = string.Empty;
-                    txtUnidade.Text = string.Empty;
-                    txtPrecoSemDesconto.Text = string.Empty;
+                    ApagandoTextbox();
                 }
             }
         }
@@ -320,15 +319,12 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtCodBarras_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
         }
 
         #endregion TextBox Codigo de Barras
 
-        #region TextBox Total Pago
+        #region TextBox Total Pago Avista
 
         private void txtTotalPago_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -393,7 +389,7 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion TextBox Total Pago
+        #endregion TextBox Total Pago Avista
 
         #region CheckBox Avista
 
@@ -507,7 +503,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 //label16.Visible = true;
 
                 lblNumeroVenda.Visible = true;
-                txtDataCadastro.Visible = true;
+                txtNumeroNF.Visible = true;
                 lblData.Visible = true;
                 txtData.Visible = true;
                 lblCliente.Visible = true;
@@ -558,33 +554,9 @@ namespace Sistema_de_Gerenciamento.Forms
             if (chbOrcamento.Checked == true)
             {
                 cmbProduto.Enabled = true;
-
                 chbVenda.Checked = false;
-                //chbAvista.Visible = false;
-                //txtTotalPagoAvista.Visible = false;
-                //txtDescontoAvista.Visible = false;
-                //txtTrocoAvista.Visible = false;
-                //txtValorAvista.Visible = false;
-                //chbCredito.Visible = false;
-                //txtValorTotalCredito.Visible = false;
-                //txtValorParcelaCredito.Visible = false;
-                //txtJurosCredito.Visible = false;
-                //cmbParcelaCredito.Visible = false;
-                //lblCredito.Visible = false;
-                //lblFormapagamentoAvista.Visible = false;
-                //lblFormapagamentoCredito.Visible = false;
-                //lblJurosCredito.Visible = false;
-                //lblParcelaCredito.Visible = false;
-                //lblValorCredito.Visible = false;
-                //grupoBoxAvista.Visible = false;
-                //grupboxCredito.Visible = false;
-                //lblDesconto.Visible = false;
-                //lblValorLiquido.Visible = false;
-                //label15.Visible = false;
-                //label16.Visible = false;
-
                 lblNumeroVenda.Visible = false;
-                txtDataCadastro.Visible = false;
+                txtNumeroNF.Visible = false;
                 lblData.Visible = false;
                 txtData.Visible = false;
                 lblCliente.Visible = false;
@@ -598,17 +570,11 @@ namespace Sistema_de_Gerenciamento.Forms
                 btnConfirmarVenda.Visible = false;
                 btnCancelarVenda.Visible = false;
                 btnAbriCadastroCliente.Visible = false;
-
                 btnNovoCliente.Text = "Novo \n Orçamento";
-
                 btnRemoverItem.Location = new Point(107, 41);
-
                 lblCodBarras.Visible = false;
                 txtCodBarras.Visible = false;
                 btnBuscar.Visible = false;
-
-                //this.Size = new Size(967, 517);
-
                 lblCodProduto.Location = new Point(90, 153);
                 txtCodProduto.Location = new Point(93, 171);
                 lblProduto.Location = new Point(219, 153);
@@ -620,9 +586,18 @@ namespace Sistema_de_Gerenciamento.Forms
                 lblPreco.Location = new Point(679, 153);
                 txtPrecoSemDesconto.Location = new Point(681, 171);
                 btnAdcionar.Location = new Point(814, 162);
-
                 gdvVenda.Rows.Clear();
+
                 TextBox.ApagandoTextBox(this);
+
+                listaProduto = Buscar.BuscarProdutos();
+
+                cmbProduto.Items.Clear();
+
+                foreach (DadosProduto item in listaProduto)
+                {
+                    cmbProduto.Items.Add(item.descricaoProduto);
+                }
             }
         }
 
@@ -683,10 +658,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void cmbCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)Keys.Space)
-            {
-                e.Handled = true;
-            }
+            TextBox.DigitarApenasNumeros(e);
         }
 
         private void cmbCliente_KeyUp(object sender, KeyEventArgs e)
@@ -715,46 +687,60 @@ namespace Sistema_de_Gerenciamento.Forms
 
         #region ComboBox Produto
 
-        private void txtProduto_KeyUp(object sender, KeyEventArgs e)
-        {
-            List<DadosProduto> listaProduto = Buscar.BuscarProdutoPorPesquisa(cmbProduto.Text);
-
-            if (listaProduto.Count != 0)
-            {
-                txtCodProduto.Text = listaProduto[0].codigo.ToString();
-                txtQuantidade.Text = listaProduto[0].quantidade.ToString();
-                txtUnidade.Text = listaProduto[0].unidade.ToString();
-                txtPrecoSemDesconto.Text = ("R$ " + listaProduto[0].preco.ToString("N2"));
-            }
-            else
-            {
-                txtCodProduto.Text = string.Empty;
-                txtQuantidade.Text = string.Empty;
-                txtUnidade.Text = string.Empty;
-                txtPrecoSemDesconto.Text = string.Empty;
-            }
-
-            if (cmbProduto.Text == string.Empty)
-            {
-                txtCodProduto.Text = string.Empty;
-                txtQuantidade.Text = string.Empty;
-                txtUnidade.Text = string.Empty;
-                txtPrecoSemDesconto.Text = string.Empty;
-            }
-        }
-
-        private void txtProduto_Enter(object sender, EventArgs e)
+        private void cmbProduto_KeyPress(object sender, KeyPressEventArgs e)
         {
             cmbProduto.MaxLength = 50;
 
-            cmbProduto.Items.Clear();
-
-            foreach (var item in Buscar.BuscarListaProduto())
+            if (cmbProduto.Text == "")
             {
-                cmbProduto.Items.Add(item);
+                KeysConverter kc = new KeysConverter();
+
+                string caracter = kc.ConvertToString(e.KeyChar);
+
+                produto = listaProduto.FindLast(prod => prod.descricaoProduto.ToLower().StartsWith(caracter));
+            }
+            else
+            {
+                produto = listaProduto.FindLast(prod => prod.descricaoProduto.ToLower().StartsWith(cmbProduto.Text.ToLower()));
+            }
+
+            if (produto != null)
+            {
+                txtCodProduto.Text = produto.codigo.ToString();
+                txtQuantidade.Text = produto.quantidade.ToString();
+                txtUnidade.Text = produto.unidade.ToString();
+                txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco).ToString();
+            }
+            else
+            {
+                ApagandoTextbox();
             }
         }
 
+        private void cmbProduto_SelectedValueChanged(object sender, EventArgs e)
+        {
+            produto = listaProduto.FindLast(prod => prod.descricaoProduto.ToLower().StartsWith(cmbProduto.Text.ToLower()));
+
+            txtCodProduto.Text = produto.codigo.ToString();
+            txtQuantidade.Text = produto.quantidade.ToString();
+            txtUnidade.Text = produto.unidade.ToString();
+            txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco).ToString();
+        }
+
         #endregion ComboBox Produto
+
+        #region Apagando Dados dos TextBox
+
+        private void ApagandoTextbox()
+        {
+            txtCodBarras.Text = string.Empty;
+            txtCodProduto.Text = string.Empty;
+            //cmbProduto.Text = string.Empty;
+            txtQuantidade.Text = string.Empty;
+            txtUnidade.Text = string.Empty;
+            txtPrecoSemDesconto.Text = string.Empty;
+        }
+
+        #endregion Apagando Dados dos TextBox
     }
 }

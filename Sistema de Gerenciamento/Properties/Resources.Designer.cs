@@ -75,7 +75,7 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap adicionar_produto {
             get {
-                object obj = ResourceManager.GetObject("adicionar-produto", resourceCulture);
+                object obj = ResourceManager.GetObject("adicionar-descricaoProduto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -245,7 +245,7 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap descricao_do_produto {
             get {
-                object obj = ResourceManager.GetObject("descricao-do-produto", resourceCulture);
+                object obj = ResourceManager.GetObject("descricao-do-descricaoProduto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -325,7 +325,7 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap excluir_produto {
             get {
-                object obj = ResourceManager.GetObject("excluir-produto", resourceCulture);
+                object obj = ResourceManager.GetObject("excluir-descricaoProduto", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

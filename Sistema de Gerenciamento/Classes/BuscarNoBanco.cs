@@ -624,67 +624,35 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Lista Grupo Produto Para ComboBox
 
-        public List<string> BuscarGrupoProduto()
+        public List<DadosGrupoMaterial> BuscarGrupoProduto()
         {
             try
             {
-                List<string> Grupo = new List<string>();
+                List<DadosGrupoMaterial> listaGrupo = new List<DadosGrupoMaterial>();
 
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select distinct cg_grupo from tb_CadastroGrupoMaterial";
+                    string query = "select distinct cg_grupo,cg_sub_grupo from tb_CadastroGrupoMaterial";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
                     SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
                     while (dr.Read())
                     {
-                        Grupo.Add(dr.GetString(0));
+                        listaGrupo.Add(new DadosGrupoMaterial(dr.GetString(0), dr.GetString(1)));
                     }
 
-                    return Grupo;
+                    return listaGrupo;
                 }
             }
             catch (Exception ex)
             {
-                return new List<string>();
+                return new List<DadosGrupoMaterial>();
 
                 Erro.ErroAoBuscarGrupoProdutoNoBanco(ex);
             }
         }
 
         #endregion Buscar Lista Grupo Produto Para ComboBox
-
-        #region Buscar Lista Sub-Grupo Produto Para ComboBox
-
-        public List<string> BuscarSubGrupoProduto()
-        {
-            try
-            {
-                List<string> SubGrupo = new List<string>();
-
-                using (SqlConnection conexaoSQL = AbrirConexao())
-                {
-                    string query = "select distinct cg_sub_grupo from tb_CadastroGrupoMaterial";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-
-                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        SubGrupo.Add(dr.GetString(0));
-                    }
-
-                    return SubGrupo;
-                }
-            }
-            catch (Exception ex)
-            {
-                return new List<string>();
-
-                Erro.ErroAoBuscarSubGrupoProdutoNoBanco(ex);
-            }
-        }
-
-        #endregion Buscar Lista Sub-Grupo Produto Para ComboBox
 
         #region Buscar Lista Fornecedor Produto Para ComboBox
 
@@ -1156,19 +1124,19 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Produto Por Pesquisa
 
-        public List<DadosProduto> BuscarProdutoPorPesquisa(string _nomeProduto)
+        public List<DadosProduto> BuscarProdutos()
 
         {
             List<DadosProduto> listaProduto = new List<DadosProduto>();
+
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select ep_codigo_produto,ep_descricao,ep_quantidade,ep_unidade,ep_valor_unitario " +
-                                   "from tb_EstoqueProduto where ep_descricao like @nomeProduto";
+                                   "from tb_EstoqueProduto";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@nomeProduto", string.Format("%{0}%", _nomeProduto));
 
                     SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
 
@@ -1189,39 +1157,6 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Produto Por Pesquisa
 
-        #region Buscar Lista Produto
-
-        public List<string> BuscarListaProduto()
-
-        {
-            try
-            {
-                List<string> ListaProduto = new List<string>();
-
-                using (SqlConnection conexaoSQL = AbrirConexao())
-                {
-                    string query = "select ep_descricao from tb_EstoqueProduto order by ep_descricao desc";
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-
-                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
-                    while (dr.Read())
-                    {
-                        ListaProduto.Add(dr.GetString(0));
-                    }
-
-                    return ListaProduto;
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoBuscarListaProdutoNoBanco(ex);
-
-                return new List<string>();
-            }
-        }
-
-        #endregion Buscar Lista Produto
-
         #region Buscar O Desconto Por Item
 
         public decimal BuscarDesontoPorItem(string _produto)
@@ -1230,9 +1165,9 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select distinct ep_desconto_por_item from tb_EstoqueProduto where ep_descricao = @produto";
+                    string query = "select distinct ep_desconto_por_item from tb_EstoqueProduto where ep_descricao = @descricaoProduto";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@produto", _produto);
+                    adapter.SelectCommand.Parameters.AddWithValue("@descricaoProduto", _produto);
 
                     SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
                     dr.Read();

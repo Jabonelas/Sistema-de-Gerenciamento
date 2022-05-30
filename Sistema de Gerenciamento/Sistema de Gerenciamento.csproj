@@ -241,6 +241,7 @@
     <Compile Include="Classes\ConectarBanco.cs" />
     <Compile Include="Classes\DadosCarne.cs" />
     <Compile Include="Classes\DadosCliente.cs" />
+    <Compile Include="Classes\DadosGrupoMaterial.cs" />
     <Compile Include="Classes\DadosProduto.cs" />
     <Compile Include="Classes\ExcluirNoBanco.cs" />
     <Compile Include="Classes\ExportarExcel.cs" />

@@ -98,5 +98,17 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Limpando dados dos TextBox
+
+        #region Digitar Apenas Numeros
+
+        public void DigitarApenasNumeros(KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
+        }
+
+        #endregion Digitar Apenas Numeros
     }
 }

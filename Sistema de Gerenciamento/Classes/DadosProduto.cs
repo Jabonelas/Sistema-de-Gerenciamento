@@ -10,7 +10,7 @@ namespace Sistema_de_Gerenciamento.Classes
     {
         public int codigo { get; set; }
 
-        public string produto { get; set; }
+        public string descricaoProduto { get; set; }
 
         public decimal quantidade { get; set; }
 
@@ -18,10 +18,10 @@ namespace Sistema_de_Gerenciamento.Classes
 
         public decimal preco { get; set; }
 
-        public DadosProduto(int _codigo, string _produto, decimal _quantidade, string _unidade, decimal _preco)
+        public DadosProduto(int _codigo, string _descricaoProduto, decimal _quantidade, string _unidade, decimal _preco)
         {
             codigo = _codigo;
-            produto = _produto;
+            descricaoProduto = _descricaoProduto;
             quantidade = _quantidade;
             unidade = _unidade;
             preco = _preco;
