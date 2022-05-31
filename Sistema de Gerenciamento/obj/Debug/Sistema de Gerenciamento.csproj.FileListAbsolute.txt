@@ -33,3 +33,4 @@ C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\ob
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.csproj.CopyComplete
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.exe
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.pdb
+C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_ConfiguracaoGerencial.resources

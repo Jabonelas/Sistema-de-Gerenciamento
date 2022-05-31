@@ -5,8 +5,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
 
 namespace Sistema_de_Gerenciamento
 {
@@ -110,5 +112,36 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Digitar Apenas Numeros
+
+        #region Preenchimento Porcentagem
+
+        public void PreenchimentoPorcentagem(KeyPressEventArgs e, string _textBox, object sender)
+        {
+            try
+            {
+                if (Char.IsDigit(e.KeyChar) || e.KeyChar.Equals((char)Keys.Back))
+                {
+                    if (_textBox.Length <= 7 || e.KeyChar.Equals((char)Keys.Back))
+                    {
+                        Guna2TextBox textbox = (Guna2TextBox)sender;
+                        string testoDoTextBox = Regex.Replace(textbox.Text, "[^0-9]", string.Empty);
+                        if (testoDoTextBox == string.Empty)
+                        {
+                            testoDoTextBox = "0";
+                        }
+
+                        testoDoTextBox += e.KeyChar;
+                        textbox.Text = String.Format("{0:#,##0.00} %", double.Parse(testoDoTextBox) / 100);
+                        textbox.Select(textbox.Text.Length, 0);
+                    }
+                }
+                e.Handled = true;
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        #endregion Preenchimento Porcentagem
     }
 }

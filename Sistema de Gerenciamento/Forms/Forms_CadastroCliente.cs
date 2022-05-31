@@ -30,7 +30,7 @@ namespace Sistema_de_Gerenciamento
 
         private ExcluirNoBanco Excluir = new ExcluirNoBanco();
 
-        private BuscarNoBanco Buscar = new BuscarNoBanco();
+        //private BuscarNoBanco Buscar = new BuscarNoBanco();
 
         private ApiCorreios Api = new ApiCorreios();
 

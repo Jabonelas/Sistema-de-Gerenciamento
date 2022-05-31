@@ -247,6 +247,12 @@
     <Compile Include="Classes\ExportarExcel.cs" />
     <Compile Include="Classes\Temperatures.cs" />
     <Compile Include="Classes\VerificacaoDeExistencia.cs" />
+    <Compile Include="Forms\Forms_ConfiguracaoGerencial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_ConfiguracaoGerencial.Designer.cs">
+      <DependentUpon>Forms_ConfiguracaoGerencial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Forms_CadastroDespesas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -386,6 +392,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_Compras.resx">
       <DependentUpon>Forms_Compras.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_ConfiguracaoGerencial.resx">
+      <DependentUpon>Forms_ConfiguracaoGerencial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_GerarCarne.resx">
       <DependentUpon>Forms_GerarCarne.cs</DependentUpon>

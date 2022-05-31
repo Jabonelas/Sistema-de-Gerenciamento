@@ -565,5 +565,29 @@ namespace Sistema_de_Gerenciamento.Classes
         #endregion Atualizar Data Lancamento Nota Fiscal Entrada Quando Cancelada
 
         #endregion Atualizar Nota Fiscal Entrada
+
+        public void AtualizarDescontoPorGrupoDeProduto(string _grupo, string _subGrupo, decimal _desconto)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update e_Produto set ep_desconto_por_item = @desconto from tb_EstoqueProduto as e_Produto " +
+                                   "inner join tb_CadastroProdutos as c_Produto on e_Produto.ep_codigo_produto = c_Produto.cp_id " +
+                                   "and c_Produto.cp_grupo = @grupo and c_Produto.cp_sub_grupo = @subGrupo";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@desconto", SqlDbType.Decimal).Value = _desconto;
+                    adapter.SelectCommand.Parameters.AddWithValue("@grupo", SqlDbType.VarChar).Value = _grupo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@subGrupo", SqlDbType.VarChar).Value = _subGrupo;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarDescontoPorGrupoNoBanco(ex);
+            }
+        }
     }
 }

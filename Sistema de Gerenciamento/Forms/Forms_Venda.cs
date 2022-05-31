@@ -38,13 +38,6 @@ namespace Sistema_de_Gerenciamento.Forms
             txtData.Text = DateTime.Today.ToShortDateString();
 
             txtVendedor.Text = Global.tipoDeUsuario;
-
-            //cmbProduto.Items.Clear();
-
-            //foreach (var item in Buscar.BuscarListaProduto())
-            //{
-            //    cmbProduto.Items.Add(item);
-            //}
         }
 
         #region Botao Abrir Cadastro Cliente
@@ -100,17 +93,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
                         txtValorTotal.Text = string.Format("{0:C}", valorBruto);
 
-                        //txtTotalLiquido.Text = string.Format("{0:C}", (valorBruto - (Buscar.BuscarPorcentagemGeralEstoqueProdutoPorCodigo(txtCodBarras.Text)) * valorBruto / 100));
-
                         txtTotalItens.Text = gdvVenda.RowCount.ToString();
-
-                        //
-                        // Avista
-                        //txtValorAvista.Text = string.Format("{0:C}", (valorBruto - (Buscar.BuscarPorcentagemAvistaEstoqueProdutoPorCodigo(txtCodBarras.Text)) * valorBruto / 100));
-
-                        //txtDescontoAvista.Text = string.Format("{0:P}", Buscar.BuscarPorcentagemAvistaEstoqueProdutoPorCodigo(txtCodBarras.Text) / 100);
-
-                        //txtTroco.Text = string.Format("{0:C}", Convert.ToDecimal(txtTotalPago.Text) - Convert.ToDecimal(txtTotalLiquido.Text)).ToString();
 
                         ApagandoTextbox();
                     }
@@ -121,17 +104,11 @@ namespace Sistema_de_Gerenciamento.Forms
                 }
                 else if (cmbProduto.Text != string.Empty && chbOrcamento.Checked == true && txtCodProduto.Text != string.Empty)
                 {
-                    //bool isCadastroExiste = Buscar.BuscarEstoqueProdutoPorCodigo(txtCodBarras.Text);
-
-                    //if (isCadastroExiste == true)
-                    //{
                     txtPrecoComDesconto.Text = string.Format("{0:C}", (Convert.ToDecimal(txtPrecoSemDesconto.Text.Replace("R$ ", "")) -
                                                                        (Convert.ToDecimal(Buscar.BuscarDesontoPorItem(cmbProduto.Text)))
                                                                        * Convert.ToDecimal(txtPrecoSemDesconto.Text.Replace("R$ ", "")) / 100)).ToString();
 
                     txtDescontoPorItem.Text = string.Format("{0:P}", Convert.ToDecimal(Buscar.BuscarDesontoPorItem(cmbProduto.Text)) / 100);
-
-                    /////
 
                     gdvVenda.ColumnCount = 7;
 
@@ -155,24 +132,9 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     txtValorTotal.Text = string.Format("{0:C}", valorBruto);
 
-                    //txtTotalLiquido.Text = string.Format("{0:C}", (valorBruto - (Buscar.BuscarPorcentagemGeralEstoqueProdutoPorCodigo(txtCodBarras.Text)) * valorBruto / 100));
-
                     txtTotalItens.Text = gdvVenda.RowCount.ToString();
 
-                    //
-                    // Avista
-                    //txtValorAvista.Text = string.Format("{0:C}", (valorBruto - (Buscar.BuscarPorcentagemAvistaEstoqueProdutoPorCodigo(txtCodBarras.Text)) * valorBruto / 100));
-
-                    //txtDescontoAvista.Text = string.Format("{0:P}", Buscar.BuscarPorcentagemAvistaEstoqueProdutoPorCodigo(txtCodBarras.Text) / 100);
-
-                    //txtTroco.Text = string.Format("{0:C}", Convert.ToDecimal(txtTotalPago.Text) - Convert.ToDecimal(txtTotalLiquido.Text)).ToString();
-
                     ApagandoTextbox();
-                    //}
-                    //else if (isCadastroExiste == false)
-                    //{
-                    //    MessageBox.Show("Codigo de Barras Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    //}
                 }
             }
             catch (Exception ex)
@@ -304,6 +266,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 if (OpcaoDoUsuario == DialogResult.Yes)
                 {
                     gdvVenda.Rows.Clear();
+
                     TextBox.ApagandoTextBox(this);
                 }
             }
@@ -713,18 +676,25 @@ namespace Sistema_de_Gerenciamento.Forms
             }
             else
             {
-                ApagandoTextbox();
+                txtCodBarras.Text = string.Empty;
+                txtCodProduto.Text = string.Empty;
+                txtQuantidade.Text = string.Empty;
+                txtUnidade.Text = string.Empty;
+                txtPrecoSemDesconto.Text = string.Empty;
             }
         }
 
         private void cmbProduto_SelectedValueChanged(object sender, EventArgs e)
         {
-            produto = listaProduto.FindLast(prod => prod.descricaoProduto.ToLower().StartsWith(cmbProduto.Text.ToLower()));
+            if (cmbProduto.Text != string.Empty)
+            {
+                produto = listaProduto.FindLast(prod => prod.descricaoProduto.ToLower().StartsWith(cmbProduto.Text.ToLower()));
 
-            txtCodProduto.Text = produto.codigo.ToString();
-            txtQuantidade.Text = produto.quantidade.ToString();
-            txtUnidade.Text = produto.unidade.ToString();
-            txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco).ToString();
+                txtCodProduto.Text = produto.codigo.ToString();
+                txtQuantidade.Text = produto.quantidade.ToString();
+                txtUnidade.Text = produto.unidade.ToString();
+                txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco).ToString();
+            }
         }
 
         #endregion ComboBox Produto
@@ -735,7 +705,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             txtCodBarras.Text = string.Empty;
             txtCodProduto.Text = string.Empty;
-            //cmbProduto.Text = string.Empty;
+            cmbProduto.Text = string.Empty;
             txtQuantidade.Text = string.Empty;
             txtUnidade.Text = string.Empty;
             txtPrecoSemDesconto.Text = string.Empty;

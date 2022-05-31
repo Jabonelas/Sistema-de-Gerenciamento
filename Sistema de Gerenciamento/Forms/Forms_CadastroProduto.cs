@@ -285,29 +285,7 @@ namespace Sistema_de_Gerenciamento
         {
             TextBox.DigitarApenasNumeros(e);
 
-            try
-            {
-                if (Char.IsDigit(e.KeyChar) || e.KeyChar.Equals((char)Keys.Back))
-                {
-                    if (txtPorcentagem.Text.Length <= 7 || e.KeyChar.Equals((char)Keys.Back))
-                    {
-                        TextBox textbox = (TextBox)sender;
-                        string testoDoTextBox = Regex.Replace(textbox.Text, "[^0-9]", string.Empty);
-                        if (testoDoTextBox == string.Empty)
-                        {
-                            testoDoTextBox = "0";
-                        }
-
-                        testoDoTextBox += e.KeyChar;
-                        textbox.Text = String.Format("{0:#,##0.00} %", double.Parse(testoDoTextBox) / 100);
-                        textbox.Select(textbox.Text.Length, 0);
-                    }
-                }
-                e.Handled = true;
-            }
-            catch (Exception)
-            {
-            }
+            TextBox.PreenchimentoPorcentagem(e, txtPorcentagem.Text, sender);
         }
 
         private void txtPorcentagem_Leave(object sender, EventArgs e)

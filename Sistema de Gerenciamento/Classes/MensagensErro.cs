@@ -635,6 +635,15 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Verificar Existencia No Banco
 
+        #region Configuracao Gerencial
+
+        public void ErroAoAtualizarDescontoPorGrupoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-CG01) Erro ao Atualizar Desconto Por Grupo de Produto! \n\nErro: {_e}", "Erro Atualizacao Grupo Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Configuracao Gerencial
+
         #endregion Banco
 
         #region Exportar Dados para o Excel

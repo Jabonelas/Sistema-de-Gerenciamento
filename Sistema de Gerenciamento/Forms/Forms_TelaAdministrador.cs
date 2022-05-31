@@ -153,5 +153,11 @@ namespace Sistema_de_Gerenciamento
             Forms_Compras compras = new Forms_Compras();
             compras.ShowDialog();
         }
+
+        private void btnConfiguracaoGerencial_Click(object sender, EventArgs e)
+        {
+            Forms_ConfiguracaoGerencial configuracaoGerencial = new Forms_ConfiguracaoGerencial();
+            configuracaoGerencial.ShowDialog();
+        }
     }
 }
