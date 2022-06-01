@@ -33,6 +33,96 @@ namespace Sistema_de_Gerenciamento
             InitializeComponent();
         }
 
+        #region Botao Salvar
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                {
+                    if (txtCNPJ.Text == string.Empty)
+                    {
+                        Salvar.InserirCadastroEmpresa(
+                            txtRazaoSocial.Text,
+                            txtCNPJ.Text,
+                            txtNomeFantasia.Text,
+                            txtCEP.Text,
+                            txtEndereco.Text,
+                            txtComplemento.Text,
+                            txtBairro.Text,
+                            txtCidade.Text,
+                            cmbUF.Text,
+                            Convert.ToInt32(txtNumero.Text),
+                            txtTelefone.Text,
+                            txtEmail.Text,
+                            txtTextPadrao.Text,
+                            pcbEmpresa.Image);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Empresa Já Cadastrada! \nSe Deseja Realizar Alteração Click Em Altera!", "Atenção!", MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoCadastroEmpresa(ex);
+            }
+        }
+
+        #endregion Botao Salvar
+
+        #region Botao Alterar
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                {
+                    if (txtCNPJ.Text != string.Empty)
+                    {
+                        Atualizar.AtualizarCadastroEmpresa(
+                            txtRazaoSocial.Text,
+                            txtCNPJ.Text,
+                            txtNomeFantasia.Text,
+                            txtCEP.Text,
+                            txtEndereco.Text,
+                            txtComplemento.Text,
+                            txtBairro.Text,
+                            txtCidade.Text,
+                            cmbUF.Text,
+                            Convert.ToInt32(txtNumero.Text),
+                            txtTelefone.Text,
+                            txtEmail.Text,
+                            txtTextPadrao.Text,
+                            Convert.ToInt32(lblce_id.Text)
+
+                            );
+
+                        Atualizar.AtualizarImagemNoCadastroEmpresa(pcbEmpresa.Image, Convert.ToInt32(lblce_id.Text));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Preenchimento Dos Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarCadastroEmpresa(ex);
+            }
+        }
+
+        #endregion Botao Alterar
+
         #region Botao Sair
 
         private void bntSair_Click(object sender, EventArgs e)
@@ -250,58 +340,6 @@ namespace Sistema_de_Gerenciamento
 
         #endregion TextBox Numero
 
-        #region Botao Salvar
-
-        private void btnSalvar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
-                {
-                    if (txtCNPJ.Text == string.Empty)
-                    {
-                        Salvar.InserirCadastroEmpresa(
-                            txtRazaoSocial.Text,
-                            txtCNPJ.Text,
-                            txtNomeFantasia.Text,
-                            txtCEP.Text,
-                            txtEndereco.Text,
-                            txtComplemento.Text,
-                            txtBairro.Text,
-                            txtCidade.Text,
-                            cmbUF.Text,
-                            Convert.ToInt32(txtNumero.Text),
-                            txtTelefone.Text,
-                            txtEmail.Text,
-                            txtTextPadrao.Text,
-                            pcbEmpresa.Image);
-
-                        //Chamar o forms de alerta de inclusao com sucesso
-                        Global.tipoDoAlerta = "Inclusao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Empresa Já Cadastrada! \nSe Deseja Realizar Alteração Click Em Altera!", "Atenção!", MessageBoxButtons.OK,
-                            MessageBoxIcon.Warning);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoCadastroEmpresa(ex);
-            }
-        }
-
-        #endregion Botao Salvar
-
         #region Load
 
         private void CadastroEmpresa_Load(object sender, EventArgs e)
@@ -337,55 +375,5 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Load
-
-        #region Botao Alterar
-
-        private void btnAlterar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
-                {
-                    if (txtCNPJ.Text != string.Empty)
-                    {
-                        Atualizar.AtualizarCadastroEmpresa(
-                            txtRazaoSocial.Text,
-                            txtCNPJ.Text,
-                            txtNomeFantasia.Text,
-                            txtCEP.Text,
-                            txtEndereco.Text,
-                            txtComplemento.Text,
-                            txtBairro.Text,
-                            txtCidade.Text,
-                            cmbUF.Text,
-                            Convert.ToInt32(txtNumero.Text),
-                            txtTelefone.Text,
-                            txtEmail.Text,
-                            txtTextPadrao.Text,
-                            Convert.ToInt32(lblce_id.Text)
-
-                            );
-
-                        Atualizar.AtualizarImagemNoCadastroEmpresa(pcbEmpresa.Image, Convert.ToInt32(lblce_id.Text));
-
-                        //Chamar o forms de alerta de atualizacao com sucesso
-                        Global.tipoDoAlerta = "Atualizacao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Preenchimento Dos Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoAtualizarCadastroEmpresa(ex);
-            }
-        }
-
-        #endregion Botao Alterar
     }
 }

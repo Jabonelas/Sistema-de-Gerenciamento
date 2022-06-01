@@ -12,6 +12,8 @@ namespace Sistema_de_Gerenciamento.Classes
     {
         private MensagensErro Erro = new MensagensErro();
 
+        private Aviso AvisoNoCantoInferiorDireito = new Aviso();
+
         #region Excluir Cliente
 
         #region Excluir Cadastro Cliente
@@ -29,6 +31,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     cmd.Parameters.AddWithValue("@CPF_CNPJ", SqlDbType.VarChar).Value = _cPF_CNPJ;
 
                     cmd.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)
@@ -54,6 +58,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     cmd.Parameters.AddWithValue("@codigo", SqlDbType.VarChar).Value = _codigo;
 
                     cmd.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)
@@ -83,6 +89,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     cmd.Parameters.AddWithValue("@CNPJ", SqlDbType.VarChar).Value = _cNPJ;
 
                     cmd.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)
@@ -108,6 +116,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     cmd.Parameters.AddWithValue("@codigo", SqlDbType.VarChar).Value = _codigo;
 
                     cmd.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)
@@ -137,6 +147,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     cmd.Parameters.AddWithValue("@descricao", SqlDbType.VarChar).Value = _descricao;
 
                     cmd.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)
@@ -162,6 +174,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     cmd.Parameters.AddWithValue("@codigo", SqlDbType.VarChar).Value = _codigo;
 
                     cmd.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)
@@ -190,6 +204,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     cmd.Parameters.AddWithValue("@subGrupo", SqlDbType.VarChar).Value = _subGrupo;
 
                     cmd.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)
@@ -216,6 +232,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     cmd.Parameters.AddWithValue("@descricao", SqlDbType.VarChar).Value = _descricao;
 
                     cmd.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)

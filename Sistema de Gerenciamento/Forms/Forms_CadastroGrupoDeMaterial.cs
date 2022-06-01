@@ -54,12 +54,6 @@ namespace Sistema_de_Gerenciamento
 
                         txtGrupoMaterial.Text = string.Empty;
                         txtSubGrupo.Text = string.Empty;
-
-                        //Chamar o forms de alerta de inclusao com sucesso
-                        Global.tipoDoAlerta = "Inclusao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaSubGrupo(txtSubGrupo.Text) == true)
                     {
@@ -93,12 +87,6 @@ namespace Sistema_de_Gerenciamento
 
                         txtGrupoMaterial.Text = string.Empty;
                         txtSubGrupo.Text = string.Empty;
-
-                        //Chamar o forms de alerta de exclusao com sucesso
-                        Global.tipoDoAlerta = "Exclusao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaSubGrupo(txtSubGrupo.Text) == false)
                     {

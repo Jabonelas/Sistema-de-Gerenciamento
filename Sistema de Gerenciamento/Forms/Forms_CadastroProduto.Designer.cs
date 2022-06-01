@@ -2011,6 +2011,7 @@
             this.cmbSubGrupo.Name = "cmbSubGrupo";
             this.cmbSubGrupo.Size = new System.Drawing.Size(142, 23);
             this.cmbSubGrupo.TabIndex = 8;
+            this.cmbSubGrupo.Enter += new System.EventHandler(this.cmbSubGrupo_Enter);
             // 
             // cmbGrupo
             // 
@@ -2021,6 +2022,7 @@
             this.cmbGrupo.Name = "cmbGrupo";
             this.cmbGrupo.Size = new System.Drawing.Size(117, 23);
             this.cmbGrupo.TabIndex = 7;
+            this.cmbGrupo.SelectedIndexChanged += new System.EventHandler(this.cmbGrupo_SelectedIndexChanged);
             // 
             // cmbUn
             // 
@@ -2053,7 +2055,7 @@
             this.lblCodigo.Text = "9";
             this.lblCodigo.Visible = false;
             // 
-            // CadastroProduto
+            // Forms_CadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -2121,7 +2123,7 @@
             this.Controls.Add(this.btnCadastroProduto);
             this.Controls.Add(this.bunifuSeparator1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "CadastroProduto";
+            this.Name = "Forms_CadastroProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Produto";
             ((System.ComponentModel.ISupportInitialize)(this.pcbProduto)).EndInit();

@@ -816,6 +816,7 @@
             this.txtCPF_CNPJ.UseSystemPasswordChar = false;
             this.txtCPF_CNPJ.WordWrap = true;
             this.txtCPF_CNPJ.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCPF_CNPJ_KeyPress_1);
+            this.txtCPF_CNPJ.Enter += new System.EventHandler(this.txtCPF_CNPJ_Enter);
             this.txtCPF_CNPJ.Leave += new System.EventHandler(this.txtCPF_CNPJ_Leave);
             // 
             // txtSaldo

@@ -475,32 +475,32 @@ namespace Sistema_de_Gerenciamento
 
         public void ErroAoBuscarSubGrupoProdutoNoBanco(Exception _e)
         {
-            MessageBox.Show($"(BUS-PR04) Erro ao Realizar Busca de Sub-Grupo do Produto \n\nErro: {_e}", "Erro Busca Sub-Grupo Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(BUS-PR05) Erro ao Realizar Busca de Sub-Grupo do Produto \n\nErro: {_e}", "Erro Busca Sub-Grupo Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoBuscarProdutoNoBanco(Exception _e)
         {
-            MessageBox.Show($"(BUS-PR05) Erro ao Realizar Busca do Produto \n\nErro: {_e}", "Erro Busca Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(BUS-PR06) Erro ao Realizar Busca do Produto \n\nErro: {_e}", "Erro Busca Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoBuscarImagemProdutoNoBanco(Exception _e)
         {
-            MessageBox.Show($"(BUS-PR06) Erro ao Realizar Busca de Imagem do Produto \n\nErro: {_e}", "Erro Busca Imagem Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(BUS-PR07) Erro ao Realizar Busca de Imagem do Produto \n\nErro: {_e}", "Erro Busca Imagem Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoBuscarListaProdutoNoBanco(Exception _e)
         {
-            MessageBox.Show($"(BUS-PR07) Erro ao Realizar Busca de Lista do Produto \n\nErro: {_e}", "Erro Busca Lista Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(BUS-PR08) Erro ao Realizar Busca de Lista do Produto \n\nErro: {_e}", "Erro Busca Lista Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoBuscarProdutoPorPesquisaNoBanco(Exception _e)
         {
-            MessageBox.Show($"(BUS-PR08) Erro ao Realizar Busca do Produto Por Pesquisa \n\nErro: {_e}", "Erro Busca Produto Pesquisa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(BUS-PR09) Erro ao Realizar Busca do Produto Por Pesquisa \n\nErro: {_e}", "Erro Busca Produto Pesquisa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoBuscarDescontoProdutoNoBanco(Exception _e)
         {
-            MessageBox.Show($"(BUS-PR09) Erro ao Realizar Busca Desconto do Produto \n\nErro: {_e}", "Erro Busca Desconto Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(BUS-PR10) Erro ao Realizar Busca Desconto do Produto \n\nErro: {_e}", "Erro Busca Desconto Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Produto
@@ -640,6 +640,21 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoAtualizarDescontoPorGrupoNoBanco(Exception _e)
         {
             MessageBox.Show($"(ATU-CG01) Erro ao Atualizar Desconto Por Grupo de Produto! \n\nErro: {_e}", "Erro Atualizacao Grupo Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAtualizarDescontoAvistaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-CG02) Erro ao Atualizar Desconto Avista! \n\nErro: {_e}", "Erro Atualizacao Desconto Avista!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAtualizarJurosCarneNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-CG03) Erro ao Atualizar Juros Carne! \n\nErro: {_e}", "Erro Atualizacao Juros Carne!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAtualizarJurosCreditoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-CG04) Erro ao Atualizar Juros Credito! \n\nErro: {_e}", "Erro Atualizacao Juros Credito!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Configuracao Gerencial

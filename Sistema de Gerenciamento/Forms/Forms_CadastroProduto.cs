@@ -33,7 +33,7 @@ namespace Sistema_de_Gerenciamento
         {
             InitializeComponent();
 
-            PreencherComboBoxGrupoeSub_Grup();
+            PreencherComboBoxGrupo();
 
             // Preencher o combobox de fornecedor
             cmbFornecedor.Items.Clear();
@@ -52,7 +52,7 @@ namespace Sistema_de_Gerenciamento
 
             pcbProduto.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\camera3.png");
 
-            PreencherComboBoxGrupoeSub_Grup();
+            PreencherComboBoxGrupo();
 
             // Preencher o combobox de fornecedor
             cmbFornecedor.Items.Clear();
@@ -95,12 +95,6 @@ namespace Sistema_de_Gerenciamento
                             Convert.ToDecimal(txtComissao.Text.Replace(" %", string.Empty)),
                             txtObservacoes.Text,
                             Convert.ToInt32(lblCodigo.Text))).ToString();
-
-                        //Chamar o forms de alerta de inclusao com sucesso
-                        Global.tipoDoAlerta = "Inclusao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == true)
                     {
@@ -149,12 +143,6 @@ namespace Sistema_de_Gerenciamento
                         txtObservacoes.Text);
 
                         Atualizar.AtualizarImagemNoCadastroProduto(pcbProduto.Image, Convert.ToInt32(txtCodigo.Text));
-
-                        //Chamar o forms de alerta de atualizacao com sucesso
-                        Global.tipoDoAlerta = "Atualizacao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == false)
                     {
@@ -197,12 +185,6 @@ namespace Sistema_de_Gerenciamento
                         Excluir.ExcluirCadastroProduto(txtDescricao.Text);
 
                         Excluir.ExcluirImagemProduto(Convert.ToInt32(txtCodigo.Text));
-
-                        //Chamar o forms de alerta de exclusao com sucesso
-                        Global.tipoDoAlerta = "Exclusao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == false)
                     {
@@ -465,7 +447,9 @@ namespace Sistema_de_Gerenciamento
 
         #region Preenchimento ComboBox
 
-        private void PreencherComboBoxGrupoeSub_Grup()
+        #region Preencher ComboBox Grupo
+
+        private void PreencherComboBoxGrupo()
         {
             List<DadosGrupoMaterial> listaGrupo = new List<DadosGrupoMaterial>();
 
@@ -473,14 +457,35 @@ namespace Sistema_de_Gerenciamento
 
             cmbGrupo.Items.Clear();
 
+            listaGrupo.ForEach(prod => cmbGrupo.Items.Add(prod.grupo));
+        }
+
+        private void cmbGrupo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<DadosSubGrupoMaterial> listaSubGrupo = new List<DadosSubGrupoMaterial>();
+
+            listaSubGrupo = Buscar.BuscarSubGrupoProduto(cmbGrupo.Text);
+
             cmbSubGrupo.Items.Clear();
 
-            foreach (DadosGrupoMaterial item in listaGrupo)
+            listaSubGrupo.ForEach(prod => cmbSubGrupo.Items.Add(prod.sub_grupo));
+        }
+
+        #endregion Preencher ComboBox Grupo
+
+        #region Preenchimento ComboBox Sub-Grupo
+
+        private void cmbSubGrupo_Enter(object sender, EventArgs e)
+        {
+            if (cmbGrupo.Text == string.Empty)
             {
-                cmbGrupo.Items.Add(item.grupo);
-                cmbSubGrupo.Items.Add(item.sub_grupo);
+                MessageBox.Show("Por Favor Preencha Primeiro O Campo Grupo!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                cmbGrupo.Focus();
             }
         }
+
+        #endregion Preenchimento ComboBox Sub-Grupo
 
         #endregion Preenchimento ComboBox
     }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DGVPrinterHelper;
 using Sistema_de_Gerenciamento.Classes;
 
 namespace Sistema_de_Gerenciamento.Forms
@@ -147,5 +148,33 @@ namespace Sistema_de_Gerenciamento.Forms
         }
 
         #endregion Botao Exportar
+
+        #region Imprimir Relatorio de Despesas
+
+        private void ImprimirRelatorioDespesas()
+        {
+            DGVPrinter printer = new DGVPrinter();
+            printer.Title = "Relatorio de Despesas";//Header
+            printer.SubTitle = string.Format("Date: {0}", DateTime.Now.Date.ToString("MM/dd/yyyy"));
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            printer.PageNumbers = true;
+            printer.PageNumberInHeader = false;
+            printer.PorportionalColumns = true;
+            printer.HeaderCellAlignment = StringAlignment.Near;
+            printer.Footer = DateTime.Today.ToString();//Footer
+            printer.FooterSpacing = 15;
+            printer.PrintDataGridView(gdvPesquisarDespesa);
+        }
+
+        #endregion Imprimir Relatorio de Despesas
+
+        #region Botao Imprimir
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            ImprimirRelatorioDespesas();
+        }
+
+        #endregion Botao Imprimir
     }
 }

@@ -54,12 +54,6 @@ namespace Sistema_de_Gerenciamento
 
                         txtUsuario.Text = string.Empty;
                         txtSenha.Text = string.Empty;
-
-                        //Chamar o forms de alerta de inclusao com sucesso
-                        Global.tipoDoAlerta = "Inclusao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDoUsuario(txtUsuario.Text) == true)
                     {
@@ -92,12 +86,6 @@ namespace Sistema_de_Gerenciamento
                         Atualizar.AtualizarCadastroUsuario(
                             txtUsuario.Text,
                             txtSenha.Text);
-
-                        //Chamar o forms de alerta de atualizacao com sucesso
-                        Global.tipoDoAlerta = "Atualizacao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDoUsuario(txtUsuario.Text) == false)
                     {

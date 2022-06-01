@@ -6,12 +6,17 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sistema_de_Gerenciamento.Classes;
 
 namespace Sistema_de_Gerenciamento
 {
     internal class AdicionarNoBanco : ConectarBanco
     {
         private MensagensErro Erro = new MensagensErro();
+
+        private Aviso AvisoNoCantoInferiorDireito = new Aviso();
+
+        private VerificacaoDeExistencia VerificarExistencia = new VerificacaoDeExistencia();
 
         #region Inserir Cliente
 
@@ -69,6 +74,8 @@ namespace Sistema_de_Gerenciamento
                     decimal x = dr.GetDecimal(0);
 
                     return Convert.ToInt32(x);
+
+                    AvisoNoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -104,6 +111,8 @@ namespace Sistema_de_Gerenciamento
                     decimal x = dr.GetDecimal(0);
 
                     return Convert.ToInt32(x);
+
+                    AvisoNoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -158,6 +167,8 @@ namespace Sistema_de_Gerenciamento
                     decimal x = dr.GetDecimal(0);
 
                     return Convert.ToInt32(x);
+
+                    AvisoNoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -193,11 +204,14 @@ namespace Sistema_de_Gerenciamento
                     decimal x = dr.GetDecimal(0);
 
                     return Convert.ToInt32(x);
+
+                    AvisoNoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
             {
                 Erro.ErroAoAdicionarImagemFornecedorNoBanco(ex);
+
                 return 0;
             }
         }
@@ -210,67 +224,22 @@ namespace Sistema_de_Gerenciamento
 
         #region Cadastro Produto
 
-        public int InserirCadastroProduto(string _descricao,
-        string _un,
-        decimal _valor_custo,
-        decimal _porcentagem,
-        decimal _valor_venda,
-        decimal _lucro,
-        decimal _preco_atacado,
-        string _grupo,
-        string _sub_grupo,
-        string _fonecedor,
-        decimal _estoque_minimo,
-        string _garantia,
-        string _marca,
-        string _referencia,
-        DateTime _validade,
-        decimal _comissao,
-        string _observacao,
-        int _fk_ip_id)
+        public int InserirCadastroProduto(string _descricao, string _un, decimal _valor_custo, decimal _porcentagem,
+        decimal _valor_venda, decimal _lucro, decimal _preco_atacado, string _grupo, string _sub_grupo, string _fonecedor,
+        decimal _estoque_minimo, string _garantia, string _marca, string _referencia, DateTime _validade, decimal _comissao,
+        string _observacao, int _fk_ip_id)
 
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "insert into tb_CadastroProdutos (cp_descricao," +
-                        "cp_un," +
-                        "cp_valor_custo," +
-                        "cp_porcentagem," +
-                        "cp_valor_venda," +
-                        "cp_lucro," +
-                        "cp_preco_atacado," +
-                         "cp_grupo," +
-                        "cp_sub_grupo," +
-                        "cp_fonecedor," +
-                        "cp_estoque_minimo," +
-                        "cp_garantia," +
-                        "cp_marca," +
-                        "cp_referencia," +
-                        "cp_validade," +
-                        "cp_comissao," +
-                        "cp_observacao," +
-                        "fk_ip_id) " +
-
-                        "values (@descricao," +
-                        "@un," +
-                        "@valorCusto," +
-                        "@porcentagem," +
-                        "@valorVenda," +
-                        "@lucro," +
-                        "@precoAtacado," +
-                        "@grupo," +
-                        "@subGrupo," +
-                        "@fonecedor," +
-                        "@estoqueMinimo," +
-                        "@garantia," +
-                        "@marca," +
-                        "@referencia," +
-                        "@validade," +
-                        "@comissao," +
-                        "@observacao," +
-                        "@fk_ip_id) select scope_identity()";
+                    string query = "insert into tb_CadastroProdutos (cp_descricao,cp_un,cp_valor_custo,cp_porcentagem," +
+                        "cp_valor_venda,cp_lucro,cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo," +
+                        "cp_garantia,cp_marca,cp_referencia,cp_validade,cp_comissao,cp_observacao,fk_ip_id) " +
+                        "values (@descricao,@un,@valorCusto,@porcentagem,@valorVenda,@lucro,@precoAtacado,@grupo," +
+                        "@subGrupo,@fonecedor,@estoqueMinimo,@garantia,@marca,@referencia,@validade,@comissao," +
+                        "@observacao,@fk_ip_id) select scope_identity()";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@descricao", SqlDbType.VarChar).Value = _descricao;
@@ -298,6 +267,8 @@ namespace Sistema_de_Gerenciamento
                     decimal x = dr.GetDecimal(0);
 
                     return Convert.ToInt32(x);
+
+                    AvisoNoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -333,6 +304,8 @@ namespace Sistema_de_Gerenciamento
                     decimal x = dr.GetDecimal(0);
 
                     return Convert.ToInt32(x);
+
+                    AvisoNoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -355,14 +328,15 @@ namespace Sistema_de_Gerenciamento
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query =
-                        "insert into tb_CadastroGrupoMaterial (cg_grupo,cg_sub_grupo) values(@grupo,@subGrupo)";
+                    string query = "insert into tb_CadastroGrupoMaterial (cg_grupo,cg_sub_grupo) values(@grupo,@subGrupo)";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
                     cmd.Parameters.AddWithValue("@grupo", SqlDbType.Date).Value = _grupo;
                     cmd.Parameters.AddWithValue("@subGrupo", SqlDbType.VarChar).Value = _subGrupo;
 
                     cmd.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -410,6 +384,8 @@ namespace Sistema_de_Gerenciamento
                     cmd.Parameters.Add("@imagem", SqlDbType.Image).Value = arr;
 
                     cmd.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -435,6 +411,8 @@ namespace Sistema_de_Gerenciamento
                     cmd.Parameters.AddWithValue("@senha", SqlDbType.VarChar).Value = _senha;
 
                     cmd.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -460,6 +438,8 @@ namespace Sistema_de_Gerenciamento
                     cmd.Parameters.AddWithValue("@tipo", SqlDbType.VarChar).Value = _tipo;
 
                     cmd.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -489,6 +469,8 @@ namespace Sistema_de_Gerenciamento
                     cmd.Parameters.AddWithValue("@ne_numero_nf", SqlDbType.Int).Value = _ne_numero_nf;
 
                     cmd.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)

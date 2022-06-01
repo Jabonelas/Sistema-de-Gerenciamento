@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>9</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +35,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>9</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bunifu.Licensing">
@@ -237,12 +239,14 @@
     <Compile Include="Classes\AdicionarNoBanco.cs" />
     <Compile Include="Classes\ApiCorreios.cs" />
     <Compile Include="Classes\AtualizacaoNoBanco.cs" />
+    <Compile Include="Classes\AvisoCantoInferiorDireito.cs" />
     <Compile Include="Classes\BuscarNoBanco.cs" />
     <Compile Include="Classes\ConectarBanco.cs" />
     <Compile Include="Classes\DadosCarne.cs" />
     <Compile Include="Classes\DadosCliente.cs" />
     <Compile Include="Classes\DadosGrupoMaterial.cs" />
     <Compile Include="Classes\DadosProduto.cs" />
+    <Compile Include="Classes\DGVPrinter.cs" />
     <Compile Include="Classes\ExcluirNoBanco.cs" />
     <Compile Include="Classes\ExportarExcel.cs" />
     <Compile Include="Classes\Temperatures.cs" />

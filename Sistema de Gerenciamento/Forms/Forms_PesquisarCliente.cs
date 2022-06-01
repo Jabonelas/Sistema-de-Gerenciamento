@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Bunifu.UI.WinForms;
+using DGVPrinterHelper;
 
 namespace Sistema_de_Gerenciamento
 {
@@ -19,10 +22,17 @@ namespace Sistema_de_Gerenciamento
 
         private MensagensErro Erro = new MensagensErro();
 
+        private int qntdDeLinhasPaginas = 0;
+
         public Forms_PesquisarCliente(Forms_CadastroCliente _cadastroCliente)
         {
             InitializeComponent();
             cadastroCliente = _cadastroCliente;
+        }
+
+        public Forms_PesquisarCliente()
+        {
+            InitializeComponent();
         }
 
         #region Botao Pesquisar
@@ -459,5 +469,33 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Botao Exportar Para Excel
+
+        #region Imprimir Relatorio Cliente
+
+        private void ImprimirRelatorioClientes()
+        {
+            DGVPrinter printer = new DGVPrinter();
+            printer.Title = "Relatorio de Clientes";//Header
+            printer.SubTitle = string.Format("Date: {0}", DateTime.Now.Date.ToString("MM/dd/yyyy"));
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            printer.PageNumbers = true;
+            printer.PageNumberInHeader = false;
+            printer.PorportionalColumns = true;
+            printer.HeaderCellAlignment = StringAlignment.Near;
+            printer.Footer = DateTime.Today.ToString();//Footer
+            printer.FooterSpacing = 15;
+            printer.PrintDataGridView(gdvPesquisarCliente);
+        }
+
+        #endregion Imprimir Relatorio Cliente
+
+        #region Botao Imprimir
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            ImprimirRelatorioClientes();
+        }
+
+        #endregion Botao Imprimir
     }
 }

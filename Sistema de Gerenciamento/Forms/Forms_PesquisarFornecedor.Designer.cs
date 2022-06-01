@@ -364,6 +364,7 @@
             this.bunifuButton2.TextMarginLeft = 0;
             this.bunifuButton2.TextPadding = new System.Windows.Forms.Padding(0);
             this.bunifuButton2.UseDefaultRadiusAndThickness = true;
+            this.bunifuButton2.Click += new System.EventHandler(this.bunifuButton2_Click);
             // 
             // btnSelecionar
             // 
@@ -998,7 +999,7 @@
             this.label1.TabIndex = 184;
             this.label1.Text = "CNPJ";
             // 
-            // PesquisarFornecedor
+            // Forms_PesquisarFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1017,7 +1018,7 @@
             this.Controls.Add(this.txtCNPJ);
             this.Controls.Add(this.txtNomeFantasia);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "PesquisarFornecedor";
+            this.Name = "Forms_PesquisarFornecedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisar Fornecedor";
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarFornecedor)).EndInit();

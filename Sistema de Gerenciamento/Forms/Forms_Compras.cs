@@ -89,11 +89,6 @@ namespace Sistema_de_Gerenciamento.Forms
                                     Atualizar.AtualizarQuantidadeEDataEntradaEstoqueProduto(quantidade, Convert.ToInt32(txtNumeroNotaFiscal.Text));
 
                                     Atualizar.AtualizarDataLancamentoNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text));
-
-                                    Global.tipoDoAlerta = "Inclusao";
-
-                                    Forms_Aviso buscarCliente = new Forms_Aviso();
-                                    buscarCliente.Show();
                                 }
                             }
                         }
@@ -137,11 +132,6 @@ namespace Sistema_de_Gerenciamento.Forms
                     Atualizar.AtualizarQuantidadeCanceladaEstoqueProduto(Convert.ToInt32(txtNumeroNotaFiscal.Text));
 
                     Atualizar.AtualizarDataLancamentoNotaFiscalEntradaQuandoCancelada(Convert.ToInt32(txtNumeroNotaFiscal.Text));
-
-                    Global.tipoDoAlerta = "Exclusao";
-
-                    Forms_Aviso buscarCliente = new Forms_Aviso();
-                    buscarCliente.Show();
                 }
                 else
                 {

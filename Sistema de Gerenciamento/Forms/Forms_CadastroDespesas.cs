@@ -33,10 +33,14 @@ namespace Sistema_de_Gerenciamento
             InitializeComponent();
         }
 
+        #region Botao Sair
+
         private void bntSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+        #endregion Botao Sair
 
         #region Botao Buscar
 
@@ -63,12 +67,6 @@ namespace Sistema_de_Gerenciamento
                        txtTipo.Text);
 
                         txtCodigo.Text = Buscar.BuscarCodigoDespesa(txtDescricao.Text).ToString();
-
-                        //Chamar o forms de alerta de inclusao com sucesso
-                        Global.tipoDoAlerta = "Inclusao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeDespesa(txtDescricao.Text) == true)
                     {
@@ -102,12 +100,6 @@ namespace Sistema_de_Gerenciamento
                             Convert.ToInt32(txtCodigo.Text),
                             txtDescricao.Text,
                             txtTipo.Text);
-
-                        //Chamar o forms de alerta de atualizacao com sucesso
-                        Global.tipoDoAlerta = "Atualizacao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeDespesa(txtDescricao.Text) == false)
                     {
@@ -138,12 +130,6 @@ namespace Sistema_de_Gerenciamento
                     if (VerificarExistencia.VerificarExistenciaDeDespesa(txtDescricao.Text) == true)
                     {
                         Excluir.ExcluirCadastroDespesa(Convert.ToInt32(txtCodigo.Text), txtDescricao.Text);
-
-                        //Chamar o forms de alerta de exclusao com sucesso
-                        Global.tipoDoAlerta = "Exclusao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeDespesa(txtDescricao.Text) == false)
                     {

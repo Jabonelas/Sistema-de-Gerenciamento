@@ -6,12 +6,16 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Correios.CorreiosServiceReference;
+using Exception = System.Exception;
 
 namespace Sistema_de_Gerenciamento.Classes
 {
     internal class AtualizacaoNoBanco : ConectarBanco
     {
         private MensagensErro Erro = new MensagensErro();
+
+        private Aviso AvisoNoCantoInferiorDireito = new Aviso();
 
         #region Atualizar Cliente
 
@@ -26,31 +30,12 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update tb_CadastroClientes set " +
-                        "cc_data_cadastro=@DataCadastro," +
-                        "cc_nome_cliente=@NomeCliente," +
-                        "cc_tipo=@Tipo," +
-                        "cc_rg=@RG," +
-                        "cc_emissor=@Emissor," +
-                        "cc_data_emissao=@DataEmissao," +
-                        "cc_ins_est=@Ins_Est," +
-                        "cc_cep=@CEP," +
-                        "cc_endereco=@Endereco," +
-                        "cc_numero=@numero," +
-                        "cc_complemento=@Complemento," +
-                        "cc_bairro=@Bairro," +
-                        "cc_cidade=@Cidade," +
-                        "cc_uf=@UF," +
-                        "cc_naturalidade=@Naturalidade," +
-                        "cc_data_nasc=@DataNasc," +
-                        "cc_estado_civil=@EstadoCivil," +
-                        "cc_credito=@Credito," +
-                        "cc_saldo=@Saldo," +
-                        "cc_bloqueio=@Bloqueio," +
-                        "cc_celular=@Celular," +
-                        "cc_tel_residencial=@Tel_Residencial," +
-                        "cc_email=@Email," +
-                        "cc_observacoes=@Observacoes " +
+                    string query = "update tb_CadastroClientes set cc_data_cadastro=@DataCadastro,cc_nome_cliente=@NomeCliente," +
+                        "cc_tipo=@Tipo,cc_rg=@RG,cc_emissor=@Emissor,cc_data_emissao=@DataEmissao,cc_ins_est=@Ins_Est," +
+                        "cc_cep=@CEP,cc_endereco=@Endereco,cc_numero=@numero,cc_complemento=@Complemento,cc_bairro=@Bairro," +
+                        "cc_cidade=@Cidade,cc_uf=@UF,cc_naturalidade=@Naturalidade,cc_data_nasc=@DataNasc,cc_estado_civil=@EstadoCivil," +
+                        "cc_credito=@Credito,cc_saldo=@Saldo,cc_bloqueio=@Bloqueio,cc_celular=@Celular,cc_tel_residencial=@Tel_Residencial," +
+                        "cc_email=@Email,cc_observacoes=@Observacoes " +
                         "where cc_cpf_cnpj=@CPF_CNPJ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -81,6 +66,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@Observacoes", SqlDbType.VarChar).Value = _observacoes;
 
                     adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -110,6 +97,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@cc_id", SqlDbType.VarChar).Value = _cc_id;
 
                     adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -134,20 +123,10 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update tb_CadastroFornecedor set " +
-                        "cf_razao_social=@razaoSocial," +
-                        "cf_cnpj=@cnpj," +
-                        "cf_nome_fantasia=@nomeFantasia," +
-                        "cf_cep=@cep," +
-                        "cf_endereco=@endereco," +
-                        "cf_complemento=@complemento," +
-                        "cf_numero=@numero," +
-                        "cf_bairro=@bairro," +
-                        "cf_cidade=@cidade," +
-                        "cf_uf=@uf," +
-                        "cf_telefone=@telefone," +
-                        "cf_email=@email," +
-                        "cf_observacoes=@Observacoes " +
+                    string query = "update tb_CadastroFornecedor set cf_razao_social=@razaoSocial,cf_cnpj=@cnpj," +
+                        "cf_nome_fantasia=@nomeFantasia,cf_cep=@cep,cf_endereco=@endereco,cf_complemento=@complemento," +
+                        "cf_numero=@numero,cf_bairro=@bairro,cf_cidade=@cidade,cf_uf=@uf,cf_telefone=@telefone," +
+                        "cf_email=@email,cf_observacoes=@Observacoes " +
                         "where cf_cnpj=@cnpj";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -166,6 +145,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@observacoes", SqlDbType.VarChar).Value = _observacoes;
 
                     adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -195,6 +176,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@cf_id", SqlDbType.VarChar).Value = _cf_id;
 
                     adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -211,22 +194,9 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Atualizar Cadastro Produto
 
-        public void AtualizarCadastroProduto(string _descricao,
-        string _un,
-        decimal _valor_custo,
-        decimal _porcentagem,
-        decimal _valor_venda,
-        decimal _lucro,
-        decimal _preco_atacado,
-        string _grupo,
-        string _sub_grupo,
-        string _fonecedor,
-        decimal _estoque_minimo,
-        string _garantia,
-        string _marca,
-        string _referencia,
-        DateTime _validade,
-        decimal _comissao,
+        public void AtualizarCadastroProduto(string _descricao, string _un, decimal _valor_custo, decimal _porcentagem,
+        decimal _valor_venda, decimal _lucro, decimal _preco_atacado, string _grupo, string _sub_grupo, string _fonecedor,
+        decimal _estoque_minimo, string _garantia, string _marca, string _referencia, DateTime _validade, decimal _comissao,
         string _observacao)
 
         {
@@ -234,23 +204,10 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update tb_CadastroProdutos set " +
-                        "cp_descricao=@descricao," +
-                        "cp_un=@un," +
-                        "cp_valor_custo=@valorCusto," +
-                        "cp_porcentagem=@porcentagem," +
-                        "cp_valor_venda=@valorVenda," +
-                        "cp_lucro=@lucro," +
-                        "cp_preco_atacado=@precoAtacado," +
-                        "cp_grupo=@grupo," +
-                        "cp_sub_grupo=@subGrupo," +
-                        "cp_fonecedor=@fonecedor," +
-                        "cp_estoque_minimo=@estoqueMinimo," +
-                        "cp_garantia=@garantia," +
-                        "cp_marca=@marca," +
-                        "cp_referencia=@referencia," +
-                        "cp_validade=@validade," +
-                        "cp_comissao=@comissao," +
+                    string query = "update tb_CadastroProdutos set cp_descricao=@descricao,cp_un=@un,cp_valor_custo=@valorCusto," +
+                        "cp_porcentagem=@porcentagem,cp_valor_venda=@valorVenda,cp_lucro=@lucro,cp_preco_atacado=@precoAtacado," +
+                        "cp_grupo=@grupo,cp_sub_grupo=@subGrupo,cp_fonecedor=@fonecedor,cp_estoque_minimo=@estoqueMinimo," +
+                        "cp_garantia=@garantia,cp_marca=@marca,cp_referencia=@referencia,cp_validade=@validade,cp_comissao=@comissao," +
                         "cp_observacao=@observacao " +
                         "where cp_descricao=@descricao";
 
@@ -274,6 +231,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@observacao", SqlDbType.VarChar).Value = _observacao;
 
                     adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -303,6 +262,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@cp_id", SqlDbType.VarChar).Value = _cp_id;
 
                     adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -326,20 +287,10 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update tb_CadastroEmpresa set " +
-                        "ce_razao_social=@razaoSocial," +
-                        "ce_cnpj=@cnpj," +
-                        "ce_nome_fantasia=@nomeFantasia," +
-                        "ce_cep=@cep," +
-                        "ce_endereco=@endereco," +
-                        "ce_complemento=@complemento," +
-                        "ce_bairro=@bairro," +
-                        "ce_cidade=@cidade," +
-                        "ce_uf=@uf," +
-                        "ce_numero=@numero," +
-                        "ce_telefone=@telefone," +
-                        "ce_email=@email," +
-                        "ce_texto_padrao_os=@textoPadraoSO " +
+                    string query = "update tb_CadastroEmpresa set ce_razao_social=@razaoSocial,ce_cnpj=@cnpj," +
+                        "ce_nome_fantasia=@nomeFantasia,ce_cep=@cep,ce_endereco=@endereco,ce_complemento=@complemento," +
+                        "ce_bairro=@bairro,ce_cidade=@cidade,ce_uf=@uf,ce_numero=@numero,ce_telefone=@telefone," +
+                        "ce_email=@email,ce_texto_padrao_os=@textoPadraoSO " +
                         "where ce_id = @ce_id ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -359,6 +310,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@ce_id", SqlDbType.Int).Value = _ce_id;
 
                     adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -388,6 +341,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@ce_id", SqlDbType.VarChar).Value = _ce_id;
 
                     adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -408,9 +363,7 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update tb_CadastroUsuario set " +
-                        "cu_usuario = @usuario," +
-                        "cu_senha = @senha " +
+                    string query = "update tb_CadastroUsuario set cu_usuario = @usuario,cu_senha = @senha " +
                         "where cu_usuario = @usuario ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -418,6 +371,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@senha", SqlDbType.VarChar).Value = _senha;
 
                     adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -436,9 +391,7 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update tb_CadastroDespesa set " +
-                                   "cd_descricao = @descricao," +
-                                   "cd_tipo = @tipo " +
+                    string query = "update tb_CadastroDespesa set cd_descricao = @descricao,cd_tipo = @tipo " +
                                    "where cd_id = @cd_id";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -447,6 +400,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@tipo", SqlDbType.VarChar).Value = _tipo;
 
                     adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -475,6 +430,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@ne_numero_nf", SqlDbType.VarChar).Value = _numeroNF;
 
                     adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -500,6 +457,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@ep_numero_nf", SqlDbType.VarChar).Value = _numeroNF;
 
                     adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -529,6 +488,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@ne_numero_nf", SqlDbType.VarChar).Value = _numeroNF;
 
                     adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -554,6 +515,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@ne_numero_nf", SqlDbType.VarChar).Value = _numeroNF;
 
                     adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -566,22 +529,28 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Atualizar Nota Fiscal Entrada
 
-        public void AtualizarDescontoPorGrupoDeProduto(string _grupo, string _subGrupo, decimal _desconto)
+        #region Atualizar Configuracao Gerencial
+
+        #region Atualizar Desconto Por Grupo de Produto
+
+        public void AtualizarDescontoPorGrupoDeProduto(string _grupo, string _subGrupo, decimal _descontoGrupo)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update e_Produto set ep_desconto_por_item = @desconto from tb_EstoqueProduto as e_Produto " +
+                    string query = "update e_Produto set ep_desconto_por_item = @descontoGrupo from tb_EstoqueProduto as e_Produto " +
                                    "inner join tb_CadastroProdutos as c_Produto on e_Produto.ep_codigo_produto = c_Produto.cp_id " +
                                    "and c_Produto.cp_grupo = @grupo and c_Produto.cp_sub_grupo = @subGrupo";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@desconto", SqlDbType.Decimal).Value = _desconto;
+                    adapter.SelectCommand.Parameters.AddWithValue("@descontoGrupo", SqlDbType.Decimal).Value = _descontoGrupo;
                     adapter.SelectCommand.Parameters.AddWithValue("@grupo", SqlDbType.VarChar).Value = _grupo;
                     adapter.SelectCommand.Parameters.AddWithValue("@subGrupo", SqlDbType.VarChar).Value = _subGrupo;
 
                     adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -589,5 +558,92 @@ namespace Sistema_de_Gerenciamento.Classes
                 Erro.ErroAoAtualizarDescontoPorGrupoNoBanco(ex);
             }
         }
+
+        #endregion Atualizar Desconto Por Grupo de Produto
+
+        #region Atualizar Desconto Avista
+
+        public void AtualizarPagamentoDescontoAvista(decimal _descontoAVista)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_Financeiro set fn_desconto_avista = @descontoAVista where fn_id = 1";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@descontoAVista", SqlDbType.Decimal).Value = _descontoAVista;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarDescontoAvistaNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Desconto Avista
+
+        #region Atualizar Juros Carne
+
+        public void JurosPorCarne(int _prazoCarne, decimal _jurosCarne, int _parcelasCarne)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_Financeiro set fn_prazo_carne = @prazoCarne, fn_juros_carne = @jurosCarne," +
+                                   "fn_parcelas_carne = @parcelasCarne";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.AddWithValue("@prazoCarne", _prazoCarne);
+                    adapter.SelectCommand.Parameters.AddWithValue("@jurosCarne", _jurosCarne);
+                    adapter.SelectCommand.Parameters.AddWithValue("@parcelasCarne", _parcelasCarne);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarJurosCarneNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Juros Carne
+
+        #region Atualizar Juros Credito
+
+        public void JurosCredito(decimal _jurosCredito, int _parcelasCredito)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_Financeiro set fn_juros_credito = @jurosCredito ,fn_parcelas_credito = @parcelasCredito";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@jurosCredito", _jurosCredito);
+                    adapter.SelectCommand.Parameters.AddWithValue("@parcelasCredito", _parcelasCredito);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoNoCantoInferiorDireito.Atualizacao();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarJurosCreditoNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Juros Credito
+
+        #endregion Atualizar Configuracao Gerencial
     }
 }

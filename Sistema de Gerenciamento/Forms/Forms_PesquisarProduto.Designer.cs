@@ -274,6 +274,7 @@
             this.btnImprimir.TextMarginLeft = 0;
             this.btnImprimir.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnImprimir.UseDefaultRadiusAndThickness = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnExportar
             // 
@@ -1211,7 +1212,7 @@
             this.label5.TabIndex = 189;
             this.label5.Text = "Sub-Grupo";
             // 
-            // PesquisarProduto
+            // Forms_PesquisarProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1234,7 +1235,7 @@
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnSelecionar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "PesquisarProduto";
+            this.Name = "Forms_PesquisarProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisar Produto";
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarProduto)).EndInit();

@@ -27,8 +27,6 @@ namespace Sistema_de_Gerenciamento
 
         private ExcluirNoBanco Excluir = new ExcluirNoBanco();
 
-        private BuscarNoBanco Buscar = new BuscarNoBanco();
-
         private ApiCorreios Api = new ApiCorreios();
 
         private int qntCEPexecutado = 0;
@@ -88,12 +86,6 @@ namespace Sistema_de_Gerenciamento
                             txtEmail.Text,
                             txtObservacoes.Text,
                             Convert.ToInt32(lblForeignKey.Text))).ToString();
-
-                        //Chamar o forms de alerta de inclusao com sucesso
-                        Global.tipoDoAlerta = "Inclusao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == true)
                     {
@@ -138,12 +130,6 @@ namespace Sistema_de_Gerenciamento
                         txtObservacoes.Text);
 
                         Atualizar.AtualizarImagemNoCadastroFornecedor(pcbFornecedor.Image, Convert.ToInt32(txtCodigo.Text));
-
-                        //Chamar o forms de alerta de atualizacao com sucesso
-                        Global.tipoDoAlerta = "Atualizacao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == false)
                     {
@@ -186,12 +172,6 @@ namespace Sistema_de_Gerenciamento
                         Excluir.ExcluirCadastroFornecedor(txtCNPJ.Text);
 
                         Excluir.ExcluirImagemFornecedor(Convert.ToInt32(txtCodigo.Text));
-
-                        //Chamar o forms de alerta de exclusao com sucesso
-                        Global.tipoDoAlerta = "Exclusao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == false)
                     {

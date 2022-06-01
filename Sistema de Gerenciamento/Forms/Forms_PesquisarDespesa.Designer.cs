@@ -56,6 +56,9 @@
             this.btnImprimir = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnSelecionar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.gdvPesquisarDespesa = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.cd_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cd_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cd_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtCodigoDespesa = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnPesquisar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -63,9 +66,6 @@
             this.txtDescricao = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtTipo = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cd_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cd_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cd_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarDespesa)).BeginInit();
             this.SuspendLayout();
             // 
@@ -352,6 +352,7 @@
             this.btnImprimir.TextMarginLeft = 0;
             this.btnImprimir.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnImprimir.UseDefaultRadiusAndThickness = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnSelecionar
             // 
@@ -512,6 +513,27 @@
             this.gdvPesquisarDespesa.Size = new System.Drawing.Size(850, 267);
             this.gdvPesquisarDespesa.TabIndex = 175;
             this.gdvPesquisarDespesa.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            // 
+            // cd_id
+            // 
+            this.cd_id.DataPropertyName = "cd_id";
+            this.cd_id.HeaderText = "Codigo";
+            this.cd_id.Name = "cd_id";
+            this.cd_id.ReadOnly = true;
+            // 
+            // cd_descricao
+            // 
+            this.cd_descricao.DataPropertyName = "cd_descricao";
+            this.cd_descricao.HeaderText = "Descricao";
+            this.cd_descricao.Name = "cd_descricao";
+            this.cd_descricao.ReadOnly = true;
+            // 
+            // cd_tipo
+            // 
+            this.cd_tipo.DataPropertyName = "cd_tipo";
+            this.cd_tipo.HeaderText = "Tipo";
+            this.cd_tipo.Name = "cd_tipo";
+            this.cd_tipo.ReadOnly = true;
             // 
             // txtCodigoDespesa
             // 
@@ -856,28 +878,7 @@
             this.label5.TabIndex = 181;
             this.label5.Text = "Tipo";
             // 
-            // cd_id
-            // 
-            this.cd_id.DataPropertyName = "cd_id";
-            this.cd_id.HeaderText = "Codigo";
-            this.cd_id.Name = "cd_id";
-            this.cd_id.ReadOnly = true;
-            // 
-            // cd_descricao
-            // 
-            this.cd_descricao.DataPropertyName = "cd_descricao";
-            this.cd_descricao.HeaderText = "Descricao";
-            this.cd_descricao.Name = "cd_descricao";
-            this.cd_descricao.ReadOnly = true;
-            // 
-            // cd_tipo
-            // 
-            this.cd_tipo.DataPropertyName = "cd_tipo";
-            this.cd_tipo.HeaderText = "Tipo";
-            this.cd_tipo.Name = "cd_tipo";
-            this.cd_tipo.ReadOnly = true;
-            // 
-            // PesquisarDespesa
+            // Forms_PesquisarDespesa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -896,7 +897,7 @@
             this.Controls.Add(this.txtTipo);
             this.Controls.Add(this.label5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "PesquisarDespesa";
+            this.Name = "Forms_PesquisarDespesa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisar Despesa";
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarDespesa)).EndInit();

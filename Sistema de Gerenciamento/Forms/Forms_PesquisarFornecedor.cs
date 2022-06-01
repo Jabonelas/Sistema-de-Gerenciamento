@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DGVPrinterHelper;
 
 namespace Sistema_de_Gerenciamento.Forms
 {
@@ -280,6 +281,28 @@ namespace Sistema_de_Gerenciamento.Forms
 
         #endregion Botao Exportar Para Excel
 
-     
+        #region Imprimir Relatorio Fornecedor
+
+        private void ImprimirRelatorioFornecedores()
+        {
+            DGVPrinter printer = new DGVPrinter();
+            printer.Title = "Relatorio de Fornecedores";//Header
+            printer.SubTitle = string.Format("Date: {0}", DateTime.Now.Date.ToString("MM/dd/yyyy"));
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            printer.PageNumbers = true;
+            printer.PageNumberInHeader = false;
+            printer.PorportionalColumns = true;
+            printer.HeaderCellAlignment = StringAlignment.Near;
+            printer.Footer = DateTime.Today.ToString();//Footer
+            printer.FooterSpacing = 15;
+            printer.PrintDataGridView(gdvPesquisarFornecedor);
+        }
+
+        #endregion Imprimir Relatorio Fornecedor
+
+        private void bunifuButton2_Click(object sender, EventArgs e)
+        {
+            ImprimirRelatorioFornecedores();
+        }
     }
 }

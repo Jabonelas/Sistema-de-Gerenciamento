@@ -632,13 +632,13 @@ namespace Sistema_de_Gerenciamento.Classes
 
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select distinct cg_grupo,cg_sub_grupo from tb_CadastroGrupoMaterial";
+                    string query = "select distinct cg_grupo from tb_CadastroGrupoMaterial";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
                     SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
                     while (dr.Read())
                     {
-                        listaGrupo.Add(new DadosGrupoMaterial(dr.GetString(0), dr.GetString(1)));
+                        listaGrupo.Add(new DadosGrupoMaterial(dr.GetString(0)));
                     }
 
                     return listaGrupo;
@@ -653,6 +653,39 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Lista Grupo Produto Para ComboBox
+
+        #region Buscar Lista De Sug-Grupo Produto Para ComboBox
+
+        public List<DadosSubGrupoMaterial> BuscarSubGrupoProduto(string _grupo)
+        {
+            try
+            {
+                List<DadosSubGrupoMaterial> listaGrupo = new List<DadosSubGrupoMaterial>();
+
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select distinct cg_sub_grupo from tb_CadastroGrupoMaterial where cg_grupo = @grupo";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@grupo", _grupo);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        listaGrupo.Add(new DadosSubGrupoMaterial(dr.GetString(0)));
+                    }
+
+                    return listaGrupo;
+                }
+            }
+            catch (Exception ex)
+            {
+                return new List<DadosSubGrupoMaterial>();
+
+                Erro.ErroAoBuscarSubGrupoProdutoNoBanco(ex);
+            }
+        }
+
+        #endregion Buscar Lista De Sug-Grupo Produto Para ComboBox
 
         #region Buscar Lista Fornecedor Produto Para ComboBox
 

@@ -18,7 +18,7 @@ namespace Sistema_de_Gerenciamento
 {
     public partial class Forms_CadastroCliente : Form
     {
-        private ManipulacaoTextBox TextBox = new ManipulacaoTextBox();
+        private ManipulacaoTextBox ManipularTextBox = new ManipulacaoTextBox();
 
         private AdicionarNoBanco Salvar = new AdicionarNoBanco();
 
@@ -29,8 +29,6 @@ namespace Sistema_de_Gerenciamento
         private VerificacaoDeExistencia VerificarExistencia = new VerificacaoDeExistencia();
 
         private ExcluirNoBanco Excluir = new ExcluirNoBanco();
-
-        //private BuscarNoBanco Buscar = new BuscarNoBanco();
 
         private ApiCorreios Api = new ApiCorreios();
 
@@ -45,7 +43,7 @@ namespace Sistema_de_Gerenciamento
 
         private void btnCadastroProduto_Click(object sender, EventArgs e)
         {
-            TextBox.ApagandoTextBox(this);
+            ManipularTextBox.ApagandoTextBox(this);
 
             lblTipoDeCliente.Text = "CPF / CNPJ";
 
@@ -60,7 +58,7 @@ namespace Sistema_de_Gerenciamento
         {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipularTextBox.VerificarPreenchimentoTextBox(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == false)
                     {
@@ -93,14 +91,6 @@ namespace Sistema_de_Gerenciamento
                             txtEmail.Text,
                             txtObservacoes.Text,
                             Convert.ToInt32(lblCodigoCliente.Text))).ToString());
-
-                        //Convert.ToInt32(lblCodigoCliente.Text)).ToString());
-
-                        //Chamar o forms de alerta de inclusao com sucesso
-                        Global.tipoDoAlerta = "Inclusao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == true)
                     {
@@ -126,7 +116,7 @@ namespace Sistema_de_Gerenciamento
         {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipularTextBox.VerificarPreenchimentoTextBox(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == true)
                     {
@@ -158,12 +148,6 @@ namespace Sistema_de_Gerenciamento
                                     txtObservacoes.Text);
 
                         Atualizar.AtualizarImagemNoCadastroCliente(pcbCliente.Image, Convert.ToInt32(txtCodigo.Text));
-
-                        //Chamar o forms de alerta de atualizacao com sucesso
-                        Global.tipoDoAlerta = "Atualizacao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == false)
                     {
@@ -199,19 +183,13 @@ namespace Sistema_de_Gerenciamento
         {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipularTextBox.VerificarPreenchimentoTextBox(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == true)
                     {
                         Excluir.ExcluirCadastroCliente(txtCPF_CNPJ.Text);
 
                         Excluir.ExcluirImagemCliente(Convert.ToInt32(txtCodigo.Text));
-
-                        //Chamar o forms de alerta de exclusao com sucesso
-                        Global.tipoDoAlerta = "Exclusao";
-
-                        Forms_Aviso buscarCliente = new Forms_Aviso();
-                        buscarCliente.Show();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == false)
                     {
@@ -259,7 +237,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipularTextBox.DigitarApenasNumeros(e);
         }
 
         #endregion TextBox Codigo
@@ -304,7 +282,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCPF_CNPJ_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipularTextBox.DigitarApenasNumeros(e);
 
             if (cmbTipo.Text == "Pess. Fisica")
             {
@@ -371,6 +349,16 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
+        private void txtCPF_CNPJ_Enter(object sender, EventArgs e)
+        {
+            if (cmbTipo.Text == String.Empty)
+            {
+                MessageBox.Show("Por Favor Preencha Primeiro O Campo Tipo!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                cmbTipo.Focus();
+            }
+        }
+
         private void txtCPF_CNPJ_Leave(object sender, EventArgs e)
         {
             if (txtCPF_CNPJ.Text.Length != txtCPF_CNPJ.MaxLength && txtCPF_CNPJ.Text.Length != 0)
@@ -393,7 +381,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtRG_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipularTextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -443,7 +431,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtDataEmissao_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipularTextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -506,7 +494,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtDataNascimento_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipularTextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -567,7 +555,10 @@ namespace Sistema_de_Gerenciamento
 
         private void txtNome_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            if (Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
+            {
+                e.Handled = true;
+            }
         }
 
         #endregion TextBox Nome
@@ -576,7 +567,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCEP_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipularTextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -653,7 +644,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipularTextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -699,7 +690,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtTel_Residencial_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipularTextBox.DigitarApenasNumeros(e);
 
             if (char.IsNumber(e.KeyChar) == true)
             {
@@ -810,7 +801,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCidade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipularTextBox.DigitarApenasNumeros(e);
         }
 
         #endregion TextBox Cidade
@@ -819,7 +810,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtNaturalidade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipularTextBox.DigitarApenasNumeros(e);
         }
 
         #endregion TextBox Naturalidade
@@ -828,7 +819,7 @@ namespace Sistema_de_Gerenciamento
 
         private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipularTextBox.DigitarApenasNumeros(e);
         }
 
         #endregion TextBox Numero

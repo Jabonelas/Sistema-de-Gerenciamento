@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DGVPrinterHelper;
 
 namespace Sistema_de_Gerenciamento
 {
@@ -248,5 +249,33 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion TextBox Codigo
+
+        #region Imprimir Relatorio Produto
+
+        private void ImprimirRelatorioProduto()
+        {
+            DGVPrinter printer = new DGVPrinter();
+            printer.Title = "Relatorio de Produtos";//Header
+            printer.SubTitle = string.Format("Date: {0}", DateTime.Now.Date.ToString("MM/dd/yyyy"));
+            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
+            printer.PageNumbers = true;
+            printer.PageNumberInHeader = false;
+            printer.PorportionalColumns = true;
+            printer.HeaderCellAlignment = StringAlignment.Near;
+            printer.Footer = DateTime.Today.ToString();//Footer
+            printer.FooterSpacing = 15;
+            printer.PrintDataGridView(gdvPesquisarProduto);
+        }
+
+        #endregion Imprimir Relatorio Produto
+
+        #region Botao Imprimir
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            ImprimirRelatorioProduto();
+        }
+
+        #endregion Botao Imprimir
     }
 }

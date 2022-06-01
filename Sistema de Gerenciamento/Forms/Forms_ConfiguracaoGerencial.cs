@@ -4,12 +4,15 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Correios.CorreiosServiceReference;
 using Guna.UI2.WinForms;
 using Sistema_de_Gerenciamento.Classes;
+using Exception = System.Exception;
 
 namespace Sistema_de_Gerenciamento.Forms
 {
@@ -25,29 +28,8 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             InitializeComponent();
 
-            PreencherComboBoxGrupoeSub_Grup();
+            PreencherComboBoxGrupo();
         }
-
-        #region Preencher Combobox
-
-        private void PreencherComboBoxGrupoeSub_Grup()
-        {
-            List<DadosGrupoMaterial> listaGrupo = new List<DadosGrupoMaterial>();
-
-            listaGrupo = Buscar.BuscarGrupoProduto();
-
-            cmbGrupoProduto.Items.Clear();
-
-            cmbSub_GrupoProduto.Items.Clear();
-
-            foreach (DadosGrupoMaterial item in listaGrupo)
-            {
-                cmbGrupoProduto.Items.Add(item.grupo);
-                cmbSub_GrupoProduto.Items.Add(item.sub_grupo);
-            }
-        }
-
-        #endregion Preencher Combobox
 
         #region Botao Fechar
 
@@ -57,6 +39,82 @@ namespace Sistema_de_Gerenciamento.Forms
         }
 
         #endregion Botao Fechar
+
+        #region Botao Confirmar Desconto Por Grupo
+
+        private void btnConfirmarGrupo_Click(object sender, EventArgs e)
+        {
+            if (cmbSub_GrupoProduto.Text != String.Empty && cmbGrupoProduto.Text != String.Empty && txtDescontoPorGrupo.Text != String.Empty)
+            {
+                Atualizacao.AtualizarDescontoPorGrupoDeProduto(cmbGrupoProduto.Text,
+                    cmbSub_GrupoProduto.Text, Convert.ToDecimal(txtDescontoPorGrupo.Text.Replace("%", "")));
+
+                cmbSub_GrupoProduto.Text = String.Empty;
+                cmbGrupoProduto.Text = String.Empty;
+                txtDescontoPorGrupo.Text = String.Empty;
+            }
+            else
+            {
+                MessageBox.Show("Por Favor Preencha Todos Campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                cmbGrupoProduto.Focus();
+            }
+        }
+
+        #endregion Botao Confirmar Desconto Por Grupo
+
+        #region Preencher Combobox
+
+        #region Preencher ComboBox Grupo
+
+        private void PreencherComboBoxGrupo()
+        {
+            List<DadosGrupoMaterial> listaGrupo = new List<DadosGrupoMaterial>();
+
+            listaGrupo = Buscar.BuscarGrupoProduto();
+
+            cmbGrupoProduto.Items.Clear();
+
+            listaGrupo.ForEach(prod => cmbGrupoProduto.Items.Add(prod.grupo));
+
+            cmbGrupoProduto.Items.Add(string.Empty);
+        }
+
+        private void cmbGrupoProduto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PreencherComboBoxSubGrupo();
+        }
+
+        #endregion Preencher ComboBox Grupo
+
+        #region Preencher ComboBox Sub-Grupo
+
+        private void PreencherComboBoxSubGrupo()
+        {
+            List<DadosSubGrupoMaterial> listaSubGrupo = new List<DadosSubGrupoMaterial>();
+
+            listaSubGrupo = Buscar.BuscarSubGrupoProduto(cmbGrupoProduto.Text);
+
+            cmbSub_GrupoProduto.Items.Clear();
+
+            listaSubGrupo.ForEach(prod => cmbSub_GrupoProduto.Items.Add(prod.sub_grupo));
+
+            cmbSub_GrupoProduto.Items.Add(string.Empty);
+        }
+
+        private void cmbSub_GrupoProduto_Enter(object sender, EventArgs e)
+        {
+            if (cmbGrupoProduto.Text == String.Empty)
+            {
+                MessageBox.Show("Por Favor Preencha Primeiro O Campo Grupo Produto!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                cmbGrupoProduto.Focus();
+            }
+        }
+
+        #endregion Preencher ComboBox Sub-Grupo
+
+        #endregion Preencher Combobox
 
         #region TextBox Desconto Por Grupo
 
@@ -166,10 +224,66 @@ namespace Sistema_de_Gerenciamento.Forms
 
         #endregion TextBox Juros Credito
 
-        private void btnConfirmarGrupo_Click(object sender, EventArgs e)
+        #region Botao Confirmar Desconto Avista
+
+        private void btnConfirmarAvista_Click(object sender, EventArgs e)
         {
-            Atualizacao.AtualizarDescontoPorGrupoDeProduto(cmbGrupoProduto.Text,
-                cmbSub_GrupoProduto.Text, Convert.ToDecimal(txtDescontoPorGrupo.Text.Replace("%", "")));
+            if (txtDescontoAvista.Text != String.Empty)
+            {
+                Atualizacao.AtualizarPagamentoDescontoAvista(Convert.ToDecimal(txtDescontoAvista.Text.Replace("%", "")));
+
+                txtDescontoAvista.Text = String.Empty;
+            }
+            else
+            {
+                MessageBox.Show("Por Favor Preencha Todos Campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                txtDescontoAvista.Focus();
+            }
         }
+
+        #endregion Botao Confirmar Desconto Avista
+
+        #region Botao Confirmar Juros Carne
+
+        private void btnConfirmarCarne_Click(object sender, EventArgs e)
+        {
+            if (txtPrazoCarne.Text != String.Empty && cmbParcelasCarne.Text != String.Empty && txtJurosCarne.Text != String.Empty)
+            {
+                Atualizacao.JurosPorCarne(Convert.ToInt32(txtPrazoCarne.Text), Convert.ToDecimal(txtJurosCarne.Text.Replace("%", "")),
+                    Convert.ToInt32(cmbParcelasCarne.Text.Replace("x", "")));
+
+                txtPrazoCarne.Text = String.Empty;
+                cmbParcelasCarne.Text = String.Empty;
+                txtJurosCarne.Text = String.Empty;
+            }
+            else
+            {
+                MessageBox.Show("Por Favor Preencha Todos Campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                cmbParcelasCarne.Focus();
+            }
+        }
+
+        #endregion Botao Confirmar Juros Carne
+
+        #region Botao Confirmar Juros Credito
+
+        private void btnConfirmarCredito_Click(object sender, EventArgs e)
+        {
+            if (txtJurosCredito.Text != String.Empty && cmbParcelasCredito.Text != String.Empty)
+            {
+                Atualizacao.JurosCredito(Convert.ToDecimal(txtJurosCredito.Text.Replace("%", "")),
+                    Convert.ToInt32(cmbParcelasCredito.Text.Replace("x", "")));
+            }
+            else
+            {
+                MessageBox.Show("Por Favor Preencha Todos Campos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                cmbParcelasCredito.Focus();
+            }
+        }
+
+        #endregion Botao Confirmar Juros Credito
     }
 }
