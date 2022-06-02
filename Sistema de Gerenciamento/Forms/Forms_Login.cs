@@ -31,9 +31,14 @@ namespace Sistema_de_Gerenciamento.Forms
             txtSenha.Text = "123";
         }
 
-        #region Botao Login
-
         private void btnLogin_Click(object sender, EventArgs e)
+        {
+            Logar();
+        }
+
+        #region Logar
+
+        private void Logar()
         {
             try
             {
@@ -63,42 +68,35 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Botao Login
-
-        #region Botao Cancelar
+        #endregion Logar
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        #endregion Botao Cancelar
-
-        #region TextBox Usuario
-
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)Keys.Space)
-            {
-                e.Handled = true;
-            }
             txtUsuario.CharacterCasing = CharacterCasing.Upper;
+
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
         }
-
-        #endregion TextBox Usuario
-
-        #region TextBox Senha
 
         private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
         {
             txtSenha.UseSystemPasswordChar = true;
+
+            ManipulacaoTextBox.DigitoValidoParaSenha(e);
         }
 
-        #endregion TextBox Senha
-
-        #region Botao Mostrar Senha
-
         private void btnMostraSenha_Login_Click(object sender, EventArgs e)
+        {
+            MostraOuEsconderSenha();
+        }
+
+        #region Mostra ou Esconder Senha
+
+        private void MostraOuEsconderSenha()
         {
             if (txtSenha.UseSystemPasswordChar == true)
             {
@@ -114,6 +112,6 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Botao Mostrar Senha
+        #endregion Mostra ou Esconder Senha
     }
 }

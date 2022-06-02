@@ -123,7 +123,7 @@
             this.lblTipoDeCliente = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.btnInserirImagem = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.btnInserirImagemCliente = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.txtRG = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtCPF_CNPJ = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtSaldo = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -321,6 +321,7 @@
             this.txtObservacoes.Size = new System.Drawing.Size(529, 50);
             this.txtObservacoes.TabIndex = 23;
             this.txtObservacoes.Text = "";
+            this.txtObservacoes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtObservacoes_KeyPress);
             // 
             // panel6
             // 
@@ -508,6 +509,7 @@
             this.txtComplemento.ShortcutsEnabled = false;
             this.txtComplemento.Size = new System.Drawing.Size(191, 28);
             this.txtComplemento.TabIndex = 10;
+            this.txtComplemento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtComplemento_KeyPress);
             // 
             // cmbTipo
             // 
@@ -576,95 +578,95 @@
             this.label21.Text = "Estado Civil                       Credito                                       " +
     "  Saldo                                                       Bloqueio   ";
             // 
-            // btnInserirImagem
+            // btnInserirImagemCliente
             // 
-            this.btnInserirImagem.AllowAnimations = true;
-            this.btnInserirImagem.AllowMouseEffects = true;
-            this.btnInserirImagem.AllowToggling = false;
-            this.btnInserirImagem.AnimationSpeed = 200;
-            this.btnInserirImagem.AutoGenerateColors = false;
-            this.btnInserirImagem.AutoRoundBorders = false;
-            this.btnInserirImagem.AutoSizeLeftIcon = true;
-            this.btnInserirImagem.AutoSizeRightIcon = true;
-            this.btnInserirImagem.BackColor = System.Drawing.Color.Transparent;
-            this.btnInserirImagem.BackColor1 = System.Drawing.Color.Transparent;
-            this.btnInserirImagem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInserirImagem.BackgroundImage")));
-            this.btnInserirImagem.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnInserirImagem.ButtonText = "Inserir Imagem";
-            this.btnInserirImagem.ButtonTextMarginLeft = 0;
-            this.btnInserirImagem.ColorContrastOnClick = 45;
-            this.btnInserirImagem.ColorContrastOnHover = 45;
-            this.btnInserirImagem.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnInserirImagemCliente.AllowAnimations = true;
+            this.btnInserirImagemCliente.AllowMouseEffects = true;
+            this.btnInserirImagemCliente.AllowToggling = false;
+            this.btnInserirImagemCliente.AnimationSpeed = 200;
+            this.btnInserirImagemCliente.AutoGenerateColors = false;
+            this.btnInserirImagemCliente.AutoRoundBorders = false;
+            this.btnInserirImagemCliente.AutoSizeLeftIcon = true;
+            this.btnInserirImagemCliente.AutoSizeRightIcon = true;
+            this.btnInserirImagemCliente.BackColor = System.Drawing.Color.Transparent;
+            this.btnInserirImagemCliente.BackColor1 = System.Drawing.Color.Transparent;
+            this.btnInserirImagemCliente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInserirImagemCliente.BackgroundImage")));
+            this.btnInserirImagemCliente.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnInserirImagemCliente.ButtonText = "Inserir Imagem";
+            this.btnInserirImagemCliente.ButtonTextMarginLeft = 0;
+            this.btnInserirImagemCliente.ColorContrastOnClick = 45;
+            this.btnInserirImagemCliente.ColorContrastOnHover = 45;
+            this.btnInserirImagemCliente.Cursor = System.Windows.Forms.Cursors.Default;
             borderEdges1.BottomLeft = true;
             borderEdges1.BottomRight = true;
             borderEdges1.TopLeft = true;
             borderEdges1.TopRight = true;
-            this.btnInserirImagem.CustomizableEdges = borderEdges1;
-            this.btnInserirImagem.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnInserirImagem.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnInserirImagem.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnInserirImagem.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnInserirImagem.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
-            this.btnInserirImagem.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInserirImagem.ForeColor = System.Drawing.Color.Black;
-            this.btnInserirImagem.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInserirImagem.IconLeftCursor = System.Windows.Forms.Cursors.Default;
-            this.btnInserirImagem.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.btnInserirImagem.IconMarginLeft = 11;
-            this.btnInserirImagem.IconPadding = 10;
-            this.btnInserirImagem.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnInserirImagem.IconRightCursor = System.Windows.Forms.Cursors.Default;
-            this.btnInserirImagem.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
-            this.btnInserirImagem.IconSize = 25;
-            this.btnInserirImagem.IdleBorderColor = System.Drawing.Color.Black;
-            this.btnInserirImagem.IdleBorderRadius = 1;
-            this.btnInserirImagem.IdleBorderThickness = 1;
-            this.btnInserirImagem.IdleFillColor = System.Drawing.Color.Transparent;
-            this.btnInserirImagem.IdleIconLeftImage = null;
-            this.btnInserirImagem.IdleIconRightImage = null;
-            this.btnInserirImagem.IndicateFocus = false;
-            this.btnInserirImagem.Location = new System.Drawing.Point(647, 354);
-            this.btnInserirImagem.Name = "btnInserirImagem";
-            this.btnInserirImagem.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnInserirImagem.OnDisabledState.BorderRadius = 1;
-            this.btnInserirImagem.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnInserirImagem.OnDisabledState.BorderThickness = 1;
-            this.btnInserirImagem.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnInserirImagem.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnInserirImagem.OnDisabledState.IconLeftImage = null;
-            this.btnInserirImagem.OnDisabledState.IconRightImage = null;
-            this.btnInserirImagem.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.btnInserirImagem.onHoverState.BorderRadius = 1;
-            this.btnInserirImagem.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnInserirImagem.onHoverState.BorderThickness = 1;
-            this.btnInserirImagem.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.btnInserirImagem.onHoverState.ForeColor = System.Drawing.Color.White;
-            this.btnInserirImagem.onHoverState.IconLeftImage = null;
-            this.btnInserirImagem.onHoverState.IconRightImage = null;
-            this.btnInserirImagem.OnIdleState.BorderColor = System.Drawing.Color.Black;
-            this.btnInserirImagem.OnIdleState.BorderRadius = 1;
-            this.btnInserirImagem.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnInserirImagem.OnIdleState.BorderThickness = 1;
-            this.btnInserirImagem.OnIdleState.FillColor = System.Drawing.Color.Transparent;
-            this.btnInserirImagem.OnIdleState.ForeColor = System.Drawing.Color.Black;
-            this.btnInserirImagem.OnIdleState.IconLeftImage = null;
-            this.btnInserirImagem.OnIdleState.IconRightImage = null;
-            this.btnInserirImagem.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.btnInserirImagem.OnPressedState.BorderRadius = 1;
-            this.btnInserirImagem.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnInserirImagem.OnPressedState.BorderThickness = 1;
-            this.btnInserirImagem.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.btnInserirImagem.OnPressedState.ForeColor = System.Drawing.Color.White;
-            this.btnInserirImagem.OnPressedState.IconLeftImage = null;
-            this.btnInserirImagem.OnPressedState.IconRightImage = null;
-            this.btnInserirImagem.Size = new System.Drawing.Size(134, 39);
-            this.btnInserirImagem.TabIndex = 24;
-            this.btnInserirImagem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnInserirImagem.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnInserirImagem.TextMarginLeft = 0;
-            this.btnInserirImagem.TextPadding = new System.Windows.Forms.Padding(0);
-            this.btnInserirImagem.UseDefaultRadiusAndThickness = true;
-            this.btnInserirImagem.Click += new System.EventHandler(this.btnInserirImagem_Click);
+            this.btnInserirImagemCliente.CustomizableEdges = borderEdges1;
+            this.btnInserirImagemCliente.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnInserirImagemCliente.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnInserirImagemCliente.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnInserirImagemCliente.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnInserirImagemCliente.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btnInserirImagemCliente.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInserirImagemCliente.ForeColor = System.Drawing.Color.Black;
+            this.btnInserirImagemCliente.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInserirImagemCliente.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnInserirImagemCliente.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnInserirImagemCliente.IconMarginLeft = 11;
+            this.btnInserirImagemCliente.IconPadding = 10;
+            this.btnInserirImagemCliente.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnInserirImagemCliente.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnInserirImagemCliente.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnInserirImagemCliente.IconSize = 25;
+            this.btnInserirImagemCliente.IdleBorderColor = System.Drawing.Color.Black;
+            this.btnInserirImagemCliente.IdleBorderRadius = 1;
+            this.btnInserirImagemCliente.IdleBorderThickness = 1;
+            this.btnInserirImagemCliente.IdleFillColor = System.Drawing.Color.Transparent;
+            this.btnInserirImagemCliente.IdleIconLeftImage = null;
+            this.btnInserirImagemCliente.IdleIconRightImage = null;
+            this.btnInserirImagemCliente.IndicateFocus = false;
+            this.btnInserirImagemCliente.Location = new System.Drawing.Point(647, 354);
+            this.btnInserirImagemCliente.Name = "btnInserirImagemCliente";
+            this.btnInserirImagemCliente.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnInserirImagemCliente.OnDisabledState.BorderRadius = 1;
+            this.btnInserirImagemCliente.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnInserirImagemCliente.OnDisabledState.BorderThickness = 1;
+            this.btnInserirImagemCliente.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnInserirImagemCliente.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnInserirImagemCliente.OnDisabledState.IconLeftImage = null;
+            this.btnInserirImagemCliente.OnDisabledState.IconRightImage = null;
+            this.btnInserirImagemCliente.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnInserirImagemCliente.onHoverState.BorderRadius = 1;
+            this.btnInserirImagemCliente.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnInserirImagemCliente.onHoverState.BorderThickness = 1;
+            this.btnInserirImagemCliente.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnInserirImagemCliente.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnInserirImagemCliente.onHoverState.IconLeftImage = null;
+            this.btnInserirImagemCliente.onHoverState.IconRightImage = null;
+            this.btnInserirImagemCliente.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.btnInserirImagemCliente.OnIdleState.BorderRadius = 1;
+            this.btnInserirImagemCliente.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnInserirImagemCliente.OnIdleState.BorderThickness = 1;
+            this.btnInserirImagemCliente.OnIdleState.FillColor = System.Drawing.Color.Transparent;
+            this.btnInserirImagemCliente.OnIdleState.ForeColor = System.Drawing.Color.Black;
+            this.btnInserirImagemCliente.OnIdleState.IconLeftImage = null;
+            this.btnInserirImagemCliente.OnIdleState.IconRightImage = null;
+            this.btnInserirImagemCliente.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnInserirImagemCliente.OnPressedState.BorderRadius = 1;
+            this.btnInserirImagemCliente.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnInserirImagemCliente.OnPressedState.BorderThickness = 1;
+            this.btnInserirImagemCliente.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnInserirImagemCliente.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnInserirImagemCliente.OnPressedState.IconLeftImage = null;
+            this.btnInserirImagemCliente.OnPressedState.IconRightImage = null;
+            this.btnInserirImagemCliente.Size = new System.Drawing.Size(134, 39);
+            this.btnInserirImagemCliente.TabIndex = 24;
+            this.btnInserirImagemCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnInserirImagemCliente.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnInserirImagemCliente.TextMarginLeft = 0;
+            this.btnInserirImagemCliente.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnInserirImagemCliente.UseDefaultRadiusAndThickness = true;
+            this.btnInserirImagemCliente.Click += new System.EventHandler(this.btnInserirImagemCliente_Click);
             // 
             // txtRG
             // 
@@ -1118,6 +1120,7 @@
             this.txtEmail.TextPlaceholder = "";
             this.txtEmail.UseSystemPasswordChar = false;
             this.txtEmail.WordWrap = true;
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // txtEndereco
             // 
@@ -1192,6 +1195,7 @@
             this.txtEndereco.TextPlaceholder = "";
             this.txtEndereco.UseSystemPasswordChar = false;
             this.txtEndereco.WordWrap = true;
+            this.txtEndereco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEndereco_KeyPress);
             // 
             // txtCEP
             // 
@@ -1568,6 +1572,7 @@
             this.txtBairro.TextPlaceholder = "";
             this.txtBairro.UseSystemPasswordChar = false;
             this.txtBairro.WordWrap = true;
+            this.txtBairro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBairro_KeyPress);
             // 
             // txtDataEmissao
             // 
@@ -2186,7 +2191,7 @@
             this.btnSalvarCliente.TextMarginLeft = 0;
             this.btnSalvarCliente.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnSalvarCliente.UseDefaultRadiusAndThickness = true;
-            this.btnSalvarCliente.Click += new System.EventHandler(this.btnSalvar_Click);
+            this.btnSalvarCliente.Click += new System.EventHandler(this.btnSalvarCliente_Click);
             // 
             // btnNovoCliente
             // 
@@ -2277,7 +2282,7 @@
             this.btnNovoCliente.TextMarginLeft = 0;
             this.btnNovoCliente.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnNovoCliente.UseDefaultRadiusAndThickness = true;
-            this.btnNovoCliente.Click += new System.EventHandler(this.btnCadastroProduto_Click);
+            this.btnNovoCliente.Click += new System.EventHandler(this.btnNovoCliente_Click);
             // 
             // bunifuSeparator1
             // 
@@ -2425,7 +2430,7 @@
             this.Controls.Add(this.lblCodigoCliente);
             this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.txtCodigo);
-            this.Controls.Add(this.btnInserirImagem);
+            this.Controls.Add(this.btnInserirImagemCliente);
             this.Controls.Add(this.txtRG);
             this.Controls.Add(this.txtCPF_CNPJ);
             this.Controls.Add(this.label22);
@@ -2536,7 +2541,7 @@
         public Bunifu.UI.WinForms.BunifuTextBox txtSaldo;
         public Guna.UI.WinForms.GunaComboBox cmbTipo;
         public System.Windows.Forms.TextBox txtDataCadastro;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnInserirImagem;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnInserirImagemCliente;
         public Guna.UI.WinForms.GunaPictureBox pcbCliente;
         public Guna.UI.WinForms.GunaTextBox txtCodigo;
         public Bunifu.UI.WinForms.BunifuTextBox txtNumero;

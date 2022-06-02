@@ -16,8 +16,6 @@ namespace Sistema_de_Gerenciamento
     {
         private VerificacaoDeExistencia VerificarExistencia = new VerificacaoDeExistencia();
 
-        private ManipulacaoTextBox TextBox = new ManipulacaoTextBox();
-
         private AtualizacaoNoBanco Atualizar = new AtualizacaoNoBanco();
 
         private AdicionarNoBanco Salvar = new AdicionarNoBanco();
@@ -29,22 +27,23 @@ namespace Sistema_de_Gerenciamento
             InitializeComponent();
         }
 
-        #region Botao Sair
-
         private void bntSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        #endregion Botao Sair
-
-        #region Botao Salvar
-
         private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            SalvarUsuario();
+        }
+
+        #region SalvarUsuario
+
+        private void SalvarUsuario()
         {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDoUsuario(txtUsuario.Text) == false)
                     {
@@ -60,10 +59,6 @@ namespace Sistema_de_Gerenciamento
                         MessageBox.Show("Usuario Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
             }
             catch (Exception ex)
             {
@@ -71,15 +66,20 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Salvar
-
-        #region Botao Alterar
+        #endregion SalvarUsuario
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
+            AlterarUsuario();
+        }
+
+        #region Alterar Usuario
+
+        private void AlterarUsuario()
+        {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDoUsuario(txtUsuario.Text) == true)
                     {
@@ -92,10 +92,6 @@ namespace Sistema_de_Gerenciamento
                         MessageBox.Show("Usuario Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Preenchimento Dos Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
             }
             catch (Exception ex)
             {
@@ -103,15 +99,18 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Alterar
-
-        #region TextBox Usuario
+        #endregion Alterar Usuario
 
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
             txtUsuario.CharacterCasing = CharacterCasing.Upper;
+
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
         }
 
-        #endregion TextBox Usuario
+        private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoValidoParaSenha(e);
+        }
     }
 }

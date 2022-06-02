@@ -18,8 +18,6 @@ namespace Sistema_de_Gerenciamento
 
         private MensagensErro Erro = new MensagensErro();
 
-        private ManipulacaoTextBox TextBox = new ManipulacaoTextBox();
-
         private AdicionarNoBanco Salvar = new AdicionarNoBanco();
 
         private BuscarNoBanco Buscar = new BuscarNoBanco();
@@ -33,16 +31,10 @@ namespace Sistema_de_Gerenciamento
             InitializeComponent();
         }
 
-        #region Botao Sair
-
         private void bntSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        #endregion Botao Sair
-
-        #region Botao Buscar
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
@@ -50,21 +42,24 @@ namespace Sistema_de_Gerenciamento
             buscarCliente.ShowDialog();
         }
 
-        #endregion Botao Buscar
-
-        #region Botao Salvar
-
         private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            SalvarCastroDespesas();
+        }
+
+        #region Salvar Cadastro Despesas
+
+        private void SalvarCastroDespesas()
         {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDeDespesa(txtDescricao.Text) == false)
                     {
                         Salvar.InserirCadastroDespesa(
-                       txtDescricao.Text,
-                       txtTipo.Text);
+                            txtDescricao.Text,
+                            txtTipo.Text);
 
                         txtCodigo.Text = Buscar.BuscarCodigoDespesa(txtDescricao.Text).ToString();
                     }
@@ -73,10 +68,6 @@ namespace Sistema_de_Gerenciamento
                         MessageBox.Show("Despesa Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
             }
             catch (Exception ex)
             {
@@ -84,15 +75,20 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Salvar
-
-        #region Botao Alterar
+        #endregion Salvar Cadastro Despesas
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
+            AlterarCadastoDespesa();
+        }
+
+        #region Atualziar Casdastro de Despesas
+
+        private void AlterarCadastoDespesa()
+        {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDeDespesa(txtDescricao.Text) == true)
                     {
@@ -106,10 +102,6 @@ namespace Sistema_de_Gerenciamento
                         MessageBox.Show("Despesa Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Preenchimento Dos Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
             }
             catch (Exception ex)
             {
@@ -117,15 +109,20 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Alterar
-
-        #region Botao Excluir
+        #endregion Atualziar Casdastro de Despesas
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            ExcluirCadastroDespesa();
+        }
+
+        #region Excluir Cadastro Despesa
+
+        private void ExcluirCadastroDespesa()
+        {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDeDespesa(txtDescricao.Text) == true)
                     {
@@ -136,10 +133,6 @@ namespace Sistema_de_Gerenciamento
                         MessageBox.Show("Cliente Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
             }
             catch (Exception ex)
             {
@@ -147,6 +140,16 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Excluir
+        #endregion Excluir Cadastro Despesa
+
+        private void txtDescricao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtTipo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
     }
 }

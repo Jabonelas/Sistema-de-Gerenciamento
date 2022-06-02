@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Bunifu.UI.WinForms;
 using Sistema_de_Gerenciamento.Classes;
 using Sistema_de_Gerenciamento.Forms;
 
@@ -22,10 +23,6 @@ namespace Sistema_de_Gerenciamento
 
         private MensagensErro Erro = new MensagensErro();
 
-        private ManipulacaoTextBox TextBox = new ManipulacaoTextBox();
-
-        private VerificacaoDeExistencia VerificarExistencia = new VerificacaoDeExistencia();
-
         private ApiCorreios Api = new ApiCorreios();
 
         public Forms_CadastroEmpresa()
@@ -33,13 +30,18 @@ namespace Sistema_de_Gerenciamento
             InitializeComponent();
         }
 
-        #region Botao Salvar
-
         private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            SalvarCadastroEmpresa();
+        }
+
+        #region Salvar Cadastro Empresa
+
+        private void SalvarCadastroEmpresa()
         {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
                     if (txtCNPJ.Text == string.Empty)
                     {
@@ -65,11 +67,6 @@ namespace Sistema_de_Gerenciamento
                             MessageBoxIcon.Warning);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-                }
             }
             catch (Exception ex)
             {
@@ -77,15 +74,20 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Salvar
-
-        #region Botao Alterar
+        #endregion Salvar Cadastro Empresa
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
+            AtualziarCadastroEmpresa();
+        }
+
+        #region Atualizar Cadastro Empresa
+
+        private void AtualziarCadastroEmpresa()
+        {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
                     if (txtCNPJ.Text != string.Empty)
                     {
@@ -103,16 +105,10 @@ namespace Sistema_de_Gerenciamento
                             txtTelefone.Text,
                             txtEmail.Text,
                             txtTextPadrao.Text,
-                            Convert.ToInt32(lblce_id.Text)
-
-                            );
+                            Convert.ToInt32(lblce_id.Text));
 
                         Atualizar.AtualizarImagemNoCadastroEmpresa(pcbEmpresa.Image, Convert.ToInt32(lblce_id.Text));
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Preenchimento Dos Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
@@ -121,20 +117,21 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Alterar
-
-        #region Botao Sair
+        #endregion Atualizar Cadastro Empresa
 
         private void bntSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        #endregion Botao Sair
-
-        #region Botao Inserir Imagem
-
         private void btnInserirImagem_Click(object sender, EventArgs e)
+        {
+            InserirImagemEmpresa();
+        }
+
+        #region Inserir Imagem Empresa
+
+        private void InserirImagemEmpresa()
         {
             OpenFileDialog abrirPesquisa = new OpenFileDialog();
 
@@ -145,151 +142,56 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Inserir Imagem
-
-        #region TextBox Telefone
+        #endregion Inserir Imagem Empresa
 
         private void txtTelefone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
-
-            if (char.IsNumber(e.KeyChar) == true)
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
             {
-                switch (txtTelefone.TextLength)
-                {
-                    case 0:
-                        txtTelefone.Text = "(";
-                        txtTelefone.SelectionStart = 1;
-                        break;
-
-                    case 3:
-                        txtTelefone.Text = txtTelefone.Text + ") ";
-                        txtTelefone.SelectionStart = 5;
-                        break;
-
-                    case 10:
-                        txtTelefone.Text = txtTelefone.Text + "-";
-                        txtTelefone.SelectionStart = 11;
-                        break;
-                }
+                ManipulacaoTextBox.FormatoCelular(txtTelefone);
             }
         }
 
         private void txtTelefone_Leave(object sender, EventArgs e)
         {
-            if (txtTelefone.Text.Length != txtTelefone.MaxLength && txtTelefone.Text.Length != 0)
-            {
-                txtTelefone.BorderColorActive = Color.Red;
-
-                MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                txtTelefone.Focus();
-            }
-            else if (txtTelefone.Text.Length == txtTelefone.MaxLength || txtTelefone.Text.Length == 0)
-            {
-                txtTelefone.BorderColorActive = Color.DodgerBlue;
-            }
+            ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtTelefone);
         }
-
-        #endregion TextBox Telefone
-
-        #region TextBox CNPJ
 
         private void txtCNPJ_KeyPress(object sender, KeyPressEventArgs e)
         {
-            txtCNPJ.MaxLength = 18;
-
-            TextBox.DigitarApenasNumeros(e);
-
-            if (char.IsNumber(e.KeyChar) == true)
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
             {
-                switch (txtCNPJ.TextLength)
-                {
-                    case 0:
-                        txtCNPJ.Text = "";
-                        break;
-
-                    case 2:
-                        txtCNPJ.Text = txtCNPJ.Text + ".";
-                        txtCNPJ.SelectionStart = 3;
-                        break;
-
-                    case 6:
-                        txtCNPJ.Text = txtCNPJ.Text + ".";
-                        txtCNPJ.SelectionStart = 7;
-                        break;
-
-                    case 10:
-                        txtCNPJ.Text = txtCNPJ.Text + "/";
-                        txtCNPJ.SelectionStart = 11;
-                        break;
-
-                    case 15:
-                        txtCNPJ.Text = txtCNPJ.Text + "-";
-                        txtCNPJ.SelectionStart = 16;
-                        break;
-                }
+                ManipulacaoTextBox.FormatoCNPJ(e, txtCNPJ);
             }
         }
 
         private void txtCNPJ_Leave(object sender, EventArgs e)
         {
-            if (txtCNPJ.Text.Length != txtCNPJ.MaxLength && txtCNPJ.Text.Length != 0)
-            {
-                txtCNPJ.BorderColorActive = Color.Red;
-
-                MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-
-                txtCNPJ.Focus();
-            }
-            else if (txtCNPJ.Text.Length == txtCNPJ.MaxLength || txtCNPJ.Text.Length == 0)
-            {
-                txtCNPJ.BorderColorActive = Color.DodgerBlue;
-            }
+            ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtCNPJ);
         }
-
-        #endregion TextBox CNPJ
-
-        #region TextBox CEP
 
         private void txtCEP_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
-
-            if (char.IsNumber(e.KeyChar) == true)
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
             {
-                switch (txtCEP.TextLength)
-                {
-                    case 0:
-                        txtCEP.Text = "";
-                        break;
-
-                    case 5:
-                        txtCEP.Text = txtCEP.Text + "-";
-                        txtCEP.SelectionStart = 6;
-                        break;
-                }
+                ManipulacaoTextBox.FormatoCEP(txtCEP);
             }
         }
 
         private async void txtCEP_Leave(object sender, EventArgs e)
         {
+            PreenchimentoPorCEP(txtCEP);
+        }
+
+        #region Buscar de Endereco por CEP
+
+        private async void PreenchimentoPorCEP(BunifuTextBox _textBox)
+        {
             try
             {
-                if (txtCEP.Text.Length != txtCEP.MaxLength && txtCEP.Text.Length != 0)
+                if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtCEP) == true)
                 {
-                    txtCEP.BorderColorActive = Color.Red;
-
-                    MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-
-                    txtCEP.Focus();
-                }
-                else if (txtCEP.Text.Length == txtCEP.MaxLength || txtCEP.Text.Length == 0)
-                {
-                    await Api.APICorreios((txtCEP.Text).Replace("-", ""));
+                    await Api.APICorreios((_textBox.Text).Replace("-", ""));
 
                     int cont = 0;
 
@@ -305,17 +207,16 @@ namespace Sistema_de_Gerenciamento
 
                             Api.ZerarLista();
 
-                            txtCEP.BorderColorActive = Color.DodgerBlue;
+                            _textBox.BorderColorActive = Color.DodgerBlue;
                         }
                         else
                         {
-                            txtCEP.Focus();
+                            _textBox.Focus();
                             Api.ZerarLista();
 
                             if (cont == 0)
                             {
-                                MessageBox.Show("CEP Não Encontrado!", "Atenção!", MessageBoxButtons.OK,
-                                    MessageBoxIcon.Warning);
+                                MessageBox.Show("CEP Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 cont++;
                             }
 
@@ -329,20 +230,21 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion TextBox CEP
-
-        #region TextBox Numero
+        #endregion Buscar de Endereco por CEP
 
         private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipulacaoTextBox.DigitoFoiNumero(e);
         }
 
-        #endregion TextBox Numero
-
-        #region Load
-
         private void CadastroEmpresa_Load(object sender, EventArgs e)
+        {
+            PreenchimentoDosTextBox();
+        }
+
+        #region Preechimento dos TextBox Com Buscar e Pelo Gridview
+
+        private void PreenchimentoDosTextBox()
         {
             try
             {
@@ -374,6 +276,46 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Load
+        #endregion Preechimento dos TextBox Com Buscar e Pelo Gridview
+
+        private void txtRazaoSocial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtNomeFantasia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtEndereco_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtComplemento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtBairro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtCidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetras(e);
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoValidoParaEmail(e);
+        }
+
+        private void txtTextPadrao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
     }
 }

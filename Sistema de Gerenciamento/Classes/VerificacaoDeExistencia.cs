@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Sistema_de_Gerenciamento.Classes
 {
@@ -36,6 +37,11 @@ namespace Sistema_de_Gerenciamento.Classes
                     else
                     {
                         isExist = false;
+                    }
+
+                    if (isExist == true)
+                    {
+                        MessageBox.Show("Cliente Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
                     return isExist;

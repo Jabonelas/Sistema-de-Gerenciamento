@@ -28,19 +28,10 @@ namespace Sistema_de_Gerenciamento.Forms
             InitializeComponent();
         }
 
-        #region TextBox Numero da Nota Fiscal
-
         private void txtNumeroNotaFiscal_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            ManipulacaoTextBox.DigitoFoiNumero(e);
         }
-
-        #endregion TextBox Numero da Nota Fiscal
-
-        #region Botao Buscar
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
@@ -64,11 +55,14 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Botao Buscar
-
-        #region Botao Salvar
-
         private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            SalvarCompras();
+        }
+
+        #region Salvar Compras
+
+        private void SalvarCompras()
         {
             try
             {
@@ -110,20 +104,21 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Botao Salvar
-
-        #region Botao Sair
+        #endregion Salvar Compras
 
         private void bntSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        #endregion Botao Sair
-
-        #region Botao Excluir
-
         private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            ExlcuirCompra();
+        }
+
+        #region Excluir Compras
+
+        private void ExlcuirCompra()
         {
             if (txtNumeroNotaFiscal.Text != string.Empty)
             {
@@ -141,6 +136,6 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Botao Excluir
+        #endregion Excluir Compras
     }
 }

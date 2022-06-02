@@ -1230,19 +1230,8 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select ce_razao_social," +
-                                   "ce_cnpj," +
-                                   "ce_nome_fantasia," +
-                                   "ce_cep," +
-                                   "ce_endereco," +
-                                   "ce_complemento," +
-                                   "ce_bairro," +
-                                   "ce_cidade," +
-                                   "ce_uf," +
-                                   "ce_numero," +
-                                   "ce_telefone," +
-                                   "ce_email," +
-                                   "ce_texto_padrao_os " +
+                    string query = "select ce_razao_social,ce_cnpj,ce_nome_fantasia,ce_cep,ce_endereco,ce_complemento," +
+                                   "ce_bairro,ce_cidade,ce_uf,ce_numero,ce_telefone,ce_email,ce_texto_padrao_os " +
                                    "from tb_CadastroEmpresa where ce_id = @ce_id";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);

@@ -15,8 +15,6 @@ namespace Sistema_de_Gerenciamento
 {
     public partial class Forms_CadastroFornecedor : Form
     {
-        private ManipulacaoTextBox TextBox = new ManipulacaoTextBox();
-
         private AdicionarNoBanco Salvar = new AdicionarNoBanco();
 
         private MensagensErro Erro = new MensagensErro();
@@ -38,33 +36,30 @@ namespace Sistema_de_Gerenciamento
             txtDataCadastro.Text = DateTime.Today.ToShortDateString();
         }
 
-        #region Botao Sair
-
         private void bntSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        #endregion Botao Sair
-
-        #region Botao Novo
-
-        private void btnCadastroProduto_Click(object sender, EventArgs e)
+        private void btnNovoFornecedor_Click(object sender, EventArgs e)
         {
-            TextBox.ApagandoTextBox(this);
+            ManipulacaoTextBox.ApagandoTextBox(this);
 
             pcbFornecedor.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\imagem-do-usuario-com-fundo-preto.png");
         }
 
-        #endregion Botao Novo
-
-        #region Botao Salvar
-
         private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            SalvarCadastroFornecedor();
+        }
+
+        #region Salvar Cadastro Fornecedor
+
+        private void SalvarCadastroFornecedor()
         {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == false)
                     {
@@ -92,10 +87,6 @@ namespace Sistema_de_Gerenciamento
                         MessageBox.Show("Fornecedor Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
             }
             catch (Exception ex)
             {
@@ -103,31 +94,36 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Salvar
-
-        #region Botao Atualizar
+        #endregion Salvar Cadastro Fornecedor
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
+            AtualizarCadastroFornecedor();
+        }
+
+        #region Atualizar Cadastro Fornecedor
+
+        private void AtualizarCadastroFornecedor()
+        {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == true)
                     {
                         Atualizar.AtualizarCadastroFornecedor(txtRazaoSocial.Text,
-                        txtCNPJ.Text,
-                        txtNomeFantasia.Text,
-                        txtCEP.Text,
-                        txtEndereco.Text,
-                        txtComplemento.Text,
-                        Convert.ToInt32(txtNumero.Text),
-                        txtBairro.Text,
-                        txtCidade.Text,
-                        cmbUF.Text,
-                        txtTelefone.Text,
-                        txtEmail.Text,
-                        txtObservacoes.Text);
+                            txtCNPJ.Text,
+                            txtNomeFantasia.Text,
+                            txtCEP.Text,
+                            txtEndereco.Text,
+                            txtComplemento.Text,
+                            Convert.ToInt32(txtNumero.Text),
+                            txtBairro.Text,
+                            txtCidade.Text,
+                            cmbUF.Text,
+                            txtTelefone.Text,
+                            txtEmail.Text,
+                            txtObservacoes.Text);
 
                         Atualizar.AtualizarImagemNoCadastroFornecedor(pcbFornecedor.Image, Convert.ToInt32(txtCodigo.Text));
                     }
@@ -136,10 +132,6 @@ namespace Sistema_de_Gerenciamento
                         MessageBox.Show("Fornecedor Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Preenchimento Dos Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
             }
             catch (Exception ex)
             {
@@ -147,9 +139,7 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Atualizar
-
-        #region Botao Buscar
+        #endregion Atualizar Cadastro Fornecedor
 
         private void btnBuscarFornecedor_Click(object sender, EventArgs e)
         {
@@ -157,15 +147,18 @@ namespace Sistema_de_Gerenciamento
             buscarFornecedor.ShowDialog();
         }
 
-        #endregion Botao Buscar
-
-        #region Botao Excluir
-
         private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            ExcluirCadastroFornecedor();
+        }
+
+        #region Excluir Cadastro Fornecedor
+
+        private void ExcluirCadastroFornecedor()
         {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == true)
                     {
@@ -178,10 +171,6 @@ namespace Sistema_de_Gerenciamento
                         MessageBox.Show("Fornecedor Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
             }
             catch (Exception ex)
             {
@@ -189,11 +178,16 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Excluir
-
-        #region Botao Inserir Imagem
+        #endregion Excluir Cadastro Fornecedor
 
         private void btnInserirImagem_Click(object sender, EventArgs e)
+        {
+            InserirImagemFornecedor();
+        }
+
+        #region Inserir Imagem Fornecedor
+
+        private void InserirImagemFornecedor()
         {
             OpenFileDialog abrirPesquisa = new OpenFileDialog();
 
@@ -204,95 +198,47 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Inserir Imagem
-
-        #region TextBox Telefone
+        #endregion Inserir Imagem Fornecedor
 
         private void txtTelefone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
-
-            if (char.IsNumber(e.KeyChar) == true)
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
             {
-                switch (txtTelefone.TextLength)
-                {
-                    case 0:
-                        txtTelefone.Text = "(";
-                        txtTelefone.SelectionStart = 1;
-                        break;
-
-                    case 3:
-                        txtTelefone.Text = txtTelefone.Text + ") ";
-                        txtTelefone.SelectionStart = 5;
-                        break;
-
-                    case 10:
-                        txtTelefone.Text = txtTelefone.Text + "-";
-                        txtTelefone.SelectionStart = 11;
-                        break;
-                }
+                ManipulacaoTextBox.FormatoCelular(txtTelefone);
             }
         }
 
         private void txtTelefone_Leave(object sender, EventArgs e)
         {
-            if (txtTelefone.Text.Length != txtTelefone.MaxLength && txtTelefone.Text.Length != 0)
-            {
-                txtTelefone.BorderColorActive = Color.Red;
-
-                MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                txtTelefone.Focus();
-            }
-            else if (txtTelefone.Text.Length == txtTelefone.MaxLength || txtTelefone.Text.Length == 0)
-            {
-                txtTelefone.BorderColorActive = Color.DodgerBlue;
-            }
+            ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtTelefone);
         }
-
-        #endregion TextBox Telefone
-
-        #region TextBox Cidade
 
         private void txtCidade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipulacaoTextBox.DigitoFoiLetras(e);
         }
-
-        #endregion TextBox Cidade
-
-        #region TextBox Numero
 
         private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipulacaoTextBox.DigitoFoiNumero(e);
         }
-
-        #endregion TextBox Numero
-
-        #region TextBox CEP
 
         private void txtCEP_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
-
-            if (char.IsNumber(e.KeyChar) == true)
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
             {
-                switch (txtCEP.TextLength)
-                {
-                    case 0:
-                        txtCEP.Text = "";
-                        break;
-
-                    case 5:
-                        txtCEP.Text = txtCEP.Text + "-";
-                        txtCEP.SelectionStart = 6;
-                        break;
-                }
+                ManipulacaoTextBox.FormatoCEP(txtCEP);
             }
         }
 
         private async void txtCEP_Leave(object sender, EventArgs e)
+        {
+            PreenchimentoPorCEP();
+        }
+
+        #region Preenchimento dos TextBox Por Buscar Com CEP
+
+        private async void PreenchimentoPorCEP()
         {
             if (qntCEPexecutado == 0)
             {
@@ -347,67 +293,56 @@ namespace Sistema_de_Gerenciamento
             {
                 qntCEPexecutado = 0;
             }
-
-            //txtCEP.Focus();
         }
 
-        #endregion TextBox CEP
-
-        #region TextBox CNPJ
+        #endregion Preenchimento dos TextBox Por Buscar Com CEP
 
         private void txtCNPJ_KeyPress(object sender, KeyPressEventArgs e)
         {
-            txtCNPJ.MaxLength = 18;
-
-            TextBox.DigitarApenasNumeros(e);
-
-            if (char.IsNumber(e.KeyChar) == true)
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
             {
-                switch (txtCNPJ.TextLength)
-                {
-                    case 0:
-                        txtCNPJ.Text = "";
-                        break;
-
-                    case 2:
-                        txtCNPJ.Text = txtCNPJ.Text + ".";
-                        txtCNPJ.SelectionStart = 3;
-                        break;
-
-                    case 6:
-                        txtCNPJ.Text = txtCNPJ.Text + ".";
-                        txtCNPJ.SelectionStart = 7;
-                        break;
-
-                    case 10:
-                        txtCNPJ.Text = txtCNPJ.Text + "/";
-                        txtCNPJ.SelectionStart = 11;
-                        break;
-
-                    case 15:
-                        txtCNPJ.Text = txtCNPJ.Text + "-";
-                        txtCNPJ.SelectionStart = 16;
-                        break;
-                }
+                ManipulacaoTextBox.FormatoCNPJ(e, txtCNPJ);
             }
         }
 
         private void txtCNPJ_Leave(object sender, EventArgs e)
         {
-            if (txtCNPJ.Text.Length != txtCNPJ.MaxLength && txtCNPJ.Text.Length != 0)
-            {
-                txtCNPJ.BorderColorActive = Color.Red;
-
-                MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                txtCNPJ.Focus();
-            }
-            else if (txtCNPJ.Text.Length == txtCNPJ.MaxLength || txtCNPJ.Text.Length == 0)
-            {
-                txtCNPJ.BorderColorActive = Color.DodgerBlue;
-            }
+            ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtCNPJ);
         }
 
-        #endregion TextBox CNPJ
+        private void txtRazaoSocial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtNomeFantasia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtEndereco_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtComplemento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtBairro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoValidoParaEmail(e);
+        }
+
+        private void txtObservacoes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
     }
 }

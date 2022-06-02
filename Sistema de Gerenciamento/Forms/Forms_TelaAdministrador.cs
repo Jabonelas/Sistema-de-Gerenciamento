@@ -98,7 +98,7 @@ namespace Sistema_de_Gerenciamento
 
         private void bntGrupoDeMaterial_Click(object sender, EventArgs e)
         {
-            Forms_CadastroGrupoDeMaterial cadastroGrupoDeMaterial = new Forms_CadastroGrupoDeMaterial();
+            Forms_CadastroGrupoProduto cadastroGrupoDeMaterial = new Forms_CadastroGrupoProduto();
             cadastroGrupoDeMaterial.ShowDialog();
         }
 

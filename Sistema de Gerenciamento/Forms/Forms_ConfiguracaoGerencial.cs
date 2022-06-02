@@ -20,8 +20,6 @@ namespace Sistema_de_Gerenciamento.Forms
     {
         private BuscarNoBanco Buscar = new BuscarNoBanco();
 
-        private ManipulacaoTextBox TextBox = new ManipulacaoTextBox();
-
         private AtualizacaoNoBanco Atualizacao = new AtualizacaoNoBanco();
 
         public Forms_ConfiguracaoGerencial()
@@ -31,18 +29,36 @@ namespace Sistema_de_Gerenciamento.Forms
             PreencherComboBoxGrupo();
         }
 
-        #region Botao Fechar
+        #region Preencher ComboBox Grupo
+
+        private void PreencherComboBoxGrupo()
+        {
+            List<DadosGrupoMaterial> listaGrupo = new List<DadosGrupoMaterial>();
+
+            listaGrupo = Buscar.BuscarGrupoProduto();
+
+            cmbGrupoProduto.Items.Clear();
+
+            listaGrupo.ForEach(prod => cmbGrupoProduto.Items.Add(prod.grupo));
+
+            cmbGrupoProduto.Items.Add(string.Empty);
+        }
+
+        #endregion Preencher ComboBox Grupo
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        #endregion Botao Fechar
-
-        #region Botao Confirmar Desconto Por Grupo
-
         private void btnConfirmarGrupo_Click(object sender, EventArgs e)
+        {
+            AtualizacaoPorcentagemDesconto();
+        }
+
+        #region Atualizacao Da Porgentadem De Desconto Por Grupo De Produto
+
+        private void AtualizacaoPorcentagemDesconto()
         {
             if (cmbSub_GrupoProduto.Text != String.Empty && cmbGrupoProduto.Text != String.Empty && txtDescontoPorGrupo.Text != String.Empty)
             {
@@ -61,31 +77,12 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Botao Confirmar Desconto Por Grupo
-
-        #region Preencher Combobox
-
-        #region Preencher ComboBox Grupo
-
-        private void PreencherComboBoxGrupo()
-        {
-            List<DadosGrupoMaterial> listaGrupo = new List<DadosGrupoMaterial>();
-
-            listaGrupo = Buscar.BuscarGrupoProduto();
-
-            cmbGrupoProduto.Items.Clear();
-
-            listaGrupo.ForEach(prod => cmbGrupoProduto.Items.Add(prod.grupo));
-
-            cmbGrupoProduto.Items.Add(string.Empty);
-        }
+        #endregion Atualizacao Da Porgentadem De Desconto Por Grupo De Produto
 
         private void cmbGrupoProduto_SelectedIndexChanged(object sender, EventArgs e)
         {
             PreencherComboBoxSubGrupo();
         }
-
-        #endregion Preencher ComboBox Grupo
 
         #region Preencher ComboBox Sub-Grupo
 
@@ -102,7 +99,16 @@ namespace Sistema_de_Gerenciamento.Forms
             cmbSub_GrupoProduto.Items.Add(string.Empty);
         }
 
+        #endregion Preencher ComboBox Sub-Grupo
+
         private void cmbSub_GrupoProduto_Enter(object sender, EventArgs e)
+        {
+            VerificarPreenchimentoGrupo();
+        }
+
+        #region Verificar se o Campo de Grupo Foi Preenchido
+
+        private void VerificarPreenchimentoGrupo()
         {
             if (cmbGrupoProduto.Text == String.Empty)
             {
@@ -112,121 +118,53 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Preencher ComboBox Sub-Grupo
-
-        #endregion Preencher Combobox
-
-        #region TextBox Desconto Por Grupo
+        #endregion Verificar se o Campo de Grupo Foi Preenchido
 
         private void txtDescontoPorGrupo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
-
-            try
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
             {
-                if (Char.IsDigit(e.KeyChar) || e.KeyChar.Equals((char)Keys.Back))
-                {
-                    if (txtDescontoPorGrupo.Text.Length <= 7 || e.KeyChar.Equals((char)Keys.Back))
-                    {
-                        TextBox textbox = (TextBox)sender;
-                        string testoDoTextBox = Regex.Replace(textbox.Text, "[^0-9]", string.Empty);
-                        if (testoDoTextBox == string.Empty)
-                        {
-                            testoDoTextBox = "0";
-                        }
-
-                        testoDoTextBox += e.KeyChar;
-                        textbox.Text = String.Format("{0:#,##0.00} %", double.Parse(testoDoTextBox) / 100);
-                        textbox.Select(textbox.Text.Length, 0);
-                    }
-                }
-                e.Handled = true;
-            }
-            catch (Exception)
-            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtDescontoPorGrupo.Text, sender);
             }
         }
-
-        #endregion TextBox Desconto Por Grupo
-
-        #region TextBox Desconto Avista
 
         private void txtDescontoAvista_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
-
-            try
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
             {
-                if (Char.IsDigit(e.KeyChar) || e.KeyChar.Equals((char)Keys.Back))
-                {
-                    if (txtDescontoAvista.Text.Length <= 7 || e.KeyChar.Equals((char)Keys.Back))
-                    {
-                        TextBox textbox = (TextBox)sender;
-                        string testoDoTextBox = Regex.Replace(textbox.Text, "[^0-9]", string.Empty);
-                        if (testoDoTextBox == string.Empty)
-                        {
-                            testoDoTextBox = "0";
-                        }
-
-                        testoDoTextBox += e.KeyChar;
-                        textbox.Text = String.Format("{0:#,##0.00} %", double.Parse(testoDoTextBox) / 100);
-                        textbox.Select(textbox.Text.Length, 0);
-                    }
-                }
-                e.Handled = true;
-            }
-            catch (Exception)
-            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtDescontoAvista.Text, sender);
             }
         }
-
-        #endregion TextBox Desconto Avista
-
-        #region TextBox Prazo Carne
 
         private void txtPrazoCarne_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipulacaoTextBox.DigitoFoiNumero(e);
         }
-
-        #endregion TextBox Prazo Carne
-
-        #region TextBox Juros Credito
-
-        private void txtJurosCredito_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            TextBox.DigitarApenasNumeros(e);
-
-            TextBox.PreenchimentoPorcentagem(e, txtJurosCredito.Text, sender);
-        }
-
-        #endregion TextBox Juros Credito
-
-        #region TextBox Juros Carne
 
         private void txtJurosCarne_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
-
-            TextBox.PreenchimentoPorcentagem(e, txtJurosCarne.Text, sender);
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtJurosCarne.Text, sender);
+            }
         }
-
-        #endregion TextBox Juros Carne
-
-        #region TextBox Juros Credito
 
         private void txtJurosCredito_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
-
-            TextBox.PreenchimentoPorcentagem(e, txtJurosCredito.Text, sender);
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtJurosCredito.Text, sender);
+            }
         }
 
-        #endregion TextBox Juros Credito
-
-        #region Botao Confirmar Desconto Avista
-
         private void btnConfirmarAvista_Click(object sender, EventArgs e)
+        {
+            AtualizacaoPorcentagemAvista();
+        }
+
+        #region Atualizacao de Porcentagem do Desconto Avista
+
+        private void AtualizacaoPorcentagemAvista()
         {
             if (txtDescontoAvista.Text != String.Empty)
             {
@@ -242,11 +180,16 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Botao Confirmar Desconto Avista
-
-        #region Botao Confirmar Juros Carne
+        #endregion Atualizacao de Porcentagem do Desconto Avista
 
         private void btnConfirmarCarne_Click(object sender, EventArgs e)
+        {
+            AtualizacaoPorcentagemJurosCarne();
+        }
+
+        #region Atualizacao de Porcentagem do Juros Por Carne
+
+        private void AtualizacaoPorcentagemJurosCarne()
         {
             if (txtPrazoCarne.Text != String.Empty && cmbParcelasCarne.Text != String.Empty && txtJurosCarne.Text != String.Empty)
             {
@@ -265,11 +208,16 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Botao Confirmar Juros Carne
-
-        #region Botao Confirmar Juros Credito
+        #endregion Atualizacao de Porcentagem do Juros Por Carne
 
         private void btnConfirmarCredito_Click(object sender, EventArgs e)
+        {
+            AtualziacaoPorcentagemJurosCredito();
+        }
+
+        #region Atualizacao de Porcentagem do Juros Por Carne
+
+        private void AtualziacaoPorcentagemJurosCredito()
         {
             if (txtJurosCredito.Text != String.Empty && cmbParcelasCredito.Text != String.Empty)
             {
@@ -284,6 +232,6 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Botao Confirmar Juros Credito
+        #endregion Atualizacao de Porcentagem do Juros Por Carne
     }
 }

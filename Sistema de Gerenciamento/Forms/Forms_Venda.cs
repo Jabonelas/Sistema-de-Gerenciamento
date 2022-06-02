@@ -23,13 +23,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private MensagensErro Erro = new MensagensErro();
 
-        private decimal valorBruto = 0;
-
-        private ManipulacaoTextBox TextBox = new ManipulacaoTextBox();
+        private DadosProduto produto;
 
         private List<DadosProduto> listaProduto = new List<DadosProduto>();
 
-        private DadosProduto produto;
+        private decimal valorBruto = 0;
 
         public Forms_Venda()
         {
@@ -40,26 +38,16 @@ namespace Sistema_de_Gerenciamento.Forms
             txtVendedor.Text = Global.tipoDeUsuario;
         }
 
-        #region Botao Abrir Cadastro Cliente
-
         private void btnAbriCadastroCliente_Click(object sender, EventArgs e)
         {
             Forms_CadastroCliente buscarCliente = new Forms_CadastroCliente();
             buscarCliente.ShowDialog();
         }
 
-        #endregion Botao Abrir Cadastro Cliente
-
-        #region Botao Sair
-
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        #endregion Botao Sair
-
-        #region Botao Adcionar
 
         private void btnAdcionar_Click(object sender, EventArgs e)
         {
@@ -142,8 +130,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 Erro.ErroAoBuscarEstoqueProduto(ex);
             }
         }
-
-        #endregion Botao Adcionar
 
         #region Botao Gerar Boleto
 
@@ -267,12 +253,12 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     gdvVenda.Rows.Clear();
 
-                    TextBox.ApagandoTextBox(this);
+                    ManipulacaoTextBox.ApagandoTextBox(this);
                 }
             }
             else
             {
-                TextBox.ApagandoTextBox(this);
+                ManipulacaoTextBox.ApagandoTextBox(this);
             }
         }
 
@@ -282,7 +268,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtCodBarras_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipulacaoTextBox.DigitoFoiNumero(e);
         }
 
         #endregion TextBox Codigo de Barras
@@ -504,7 +490,8 @@ namespace Sistema_de_Gerenciamento.Forms
                 btnAdcionar.Location = new Point(901, 162);
 
                 gdvVenda.Rows.Clear();
-                TextBox.ApagandoTextBox(this);
+
+                ManipulacaoTextBox.ApagandoTextBox(this);
             }
         }
 
@@ -551,7 +538,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 btnAdcionar.Location = new Point(814, 162);
                 gdvVenda.Rows.Clear();
 
-                TextBox.ApagandoTextBox(this);
+                ManipulacaoTextBox.ApagandoTextBox(this);
 
                 listaProduto = Buscar.BuscarProdutos();
 
@@ -621,7 +608,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void cmbCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
+            ManipulacaoTextBox.DigitoFoiNumero(e);
         }
 
         private void cmbCliente_KeyUp(object sender, KeyEventArgs e)

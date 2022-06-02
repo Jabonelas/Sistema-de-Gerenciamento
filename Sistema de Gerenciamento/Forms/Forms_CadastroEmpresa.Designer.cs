@@ -122,7 +122,6 @@
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.bunifuSeparator2 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.gdvPesquisarEmpresa = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.lblce_id = new System.Windows.Forms.Label();
             this.ce_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ce_razao_social = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ce_cnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -138,6 +137,7 @@
             this.ce_email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ce_texto_padrao_os = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ce_imagem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblce_id = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEmpresa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarEmpresa)).BeginInit();
             this.SuspendLayout();
@@ -514,6 +514,7 @@
             this.txtTextPadrao.TextPlaceholder = "";
             this.txtTextPadrao.UseSystemPasswordChar = false;
             this.txtTextPadrao.WordWrap = true;
+            this.txtTextPadrao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTextPadrao_KeyPress);
             // 
             // txtTelefone
             // 
@@ -674,6 +675,7 @@
             this.txtNomeFantasia.TextPlaceholder = "";
             this.txtNomeFantasia.UseSystemPasswordChar = false;
             this.txtNomeFantasia.WordWrap = true;
+            this.txtNomeFantasia.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomeFantasia_KeyPress);
             // 
             // txtEmail
             // 
@@ -748,6 +750,7 @@
             this.txtEmail.TextPlaceholder = "";
             this.txtEmail.UseSystemPasswordChar = false;
             this.txtEmail.WordWrap = true;
+            this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
             // 
             // label32
             // 
@@ -879,6 +882,7 @@
             this.txtEndereco.TextPlaceholder = "";
             this.txtEndereco.UseSystemPasswordChar = false;
             this.txtEndereco.WordWrap = true;
+            this.txtEndereco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEndereco_KeyPress);
             // 
             // txtCEP
             // 
@@ -1114,6 +1118,7 @@
             this.txtCidade.TextPlaceholder = "";
             this.txtCidade.UseSystemPasswordChar = false;
             this.txtCidade.WordWrap = true;
+            this.txtCidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCidade_KeyPress);
             // 
             // txtBairro
             // 
@@ -1188,6 +1193,7 @@
             this.txtBairro.TextPlaceholder = "";
             this.txtBairro.UseSystemPasswordChar = false;
             this.txtBairro.WordWrap = true;
+            this.txtBairro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBairro_KeyPress);
             // 
             // label18
             // 
@@ -1312,6 +1318,7 @@
             this.txtComplemento.TextPlaceholder = "";
             this.txtComplemento.UseSystemPasswordChar = false;
             this.txtComplemento.WordWrap = true;
+            this.txtComplemento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtComplemento_KeyPress);
             // 
             // label12
             // 
@@ -1527,6 +1534,7 @@
             this.txtRazaoSocial.TextPlaceholder = "";
             this.txtRazaoSocial.UseSystemPasswordChar = false;
             this.txtRazaoSocial.WordWrap = true;
+            this.txtRazaoSocial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRazaoSocial_KeyPress);
             // 
             // label1
             // 
@@ -1738,16 +1746,6 @@
             this.gdvPesquisarEmpresa.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.gdvPesquisarEmpresa.Visible = false;
             // 
-            // lblce_id
-            // 
-            this.lblce_id.AutoSize = true;
-            this.lblce_id.Location = new System.Drawing.Point(346, 6);
-            this.lblce_id.Name = "lblce_id";
-            this.lblce_id.Size = new System.Drawing.Size(13, 13);
-            this.lblce_id.TabIndex = 162;
-            this.lblce_id.Text = "1";
-            this.lblce_id.Visible = false;
-            // 
             // ce_id
             // 
             this.ce_id.HeaderText = "ce_id";
@@ -1850,7 +1848,17 @@
             this.ce_imagem.Name = "ce_imagem";
             this.ce_imagem.ReadOnly = true;
             // 
-            // CadastroEmpresa
+            // lblce_id
+            // 
+            this.lblce_id.AutoSize = true;
+            this.lblce_id.Location = new System.Drawing.Point(346, 6);
+            this.lblce_id.Name = "lblce_id";
+            this.lblce_id.Size = new System.Drawing.Size(13, 13);
+            this.lblce_id.TabIndex = 162;
+            this.lblce_id.Text = "1";
+            this.lblce_id.Visible = false;
+            // 
+            // Forms_CadastroEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1895,7 +1903,7 @@
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnSalvar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "CadastroEmpresa";
+            this.Name = "Forms_CadastroEmpresa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Empresa";
             this.Load += new System.EventHandler(this.CadastroEmpresa_Load);

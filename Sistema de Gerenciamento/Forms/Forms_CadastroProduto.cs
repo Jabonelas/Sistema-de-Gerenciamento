@@ -15,8 +15,6 @@ namespace Sistema_de_Gerenciamento
 {
     public partial class Forms_CadastroProduto : Form
     {
-        private ManipulacaoTextBox TextBox = new ManipulacaoTextBox();
-
         private AdicionarNoBanco Salvar = new AdicionarNoBanco();
 
         private MensagensErro Erro = new MensagensErro();
@@ -35,43 +33,45 @@ namespace Sistema_de_Gerenciamento
 
             PreencherComboBoxGrupo();
 
-            // Preencher o combobox de fornecedor
-            cmbFornecedor.Items.Clear();
-
-            foreach (var item in Buscar.BuscarListaForcedor())
-            {
-                cmbFornecedor.Items.Add(item);
-            }
+            PreencherComboBoxFornecedor();
         }
 
-        #region Botao Novo
-
-        private void btnCadastroProduto_Click(object sender, EventArgs e)
+        private void btnNovoProduto_Click(object sender, EventArgs e)
         {
-            TextBox.ApagandoTextBox(this);
+            NovoCadastroProduto();
+        }
+
+        #region Novo Cadastro Produto
+
+        private void NovoCadastroProduto()
+        {
+            ManipulacaoTextBox.ApagandoTextBox(this);
 
             pcbProduto.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\camera3.png");
 
             PreencherComboBoxGrupo();
 
-            // Preencher o combobox de fornecedor
-            cmbFornecedor.Items.Clear();
-
-            foreach (var item in Buscar.BuscarListaForcedor())
-            {
-                cmbFornecedor.Items.Add(item);
-            }
+            PreencherComboBoxFornecedor();
         }
 
-        #endregion Botao Novo
+        #endregion Novo Cadastro Produto
 
         #region Botao Salvar
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            SalvarCadastroProduto();
+        }
+
+        #endregion Botao Salvar
+
+        #region Salvar Cadastro Produto
+
+        private void SalvarCadastroProduto()
+        {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == false)
                     {
@@ -101,10 +101,6 @@ namespace Sistema_de_Gerenciamento
                         MessageBox.Show("Produto Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
             }
             catch (Exception ex)
             {
@@ -112,35 +108,40 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Salvar
+        #endregion Salvar Cadastro Produto
 
-        #region Botao Atualizar
+        private void btnAlterarProduto_Click(object sender, EventArgs e)
+        {
+            AtualizarCadastroProduto();
+        }
 
-        private void btnAlterar_Click(object sender, EventArgs e)
+        #region Atualizar Cadastro Produto
+
+        private void AtualizarCadastroProduto()
         {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == true)
                     {
                         Atualizar.AtualizarCadastroProduto(txtDescricao.Text,
-                        cmbUn.Text,
-                        Convert.ToDecimal(txtValorDeCusto.Text.Replace("R$ ", string.Empty)),
-                        Convert.ToDecimal(txtPorcentagem.Text.Replace(" %", string.Empty)),
-                        Convert.ToDecimal(txtValorVenda.Text.Replace("R$ ", string.Empty)),
-                        Convert.ToDecimal(txtLucro.Text.Replace("R$ ", string.Empty)),
-                        Convert.ToDecimal(txtPrecoAtacado.Text.Replace("R$ ", string.Empty)),
-                        cmbGrupo.Text,
-                        cmbSubGrupo.Text,
-                        cmbFornecedor.Text,
-                        Convert.ToDecimal(txtEstoqueMinimo.Text),
-                        txtGarantia.Text,
-                        txtMarca.Text,
-                        txtReferencia.Text,
-                        Convert.ToDateTime(txtValidade.Text),
-                        Convert.ToDecimal(txtComissao.Text.Replace(" %", string.Empty)),
-                        txtObservacoes.Text);
+                            cmbUn.Text,
+                            Convert.ToDecimal(txtValorDeCusto.Text.Replace("R$ ", string.Empty)),
+                            Convert.ToDecimal(txtPorcentagem.Text.Replace(" %", string.Empty)),
+                            Convert.ToDecimal(txtValorVenda.Text.Replace("R$ ", string.Empty)),
+                            Convert.ToDecimal(txtLucro.Text.Replace("R$ ", string.Empty)),
+                            Convert.ToDecimal(txtPrecoAtacado.Text.Replace("R$ ", string.Empty)),
+                            cmbGrupo.Text,
+                            cmbSubGrupo.Text,
+                            cmbFornecedor.Text,
+                            Convert.ToDecimal(txtEstoqueMinimo.Text),
+                            txtGarantia.Text,
+                            txtMarca.Text,
+                            txtReferencia.Text,
+                            Convert.ToDateTime(txtValidade.Text),
+                            Convert.ToDecimal(txtComissao.Text.Replace(" %", string.Empty)),
+                            txtObservacoes.Text);
 
                         Atualizar.AtualizarImagemNoCadastroProduto(pcbProduto.Image, Convert.ToInt32(txtCodigo.Text));
                     }
@@ -149,10 +150,6 @@ namespace Sistema_de_Gerenciamento
                         MessageBox.Show("Produto Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Preenchimento Dos Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
             }
             catch (Exception ex)
             {
@@ -160,9 +157,7 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Atualizar
-
-        #region Botao Buscar
+        #endregion Atualizar Cadastro Produto
 
         private void btnBuscarProduto_Click(object sender, EventArgs e)
         {
@@ -170,15 +165,18 @@ namespace Sistema_de_Gerenciamento
             buscarProduto.ShowDialog();
         }
 
-        #endregion Botao Buscar
+        private void btnExcluirProduto_Click(object sender, EventArgs e)
+        {
+            ExcluirCadastroProduto();
+        }
 
-        #region Botao Excluir
+        #region Excluir Cadastro Produto
 
-        private void btnExcluir_Click(object sender, EventArgs e)
+        private void ExcluirCadastroProduto()
         {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == true)
                     {
@@ -191,10 +189,6 @@ namespace Sistema_de_Gerenciamento
                         MessageBox.Show("Produto Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
             }
             catch (Exception ex)
             {
@@ -202,20 +196,21 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Excluir
-
-        #region Botao Sair
+        #endregion Excluir Cadastro Produto
 
         private void bntSair_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        #endregion Botao Sair
+        private void btnInserirImagemProduto_Click(object sender, EventArgs e)
+        {
+            InserirImagemProduto();
+        }
 
-        #region Botao Inserir Imagem
+        #region Inserir Imagem Produto
 
-        private void btnInserirImagem_Click(object sender, EventArgs e)
+        private void InserirImagemProduto()
         {
             OpenFileDialog abrirPesquisa = new OpenFileDialog();
 
@@ -226,51 +221,29 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Inserir Imagem
-
-        #region TextBox Valor de Custo
+        #endregion Inserir Imagem Produto
 
         private void txtValorDeCusto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
-            {
-                txtValorDeCusto.MaxLength = 10;
-
-                if (Char.IsDigit(e.KeyChar) || e.KeyChar.Equals((char)Keys.Back))
-                {
-                    if (txtValorDeCusto.Text.Length <= 13 || e.KeyChar.Equals((char)Keys.Back))
-                    {
-                        TextBox textbox = (TextBox)sender;
-                        string testoDoTextBox = Regex.Replace(textbox.Text, "[^0-9]", string.Empty);
-                        if (testoDoTextBox == string.Empty)
-                        {
-                            testoDoTextBox = "00";
-                        }
-
-                        testoDoTextBox += e.KeyChar;
-                        textbox.Text = String.Format("R$ {0:#,##0.00}", double.Parse(testoDoTextBox) / 100);
-                        textbox.Select(textbox.Text.Length, 0);
-                    }
-                }
-                e.Handled = true;
-            }
-            catch (Exception)
-            {
-            }
+            ManipulacaoTextBox.FormatoDinheiro(e, sender, txtValorDeCusto);
         }
-
-        #endregion TextBox Valor de Custo
-
-        #region TextBox Porcentagem
 
         private void txtPorcentagem_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
-
-            TextBox.PreenchimentoPorcentagem(e, txtPorcentagem.Text, sender);
+            if (ManipulacaoTextBox.DigitoFoiNumero(e))
+            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtPorcentagem.Text, sender);
+            }
         }
 
         private void txtPorcentagem_Leave(object sender, EventArgs e)
+        {
+            GerarValorDeVenda_Lucro();
+        }
+
+        #region Gerar Valor De Venda e Valor de Lucro
+
+        private void GerarValorDeVenda_Lucro()
         {
             if (txtValorDeCusto.Text != String.Empty)
             {
@@ -284,170 +257,85 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion TextBox Porcentagem
-
-        #region TextBox Preco aPrazo e Atacado
+        #endregion Gerar Valor De Venda e Valor de Lucro
 
         private void txtPrecoAPrazoAtacado_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
-            {
-                txtValorDeCusto.MaxLength = 10;
-
-                if (Char.IsDigit(e.KeyChar) || e.KeyChar.Equals((char)Keys.Back))
-                {
-                    if (txtValorDeCusto.Text.Length <= 13 || e.KeyChar.Equals((char)Keys.Back))
-                    {
-                        TextBox textbox = (TextBox)sender;
-                        string testoDoTextBox = Regex.Replace(textbox.Text, "[^0-9]", string.Empty);
-                        if (testoDoTextBox == string.Empty)
-                        {
-                            testoDoTextBox = "00";
-                        }
-
-                        testoDoTextBox += e.KeyChar;
-                        textbox.Text = String.Format("R$ {0:#,##0.00}", double.Parse(testoDoTextBox) / 100);
-                        textbox.Select(textbox.Text.Length, 0);
-                    }
-                }
-                e.Handled = true;
-            }
-            catch (Exception)
-            {
-            }
+            ManipulacaoTextBox.FormatoDinheiro(e, sender, txtPrecoAtacado);
         }
-
-        #endregion TextBox Preco aPrazo e Atacado
-
-        #region TextBox Comissao
 
         private void txtComissao_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
-
-            try
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
             {
-                if (Char.IsDigit(e.KeyChar) || e.KeyChar.Equals((char)Keys.Back))
-                {
-                    if (txtComissao.Text.Length <= 7 || e.KeyChar.Equals((char)Keys.Back))
-                    {
-                        TextBox textbox = (TextBox)sender;
-                        string testoDoTextBox = Regex.Replace(textbox.Text, "[^0-9]", string.Empty);
-                        if (testoDoTextBox == string.Empty)
-                        {
-                            testoDoTextBox = "0";
-                        }
-
-                        testoDoTextBox += e.KeyChar;
-                        textbox.Text = String.Format("{0:#,##0.00} %", double.Parse(testoDoTextBox) / 100);
-                        textbox.Select(textbox.Text.Length, 0);
-                    }
-                }
-                e.Handled = true;
-            }
-            catch (Exception)
-            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtComissao.Text, sender);
             }
         }
 
-        #endregion TextBox Comissao
-
-        #region TextBox Validade
-
         private void txtValidade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
-
-            if (char.IsNumber(e.KeyChar) == true)
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
             {
-                switch (txtValidade.TextLength)
-                {
-                    case 0:
-                        txtValidade.Text = "";
-                        break;
-
-                    case 2:
-                        txtValidade.Text = txtValidade.Text + "/";
-                        txtValidade.SelectionStart = 3;
-                        break;
-
-                    case 5:
-                        txtValidade.Text = txtValidade.Text + "/";
-                        txtValidade.SelectionStart = 6;
-                        break;
-                }
+                ManipulacaoTextBox.FormatoData(txtValidade);
             }
         }
 
         private void txtValidade_Leave(object sender, EventArgs e)
         {
-            //Verificação se o campo do totalmente preenchido
-            if (txtValidade.Text.Length != txtValidade.MaxLength && txtValidade.Text.Length != 0)
+            if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtValidade) == true)
             {
-                txtValidade.BorderColorActive = Color.Red;
-
-                MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                txtValidade.Focus();
-            }
-            else if (txtValidade.Text.Length == txtValidade.MaxLength || txtValidade.Text.Length == 0)
-            {
-                txtValidade.BorderColorActive = Color.DodgerBlue;
-            }
-            //Verificação se o campo foi preenchido com um formato valido
-            if (txtValidade.Text.Length == txtValidade.MaxLength)
-            {
-                DateTime time;
-                if (DateTime.TryParse(txtValidade.Text, out time))
-                {
-                    txtValidade.BorderColorActive = Color.DodgerBlue;
-                }
-                else
-                {
-                    txtValidade.BorderColorActive = Color.Red;
-                    MessageBox.Show($"Data Errada: {txtValidade.Text}", "Atencao!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtValidade.Focus();
-                }
+                ManipulacaoTextBox.FormatoData(txtValidade);
             }
         }
-
-        #endregion TextBox Validade
-
-        #region TextBox Estoque Minimo
 
         private void txtEstoqueMinimo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            TextBox.DigitarApenasNumeros(e);
-            try
+            if (ManipulacaoTextBox.DigitoFoiNumero(e))
             {
-                if (Char.IsDigit(e.KeyChar) || e.KeyChar.Equals((char)Keys.Back))
-                {
-                    if (txtEstoqueMinimo.Text.Length <= 7 || e.KeyChar.Equals((char)Keys.Back))
-                    {
-                        TextBox textbox = (TextBox)sender;
-                        string testoDoTextBox = Regex.Replace(textbox.Text, "[^0-9]", string.Empty);
-                        if (testoDoTextBox == string.Empty)
-                        {
-                            testoDoTextBox = "0";
-                        }
-
-                        testoDoTextBox += e.KeyChar;
-                        textbox.Text = String.Format("{0:#,##0.00}", double.Parse(testoDoTextBox) / 100);
-                        textbox.Select(textbox.Text.Length, 0);
-                    }
-                }
-                e.Handled = true;
-            }
-            catch (Exception)
-            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtEstoqueMinimo.Text, sender);
             }
         }
 
-        #endregion TextBox Estoque Minimo
+        private void cmbGrupo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PreenchimentoSubGrupo();
+        }
 
-        #region Preenchimento ComboBox
+        #region Preenchimento do ComboBox Sub-Grupo
 
-        #region Preencher ComboBox Grupo
+        private void PreenchimentoSubGrupo()
+        {
+            List<DadosSubGrupoMaterial> listaSubGrupo = new List<DadosSubGrupoMaterial>();
+
+            listaSubGrupo = Buscar.BuscarSubGrupoProduto(cmbGrupo.Text);
+
+            cmbSubGrupo.Items.Clear();
+
+            listaSubGrupo.ForEach(prod => cmbSubGrupo.Items.Add(prod.sub_grupo));
+        }
+
+        #endregion Preenchimento do ComboBox Sub-Grupo
+
+        private void cmbSubGrupo_Enter(object sender, EventArgs e)
+        {
+            VerificarPreenchimentoGrupo();
+        }
+
+        #region Verificar Se o ComboBox Grupo Esta Preenchdo
+
+        private void VerificarPreenchimentoGrupo()
+        {
+            if (cmbGrupo.Text == string.Empty)
+            {
+                MessageBox.Show("Por Favor Preencha Primeiro O Campo Grupo!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                cmbGrupo.Focus();
+            }
+        }
+
+        #endregion Verificar Se o ComboBox Grupo Esta Preenchdo
+
+        #region Preencher Combobox Grupo
 
         private void PreencherComboBoxGrupo()
         {
@@ -460,33 +348,45 @@ namespace Sistema_de_Gerenciamento
             listaGrupo.ForEach(prod => cmbGrupo.Items.Add(prod.grupo));
         }
 
-        private void cmbGrupo_SelectedIndexChanged(object sender, EventArgs e)
+        #endregion Preencher Combobox Grupo
+
+        #region Preencher ComboBox Fornecedor
+
+        private void PreencherComboBoxFornecedor()
         {
-            List<DadosSubGrupoMaterial> listaSubGrupo = new List<DadosSubGrupoMaterial>();
+            cmbFornecedor.Items.Clear();
 
-            listaSubGrupo = Buscar.BuscarSubGrupoProduto(cmbGrupo.Text);
-
-            cmbSubGrupo.Items.Clear();
-
-            listaSubGrupo.ForEach(prod => cmbSubGrupo.Items.Add(prod.sub_grupo));
-        }
-
-        #endregion Preencher ComboBox Grupo
-
-        #region Preenchimento ComboBox Sub-Grupo
-
-        private void cmbSubGrupo_Enter(object sender, EventArgs e)
-        {
-            if (cmbGrupo.Text == string.Empty)
+            foreach (var item in Buscar.BuscarListaForcedor())
             {
-                MessageBox.Show("Por Favor Preencha Primeiro O Campo Grupo!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                cmbGrupo.Focus();
+                cmbFornecedor.Items.Add(item);
             }
         }
 
-        #endregion Preenchimento ComboBox Sub-Grupo
+        #endregion Preencher ComboBox Fornecedor
 
-        #endregion Preenchimento ComboBox
+        private void txtDescricao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtGarantia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtMarca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtReferencia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtObservacoes_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
     }
 }

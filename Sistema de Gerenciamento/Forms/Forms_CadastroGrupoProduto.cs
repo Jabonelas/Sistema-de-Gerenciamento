@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Sistema_de_Gerenciamento.Classes;
+using System;
 using System.Windows.Forms;
-using Sistema_de_Gerenciamento.Classes;
-using Sistema_de_Gerenciamento.Forms;
 
 namespace Sistema_de_Gerenciamento
 {
-    public partial class Forms_CadastroGrupoDeMaterial : Form
+    public partial class Forms_CadastroGrupoProduto : Form
     {
         private AdicionarNoBanco Salvar = new AdicionarNoBanco();
 
@@ -20,31 +12,30 @@ namespace Sistema_de_Gerenciamento
 
         private MensagensErro Erro = new MensagensErro();
 
-        private ManipulacaoTextBox TextBox = new ManipulacaoTextBox();
-
         private VerificacaoDeExistencia VerificarExistencia = new VerificacaoDeExistencia();
 
-        public Forms_CadastroGrupoDeMaterial()
+        public Forms_CadastroGrupoProduto()
         {
             InitializeComponent();
         }
-
-        #region Botao Sair
 
         private void bntSair_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        #endregion Botao Sair
-
-        #region Botao Salvar
-
         private void btnSalvarGrupo_Click(object sender, EventArgs e)
+        {
+            SalvarGrupoProduto();
+        }
+
+        #region Salvar Grupo de Produto
+
+        private void SalvarGrupoProduto()
         {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaSubGrupo(txtSubGrupo.Text) == false)
                     {
@@ -60,10 +51,6 @@ namespace Sistema_de_Gerenciamento
                         MessageBox.Show("Sub-Grupo Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
             }
             catch (Exception ex)
             {
@@ -71,15 +58,20 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Salvar
-
-        #region Botao Excluir
+        #endregion Salvar Grupo de Produto
 
         private void btnExcluirGrupo_Click(object sender, EventArgs e)
         {
+            ExcluirGrupoProduto();
+        }
+
+        #region Excluir Grupo de Produto
+
+        private void ExcluirGrupoProduto()
+        {
             try
             {
-                if (TextBox.VerificarPreenchimentoTextBox(this) == false)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
                     if (VerificarExistencia.VerificarExistenciaSubGrupo(txtSubGrupo.Text) == true)
                     {
@@ -90,12 +82,9 @@ namespace Sistema_de_Gerenciamento
                     }
                     else if (VerificarExistencia.VerificarExistenciaSubGrupo(txtSubGrupo.Text) == false)
                     {
-                        MessageBox.Show("Cliente Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Cliente Não Encontrado!", "Atenção!", MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Todos Os Campos São Obrigatorios!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
@@ -104,6 +93,16 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Excluir
+        #endregion Excluir Grupo de Produto
+
+        private void txtGrupoMaterial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetras(e);
+        }
+
+        private void txtSubGrupo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetras(e);
+        }
     }
 }

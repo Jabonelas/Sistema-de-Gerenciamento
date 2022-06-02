@@ -1,6 +1,6 @@
 ﻿namespace Sistema_de_Gerenciamento
 {
-    partial class Forms_CadastroGrupoDeMaterial
+    partial class Forms_CadastroGrupoProduto
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Forms_CadastroGrupoDeMaterial));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Forms_CadastroGrupoProduto));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
@@ -233,6 +233,7 @@
             this.txtSubGrupo.TextPlaceholder = "";
             this.txtSubGrupo.UseSystemPasswordChar = false;
             this.txtSubGrupo.WordWrap = true;
+            this.txtSubGrupo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSubGrupo_KeyPress);
             // 
             // label3
             // 
@@ -327,6 +328,7 @@
             this.txtGrupoMaterial.TextPlaceholder = "";
             this.txtGrupoMaterial.UseSystemPasswordChar = false;
             this.txtGrupoMaterial.WordWrap = true;
+            this.txtGrupoMaterial.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGrupoMaterial_KeyPress);
             // 
             // bntSair
             // 
@@ -540,7 +542,7 @@
             this.bunifuSeparator2.Size = new System.Drawing.Size(360, 20);
             this.bunifuSeparator2.TabIndex = 160;
             // 
-            // CadastroGrupoDeMaterial
+            // Forms_CadastroGrupoProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -557,7 +559,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnSalvarGrupo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "CadastroGrupoDeMaterial";
+            this.Name = "Forms_CadastroGrupoProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Grupo De Material";
             this.ResumeLayout(false);

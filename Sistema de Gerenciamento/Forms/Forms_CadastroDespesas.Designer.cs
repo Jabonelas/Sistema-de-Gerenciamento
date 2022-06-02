@@ -620,6 +620,7 @@
             this.txtTipo.TextPlaceholder = "";
             this.txtTipo.UseSystemPasswordChar = false;
             this.txtTipo.WordWrap = true;
+            this.txtTipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTipo_KeyPress);
             // 
             // txtDescricao
             // 
@@ -694,6 +695,7 @@
             this.txtDescricao.TextPlaceholder = "";
             this.txtDescricao.UseSystemPasswordChar = false;
             this.txtDescricao.WordWrap = true;
+            this.txtDescricao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescricao_KeyPress);
             // 
             // label3
             // 
@@ -761,7 +763,7 @@
             this.txtCodigo.Size = new System.Drawing.Size(124, 26);
             this.txtCodigo.TabIndex = 165;
             // 
-            // CadastroDespesas
+            // Forms_CadastroDespesas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -783,7 +785,7 @@
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.bunifuSeparator1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "CadastroDespesas";
+            this.Name = "Forms_CadastroDespesas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Despesas";
             this.ResumeLayout(false);
