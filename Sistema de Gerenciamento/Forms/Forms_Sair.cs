@@ -58,10 +58,6 @@ namespace Sistema_de_Gerenciamento
             fecharAdministrador.Hide();
             this.Hide();
             login.Show();
-
-            //this.Hide();
-            //Login TrocarUsuario = new Login();
-            //TrocarUsuario.ShowDialog();
         }
     }
 }

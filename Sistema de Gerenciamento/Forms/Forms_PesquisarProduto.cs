@@ -18,69 +18,26 @@ namespace Sistema_de_Gerenciamento
 
         private BuscarNoBanco Buscar = new BuscarNoBanco();
 
-        private MensagensErro Erro = new MensagensErro();
-
         public Forms_PesquisarProduto(Forms_CadastroProduto _cadastroProduto)
         {
             InitializeComponent();
+
             cadastroProduto = _cadastroProduto;
         }
 
-        #region Gridview
+        private void btnSelecionar_Click(object sender, EventArgs e)
+        {
+            SelecaoGridViewPreencherTextBox();
+        }
 
         private void gdvPesquisarProduto_DoubleClick(object sender, EventArgs e)
         {
-            if (gdvPesquisarProduto.RowCount >= 1)
-            {
-                int indice = 0;
-
-                cadastroProduto.txtCodigo.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
-
-                cadastroProduto.txtDescricao.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
-
-                cadastroProduto.cmbUn.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
-
-                cadastroProduto.txtValorDeCusto.Text = ("R$ " + gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString());
-
-                cadastroProduto.txtPorcentagem.Text = (gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString() + " %");
-
-                cadastroProduto.txtValorVenda.Text = ("R$ " + gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString());
-
-                cadastroProduto.txtLucro.Text = ("R$ " + gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString());
-
-                cadastroProduto.txtPrecoAtacado.Text = ("R$ " + gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString());
-
-                cadastroProduto.cmbGrupo.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
-
-                cadastroProduto.cmbSubGrupo.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
-
-                cadastroProduto.cmbFornecedor.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
-
-                cadastroProduto.txtEstoqueMinimo.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
-
-                cadastroProduto.txtGarantia.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
-
-                cadastroProduto.txtMarca.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
-
-                cadastroProduto.txtReferencia.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
-
-                cadastroProduto.txtValidade.Text = (((DateTime)gdvPesquisarProduto.SelectedCells[indice += 1].Value).ToShortDateString());
-
-                cadastroProduto.txtComissao.Text = (gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString() + " %");
-
-                cadastroProduto.txtObservacoes.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
-
-                cadastroProduto.pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(cadastroProduto.txtCodigo.Text));
-
-                this.Close();
-            }
+            SelecaoGridViewPreencherTextBox();
         }
 
-        #endregion Gridview
+        #region Selecionar Linha No Gridview Para Preencher TextBox na Tela De Cadastro de Produto
 
-        #region Botao Selececionar
-
-        private void btnSelecionar_Click(object sender, EventArgs e)
+        private void SelecaoGridViewPreencherTextBox()
         {
             if (gdvPesquisarProduto.RowCount >= 1)
             {
@@ -128,56 +85,46 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Botao Selececionar
-
-        #region Botao Pesquisar
+        #endregion Selecionar Linha No Gridview Para Preencher TextBox na Tela De Cadastro de Produto
 
         private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            PesquisarProduto();
+        }
+
+        #region Pesquisar Produto
+
+        private void PesquisarProduto()
         {
             if (txtCodigoProduto.Text != string.Empty)
             {
                 bool isCadastroExiste = Buscar.BuscarCadastroProdutoPorCodigo(Convert.ToInt32(txtCodigoProduto.Text), gdvPesquisarProduto);
 
-                if (isCadastroExiste == false)
-                {
-                    MessageBox.Show("Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                MessagemProdutoNaoEncontrado(isCadastroExiste);
             }
             else if (txtDescicao.Text != string.Empty)
             {
                 bool isCadastroExiste = Buscar.BuscarCadastroProdutoPorDescricao(txtDescicao.Text, gdvPesquisarProduto);
 
-                if (isCadastroExiste == false)
-                {
-                    MessageBox.Show("Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                MessagemProdutoNaoEncontrado(isCadastroExiste);
             }
             else if (txtGrupo.Text != string.Empty)
             {
                 bool isCadastroExiste = Buscar.BuscarCadastroProdutoPorGrupo(txtGrupo.Text, gdvPesquisarProduto);
 
-                if (isCadastroExiste == false)
-                {
-                    MessageBox.Show("Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                MessagemProdutoNaoEncontrado(isCadastroExiste);
             }
             else if (txtSubGrupo.Text != string.Empty)
             {
                 bool isCadastroExiste = Buscar.BuscarCadastroProdutoPorSubGrupo(txtSubGrupo.Text, gdvPesquisarProduto);
 
-                if (isCadastroExiste == false)
-                {
-                    MessageBox.Show("Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                MessagemProdutoNaoEncontrado(isCadastroExiste);
             }
             else if (txtMarca.Text != string.Empty)
             {
                 bool isCadastroExiste = Buscar.BuscarCadastroProdutoPorMarca(txtMarca.Text, gdvPesquisarProduto);
 
-                if (isCadastroExiste == false)
-                {
-                    MessageBox.Show("Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                MessagemProdutoNaoEncontrado(isCadastroExiste);
             }
             else
             {
@@ -187,95 +134,40 @@ namespace Sistema_de_Gerenciamento
                 {
                     bool isCadastroExiste = Buscar.BuscarCadastroProdutoTudo(gdvPesquisarProduto);
 
-                    if (isCadastroExiste == false)
-                    {
-                        MessageBox.Show("Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    MessagemProdutoNaoEncontrado(isCadastroExiste);
+                    ;
                 }
             }
         }
 
-        #endregion Botao Pesquisar
+        private void MessagemProdutoNaoEncontrado(bool _isCadastroExiste)
+        {
+            if (_isCadastroExiste == false)
+            {
+                MessageBox.Show("Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
-        #region Botao Sair
+        #endregion Pesquisar Produto
 
         private void btnFechar_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        #endregion Botao Sair
-
-        #region Botao Exportar
-
         private void btnExportar_Click_1(object sender, EventArgs e)
         {
-            if (gdvPesquisarProduto.RowCount > 0)
-            {
-                try
-                {
-                    SaveFileDialog openFileDialog = new SaveFileDialog();
-                    openFileDialog.InitialDirectory = "c:\\";
-                    openFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx|Excel 2007 (*.xls)|*.xls";
-                    openFileDialog.FilterIndex = 1;
-
-                    if (openFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        DataTable dt = ExportarExcel.DataGridView_To_Datatable(gdvPesquisarProduto);
-                        dt.exportToExcel(openFileDialog.FileName);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Erro.ErroAoExportarDadosExecel(ex);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Primeiro Realizar a Pesquisa!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            ExportarExcel.GerarExcel(gdvPesquisarProduto);
         }
-
-        #endregion Botao Exportar
-
-        #region TextBox Codigo
-
-        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
-        }
-
-        #endregion TextBox Codigo
-
-        #region Imprimir Relatorio Produto
-
-        private void ImprimirRelatorioProduto()
-        {
-            DGVPrinter printer = new DGVPrinter();
-            printer.Title = "Relatorio de Produtos";//Header
-            printer.SubTitle = string.Format("Date: {0}", DateTime.Now.Date.ToString("MM/dd/yyyy"));
-            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
-            printer.PageNumbers = true;
-            printer.PageNumberInHeader = false;
-            printer.PorportionalColumns = true;
-            printer.HeaderCellAlignment = StringAlignment.Near;
-            printer.Footer = DateTime.Today.ToString();//Footer
-            printer.FooterSpacing = 15;
-            printer.PrintDataGridView(gdvPesquisarProduto);
-        }
-
-        #endregion Imprimir Relatorio Produto
-
-        #region Botao Imprimir
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            ImprimirRelatorioProduto();
+            Imprimir.ImprimirGridView("Relatorio de Produto", gdvPesquisarProduto);
         }
 
-        #endregion Botao Imprimir
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
     }
 }

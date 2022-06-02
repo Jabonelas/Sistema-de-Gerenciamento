@@ -1906,7 +1906,6 @@
             this.Name = "Forms_CadastroEmpresa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Empresa";
-            this.Load += new System.EventHandler(this.CadastroEmpresa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pcbEmpresa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarEmpresa)).EndInit();
             this.ResumeLayout(false);

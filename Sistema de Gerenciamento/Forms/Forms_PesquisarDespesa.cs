@@ -27,57 +27,37 @@ namespace Sistema_de_Gerenciamento.Forms
             cadastroDespesas = _cadastroDespesas;
         }
 
-        #region Botao Sair
-
         private void btnFechar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        #endregion Botao Sair
-
-        #region Botao Codigo
-
-        private void txtCodigoDespesa_KeyPress(object sender, KeyPressEventArgs e)
+        private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != (char)8)
-            {
-                e.Handled = true;
-            }
+            PesquisarDespesa();
         }
 
-        #endregion Botao Codigo
+        #region Pesquisar Despesa
 
-        #region Botao Pesquisar
-
-        private void btnPesquisar_Click(object sender, EventArgs e)
+        private void PesquisarDespesa()
         {
             if (txtCodigoDespesa.Text != string.Empty)
             {
                 bool isCadastroExiste = Buscar.BuscarCadastroDespesaPorCodigo(Convert.ToInt32(txtCodigoDespesa.Text), gdvPesquisarDespesa);
 
-                if (isCadastroExiste == false)
-                {
-                    MessageBox.Show("Despesa Não Encontrada ", "Não Encontrada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                MensagemDespesaNaoEncontrada(isCadastroExiste);
             }
             else if (txtDescricao.Text != string.Empty)
             {
                 bool isCadastroExiste = Buscar.BuscarCadastroDespesaPorDescricao(txtDescricao.Text, gdvPesquisarDespesa);
 
-                if (isCadastroExiste == false)
-                {
-                    MessageBox.Show("Despesa Não Encontrada ", "Não Encontrada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                MensagemDespesaNaoEncontrada(isCadastroExiste);
             }
             else if (txtTipo.Text != string.Empty)
             {
                 bool isCadastroExiste = Buscar.BuscarCadastroDespesaPorTipo(txtTipo.Text, gdvPesquisarDespesa);
 
-                if (isCadastroExiste == false)
-                {
-                    MessageBox.Show("Despesa Não Encontrada ", "Não Encontrada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                MensagemDespesaNaoEncontrada(isCadastroExiste);
             }
             else
             {
@@ -87,19 +67,44 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     bool isCadastroExiste = Buscar.BuscarCadastroTudoDespesa(gdvPesquisarDespesa);
 
-                    if (isCadastroExiste == false)
-                    {
-                        MessageBox.Show("Despesa Não Encontrada ", "Não Encontrada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    MensagemDespesaNaoEncontrada(isCadastroExiste);
                 }
             }
         }
 
-        #endregion Botao Pesquisar
+        private void MensagemDespesaNaoEncontrada(bool _isCadastroExiste)
+        {
+            if (_isCadastroExiste == false)
+            {
+                MessageBox.Show("Despesa Não Encontrada ", "Não Encontrada!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
-        #region Botao Selecionar
+        #endregion Pesquisar Despesa
+
+        private void btnExportarParaExcel_Click(object sender, EventArgs e)
+        {
+            ExportarExcel.GerarExcel(gdvPesquisarDespesa);
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            Imprimir.ImprimirGridView("Relatorio de Despesa", gdvPesquisarDespesa);
+        }
 
         private void btnSelecionar_Click(object sender, EventArgs e)
+        {
+            SelecaoGridViewPreencherTextBox();
+        }
+
+        private void gdvPesquisarDespesa_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SelecaoGridViewPreencherTextBox();
+        }
+
+        #region Selecionar Linha No GridView Para Preencher TextBox
+
+        private void SelecaoGridViewPreencherTextBox()
         {
             if (gdvPesquisarDespesa.RowCount >= 1)
             {
@@ -115,66 +120,21 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Botao Selecionar
+        #endregion Selecionar Linha No GridView Para Preencher TextBox
 
-        #region Botao Exportar
-
-        private void btnExportarParaExcel_Click(object sender, EventArgs e)
+        private void txtDescricao_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (gdvPesquisarDespesa.RowCount > 0)
-            {
-                try
-                {
-                    SaveFileDialog openFileDialog = new SaveFileDialog();
-                    openFileDialog.InitialDirectory = "c:\\";
-                    openFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx|Excel 2007 (*.xls)|*.xls";
-                    openFileDialog.FilterIndex = 1;
-
-                    if (openFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        DataTable dt = ExportarExcel.DataGridView_To_Datatable(gdvPesquisarDespesa);
-                        dt.exportToExcel(openFileDialog.FileName);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    Erro.ErroAoExportarDadosExecel(ex);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Primeiro Realizar a Pesquisa!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
         }
 
-        #endregion Botao Exportar
-
-        #region Imprimir Relatorio de Despesas
-
-        private void ImprimirRelatorioDespesas()
+        private void txtTipo_KeyPress(object sender, KeyPressEventArgs e)
         {
-            DGVPrinter printer = new DGVPrinter();
-            printer.Title = "Relatorio de Despesas";//Header
-            printer.SubTitle = string.Format("Date: {0}", DateTime.Now.Date.ToString("MM/dd/yyyy"));
-            printer.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
-            printer.PageNumbers = true;
-            printer.PageNumberInHeader = false;
-            printer.PorportionalColumns = true;
-            printer.HeaderCellAlignment = StringAlignment.Near;
-            printer.Footer = DateTime.Today.ToString();//Footer
-            printer.FooterSpacing = 15;
-            printer.PrintDataGridView(gdvPesquisarDespesa);
+            ManipulacaoTextBox.DigitoFoiLetras(e);
         }
 
-        #endregion Imprimir Relatorio de Despesas
-
-        #region Botao Imprimir
-
-        private void btnImprimir_Click(object sender, EventArgs e)
+        private void txtCodigoDespesa_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ImprimirRelatorioDespesas();
+            ManipulacaoTextBox.DigitoFoiNumero(e);
         }
-
-        #endregion Botao Imprimir
     }
 }

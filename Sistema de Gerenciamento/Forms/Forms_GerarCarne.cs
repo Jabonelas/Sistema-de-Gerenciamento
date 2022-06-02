@@ -30,12 +30,7 @@ namespace Sistema_de_Gerenciamento.Forms
             forms = _forms;
         }
 
-        public Forms_GerarCarne()
-        {
-            InitializeComponent();
-        }
-
-        #region Preenchimentos dos TextBox Prazo, Juros, Parcelas
+        #region Dados Do Carne Para Preencher Os Textbox
 
         private void DadosDoCarneParaPreenchimentoTextBox()
         {
@@ -55,9 +50,24 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Preenchimentos dos TextBox Prazo, Juros, Parcelas
+        #endregion Dados Do Carne Para Preencher Os Textbox
 
-        #region ComboBox Parcela Carne
+        public Forms_GerarCarne()
+        {
+            InitializeComponent();
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void cmbParcelaCarne_SelectedValueChanged(object sender, EventArgs e)
+        {
+            CalcularJuros();
+
+            PreencherGridview();
+        }
 
         #region Preencher GridView
 
@@ -127,23 +137,5 @@ namespace Sistema_de_Gerenciamento.Forms
         }
 
         #endregion CalcularJuros
-
-        private void cmbParcelaCarne_SelectedValueChanged(object sender, EventArgs e)
-        {
-            CalcularJuros();
-
-            PreencherGridview();
-        }
-
-        #endregion ComboBox Parcela Carne
-
-        #region Botão Fechar
-
-        private void btnFechar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        #endregion Botão Fechar
     }
 }

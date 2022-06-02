@@ -249,6 +249,7 @@
     <Compile Include="Classes\DGVPrinter.cs" />
     <Compile Include="Classes\ExcluirNoBanco.cs" />
     <Compile Include="Classes\ExportarExcel.cs" />
+    <Compile Include="Classes\Imprimir.cs" />
     <Compile Include="Classes\Temperatures.cs" />
     <Compile Include="Classes\VerificacaoDeExistencia.cs" />
     <Compile Include="Forms\Forms_ConfiguracaoGerencial.cs">

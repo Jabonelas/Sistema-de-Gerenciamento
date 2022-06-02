@@ -12,6 +12,8 @@ namespace Sistema_de_Gerenciamento.Classes
 {
     internal static class ExportarExcel
     {
+        private static MensagensErro Erro = new MensagensErro();
+
         public static void exportToExcel(this System.Data.DataTable DataTable, string ExcelFilePath = null)
         {
             try
@@ -84,5 +86,37 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             return ExportDataTable;
         }
+
+        #region Gerar Excel
+
+        public static void GerarExcel(BunifuDataGridView _gridView)
+        {
+            if (_gridView.RowCount > 0)
+            {
+                try
+                {
+                    SaveFileDialog openFileDialog = new SaveFileDialog();
+                    openFileDialog.InitialDirectory = "c:\\";
+                    openFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx|Excel 2007 (*.xls)|*.xls";
+                    openFileDialog.FilterIndex = 1;
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        DataTable dt = DataGridView_To_Datatable(_gridView);
+                        dt.exportToExcel(openFileDialog.FileName);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Erro.ErroAoExportarDadosExcel(ex);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Primeiro Realizar a Pesquisa!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        #endregion Gerar Excel
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Navigation;
 using Bunifu.UI.WinForms;
 
 namespace Sistema_de_Gerenciamento.Classes

@@ -28,12 +28,14 @@ namespace Sistema_de_Gerenciamento.Forms
             InitializeComponent();
         }
 
-        private void txtNumeroNotaFiscal_KeyPress(object sender, KeyPressEventArgs e)
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
-            ManipulacaoTextBox.DigitoFoiNumero(e);
+            BuscarCompra();
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        #region Buscar Compra
+
+        private void BuscarCompra()
         {
             try
             {
@@ -41,7 +43,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     if (Buscar.BuscarNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text), gdvCompra) == true)//verificação de existencia de nota fiscal
                     {
-                        //Buscar.BuscarNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text), gdvCompra);
                     }
                     else
                     {
@@ -54,6 +55,8 @@ namespace Sistema_de_Gerenciamento.Forms
                 Erro.ErroAoBuscarNotaFiscalEntrada(ex);
             }
         }
+
+        #endregion Buscar Compra
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
@@ -137,5 +140,10 @@ namespace Sistema_de_Gerenciamento.Forms
         }
 
         #endregion Excluir Compras
+
+        private void txtNumeroNotaFiscal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
     }
 }

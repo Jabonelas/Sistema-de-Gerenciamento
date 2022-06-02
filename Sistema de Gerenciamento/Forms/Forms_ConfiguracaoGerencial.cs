@@ -29,23 +29,6 @@ namespace Sistema_de_Gerenciamento.Forms
             PreencherComboBoxGrupo();
         }
 
-        #region Preencher ComboBox Grupo
-
-        private void PreencherComboBoxGrupo()
-        {
-            List<DadosGrupoMaterial> listaGrupo = new List<DadosGrupoMaterial>();
-
-            listaGrupo = Buscar.BuscarGrupoProduto();
-
-            cmbGrupoProduto.Items.Clear();
-
-            listaGrupo.ForEach(prod => cmbGrupoProduto.Items.Add(prod.grupo));
-
-            cmbGrupoProduto.Items.Add(string.Empty);
-        }
-
-        #endregion Preencher ComboBox Grupo
-
         private void btnFechar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -78,84 +61,6 @@ namespace Sistema_de_Gerenciamento.Forms
         }
 
         #endregion Atualizacao Da Porgentadem De Desconto Por Grupo De Produto
-
-        private void cmbGrupoProduto_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            PreencherComboBoxSubGrupo();
-        }
-
-        #region Preencher ComboBox Sub-Grupo
-
-        private void PreencherComboBoxSubGrupo()
-        {
-            List<DadosSubGrupoMaterial> listaSubGrupo = new List<DadosSubGrupoMaterial>();
-
-            listaSubGrupo = Buscar.BuscarSubGrupoProduto(cmbGrupoProduto.Text);
-
-            cmbSub_GrupoProduto.Items.Clear();
-
-            listaSubGrupo.ForEach(prod => cmbSub_GrupoProduto.Items.Add(prod.sub_grupo));
-
-            cmbSub_GrupoProduto.Items.Add(string.Empty);
-        }
-
-        #endregion Preencher ComboBox Sub-Grupo
-
-        private void cmbSub_GrupoProduto_Enter(object sender, EventArgs e)
-        {
-            VerificarPreenchimentoGrupo();
-        }
-
-        #region Verificar se o Campo de Grupo Foi Preenchido
-
-        private void VerificarPreenchimentoGrupo()
-        {
-            if (cmbGrupoProduto.Text == String.Empty)
-            {
-                MessageBox.Show("Por Favor Preencha Primeiro O Campo Grupo Produto!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                cmbGrupoProduto.Focus();
-            }
-        }
-
-        #endregion Verificar se o Campo de Grupo Foi Preenchido
-
-        private void txtDescontoPorGrupo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
-            {
-                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtDescontoPorGrupo.Text, sender);
-            }
-        }
-
-        private void txtDescontoAvista_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
-            {
-                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtDescontoAvista.Text, sender);
-            }
-        }
-
-        private void txtPrazoCarne_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiNumero(e);
-        }
-
-        private void txtJurosCarne_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
-            {
-                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtJurosCarne.Text, sender);
-            }
-        }
-
-        private void txtJurosCredito_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
-            {
-                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtJurosCredito.Text, sender);
-            }
-        }
 
         private void btnConfirmarAvista_Click(object sender, EventArgs e)
         {
@@ -233,5 +138,100 @@ namespace Sistema_de_Gerenciamento.Forms
         }
 
         #endregion Atualizacao de Porcentagem do Juros Por Carne
+
+        private void cmbGrupoProduto_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PreencherComboBoxSubGrupo();
+        }
+
+        #region Preencher ComboBox Grupo
+
+        private void PreencherComboBoxGrupo()
+        {
+            List<DadosGrupoMaterial> listaGrupo = new List<DadosGrupoMaterial>();
+
+            listaGrupo = Buscar.BuscarGrupoProduto();
+
+            cmbGrupoProduto.Items.Clear();
+
+            listaGrupo.ForEach(prod => cmbGrupoProduto.Items.Add(prod.grupo));
+
+            cmbGrupoProduto.Items.Add(string.Empty);
+        }
+
+        #endregion Preencher ComboBox Grupo
+
+        #region Preencher ComboBox Sub-Grupo
+
+        private void PreencherComboBoxSubGrupo()
+        {
+            List<DadosSubGrupoMaterial> listaSubGrupo = new List<DadosSubGrupoMaterial>();
+
+            listaSubGrupo = Buscar.BuscarSubGrupoProduto(cmbGrupoProduto.Text);
+
+            cmbSub_GrupoProduto.Items.Clear();
+
+            listaSubGrupo.ForEach(prod => cmbSub_GrupoProduto.Items.Add(prod.sub_grupo));
+
+            cmbSub_GrupoProduto.Items.Add(string.Empty);
+        }
+
+        #endregion Preencher ComboBox Sub-Grupo
+
+        private void cmbSub_GrupoProduto_Enter(object sender, EventArgs e)
+        {
+            VerificarPreenchimentoGrupo();
+        }
+
+        #region Verificar se o Campo de Grupo Foi Preenchido
+
+        private void VerificarPreenchimentoGrupo()
+        {
+            if (cmbGrupoProduto.Text == String.Empty)
+            {
+                MessageBox.Show("Por Favor Preencha Primeiro O Campo Grupo Produto!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                cmbGrupoProduto.Focus();
+            }
+        }
+
+        #endregion Verificar se o Campo de Grupo Foi Preenchido
+
+        private void txtDescontoPorGrupo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtDescontoPorGrupo.Text, sender);
+            }
+        }
+
+        private void txtDescontoAvista_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtDescontoAvista.Text, sender);
+            }
+        }
+
+        private void txtPrazoCarne_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
+
+        private void txtJurosCarne_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtJurosCarne.Text, sender);
+            }
+        }
+
+        private void txtJurosCredito_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtJurosCredito.Text, sender);
+            }
+        }
     }
 }

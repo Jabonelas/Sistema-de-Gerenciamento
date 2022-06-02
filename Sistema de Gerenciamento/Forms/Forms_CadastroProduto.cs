@@ -223,6 +223,74 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Inserir Imagem Produto
 
+        private void cmbGrupo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PreenchimentoSubGrupo();
+        }
+
+        #region Preenchimento do ComboBox Sub-Grupo
+
+        private void PreenchimentoSubGrupo()
+        {
+            List<DadosSubGrupoMaterial> listaSubGrupo = new List<DadosSubGrupoMaterial>();
+
+            listaSubGrupo = Buscar.BuscarSubGrupoProduto(cmbGrupo.Text);
+
+            cmbSubGrupo.Items.Clear();
+
+            listaSubGrupo.ForEach(prod => cmbSubGrupo.Items.Add(prod.sub_grupo));
+        }
+
+        #endregion Preenchimento do ComboBox Sub-Grupo
+
+        private void cmbSubGrupo_Enter(object sender, EventArgs e)
+        {
+            VerificarPreenchimentoGrupo();
+        }
+
+        #region Verificar Se o ComboBox Grupo Esta Preenchdo
+
+        private void VerificarPreenchimentoGrupo()
+        {
+            if (cmbGrupo.Text == string.Empty)
+            {
+                MessageBox.Show("Por Favor Preencha Primeiro O Campo Grupo!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                cmbGrupo.Focus();
+            }
+        }
+
+        #endregion Verificar Se o ComboBox Grupo Esta Preenchdo
+
+        #region Preencher Combobox Grupo
+
+        private void PreencherComboBoxGrupo()
+        {
+            List<DadosGrupoMaterial> listaGrupo = new List<DadosGrupoMaterial>();
+
+            listaGrupo = Buscar.BuscarGrupoProduto();
+
+            cmbGrupo.Items.Clear();
+
+            listaGrupo.ForEach(prod => cmbGrupo.Items.Add(prod.grupo));
+        }
+
+        #endregion Preencher Combobox Grupo
+
+        #region Preencher ComboBox Fornecedor
+
+        private void PreencherComboBoxFornecedor()
+        {
+            cmbFornecedor.Items.Clear();
+
+            foreach (var item in Buscar.BuscarListaForcedor())
+            {
+                cmbFornecedor.Items.Add(item);
+            }
+        }
+
+        #endregion Preencher ComboBox Fornecedor
+
         private void txtValorDeCusto_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.FormatoDinheiro(e, sender, txtValorDeCusto);
@@ -295,74 +363,6 @@ namespace Sistema_de_Gerenciamento
                 ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtEstoqueMinimo.Text, sender);
             }
         }
-
-        private void cmbGrupo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            PreenchimentoSubGrupo();
-        }
-
-        #region Preenchimento do ComboBox Sub-Grupo
-
-        private void PreenchimentoSubGrupo()
-        {
-            List<DadosSubGrupoMaterial> listaSubGrupo = new List<DadosSubGrupoMaterial>();
-
-            listaSubGrupo = Buscar.BuscarSubGrupoProduto(cmbGrupo.Text);
-
-            cmbSubGrupo.Items.Clear();
-
-            listaSubGrupo.ForEach(prod => cmbSubGrupo.Items.Add(prod.sub_grupo));
-        }
-
-        #endregion Preenchimento do ComboBox Sub-Grupo
-
-        private void cmbSubGrupo_Enter(object sender, EventArgs e)
-        {
-            VerificarPreenchimentoGrupo();
-        }
-
-        #region Verificar Se o ComboBox Grupo Esta Preenchdo
-
-        private void VerificarPreenchimentoGrupo()
-        {
-            if (cmbGrupo.Text == string.Empty)
-            {
-                MessageBox.Show("Por Favor Preencha Primeiro O Campo Grupo!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                cmbGrupo.Focus();
-            }
-        }
-
-        #endregion Verificar Se o ComboBox Grupo Esta Preenchdo
-
-        #region Preencher Combobox Grupo
-
-        private void PreencherComboBoxGrupo()
-        {
-            List<DadosGrupoMaterial> listaGrupo = new List<DadosGrupoMaterial>();
-
-            listaGrupo = Buscar.BuscarGrupoProduto();
-
-            cmbGrupo.Items.Clear();
-
-            listaGrupo.ForEach(prod => cmbGrupo.Items.Add(prod.grupo));
-        }
-
-        #endregion Preencher Combobox Grupo
-
-        #region Preencher ComboBox Fornecedor
-
-        private void PreencherComboBoxFornecedor()
-        {
-            cmbFornecedor.Items.Clear();
-
-            foreach (var item in Buscar.BuscarListaForcedor())
-            {
-                cmbFornecedor.Items.Add(item);
-            }
-        }
-
-        #endregion Preencher ComboBox Fornecedor
 
         private void txtDescricao_KeyPress(object sender, KeyPressEventArgs e)
         {

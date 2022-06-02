@@ -16,5 +16,19 @@ namespace Sistema_de_Gerenciamento
         {
             InitializeComponent();
         }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void txtTipoDeServico_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtFornecedor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
     }
 }

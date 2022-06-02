@@ -294,6 +294,13 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCPF_CNPJ_KeyPress_1(object sender, KeyPressEventArgs e)
         {
+            FormatarCPF_CNPJ(e);
+        }
+
+        #region Formatar CPF/CNPJ
+
+        private void FormatarCPF_CNPJ(KeyPressEventArgs e)
+        {
             if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
             {
                 if (cmbTipo.Text == "Pess. Fisica")
@@ -307,12 +314,14 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
+        #endregion Formatar CPF/CNPJ
+
         private void txtCPF_CNPJ_Enter(object sender, EventArgs e)
         {
             VerificacaoPreenchimentoTipoCliente();
         }
 
-        #region Verificar se o Campo Tipo de Clinete Foi Preenchido Primeiramente
+        #region Verificar se o Campo Tipo de Cliente Foi Preenchido Primeiramente
 
         private void VerificacaoPreenchimentoTipoCliente()
         {
@@ -328,7 +337,7 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Verificar se o Campo Tipo de Clinete Foi Preenchido Primeiramente
+        #endregion Verificar se o Campo Tipo de Cliente Foi Preenchido Primeiramente
 
         private void txtCPF_CNPJ_Leave(object sender, EventArgs e)
         {

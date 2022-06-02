@@ -663,7 +663,7 @@ namespace Sistema_de_Gerenciamento
 
         #region Exportar Dados para o Excel
 
-        public void ErroAoExportarDadosExecel(Exception _e)
+        public void ErroAoExportarDadosExcel(Exception _e)
         {
             MessageBox.Show($"(EDE-EX01) Erro ao Exportar Dados Para o Excel \n\nErro: {_e}", "Erro Exportar Dados!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

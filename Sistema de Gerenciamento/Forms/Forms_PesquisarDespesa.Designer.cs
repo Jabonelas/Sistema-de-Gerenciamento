@@ -513,6 +513,7 @@
             this.gdvPesquisarDespesa.Size = new System.Drawing.Size(850, 267);
             this.gdvPesquisarDespesa.TabIndex = 175;
             this.gdvPesquisarDespesa.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            this.gdvPesquisarDespesa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvPesquisarDespesa_CellContentClick);
             // 
             // cd_id
             // 
@@ -793,6 +794,7 @@
             this.txtDescricao.TextPlaceholder = "";
             this.txtDescricao.UseSystemPasswordChar = false;
             this.txtDescricao.WordWrap = true;
+            this.txtDescricao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDescricao_KeyPress);
             // 
             // txtTipo
             // 
@@ -867,6 +869,7 @@
             this.txtTipo.TextPlaceholder = "";
             this.txtTipo.UseSystemPasswordChar = false;
             this.txtTipo.WordWrap = true;
+            this.txtTipo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTipo_KeyPress);
             // 
             // label5
             // 

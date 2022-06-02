@@ -51,37 +51,26 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnAdcionar_Click(object sender, EventArgs e)
         {
+            AdicionarProduto();
+        }
+
+        #region Adicionar Produto
+
+        private void AdicionarProduto()
+        {
             try
             {
                 if (txtCodBarras.Text != string.Empty && cmbProduto.Text != string.Empty && chbVenda.Checked == true)
                 {
+                    //Checkbox Venda
+
                     bool isCadastroExiste = Buscar.BuscarEstoqueProdutoPorCodigo(txtCodBarras.Text);
 
                     if (isCadastroExiste == true)
                     {
-                        gdvVenda.ColumnCount = 7;
+                        PreenchendoGridView();
 
-                        var rows = new List<string[]>();
-                        string[] row1 = new string[] { txtCodProduto.Text, cmbProduto.Text, txtQuantidade.Text,
-                            txtUnidade.Text, txtDescontoPorItem.Text, txtPrecoSemDesconto.Text,txtPrecoComDesconto.Text };
-                        rows.Add(row1);
-
-                        foreach (string[] item in rows)
-                        {
-                            gdvVenda.Rows.Add(item);
-                        }
-
-                        //setando o valor para o textbox preco bruto
-                        valorBruto = 0;
-
-                        for (int i = 0; i < gdvVenda.RowCount; i++)
-                        {
-                            valorBruto += Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", ""));
-                        }
-
-                        txtValorTotal.Text = string.Format("{0:C}", valorBruto);
-
-                        txtTotalItens.Text = gdvVenda.RowCount.ToString();
+                        ValorTotal();
 
                         ApagandoTextbox();
                     }
@@ -92,35 +81,17 @@ namespace Sistema_de_Gerenciamento.Forms
                 }
                 else if (cmbProduto.Text != string.Empty && chbOrcamento.Checked == true && txtCodProduto.Text != string.Empty)
                 {
+                    //Checkbox Orcamento
+
                     txtPrecoComDesconto.Text = string.Format("{0:C}", (Convert.ToDecimal(txtPrecoSemDesconto.Text.Replace("R$ ", "")) -
                                                                        (Convert.ToDecimal(Buscar.BuscarDesontoPorItem(cmbProduto.Text)))
                                                                        * Convert.ToDecimal(txtPrecoSemDesconto.Text.Replace("R$ ", "")) / 100)).ToString();
 
                     txtDescontoPorItem.Text = string.Format("{0:P}", Convert.ToDecimal(Buscar.BuscarDesontoPorItem(cmbProduto.Text)) / 100);
 
-                    gdvVenda.ColumnCount = 7;
+                    PreenchendoGridView();
 
-                    var rows = new List<string[]>();
-                    string[] row1 = new string[] { txtCodProduto.Text, cmbProduto.Text, txtQuantidade.Text,
-                            txtUnidade.Text, txtDescontoPorItem.Text, txtPrecoSemDesconto.Text,txtPrecoComDesconto.Text };
-                    rows.Add(row1);
-
-                    foreach (string[] item in rows)
-                    {
-                        gdvVenda.Rows.Add(item);
-                    }
-
-                    //setando o valor para o textbox preco bruto
-                    valorBruto = 0;
-
-                    for (int i = 0; i < gdvVenda.RowCount; i++)
-                    {
-                        valorBruto += Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", ""));
-                    }
-
-                    txtValorTotal.Text = string.Format("{0:C}", valorBruto);
-
-                    txtTotalItens.Text = gdvVenda.RowCount.ToString();
+                    ValorTotal();
 
                     ApagandoTextbox();
                 }
@@ -131,7 +102,42 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #region Botao Gerar Boleto
+        #endregion Adicionar Produto
+
+        #region Valor Total
+
+        private void ValorTotal()
+        {
+            valorBruto = 0;
+
+            for (int i = 0; i < gdvVenda.RowCount; i++)
+            {
+                valorBruto += Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", ""));
+            }
+
+            txtValorTotal.Text = string.Format("{0:C}", valorBruto);
+
+            txtTotalItens.Text = gdvVenda.RowCount.ToString();
+        }
+
+        #endregion Valor Total
+
+        #region Preencher GridView
+
+        private void PreenchendoGridView()
+        {
+            var rows = new List<string[]>();
+            string[] row1 = new string[] { txtCodProduto.Text, cmbProduto.Text, txtQuantidade.Text,
+                txtUnidade.Text, txtDescontoPorItem.Text, txtPrecoSemDesconto.Text,txtPrecoComDesconto.Text };
+            rows.Add(row1);
+
+            foreach (string[] item in rows)
+            {
+                gdvVenda.Rows.Add(item);
+            }
+        }
+
+        #endregion Preencher GridView
 
         private void btnGerarBoleto_Click(object sender, EventArgs e)
         {
@@ -142,11 +148,18 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Botao Gerar Boleto
-
-        #region Botão Buscar
-
         private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            BuscarProduto();
+        }
+
+        /// <summary>
+        /// /////////
+        /// </summary>
+
+        #region Buscar Produto e Preencher os TextBox Conforme a Busca
+
+        private void BuscarProduto()
         {
             try
             {
@@ -169,8 +182,8 @@ namespace Sistema_de_Gerenciamento.Forms
                         txtDescontoPorItem.Text = string.Format("{0:P}", Buscar.BuscarPorcentagemGeralEstoqueProdutoPorCodigo(txtCodBarras.Text) / 100);
 
                         txtPrecoComDesconto.Text = string.Format("{0:C}", (Convert.ToDecimal(txtPrecoSemDesconto.Text.Replace("R$ ", "")) -
-                                                                       (Buscar.BuscarPorcentagemGeralEstoqueProdutoPorCodigo(txtCodBarras.Text))
-                                                                       * Convert.ToDecimal(txtPrecoSemDesconto.Text.Replace("R$ ", "")) / 100)).ToString();
+                                                                           (Buscar.BuscarPorcentagemGeralEstoqueProdutoPorCodigo(txtCodBarras.Text))
+                                                                           * Convert.ToDecimal(txtPrecoSemDesconto.Text.Replace("R$ ", "")) / 100)).ToString();
                     }
                     else if (isCadastroExiste == false)
                     {
@@ -184,11 +197,21 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Botão Buscar
+        #endregion Buscar Produto e Preencher os TextBox Conforme a Busca
 
-        #region Botao Remover Item
-
+        /// <summary>
+        /// //
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRemoverItem_Click(object sender, EventArgs e)
+        {
+            RemoverProduto();
+        }
+
+        #region Remover Produto do GridView
+
+        private void RemoverProduto()
         {
             if (gdvVenda.RowCount > 0)
             {
@@ -198,27 +221,23 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     gdvVenda.Rows.RemoveAt(gdvVenda.CurrentRow.Index);
 
-                    valorBruto = 0;
-
-                    for (int i = 0; i < gdvVenda.RowCount; i++)
-                    {
-                        valorBruto += Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", ""));
-                    }
-
-                    txtValorTotal.Text = string.Format("{0:C}", valorBruto);
-
-                    txtTotalItens.Text = gdvVenda.RowCount.ToString();
+                    ValorTotal();
 
                     ApagandoTextbox();
                 }
             }
         }
 
-        #endregion Botao Remover Item
-
-        #region Botao Cancelar Venda
+        #endregion Remover Produto do GridView
 
         private void btnCancelarVenda_Click(object sender, EventArgs e)
+        {
+            CancelarCompra();
+        }
+
+        #region Cancelar Compra
+
+        private void CancelarCompra()
         {
             if (gdvVenda.RowCount > 0)
             {
@@ -227,23 +246,26 @@ namespace Sistema_de_Gerenciamento.Forms
                 if (OpcaoDoUsuario == DialogResult.Yes)
                 {
                     gdvVenda.Rows.Clear();
+
+                    ManipulacaoTextBox.ApagandoTextBox(this);
                 }
             }
         }
 
-        #endregion Botao Cancelar Venda
-
-        #region Botao Imprimir
+        #endregion Cancelar Compra
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
         }
 
-        #endregion Botao Imprimir
+        private void btnNovoVenda_Click(object sender, EventArgs e)
+        {
+            NovaVenda();
+        }
 
-        #region Botao Novo Cliente
+        #region Nova Venda
 
-        private void btnNovoCliente_Click(object sender, EventArgs e)
+        private void NovaVenda()
         {
             if (gdvVenda.RowCount > 0)
             {
@@ -262,49 +284,26 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Botao Novo Cliente
-
-        #region TextBox Codigo de Barras
+        #endregion Nova Venda
 
         private void txtCodBarras_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoFoiNumero(e);
         }
 
-        #endregion TextBox Codigo de Barras
-
-        #region TextBox Total Pago Avista
-
         private void txtTotalPago_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
-            {
-                txtTotalPagoAvista.MaxLength = 10;
-
-                if (Char.IsDigit(e.KeyChar) || e.KeyChar.Equals((char)Keys.Back))
-                {
-                    if (txtTotalPagoAvista.Text.Length <= 13 || e.KeyChar.Equals((char)Keys.Back))
-                    {
-                        TextBox textbox = (TextBox)sender;
-                        string testoDoTextBox = Regex.Replace(textbox.Text, "[^0-9]", string.Empty);
-                        if (testoDoTextBox == string.Empty)
-                        {
-                            testoDoTextBox = "00";
-                        }
-
-                        testoDoTextBox += e.KeyChar;
-                        textbox.Text = String.Format("R$ {0:#,##0.00}", double.Parse(testoDoTextBox) / 100);
-                        textbox.Select(textbox.Text.Length, 0);
-                    }
-                }
-                e.Handled = true;
-            }
-            catch (Exception)
-            {
-            }
+            ManipulacaoTextBox.FormatoDinheiro(e, sender, txtTotalPagoAvista);
         }
 
         private void txtTotalPago_KeyUp(object sender, KeyEventArgs e)
+        {
+            ValorTroco();
+        }
+
+        #region Valor Do Troco
+
+        private void ValorTroco()
         {
             try
             {
@@ -315,34 +314,29 @@ namespace Sistema_de_Gerenciamento.Forms
                     txtTrocoAvista.Text = string.Format("{0:C}", troco);
                     txtTrocoAvista.BackColor = Color.Black;
                     txtTrocoAvista.ForeColor = Color.Black;
-
-                    //txtValorAvista.Text = (string.Format("{0:C}", (Convert.ToDecimal(txtValorBruto.Text) - (Buscar.BuscarPorcentagemAvistaEstoqueProdutoPorCodigo(txtCodBarras.Text) * Convert.ToDecimal(txtValorBruto.Text) / 100)))).ToString();
-                    //txtValorAvista.BackColor = Color.Black;
-                    //txtValorAvista.ForeColor = Color.Black;
                 }
                 else
                 {
                     txtTrocoAvista.Text = string.Format("{0:C}", troco);
                     txtTrocoAvista.BackColor = Color.Red;
                     txtTrocoAvista.ForeColor = Color.Red;
-
-                    //txtValorAvista.Text = (string.Format("{0:C}", (Convert.ToDecimal(txtValorBruto.Text) - (Buscar.BuscarPorcentagemAvistaEstoqueProdutoPorCodigo(txtCodBarras.Text) * Convert.ToDecimal(txtValorBruto.Text) / 100)))).ToString();
-                    //txtValorAvista.BackColor = Color.Red;
-                    //txtValorAvista.ForeColor = Color.Red;
                 }
-
-                //txtTroco.Text = string.Format("{0:C}", Convert.ToDecimal(txtTotalPago.Text.Replace("R$ ", "")) - Convert.ToDecimal(txtTotalLiquido.Text.Replace("R$ ", "")));
             }
             catch (Exception exception)
             {
             }
         }
 
-        #endregion TextBox Total Pago Avista
-
-        #region CheckBox Avista
+        #endregion Valor Do Troco
 
         private void Avista_CheckedChanged(object sender, EventArgs e)
+        {
+            PagamentoAvistaSelecionado();
+        }
+
+        #region Pagamento Avista Selecionado
+
+        private void PagamentoAvistaSelecionado()
         {
             if (gdvVenda.RowCount > 0)
             {
@@ -373,6 +367,8 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
+        #endregion Pagamento Avista Selecionado
+
         private void chbAvista_Click(object sender, EventArgs e)
         {
             if (chbAvista.Checked == true)
@@ -381,11 +377,14 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion CheckBox Avista
-
-        #region CheckBox Credito
-
         private void chbCredito_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBoxCreditoSelecionado();
+        }
+
+        #region CheckBox Credito Selecionado
+
+        private void CheckBoxCreditoSelecionado()
         {
             if (gdvVenda.RowCount > 0)
             {
@@ -408,6 +407,8 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
+        #endregion CheckBox Credito Selecionado
+
         private void chbCredito_Click(object sender, EventArgs e)
         {
             if (chbCredito.Checked == true)
@@ -416,41 +417,20 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion CheckBox Credito
-
-        #region CheckBox Venda
-
         private void chbVenda_Click(object sender, EventArgs e)
+        {
+            VendaSelecionada();
+        }
+
+        #region Venda Selecionada
+
+        private void VendaSelecionada()
         {
             if (chbVenda.Checked == true)
             {
                 cmbProduto.Enabled = false;
 
                 chbOrcamento.Checked = false;
-                //chbVenda.Checked = true;
-                //chbAvista.Visible = true;
-                //txtTotalPagoAvista.Visible = true;
-                //txtDescontoAvista.Visible = true;
-                //txtTrocoAvista.Visible = true;
-                //txtValorAvista.Visible = true;
-                //chbCredito.Visible = true;
-                //txtValorTotalCredito.Visible = true;
-                //txtValorParcelaCredito.Visible = true;
-                //txtJurosCredito.Visible = true;
-                //cmbParcelaCredito.Visible = true;
-                //lblCredito.Visible = true;
-                //lblFormapagamentoAvista.Visible = true;
-                //lblFormapagamentoCredito.Visible = true;
-                //lblJurosCredito.Visible = true;
-                //lblParcelaCredito.Visible = true;
-                //lblValorCredito.Visible = true;
-                //grupoBoxAvista.Visible = true;
-                //grupboxCredito.Visible = true;
-                //lblDesconto.Visible = true;
-                //lblValorLiquido.Visible = true;
-                //label15.Visible = true;
-                //label16.Visible = true;
-
                 lblNumeroVenda.Visible = true;
                 txtNumeroNF.Visible = true;
                 lblData.Visible = true;
@@ -466,17 +446,11 @@ namespace Sistema_de_Gerenciamento.Forms
                 btnConfirmarVenda.Visible = true;
                 btnCancelarVenda.Visible = true;
                 btnAbriCadastroCliente.Visible = true;
-
-                btnNovoCliente.Text = "Nova \nVeda";
-
+                btnNovaVenda.Text = "Nova \nVeda";
                 btnRemoverItem.Location = new Point(297, 41);
-
-                //this.Size = new Size(967, 727);
-
                 lblCodBarras.Visible = true;
                 txtCodBarras.Visible = true;
                 btnBuscar.Visible = true;
-
                 lblCodProduto.Location = new Point(177, 153);
                 txtCodProduto.Location = new Point(180, 171);
                 lblProduto.Location = new Point(306, 153);
@@ -495,11 +469,16 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion CheckBox Venda
-
-        #region CheckBox Orcamento
+        #endregion Venda Selecionada
 
         private void chbOrcamento_Click(object sender, EventArgs e)
+        {
+            OrcamentoSelecionado();
+        }
+
+        #region Orcamento Selecionado
+
+        private void OrcamentoSelecionado()
         {
             if (chbOrcamento.Checked == true)
             {
@@ -520,7 +499,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 btnConfirmarVenda.Visible = false;
                 btnCancelarVenda.Visible = false;
                 btnAbriCadastroCliente.Visible = false;
-                btnNovoCliente.Text = "Novo \n Orçamento";
+                btnNovaVenda.Text = "Novo \n Orçamento";
                 btnRemoverItem.Location = new Point(107, 41);
                 lblCodBarras.Visible = false;
                 txtCodBarras.Visible = false;
@@ -551,11 +530,16 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion CheckBox Orcamento
-
-        #region ComboBox Parcela Credito
+        #endregion Orcamento Selecionado
 
         private void cmbParcelaCredito_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ValorJuros();
+        }
+
+        #region Valor do Juros Conforme a Quantidade de Parcelas
+
+        private void ValorJuros()
         {
             if (cmbParcelaCredito.Text != String.Empty)
             {
@@ -590,11 +574,16 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion ComboBox Parcela Credito
-
-        #region ComboBox Cliente
+        #endregion Valor do Juros Conforme a Quantidade de Parcelas
 
         private void cmbCliente_Enter(object sender, EventArgs e)
+        {
+            PreencherListaClientes();
+        }
+
+        #region Preencher Lista Com Clinetes
+
+        private void PreencherListaClientes()
         {
             cmbCliente.MaxLength = 50;
 
@@ -606,12 +595,21 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
+        #endregion Preencher Lista Com Clinetes
+
         private void cmbCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
-            ManipulacaoTextBox.DigitoFoiNumero(e);
+            ManipulacaoTextBox.DigitoFoiLetras(e);
         }
 
         private void cmbCliente_KeyUp(object sender, KeyEventArgs e)
+        {
+            BuscarDadosCliente();
+        }
+
+        #region Buscar Dados Cliente
+
+        private void BuscarDadosCliente()
         {
             List<DadosCliente> listaCliente = Buscar.BuscarClientePorPesquisa(cmbCliente.Text);
 
@@ -633,11 +631,16 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion ComboBox Cliente
-
-        #region ComboBox Produto
+        #endregion Buscar Dados Cliente
 
         private void cmbProduto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MostrarListaComProdutos(e);
+        }
+
+        #region Mostrar Lista Com Produtos
+
+        private void MostrarListaComProdutos(KeyPressEventArgs e)
         {
             cmbProduto.MaxLength = 50;
 
@@ -671,7 +674,16 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
+        #endregion Mostrar Lista Com Produtos
+
         private void cmbProduto_SelectedValueChanged(object sender, EventArgs e)
+        {
+            PreencherTextBoxPorProduto();
+        }
+
+        #region Preencher TextBox Por Produto da Busca
+
+        private void PreencherTextBoxPorProduto()
         {
             if (cmbProduto.Text != string.Empty)
             {
@@ -684,7 +696,7 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion ComboBox Produto
+        #endregion Preencher TextBox Por Produto da Busca
 
         #region Apagando Dados dos TextBox
 

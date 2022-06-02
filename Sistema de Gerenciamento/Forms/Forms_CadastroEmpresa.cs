@@ -28,6 +28,8 @@ namespace Sistema_de_Gerenciamento
         public Forms_CadastroEmpresa()
         {
             InitializeComponent();
+
+            PreenchimentoDosTextBox();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -235,11 +237,6 @@ namespace Sistema_de_Gerenciamento
         private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoFoiNumero(e);
-        }
-
-        private void CadastroEmpresa_Load(object sender, EventArgs e)
-        {
-            PreenchimentoDosTextBox();
         }
 
         #region Preechimento dos TextBox Com Buscar e Pelo Gridview
