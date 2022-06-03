@@ -333,7 +333,6 @@
             this.label13.Size = new System.Drawing.Size(66, 30);
             this.label13.TabIndex = 189;
             this.label13.Text = "Preço Com\r\n Desconto";
-            this.label13.Visible = false;
             // 
             // label14
             // 
@@ -700,7 +699,6 @@
             this.txtPrecoComDesconto.TextMarginTop = 0;
             this.txtPrecoComDesconto.TextPlaceholder = "";
             this.txtPrecoComDesconto.UseSystemPasswordChar = false;
-            this.txtPrecoComDesconto.Visible = false;
             this.txtPrecoComDesconto.WordWrap = true;
             // 
             // txtNumeroNF
@@ -2850,7 +2848,6 @@
             this.txtDescontoPorItem.TextMarginTop = 0;
             this.txtDescontoPorItem.TextPlaceholder = "";
             this.txtDescontoPorItem.UseSystemPasswordChar = false;
-            this.txtDescontoPorItem.Visible = false;
             this.txtDescontoPorItem.WordWrap = true;
             // 
             // label18
@@ -2862,7 +2859,6 @@
             this.label18.Size = new System.Drawing.Size(61, 30);
             this.label18.TabIndex = 248;
             this.label18.Text = "Desconto \r\nPor item";
-            this.label18.Visible = false;
             // 
             // cmbProduto
             // 

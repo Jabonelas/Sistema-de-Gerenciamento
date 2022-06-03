@@ -242,8 +242,8 @@
     <Compile Include="Classes\AvisoCantoInferiorDireito.cs" />
     <Compile Include="Classes\BuscarNoBanco.cs" />
     <Compile Include="Classes\ConectarBanco.cs" />
-    <Compile Include="Classes\DadosCarne.cs" />
     <Compile Include="Classes\DadosCliente.cs" />
+    <Compile Include="Classes\DadosFinanceiro.cs" />
     <Compile Include="Classes\DadosGrupoMaterial.cs" />
     <Compile Include="Classes\DadosProduto.cs" />
     <Compile Include="Classes\DGVPrinter.cs" />

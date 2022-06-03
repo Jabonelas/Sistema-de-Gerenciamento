@@ -19,13 +19,17 @@ namespace Sistema_de_Gerenciamento.Forms
 
         public Forms_Venda forms;
 
-        //private List<DadosCarne> listaCarne = new List<DadosCarne>();
+        private List<DadosFinanceiro> ListaFinanceiro = new List<DadosFinanceiro>();
+
+        private DadosFinanceiro financeiro;
 
         public Forms_GerarCarne(Forms_Venda _forms)
         {
             InitializeComponent();
 
             DadosDoCarneParaPreenchimentoTextBox();
+
+            ListaFinanceiro = Buscar.BuscarFinanceiro();
 
             forms = _forms;
         }
@@ -36,11 +40,9 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             try
             {
-                List<DadosCarne> listaCarne = Buscar.BuscarGerarCarne();
+                txtPrazo.Text = financeiro.prazoCarne.ToString();
 
-                txtPrazo.Text = listaCarne[0].prazo.ToString();
-
-                txtParcelasQueGeramJuros.Text = listaCarne[0].parcelas.ToString();
+                txtParcelasQueGeramJuros.Text = financeiro.parcelasCarne.ToString();
 
                 txtPrimeiraParcela.Text = DateTime.Today.AddDays(Convert.ToDouble(txtPrazo.Text)).ToShortDateString();
             }
@@ -103,11 +105,11 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             try
             {
-                List<DadosCarne> listaCarne = Buscar.BuscarGerarCarne();
+                ListaFinanceiro.ForEach(finac => financeiro = finac);
 
                 if (Convert.ToInt32(cmbParcelaCarne.Text.Replace("x", "")) > Convert.ToInt32(txtParcelasQueGeramJuros.Text))
                 {
-                    txtJurosCarne.Text = string.Format("{0:P}", listaCarne[0].juros / 100).ToString();
+                    txtJurosCarne.Text = string.Format("{0:P}", financeiro.jurosCarne / 100).ToString();
 
                     txtValorTotalCarne.Text = string.Format("{0:C}", (Convert.ToDecimal(txtJurosCarne.Text.Replace("%", "")) *
                                                                          Convert.ToDecimal(forms.txtValorTotal.Text.Replace("R$ ", "")) / 100) +

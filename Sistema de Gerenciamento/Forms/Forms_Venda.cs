@@ -23,9 +23,13 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private MensagensErro Erro = new MensagensErro();
 
+        private List<DadosProduto> listaProduto = new List<DadosProduto>();
+
+        private List<DadosFinanceiro> ListaFinanceiro = new List<DadosFinanceiro>();
+
         private DadosProduto produto;
 
-        private List<DadosProduto> listaProduto = new List<DadosProduto>();
+        private DadosFinanceiro financeiro;
 
         private decimal valorBruto = 0;
 
@@ -36,7 +40,22 @@ namespace Sistema_de_Gerenciamento.Forms
             txtData.Text = DateTime.Today.ToShortDateString();
 
             txtVendedor.Text = Global.tipoDeUsuario;
+
+            CarregarDadosBanco();
         }
+
+        #region Carregar Dados Banco
+
+        private void CarregarDadosBanco()
+        {
+            listaProduto = Buscar.BuscarProdutos();
+
+            ListaFinanceiro = Buscar.BuscarFinanceiro();
+
+            ListaFinanceiro.ForEach(finac => financeiro = finac);
+        }
+
+        #endregion Carregar Dados Banco
 
         private void btnAbriCadastroCliente_Click(object sender, EventArgs e)
         {
@@ -153,10 +172,6 @@ namespace Sistema_de_Gerenciamento.Forms
             BuscarProduto();
         }
 
-        /// <summary>
-        /// /////////
-        /// </summary>
-
         #region Buscar Produto e Preencher os TextBox Conforme a Busca
 
         private void BuscarProduto()
@@ -169,21 +184,15 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     if (isCadastroExiste == true)
                     {
-                        txtCodProduto.Text = Buscar.BuscarEstoqueProdutoCodigoProdutoPorCodigoDeBarras(txtCodBarras.Text).ToString();
+                        produto = listaProduto.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodBarras.Text));
 
-                        cmbProduto.Text = Buscar.BuscarEstoqueProdutoDescricaoProdutoPorCodigoDeBarras(txtCodBarras.Text);
-
-                        txtUnidade.Text = Buscar.BuscarEstoqueProdutoUnidadeProdutoPorCodigoDeBarras(txtCodBarras.Text);
-
-                        txtQuantidade.Text = Buscar.BuscarEstoqueProdutoQuantidadeProdutoPorCodigoDeBarras(txtCodBarras.Text).ToString();
-
-                        txtPrecoSemDesconto.Text = ("R$ " + Buscar.BuscarEstoqueProdutoPrecoProdutoPorCodigoDeBarras(txtCodBarras.Text).ToString("N2"));
-
-                        txtDescontoPorItem.Text = string.Format("{0:P}", Buscar.BuscarPorcentagemGeralEstoqueProdutoPorCodigo(txtCodBarras.Text) / 100);
-
-                        txtPrecoComDesconto.Text = string.Format("{0:C}", (Convert.ToDecimal(txtPrecoSemDesconto.Text.Replace("R$ ", "")) -
-                                                                           (Buscar.BuscarPorcentagemGeralEstoqueProdutoPorCodigo(txtCodBarras.Text))
-                                                                           * Convert.ToDecimal(txtPrecoSemDesconto.Text.Replace("R$ ", "")) / 100)).ToString();
+                        cmbProduto.Text = produto.descricaoProduto;
+                        txtCodProduto.Text = produto.codigoProduto.ToString();
+                        txtQuantidade.Text = produto.quantidade.ToString();
+                        txtUnidade.Text = produto.unidade;
+                        txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco);
+                        txtDescontoPorItem.Text = string.Format("{0:P}", (produto.desconto) / 100);
+                        txtPrecoComDesconto.Text = string.Format("{0:C}", ((produto.preco - (produto.preco * produto.desconto) / 100)));
                     }
                     else if (isCadastroExiste == false)
                     {
@@ -199,11 +208,6 @@ namespace Sistema_de_Gerenciamento.Forms
 
         #endregion Buscar Produto e Preencher os TextBox Conforme a Busca
 
-        /// <summary>
-        /// //
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnRemoverItem_Click(object sender, EventArgs e)
         {
             RemoverProduto();
@@ -346,9 +350,9 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     txtTotalPagoAvista.ReadOnly = false;
 
-                    txtValorAvista.Text = string.Format("{0:C}", (valorBruto - (Buscar.BuscarPorcentagemAvistaEstoqueProdutoPorCodigo()) * valorBruto / 100));
+                    txtValorAvista.Text = string.Format("{0:C}", (valorBruto - (financeiro.descontoAvista) * valorBruto / 100));
 
-                    txtDescontoAvista.Text = string.Format("{0:P}", Buscar.BuscarPorcentagemAvistaEstoqueProdutoPorCodigo() / 100);
+                    txtDescontoAvista.Text = string.Format("{0:P}", financeiro.descontoAvista / 100);
                 }
                 else if (chbAvista.Checked == false)
                 {
@@ -379,12 +383,12 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void chbCredito_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBoxCreditoSelecionado();
+            CreditoSelecionado();
         }
 
-        #region CheckBox Credito Selecionado
+        #region Credito Selecionado
 
-        private void CheckBoxCreditoSelecionado()
+        private void CreditoSelecionado()
         {
             if (gdvVenda.RowCount > 0)
             {
@@ -407,7 +411,7 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion CheckBox Credito Selecionado
+        #endregion Credito Selecionado
 
         private void chbCredito_Click(object sender, EventArgs e)
         {
@@ -519,8 +523,6 @@ namespace Sistema_de_Gerenciamento.Forms
 
                 ManipulacaoTextBox.ApagandoTextBox(this);
 
-                listaProduto = Buscar.BuscarProdutos();
-
                 cmbProduto.Items.Clear();
 
                 foreach (DadosProduto item in listaProduto)
@@ -543,9 +545,9 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (cmbParcelaCredito.Text != String.Empty)
             {
-                if (Convert.ToInt32(cmbParcelaCredito.Text.Replace("x", "")) > Buscar.BuscarQuantidadeDeParcelasParaGerarJuros())
+                if (Convert.ToInt32(cmbParcelaCredito.Text.Replace("x", "")) > financeiro.parcelasCredito)
                 {
-                    txtJurosCredito.Text = string.Format("{0:P}", Buscar.BuscarPorcentagemJurosCredito() / 100);
+                    txtJurosCredito.Text = string.Format("{0:P}", financeiro.jurosCredito / 100);
 
                     txtValorParcelaCredito.Text = string.Format("{0:C}", ((Convert.ToDecimal(txtValorTotal.Text.Replace("R$ ", "")) +
                                                                          (Convert.ToDecimal(txtJurosCredito.Text.Replace("%", "")) *
@@ -615,7 +617,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             if (listaCliente.Count != 0)
             {
-                foreach (var variable in listaCliente)
+                foreach (DadosCliente variable in listaCliente)
                 {
                     txtCodigoCliente.Text = variable.id.ToString();
                 }
@@ -659,7 +661,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             if (produto != null)
             {
-                txtCodProduto.Text = produto.codigo.ToString();
+                txtCodProduto.Text = produto.codigoProduto.ToString();
                 txtQuantidade.Text = produto.quantidade.ToString();
                 txtUnidade.Text = produto.unidade.ToString();
                 txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco).ToString();
@@ -689,7 +691,7 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 produto = listaProduto.FindLast(prod => prod.descricaoProduto.ToLower().StartsWith(cmbProduto.Text.ToLower()));
 
-                txtCodProduto.Text = produto.codigo.ToString();
+                txtCodProduto.Text = produto.codigoProduto.ToString();
                 txtQuantidade.Text = produto.quantidade.ToString();
                 txtUnidade.Text = produto.unidade.ToString();
                 txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco).ToString();
