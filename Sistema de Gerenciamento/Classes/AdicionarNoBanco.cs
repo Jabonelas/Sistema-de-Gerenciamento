@@ -14,9 +14,7 @@ namespace Sistema_de_Gerenciamento
     {
         private MensagensErro Erro = new MensagensErro();
 
-        private Aviso AvisoNoCantoInferiorDireito = new Aviso();
-
-        private VerificacaoDeExistencia VerificarExistencia = new VerificacaoDeExistencia();
+        //private VerificacaoDeExistencia VerificarExistencia = new VerificacaoDeExistencia();
 
         #region Inserir Cliente
 
@@ -75,7 +73,7 @@ namespace Sistema_de_Gerenciamento
 
                     return Convert.ToInt32(x);
 
-                    AvisoNoCantoInferiorDireito.Inclusao();
+                    AvisoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -112,7 +110,7 @@ namespace Sistema_de_Gerenciamento
 
                     return Convert.ToInt32(x);
 
-                    AvisoNoCantoInferiorDireito.Inclusao();
+                    AvisoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -168,7 +166,7 @@ namespace Sistema_de_Gerenciamento
 
                     return Convert.ToInt32(x);
 
-                    AvisoNoCantoInferiorDireito.Inclusao();
+                    AvisoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -205,7 +203,7 @@ namespace Sistema_de_Gerenciamento
 
                     return Convert.ToInt32(x);
 
-                    AvisoNoCantoInferiorDireito.Inclusao();
+                    AvisoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -268,7 +266,7 @@ namespace Sistema_de_Gerenciamento
 
                     return Convert.ToInt32(x);
 
-                    AvisoNoCantoInferiorDireito.Inclusao();
+                    AvisoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -305,7 +303,7 @@ namespace Sistema_de_Gerenciamento
 
                     return Convert.ToInt32(x);
 
-                    AvisoNoCantoInferiorDireito.Inclusao();
+                    AvisoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -336,7 +334,7 @@ namespace Sistema_de_Gerenciamento
 
                     cmd.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Inclusao();
+                    AvisoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -385,7 +383,7 @@ namespace Sistema_de_Gerenciamento
 
                     cmd.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Inclusao();
+                    AvisoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -412,7 +410,7 @@ namespace Sistema_de_Gerenciamento
 
                     cmd.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Inclusao();
+                    AvisoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -439,7 +437,7 @@ namespace Sistema_de_Gerenciamento
 
                     cmd.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Inclusao();
+                    AvisoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
@@ -467,10 +465,11 @@ namespace Sistema_de_Gerenciamento
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
                     cmd.Parameters.AddWithValue("@indice", SqlDbType.Int).Value = _indice;
                     cmd.Parameters.AddWithValue("@ne_numero_nf", SqlDbType.Int).Value = _ne_numero_nf;
+                    //cmd.Parameters.AddWithValue("@ep_codigo_barras", SqlDbType.Int).Value = _ep_codigo_barras;
 
                     cmd.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Inclusao();
+                    AvisoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)

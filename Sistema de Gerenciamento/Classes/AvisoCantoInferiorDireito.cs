@@ -7,11 +7,11 @@ using Sistema_de_Gerenciamento.Forms;
 
 namespace Sistema_de_Gerenciamento.Classes
 {
-    internal class Aviso
+    internal static class AvisoCantoInferiorDireito
     {
         #region Inclusao
 
-        public void Inclusao()
+        public static void Inclusao()
         {
             Global.tipoDoAlerta = "Inclusao";
 
@@ -23,7 +23,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Atualizacao
 
-        public void Atualizacao()
+        public static void Atualizacao()
         {
             Global.tipoDoAlerta = "Atualizacao";
 
@@ -35,7 +35,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Exclusao
 
-        public void Exclusao()
+        public static void Exclusao()
         {
             Global.tipoDoAlerta = "Exclusao";
 

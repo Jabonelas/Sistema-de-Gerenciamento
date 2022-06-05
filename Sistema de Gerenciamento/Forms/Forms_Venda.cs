@@ -121,8 +121,6 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Adicionar Produto
-
         #region Valor Total
 
         private void ValorTotal()
@@ -157,6 +155,8 @@ namespace Sistema_de_Gerenciamento.Forms
         }
 
         #endregion Preencher GridView
+
+        #endregion Adicionar Produto
 
         private void btnGerarBoleto_Click(object sender, EventArgs e)
         {

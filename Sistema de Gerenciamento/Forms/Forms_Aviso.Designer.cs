@@ -84,7 +84,7 @@
             this.timerDesaparecer.Interval = 150;
             this.timerDesaparecer.Tick += new System.EventHandler(this.timerDesaparecer_Tick);
             // 
-            // Aviso
+            // AvisoCantoInferiorDireito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

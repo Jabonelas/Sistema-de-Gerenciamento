@@ -12,8 +12,6 @@ namespace Sistema_de_Gerenciamento.Classes
     {
         private MensagensErro Erro = new MensagensErro();
 
-        private Aviso AvisoNoCantoInferiorDireito = new Aviso();
-
         #region Excluir Cliente
 
         #region Excluir Cadastro Cliente
@@ -32,7 +30,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     cmd.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Exclusao();
+                    AvisoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)
@@ -59,7 +57,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     cmd.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Exclusao();
+                    AvisoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)
@@ -90,7 +88,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     cmd.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Exclusao();
+                    AvisoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)
@@ -117,7 +115,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     cmd.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Exclusao();
+                    AvisoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)
@@ -148,7 +146,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     cmd.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Exclusao();
+                    AvisoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)
@@ -175,7 +173,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     cmd.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Exclusao();
+                    AvisoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)
@@ -205,7 +203,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     cmd.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Exclusao();
+                    AvisoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)
@@ -233,7 +231,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     cmd.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Exclusao();
+                    AvisoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)

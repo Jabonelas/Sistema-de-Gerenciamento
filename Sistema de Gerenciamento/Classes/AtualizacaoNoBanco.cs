@@ -15,8 +15,6 @@ namespace Sistema_de_Gerenciamento.Classes
     {
         private MensagensErro Erro = new MensagensErro();
 
-        private Aviso AvisoNoCantoInferiorDireito = new Aviso();
-
         #region Atualizar Cliente
 
         #region Atualizar Cadastro Cliente
@@ -67,7 +65,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Atualizacao();
+                    AvisoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -98,7 +96,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Atualizacao();
+                    AvisoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -146,7 +144,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Atualizacao();
+                    AvisoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -177,7 +175,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Atualizacao();
+                    AvisoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -232,7 +230,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Atualizacao();
+                    AvisoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -263,7 +261,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Atualizacao();
+                    AvisoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -311,7 +309,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Atualizacao();
+                    AvisoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -342,7 +340,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Atualizacao();
+                    AvisoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -372,7 +370,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Atualizacao();
+                    AvisoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -401,7 +399,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Atualizacao();
+                    AvisoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -430,8 +428,6 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@ne_numero_nf", SqlDbType.VarChar).Value = _numeroNF;
 
                     adapter.SelectCommand.ExecuteNonQuery();
-
-                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -457,8 +453,6 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@ep_numero_nf", SqlDbType.VarChar).Value = _numeroNF;
 
                     adapter.SelectCommand.ExecuteNonQuery();
-
-                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -468,6 +462,29 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Atualizar Estoque Produto Quando a Nota Fiscal De Entrada É Cancelada
+
+        public void AtualizarCodigoBarrasEstoqueProduto(int _ep_codigo_barras, int _numeroNF, int _codigoProduto)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_EstoqueProduto set ep_codigo_barras = @codigoBarras " +
+                                   "where ep_nf_entrada = @ne_numero_nf and ep_codigo_produto = @codigoProduto";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigoBarras", SqlDbType.Int).Value = _ep_codigo_barras;
+                    adapter.SelectCommand.Parameters.AddWithValue("@ne_numero_nf", SqlDbType.Int).Value = _numeroNF;
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigoProduto", SqlDbType.Int).Value = _codigoProduto;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarQuantidadeEstoqueProdutoNoBanco(ex);
+            }
+        }
 
         #endregion Atualizar Estoque Produto
 
@@ -488,8 +505,6 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@ne_numero_nf", SqlDbType.VarChar).Value = _numeroNF;
 
                     adapter.SelectCommand.ExecuteNonQuery();
-
-                    AvisoNoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -508,7 +523,7 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update tb_NotaFiscalEntrada set ne_data_lancamento = '' " +
+                    string query = "update tb_NotaFiscalEntrada set ne_data_lancamento = null " +
                                    "where ne_numero_nf = @ne_numero_nf";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -516,7 +531,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Atualizacao();
+                    AvisoCantoInferiorDireito.Exclusao();
                 }
             }
             catch (Exception ex)
@@ -550,7 +565,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Atualizacao();
+                    AvisoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -576,7 +591,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Atualizacao();
+                    AvisoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -606,7 +621,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Atualizacao();
+                    AvisoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)
@@ -633,7 +648,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    AvisoNoCantoInferiorDireito.Atualizacao();
+                    AvisoCantoInferiorDireito.Atualizacao();
                 }
             }
             catch (Exception ex)

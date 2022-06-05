@@ -1677,31 +1677,24 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Nota Fiscal Entrada
 
-        public bool BuscarNotaFiscalEntrada(int _numeroNF, BunifuDataGridView _tabela)
+        public List<DadosNotaFiscalEntrada> BuscarNotaFiscalEntrada(int _numeroNF, BunifuDataGridView _tabela)
         {
+            List<DadosNotaFiscalEntrada> listaNotaFiscalEntrada = new List<DadosNotaFiscalEntrada>();
+
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query =
-                        "select ne_numero_nf," +
-                        "ne_cnpj," +
-                        "ne_razao_social," +
-                        "ne_codigo_produto," +
-                        "ne_descricao_produto," +
-                        "ne_quantidade," +
-                        "ne_unidade," +
-                        "ne_valor_unitario," +
-                        "ne_valor_total," +
-                        "ne_data_emissao," +
-                        "ne_data_lancamento " +
-                        "from tb_NotaFiscalEntrada " +
-                        "where ne_numero_nf = @numeroNF";
+                    //string query = "select * from tb_NotaFiscalEntrada " +
+                    //               "where ne_numero_nf = @numeroNF";
+
+                    string query = "select ne_numero_nf,ne_cnpj,ne_razao_social,ne_codigo_produto,ne_descricao_produto," +
+                                   "ne_quantidade,ne_unidade,ne_valor_unitario,ne_valor_total,ne_data_emissao,ne_data_lancamento " +
+                                   "from tb_NotaFiscalEntrada " +
+                                   "where ne_numero_nf = @numeroNF";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
-
-                    adapter.SelectCommand.ExecuteNonQuery();
 
                     DataTable dataTable = new DataTable();
 
@@ -1709,27 +1702,29 @@ namespace Sistema_de_Gerenciamento.Classes
                     _tabela.DataSource = dataTable;
                     _tabela.Refresh();
 
-                    SqlDataReader reader;
-                    reader = adapter.SelectCommand.ExecuteReader();
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
 
-                    reader.Read();
+                    while (dr.Read())
+                    {
+                        listaNotaFiscalEntrada.Add(new DadosNotaFiscalEntrada(
+                            dr.GetInt32(0), dr.GetString(1), dr.GetString(2),
+                            dr.GetInt32(3), dr.GetString(4), dr.GetDecimal(5),
+                             dr.GetString(6), dr.GetDecimal(7), dr.GetDecimal(8),
+                             dr.GetDateTime(9), dr.GetDateTime(10)));
 
-                    if (reader.HasRows == true)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
+                        //listaNotaFiscalEntrada.Add(new DadosNotaFiscalEntrada(dr.GetInt32(0),
+                        //    dr.GetInt32(1), dr.GetString(2), dr.GetString(3),
+                        //    dr.GetInt32(4), dr.GetString(5), dr.GetDecimal(6),
+                        //    dr.GetString(7), dr.GetDecimal(8), dr.GetDecimal(9),
+                        //    dr.GetDateTime(10), dr.GetDateTime(11)));
                     }
                 }
             }
             catch (Exception ex)
             {
                 Erro.ErroAoBuscarNotaFiscalEntradaNoBanco(ex);
-
-                return false;
             }
+            return listaNotaFiscalEntrada;
         }
 
         #endregion Buscar Nota Fiscal Entrada
