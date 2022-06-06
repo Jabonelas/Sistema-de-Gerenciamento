@@ -450,26 +450,27 @@ namespace Sistema_de_Gerenciamento
 
         #region Inserir Estoque Produto
 
-        public void InserirEstoqueProduto(int _indice, int _ne_numero_nf)
+        public void InserirEstoqueProduto(int _ne_numero_nf)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "insert into tb_EstoqueProduto (ep_nf_entrada,ep_codigo_produto,ep_descricao," +
-                                   "ep_unidade,ep_valor_unitario) " +
+                                   "ep_unidade,ep_valor_unitario,ep_quantidade) " +
                                    "select ne_numero_nf,ne_codigo_produto,ne_descricao_produto,ne_unidade," +
-                                   "ne_valor_unitario " +
-                                   "from tb_NotaFiscalEntrada where ne_numero_nf = @ne_numero_nf and ne_indice = @indice";
+                                   "ne_valor_unitario,ne_quantidade " +
+                                   "from tb_NotaFiscalEntrada where ne_numero_nf = @ne_numero_nf";
+                    //and ne_indice = @indice";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
-                    cmd.Parameters.AddWithValue("@indice", SqlDbType.Int).Value = _indice;
+                    //cmd.Parameters.AddWithValue("@indice", SqlDbType.Int).Value = _indice;
                     cmd.Parameters.AddWithValue("@ne_numero_nf", SqlDbType.Int).Value = _ne_numero_nf;
                     //cmd.Parameters.AddWithValue("@ep_codigo_barras", SqlDbType.Int).Value = _ep_codigo_barras;
 
                     cmd.ExecuteNonQuery();
 
-                    AvisoCantoInferiorDireito.Inclusao();
+                    //AvisoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)

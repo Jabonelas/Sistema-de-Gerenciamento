@@ -243,6 +243,7 @@
     <Compile Include="Classes\BuscarNoBanco.cs" />
     <Compile Include="Classes\ConectarBanco.cs" />
     <Compile Include="Classes\DadosCliente.cs" />
+    <Compile Include="Classes\DadosEstoqueProduto.cs" />
     <Compile Include="Classes\DadosFinanceiro.cs" />
     <Compile Include="Classes\DadosGrupoMaterial.cs" />
     <Compile Include="Classes\DadosNotaFiscalEntrada.cs" />

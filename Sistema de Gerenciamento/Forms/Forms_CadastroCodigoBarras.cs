@@ -17,13 +17,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private AtualizacaoNoBanco Atualizar = new AtualizacaoNoBanco();
 
-        private AdicionarNoBanco Salvar = new AdicionarNoBanco();
-
-        //private  DadosNotaFiscalEntrada liDadosNotaFiscalEntrada = new DadosNotaFiscalEntrada();
-
         public DadosNotaFiscalEntrada ListaEntrada;
-
-        public Forms_Compras Compras = new Forms_Compras();
 
         public Forms_Compras compras;
 
@@ -35,15 +29,49 @@ namespace Sistema_de_Gerenciamento.Forms
 
             compras = _compras;
 
-            //compras.listaDadosNotaFiscalEntrada = Buscar.BuscarNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text),compras.gdvCompra);
-
-            compras.listaDadosNotaFiscalEntrada.ForEach(nf => ListaEntrada = nf);
-
-            txtNumeroNotaFiscal.Text = ListaEntrada.numeroNF.ToString();
-            txtQuantidade.Text = ListaEntrada.quantidade.ToString();
-            txtCodigoProduto.Text = ListaEntrada.codProduto.ToString();
-            txtDescricaoProduto.Text = ListaEntrada.descricao.ToString();
+            PreenchimentoTextBox();
         }
+
+        #region Preenchimento TextBox
+
+        private void PreenchimentoTextBox()
+        {
+            if (Global.tipoEntrada == "Entrada")
+            {
+                compras.listaDadosNotaFiscalEntrada.ForEach(nf => ListaEntrada = nf);
+
+                txtNumeroNotaFiscal.Text = compras.listaDadosNotaFiscalEntrada[0].numeroNF.ToString();
+                txtQuantidade.Text = compras.listaDadosNotaFiscalEntrada[0].quantidade.ToString();
+                txtCodigoProduto.Text = compras.listaDadosNotaFiscalEntrada[0].codProduto.ToString();
+                txtDescricaoProduto.Text = compras.listaDadosNotaFiscalEntrada[0].descricao;
+
+                pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigoProduto.Text));
+
+                btnAdicionarCodigoBarras.Location = new Point(178, 234);
+
+                btnFechar.Visible = false;
+            }
+            else if (Global.tipoEntrada == "Alterar")
+            {
+                compras.listaDadosNotaFiscalEntrada.ForEach(nf => ListaEntrada = nf);
+
+                txtNumeroNotaFiscal.Text = compras.listaDadosEstoqueProdutos[0].numeroNF.ToString();
+                txtQuantidade.Text = compras.listaDadosEstoqueProdutos[0].quantidade.ToString();
+                txtCodigoProduto.Text = compras.listaDadosEstoqueProdutos[0].codigoProduto.ToString();
+                txtDescricaoProduto.Text = compras.listaDadosEstoqueProdutos[0].descricaoProduto;
+                txtCodigoBarras.Text = compras.listaDadosEstoqueProdutos[0].codigoBarras.ToString();
+
+                pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigoProduto.Text));
+
+                btnAdicionarCodigoBarras.Location = new Point(35, 237);
+
+                btnFechar.Location = new Point(308, 237);
+
+                btnFechar.Visible = true;
+            }
+        }
+
+        #endregion Preenchimento TextBox
 
         private void txtCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -52,31 +80,69 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnAdicionarCodigoBarras_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i <= cont; i++)
+            if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
             {
-                //for (int indiceDoItem = 1; indiceDoItem <= Buscar.BuscarQuantidadeDeItensNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)); indiceDoItem++)
-                //{
-                //for (int quantidadePorCadaItem = 1; quantidadePorCadaItem <= Buscar.BuscarQuantidadeDeCadaItemNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text), cont); quantidadePorCadaItem++)
-                //{
-                //    int quantidade = 1;
+                if (Global.tipoEntrada == "Alterar")
+                {
+                    Atualizar.AtualizarCodigoBarrasEstoqueProduto(Convert.ToInt32(txtCodigoBarras.Text),
+                        Convert.ToInt32(txtNumeroNotaFiscal.Text), Convert.ToInt32(txtCodigoProduto.Text));
 
-                //    //Salvar.InserirEstoqueProduto(indiceDoItem, Convert.ToInt32(txtNumeroNotaFiscal.Text),
-                //    //    Convert.ToInt32(txtCodigoBarras.Text));
+                    if (cont <= (Buscar.BuscarQuantidadeDeItensNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)) - 1))
+                    {
+                        txtNumeroNotaFiscal.Text = compras.listaDadosEstoqueProdutos[cont].numeroNF.ToString();
+                        txtQuantidade.Text = compras.listaDadosEstoqueProdutos[cont].quantidade.ToString();
+                        txtCodigoProduto.Text = compras.listaDadosEstoqueProdutos[cont].codigoProduto.ToString();
+                        txtDescricaoProduto.Text = compras.listaDadosEstoqueProdutos[cont].descricaoProduto;
+                        txtCodigoBarras.Text = compras.listaDadosEstoqueProdutos[cont].codigoBarras.ToString();
 
-                //    Salvar.InserirEstoqueProduto(cont, Convert.ToInt32(txtNumeroNotaFiscal.Text),
-                //        Convert.ToInt32(txtCodigoBarras.Text));
+                        pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigoProduto.Text));
 
-                Atualizar.AtualizarCodigoBarrasEstoqueProduto(Convert.ToInt32(txtCodigoBarras),
-                    Convert.ToInt32(txtNumeroNotaFiscal), Convert.ToInt32(txtCodigoProduto));
+                        //txtCodigoBarras.Text = string.Empty;
 
-                //    Atualizar.AtualizarQuantidadeEDataEntradaEstoqueProduto(quantidade, Convert.ToInt32(txtNumeroNotaFiscal.Text));
+                        cont++;
 
-                //    Atualizar.AtualizarDataLancamentoNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text));
-                //}
-                //}
+                        txtCodigoBarras.Focus();
+                    }
+                    else
+                    {
+                        AvisoCantoInferiorDireito.Inclusao();
+
+                        this.Close();
+                    }
+                }
+                else if (Global.tipoEntrada == "Entrada")
+                {
+                    Atualizar.AtualizarCodigoBarrasEstoqueProduto(Convert.ToInt32(txtCodigoBarras.Text),
+                        Convert.ToInt32(txtNumeroNotaFiscal.Text), Convert.ToInt32(txtCodigoProduto.Text));
+
+                    if (cont <= (Buscar.BuscarQuantidadeDeItensNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)) - 1))
+                    {
+                        txtNumeroNotaFiscal.Text = compras.listaDadosNotaFiscalEntrada[cont].numeroNF.ToString();
+                        txtQuantidade.Text = compras.listaDadosNotaFiscalEntrada[cont].quantidade.ToString();
+                        txtCodigoProduto.Text = compras.listaDadosNotaFiscalEntrada[cont].codProduto.ToString();
+                        txtDescricaoProduto.Text = compras.listaDadosNotaFiscalEntrada[cont].descricao;
+
+                        pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigoProduto.Text));
+
+                        txtCodigoBarras.Text = string.Empty;
+
+                        cont++;
+
+                        txtCodigoBarras.Focus();
+                    }
+                    else
+                    {
+                        AvisoCantoInferiorDireito.Inclusao();
+
+                        this.Close();
+                    }
+                }
             }
+        }
 
-            cont++;
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

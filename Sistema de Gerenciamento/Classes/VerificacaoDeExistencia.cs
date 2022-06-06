@@ -260,10 +260,11 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query =
-                        "select ep_quantidade " +
-                        "from tb_EstoqueProduto " +
-                        "where ep_quantidade <> 1 and ep_nf_entrada = @numeroNF";
+                    string query = "select p.ep_quantidade " +
+                                   "from tb_EstoqueProduto as p inner join tb_NotaFiscalEntrada pe " +
+                                   "on p.ep_quantidade != pe.ne_quantidade and " +
+                                   "p.ep_codigo_produto != pe.ne_codigo_produto " +
+                                   "where p.ep_nf_entrada = @numeroNF and ep_quantidade != 0";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);

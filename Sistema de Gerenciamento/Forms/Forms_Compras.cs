@@ -25,7 +25,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         public List<DadosNotaFiscalEntrada> listaDadosNotaFiscalEntrada = new List<DadosNotaFiscalEntrada>();
 
-        private DadosNotaFiscalEntrada notaFiscalEntrada;
+        public List<DadosEstoqueProduto> listaDadosEstoqueProdutos = new List<DadosEstoqueProduto>();
+
+        public DadosEstoqueProduto estoqueProduto;
+
+        public DadosNotaFiscalEntrada notaFiscalEntrada;
 
         public Forms_Compras()
         {
@@ -47,19 +51,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     if ((listaDadosNotaFiscalEntrada = Buscar.BuscarNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text), gdvCompra)) != null)
                     {
-                        listaDadosNotaFiscalEntrada.ForEach(nf => notaFiscalEntrada = nf);
-
-                        var rows = new List<string[]>();
-                        string[] row1 = new string[] { notaFiscalEntrada.numeroNF.ToString(),notaFiscalEntrada.razaoSocial,
-                            notaFiscalEntrada.codProduto.ToString(),notaFiscalEntrada.descricao,notaFiscalEntrada.quantidade.ToString(),
-                            notaFiscalEntrada.unidade,notaFiscalEntrada.valorUnitario.ToString(),notaFiscalEntrada.valorTotal.ToString(),
-                            notaFiscalEntrada.dataEmissao.ToShortDateString(),notaFiscalEntrada.dataLancamento.ToShortDateString() };
-                        rows.Add(row1);
-
-                        foreach (string[] item in rows)
-                        {
-                            gdvCompra.Rows.Add(item);
-                        }
+                        SetarDesignForms();
                     }
                     else
                     {
@@ -88,73 +80,32 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (txtNumeroNotaFiscal.Text != string.Empty)
                 {
-                    if (VerificarExistencia.VerificarSeEstoqueFoiConsumidoSalvar(Convert.ToInt32(txtNumeroNotaFiscal.Text)) == false) //verificação de existencia de nota fiscal
+                    if ((listaDadosNotaFiscalEntrada = Buscar.BuscarNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text), gdvCompra)) != null)
                     {
-                        if ((listaDadosNotaFiscalEntrada = Buscar.BuscarNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text), gdvCompra)) != null)
+                        if (VerificarExistencia.VerificarSeEstoqueFoiConsumidoSalvar(Convert.ToInt32(txtNumeroNotaFiscal.Text)) == false) //verificação de existencia de nota fiscal
                         {
-                            //listaDadosNotaFiscalEntrada.ForEach(nf => notaFiscalEntrada = nf);
+                            SetarDesignForms();
 
-                            foreach (var notaFiscalEntrada in listaDadosNotaFiscalEntrada)
-                            {
-                                var rows = new List<string[]>();
-                                string[] row1 = new string[] { notaFiscalEntrada.numeroNF.ToString(),notaFiscalEntrada.razaoSocial,
-                                notaFiscalEntrada.codProduto.ToString(),notaFiscalEntrada.descricao,notaFiscalEntrada.quantidade.ToString(),
-                                notaFiscalEntrada.unidade,notaFiscalEntrada.valorUnitario.ToString(),notaFiscalEntrada.valorTotal.ToString(),
-                                notaFiscalEntrada.dataEmissao.ToShortDateString(),notaFiscalEntrada.dataLancamento.ToShortDateString() };
-                                rows.Add(row1);
-                                foreach (string[] item in rows)
-                                {
-                                    gdvCompra.Rows.Add(item);
-                                }
-                            }
+                            Global.tipoEntrada = "Entrada";
 
-                            for (int indiceDoItem = 1; indiceDoItem <= Buscar.BuscarQuantidadeDeItensNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)); indiceDoItem++)
-                            {
-                                for (int quantidadePorCadaItem = 1; quantidadePorCadaItem <= Buscar.BuscarQuantidadeDeCadaItemNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text), indiceDoItem); quantidadePorCadaItem++)
-                                {
-                                    int quantidade = 1;
+                            Salvar.InserirEstoqueProduto(Convert.ToInt32(txtNumeroNotaFiscal.Text));
 
-                                    Salvar.InserirEstoqueProduto(indiceDoItem, Convert.ToInt32(txtNumeroNotaFiscal.Text));
+                            Atualizar.AtualizarDataLancamentoNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text));
 
-                                    Atualizar.AtualizarQuantidadeEDataEntradaEstoqueProduto(quantidade, Convert.ToInt32(txtNumeroNotaFiscal.Text));
-
-                                    Atualizar.AtualizarDataLancamentoNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text));
-                                }
-                            }
+                            listaDadosNotaFiscalEntrada.ForEach(nf => notaFiscalEntrada = nf);
 
                             Forms_CadastroCodigoBarras inserirCodigoBarras = new Forms_CadastroCodigoBarras(this);
                             inserirCodigoBarras.ShowDialog();
                         }
                         else
                         {
-                            MessageBox.Show("Nota Fiscal Não Encontrada!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Nota Fiscal Já Foi Dado Entrada!", "Informação!", MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
                         }
-
-                        //if (Buscar.BuscarNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text), gdvCompra) != null)//verificação de existencia de nota fiscal
-                        //{
-                        //    //for (int indiceDoItem = 1; indiceDoItem <= Buscar.BuscarQuantidadeDeItensNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)); indiceDoItem++)
-                        //    //{
-                        //    //    for (int quantidadePorCadaItem = 1; quantidadePorCadaItem <= Buscar.BuscarQuantidadeDeCadaItemNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text), indiceDoItem); quantidadePorCadaItem++)
-                        //    //    {
-                        //    //        int quantidade = 1;
-
-                        //    //        Salvar.InserirEstoqueProduto(indiceDoItem, Convert.ToInt32(txtNumeroNotaFiscal.Text));
-
-                        //    //        Atualizar.AtualizarQuantidadeEDataEntradaEstoqueProduto(quantidade, Convert.ToInt32(txtNumeroNotaFiscal.Text));
-
-                        //    //        Atualizar.AtualizarDataLancamentoNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text));
-                        //    //    }
-                        //    //}
-                        //}
-                        //else
-                        //{
-                        //    MessageBox.Show("Nota Fiscal Não Encontrada!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //}
                     }
                     else
                     {
-                        MessageBox.Show("Nota Fiscal Já Consumida!", "Informação!", MessageBoxButtons.OK,
-                            MessageBoxIcon.Information);
+                        MessageBox.Show("Nota Fiscal Não Encontrada!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -184,13 +135,18 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (VerificarExistencia.VerificarSeEstoqueFoiConsumidoExcluir(Convert.ToInt32(txtNumeroNotaFiscal.Text)) == false)//verificação de existencia de nota fiscal
                 {
+                    SetarDesignForms();
+
                     Atualizar.AtualizarQuantidadeCanceladaEstoqueProduto(Convert.ToInt32(txtNumeroNotaFiscal.Text));
 
                     Atualizar.AtualizarDataLancamentoNotaFiscalEntradaQuandoCancelada(Convert.ToInt32(txtNumeroNotaFiscal.Text));
+
+                    txtNumeroNotaFiscal.Text = string.Empty;
+                    gdvCompra.Rows.Clear();
                 }
                 else
                 {
-                    MessageBox.Show("Nota Fiscal Já Cancelada!", "Informação!", MessageBoxButtons.OK,
+                    MessageBox.Show("Nota Fiscal Indisponivel Para Exclusão!", "Informação!", MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
                 }
             }
@@ -198,9 +154,65 @@ namespace Sistema_de_Gerenciamento.Forms
 
         #endregion Excluir Compras
 
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txtNumeroNotaFiscal.Text != string.Empty)
+                {
+                    if ((listaDadosEstoqueProdutos = Buscar.BuscarEstoqueProduto(Convert.ToInt32(txtNumeroNotaFiscal.Text), gdvEstoque)) != null)
+                    {
+                        if (VerificarExistencia.VerificarSeEstoqueFoiConsumidoSalvar(Convert.ToInt32(txtNumeroNotaFiscal.Text)) != false) //verificação de existencia de nota fiscal
+                        {
+                            this.gdvEstoque.Columns["ep_valor_unitario"].DefaultCellStyle.Format = "c";
+
+                            gdvEstoque.Visible = true;
+                            gdvCompra.Visible = false;
+
+                            //gdvEstoque.Size = new Size(632, 303);
+                            //gdvEstoque.Location = new Point(138, 196);
+
+                            this.Size = new Size(686, 554);
+
+                            Global.tipoEntrada = "Alterar";
+
+                            listaDadosEstoqueProdutos.ForEach(nf => estoqueProduto = nf);
+
+                            Forms_CadastroCodigoBarras inserirCodigoBarras = new Forms_CadastroCodigoBarras(this);
+                            inserirCodigoBarras.ShowDialog();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Nota Fiscal Já Consumida!", "Informação!", MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nota Fiscal Não Encontrada!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarNotaFiscalEntrada(ex);
+            }
+        }
+
         private void txtNumeroNotaFiscal_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
+
+        private void SetarDesignForms()
+        {
+            this.gdvCompra.Columns["ne_valor_unitario"].DefaultCellStyle.Format = "c";
+            this.gdvCompra.Columns["ne_valor_total"].DefaultCellStyle.Format = "c";
+
+            gdvEstoque.Visible = false;
+            gdvCompra.Visible = true;
+
+            this.Size = new Size(958, 554);
         }
     }
 }

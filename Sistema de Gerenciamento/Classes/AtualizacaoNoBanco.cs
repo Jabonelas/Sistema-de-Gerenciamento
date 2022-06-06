@@ -469,7 +469,8 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update tb_EstoqueProduto set ep_codigo_barras = @codigoBarras " +
+                    string query = "update tb_EstoqueProduto set ep_codigo_barras = @codigoBarras, ep_data_entrada = GETDATE(), " +
+                                   "ep_desconto_por_item = 0 " +
                                    "where ep_nf_entrada = @ne_numero_nf and ep_codigo_produto = @codigoProduto";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);

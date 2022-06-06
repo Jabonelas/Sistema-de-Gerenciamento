@@ -10,6 +10,7 @@ namespace Sistema_de_Gerenciamento.Classes
     {
         //public int indice { get; set; }
         public int numeroNF { get; set; }
+
         public string cnpj { get; set; }
         public string razaoSocial { get; set; }
         public int codProduto { get; set; }
@@ -18,17 +19,11 @@ namespace Sistema_de_Gerenciamento.Classes
         public string unidade { get; set; }
         public decimal valorUnitario { get; set; }
         public decimal valorTotal { get; set; }
-        public DateTime dataEmissao { get; set; }
-        public DateTime dataLancamento { get; set; }
+        public DateTime? dataEmissao { get; set; } = null;
+        public DateTime? dataLancamento { get; set; } = null;
 
-        //public DadosNotaFiscalEntrada(int _indice, int _numeroNF, string _cnpj, string _razaoSocial, int _codProduto,
-        //    string _descricao, decimal _quantidade, string _unidade, decimal _valorUnitario, decimal _valorTotal, DateTime _dataEmissao, DateTime _dataLancamento)
-        //{
-
-
-
-            public DadosNotaFiscalEntrada( int _numeroNF, string _cnpj, string _razaoSocial, int _codProduto,
-        string _descricao, decimal _quantidade, string _unidade, decimal _valorUnitario, decimal _valorTotal, DateTime _dataEmissao, DateTime _dataLancamento)
+        public DadosNotaFiscalEntrada(int _numeroNF, string _cnpj, string _razaoSocial, int _codProduto,
+    string _descricao, decimal _quantidade, string _unidade, decimal _valorUnitario, decimal _valorTotal, DateTime? _dataEmissao, DateTime? _dataLancamento)
         {
             //indice = _indice;
             numeroNF = _numeroNF;

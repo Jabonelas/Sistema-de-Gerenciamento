@@ -1060,26 +1060,10 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query =
-                        "select cp_id," +
-                        "cp_descricao," +
-                        "cp_un," +
-                        "cp_valor_custo," +
-                        "cp_porcentagem," +
-                        "cp_valor_venda," +
-                        "cp_lucro," +
-                        "cp_preco_atacado," +
-                        "cp_grupo," +
-                        "cp_sub_grupo," +
-                        "cp_fonecedor," +
-                        "cp_estoque_minimo," +
-                        "cp_garantia," +
-                        "cp_marca," +
-                        "cp_referencia," +
-                        "cp_validade," +
-                        "cp_comissao," +
-                        "cp_observacao " +
-                        "from tb_CadastroProdutos ";
+                    string query = "select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda," +
+                                   "cp_lucro,cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo," +
+                                   "cp_garantia,cp_marca,cp_referencia,cp_validade,cp_comissao,cp_observacao " +
+                                   "from tb_CadastroProdutos ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -1663,7 +1647,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscarProdutoPorPesquisaNoBanco(ex);
+                Erro.ErroAoBuscarListaEstoqueProdutoNoBanco(ex);
             }
 
             return listaFinanceiro;
@@ -1679,15 +1663,15 @@ namespace Sistema_de_Gerenciamento.Classes
 
         public List<DadosNotaFiscalEntrada> BuscarNotaFiscalEntrada(int _numeroNF, BunifuDataGridView _tabela)
         {
+            string dataEmissao = null;
+            string dataLancamento = null;
+
             List<DadosNotaFiscalEntrada> listaNotaFiscalEntrada = new List<DadosNotaFiscalEntrada>();
 
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    //string query = "select * from tb_NotaFiscalEntrada " +
-                    //               "where ne_numero_nf = @numeroNF";
-
                     string query = "select ne_numero_nf,ne_cnpj,ne_razao_social,ne_codigo_produto,ne_descricao_produto," +
                                    "ne_quantidade,ne_unidade,ne_valor_unitario,ne_valor_total,ne_data_emissao,ne_data_lancamento " +
                                    "from tb_NotaFiscalEntrada " +
@@ -1706,17 +1690,32 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     while (dr.Read())
                     {
-                        listaNotaFiscalEntrada.Add(new DadosNotaFiscalEntrada(
-                            dr.GetInt32(0), dr.GetString(1), dr.GetString(2),
-                            dr.GetInt32(3), dr.GetString(4), dr.GetDecimal(5),
-                             dr.GetString(6), dr.GetDecimal(7), dr.GetDecimal(8),
-                             dr.GetDateTime(9), dr.GetDateTime(10)));
+                        if (dr.IsDBNull(9) == null)
+                        {
+                            listaNotaFiscalEntrada.Add(new DadosNotaFiscalEntrada(
+                                dr.GetInt32(0), dr.GetString(1), dr.GetString(2),
+                                dr.GetInt32(3), dr.GetString(4), dr.GetDecimal(5),
+                                dr.GetString(6), dr.GetDecimal(7), dr.GetDecimal(8),
+                                null, dr.GetDateTime(10)));
+                        }
 
-                        //listaNotaFiscalEntrada.Add(new DadosNotaFiscalEntrada(dr.GetInt32(0),
-                        //    dr.GetInt32(1), dr.GetString(2), dr.GetString(3),
-                        //    dr.GetInt32(4), dr.GetString(5), dr.GetDecimal(6),
-                        //    dr.GetString(7), dr.GetDecimal(8), dr.GetDecimal(9),
-                        //    dr.GetDateTime(10), dr.GetDateTime(11)));
+                        if (dr.IsDBNull(10) == null)
+                        {
+                            listaNotaFiscalEntrada.Add(new DadosNotaFiscalEntrada(
+                                dr.GetInt32(0), dr.GetString(1), dr.GetString(2),
+                                dr.GetInt32(3), dr.GetString(4), dr.GetDecimal(5),
+                                dr.GetString(6), dr.GetDecimal(7), dr.GetDecimal(8),
+                                dr.GetDateTime(9), null));
+                        }
+
+                        if (dr.IsDBNull(9) != null || dr.IsDBNull(10) != null)
+                        {
+                            listaNotaFiscalEntrada.Add(new DadosNotaFiscalEntrada(
+                                dr.GetInt32(0), dr.GetString(1), dr.GetString(2),
+                                dr.GetInt32(3), dr.GetString(4), dr.GetDecimal(5),
+                                 dr.GetString(6), dr.GetDecimal(7), dr.GetDecimal(8),
+                                 dr.GetDateTime(9), dr.GetDateTime(10)));
+                        }
                     }
                 }
             }
@@ -1746,6 +1745,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     dr.Read();
 
                     int x = dr.GetInt32(0);
+
                     return x;
                 }
             }
@@ -1790,5 +1790,45 @@ namespace Sistema_de_Gerenciamento.Classes
         #endregion Buscar Quantidade de Cada Item da Nota Fiscal de Entrada
 
         #endregion Buscar Compra
+
+        public List<DadosEstoqueProduto> BuscarEstoqueProduto(int _numeroNF, BunifuDataGridView _tabela)
+        {
+            List<DadosEstoqueProduto> listaEstoqueProduto = new List<DadosEstoqueProduto>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ep_nf_entrada,ep_codigo_barras,ep_codigo_produto,ep_descricao," +
+                                   "ep_quantidade,ep_unidade,ep_valor_unitario,ep_data_entrada,ep_desconto_por_item " +
+                                   "from tb_EstoqueProduto " +
+                                   "where ep_nf_entrada = @numeroNF";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaEstoqueProduto.Add(new DadosEstoqueProduto(
+                            dr.GetInt32(0), dr.GetInt32(1), dr.GetInt32(2),
+                            dr.GetString(3), dr.GetDecimal(4), dr.GetString(5),
+                             dr.GetDecimal(6), dr.GetDateTime(7), dr.GetDecimal(8)));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarNotaFiscalEntradaNoBanco(ex);
+            }
+            return listaEstoqueProduto;
+        }
     }
 }

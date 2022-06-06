@@ -564,6 +564,11 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-EP01) Erro ao Realizar Busca do Estoque Produto \n\nErro: {_e}", "Erro Busca Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoBuscarListaEstoqueProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EP02) Erro ao Realizar Busca da Lista de Estoque Produto \n\nErro: {_e}", "Erro Busca Lista Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Estoque Produto
 
         #region Compras
