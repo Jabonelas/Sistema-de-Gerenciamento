@@ -143,14 +143,29 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Estoque Produto
 
-        #region Nota Fiscal Entrada
+        #region Compras
 
         public void ErroAoBuscarNotaFiscalEntrada(Exception _e)
         {
             MessageBox.Show($"(BUS-EP01) Erro ao Buscar Estoque Produto \n\nErro: {_e}", "Erro Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        #endregion Nota Fiscal Entrada
+        public void ErroAoAlterarCodigoBarrasNotaFiscalEntrada(Exception _e)
+        {
+            MessageBox.Show($"(ALT-EP01) Erro ao Alterar Codigo de Barras Nota Fiscal Entrada \n\nErro: {_e}", "Erro Alterar Codigo de Barras Nota Fiscal Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoSalvarNotaFiscalEntrada(Exception _e)
+        {
+            MessageBox.Show($"(SAL-EP01) Erro ao Salvar Nota Fiscal de Entrada \n\nErro: {_e}", "Erro Salvar Nota Fiscal de Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroExcluirNotaFiscalEntrada(Exception _e)
+        {
+            MessageBox.Show($"(EXC-EP01) Erro ao Excluir Nota Fiscal de Entrada \n\nErro: {_e}", "Erro Excluit Nota Fiscal de Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Compras
 
         #region Gerar Carne
 
@@ -503,6 +518,11 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-PR10) Erro ao Realizar Busca Desconto do Produto \n\nErro: {_e}", "Erro Busca Desconto Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoBuscarComissaoProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR11) Erro ao Realizar Busca Comissao do Produto \n\nErro: {_e}", "Erro Busca Comissao Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Produto
 
         #region Empresa
@@ -519,7 +539,7 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Empresa
 
-        #region Despesa
+        #region Despesa Custo
 
         public void ErroAoBuscarCodigoDespesaNoBanco(Exception _e)
         {
@@ -546,7 +566,12 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-DE05) Erro ao Realizar Busca de Despesa \n\nErro: {_e}", "Erro Busca Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        #endregion Despesa
+        public void ErroAoBuscarListaDespesa(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE06) Erro ao Realizar Busca Lista de Despesa \n\nErro: {_e}", "Erro Busca Lista Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Despesa Custo
 
         #region Usuairo
 

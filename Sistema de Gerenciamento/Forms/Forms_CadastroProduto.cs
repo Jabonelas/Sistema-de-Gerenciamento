@@ -34,11 +34,18 @@ namespace Sistema_de_Gerenciamento
             PreencherComboBoxGrupo();
 
             PreencherComboBoxFornecedor();
+
+            PreencherTextBoxComissao();
         }
 
         private void btnNovoProduto_Click(object sender, EventArgs e)
         {
             NovoCadastroProduto();
+        }
+
+        private void PreencherTextBoxComissao()
+        {
+            txtComissao.Text = String.Format("{0:#,##0.00} %", Buscar.Comissao());
         }
 
         #region Novo Cadastro Produto

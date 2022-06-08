@@ -110,7 +110,7 @@ namespace Sistema_de_Gerenciamento
 
         private void btnDespesas_Click(object sender, EventArgs e)
         {
-            Forms_CadastroDespesas cadastroDespesa = new Forms_CadastroDespesas();
+            Forms_CadastroDespesasCusto cadastroDespesa = new Forms_CadastroDespesasCusto();
             cadastroDespesa.ShowDialog();
         }
 
@@ -158,6 +158,12 @@ namespace Sistema_de_Gerenciamento
         {
             Forms_ConfiguracaoGerencial configuracaoGerencial = new Forms_ConfiguracaoGerencial();
             configuracaoGerencial.ShowDialog();
+        }
+
+        private void btnDespesa_Click(object sender, EventArgs e)
+        {
+            Forms_Despesas despesas = new Forms_Despesas();
+            despesas.ShowDialog();
         }
     }
 }

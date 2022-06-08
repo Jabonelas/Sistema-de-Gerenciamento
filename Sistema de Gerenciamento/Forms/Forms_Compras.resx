@@ -277,10 +277,10 @@
   </data>
   <data name="txtTotalItens.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAHoAAAAcCAYAAACu9KujAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB6SURBVGhD7dGxCcBADARB9V+VHpXhMlyAH4ESt6DdhUsu
-        nTBQVfVk5uf2rW2HOaIP21nbDrPQmxMaktCQhIYkNCShIQkNSWhIQkMSGpLQkISGJDQkoSEJDUloSEJD
-        EhqS0JCEhiQ0JKEhCQ3pB33Oeftw+9a2w2z7i7h65r0ar55vqAAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAAGoAAAAcCAYAAACJWipLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB7SURBVGhD7dGxCcBADARB9V+VHpXhMlyAH4ESd6CFXbjk
+        0gkDVVVPZn5u39pmmCL6sJ21zTAJtTmhIAkFSShIQkESCpJQkISCJBQkoSAJBUkoSEJBEgqSUJCEgiQU
+        JKEgCQVJKEhCQRIKklCQflDnnLcPt29tM0y2v4gLbBta4PGueNUAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="txtValorTotal.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

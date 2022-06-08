@@ -128,6 +128,9 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 Atualizacao.JurosCredito(Convert.ToDecimal(txtJurosCredito.Text.Replace("%", "")),
                     Convert.ToInt32(cmbParcelasCredito.Text.Replace("x", "")));
+
+                cmbParcelasCredito.Text = String.Empty;
+                txtJurosCredito.Text = String.Empty;
             }
             else
             {
@@ -138,6 +141,28 @@ namespace Sistema_de_Gerenciamento.Forms
         }
 
         #endregion Atualizacao de Porcentagem do Juros Por Carne
+
+        private void btnConfirmarComissao_Click(object sender, EventArgs e)
+        {
+            AtualziacaoPorcentagemComissao();
+        }
+
+        private void AtualziacaoPorcentagemComissao()
+        {
+            if (txtComissao.Text != String.Empty)
+            {
+                Atualizacao.AtualizarComissao(Convert.ToDecimal(txtComissao.Text.Replace("%", "")));
+
+                txtComissao.Text = String.Empty;
+                ;
+            }
+            else
+            {
+                MessageBox.Show("Por Favor Preencha O Campo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                txtComissao.Focus();
+            }
+        }
 
         private void cmbGrupoProduto_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -197,22 +222,6 @@ namespace Sistema_de_Gerenciamento.Forms
 
         #endregion Verificar se o Campo de Grupo Foi Preenchido
 
-        private void txtDescontoPorGrupo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
-            {
-                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtDescontoPorGrupo.Text, sender);
-            }
-        }
-
-        private void txtDescontoAvista_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
-            {
-                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtDescontoAvista.Text, sender);
-            }
-        }
-
         private void txtPrazoCarne_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoFoiNumero(e);
@@ -222,7 +231,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
             {
-                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtJurosCarne.Text, sender);
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtJurosCarne.Text.Replace("%", ""), sender);
             }
         }
 
@@ -230,7 +239,31 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
             {
-                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtJurosCredito.Text, sender);
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtJurosCredito.Text.Replace("%", ""), sender);
+            }
+        }
+
+        private void txtDescontoPorGrupo_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtDescontoPorGrupo.Text.Replace("%", ""), sender);
+            }
+        }
+
+        private void txtDescontoAvista_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtDescontoAvista.Text.Replace("%", ""), sender);
+            }
+        }
+
+        private void txtComissao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtComissao.Text.Replace("%", ""), sender);
             }
         }
     }

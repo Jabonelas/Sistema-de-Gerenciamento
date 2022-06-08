@@ -369,33 +369,9 @@ namespace Sistema_de_Gerenciamento
         {
             if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtDataEmissao) == true)
             {
-                ValidacaoData(txtDataEmissao);
+                ManipulacaoTextBox.ValidacaoData(txtDataEmissao);
             }
         }
-
-        #region Validacao Data
-
-        private void ValidacaoData(BunifuTextBox _textBox)
-        {
-            if (_textBox.Text.Length == _textBox.MaxLength && _textBox.Text != "----------")
-            {
-                DateTime time;
-                if (DateTime.TryParse(_textBox.Text, out time))
-                {
-                    _textBox.BorderColorActive = Color.DodgerBlue;
-                }
-                else
-                {
-                    _textBox.BorderColorActive = Color.Red;
-
-                    MessageBox.Show($"Data Errada: {_textBox.Text}", "Atencao!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                    _textBox.Focus();
-                }
-            }
-        }
-
-        #endregion Validacao Data
 
         private void txtDataNascimento_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -409,7 +385,7 @@ namespace Sistema_de_Gerenciamento
         {
             if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtDataNascimento) == true)
             {
-                ValidacaoData(txtDataNascimento);
+                ManipulacaoTextBox.ValidacaoData(txtDataNascimento);
             }
         }
 

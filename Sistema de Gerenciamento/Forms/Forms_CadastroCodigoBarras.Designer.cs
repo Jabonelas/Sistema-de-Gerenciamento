@@ -487,7 +487,7 @@
             this.Controls.Add(this.txtCodigoProduto);
             this.Controls.Add(this.pcbProduto);
             this.Controls.Add(this.txtCodigoBarras);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Forms_CadastroCodigoBarras";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cadrastro Codigo de Barras";

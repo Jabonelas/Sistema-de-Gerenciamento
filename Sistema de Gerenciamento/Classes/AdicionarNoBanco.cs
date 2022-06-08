@@ -423,17 +423,19 @@ namespace Sistema_de_Gerenciamento
 
         #region Inserir Despesa
 
-        public void InserirCadastroDespesa(string _descricao, string _tipo)
+        public void InserirCadastroDespesa(string _descricao, string _tipo, string _categoria)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "insert into tb_CadastroDespesa (cd_descricao,cd_tipo) values(@descricao,@tipo)";
+                    string query = "insert into tb_CadastroDespesaCustos (cd_descricao,cd_tipo,cd_categoria) " +
+                                   "values(@descricao,@tipo,@categoria)";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
                     cmd.Parameters.AddWithValue("@descricao", SqlDbType.Date).Value = _descricao;
                     cmd.Parameters.AddWithValue("@tipo", SqlDbType.VarChar).Value = _tipo;
+                    cmd.Parameters.AddWithValue("@categoria", SqlDbType.VarChar).Value = _categoria;
 
                     cmd.ExecuteNonQuery();
 

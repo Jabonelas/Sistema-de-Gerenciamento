@@ -591,7 +591,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             cmbCliente.Items.Clear();
 
-            foreach (var item in Buscar.BuscarListaCliente())
+            foreach (string item in Buscar.BuscarListaCliente())
             {
                 cmbCliente.Items.Add(item);
             }

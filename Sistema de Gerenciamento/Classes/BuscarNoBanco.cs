@@ -76,11 +76,12 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cc_id,cc_data_cadastro,cc_nome_cliente,cc_tipo,cc_cpf_cnpj,cc_rg,cc_emissor," +
-                                   "cc_data_emissao,cc_ins_est,cc_cep,cc_endereco,cc_numero,cc_complemento,cc_bairro,cc_cidade,cc_uf," +
-                                   "cc_naturalidade,cc_data_nasc,cc_estado_civil,cc_credito,cc_saldo,cc_bloqueio,cc_celular,cc_tel_residencial," +
-                                   "cc_email,cc_observacoes " +
-                                   "from tb_CadastroClientes where cc_cpf_cnpj = @cpf_cnpj";
+                    string query =
+                        "select cc_id,cc_data_cadastro,cc_nome_cliente,cc_tipo,cc_cpf_cnpj,cc_rg,cc_emissor," +
+                        "cc_data_emissao,cc_ins_est,cc_cep,cc_endereco,cc_numero,cc_complemento,cc_bairro,cc_cidade,cc_uf," +
+                        "cc_naturalidade,cc_data_nasc,cc_estado_civil,cc_credito,cc_saldo,cc_bloqueio,cc_celular,cc_tel_residencial," +
+                        "cc_email,cc_observacoes " +
+                        "from tb_CadastroClientes where cc_cpf_cnpj = @cpf_cnpj";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@cpf_cnpj", _cpf_cnpj);
@@ -124,11 +125,12 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cc_id,cc_data_cadastro,cc_nome_cliente,cc_tipo,cc_cpf_cnpj,cc_rg,cc_emissor," +
-                                   "cc_data_emissao,cc_ins_est,cc_cep,cc_endereco,cc_numero,cc_complemento,cc_bairro,cc_cidade,cc_uf," +
-                                   "cc_naturalidade,cc_data_nasc,cc_estado_civil,cc_credito,cc_saldo,cc_bloqueio,cc_celular,cc_tel_residencial," +
-                                   "cc_email,cc_observacoes " +
-                                   "from tb_CadastroClientes where cc_rg = @rg";
+                    string query =
+                        "select cc_id,cc_data_cadastro,cc_nome_cliente,cc_tipo,cc_cpf_cnpj,cc_rg,cc_emissor," +
+                        "cc_data_emissao,cc_ins_est,cc_cep,cc_endereco,cc_numero,cc_complemento,cc_bairro,cc_cidade,cc_uf," +
+                        "cc_naturalidade,cc_data_nasc,cc_estado_civil,cc_credito,cc_saldo,cc_bloqueio,cc_celular,cc_tel_residencial," +
+                        "cc_email,cc_observacoes " +
+                        "from tb_CadastroClientes where cc_rg = @rg";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@rg", _rg);
@@ -172,11 +174,12 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cc_id,cc_data_cadastro,cc_nome_cliente,cc_tipo,cc_cpf_cnpj,cc_rg,cc_emissor," +
-                                   "cc_data_emissao,cc_ins_est,cc_cep,cc_endereco,cc_numero,cc_complemento,cc_bairro,cc_cidade,cc_uf," +
-                                   "cc_naturalidade,cc_data_nasc,cc_estado_civil,cc_credito,cc_saldo,cc_bloqueio,cc_celular,cc_tel_residencial," +
-                                   "cc_email,cc_observacoes " +
-                                   "from tb_CadastroClientes where cc_nome_cliente like @nomeCliente";
+                    string query =
+                        "select cc_id,cc_data_cadastro,cc_nome_cliente,cc_tipo,cc_cpf_cnpj,cc_rg,cc_emissor," +
+                        "cc_data_emissao,cc_ins_est,cc_cep,cc_endereco,cc_numero,cc_complemento,cc_bairro,cc_cidade,cc_uf," +
+                        "cc_naturalidade,cc_data_nasc,cc_estado_civil,cc_credito,cc_saldo,cc_bloqueio,cc_celular,cc_tel_residencial," +
+                        "cc_email,cc_observacoes " +
+                        "from tb_CadastroClientes where cc_nome_cliente like @nomeCliente";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@nomeCliente", string.Format("%{0}%", _nomeCliente));
@@ -250,11 +253,12 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cc_id,cc_data_cadastro,cc_nome_cliente,cc_tipo,cc_cpf_cnpj,cc_rg,cc_emissor," +
-                                   "cc_data_emissao,cc_ins_est,cc_cep,cc_endereco,cc_numero,cc_complemento,cc_bairro,cc_cidade,cc_uf," +
-                                   "cc_naturalidade,cc_data_nasc,cc_estado_civil,cc_credito,cc_saldo,cc_bloqueio,cc_celular,cc_tel_residencial," +
-                                   "cc_email,cc_observacoes " +
-                                   "from tb_CadastroClientes";
+                    string query =
+                        "select cc_id,cc_data_cadastro,cc_nome_cliente,cc_tipo,cc_cpf_cnpj,cc_rg,cc_emissor," +
+                        "cc_data_emissao,cc_ins_est,cc_cep,cc_endereco,cc_numero,cc_complemento,cc_bairro,cc_cidade,cc_uf," +
+                        "cc_naturalidade,cc_data_nasc,cc_estado_civil,cc_credito,cc_saldo,cc_bloqueio,cc_celular,cc_tel_residencial," +
+                        "cc_email,cc_observacoes " +
+                        "from tb_CadastroClientes";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -308,6 +312,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     {
                         reader.Read();
                     }
+
                     byte[] img = (byte[])(reader["ic_imagem"]);
                     MemoryStream ms = new MemoryStream(img);
 
@@ -404,9 +409,10 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cf_id,cf_razao_social,cf_data_cadastro,cf_cnpj,cf_nome_fantasia,cf_cep,cf_endereco,cf_complemento," +
-                                   "cf_numero,cf_bairro,cf_cidade,cf_uf,cf_telefone,cf_email,cf_observacoes " +
-                                   "from tb_CadastroFornecedor where cf_id = @cf_id";
+                    string query =
+                        "select cf_id,cf_razao_social,cf_data_cadastro,cf_cnpj,cf_nome_fantasia,cf_cep,cf_endereco,cf_complemento," +
+                        "cf_numero,cf_bairro,cf_cidade,cf_uf,cf_telefone,cf_email,cf_observacoes " +
+                        "from tb_CadastroFornecedor where cf_id = @cf_id";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@cf_id", _cf_id);
@@ -450,9 +456,10 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cf_id,cf_razao_social,cf_data_cadastro,cf_cnpj,cf_nome_fantasia,cf_cep,cf_endereco,cf_complemento," +
-                                   "cf_numero,cf_bairro,cf_cidade,cf_uf,cf_telefone,cf_email,cf_observacoes " +
-                                   "from tb_CadastroFornecedor where cf_cnpj = @cnpj";
+                    string query =
+                        "select cf_id,cf_razao_social,cf_data_cadastro,cf_cnpj,cf_nome_fantasia,cf_cep,cf_endereco,cf_complemento," +
+                        "cf_numero,cf_bairro,cf_cidade,cf_uf,cf_telefone,cf_email,cf_observacoes " +
+                        "from tb_CadastroFornecedor where cf_cnpj = @cnpj";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@cnpj", _cnpj);
@@ -496,12 +503,14 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cf_id,cf_razao_social,cf_data_cadastro,cf_cnpj,cf_nome_fantasia,cf_cep,cf_endereco,cf_complemento," +
-                                   "cf_numero,cf_bairro,cf_cidade,cf_uf,cf_telefone,cf_email,cf_observacoes " +
-                                   "from tb_CadastroFornecedor where cf_nome_fantasia like @nomeFantasia";
+                    string query =
+                        "select cf_id,cf_razao_social,cf_data_cadastro,cf_cnpj,cf_nome_fantasia,cf_cep,cf_endereco,cf_complemento," +
+                        "cf_numero,cf_bairro,cf_cidade,cf_uf,cf_telefone,cf_email,cf_observacoes " +
+                        "from tb_CadastroFornecedor where cf_nome_fantasia like @nomeFantasia";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@nomeFantasia", string.Format("%{0}%", _nomeFantasia));
+                    adapter.SelectCommand.Parameters.AddWithValue("@nomeFantasia",
+                        string.Format("%{0}%", _nomeFantasia));
 
                     DataTable dataTable = new DataTable();
 
@@ -542,9 +551,10 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cf_id,cf_razao_social,cf_data_cadastro,cf_cnpj,cf_nome_fantasia,cf_cep,cf_endereco,cf_complemento," +
-                                   "cf_numero,cf_bairro,cf_cidade,cf_uf,cf_telefone,cf_email,cf_observacoes " +
-                                   "from tb_CadastroFornecedor";
+                    string query =
+                        "select cf_id,cf_razao_social,cf_data_cadastro,cf_cnpj,cf_nome_fantasia,cf_cep,cf_endereco,cf_complemento," +
+                        "cf_numero,cf_bairro,cf_cidade,cf_uf,cf_telefone,cf_email,cf_observacoes " +
+                        "from tb_CadastroFornecedor";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -599,6 +609,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     {
                         reader.Read();
                     }
+
                     byte[] img = (byte[])(reader["if_imagem"]);
                     MemoryStream ms = new MemoryStream(img);
 
@@ -735,7 +746,7 @@ namespace Sistema_de_Gerenciamento.Classes
                         "cp_valor_venda," +
                         "cp_lucro," +
                         "cp_preco_atacado," +
-                         "cp_grupo," +
+                        "cp_grupo," +
                         "cp_sub_grupo," +
                         "cp_fonecedor," +
                         "cp_estoque_minimo," +
@@ -852,7 +863,7 @@ namespace Sistema_de_Gerenciamento.Classes
                         "cp_valor_venda," +
                         "cp_lucro," +
                         "cp_preco_atacado," +
-                         "cp_grupo," +
+                        "cp_grupo," +
                         "cp_sub_grupo," +
                         "cp_fonecedor," +
                         "cp_estoque_minimo," +
@@ -910,27 +921,11 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query =
-                        "select cp_id," +
-                        "cp_descricao," +
-                        "cp_un," +
-                        "cp_valor_custo," +
-                        "cp_porcentagem," +
-                        "cp_valor_venda," +
-                        "cp_lucro," +
-                        "cp_preco_atacado," +
-                         "cp_grupo," +
-                        "cp_sub_grupo," +
-                        "cp_fonecedor," +
-                        "cp_estoque_minimo," +
-                        "cp_garantia," +
-                        "cp_marca," +
-                        "cp_referencia," +
-                        "cp_validade," +
-                        "cp_comissao," +
-                        "cp_observacao " +
-                        "from tb_CadastroProdutos " +
-                        "where cp_sub_grupo like @subGrupo";
+                    string query = "select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda,cp_lucro," +
+                                   "cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo,cp_garantia,cp_marca," +
+                                   "cp_referencia,cp_validade,cp_comissao,cp_observacao " +
+                                   "from tb_CadastroProdutos " +
+                                   "where cp_sub_grupo like @subGrupo";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@subGrupo", string.Format("%{0}%", _subGrupo));
@@ -986,7 +981,7 @@ namespace Sistema_de_Gerenciamento.Classes
                         "cp_valor_venda," +
                         "cp_lucro," +
                         "cp_preco_atacado," +
-                         "cp_grupo," +
+                        "cp_grupo," +
                         "cp_sub_grupo," +
                         "cp_fonecedor," +
                         "cp_estoque_minimo," +
@@ -1104,6 +1099,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     {
                         reader.Read();
                     }
+
                     byte[] img = (byte[])(reader["ip_imagem"]);
                     MemoryStream ms = new MemoryStream(img);
 
@@ -1133,8 +1129,9 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select ep_codigo_produto,ep_descricao,ep_quantidade,ep_unidade,ep_valor_unitario,ep_desconto_por_item,ep_codigo_barras " +
-                                   "from tb_EstoqueProduto";
+                    string query =
+                        "select ep_codigo_produto,ep_descricao,ep_quantidade,ep_unidade,ep_valor_unitario,ep_desconto_por_item,ep_codigo_barras " +
+                        "from tb_EstoqueProduto";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -1187,6 +1184,36 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar O Desconto Por Item
 
+        #region Buscar Comissao
+
+        public decimal Comissao()
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select fn_comissao from tb_Financeiro";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    decimal x = dr.GetDecimal(0);
+
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarComissaoProdutoNoBanco(ex);
+                return 0;
+            }
+        }
+
+        #endregion Buscar Comissao
+
         #endregion Buscar Produto
 
         #region Buscar Empresa
@@ -1199,9 +1226,10 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select ce_razao_social,ce_cnpj,ce_nome_fantasia,ce_cep,ce_endereco,ce_complemento," +
-                                   "ce_bairro,ce_cidade,ce_uf,ce_numero,ce_telefone,ce_email,ce_texto_padrao_os " +
-                                   "from tb_CadastroEmpresa where ce_id = @ce_id";
+                    string query =
+                        "select ce_razao_social,ce_cnpj,ce_nome_fantasia,ce_cep,ce_endereco,ce_complemento," +
+                        "ce_bairro,ce_cidade,ce_uf,ce_numero,ce_telefone,ce_email,ce_texto_padrao_os " +
+                        "from tb_CadastroEmpresa where ce_id = @ce_id";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@ce_id", _ce_id);
@@ -1258,6 +1286,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     {
                         reader.Read();
                     }
+
                     byte[] img = (byte[])(reader["ce_imagem"]);
                     MemoryStream ms = new MemoryStream(img);
 
@@ -1327,7 +1356,7 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cd_id from tb_CadastroDespesa where cd_descricao = @descricao";
+                    string query = "select cd_id from tb_CadastroDespesaCustos where cd_descricao = @descricao";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@descricao", _descricao);
 
@@ -1355,8 +1384,8 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cd_id,cd_descricao,cd_tipo " +
-                                   "from tb_CadastroDespesa where cd_id = @cd_id";
+                    string query = "select * " +
+                                   "from ttb_CadastroDespesaCustos where cd_id = @cd_id";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -1401,8 +1430,8 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cd_id,cd_descricao,cd_tipo " +
-                                   "from tb_CadastroDespesa where cd_descricao like @descricao";
+                    string query = "select * " +
+                                   "from tb_CadastroDespesaCustos where cd_descricao like @descricao";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -1447,8 +1476,8 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cd_id,cd_descricao,cd_tipo " +
-                                   "from tb_CadastroDespesa where cd_tipo like @tipo";
+                    string query = "select * " +
+                                   "from tb_CadastroDespesaCustos where cd_tipo like @tipo";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -1485,6 +1514,52 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Despesa Por Tipo
 
+        #region Buscar Despesa Por Categoria
+
+        public bool BuscarCadastroDespesaPorCategoria(string _categoria, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * " +
+                                   "from tb_CadastroDespesaCustos where cd_categoria = @categoria";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.AddWithValue("@Categoria", _categoria);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarCadastroDespesaPorTipoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Buscar Despesa Por Categoria
+
         #region Buscar Tudo Despesa
 
         public bool BuscarCadastroTudoDespesa(BunifuDataGridView _tabela)
@@ -1493,8 +1568,8 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cd_id,cd_descricao,cd_tipo " +
-                                   "from tb_CadastroDespesa";
+                    string query = "select * " +
+                                   "from tb_CadastroDespesaCustos";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -1528,6 +1603,82 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Tudo Despesa
+
+        #region Buscar Lista Despesa
+
+        public List<string> BuscarListaDespesa()
+        {
+            List<string> listaDespesa = new List<string>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select cd_tipo " +
+                                   "from tb_CadastroDespesaCustos " +
+                                   "where cd_categoria = 'Despesa'";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaDespesa.Add(dr.GetString(0));
+                    }
+                }
+
+                return listaDespesa;
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarListaDespesa(ex);
+
+                return listaDespesa;
+            }
+        }
+
+        #endregion Buscar Lista Despesa
+
+        #region Buscar Lista Despesa Por Tipo
+
+        public List<DadosDespesasCusto> BuscarListaDespesaPorTipo(string _tipo)
+        {
+            List<DadosDespesasCusto> listaDespesas = new List<DadosDespesasCusto>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * " +
+                                   "from tb_CadastroDespesaCustos " +
+                                   "where cd_tipo like @tipo and cd_categoria = 'Despesa'";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.AddWithValue("@tipo", string.Format("%{0}%", _tipo));
+
+                    SqlDataReader dr;
+                    dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaDespesas.Add(new DadosDespesasCusto(dr.GetInt32(0), dr.GetString(1),
+                            dr.GetString(2), dr.GetString(3)));
+                    }
+                }
+
+                return listaDespesas;
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarCadastroDespesaPorTipoNoBanco(ex);
+
+                return listaDespesas;
+            }
+        }
+
+        #endregion Buscar Lista Despesa Por Tipo
 
         #endregion Buscar Despesa
 
@@ -1617,8 +1768,9 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select fn_desconto_avista,fn_juros_credito,fn_parcelas_credito,fn_prazo_carne,fn_juros_carne,fn_parcelas_carne " +
-                                   "from tb_Financeiro ";
+                    string query =
+                        "select fn_desconto_avista,fn_juros_credito,fn_parcelas_credito,fn_prazo_carne,fn_juros_carne,fn_parcelas_carne " +
+                        "from tb_Financeiro ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -1655,10 +1807,11 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select ne_indice,ne_numero_nf,ne_cnpj,ne_razao_social,ne_codigo_produto,ne_descricao_produto," +
-                                   "ne_quantidade,ne_unidade,ne_valor_unitario,ne_valor_total,ne_data_emissao,ne_data_lancamento " +
-                                   "from tb_NotaFiscalEntrada " +
-                                   "where ne_numero_nf = @numeroNF";
+                    string query =
+                        "select ne_indice,ne_numero_nf,ne_cnpj,ne_razao_social,ne_codigo_produto,ne_descricao_produto," +
+                        "ne_quantidade,ne_unidade,ne_valor_unitario,ne_valor_total,ne_data_emissao,ne_data_lancamento " +
+                        "from tb_NotaFiscalEntrada " +
+                        "where ne_numero_nf = @numeroNF";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
@@ -1682,7 +1835,7 @@ namespace Sistema_de_Gerenciamento.Classes
                                 dr.GetInt32(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3),
                                 dr.GetInt32(4), dr.GetString(5), dr.GetDecimal(6),
                                 dr.GetString(7), dr.GetDecimal(8), dr.GetDecimal(9),
-                                 dr.GetDateTime(10), null));
+                                dr.GetDateTime(10), null));
                         }
 
                         if (dr.IsDBNull(10) != null && dr.IsDBNull(11) != null)
@@ -1700,6 +1853,7 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 Erro.ErroAoBuscarNotaFiscalEntradaNoBanco(ex);
             }
+
             return listaNotaFiscalEntrada;
         }
 
@@ -1713,10 +1867,11 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select ne_indice,ne_numero_nf,ne_cnpj,ne_razao_social,ne_codigo_produto,ne_descricao_produto," +
-                                   "ne_quantidade,ne_unidade,ne_valor_unitario,ne_valor_total,ne_data_emissao,ne_data_lancamento " +
-                                   "from tb_NotaFiscalEntrada " +
-                                   "where ne_numero_nf = @numeroNF";
+                    string query =
+                        "select ne_indice,ne_numero_nf,ne_cnpj,ne_razao_social,ne_codigo_produto,ne_descricao_produto," +
+                        "ne_quantidade,ne_unidade,ne_valor_unitario,ne_valor_total,ne_data_emissao,ne_data_lancamento " +
+                        "from tb_NotaFiscalEntrada " +
+                        "where ne_numero_nf = @numeroNF";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
@@ -1746,7 +1901,8 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select count (ne_numero_nf) from tb_NotaFiscalEntrada where ne_numero_nf = @numeroNF";
+                    string query =
+                        "select count (ne_numero_nf) from tb_NotaFiscalEntrada where ne_numero_nf = @numeroNF";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
 
@@ -1809,7 +1965,8 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select ne_quantidade from tb_NotaFiscalEntrada where ne_numero_nf = @numeroNF and ne_indice = @indice ";
+                    string query =
+                        "select ne_quantidade from tb_NotaFiscalEntrada where ne_numero_nf = @numeroNF and ne_indice = @indice ";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
                     adapter.SelectCommand.Parameters.AddWithValue("@indice", _indice);
@@ -1833,10 +1990,59 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Compra
 
-        public List<DadosEstoqueProduto> BuscarEstoqueProduto(int _numeroNF, BunifuDataGridView _tabela)
+        #region Preencher Lista Estoque Produto
+
+        public List<DadosEstoqueProduto> BuscarEstoqueProdutoListaProduto(int _numeroNF)
         {
             List<DadosEstoqueProduto> listaEstoqueProduto = new List<DadosEstoqueProduto>();
 
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ep_nf_entrada,ep_codigo_barras,ep_codigo_produto,ep_descricao," +
+                                   "ep_quantidade,ep_unidade,ep_valor_unitario,ep_data_entrada,ep_desconto_por_item " +
+                                   "from tb_EstoqueProduto " +
+                                   "where ep_nf_entrada = @numeroNF";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        if (dr.IsDBNull(1) == null && dr.IsDBNull(7) == null && dr.IsDBNull(8) == null)
+                        {
+                            listaEstoqueProduto.Add(new DadosEstoqueProduto(
+                                dr.GetInt32(0), null, dr.GetInt32(2),
+                                dr.GetString(3), dr.GetDecimal(4), dr.GetString(5),
+                                dr.GetDecimal(6), null, null));
+                        }
+                        else if (dr.IsDBNull(1) != null && dr.IsDBNull(7) != null && dr.IsDBNull(8) != null)
+                        {
+                            listaEstoqueProduto.Add(new DadosEstoqueProduto(
+                                dr.GetInt32(0), dr.GetInt32(1), dr.GetInt32(2),
+                                dr.GetString(3), dr.GetDecimal(4), dr.GetString(5),
+                                dr.GetDecimal(6), dr.GetDateTime(7), dr.GetDecimal(8)));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarNotaFiscalEntradaNoBanco(ex);
+            }
+
+            return listaEstoqueProduto;
+        }
+
+        #endregion Preencher Lista Estoque Produto
+
+        #region PreencherGridView Com Dados do Estoque Produto
+
+        public void BuscarEstoqueProdutoPreencherGridView(int _numeroNF, BunifuDataGridView _tabela)
+        {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
@@ -1856,31 +2062,14 @@ namespace Sistema_de_Gerenciamento.Classes
                     _tabela.Refresh();
 
                     SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        if (dr.IsDBNull(1) == null && dr.IsDBNull(7) == null && dr.IsDBNull(8) == null)
-                        {
-                            listaEstoqueProduto.Add(new DadosEstoqueProduto(
-                                dr.GetInt32(0), null, dr.GetInt32(2),
-                                dr.GetString(3), dr.GetDecimal(4), dr.GetString(5),
-                                 dr.GetDecimal(6), null, null));
-                        }
-                        else if (dr.IsDBNull(1) != null && dr.IsDBNull(7) != null && dr.IsDBNull(8) != null)
-                        {
-                            listaEstoqueProduto.Add(new DadosEstoqueProduto(
-                                dr.GetInt32(0), dr.GetInt32(1), dr.GetInt32(2),
-                                dr.GetString(3), dr.GetDecimal(4), dr.GetString(5),
-                                dr.GetDecimal(6), dr.GetDateTime(7), dr.GetDecimal(8)));
-                        }
-                    }
                 }
             }
             catch (Exception ex)
             {
                 Erro.ErroAoBuscarNotaFiscalEntradaNoBanco(ex);
             }
-            return listaEstoqueProduto;
         }
+
+        #endregion PreencherGridView Com Dados do Estoque Produto
     }
 }

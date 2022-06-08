@@ -383,19 +383,20 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Atualizar Despesa
 
-        public void AtualizarCadastroDespesa(int _cd_id, string _descricao, string _tipo)
+        public void AtualizarCadastroDespesa(int _cd_id, string _descricao, string _tipo, string _categoria)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update tb_CadastroDespesa set cd_descricao = @descricao,cd_tipo = @tipo " +
-                                   "where cd_id = @cd_id";
+                    string query = "update tb_CadastroDespesaCustos set cd_descricao = @descricao,cd_tipo = @tipo " +
+                                   "where cd_id = @cd_id and cd_categoria = @categoria";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@cd_id", SqlDbType.Int).Value = _cd_id;
                     adapter.SelectCommand.Parameters.AddWithValue("@descricao", SqlDbType.VarChar).Value = _descricao;
                     adapter.SelectCommand.Parameters.AddWithValue("@tipo", SqlDbType.VarChar).Value = _tipo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@categoria", SqlDbType.VarChar).Value = _categoria;
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
@@ -659,6 +660,32 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Atualizar Juros Credito
+
+        #region Atualizar Comissao
+
+        public void AtualizarComissao(decimal _comissao)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_Financeiro set fn_comissao = @comissao";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@comissao", _comissao);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoCantoInferiorDireito.Atualizacao();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarJurosCreditoNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Comissao
 
         #endregion Atualizar Configuracao Gerencial
     }

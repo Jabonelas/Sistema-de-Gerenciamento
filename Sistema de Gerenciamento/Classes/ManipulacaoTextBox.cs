@@ -273,6 +273,8 @@ namespace Sistema_de_Gerenciamento
 
         public static void FormatoData(BunifuTextBox _txtBox)
         {
+            _txtBox.MaxLength = 10;
+
             switch (_txtBox.TextLength)
             {
                 case 0:
@@ -465,5 +467,29 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Formatacao Para Senha
+
+        #region Validar Data
+
+        public static void ValidacaoData(BunifuTextBox _textBox)
+        {
+            if (_textBox.Text.Length == _textBox.MaxLength && _textBox.Text != "----------")
+            {
+                DateTime time;
+                if (DateTime.TryParse(_textBox.Text, out time))
+                {
+                    _textBox.BorderColorActive = Color.DodgerBlue;
+                }
+                else
+                {
+                    _textBox.BorderColorActive = Color.Red;
+
+                    MessageBox.Show($"Data Errada: {_textBox.Text}", "Atencao!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    _textBox.Focus();
+                }
+            }
+        }
+
+        #endregion Validar Data
     }
 }

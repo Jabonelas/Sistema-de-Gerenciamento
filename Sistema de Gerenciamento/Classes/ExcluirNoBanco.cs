@@ -222,7 +222,7 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "delete tb_CadastroDespesa where cd_id = @cd_id and cd_descricao = @descricao";
+                    string query = "delete tb_CadastroDespesaCustos where cd_id = @cd_id and cd_descricao = @descricao";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
 
