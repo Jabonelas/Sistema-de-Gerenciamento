@@ -14,8 +14,6 @@ namespace Sistema_de_Gerenciamento.Forms
 {
     public partial class Forms_PesquisarDespesaCusto : Form
     {
-        private MensagensErro Erro = new MensagensErro();
-
         private BuscarNoBanco Buscar = new BuscarNoBanco();
 
         private Forms_CadastroDespesasCusto cadastroDespesas;
@@ -43,25 +41,25 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (txtCodigoDespesa.Text != string.Empty)
             {
-                bool isCadastroExiste = Buscar.BuscarCadastroDespesaPorCodigo(Convert.ToInt32(txtCodigoDespesa.Text), gdvPesquisarDespesa);
+                bool isCadastroExiste = Buscar.BuscarCadastroDespesaPorCodigo(Convert.ToInt32(txtCodigoDespesa.Text), gdvPesquisarDespesaCusto);
 
                 MensagemDespesaCustoNaoEncontrada(isCadastroExiste);
             }
             else if (txtDescricao.Text != string.Empty)
             {
-                bool isCadastroExiste = Buscar.BuscarCadastroDespesaPorDescricao(txtDescricao.Text, gdvPesquisarDespesa);
+                bool isCadastroExiste = Buscar.BuscarCadastroDespesaPorDescricao(txtDescricao.Text, gdvPesquisarDespesaCusto);
 
                 MensagemDespesaCustoNaoEncontrada(isCadastroExiste);
             }
             else if (txtTipo.Text != string.Empty)
             {
-                bool isCadastroExiste = Buscar.BuscarCadastroDespesaPorTipo(txtTipo.Text, gdvPesquisarDespesa);
+                bool isCadastroExiste = Buscar.BuscarCadastroDespesaPorTipo(txtTipo.Text, gdvPesquisarDespesaCusto);
 
                 MensagemDespesaCustoNaoEncontrada(isCadastroExiste);
             }
             else if (cmbCategoria.Text != string.Empty)
             {
-                bool isCadastroExiste = Buscar.BuscarCadastroDespesaPorCategoria(cmbCategoria.Text, gdvPesquisarDespesa);
+                bool isCadastroExiste = Buscar.BuscarCadastroDespesaPorCategoria(cmbCategoria.Text, gdvPesquisarDespesaCusto);
 
                 MensagemDespesaCustoNaoEncontrada(isCadastroExiste);
             }
@@ -71,7 +69,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 OpcaoDoUsuario = MessageBox.Show("Deseja Exibir Todos As Despesas/Custos?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (OpcaoDoUsuario == DialogResult.Yes)
                 {
-                    bool isCadastroExiste = Buscar.BuscarCadastroTudoDespesa(gdvPesquisarDespesa);
+                    bool isCadastroExiste = Buscar.BuscarCadastroTudoDespesa(gdvPesquisarDespesaCusto);
 
                     MensagemDespesaCustoNaoEncontrada(isCadastroExiste);
                 }
@@ -90,12 +88,12 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnExportarParaExcel_Click(object sender, EventArgs e)
         {
-            ExportarExcel.GerarExcel(gdvPesquisarDespesa);
+            ExportarExcel.GerarExcel(gdvPesquisarDespesaCusto);
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            Imprimir.ImprimirGridView("Relatorio de Despesa", gdvPesquisarDespesa);
+            Imprimir.ImprimirGridView("Relatorio de Despesa", gdvPesquisarDespesaCusto);
         }
 
         private void btnSelecionar_Click(object sender, EventArgs e)
@@ -112,15 +110,26 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void SelecaoGridViewPreencherTextBox()
         {
-            if (gdvPesquisarDespesa.RowCount >= 1)
+            if (gdvPesquisarDespesaCusto.RowCount >= 1)
             {
                 int indice = -1;
 
-                cadastroDespesas.txtCodigo.Text = gdvPesquisarDespesa.SelectedCells[indice += 1].Value.ToString();
+                cadastroDespesas.txtCodigo.Text = gdvPesquisarDespesaCusto.SelectedCells[indice += 1].Value.ToString();
 
-                cadastroDespesas.txtDescricao.Text = gdvPesquisarDespesa.SelectedCells[indice += 1].Value.ToString();
+                cadastroDespesas.txtTitulo.Text = gdvPesquisarDespesaCusto.SelectedCells[indice += 1].Value.ToString();
 
-                cadastroDespesas.txtTipo.Text = gdvPesquisarDespesa.SelectedCells[indice += 1].Value.ToString();
+                cadastroDespesas.cmbTipo.Text = gdvPesquisarDespesaCusto.SelectedCells[indice += 1].Value.ToString();
+
+                if (gdvPesquisarDespesaCusto.SelectedCells[indice += 1].Value.ToString() == "Despesa")
+                {
+                    cadastroDespesas.chbDespesa.Checked = true;
+                    cadastroDespesas.chbCusto.Checked = false;
+                }
+                else if (gdvPesquisarDespesaCusto.SelectedCells[indice].Value.ToString() == "Custo")
+                {
+                    cadastroDespesas.chbCusto.Checked = true;
+                    cadastroDespesas.chbDespesa.Checked = false;
+                }
 
                 this.Close();
             }

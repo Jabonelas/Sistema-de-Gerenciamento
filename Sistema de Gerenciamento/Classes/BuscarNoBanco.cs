@@ -1614,7 +1614,7 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cd_tipo " +
+                    string query = "select distinct cd_tipo " +
                                    "from tb_CadastroDespesaCustos " +
                                    "where cd_categoria = 'Despesa'";
 
@@ -1652,7 +1652,8 @@ namespace Sistema_de_Gerenciamento.Classes
                 {
                     string query = "select * " +
                                    "from tb_CadastroDespesaCustos " +
-                                   "where cd_tipo like @tipo and cd_categoria = 'Despesa'";
+                                   "where cd_tipo like @tipo and cd_categoria = 'Despesa' " +
+                                   "order by cd_descricao asc";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -1679,6 +1680,241 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Lista Despesa Por Tipo
+
+        #region Buscar Despesa Por Codigo
+
+        public bool BuscarDespesaPorCogigo(int _codigo, string _categoria, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * " +
+                                   "from tb_DespesasCustos " +
+                                   "where dc_codigo = @codigo and dc_categoria = @categoria";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigo", _codigo);
+                    adapter.SelectCommand.Parameters.AddWithValue("@categoria", _categoria);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarDespesaPorCodigoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Buscar Despesa Por Codigo
+
+        #region Buscar Despesa Por Tipo
+
+        public bool BuscarDespesaPorTipo(string _tipo, string _categoria, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * " +
+                                   "from tb_DespesasCustos " +
+                                   "where dc_tipo = @tipo and dc_categoria = @categoria";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@tipo", _tipo);
+                    adapter.SelectCommand.Parameters.AddWithValue("@categoria", _categoria);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarDespesaPorTipoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Buscar Despesa Por Tipo
+
+        #region Buscar Despesa Por Titulo
+
+        public bool BuscarDespesaPorTitulo(string _titulo, string _categoria, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * " +
+                                   "from tb_DespesasCustos " +
+                                   "where dc_fornecedor_titulo like @titulo and dc_categoria = @categoria";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.AddWithValue("@titulo", string.Format("%{0}%", _titulo));
+                    adapter.SelectCommand.Parameters.AddWithValue("@categoria", _categoria);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarDespesaPorTituloNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Buscar Despesa Por Titulo
+
+        #region Buscar Despesa Por Descricao
+
+        public bool BuscarDespesaPorDescricao(string _descricao, string _categoria, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * " +
+                                   "from tb_DespesasCustos " +
+                                   "where dc_descricao like @descricao and dc_categoria = @categoria";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@descricao", string.Format("%{0}%", _descricao));
+                    adapter.SelectCommand.Parameters.AddWithValue("@categoria", _categoria);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarDespesaPorDescricaoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Buscar Despesa Por Descricao
+
+        #region Buscar Despesa
+
+        public bool BuscarDespesa(string _categoria, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * " +
+                                   "from tb_DespesasCustos " +
+                                   "where dc_categoria = @categoria";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@categoria", _categoria);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarDespesaNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Buscar Despesa
 
         #endregion Buscar Despesa
 
@@ -1988,8 +2224,6 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Quantidade de Cada Item da Nota Fiscal de Entrada
 
-        #endregion Buscar Compra
-
         #region Preencher Lista Estoque Produto
 
         public List<DadosEstoqueProduto> BuscarEstoqueProdutoListaProduto(int _numeroNF)
@@ -2071,5 +2305,7 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion PreencherGridView Com Dados do Estoque Produto
+
+        #endregion Buscar Compra
     }
 }

@@ -181,6 +181,15 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Gerar Carne
 
+        #region Despesa
+
+        public void ErroAoInserirDadosDespesa(Exception _e)
+        {
+            MessageBox.Show($"(INS-DE01) Erro ao Inserir Dados de Despesa \n\nErro: {_e}", "Erro Inserir Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Despesa
+
         #endregion Forms
 
         #region Banco
@@ -258,9 +267,14 @@ namespace Sistema_de_Gerenciamento
 
         #region Despesa
 
+        public void ErroAoAdicionarDespesaCustoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(INS-DE01) Erro ao Inserir Despesa/Custo \n\nErro: {_e}", "Erro Inserir Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         public void ErroAoAdicionarDespesaNoBanco(Exception _e)
         {
-            MessageBox.Show($"(INS-DE01) Erro ao Inserir Despesa \n\nErro: {_e}", "Erro Inserir Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(INS-DE02) Erro ao Inserir Despesa \n\nErro: {_e}", "Erro Inserir Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Despesa
@@ -618,6 +632,35 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Gerar Carne
+
+        #region Pesquisar Despesa
+
+        public void ErroAoBuscarDespesaPorCodigoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE01) Erro ao Realizar Busca de Despesa Por Codigo \n\nErro: {_e}", "Erro Busca Despesa Por Codigo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarDespesaPorTipoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE02) Erro ao Realizar Busca de Despesa Por Tipo \n\nErro: {_e}", "Erro Busca Despesa Por Tipo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarDespesaPorTituloNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE03) Erro ao Realizar Busca de Despesa Por Titulo \n\nErro: {_e}", "Erro Busca Despesa Por Titulo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarDespesaPorDescricaoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE04) Erro ao Realizar Busca de Despesa Por Descricao \n\nErro: {_e}", "Erro Busca Despesa Por Descricao!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarDespesaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE05) Erro ao Realizar Busca de Despesa \n\nErro: {_e}", "Erro Busca Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Pesquisar Despesa
 
         #endregion Buscar No Banco
 

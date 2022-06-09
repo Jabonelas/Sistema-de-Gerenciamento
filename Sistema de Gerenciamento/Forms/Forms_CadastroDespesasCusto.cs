@@ -36,12 +36,6 @@ namespace Sistema_de_Gerenciamento
             this.Close();
         }
 
-        private void btnBuscarCliente_Click(object sender, EventArgs e)
-        {
-            Forms_PesquisarDespesaCusto buscarCliente = new Forms_PesquisarDespesaCusto(this);
-            buscarCliente.ShowDialog();
-        }
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             SalvarCastroDespesas();
@@ -59,13 +53,13 @@ namespace Sistema_de_Gerenciamento
                     {
                         MessageBox.Show("Defina a Categoria!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-                    else if (VerificarExistencia.VerificarExistenciaDeDespesa(txtDescricao.Text) == false)
+                    else if (VerificarExistencia.VerificarExistenciaDeDespesa(txtTitulo.Text) == false)
                     {
-                        Salvar.InserirCadastroDespesa(txtDescricao.Text, txtTipo.Text, lblCategoria.Text);
+                        Salvar.InserirCadastroDespesa(txtTitulo.Text, cmbTipo.Text, lblCategoria.Text);
 
-                        txtCodigo.Text = Buscar.BuscarCodigoDespesa(txtDescricao.Text).ToString();
+                        txtCodigo.Text = Buscar.BuscarCodigoDespesa(txtTitulo.Text).ToString();
                     }
-                    else if (VerificarExistencia.VerificarExistenciaDeDespesa(txtDescricao.Text) == true)
+                    else if (VerificarExistencia.VerificarExistenciaDeDespesa(txtTitulo.Text) == true)
                     {
                         MessageBox.Show("Despesa/Custo Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -92,14 +86,14 @@ namespace Sistema_de_Gerenciamento
             {
                 if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
-                    if (VerificarExistencia.VerificarExistenciaDeDespesa(txtDescricao.Text) == false)
+                    if (VerificarExistencia.VerificarExistenciaDeDespesa(txtTitulo.Text) == false)
                     {
                         MessageBox.Show("Despesa Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
-                        Atualizar.AtualizarCadastroDespesa(Convert.ToInt32(txtCodigo.Text), txtDescricao.Text,
-                            txtTipo.Text, lblCategoria.Text);
+                        Atualizar.AtualizarCadastroDespesa(Convert.ToInt32(txtCodigo.Text), txtTitulo.Text,
+                            cmbTipo.Text, lblCategoria.Text);
                     }
                 }
             }
@@ -110,6 +104,12 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Atualziar Casdastro de Despesas
+
+        private void btnBuscar_Click_1(object sender, EventArgs e)
+        {
+            Forms_PesquisarDespesaCusto buscarDespesasCusto = new Forms_PesquisarDespesaCusto(this);
+            buscarDespesasCusto.ShowDialog();
+        }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
@@ -124,13 +124,13 @@ namespace Sistema_de_Gerenciamento
             {
                 if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
-                    if (VerificarExistencia.VerificarExistenciaDeDespesa(txtDescricao.Text) == false)
+                    if (VerificarExistencia.VerificarExistenciaDeDespesa(txtTitulo.Text) == false)
                     {
                         MessageBox.Show("Cliente Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
-                        Excluir.ExcluirCadastroDespesa(Convert.ToInt32(txtCodigo.Text), txtDescricao.Text);
+                        Excluir.ExcluirCadastroDespesa(Convert.ToInt32(txtCodigo.Text), txtTitulo.Text);
                     }
                 }
             }
@@ -142,23 +142,20 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Excluir Cadastro Despesa
 
-        private void txtDescricao_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
-        }
-
-        private void txtTipo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
-        }
-
         private void chbDespesa_Click(object sender, EventArgs e)
+        {
+            LayoutDespesa();
+        }
+
+        #region LayoutDespesa
+
+        private void LayoutDespesa()
         {
             if (chbDespesa.Checked == true)
             {
                 chbCusto.Checked = false;
 
-                lblDescricao.Text = "Descrição Despesa";
+                lblDescricao.Text = "Titulo Despesa";
                 lblTipo.Text = "Tipo Despesa";
 
                 lblCategoria.Text = "Despesa";
@@ -166,18 +163,34 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
+        #endregion LayoutDespesa
+
         private void chbCusto_Click(object sender, EventArgs e)
+        {
+            LayoutCusto();
+        }
+
+        #region Layout Custo
+
+        private void LayoutCusto()
         {
             if (chbCusto.Checked == true)
             {
                 chbDespesa.Checked = false;
 
-                lblDescricao.Text = "Descrição Custo";
+                lblDescricao.Text = "Titulo Custo";
                 lblTipo.Text = "Tipo Custo";
 
                 lblCategoria.Text = "Custo";
                 this.Text = "Cadastro Custo";
             }
+        }
+
+        #endregion Layout Custo
+
+        private void txtDescricao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
         }
     }
 }

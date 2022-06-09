@@ -15,12 +15,30 @@ namespace Sistema_de_Gerenciamento.Forms
     {
         private BuscarNoBanco Buscar = new BuscarNoBanco();
 
-        private List<DadosDespesasCusto> despesa = new List<DadosDespesasCusto>();
+        private AdicionarNoBanco Salvar = new AdicionarNoBanco();
+
+        private MensagensErro Erro = new MensagensErro();
 
         public Forms_Despesas()
         {
             InitializeComponent();
+
+            layout();
         }
+
+        #region Layout Tela Despesa
+
+        private void layout()
+        {
+            lblCNPJ.Visible = false;
+            txtCNPJ.Visible = false;
+            txtValorParcelas.Visible = false;
+            lblValorParcelas.Visible = false;
+            cmbQuantidadeParcelas.Visible = false;
+            lblQuantidadeParcelas.Visible = false;
+        }
+
+        #endregion Layout Tela Despesa
 
         private void bntSair_Click(object sender, EventArgs e)
         {
@@ -66,6 +84,13 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void cmbTipoDespesa_Enter(object sender, EventArgs e)
         {
+            PreencherComboBoxTipo();
+        }
+
+        #region Preencher ComboBox Tipo
+
+        private void PreencherComboBoxTipo()
+        {
             cmbTipoDespesa.MaxLength = 50;
 
             cmbTipoDespesa.Items.Clear();
@@ -76,31 +101,11 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
+        #endregion Preencher ComboBox Tipo
+
         private void cmbTipoDespesa_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
-        }
-
-        private void cmbTipoDespesa_MouseUp(object sender, MouseEventArgs e)
-        {
-            //List<DadosDespesasCusto> listaDespesas = Buscar.BuscarListaDespesaPorTipo(cmbTipoDespesa.Text);
-
-            //if (listaDespesas.Count != 0)
-            //{
-            //    foreach (DadosDespesasCusto item in listaDespesas)
-            //    {
-            //        txtCodigo.Text = item.codigo.ToString();
-            //    }
-            //}
-            //else
-            //{
-            //    txtCodigo.Text = string.Empty;
-            //}
-
-            //if (cmbTipoDespesa.Text == string.Empty)
-            //{
-            //    txtCodigo.Text = string.Empty;
-            //}
         }
 
         private void cmbDescricao_KeyPress(object sender, KeyPressEventArgs e)
@@ -108,9 +113,53 @@ namespace Sistema_de_Gerenciamento.Forms
             ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
         }
 
-        private void cmbTipoDespesa_Leave(object sender, EventArgs e)
+        private void cmbDescricao_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cmbDescricao.Items.Clear();
+            BuscarCodigoDespesa();
+        }
+
+        #region Buscar Codigo de Despesa
+
+        private void BuscarCodigoDespesa()
+        {
+            List<DadosDespesasCusto> listaDespesas = Buscar.BuscarListaDespesaPorTipo(cmbTipoDespesa.Text);
+
+            if (listaDespesas.Count != 0)
+            {
+                foreach (DadosDespesasCusto item in listaDespesas)
+                {
+                    if (cmbFornecedorTitulo.Text == item.descricao)
+                    {
+                        txtCodigo.Text = item.codigo.ToString();
+                    }
+                }
+            }
+        }
+
+        #endregion Buscar Codigo de Despesa
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Forms_PesquisarDespesa pesquisarDespesa = new Forms_PesquisarDespesa(this);
+            pesquisarDespesa.ShowDialog();
+        }
+
+        private void cmbTipoDespesa_SelectedValueChanged(object sender, EventArgs e)
+        {
+            PreencherComboBoxFornecedorTitulo();
+        }
+
+        #region Preencher ComboBox Fornecedor Titulo
+
+        private void PreencherComboBoxFornecedorTitulo()
+        {
+            cmbFornecedorTitulo.Items.Clear();
+            cmbFornecedorTitulo.Text = String.Empty;
+            txtCodigo.Text = String.Empty;
 
             List<DadosDespesasCusto> listaDespesas = Buscar.BuscarListaDespesaPorTipo(cmbTipoDespesa.Text);
 
@@ -118,7 +167,7 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 foreach (DadosDespesasCusto item in listaDespesas)
                 {
-                    cmbDescricao.Items.Add(item.descricao);
+                    cmbFornecedorTitulo.Items.Add(item.descricao);
                 }
             }
             else
@@ -132,20 +181,57 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        private void cmbDescricao_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            List<DadosDespesasCusto> listaDespesas = Buscar.BuscarListaDespesaPorTipo(cmbTipoDespesa.Text);
+        #endregion Preencher ComboBox Fornecedor Titulo
 
-            if (listaDespesas.Count != 0)
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            SalvarDespesa();
+        }
+
+        #region Salvar Despesa
+
+        private void SalvarDespesa()
+        {
+            try
             {
-                foreach (DadosDespesasCusto item in listaDespesas)
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
-                    if (cmbDescricao.Text == item.descricao)
-                    {
-                        txtCodigo.Text = item.codigo.ToString();
-                    }
+                    Salvar.InserirDespesa(Convert.ToInt32(txtCodigo.Text), cmbTipoDespesa.Text, txtDescricao.Text, cmbFornecedorTitulo.Text,
+                              txtCNPJ.Text, Convert.ToDateTime(txtEmissao.Text), Convert.ToDateTime(txtVencimento.Text), cmbFrequencia.Text,
+                        Convert.ToDecimal(txtValor.Text.Replace("R$", "")), Convert.ToInt32(cmbQuantidadeParcelas.Text),
+                        Convert.ToDecimal(txtValorParcelas.Text), lblCategoria.Text);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoInserirDadosDespesa(ex);
+            }
+        }
+
+        #endregion Salvar Despesa
+
+        private void txtVencimento_Leave(object sender, EventArgs e)
+        {
+            VerificarData();
+        }
+
+        #region Verificar Data
+
+        private void VerificarData()
+        {
+            if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtVencimento) == false)
+            {
+                ManipulacaoTextBox.ValidacaoData(txtVencimento);
+
+                if (Convert.ToDateTime(txtEmissao.Text) > Convert.ToDateTime(txtVencimento.Text))
+                {
+                    MessageBox.Show("A Data de Emissão Não Pode Ser Maior que a Data De Vencimento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    txtVencimento.Focus();
                 }
             }
         }
+
+        #endregion Verificar Data
     }
 }

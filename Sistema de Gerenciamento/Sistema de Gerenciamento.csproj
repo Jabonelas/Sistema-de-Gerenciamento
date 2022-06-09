@@ -255,6 +255,12 @@
     <Compile Include="Classes\Imprimir.cs" />
     <Compile Include="Classes\Temperatures.cs" />
     <Compile Include="Classes\VerificacaoDeExistencia.cs" />
+    <Compile Include="Forms\Forms_PesquisarDespesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_PesquisarDespesa.Designer.cs">
+      <DependentUpon>Forms_PesquisarDespesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Forms_Despesas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -439,6 +445,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_PesquisarContasAPagar.resx">
       <DependentUpon>Forms_PesquisarContasAPagar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_PesquisarDespesa.resx">
+      <DependentUpon>Forms_PesquisarDespesa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_PesquisarDespesaCusto.resx">
       <DependentUpon>Forms_PesquisarDespesaCusto.cs</DependentUpon>

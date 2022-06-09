@@ -423,6 +423,8 @@ namespace Sistema_de_Gerenciamento
 
         #region Inserir Despesa
 
+        #region Inserir Cadastro de Despesas e Custo
+
         public void InserirCadastroDespesa(string _descricao, string _tipo, string _categoria)
         {
             try
@@ -433,7 +435,7 @@ namespace Sistema_de_Gerenciamento
                                    "values(@descricao,@tipo,@categoria)";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
-                    cmd.Parameters.AddWithValue("@descricao", SqlDbType.Date).Value = _descricao;
+                    cmd.Parameters.AddWithValue("@descricao", SqlDbType.VarChar).Value = _descricao;
                     cmd.Parameters.AddWithValue("@tipo", SqlDbType.VarChar).Value = _tipo;
                     cmd.Parameters.AddWithValue("@categoria", SqlDbType.VarChar).Value = _categoria;
 
@@ -444,9 +446,52 @@ namespace Sistema_de_Gerenciamento
             }
             catch (Exception ex)
             {
+                Erro.ErroAoAdicionarDespesaCustoNoBanco(ex);
+            }
+        }
+
+        #endregion Inserir Cadastro de Despesas e Custo
+
+        #region Inserir Despesas
+
+        public void InserirDespesa(int _codigo, string _tipo, string _descricao, string _forncedorTitulo, string _cnpj, DateTime _emissao,
+            DateTime _vencimento, string _frequencia, decimal _valor, int _quantidadeParcelas, decimal _valorParcelas, string _categoria)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "insert into tb_DespesasCustos (dc_codigo, dc_tipo, dc_descricao, dc_fornecedor_titulo, dc_cnpj, " +
+                                   "dc_emissao, dc_vencimento, dc_frequencia, dc_valor, dc_quantidade_parcelas, " +
+                                   "dc_valor_parcela, dc_categoria) " +
+                                   "values(@codigo,@tipo,@descricao,@fornecedorTitulo,@cnpj,@emissao,@vencimento,@frequencia," +
+                                   "@valor,@quantidadeParcelas,@valorParcelas,@categoria)";
+
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+                    cmd.Parameters.AddWithValue("@codigo", SqlDbType.Int).Value = _codigo;
+                    cmd.Parameters.AddWithValue("@tipo", SqlDbType.VarChar).Value = _tipo;
+                    cmd.Parameters.AddWithValue("@descricao", SqlDbType.VarChar).Value = _descricao;
+                    cmd.Parameters.AddWithValue("@fornecedorTitulo", SqlDbType.VarChar).Value = _forncedorTitulo;
+                    cmd.Parameters.AddWithValue("@cnpj", SqlDbType.VarChar).Value = _cnpj;
+                    cmd.Parameters.AddWithValue("@emissao", SqlDbType.Date).Value = _emissao;
+                    cmd.Parameters.AddWithValue("@vencimento", SqlDbType.Date).Value = _vencimento;
+                    cmd.Parameters.AddWithValue("@frequencia", SqlDbType.VarChar).Value = _frequencia;
+                    cmd.Parameters.AddWithValue("@valor", SqlDbType.Decimal).Value = _valor;
+                    cmd.Parameters.AddWithValue("@quantidadeParcelas", SqlDbType.Int).Value = _quantidadeParcelas;
+                    cmd.Parameters.AddWithValue("@valorParcelas", SqlDbType.Decimal).Value = _valorParcelas;
+                    cmd.Parameters.AddWithValue("@categoria", SqlDbType.VarChar).Value = _categoria;
+                    cmd.ExecuteNonQuery();
+
+                    AvisoCantoInferiorDireito.Inclusao();
+                }
+            }
+            catch (Exception ex)
+            {
                 Erro.ErroAoAdicionarDespesaNoBanco(ex);
             }
         }
+
+        #endregion Inserir Despesas
 
         #endregion Inserir Despesa
 

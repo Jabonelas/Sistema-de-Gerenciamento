@@ -55,7 +55,11 @@
             this.btnExportarParaExcel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnImprimir = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnSelecionar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.gdvPesquisarDespesa = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.gdvPesquisarDespesaCusto = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.cd_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cd_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cd_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cd_categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtCodigoDespesa = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnPesquisar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -65,11 +69,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
-            this.cd_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cd_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cd_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cd_categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarDespesa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarDespesaCusto)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuSeparator1
@@ -191,7 +191,7 @@
             this.btnExportarParaExcel.BackColor1 = System.Drawing.Color.Transparent;
             this.btnExportarParaExcel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExportarParaExcel.BackgroundImage")));
             this.btnExportarParaExcel.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnExportarParaExcel.ButtonText = "Exportar para o Execel \r\nRelação lista Despesas";
+            this.btnExportarParaExcel.ButtonText = "Exportar para o Execel \r\nRelação lista Despesas e Custos";
             this.btnExportarParaExcel.ButtonTextMarginLeft = 0;
             this.btnExportarParaExcel.ColorContrastOnClick = 45;
             this.btnExportarParaExcel.ColorContrastOnHover = 45;
@@ -281,7 +281,7 @@
             this.btnImprimir.BackColor1 = System.Drawing.Color.Transparent;
             this.btnImprimir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnImprimir.BackgroundImage")));
             this.btnImprimir.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnImprimir.ButtonText = "Imprimir Relação dos Despesas";
+            this.btnImprimir.ButtonText = "Imprimir Relação das\r\nDespesas e Custos";
             this.btnImprimir.ButtonTextMarginLeft = 0;
             this.btnImprimir.ColorContrastOnClick = 45;
             this.btnImprimir.ColorContrastOnHover = 45;
@@ -447,18 +447,18 @@
             this.btnSelecionar.UseDefaultRadiusAndThickness = true;
             this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
             // 
-            // gdvPesquisarDespesa
+            // gdvPesquisarDespesaCusto
             // 
-            this.gdvPesquisarDespesa.AllowCustomTheming = false;
-            this.gdvPesquisarDespesa.AllowUserToAddRows = false;
-            this.gdvPesquisarDespesa.AllowUserToDeleteRows = false;
+            this.gdvPesquisarDespesaCusto.AllowCustomTheming = false;
+            this.gdvPesquisarDespesaCusto.AllowUserToAddRows = false;
+            this.gdvPesquisarDespesaCusto.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.gdvPesquisarDespesa.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.gdvPesquisarDespesa.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gdvPesquisarDespesa.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.gdvPesquisarDespesa.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.gdvPesquisarDespesa.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.gdvPesquisarDespesaCusto.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gdvPesquisarDespesaCusto.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gdvPesquisarDespesaCusto.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gdvPesquisarDespesaCusto.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.gdvPesquisarDespesaCusto.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
@@ -466,31 +466,31 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gdvPesquisarDespesa.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.gdvPesquisarDespesa.ColumnHeadersHeight = 40;
-            this.gdvPesquisarDespesa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gdvPesquisarDespesaCusto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.gdvPesquisarDespesaCusto.ColumnHeadersHeight = 40;
+            this.gdvPesquisarDespesaCusto.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cd_id,
             this.cd_descricao,
             this.cd_tipo,
             this.cd_categoria});
-            this.gdvPesquisarDespesa.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            this.gdvPesquisarDespesa.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gdvPesquisarDespesa.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.gdvPesquisarDespesa.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.gdvPesquisarDespesa.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.gdvPesquisarDespesa.CurrentTheme.BackColor = System.Drawing.Color.White;
-            this.gdvPesquisarDespesa.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.gdvPesquisarDespesa.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue;
-            this.gdvPesquisarDespesa.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            this.gdvPesquisarDespesa.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.gdvPesquisarDespesa.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.gdvPesquisarDespesa.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.gdvPesquisarDespesa.CurrentTheme.Name = null;
-            this.gdvPesquisarDespesa.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.gdvPesquisarDespesa.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gdvPesquisarDespesa.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.gdvPesquisarDespesa.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            this.gdvPesquisarDespesa.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.gdvPesquisarDespesaCusto.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            this.gdvPesquisarDespesaCusto.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gdvPesquisarDespesaCusto.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.gdvPesquisarDespesaCusto.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.gdvPesquisarDespesaCusto.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.gdvPesquisarDespesaCusto.CurrentTheme.BackColor = System.Drawing.Color.White;
+            this.gdvPesquisarDespesaCusto.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.gdvPesquisarDespesaCusto.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            this.gdvPesquisarDespesaCusto.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            this.gdvPesquisarDespesaCusto.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.gdvPesquisarDespesaCusto.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.gdvPesquisarDespesaCusto.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.gdvPesquisarDespesaCusto.CurrentTheme.Name = null;
+            this.gdvPesquisarDespesaCusto.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.gdvPesquisarDespesaCusto.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gdvPesquisarDespesaCusto.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.gdvPesquisarDespesaCusto.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.gdvPesquisarDespesaCusto.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
@@ -498,26 +498,54 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gdvPesquisarDespesa.DefaultCellStyle = dataGridViewCellStyle3;
-            this.gdvPesquisarDespesa.EnableHeadersVisualStyles = false;
-            this.gdvPesquisarDespesa.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
-            this.gdvPesquisarDespesa.HeaderBackColor = System.Drawing.Color.DodgerBlue;
-            this.gdvPesquisarDespesa.HeaderBgColor = System.Drawing.Color.Empty;
-            this.gdvPesquisarDespesa.HeaderForeColor = System.Drawing.Color.White;
-            this.gdvPesquisarDespesa.Location = new System.Drawing.Point(9, 148);
-            this.gdvPesquisarDespesa.Name = "gdvPesquisarDespesa";
-            this.gdvPesquisarDespesa.ReadOnly = true;
-            this.gdvPesquisarDespesa.RowHeadersVisible = false;
-            this.gdvPesquisarDespesa.RowHeadersWidth = 50;
-            this.gdvPesquisarDespesa.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.gdvPesquisarDespesaCusto.DefaultCellStyle = dataGridViewCellStyle3;
+            this.gdvPesquisarDespesaCusto.EnableHeadersVisualStyles = false;
+            this.gdvPesquisarDespesaCusto.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.gdvPesquisarDespesaCusto.HeaderBackColor = System.Drawing.Color.DodgerBlue;
+            this.gdvPesquisarDespesaCusto.HeaderBgColor = System.Drawing.Color.Empty;
+            this.gdvPesquisarDespesaCusto.HeaderForeColor = System.Drawing.Color.White;
+            this.gdvPesquisarDespesaCusto.Location = new System.Drawing.Point(9, 148);
+            this.gdvPesquisarDespesaCusto.Name = "gdvPesquisarDespesaCusto";
+            this.gdvPesquisarDespesaCusto.ReadOnly = true;
+            this.gdvPesquisarDespesaCusto.RowHeadersVisible = false;
+            this.gdvPesquisarDespesaCusto.RowHeadersWidth = 50;
+            this.gdvPesquisarDespesaCusto.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gdvPesquisarDespesa.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.gdvPesquisarDespesa.RowTemplate.Height = 40;
-            this.gdvPesquisarDespesa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvPesquisarDespesa.Size = new System.Drawing.Size(850, 267);
-            this.gdvPesquisarDespesa.TabIndex = 175;
-            this.gdvPesquisarDespesa.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            this.gdvPesquisarDespesa.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvPesquisarDespesa_CellContentClick);
+            this.gdvPesquisarDespesaCusto.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.gdvPesquisarDespesaCusto.RowTemplate.Height = 40;
+            this.gdvPesquisarDespesaCusto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gdvPesquisarDespesaCusto.Size = new System.Drawing.Size(850, 267);
+            this.gdvPesquisarDespesaCusto.TabIndex = 175;
+            this.gdvPesquisarDespesaCusto.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            this.gdvPesquisarDespesaCusto.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvPesquisarDespesa_CellContentClick);
+            // 
+            // cd_id
+            // 
+            this.cd_id.DataPropertyName = "cd_id";
+            this.cd_id.HeaderText = "Codigo";
+            this.cd_id.Name = "cd_id";
+            this.cd_id.ReadOnly = true;
+            // 
+            // cd_descricao
+            // 
+            this.cd_descricao.DataPropertyName = "cd_descricao";
+            this.cd_descricao.HeaderText = "Titulo";
+            this.cd_descricao.Name = "cd_descricao";
+            this.cd_descricao.ReadOnly = true;
+            // 
+            // cd_tipo
+            // 
+            this.cd_tipo.DataPropertyName = "cd_tipo";
+            this.cd_tipo.HeaderText = "Tipo";
+            this.cd_tipo.Name = "cd_tipo";
+            this.cd_tipo.ReadOnly = true;
+            // 
+            // cd_categoria
+            // 
+            this.cd_categoria.DataPropertyName = "cd_categoria";
+            this.cd_categoria.HeaderText = "Categoria";
+            this.cd_categoria.Name = "cd_categoria";
+            this.cd_categoria.ReadOnly = true;
             // 
             // txtCodigoDespesa
             // 
@@ -888,34 +916,6 @@
             this.cmbCategoria.Size = new System.Drawing.Size(142, 23);
             this.cmbCategoria.TabIndex = 187;
             // 
-            // cd_id
-            // 
-            this.cd_id.DataPropertyName = "cd_id";
-            this.cd_id.HeaderText = "Codigo";
-            this.cd_id.Name = "cd_id";
-            this.cd_id.ReadOnly = true;
-            // 
-            // cd_descricao
-            // 
-            this.cd_descricao.DataPropertyName = "cd_descricao";
-            this.cd_descricao.HeaderText = "Descricao";
-            this.cd_descricao.Name = "cd_descricao";
-            this.cd_descricao.ReadOnly = true;
-            // 
-            // cd_tipo
-            // 
-            this.cd_tipo.DataPropertyName = "cd_tipo";
-            this.cd_tipo.HeaderText = "Tipo";
-            this.cd_tipo.Name = "cd_tipo";
-            this.cd_tipo.ReadOnly = true;
-            // 
-            // cd_categoria
-            // 
-            this.cd_categoria.DataPropertyName = "cd_categoria";
-            this.cd_categoria.HeaderText = "Categoria";
-            this.cd_categoria.Name = "cd_categoria";
-            this.cd_categoria.ReadOnly = true;
-            // 
             // Forms_PesquisarDespesaCusto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -928,7 +928,7 @@
             this.Controls.Add(this.btnExportarParaExcel);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnSelecionar);
-            this.Controls.Add(this.gdvPesquisarDespesa);
+            this.Controls.Add(this.gdvPesquisarDespesaCusto);
             this.Controls.Add(this.txtCodigoDespesa);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnPesquisar);
@@ -940,7 +940,7 @@
             this.Name = "Forms_PesquisarDespesaCusto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisar Despesa";
-            ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarDespesa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarDespesaCusto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -952,7 +952,7 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnExportarParaExcel;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnImprimir;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnSelecionar;
-        private Bunifu.UI.WinForms.BunifuDataGridView gdvPesquisarDespesa;
+        private Bunifu.UI.WinForms.BunifuDataGridView gdvPesquisarDespesaCusto;
         private Bunifu.UI.WinForms.BunifuTextBox txtCodigoDespesa;
         private System.Windows.Forms.Label label8;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnPesquisar;
