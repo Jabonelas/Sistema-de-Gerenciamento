@@ -67,18 +67,6 @@
             this.btnSalvar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.gdvCompra = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.ne_indice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ne_numero_nf = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ne_cnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ne_razao_social = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ne_codigo_produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ne_descricao_produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ne_quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ne_unidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ne_valor_unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ne_valor_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ne_data_emissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ne_data_lancamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bntSair = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnAlterar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.gdvEstoque = new Bunifu.UI.WinForms.BunifuDataGridView();
@@ -101,6 +89,18 @@
             this.txtCNPJ = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtTotalItens = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtValorTotal = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.ne_numero_nf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ne_indice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ne_cnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ne_razao_social = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ne_codigo_produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ne_descricao_produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ne_quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ne_unidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ne_valor_unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ne_valor_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ne_data_emissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ne_data_lancamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gdvCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvEstoque)).BeginInit();
             this.SuspendLayout();
@@ -409,8 +409,8 @@
             this.gdvCompra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gdvCompra.ColumnHeadersHeight = 40;
             this.gdvCompra.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ne_indice,
             this.ne_numero_nf,
+            this.ne_indice,
             this.ne_cnpj,
             this.ne_razao_social,
             this.ne_codigo_produto,
@@ -465,104 +465,6 @@
             this.gdvCompra.Size = new System.Drawing.Size(897, 303);
             this.gdvCompra.TabIndex = 160;
             this.gdvCompra.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            // 
-            // ne_indice
-            // 
-            this.ne_indice.DataPropertyName = "ne_indice";
-            this.ne_indice.HeaderText = "Índice";
-            this.ne_indice.Name = "ne_indice";
-            this.ne_indice.ReadOnly = true;
-            this.ne_indice.Width = 80;
-            // 
-            // ne_numero_nf
-            // 
-            this.ne_numero_nf.DataPropertyName = "ne_numero_nf";
-            this.ne_numero_nf.HeaderText = "Nº NF";
-            this.ne_numero_nf.Name = "ne_numero_nf";
-            this.ne_numero_nf.ReadOnly = true;
-            this.ne_numero_nf.Width = 78;
-            // 
-            // ne_cnpj
-            // 
-            this.ne_cnpj.DataPropertyName = "ne_cnpj";
-            this.ne_cnpj.HeaderText = "CNPJ";
-            this.ne_cnpj.Name = "ne_cnpj";
-            this.ne_cnpj.ReadOnly = true;
-            this.ne_cnpj.Visible = false;
-            this.ne_cnpj.Width = 71;
-            // 
-            // ne_razao_social
-            // 
-            this.ne_razao_social.DataPropertyName = "ne_razao_social";
-            this.ne_razao_social.HeaderText = "R. Social";
-            this.ne_razao_social.Name = "ne_razao_social";
-            this.ne_razao_social.ReadOnly = true;
-            this.ne_razao_social.Visible = false;
-            this.ne_razao_social.Width = 96;
-            // 
-            // ne_codigo_produto
-            // 
-            this.ne_codigo_produto.DataPropertyName = "ne_codigo_produto";
-            this.ne_codigo_produto.HeaderText = "Cod. Prod.";
-            this.ne_codigo_produto.Name = "ne_codigo_produto";
-            this.ne_codigo_produto.ReadOnly = true;
-            this.ne_codigo_produto.Width = 112;
-            // 
-            // ne_descricao_produto
-            // 
-            this.ne_descricao_produto.DataPropertyName = "ne_descricao_produto";
-            this.ne_descricao_produto.HeaderText = "Desc. Prod.";
-            this.ne_descricao_produto.Name = "ne_descricao_produto";
-            this.ne_descricao_produto.ReadOnly = true;
-            this.ne_descricao_produto.Width = 117;
-            // 
-            // ne_quantidade
-            // 
-            this.ne_quantidade.DataPropertyName = "ne_quantidade";
-            this.ne_quantidade.HeaderText = "Quant.";
-            this.ne_quantidade.Name = "ne_quantidade";
-            this.ne_quantidade.ReadOnly = true;
-            this.ne_quantidade.Width = 83;
-            // 
-            // ne_unidade
-            // 
-            this.ne_unidade.DataPropertyName = "ne_unidade";
-            this.ne_unidade.HeaderText = "UN";
-            this.ne_unidade.Name = "ne_unidade";
-            this.ne_unidade.ReadOnly = true;
-            this.ne_unidade.Width = 58;
-            // 
-            // ne_valor_unitario
-            // 
-            this.ne_valor_unitario.DataPropertyName = "ne_valor_unitario";
-            this.ne_valor_unitario.HeaderText = "R$ Unit.";
-            this.ne_valor_unitario.Name = "ne_valor_unitario";
-            this.ne_valor_unitario.ReadOnly = true;
-            this.ne_valor_unitario.Width = 92;
-            // 
-            // ne_valor_total
-            // 
-            this.ne_valor_total.DataPropertyName = "ne_valor_total";
-            this.ne_valor_total.HeaderText = "R$ Total";
-            this.ne_valor_total.Name = "ne_valor_total";
-            this.ne_valor_total.ReadOnly = true;
-            this.ne_valor_total.Width = 93;
-            // 
-            // ne_data_emissao
-            // 
-            this.ne_data_emissao.DataPropertyName = "ne_data_emissao";
-            this.ne_data_emissao.HeaderText = "Emissão";
-            this.ne_data_emissao.Name = "ne_data_emissao";
-            this.ne_data_emissao.ReadOnly = true;
-            this.ne_data_emissao.Width = 93;
-            // 
-            // ne_data_lancamento
-            // 
-            this.ne_data_lancamento.DataPropertyName = "ne_data_lancamento";
-            this.ne_data_lancamento.HeaderText = "Entrada";
-            this.ne_data_lancamento.Name = "ne_data_lancamento";
-            this.ne_data_lancamento.ReadOnly = true;
-            this.ne_data_lancamento.Width = 90;
             // 
             // bntSair
             // 
@@ -1271,6 +1173,104 @@
             this.txtValorTotal.UseSystemPasswordChar = false;
             this.txtValorTotal.WordWrap = true;
             // 
+            // ne_numero_nf
+            // 
+            this.ne_numero_nf.DataPropertyName = "ne_numero_nf";
+            this.ne_numero_nf.HeaderText = "Nº NF";
+            this.ne_numero_nf.Name = "ne_numero_nf";
+            this.ne_numero_nf.ReadOnly = true;
+            this.ne_numero_nf.Width = 78;
+            // 
+            // ne_indice
+            // 
+            this.ne_indice.DataPropertyName = "ne_indice";
+            this.ne_indice.HeaderText = "Índice";
+            this.ne_indice.Name = "ne_indice";
+            this.ne_indice.ReadOnly = true;
+            this.ne_indice.Width = 80;
+            // 
+            // ne_cnpj
+            // 
+            this.ne_cnpj.DataPropertyName = "ne_cnpj";
+            this.ne_cnpj.HeaderText = "CNPJ";
+            this.ne_cnpj.Name = "ne_cnpj";
+            this.ne_cnpj.ReadOnly = true;
+            this.ne_cnpj.Visible = false;
+            this.ne_cnpj.Width = 71;
+            // 
+            // ne_razao_social
+            // 
+            this.ne_razao_social.DataPropertyName = "ne_razao_social";
+            this.ne_razao_social.HeaderText = "R. Social";
+            this.ne_razao_social.Name = "ne_razao_social";
+            this.ne_razao_social.ReadOnly = true;
+            this.ne_razao_social.Visible = false;
+            this.ne_razao_social.Width = 96;
+            // 
+            // ne_codigo_produto
+            // 
+            this.ne_codigo_produto.DataPropertyName = "ne_codigo_produto";
+            this.ne_codigo_produto.HeaderText = "Cod. Prod.";
+            this.ne_codigo_produto.Name = "ne_codigo_produto";
+            this.ne_codigo_produto.ReadOnly = true;
+            this.ne_codigo_produto.Width = 112;
+            // 
+            // ne_descricao_produto
+            // 
+            this.ne_descricao_produto.DataPropertyName = "ne_descricao_produto";
+            this.ne_descricao_produto.HeaderText = "Desc. Prod.";
+            this.ne_descricao_produto.Name = "ne_descricao_produto";
+            this.ne_descricao_produto.ReadOnly = true;
+            this.ne_descricao_produto.Width = 117;
+            // 
+            // ne_quantidade
+            // 
+            this.ne_quantidade.DataPropertyName = "ne_quantidade";
+            this.ne_quantidade.HeaderText = "Quant.";
+            this.ne_quantidade.Name = "ne_quantidade";
+            this.ne_quantidade.ReadOnly = true;
+            this.ne_quantidade.Width = 83;
+            // 
+            // ne_unidade
+            // 
+            this.ne_unidade.DataPropertyName = "ne_unidade";
+            this.ne_unidade.HeaderText = "UN";
+            this.ne_unidade.Name = "ne_unidade";
+            this.ne_unidade.ReadOnly = true;
+            this.ne_unidade.Width = 58;
+            // 
+            // ne_valor_unitario
+            // 
+            this.ne_valor_unitario.DataPropertyName = "ne_valor_unitario";
+            this.ne_valor_unitario.HeaderText = "R$ Unit.";
+            this.ne_valor_unitario.Name = "ne_valor_unitario";
+            this.ne_valor_unitario.ReadOnly = true;
+            this.ne_valor_unitario.Width = 92;
+            // 
+            // ne_valor_total
+            // 
+            this.ne_valor_total.DataPropertyName = "ne_valor_total";
+            this.ne_valor_total.HeaderText = "R$ Total";
+            this.ne_valor_total.Name = "ne_valor_total";
+            this.ne_valor_total.ReadOnly = true;
+            this.ne_valor_total.Width = 93;
+            // 
+            // ne_data_emissao
+            // 
+            this.ne_data_emissao.DataPropertyName = "ne_data_emissao";
+            this.ne_data_emissao.HeaderText = "Emissão";
+            this.ne_data_emissao.Name = "ne_data_emissao";
+            this.ne_data_emissao.ReadOnly = true;
+            this.ne_data_emissao.Width = 93;
+            // 
+            // ne_data_lancamento
+            // 
+            this.ne_data_lancamento.DataPropertyName = "ne_data_lancamento";
+            this.ne_data_lancamento.HeaderText = "Entrada";
+            this.ne_data_lancamento.Name = "ne_data_lancamento";
+            this.ne_data_lancamento.ReadOnly = true;
+            this.ne_data_lancamento.Width = 90;
+            // 
             // Forms_Compras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1335,8 +1335,8 @@
         public Bunifu.UI.WinForms.BunifuTextBox txtCNPJ;
         public Bunifu.UI.WinForms.BunifuTextBox txtTotalItens;
         public Bunifu.UI.WinForms.BunifuTextBox txtValorTotal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ne_indice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ne_numero_nf;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ne_indice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ne_cnpj;
         private System.Windows.Forms.DataGridViewTextBoxColumn ne_razao_social;
         private System.Windows.Forms.DataGridViewTextBoxColumn ne_codigo_produto;

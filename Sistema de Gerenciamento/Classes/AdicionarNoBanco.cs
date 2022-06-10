@@ -454,21 +454,20 @@ namespace Sistema_de_Gerenciamento
 
         #region Inserir Despesas
 
-        public void InserirDespesa(int _codigo, string _tipo, string _descricao, string _forncedorTitulo, string _cnpj, DateTime _emissao,
+        public void InserirDespesaCusto(string _tipo, string _descricao, string _forncedorTitulo, string _cnpj, DateTime _emissao,
             DateTime _vencimento, string _frequencia, decimal _valor, int _quantidadeParcelas, decimal _valorParcelas, string _categoria)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "insert into tb_DespesasCustos (dc_codigo, dc_tipo, dc_descricao, dc_fornecedor_titulo, dc_cnpj, " +
+                    string query = "insert into tb_DespesasCustos ( dc_tipo, dc_descricao, dc_fornecedor_titulo, dc_cnpj, " +
                                    "dc_emissao, dc_vencimento, dc_frequencia, dc_valor, dc_quantidade_parcelas, " +
                                    "dc_valor_parcela, dc_categoria) " +
-                                   "values(@codigo,@tipo,@descricao,@fornecedorTitulo,@cnpj,@emissao,@vencimento,@frequencia," +
+                                   "values(@tipo,@descricao,@fornecedorTitulo,@cnpj,@emissao,@vencimento,@frequencia," +
                                    "@valor,@quantidadeParcelas,@valorParcelas,@categoria)";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
-                    cmd.Parameters.AddWithValue("@codigo", SqlDbType.Int).Value = _codigo;
                     cmd.Parameters.AddWithValue("@tipo", SqlDbType.VarChar).Value = _tipo;
                     cmd.Parameters.AddWithValue("@descricao", SqlDbType.VarChar).Value = _descricao;
                     cmd.Parameters.AddWithValue("@fornecedorTitulo", SqlDbType.VarChar).Value = _forncedorTitulo;

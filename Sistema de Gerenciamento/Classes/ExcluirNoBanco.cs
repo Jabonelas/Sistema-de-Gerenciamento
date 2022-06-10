@@ -214,7 +214,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Excluir Grupo Material
 
-        #region Excluir Despesa
+        #region Excluir Cadastro Despesa
 
         public void ExcluirCadastroDespesa(int _cd_id, string _descricao)
         {
@@ -236,7 +236,34 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoExluirCadastroGrupoMaterialNoBanco(ex);
+                Erro.ErroAoExluirCadastroDespesaNoBanco(ex);
+            }
+        }
+
+        #endregion Excluir Cadastro Despesa
+
+        #region Excluir Despesa
+
+        public void ExcluirDespesaCusto(int _codigo)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "delete tb_DespesasCustos where dc_id = @codigo";
+
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+
+                    cmd.Parameters.AddWithValue("@codigo", _codigo);
+
+                    cmd.ExecuteNonQuery();
+
+                    AvisoCantoInferiorDireito.Exclusao();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoExluirDespesaCustoNoBanco(ex);
             }
         }
 

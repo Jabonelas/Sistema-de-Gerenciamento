@@ -107,7 +107,7 @@ namespace Sistema_de_Gerenciamento
 
         private void btnBuscar_Click_1(object sender, EventArgs e)
         {
-            Forms_PesquisarDespesaCusto buscarDespesasCusto = new Forms_PesquisarDespesaCusto(this);
+            Forms_PesquisarCadastroDespesaCusto buscarDespesasCusto = new Forms_PesquisarCadastroDespesaCusto(this);
             buscarDespesasCusto.ShowDialog();
         }
 

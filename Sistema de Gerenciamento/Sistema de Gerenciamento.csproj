@@ -243,7 +243,8 @@
     <Compile Include="Classes\BuscarNoBanco.cs" />
     <Compile Include="Classes\ConectarBanco.cs" />
     <Compile Include="Classes\DadosCliente.cs" />
-    <Compile Include="Classes\DadosDespesasCusto.cs" />
+    <Compile Include="Classes\DadosCadastroDespesasCusto.cs" />
+    <Compile Include="Classes\DadosDespesaCusto.cs" />
     <Compile Include="Classes\DadosEstoqueProduto.cs" />
     <Compile Include="Classes\DadosFinanceiro.cs" />
     <Compile Include="Classes\DadosGrupoMaterial.cs" />
@@ -255,17 +256,17 @@
     <Compile Include="Classes\Imprimir.cs" />
     <Compile Include="Classes\Temperatures.cs" />
     <Compile Include="Classes\VerificacaoDeExistencia.cs" />
-    <Compile Include="Forms\Forms_PesquisarDespesa.cs">
+    <Compile Include="Forms\Forms_PesquisarDespesaCustos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms_PesquisarDespesa.Designer.cs">
-      <DependentUpon>Forms_PesquisarDespesa.cs</DependentUpon>
+    <Compile Include="Forms\Forms_PesquisarDespesaCustos.Designer.cs">
+      <DependentUpon>Forms_PesquisarDespesaCustos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Forms_Despesas.cs">
+    <Compile Include="Forms\Forms_DespesasCustos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms_Despesas.Designer.cs">
-      <DependentUpon>Forms_Despesas.cs</DependentUpon>
+    <Compile Include="Forms\Forms_DespesasCustos.Designer.cs">
+      <DependentUpon>Forms_DespesasCustos.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Forms_CadastroCodigoBarras.cs">
       <SubType>Form</SubType>
@@ -359,11 +360,11 @@
     <Compile Include="Forms\Forms_PesquisarContasAPagar.Designer.cs">
       <DependentUpon>Forms_PesquisarContasAPagar.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Forms_PesquisarDespesaCusto.cs">
+    <Compile Include="Forms\Forms_PesquisarCadastroDespesaCusto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms_PesquisarDespesaCusto.Designer.cs">
-      <DependentUpon>Forms_PesquisarDespesaCusto.cs</DependentUpon>
+    <Compile Include="Forms\Forms_PesquisarCadastroDespesaCusto.Designer.cs">
+      <DependentUpon>Forms_PesquisarCadastroDespesaCusto.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Forms_PesquisarFornecedor.cs">
       <SubType>Form</SubType>
@@ -425,8 +426,8 @@
     <EmbeddedResource Include="Forms\Forms_ConfiguracaoGerencial.resx">
       <DependentUpon>Forms_ConfiguracaoGerencial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms_Despesas.resx">
-      <DependentUpon>Forms_Despesas.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_DespesasCustos.resx">
+      <DependentUpon>Forms_DespesasCustos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_GerarCarne.resx">
       <DependentUpon>Forms_GerarCarne.cs</DependentUpon>
@@ -446,11 +447,11 @@
     <EmbeddedResource Include="Forms\Forms_PesquisarContasAPagar.resx">
       <DependentUpon>Forms_PesquisarContasAPagar.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms_PesquisarDespesa.resx">
-      <DependentUpon>Forms_PesquisarDespesa.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_PesquisarDespesaCustos.resx">
+      <DependentUpon>Forms_PesquisarDespesaCustos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms_PesquisarDespesaCusto.resx">
-      <DependentUpon>Forms_PesquisarDespesaCusto.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_PesquisarCadastroDespesaCusto.resx">
+      <DependentUpon>Forms_PesquisarCadastroDespesaCusto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_PesquisarFornecedor.resx">
       <DependentUpon>Forms_PesquisarFornecedor.cs</DependentUpon>
@@ -463,6 +464,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_TelaAdministrador.resx">
       <DependentUpon>Forms_TelaAdministrador.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_Venda.resx">
       <DependentUpon>Forms_Venda.cs</DependentUpon>

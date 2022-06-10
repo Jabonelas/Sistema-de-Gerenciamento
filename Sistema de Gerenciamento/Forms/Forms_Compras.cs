@@ -76,12 +76,15 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            SalvarCompras();
+            if (SalvarCompras() == true)
+            {
+                LancarCustos();
+            }
         }
 
         #region Salvar Compras
 
-        private void SalvarCompras()
+        private bool SalvarCompras()
         {
             try
             {
@@ -125,16 +128,51 @@ namespace Sistema_de_Gerenciamento.Forms
 
                         Forms_CadastroCodigoBarras inserirCodigoBarras = new Forms_CadastroCodigoBarras(this);
                         inserirCodigoBarras.ShowDialog();
+
+                        return true;
                     }
                 }
+                return false;
             }
             catch (Exception ex)
             {
                 Erro.ErroAoSalvarNotaFiscalEntrada(ex);
+                return false;
             }
         }
 
         #endregion Salvar Compras
+
+        #region Lançar em Custos
+
+        private void LancarCustos()
+        {
+            DialogResult OpcaoDoUsuario = new DialogResult();
+            OpcaoDoUsuario = MessageBox.Show("Deseja Inserir Nos Custos?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (OpcaoDoUsuario == DialogResult.Yes)
+            {
+                Forms_DespesasCustos custos = new Forms_DespesasCustos("Custos");
+                custos.cmbTipoDespesa.Text = "Variavel";
+                custos.cmbTipoDespesa.Enabled = false;
+                custos.cmbFornecedorTitulo.Text = "Fornecedor";
+                custos.cmbFornecedorTitulo.Enabled = false;
+                custos.txtCNPJ.Text = txtCNPJ.Text;
+                custos.txtCNPJ.Enabled = false;
+                custos.txtEmissao.Text = Convert.ToDateTime(listaDadosNotaFiscalEntrada[0].dataEmissao).ToShortDateString();
+                custos.txtEmissao.Enabled = false;
+                custos.txtValor.Text = txtValorTotal.Text;
+                custos.txtValor.Enabled = false;
+                custos.btnBuscar.Visible = false;
+                custos.btnAlterar.Visible = false;
+                custos.btnExcluir.Visible = false;
+                custos.btnNova.Visible = false;
+                custos.bntSair.Visible = false;
+                custos.btnSalvar.Location = new Point(11, 25);
+                custos.ShowDialog();
+            }
+        }
+
+        #endregion Lançar em Custos
 
         private void bntSair_Click(object sender, EventArgs e)
         {

@@ -381,7 +381,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Atualizar Usuario
 
-        #region Atualizar Despesa
+        #region Atualizar Cadastro Despesa e Custo
 
         public void AtualizarCadastroDespesa(int _cd_id, string _descricao, string _tipo, string _categoria)
         {
@@ -405,15 +405,11 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoAtualizarDespesaNoBanco(ex);
+                Erro.ErroAoAtualizarCadastroDespesaCustoNoBanco(ex);
             }
         }
 
-        #endregion Atualizar Despesa
-
-        #region Atualizar Estoque Produto
-
-        #region Atualizar Estoque Produto Quantidade e Data Entrada
+        #endregion Atualizar Cadastro Despesa e Custo
 
         public void AtualizarQuantidadeEDataEntradaEstoqueProduto(int _quantidade, int _numeroNF)
         {
@@ -437,8 +433,6 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
-        #endregion Atualizar Estoque Produto Quantidade e Data Entrada
-
         #region Atualizar Estoque Produto Quando a Nota Fiscal De Entrada É Cancelada
 
         public void AtualizarQuantidadeCanceladaEstoqueProduto(int _numeroNF)
@@ -458,11 +452,13 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoAtualizarQuantidadeEstoqueProdutoNoBanco(ex);
+                Erro.ErroAoAtualizarQuantidadeCanceladaEstoqueProdutoNoBanco(ex);
             }
         }
 
         #endregion Atualizar Estoque Produto Quando a Nota Fiscal De Entrada É Cancelada
+
+        #region Atualizar Codigo Barras Estoque Produto
 
         public void AtualizarCodigoBarrasEstoqueProduto(int _ep_codigo_barras, int _numeroNF, int _codigoProduto)
         {
@@ -488,7 +484,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
-        #endregion Atualizar Estoque Produto
+        #endregion Atualizar Codigo Barras Estoque Produto
 
         #region Atualizar Nota Fiscal Entrada
 
@@ -688,5 +684,50 @@ namespace Sistema_de_Gerenciamento.Classes
         #endregion Atualizar Comissao
 
         #endregion Atualizar Configuracao Gerencial
+
+        #region Atualizar Despesa
+
+        public void AtualizarDespesaCusto(string _tipo, string _descricao, string _forncedorTitulo, string _cnpj, DateTime _emissao,
+            DateTime _vencimento, string _frequencia, decimal _valor, int _quantidadeParcelas, decimal _valorParcelas,
+            string _categoria, int _codigo)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_DespesasCustos set dc_tipo = @tipo,dc_descricao = @descricao,dc_fornecedor_titulo = @fornecedorTitulo," +
+                                   "dc_cnpj = @cnpj, dc_emissao = @emissao,dc_vencimento = @vencimento,dc_frequencia = @frequencia," +
+                                   "dc_valor = @valor,dc_quantidade_parcelas = @quantidadeParcelas,dc_valor_parcela = @valorParcela," +
+                                   "dc_categoria = @categoria " +
+                                   "where dc_id = @codigo";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.AddWithValue("@tipo", _tipo);
+                    adapter.SelectCommand.Parameters.AddWithValue("@descricao", _descricao);
+                    adapter.SelectCommand.Parameters.AddWithValue("@fornecedorTitulo", _forncedorTitulo);
+                    adapter.SelectCommand.Parameters.AddWithValue("@cnpj", _cnpj);
+                    adapter.SelectCommand.Parameters.AddWithValue("@emissao", _emissao);
+                    adapter.SelectCommand.Parameters.AddWithValue("@vencimento", _vencimento);
+                    adapter.SelectCommand.Parameters.AddWithValue("@frequencia", _frequencia);
+                    adapter.SelectCommand.Parameters.AddWithValue("@valor", _valor);
+                    adapter.SelectCommand.Parameters.AddWithValue("@quantidadeParcelas", _quantidadeParcelas);
+                    adapter.SelectCommand.Parameters.AddWithValue("@valorParcela", _valorParcelas);
+                    adapter.SelectCommand.Parameters.AddWithValue("@categoria", _categoria);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigo", _codigo);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoCantoInferiorDireito.Atualizacao();
+                }
+            }
+            catch (Exception ex)
+
+            {
+                Erro.ErroAoAtualizarDespesaCustoNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Despesa
     }
 }

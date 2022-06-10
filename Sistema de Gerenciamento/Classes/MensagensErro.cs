@@ -357,20 +357,25 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Usuario
 
-        #region Despesa
+        #region Cadastro Despesa
 
-        public void ErroAoAtualizarDespesaNoBanco(Exception _e)
+        public void ErroAoAtualizarCadastroDespesaCustoNoBanco(Exception _e)
         {
             MessageBox.Show($"(ATU-DE01) Erro ao Atualizar Cadastro de Despesa \n\nErro: {_e}", "Erro Atualizacao Cadasto Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        #endregion Despesa
+        #endregion Cadastro Despesa
 
         #region Estoque Produto
 
         public void ErroAoAtualizarQuantidadeEstoqueProdutoNoBanco(Exception _e)
         {
             MessageBox.Show($"(ATU-EP01) Erro ao Atualizar Quantidade de Estoque! \n\nErro: {_e}", "Erro Atualizacao Quantidade Estoque!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAtualizarQuantidadeCanceladaEstoqueProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-EP02) Erro ao Atualizar Quantidade de Estoque! \n\nErro: {_e}", "Erro Atualizacao Quantidade Estoque!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Estoque Produto
@@ -388,6 +393,15 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Nota Fiscal Entrada
+
+        #region Desepesa e Custo
+
+        public void ErroAoAtualizarDespesaCustoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-DE01) Erro ao Atualizar Despesa e Custo \n\nErro: {_e}", "Erro Atualizacao Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Desepesa e Custo
 
         #endregion Atualizacao Do Banco
 
@@ -444,14 +458,23 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Grupo
 
-        #region Despesa
+        #region Cadastro Despesa
 
         public void ErroAoExluirCadastroDespesaNoBanco(Exception _e)
         {
-            MessageBox.Show($"(EXC-DE01) Erro ao Excluir Despesa \n\nErro: {_e}", "Erro Excluir Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(EXC-CD01) Erro ao Excluir Despesa \n\nErro: {_e}", "Erro Excluir Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        #endregion Despesa
+        #endregion Cadastro Despesa
+
+        #region Despesa e Custo
+
+        public void ErroAoExluirDespesaCustoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(EXC-DC01) Erro ao Excluir Despesa e Custo \n\nErro: {_e}", "Erro Excluir Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Despesa e Custo
 
         #endregion Excluir No Banco
 
@@ -658,6 +681,16 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoBuscarDespesaNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-DE05) Erro ao Realizar Busca de Despesa \n\nErro: {_e}", "Erro Busca Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarDespesaCodigoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE06) Erro ao Realizar Busca de Codigo de Despesa \n\nErro: {_e}", "Erro Busca Codigo Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarListaDespesaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE07) Erro ao Realizar Busca de Lista de Despesa \n\nErro: {_e}", "Erro Busca Lista Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Pesquisar Despesa

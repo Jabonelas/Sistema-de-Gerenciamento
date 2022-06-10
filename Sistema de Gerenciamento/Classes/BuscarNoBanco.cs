@@ -374,7 +374,8 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cc_nome_cliente,cc_id from tb_CadastroClientes where cc_nome_cliente like @nomeCliente";
+                    string query =
+                        "select cc_nome_cliente,cc_id from tb_CadastroClientes where cc_nome_cliente like @nomeCliente";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@nomeCliente", string.Format("%{0}%", _nomeCliente));
@@ -921,11 +922,12 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda,cp_lucro," +
-                                   "cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo,cp_garantia,cp_marca," +
-                                   "cp_referencia,cp_validade,cp_comissao,cp_observacao " +
-                                   "from tb_CadastroProdutos " +
-                                   "where cp_sub_grupo like @subGrupo";
+                    string query =
+                        "select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda,cp_lucro," +
+                        "cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo,cp_garantia,cp_marca," +
+                        "cp_referencia,cp_validade,cp_comissao,cp_observacao " +
+                        "from tb_CadastroProdutos " +
+                        "where cp_sub_grupo like @subGrupo";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@subGrupo", string.Format("%{0}%", _subGrupo));
@@ -1346,7 +1348,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Usuario
 
-        #region Buscar Despesa
+        #region Buscar Cadastro Despesa/Custo
 
         #region Buscar Codigo Despesa
 
@@ -1606,7 +1608,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Lista Despesa
 
-        public List<string> BuscarListaDespesa()
+        public List<string> BuscarListaDespesa(string _categoria)
         {
             List<string> listaDespesa = new List<string>();
 
@@ -1616,9 +1618,10 @@ namespace Sistema_de_Gerenciamento.Classes
                 {
                     string query = "select distinct cd_tipo " +
                                    "from tb_CadastroDespesaCustos " +
-                                   "where cd_categoria = 'Despesa'";
+                                   "where cd_categoria = @categoria";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@categoria", _categoria);
 
                     SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
 
@@ -1642,9 +1645,9 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Lista Despesa Por Tipo
 
-        public List<DadosDespesasCusto> BuscarListaDespesaPorTipo(string _tipo)
+        public List<DadosCadastroDespesasCusto> BuscarListaDespesaPorTipo(string _tipo, string _categoria)
         {
-            List<DadosDespesasCusto> listaDespesas = new List<DadosDespesasCusto>();
+            List<DadosCadastroDespesasCusto> listaDespesas = new List<DadosCadastroDespesasCusto>();
 
             try
             {
@@ -1652,19 +1655,20 @@ namespace Sistema_de_Gerenciamento.Classes
                 {
                     string query = "select * " +
                                    "from tb_CadastroDespesaCustos " +
-                                   "where cd_tipo like @tipo and cd_categoria = 'Despesa' " +
+                                   "where cd_tipo like @tipo and cd_categoria = @categoria " +
                                    "order by cd_descricao asc";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
                     adapter.SelectCommand.Parameters.AddWithValue("@tipo", string.Format("%{0}%", _tipo));
+                    adapter.SelectCommand.Parameters.AddWithValue("@categoria", _categoria);
 
                     SqlDataReader dr;
                     dr = adapter.SelectCommand.ExecuteReader();
 
                     while (dr.Read())
                     {
-                        listaDespesas.Add(new DadosDespesasCusto(dr.GetInt32(0), dr.GetString(1),
+                        listaDespesas.Add(new DadosCadastroDespesasCusto(dr.GetInt32(0), dr.GetString(1),
                             dr.GetString(2), dr.GetString(3)));
                     }
                 }
@@ -1681,6 +1685,10 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Lista Despesa Por Tipo
 
+        #endregion Buscar Cadastro Despesa/Custo
+
+        #region Buscar Despesa
+
         #region Buscar Despesa Por Codigo
 
         public bool BuscarDespesaPorCogigo(int _codigo, string _categoria, BunifuDataGridView _tabela)
@@ -1691,7 +1699,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 {
                     string query = "select * " +
                                    "from tb_DespesasCustos " +
-                                   "where dc_codigo = @codigo and dc_categoria = @categoria";
+                                   "where dc_id = @codigo and dc_categoria = @categoria";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@codigo", _codigo);
@@ -1916,6 +1924,80 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Despesa
 
+        #region Buscar Despesa Codigo
+
+        public int BuscarCodigo(string _descricao)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select dc_id from tb_DespesasCustos where dc_descricao = @descricao";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.AddWithValue("@descricao", _descricao);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    dr.Read();
+
+                    int x = dr.GetInt32(0);
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarDespesaCodigoNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Despesa Codigo
+
+        #region Buscar Lista Despesa
+
+        public List<DadosDespesaCusto> BuscarListaDespesaCusto(string _tipo, string _categoria)
+        {
+            List<DadosDespesaCusto> listaDespesas = new List<DadosDespesaCusto>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * " +
+                                   "from tb_DespesasCustos " +
+                                   "where dc_tipo = @tipo and dc_categoria = @categoria";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.AddWithValue("@tipo", _tipo);
+                    adapter.SelectCommand.Parameters.AddWithValue("@categoria", _categoria);
+
+                    SqlDataReader dr;
+                    dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaDespesas.Add(new DadosDespesaCusto(dr.GetInt32(0), dr.GetString(1),
+                            dr.GetString(2), dr.GetString(3), dr.GetString(4), dr.GetDateTime(5), dr.GetDateTime(6),
+                            dr.GetString(7), dr.GetDecimal(8), dr.GetInt32(9), dr.GetDecimal(10),
+                            dr.GetString(11)));
+                    }
+                }
+
+                return listaDespesas;
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarListaDespesaNoBanco(ex);
+
+                return listaDespesas;
+            }
+        }
+
+        #endregion Buscar Lista Despesa
+
         #endregion Buscar Despesa
 
         #region Buscar Vendas
@@ -2056,7 +2138,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     while (dr.Read())
                     {
-                        if (dr.IsDBNull(10) == null)
+                        if (dr.IsDBNull(10) == true)
                         {
                             listaNotaFiscalEntrada.Add(new DadosNotaFiscalEntrada(
                                 dr.GetInt32(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3),
@@ -2065,7 +2147,7 @@ namespace Sistema_de_Gerenciamento.Classes
                                 null, dr.GetDateTime(11)));
                         }
 
-                        if (dr.IsDBNull(11) == null)
+                        if (dr.IsDBNull(11) == true)
                         {
                             listaNotaFiscalEntrada.Add(new DadosNotaFiscalEntrada(
                                 dr.GetInt32(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3),
@@ -2074,7 +2156,7 @@ namespace Sistema_de_Gerenciamento.Classes
                                 dr.GetDateTime(10), null));
                         }
 
-                        if (dr.IsDBNull(10) != null && dr.IsDBNull(11) != null)
+                        if (dr.IsDBNull(10) == false && dr.IsDBNull(11) == false)
                         {
                             listaNotaFiscalEntrada.Add(new DadosNotaFiscalEntrada(
                                 dr.GetInt32(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3),

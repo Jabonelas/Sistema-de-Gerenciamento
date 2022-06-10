@@ -162,8 +162,14 @@ namespace Sistema_de_Gerenciamento
 
         private void btnDespesa_Click(object sender, EventArgs e)
         {
-            Forms_Despesas despesas = new Forms_Despesas();
+            Forms_DespesasCustos despesas = new Forms_DespesasCustos("Despesa");
             despesas.ShowDialog();
+        }
+
+        private void btnLançarContasAPagar_Click(object sender, EventArgs e)
+        {
+            Forms_DespesasCustos custos = new Forms_DespesasCustos("Custo");
+            custos.ShowDialog();
         }
     }
 }
