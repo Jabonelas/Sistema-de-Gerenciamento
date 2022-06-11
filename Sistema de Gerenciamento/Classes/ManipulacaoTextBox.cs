@@ -470,7 +470,7 @@ namespace Sistema_de_Gerenciamento
 
         #region Validar Data
 
-        public static void ValidacaoData(BunifuTextBox _textBox)
+        public static bool ValidacaoData(BunifuTextBox _textBox)
         {
             if (_textBox.Text.Length == _textBox.MaxLength && _textBox.Text != "----------")
             {
@@ -478,6 +478,8 @@ namespace Sistema_de_Gerenciamento
                 if (DateTime.TryParse(_textBox.Text, out time))
                 {
                     _textBox.BorderColorActive = Color.DodgerBlue;
+
+                    return true;
                 }
                 else
                 {
@@ -486,8 +488,11 @@ namespace Sistema_de_Gerenciamento
                     MessageBox.Show($"Data Errada: {_textBox.Text}", "Atencao!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                     _textBox.Focus();
+
+                    return false;
                 }
             }
+            return true;
         }
 
         #endregion Validar Data

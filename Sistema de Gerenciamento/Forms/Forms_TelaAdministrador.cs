@@ -171,5 +171,11 @@ namespace Sistema_de_Gerenciamento
             Forms_DespesasCustos custos = new Forms_DespesasCustos("Custo");
             custos.ShowDialog();
         }
+
+        private void btnClienteConsole_Click(object sender, EventArgs e)
+        {
+            Forms_PesquisarCliente pesquisarCliente = new Forms_PesquisarCliente("Cliente");
+            pesquisarCliente.ShowDialog();
+        }
     }
 }

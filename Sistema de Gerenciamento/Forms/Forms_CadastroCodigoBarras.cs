@@ -82,59 +82,67 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
             {
-                if (Global.tipoEntrada == "Alterar")
+                if (Buscar.BuscarCodigoBarras(Convert.ToInt32(txtCodigoBarras.Text)) == true)
                 {
-                    Atualizar.AtualizarCodigoBarrasEstoqueProduto(Convert.ToInt32(txtCodigoBarras.Text),
-                        Convert.ToInt32(txtNumeroNotaFiscal.Text), Convert.ToInt32(txtCodigoProduto.Text));
+                    MessageBox.Show("Codigo de Barras Já Registrado!", "Informarção!", MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
 
-                    if (cont <= (Buscar.BuscarQuantidadeDeItensNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)) - 1))
-                    {
-                        txtNumeroNotaFiscal.Text = compras.listaDadosEstoqueProdutos[cont].numeroNF.ToString();
-                        txtQuantidade.Text = compras.listaDadosEstoqueProdutos[cont].quantidade.ToString();
-                        txtCodigoProduto.Text = compras.listaDadosEstoqueProdutos[cont].codigoProduto.ToString();
-                        txtDescricaoProduto.Text = compras.listaDadosEstoqueProdutos[cont].descricaoProduto;
-                        txtCodigoBarras.Text = compras.listaDadosEstoqueProdutos[cont].codigoBarras.ToString();
-
-                        pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigoProduto.Text));
-
-                        //txtCodigoBarras.Text = string.Empty;
-
-                        cont++;
-
-                        txtCodigoBarras.Focus();
-                    }
-                    else
-                    {
-                        AvisoCantoInferiorDireito.Inclusao();
-
-                        this.Close();
-                    }
+                    txtCodigoBarras.Focus();
                 }
-                else if (Global.tipoEntrada == "Entrada")
+                else
                 {
-                    Atualizar.AtualizarCodigoBarrasEstoqueProduto(Convert.ToInt32(txtCodigoBarras.Text),
-                        Convert.ToInt32(txtNumeroNotaFiscal.Text), Convert.ToInt32(txtCodigoProduto.Text));
-
-                    if (cont <= (Buscar.BuscarQuantidadeDeItensNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)) - 1))
+                    if (Global.tipoEntrada == "Alterar")
                     {
-                        txtNumeroNotaFiscal.Text = compras.listaDadosNotaFiscalEntrada[cont].numeroNF.ToString();
-                        txtQuantidade.Text = compras.listaDadosNotaFiscalEntrada[cont].quantidade.ToString();
-                        txtCodigoProduto.Text = compras.listaDadosNotaFiscalEntrada[cont].codProduto.ToString();
-                        txtDescricaoProduto.Text = compras.listaDadosNotaFiscalEntrada[cont].descricao;
+                        Atualizar.AtualizarCodigoBarrasEstoqueProduto(Convert.ToInt32(txtCodigoBarras.Text),
+                            Convert.ToInt32(txtNumeroNotaFiscal.Text), Convert.ToInt32(txtCodigoProduto.Text));
 
-                        pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigoProduto.Text));
+                        if (cont <= (Buscar.BuscarQuantidadeDeItensNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)) - 1))
+                        {
+                            txtNumeroNotaFiscal.Text = compras.listaDadosEstoqueProdutos[cont].numeroNF.ToString();
+                            txtQuantidade.Text = compras.listaDadosEstoqueProdutos[cont].quantidade.ToString();
+                            txtCodigoProduto.Text = compras.listaDadosEstoqueProdutos[cont].codigoProduto.ToString();
+                            txtDescricaoProduto.Text = compras.listaDadosEstoqueProdutos[cont].descricaoProduto;
+                            txtCodigoBarras.Text = compras.listaDadosEstoqueProdutos[cont].codigoBarras.ToString();
 
-                        txtCodigoBarras.Text = string.Empty;
+                            pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigoProduto.Text));
 
-                        cont++;
+                            cont++;
 
-                        txtCodigoBarras.Focus();
+                            txtCodigoBarras.Focus();
+                        }
+                        else
+                        {
+                            AvisoCantoInferiorDireito.Inclusao();
+
+                            this.Close();
+                        }
                     }
-                    else
+                    else if (Global.tipoEntrada == "Entrada")
                     {
-                        AvisoCantoInferiorDireito.Inclusao();
+                        Atualizar.AtualizarCodigoBarrasEstoqueProduto(Convert.ToInt32(txtCodigoBarras.Text),
+                            Convert.ToInt32(txtNumeroNotaFiscal.Text), Convert.ToInt32(txtCodigoProduto.Text));
 
-                        this.Close();
+                        if (cont <= (Buscar.BuscarQuantidadeDeItensNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)) - 1))
+                        {
+                            txtNumeroNotaFiscal.Text = compras.listaDadosNotaFiscalEntrada[cont].numeroNF.ToString();
+                            txtQuantidade.Text = compras.listaDadosNotaFiscalEntrada[cont].quantidade.ToString();
+                            txtCodigoProduto.Text = compras.listaDadosNotaFiscalEntrada[cont].codProduto.ToString();
+                            txtDescricaoProduto.Text = compras.listaDadosNotaFiscalEntrada[cont].descricao;
+
+                            pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigoProduto.Text));
+
+                            txtCodigoBarras.Text = string.Empty;
+
+                            cont++;
+
+                            txtCodigoBarras.Focus();
+                        }
+                        else
+                        {
+                            AvisoCantoInferiorDireito.Inclusao();
+
+                            this.Close();
+                        }
                     }
                 }
             }

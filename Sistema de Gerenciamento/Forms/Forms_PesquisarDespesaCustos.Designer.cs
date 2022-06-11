@@ -58,6 +58,7 @@
             this.btnSelecionar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.gdvPesquisarDespesa = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.dc_codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dc_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dc_fornecedor_titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dc_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -489,6 +490,7 @@
             this.gdvPesquisarDespesa.ColumnHeadersHeight = 40;
             this.gdvPesquisarDespesa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dc_codigo,
+            this.dc_id,
             this.dc_tipo,
             this.dc_fornecedor_titulo,
             this.dc_descricao,
@@ -548,10 +550,18 @@
             // 
             // dc_codigo
             // 
-            this.dc_codigo.DataPropertyName = "dc_id";
+            this.dc_codigo.DataPropertyName = "dc_codigo";
             this.dc_codigo.HeaderText = "Codigo";
             this.dc_codigo.Name = "dc_codigo";
             this.dc_codigo.ReadOnly = true;
+            // 
+            // dc_id
+            // 
+            this.dc_id.DataPropertyName = "dc_id";
+            this.dc_id.HeaderText = "dc_id";
+            this.dc_id.Name = "dc_id";
+            this.dc_id.ReadOnly = true;
+            this.dc_id.Visible = false;
             // 
             // dc_tipo
             // 
@@ -915,7 +925,8 @@
             this.cmbTipoDespesa.FormattingEnabled = true;
             this.cmbTipoDespesa.Items.AddRange(new object[] {
             "Fixa",
-            "Variavel"});
+            "Variavel",
+            ""});
             this.cmbTipoDespesa.Location = new System.Drawing.Point(184, 35);
             this.cmbTipoDespesa.Name = "cmbTipoDespesa";
             this.cmbTipoDespesa.Size = new System.Drawing.Size(92, 21);
@@ -1055,6 +1066,7 @@
         private System.Windows.Forms.Label lblCategoria;
         private Bunifu.UI.WinForms.BunifuTextBox txtTitulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dc_codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dc_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dc_tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dc_fornecedor_titulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn dc_descricao;

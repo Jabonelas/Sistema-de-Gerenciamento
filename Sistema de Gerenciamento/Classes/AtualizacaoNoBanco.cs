@@ -441,7 +441,7 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update tb_EstoqueProduto set ep_quantidade = 0 " +
+                    string query = "update tb_EstoqueProduto set ep_quantidade = 0, ep_valor_unitario = 0 , ep_codigo_barras = 0" +
                                    "where ep_nf_entrada = @ep_numero_nf";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -729,5 +729,27 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Atualizar Despesa
+
+        public void AlterarCodigoDespesaCusto(int _codigo, string _descricao)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_DespesasCustos set dc_codigo = @codigo " +
+                                   "where dc_descricao = @descricao";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigo", _codigo);
+                    adapter.SelectCommand.Parameters.AddWithValue("@descricao", _descricao);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarCodigoDespesaCustoNoBanco(ex);
+            }
+        }
     }
 }

@@ -28,9 +28,25 @@ namespace Sistema_de_Gerenciamento
             cadastroCliente = _cadastroCliente;
         }
 
-        public Forms_PesquisarCliente()
+        public Forms_PesquisarCliente(string _formsCliente)
         {
             InitializeComponent();
+
+            this.Text = _formsCliente;
+
+            if (_formsCliente == "Cliente")
+            {
+                LayoutCliente();
+            }
+        }
+
+        private void LayoutCliente()
+        {
+            btnSelecionar.Visible = false;
+            btnFechar.Location = new Point(586, 437);
+            btnExportarParaExcel.Location = new Point(390, 437);
+            btnImprimir.Location = new Point(193, 437);
+            gdvPesquisarCliente.ReadOnly = true;
         }
 
         private void btnPesquisar_Click_1(object sender, EventArgs e)
@@ -111,7 +127,10 @@ namespace Sistema_de_Gerenciamento
 
         private void gdvPesquisarCliente_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            SelecaoGridViewPreencherTextBox();
+            if (this.Text != "Cliente")
+            {
+                SelecaoGridViewPreencherTextBox();
+            }
         }
 
         #region Selecionar Linha No Gridview Para Preencher TextBox na Tela De Cadastro de Cliente

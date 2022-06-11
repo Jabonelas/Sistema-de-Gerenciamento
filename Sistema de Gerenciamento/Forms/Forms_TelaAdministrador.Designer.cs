@@ -2804,6 +2804,7 @@
             this.btnClienteConsole.TextMarginLeft = 0;
             this.btnClienteConsole.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnClienteConsole.UseDefaultRadiusAndThickness = true;
+            this.btnClienteConsole.Click += new System.EventHandler(this.btnClienteConsole_Click);
             // 
             // btnProdutoConsole
             // 

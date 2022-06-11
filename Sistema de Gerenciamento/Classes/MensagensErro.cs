@@ -401,6 +401,11 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(ATU-DE01) Erro ao Atualizar Despesa e Custo \n\nErro: {_e}", "Erro Atualizacao Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoAtualizarCodigoDespesaCustoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-DE02) Erro ao Atualizar Codigo Despesa e Custo \n\nErro: {_e}", "Erro Atualizacao Codigo Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Desepesa e Custo
 
         #endregion Atualizacao Do Banco
@@ -558,6 +563,36 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoBuscarComissaoProdutoNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-PR11) Erro ao Realizar Busca Comissao do Produto \n\nErro: {_e}", "Erro Busca Comissao Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCodigoBarrasProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR12) Erro ao Realizar Busca de Codigo de Barras do Produto \n\nErro: {_e}", "Erro Busca Codigo de Barras Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCadastroProdutoPorCodigoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR13) Erro ao Realizar Busca de Cadastro do Produto Por Codigo \n\nErro: {_e}", "Erro Busca Produto Por Codigo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCadastroProdutoPorDescricaoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR14) Erro ao Realizar Busca de Cadastro do Produto Por Descricao \n\nErro: {_e}", "Erro Busca Produto Por Descricao!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCadastroProdutoPorGrupoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR15) Erro ao Realizar Busca de Cadastro do Produto Por Grupo \n\nErro: {_e}", "Erro Busca Produto Por Grupo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCadastroProdutoPorSubGrupoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR16) Erro ao Realizar Busca de Cadastro do Produto Por Sub-Grupo \n\nErro: {_e}", "Erro Busca Produto Por Sub-Grupo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCadastroProdutoPorMarcaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR17) Erro ao Realizar Busca de Cadastro do Produto Por Marca \n\nErro: {_e}", "Erro Busca Produto Por Marca!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Produto

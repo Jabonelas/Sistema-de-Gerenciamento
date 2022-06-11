@@ -38,14 +38,20 @@ namespace Sistema_de_Gerenciamento
             PreencherTextBoxComissao();
         }
 
-        private void btnNovoProduto_Click(object sender, EventArgs e)
-        {
-            NovoCadastroProduto();
-        }
+        #region MyRegion
 
         private void PreencherTextBoxComissao()
+
         {
             txtComissao.Text = String.Format("{0:#,##0.00} %", Buscar.Comissao());
+        }
+
+        #endregion MyRegion
+
+        private void btnNovoProduto_Click(object sender, EventArgs e)
+
+        {
+            NovoCadastroProduto();
         }
 
         #region Novo Cadastro Produto
@@ -63,14 +69,10 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Novo Cadastro Produto
 
-        #region Botao Salvar
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             SalvarCadastroProduto();
         }
-
-        #endregion Botao Salvar
 
         #region Salvar Cadastro Produto
 
@@ -279,7 +281,7 @@ namespace Sistema_de_Gerenciamento
 
             cmbGrupo.Items.Clear();
 
-            listaGrupo.ForEach(prod => cmbGrupo.Items.Add(prod.grupo));
+            listaGrupo.ForEach(grupoProduto => cmbGrupo.Items.Add(grupoProduto.grupo));
         }
 
         #endregion Preencher Combobox Grupo

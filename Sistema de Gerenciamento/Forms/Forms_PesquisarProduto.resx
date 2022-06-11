@@ -213,38 +213,29 @@
   </metadata>
   <data name="txtMarca.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAKAAAAAkCAYAAAAO7jHjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACXSURBVHhe7dIxDQMxAARB80fll2EERgDkZclNCHibGema
+        iVBORw0KGgoAAAANSUhEUgAAAKAAAAAdCAYAAAAtm2eGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACGSURBVHhe7dIxDQMxAARB80fll2EERgDkZclNCHibGema
         q3dAbq31mXP+zG5tN3fyG2MfcNNu7uQnQO4TICkBkhIgKQGSEiApAZISICkBkhIgKQGSEiApAZISICkB
-        khIgKQGSEiApAZISICkBkhIgKQGSEiApAZISICkBkhIgKQGSEiApAZL6C/B5nu8+zG5tN3fyg8oYL7jO
-        iAurMBf0AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="txtGrupo.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAKAAAAAkCAYAAAAO7jHjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACXSURBVHhe7dIxDQMxAARB80fll2EERgDkZclNCHibGema
-        q3dAbq31mXP+zG5tN3fyG2MfcNNu7uQnQO4TICkBkhIgKQGSEiApAZISICkBkhIgKQGSEiApAZISICkB
-        khIgKQGSEiApAZISICkBkhIgKQGSEiApAZISICkBkhIgKQGSEiApAZL6C/B5nu8+zG5tN3fyg8oYL7jO
-        iAurMBf0AAAAAElFTkSuQmCC
+        khIgKQGSEiApAZISICkBkhIgKQGSEiCpvwCf5/nuw+zWdnMnP6iM8QL/rlqqhKlM8QAAAABJRU5ErkJg
+        gg==
 </value>
   </data>
   <data name="txtDescicao.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAKAAAAAkCAYAAAAO7jHjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACXSURBVHhe7dIxDQMxAARB80fll2EERgDkZclNCHibGema
+        iVBORw0KGgoAAAANSUhEUgAAAKAAAAAdCAYAAAAtm2eGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACGSURBVHhe7dIxDQMxAARB80fll2EERgDkZclNCHibGema
         q3dAbq31mXP+zG5tN3fyG2MfcNNu7uQnQO4TICkBkhIgKQGSEiApAZISICkBkhIgKQGSEiApAZISICkB
-        khIgKQGSEiApAZISICkBkhIgKQGSEiApAZISICkBkhIgKQGSEiApAZL6C/B5nu8+zG5tN3fyg8oYL7jO
-        iAurMBf0AAAAAElFTkSuQmCC
+        khIgKQGSEiApAZISICkBkhIgKQGSEiCpvwCf5/nuw+zWdnMnP6iM8QL/rlqqhKlM8QAAAABJRU5ErkJg
+        gg==
 </value>
   </data>
   <data name="txtCodigoProduto.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAAKAAAAAkCAYAAAAO7jHjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACXSURBVHhe7dIxDQMxAARB80fll2EERgDkZclNCHibGema
+        iVBORw0KGgoAAAANSUhEUgAAAKAAAAAdCAYAAAAtm2eGAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACGSURBVHhe7dIxDQMxAARB80fll2EERgDkZclNCHibGema
         q3dAbq31mXP+zG5tN3fyG2MfcNNu7uQnQO4TICkBkhIgKQGSEiApAZISICkBkhIgKQGSEiApAZISICkB
-        khIgKQGSEiApAZISICkBkhIgKQGSEiApAZISICkBkhIgKQGSEiApAZL6C/B5nu8+zG5tN3fyg8oYL7jO
-        iAurMBf0AAAAAElFTkSuQmCC
+        khIgKQGSEiApAZISICkBkhIgKQGSEiCpvwCf5/nuw+zWdnMnP6iM8QL/rlqqhKlM8QAAAABJRU5ErkJg
+        gg==
 </value>
   </data>
   <data name="btnPesquisar.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -287,15 +278,6 @@
         jh8Q/IDgBwQ/IPgBwQ8IfkDwA4IfEPyA4AcEPyBsxw8IfkDwA4IfEPyA4AcEPyD4AcEPCH5A8AOCHxCM
         McYYY4wxxhhjjDHGGGOMMcYYY4wxxhhjjDHGGGOMMcYYY4wxxhhjjDHGGGOMMcYYY4wxxhhjjDHGGGP+
         Q0qV+hdpzTVUjZjESgAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="txtSubGrupo.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAKAAAAAkCAYAAAAO7jHjAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACXSURBVHhe7dIxDQMxAARB80fll2EERgDkZclNCHibGema
-        q3dAbq31mXP+zG5tN3fyG2MfcNNu7uQnQO4TICkBkhIgKQGSEiApAZISICkBkhIgKQGSEiApAZISICkB
-        khIgKQGSEiApAZISICkBkhIgKQGSEiApAZISICkBkhIgKQGSEiApAZL6C/B5nu8+zG5tN3fyg8oYL7jO
-        iAurMBf0AAAAAElFTkSuQmCC
 </value>
   </data>
 </root>

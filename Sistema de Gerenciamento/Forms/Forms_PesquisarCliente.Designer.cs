@@ -1316,10 +1316,6 @@
         private System.Windows.Forms.Label label5;
         private Bunifu.UI.WinForms.BunifuTextBox txtCodigoCliente;
         private System.Windows.Forms.Label label8;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnFechar;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnExportarParaExcel;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnImprimir;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnSelecionar;
         private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator1;
         public Guna.UI.WinForms.GunaComboBox cmbTipo;
         private System.Windows.Forms.Label label1;
@@ -1352,5 +1348,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn E_mail;
         private System.Windows.Forms.DataGridViewTextBoxColumn Observacoes;
         private System.Windows.Forms.DataGridViewTextBoxColumn fk_imagem_id;
+        public Bunifu.UI.WinForms.BunifuButton.BunifuButton btnFechar;
+        public Bunifu.UI.WinForms.BunifuButton.BunifuButton btnExportarParaExcel;
+        public Bunifu.UI.WinForms.BunifuButton.BunifuButton btnImprimir;
+        public Bunifu.UI.WinForms.BunifuButton.BunifuButton btnSelecionar;
     }
 }

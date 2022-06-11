@@ -84,7 +84,7 @@
             this.btnBuscar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnNova = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.txtCNPJ = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblQuantidadeParcelas = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // cmbFrequencia
@@ -97,13 +97,11 @@
             "Mensal",
             "Bimestral",
             "Semestral",
-            "Anual",
-            ""});
+            "Anual"});
             this.cmbFrequencia.Location = new System.Drawing.Point(26, 395);
             this.cmbFrequencia.Name = "cmbFrequencia";
             this.cmbFrequencia.Size = new System.Drawing.Size(123, 23);
-            this.cmbFrequencia.TabIndex = 9;
-            this.cmbFrequencia.Text = "-";
+            this.cmbFrequencia.TabIndex = 6;
             // 
             // label5
             // 
@@ -180,7 +178,7 @@
             this.txtDescricao.ShortcutsEnabled = false;
             this.txtDescricao.Size = new System.Drawing.Size(427, 28);
             this.txtDescricao.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtDescricao.TabIndex = 61;
+            this.txtDescricao.TabIndex = 3;
             this.txtDescricao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtDescricao.TextMarginBottom = 0;
             this.txtDescricao.TextMarginLeft = 3;
@@ -225,13 +223,14 @@
             // 
             this.cmbTipoDespesa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbTipoDespesa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbTipoDespesa.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbTipoDespesa.FormattingEnabled = true;
             this.cmbTipoDespesa.Items.AddRange(new object[] {
             ""});
-            this.cmbTipoDespesa.Location = new System.Drawing.Point(118, 156);
+            this.cmbTipoDespesa.Location = new System.Drawing.Point(118, 155);
             this.cmbTipoDespesa.Name = "cmbTipoDespesa";
-            this.cmbTipoDespesa.Size = new System.Drawing.Size(92, 21);
-            this.cmbTipoDespesa.TabIndex = 239;
+            this.cmbTipoDespesa.Size = new System.Drawing.Size(92, 23);
+            this.cmbTipoDespesa.TabIndex = 0;
             this.cmbTipoDespesa.SelectedValueChanged += new System.EventHandler(this.cmbTipoDespesa_SelectedValueChanged);
             this.cmbTipoDespesa.Enter += new System.EventHandler(this.cmbTipoDespesa_Enter);
             this.cmbTipoDespesa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbTipoDespesa_KeyPress);
@@ -321,7 +320,7 @@
             this.txtVencimento.ShortcutsEnabled = false;
             this.txtVencimento.Size = new System.Drawing.Size(123, 28);
             this.txtVencimento.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtVencimento.TabIndex = 244;
+            this.txtVencimento.TabIndex = 5;
             this.txtVencimento.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtVencimento.TextMarginBottom = 0;
             this.txtVencimento.TextMarginLeft = 3;
@@ -330,6 +329,7 @@
             this.txtVencimento.UseSystemPasswordChar = false;
             this.txtVencimento.WordWrap = true;
             this.txtVencimento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtVencimento_KeyPress);
+            this.txtVencimento.Enter += new System.EventHandler(this.txtVencimento_Enter);
             this.txtVencimento.Leave += new System.EventHandler(this.txtVencimento_Leave);
             // 
             // label4
@@ -445,7 +445,7 @@
             this.btnAlterar.OnPressedState.IconLeftImage = null;
             this.btnAlterar.OnPressedState.IconRightImage = null;
             this.btnAlterar.Size = new System.Drawing.Size(57, 80);
-            this.btnAlterar.TabIndex = 252;
+            this.btnAlterar.TabIndex = 11;
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAlterar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnAlterar.TextMarginLeft = 0;
@@ -536,7 +536,7 @@
             this.bntSair.OnPressedState.IconLeftImage = null;
             this.bntSair.OnPressedState.IconRightImage = null;
             this.bntSair.Size = new System.Drawing.Size(57, 80);
-            this.bntSair.TabIndex = 251;
+            this.bntSair.TabIndex = 14;
             this.bntSair.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.bntSair.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.bntSair.TextMarginLeft = 0;
@@ -627,7 +627,7 @@
             this.btnSalvar.OnPressedState.IconLeftImage = null;
             this.btnSalvar.OnPressedState.IconRightImage = null;
             this.btnSalvar.Size = new System.Drawing.Size(57, 80);
-            this.btnSalvar.TabIndex = 250;
+            this.btnSalvar.TabIndex = 9;
             this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalvar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnSalvar.TextMarginLeft = 0;
@@ -718,7 +718,7 @@
             this.btnExcluir.OnPressedState.IconLeftImage = null;
             this.btnExcluir.OnPressedState.IconRightImage = null;
             this.btnExcluir.Size = new System.Drawing.Size(57, 80);
-            this.btnExcluir.TabIndex = 249;
+            this.btnExcluir.TabIndex = 13;
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluir.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnExcluir.TextMarginLeft = 0;
@@ -806,7 +806,7 @@
             this.txtEmissao.ShortcutsEnabled = false;
             this.txtEmissao.Size = new System.Drawing.Size(123, 28);
             this.txtEmissao.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtEmissao.TabIndex = 254;
+            this.txtEmissao.TabIndex = 4;
             this.txtEmissao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtEmissao.TextMarginBottom = 0;
             this.txtEmissao.TextMarginLeft = 3;
@@ -882,7 +882,7 @@
             this.txtValor.ShortcutsEnabled = false;
             this.txtValor.Size = new System.Drawing.Size(123, 28);
             this.txtValor.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtValor.TabIndex = 255;
+            this.txtValor.TabIndex = 8;
             this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtValor.TextMarginBottom = 0;
             this.txtValor.TextMarginLeft = 3;
@@ -891,6 +891,7 @@
             this.txtValor.UseSystemPasswordChar = false;
             this.txtValor.WordWrap = true;
             this.txtValor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValor_KeyPress);
+            this.txtValor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtValor_KeyUp);
             // 
             // label8
             // 
@@ -906,13 +907,14 @@
             // 
             this.cmbFornecedorTitulo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbFornecedorTitulo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbFornecedorTitulo.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFornecedorTitulo.FormattingEnabled = true;
             this.cmbFornecedorTitulo.Items.AddRange(new object[] {
             ""});
             this.cmbFornecedorTitulo.Location = new System.Drawing.Point(26, 211);
             this.cmbFornecedorTitulo.Name = "cmbFornecedorTitulo";
-            this.cmbFornecedorTitulo.Size = new System.Drawing.Size(196, 21);
-            this.cmbFornecedorTitulo.TabIndex = 248;
+            this.cmbFornecedorTitulo.Size = new System.Drawing.Size(184, 23);
+            this.cmbFornecedorTitulo.TabIndex = 2;
             this.cmbFornecedorTitulo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbDescricao_KeyPress);
             // 
             // cmbQuantidadeParcelas
@@ -935,7 +937,7 @@
             this.cmbQuantidadeParcelas.Location = new System.Drawing.Point(182, 395);
             this.cmbQuantidadeParcelas.Name = "cmbQuantidadeParcelas";
             this.cmbQuantidadeParcelas.Size = new System.Drawing.Size(123, 23);
-            this.cmbQuantidadeParcelas.TabIndex = 257;
+            this.cmbQuantidadeParcelas.TabIndex = 7;
             this.cmbQuantidadeParcelas.SelectedValueChanged += new System.EventHandler(this.cmbQuantidadeParcelas_SelectedValueChanged);
             // 
             // txtValorParcelas
@@ -958,7 +960,6 @@
             this.txtValorParcelas.ShortcutsEnabled = false;
             this.txtValorParcelas.Size = new System.Drawing.Size(123, 28);
             this.txtValorParcelas.TabIndex = 259;
-            this.txtValorParcelas.Text = "0";
             // 
             // lblValorParcelas
             // 
@@ -1074,7 +1075,7 @@
             this.btnBuscar.OnPressedState.IconLeftImage = null;
             this.btnBuscar.OnPressedState.IconRightImage = null;
             this.btnBuscar.Size = new System.Drawing.Size(57, 80);
-            this.btnBuscar.TabIndex = 265;
+            this.btnBuscar.TabIndex = 12;
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBuscar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnBuscar.TextMarginLeft = 0;
@@ -1165,7 +1166,7 @@
             this.btnNova.OnPressedState.IconLeftImage = null;
             this.btnNova.OnPressedState.IconRightImage = null;
             this.btnNova.Size = new System.Drawing.Size(55, 80);
-            this.btnNova.TabIndex = 266;
+            this.btnNova.TabIndex = 10;
             this.btnNova.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNova.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnNova.TextMarginLeft = 0;
@@ -1238,7 +1239,7 @@
             this.txtCNPJ.ShortcutsEnabled = false;
             this.txtCNPJ.Size = new System.Drawing.Size(222, 28);
             this.txtCNPJ.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtCNPJ.TabIndex = 267;
+            this.txtCNPJ.TabIndex = 1;
             this.txtCNPJ.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCNPJ.TextMarginBottom = 0;
             this.txtCNPJ.TextMarginLeft = 3;
@@ -1248,22 +1249,22 @@
             this.txtCNPJ.WordWrap = true;
             this.txtCNPJ.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCNPJ_KeyPress_1);
             // 
-            // label3
+            // lblQuantidadeParcelas
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(179, 377);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 15);
-            this.label3.TabIndex = 268;
-            this.label3.Text = "Quant. Parcelas";
+            this.lblQuantidadeParcelas.AutoSize = true;
+            this.lblQuantidadeParcelas.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuantidadeParcelas.Location = new System.Drawing.Point(179, 377);
+            this.lblQuantidadeParcelas.Name = "lblQuantidadeParcelas";
+            this.lblQuantidadeParcelas.Size = new System.Drawing.Size(91, 15);
+            this.lblQuantidadeParcelas.TabIndex = 268;
+            this.lblQuantidadeParcelas.Text = "Quant. Parcelas";
             // 
             // Forms_DespesasCustos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 494);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblQuantidadeParcelas);
             this.Controls.Add(this.txtCNPJ);
             this.Controls.Add(this.btnNova);
             this.Controls.Add(this.btnBuscar);
@@ -1333,6 +1334,6 @@
         public Bunifu.UI.WinForms.BunifuButton.BunifuButton btnBuscar;
         public Bunifu.UI.WinForms.BunifuButton.BunifuButton btnNova;
         public Bunifu.UI.WinForms.BunifuButton.BunifuButton btnSalvar;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblQuantidadeParcelas;
     }
 }

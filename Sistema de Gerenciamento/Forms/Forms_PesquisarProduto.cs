@@ -23,7 +23,24 @@ namespace Sistema_de_Gerenciamento
             InitializeComponent();
 
             cadastroProduto = _cadastroProduto;
+
+            PreencherComboBoxGrupo();
         }
+
+        #region Preencher ComboBox Grupo
+
+        private void PreencherComboBoxGrupo()
+        {
+            List<DadosGrupoMaterial> listaGrupo = new List<DadosGrupoMaterial>();
+
+            listaGrupo = Buscar.BuscarGrupoProduto();
+
+            cmbGrupo.Items.Clear();
+
+            listaGrupo.ForEach(prod => cmbGrupo.Items.Add(prod.grupo));
+        }
+
+        #endregion Preencher ComboBox Grupo
 
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
@@ -108,15 +125,15 @@ namespace Sistema_de_Gerenciamento
 
                 MessagemProdutoNaoEncontrado(isCadastroExiste);
             }
-            else if (txtGrupo.Text != string.Empty)
+            else if (cmbGrupo.Text != string.Empty)
             {
-                bool isCadastroExiste = Buscar.BuscarCadastroProdutoPorGrupo(txtGrupo.Text, gdvPesquisarProduto);
+                bool isCadastroExiste = Buscar.BuscarCadastroProdutoPorGrupo(cmbGrupo.Text, gdvPesquisarProduto);
 
                 MessagemProdutoNaoEncontrado(isCadastroExiste);
             }
-            else if (txtSubGrupo.Text != string.Empty)
+            else if (cmbSubGrupo.Text != string.Empty)
             {
-                bool isCadastroExiste = Buscar.BuscarCadastroProdutoPorSubGrupo(txtSubGrupo.Text, gdvPesquisarProduto);
+                bool isCadastroExiste = Buscar.BuscarCadastroProdutoPorSubGrupo(cmbSubGrupo.Text, gdvPesquisarProduto);
 
                 MessagemProdutoNaoEncontrado(isCadastroExiste);
             }
@@ -169,5 +186,55 @@ namespace Sistema_de_Gerenciamento
         {
             ManipulacaoTextBox.DigitoFoiNumero(e);
         }
+
+        private void cmbGrupo_SelectedValueChanged(object sender, EventArgs e)
+        {
+            PreencherComboBoxSubGrupo();
+        }
+
+        #region Preencher ComboBox Sug-Grupo
+
+        private void PreencherComboBoxSubGrupo()
+        {
+            List<DadosSubGrupoMaterial> ListaSubGrupo = new List<DadosSubGrupoMaterial>();
+
+            ListaSubGrupo = Buscar.BuscarSubGrupoProduto(cmbGrupo.Text);
+
+            cmbSubGrupo.Items.Clear();
+
+            ListaSubGrupo.ForEach(grupoProduto => cmbSubGrupo.Items.Add(grupoProduto.sub_grupo));
+        }
+
+        #endregion Preencher ComboBox Sug-Grupo
+
+        private void cmbSubGrupo_Enter(object sender, EventArgs e)
+        {
+            VerificarPreencimentoComboBoxGrupo();
+        }
+
+        #region Vrificar Preechimento do ComboBox Grupo
+
+        private void VerificarPreencimentoComboBoxGrupo()
+        {
+            if (cmbGrupo.Text == string.Empty)
+            {
+                MessageBox.Show("Por Favor Preencha Primeiro O Campo Grupo!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                cmbGrupo.Focus();
+            }
+        }
+
+        #endregion Vrificar Preechimento do ComboBox Grupo
+
+        private void txtDescicao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtMarca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
     }
 }

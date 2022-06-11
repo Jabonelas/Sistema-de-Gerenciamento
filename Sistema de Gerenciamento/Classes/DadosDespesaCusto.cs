@@ -21,12 +21,12 @@ namespace Sistema_de_Gerenciamento.Classes
         public decimal valorParcela { get; set; }
         public string categoria { get; set; }
 
-        public DadosDespesaCusto(int _codigo, string _tipo, string _descricao, string _forncedorTitulo, string _cnpj,
+        public DadosDespesaCusto(string _tipo, string _descricao, string _forncedorTitulo, string _cnpj,
             DateTime _emissao,
             DateTime _vencimento, string _frequencia, decimal _valor, int _quantidadeParcelas,
             decimal _valorParcela, string _categoria)
         {
-            codigo = _codigo;
+            //codigo = _codigo;
             tipo = _tipo;
             descricao = _descricao;
             forncedorTitulo = _forncedorTitulo;

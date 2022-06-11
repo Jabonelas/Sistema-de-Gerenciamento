@@ -24,17 +24,21 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private ExcluirNoBanco Excluir = new ExcluirNoBanco();
 
+        private int cont = 1;
+
+        private int frequencia = 1;
+
         public Forms_DespesasCustos(string _tituloForm)
         {
             InitializeComponent();
 
             this.Text = _tituloForm;
 
-            if (this.Text == "Despesas")
+            if (this.Text == "Despesa")
             {
                 layoutDespesa();
             }
-            else if (this.Text == "Custos")
+            else if (this.Text == "Custo")
             {
                 layoutCusto();
             }
@@ -46,9 +50,13 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             lblCNPJ.Visible = false;
             txtCNPJ.Visible = false;
+            txtCNPJ.Text = "-";
             txtValorParcelas.Visible = false;
+            txtValorParcelas.Text = "0";
             lblValorParcelas.Visible = false;
             cmbQuantidadeParcelas.Visible = false;
+            cmbQuantidadeParcelas.Text = "1";
+            lblQuantidadeParcelas.Visible = false;
         }
 
         #endregion Layout Tela Despesa
@@ -61,9 +69,7 @@ namespace Sistema_de_Gerenciamento.Forms
             txtValorParcelas.Text = String.Empty;
             cmbQuantidadeParcelas.Text = String.Empty;
             txtCNPJ.Text = String.Empty;
-            lblFrequencia.Text = "Quant.Parcelas";
             cmbFrequencia.Visible = true;
-            cmbQuantidadeParcelas.Location = new Point(26, 395);
         }
 
         #endregion Layout Tela Custos
@@ -106,12 +112,58 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     if (listaDespesas.Find(lista => lista.descricao == txtDescricao.Text && lista.forncedorTitulo == cmbFornecedorTitulo.Text) == null)
                     {
-                        Salvar.InserirDespesaCusto(cmbTipoDespesa.Text, txtDescricao.Text, cmbFornecedorTitulo.Text,
-                            txtCNPJ.Text, Convert.ToDateTime(txtEmissao.Text), Convert.ToDateTime(txtVencimento.Text), cmbFrequencia.Text,
-                            Convert.ToDecimal(txtValor.Text.Replace("R$ ", "")), Convert.ToInt32(cmbQuantidadeParcelas.Text.Replace("x", "")),
-                            Convert.ToDecimal(txtValorParcelas.Text.Replace("R$ ", "")), lblCategoria.Text);
+                        if (cmbFrequencia.Text == "Semanal")
+                        {
+                            frequencia = 7;
+                        }
+                        else if (cmbFrequencia.Text == "Quinzenal")
+                        {
+                            frequencia = 15;
+                        }
+                        else if (cmbFrequencia.Text == "Mensal")
+                        {
+                            frequencia = 30;
+                        }
+                        else if (cmbFrequencia.Text == "Bimestral")
+                        {
+                            frequencia = 90;
+                        }
+                        else if (cmbFrequencia.Text == "Semestral")
+                        {
+                            frequencia = 180;
+                        }
+                        else if (cmbFrequencia.Text == "Anual")
+                        {
+                            frequencia = 365;
+                        }
 
-                        txtCodigo.Text = Buscar.BuscarCodigo(txtDescricao.Text).ToString();
+                        for (int i = 1; i <= Convert.ToInt32(cmbQuantidadeParcelas.Text.Replace("x", "")); i++)
+                        {
+                            if (i == 1)
+                            {
+                                Salvar.InserirDespesaCusto(cmbTipoDespesa.Text, txtDescricao.Text, cmbFornecedorTitulo.Text,
+                                    txtCNPJ.Text, Convert.ToDateTime(txtEmissao.Text), Convert.ToDateTime(txtVencimento.Text), cmbFrequencia.Text,
+                                    Convert.ToDecimal(txtValor.Text.Replace("R$ ", "")),
+                                    i,
+                                    Convert.ToDecimal(txtValorParcelas.Text.Replace("R$ ", "")), lblCategoria.Text);
+
+                                txtCodigo.Text = Buscar.BuscarCodigo(txtDescricao.Text).ToString();
+
+                                Atualizar.AlterarCodigoDespesaCusto(Convert.ToInt32(txtCodigo.Text), txtDescricao.Text);
+                            }
+                            else
+                            {
+                                Salvar.InserirDespesaCusto(cmbTipoDespesa.Text, txtDescricao.Text, cmbFornecedorTitulo.Text,
+                                    txtCNPJ.Text, Convert.ToDateTime(txtEmissao.Text),
+                                    Convert.ToDateTime(txtVencimento.Text).AddDays(frequencia * cont), cmbFrequencia.Text,
+                                    Convert.ToDecimal(txtValor.Text.Replace("R$ ", "")), i,
+                                    Convert.ToDecimal(txtValorParcelas.Text.Replace("R$ ", "")), lblCategoria.Text);
+
+                                Atualizar.AlterarCodigoDespesaCusto(Convert.ToInt32(txtCodigo.Text), txtDescricao.Text);
+
+                                cont++;
+                            }
+                        }
                     }
                     else
                     {
@@ -233,10 +285,12 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void VerificarData()
         {
-            if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtVencimento) == false)
+            if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtVencimento) == true)
             {
-                ManipulacaoTextBox.ValidacaoData(txtVencimento);
-
+                if (ManipulacaoTextBox.ValidacaoData(txtVencimento) == false)
+                {
+                    return;
+                }
                 if (Convert.ToDateTime(txtEmissao.Text) > Convert.ToDateTime(txtVencimento.Text))
                 {
                     MessageBox.Show("A Data de Emissão Não Pode Ser Maior que a Data De Vencimento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -287,15 +341,32 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtCNPJ_KeyPress_1(object sender, KeyPressEventArgs e)
         {
-            ManipulacaoTextBox.FormatoCNPJ(e, txtCNPJ);
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.FormatoCNPJ(e, txtCNPJ);
+            }
         }
 
         private void cmbQuantidadeParcelas_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (txtDescricao.Text != "")
+            if (txtValor.Text != "")
             {
                 txtValorParcelas.Text = string.Format("R$ {0:#,##0.00}", Convert.ToDecimal(txtValor.Text.Replace("R$", "")) /
                 Convert.ToDecimal(cmbQuantidadeParcelas.Text.Replace("x", "")));
+            }
+        }
+
+        private void txtValor_KeyUp(object sender, KeyEventArgs e)
+        {
+            txtValorParcelas.Text = string.Format("R$ {0:#,##0.00}", Convert.ToDecimal(txtValor.Text.Replace("R$", "")) /
+                                                                     Convert.ToDecimal(cmbQuantidadeParcelas.Text.Replace("x", "")));
+        }
+
+        private void txtVencimento_Enter(object sender, EventArgs e)
+        {
+            if (txtEmissao.Text == String.Empty)
+            {
+                txtEmissao.Focus();
             }
         }
     }

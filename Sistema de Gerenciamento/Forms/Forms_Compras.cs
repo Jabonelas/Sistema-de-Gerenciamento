@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Bunifu.UI.WinForms;
 using Sistema_de_Gerenciamento.Classes;
 
 namespace Sistema_de_Gerenciamento.Forms
@@ -166,8 +167,12 @@ namespace Sistema_de_Gerenciamento.Forms
                 custos.btnAlterar.Visible = false;
                 custos.btnExcluir.Visible = false;
                 custos.btnNova.Visible = false;
-                custos.bntSair.Visible = false;
                 custos.btnSalvar.Location = new Point(11, 25);
+                custos.bntSair.Location = new Point(88, 25);
+                custos.lblCategoria.Text = "Custo";
+
+                custos.txtDescricao.Text = ($"Nº Nota Fiscal: { txtNumeroNotaFiscal.Text } - Fornecedor: { txtFornecedor.Text }");
+
                 custos.ShowDialog();
             }
         }
@@ -212,19 +217,35 @@ namespace Sistema_de_Gerenciamento.Forms
                     }
                     else if (gdvCompra.RowCount > 0)
                     {
-                        SetarDesignForms();
+                        DialogResult OpcaoDoUsuario = new DialogResult();
+                        OpcaoDoUsuario = MessageBox.Show("Deseja Realmente Excluir a Nota Fiscal?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (OpcaoDoUsuario == DialogResult.Yes)
+                        {
+                            Atualizar.AtualizarQuantidadeCanceladaEstoqueProduto(Convert.ToInt32(txtNumeroNotaFiscal.Text));
 
-                        Atualizar.AtualizarQuantidadeCanceladaEstoqueProduto(Convert.ToInt32(txtNumeroNotaFiscal.Text));
+                            Atualizar.AtualizarDataLancamentoNotaFiscalEntradaQuandoCancelada(Convert.ToInt32(txtNumeroNotaFiscal.Text));
 
-                        Atualizar.AtualizarDataLancamentoNotaFiscalEntradaQuandoCancelada(Convert.ToInt32(txtNumeroNotaFiscal.Text));
+                            ManipulacaoTextBox.ApagandoTextBox(this);
 
-                        txtNumeroNotaFiscal.Text = string.Empty;
+                            LimparGrid(gdvCompra);
+                        }
                     }
                 }
             }
             catch (Exception ex)
             {
                 Erro.ErroExcluirNotaFiscalEntrada(ex);
+            }
+        }
+
+        private void LimparGrid(BunifuDataGridView _tabela)
+        {
+            if (_tabela.Rows.Count > 0)
+            {
+                do
+                {
+                    _tabela.Rows.RemoveAt(0);
+                } while (_tabela.Rows.Count > 0);
             }
         }
 
