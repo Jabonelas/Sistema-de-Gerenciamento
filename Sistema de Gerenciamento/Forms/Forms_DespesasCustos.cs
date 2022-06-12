@@ -358,8 +358,12 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtValor_KeyUp(object sender, KeyEventArgs e)
         {
-            txtValorParcelas.Text = string.Format("R$ {0:#,##0.00}", Convert.ToDecimal(txtValor.Text.Replace("R$", "")) /
-                                                                     Convert.ToDecimal(cmbQuantidadeParcelas.Text.Replace("x", "")));
+            if (txtValor.Text != string.Empty)
+            {
+                txtValorParcelas.Text = string.Format("R$ {0:#,##0.00}", Convert.ToDecimal(txtValor.Text.Replace("R$", "")));
+            }
+
+            Convert.ToDecimal(cmbQuantidadeParcelas.Text.Replace("x", ""));
         }
 
         private void txtVencimento_Enter(object sender, EventArgs e)
@@ -369,5 +373,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtEmissao.Focus();
             }
         }
+
+     
     }
 }

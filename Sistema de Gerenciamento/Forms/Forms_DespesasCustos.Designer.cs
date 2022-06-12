@@ -199,14 +199,14 @@
             this.txtCodigo.FocusedBorderColor = System.Drawing.Color.DodgerBlue;
             this.txtCodigo.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtCodigo.Location = new System.Drawing.Point(26, 152);
+            this.txtCodigo.Location = new System.Drawing.Point(26, 150);
             this.txtCodigo.MaxLength = 15;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.PasswordChar = '\0';
             this.txtCodigo.ReadOnly = true;
             this.txtCodigo.SelectedText = "";
             this.txtCodigo.ShortcutsEnabled = false;
-            this.txtCodigo.Size = new System.Drawing.Size(63, 26);
+            this.txtCodigo.Size = new System.Drawing.Size(63, 28);
             this.txtCodigo.TabIndex = 166;
             // 
             // label1
@@ -230,6 +230,7 @@
             this.cmbTipoDespesa.Location = new System.Drawing.Point(118, 155);
             this.cmbTipoDespesa.Name = "cmbTipoDespesa";
             this.cmbTipoDespesa.Size = new System.Drawing.Size(92, 23);
+            this.cmbTipoDespesa.Sorted = true;
             this.cmbTipoDespesa.TabIndex = 0;
             this.cmbTipoDespesa.SelectedValueChanged += new System.EventHandler(this.cmbTipoDespesa_SelectedValueChanged);
             this.cmbTipoDespesa.Enter += new System.EventHandler(this.cmbTipoDespesa_Enter);
@@ -1201,7 +1202,7 @@
             this.txtCNPJ.IconRight = null;
             this.txtCNPJ.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCNPJ.Lines = new string[0];
-            this.txtCNPJ.Location = new System.Drawing.Point(231, 149);
+            this.txtCNPJ.Location = new System.Drawing.Point(231, 150);
             this.txtCNPJ.MaxLength = 100;
             this.txtCNPJ.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtCNPJ.Modified = false;

@@ -463,9 +463,9 @@ namespace Sistema_de_Gerenciamento
                 {
                     string query = "insert into tb_DespesasCustos ( dc_tipo, dc_descricao, dc_fornecedor_titulo, dc_cnpj, " +
                                    "dc_emissao, dc_vencimento, dc_frequencia, dc_valor, dc_quantidade_parcelas, " +
-                                   "dc_valor_parcela, dc_categoria) " +
+                                   "dc_valor_parcela, dc_categoria,dc_pagamento) " +
                                    "values(@tipo,@descricao,@fornecedorTitulo,@cnpj,@emissao,@vencimento,@frequencia," +
-                                   "@valor,@quantidadeParcelas,@valorParcelas,@categoria)";
+                                   "@valor,@quantidadeParcelas,@valorParcelas,@categoria,'NOK')";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
                     cmd.Parameters.AddWithValue("@tipo", SqlDbType.VarChar).Value = _tipo;

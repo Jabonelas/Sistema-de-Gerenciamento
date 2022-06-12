@@ -1000,7 +1000,7 @@
             this.btnSair.IdleIconRightImage = null;
             this.btnSair.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnSair.IndicateFocus = false;
-            this.btnSair.Location = new System.Drawing.Point(841, 41);
+            this.btnSair.Location = new System.Drawing.Point(580, 41);
             this.btnSair.Name = "btnSair";
             this.btnSair.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSair.OnDisabledState.BorderRadius = 1;
@@ -2424,7 +2424,7 @@
             this.btnGerarBoleto.IdleIconRightImage = null;
             this.btnGerarBoleto.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnGerarBoleto.IndicateFocus = false;
-            this.btnGerarBoleto.Location = new System.Drawing.Point(484, 41);
+            this.btnGerarBoleto.Location = new System.Drawing.Point(486, 41);
             this.btnGerarBoleto.Name = "btnGerarBoleto";
             this.btnGerarBoleto.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnGerarBoleto.OnDisabledState.BorderRadius = 1;
