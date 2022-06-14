@@ -1,0 +1,318 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Sistema_de_Gerenciamento.Classes;
+using Sistema_de_Gerenciamento.Forms;
+
+namespace Sistema_de_Gerenciamento
+{
+    public partial class Forms_PesquisarContasAPagar : Form
+    {
+        private BuscarNoBanco Buscar = new BuscarNoBanco();
+
+        //private Forms_EditarPagamento editarPagamento = new Forms_EditarPagamento();
+
+        public Forms_EditarPagamento editarPagamento;
+
+        private int linhasSelecionadas = 0;
+
+        private decimal valor = 0;
+
+        public Forms_PesquisarContasAPagar(Forms_EditarPagamento _editarPagamento)
+        {
+            InitializeComponent();
+
+            editarPagamento = _editarPagamento;
+        }
+
+        public Forms_PesquisarContasAPagar()
+        {
+            InitializeComponent();
+
+            PreencherDatePicker();
+
+            SetarDesignColunaGridView();
+        }
+
+        #region Carregar DatePicker
+
+        private void PreencherDatePicker()
+        {
+            DateTime data = DateTime.Today;
+
+            DateTime ultimoDiaDoMes = new DateTime(data.Year, data.Month, DateTime.DaysInMonth(data.Year, data.Month));
+
+            dtpDataFinal.Text = ultimoDiaDoMes.ToString();
+
+            DateTime primeiroDiaDoMes = new DateTime(data.Year, data.Month, 1);
+
+            dtpDataInicial.Text = primeiroDiaDoMes.ToString();
+        }
+
+        #endregion Carregar DatePicker
+
+        #region Preencher ComboBox Titulo
+
+        private void PreencherComboBoxTitulo()
+        {
+            cmbTitulo.Items.Clear();
+
+            List<string> listaTitulo = new List<string>();
+
+            listaTitulo = Buscar.BuscarTitulo(cmbCategoria.Text, cmbTipo.Text);
+
+            listaTitulo.ForEach(titulo => cmbTitulo.Items.Add(titulo));
+        }
+
+        #endregion Preencher ComboBox Titulo
+
+        #region Preencher Label Numero de Lancamentos Selecionados
+
+        private void NumeroLancamentosSelecionado()
+        {
+            lblNumeroLancamentos.Text = gdvContarPagar.RowCount.ToString();
+        }
+
+        #endregion Preencher Label Numero de Lancamentos Selecionados
+
+        #region Preencher Label Com Os Valores de Contas Pagas
+
+        private void ValorContasPagas()
+        {
+            lblPagas.Text = string.Format("R$ {0:#,##0.00}", Buscar.BuscarValorDespesaCustoPagas(dtpDataInicial.Value, dtpDataFinal.Value));
+        }
+
+        #endregion Preencher Label Com Os Valores de Contas Pagas
+
+        #region Preencher Label Com Os Valores Total de Contas Pagas
+
+        private void TotalPagamento()
+        {
+            Buscar.BuscarValorTotalDespesaCustoPagas();
+        }
+
+        #endregion Preencher Label Com Os Valores Total de Contas Pagas
+
+        #region Preencher Label Com Os Valores de Contas Nao Pagas
+
+        private void ValorContasAPagar()
+        {
+            lblAPagar.Text = string.Format("R$ {0:#,##0.00}", Buscar.BuscarValorDespesaCustoNaoPagas(dtpDataInicial.Value, dtpDataFinal.Value));
+        }
+
+        #endregion Preencher Label Com Os Valores de Contas Nao Pagas
+
+        #region Preencher Label Com Valores Vencidos
+
+        private void BuscarContasVencidas()
+        {
+            lblVencidas.Text = string.Format("R$ {0:#,##0.00}", Buscar.BuscarValorDespesaCustoVencidas(dtpDataInicial.Value, dtpDataFinal.Value));
+        }
+
+        #endregion Preencher Label Com Valores Vencidos
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            PesquisarCliente();
+
+            NumeroLancamentosSelecionado();
+
+            ValorContasPagas();
+
+            TotalPagamento();
+
+            ValorContasAPagar();
+
+            BuscarContasVencidas();
+        }
+
+        #region Pesquisar Despesa e Custo por Codigo,Titulo, Descricao e Status do Pagamento
+
+        private void PesquisarCliente()
+        {
+            if (txtCodigoDespesa.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarDespesaCustoPorCogigo(Convert.ToInt32(txtCodigoDespesa.Text), gdvContarPagar, dtpDataInicial.Value, dtpDataFinal.Value);
+
+                MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
+            }
+            else if (cmbTitulo.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarDespesaCustoPorTitulo(cmbTitulo.Text, gdvContarPagar, dtpDataInicial.Value, dtpDataFinal.Value);
+
+                MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
+            }
+            else if (txtDescricao.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarDespesaCustoPorDescricao(txtDescricao.Text, gdvContarPagar, dtpDataInicial.Value, dtpDataFinal.Value);
+
+                MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
+            }
+            else if (cmbPagamento.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarDespesaCustoPorStatusPagamento(cmbPagamento.Text, gdvContarPagar, dtpDataInicial.Value, dtpDataFinal.Value);
+
+                MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
+            }
+            else
+            {
+                DialogResult OpcaoDoUsuario = new DialogResult();
+                OpcaoDoUsuario = MessageBox.Show("Deseja Exibir Todos Os Clientes?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (OpcaoDoUsuario == DialogResult.Yes)
+                {
+                    bool isCadastroExiste =
+                        Buscar.BuscarDespesaCusto(gdvContarPagar, dtpDataInicial.Value, dtpDataFinal.Value);
+
+                    MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
+                }
+            }
+        }
+
+        private void MenssagemDespesaCustoNaoEncontrado(bool _isCadastroExiste)
+        {
+            if (_isCadastroExiste == false)
+            {
+                MessageBox.Show("Despesa/Custo Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        #endregion Pesquisar Despesa e Custo por Codigo,Titulo, Descricao e Status do Pagamento
+
+        private void dtpDataFinal_Leave(object sender, EventArgs e)
+        {
+            if (dtpDataInicial.Value > dtpDataFinal.Value)
+            {
+                MessageBox.Show("A Data Final Esta Maior Que a Data Inicial!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                dtpDataFinal.Focus();
+            }
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #region Setar o Design Do Forms
+
+        private void SetarDesignColunaGridView()
+        {
+            this.gdvContarPagar.Columns["dc_valor"].DefaultCellStyle.Format = "c";
+            this.gdvContarPagar.Columns["dc_valor_parcela"].DefaultCellStyle.Format = "c";
+        }
+
+        #endregion Setar o Design Do Forms
+
+        private void txtDescricao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtCodigoDespesa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
+
+        private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PreencherComboBoxTitulo();
+        }
+
+        private void cmbTitulo_Enter(object sender, EventArgs e)
+        {
+            if (cmbCategoria.Text == String.Empty)
+            {
+                MessageBox.Show("Por Favor Primeiro Preencher o Campo Categoria!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbCategoria.Focus();
+            }
+            else if (cmbTipo.Text == String.Empty)
+            {
+                MessageBox.Show("Por Favor Primeiro Preencher o Campo Tipo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbTipo.Focus();
+            }
+        }
+
+        private void cmbTipo_Enter(object sender, EventArgs e)
+        {
+            if (cmbCategoria.Text == String.Empty)
+            {
+                MessageBox.Show("Por Favor Primeiro Preencher o Campo Categoria!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbCategoria.Focus();
+            }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            Imprimir.ImprimirGridView("Relatorio de Despesas/Custos", gdvContarPagar);
+        }
+
+        private void btnExportarParaExcel_Click(object sender, EventArgs e)
+        {
+            ExportarExcel.GerarExcel(gdvContarPagar);
+        }
+
+        private void btnSelecionar_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void gdvContarPagar_DoubleClick(object sender, EventArgs e)
+        {
+            AbrirPreencherEditarPagamento();
+        }
+
+        #region Abrir e Preencher Editar Pagamento
+
+        private void AbrirPreencherEditarPagamento()
+        {
+            Forms_EditarPagamento editarPagamento = new Forms_EditarPagamento(this);
+
+            editarPagamento.txtCodigo.Text = gdvContarPagar.SelectedCells[1].Value.ToString();
+            editarPagamento.txtTipoDespesa.Text = gdvContarPagar.SelectedCells[3].Value.ToString();
+            editarPagamento.txtTitulo.Text = gdvContarPagar.SelectedCells[4].Value.ToString();
+            editarPagamento.txtDescricao.Text = gdvContarPagar.SelectedCells[5].Value.ToString();
+            editarPagamento.txtCNPJ.Text = gdvContarPagar.SelectedCells[6].Value.ToString();
+            editarPagamento.txtEmissao.Text = Convert.ToDateTime(gdvContarPagar.SelectedCells[7].Value).ToShortDateString();
+            editarPagamento.txtVencimento.Text = Convert.ToDateTime(gdvContarPagar.SelectedCells[8].Value).ToShortDateString();
+            editarPagamento.txtValor.Text = String.Format("{0:C}", (gdvContarPagar.SelectedCells[10].Value));
+            editarPagamento.txtQuantParcelas.Text = gdvContarPagar.SelectedCells[11].Value.ToString();
+            editarPagamento.txtValorParcela.Text = String.Format("{0:C}", (gdvContarPagar.SelectedCells[12].Value));
+
+            editarPagamento.ShowDialog();
+        }
+
+        #endregion Abrir e Preencher Editar Pagamento
+
+        private void gdvContarPagar_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 0)
+            {
+                DataGridViewRow linha = gdvContarPagar.Rows[e.RowIndex];
+
+                linha.Cells[0].Value = !Convert.ToBoolean(linha.Cells[0].EditedFormattedValue);
+
+                if (Convert.ToBoolean(linha.Cells[0].Value) == true)
+                {
+                    valor += Convert.ToDecimal(linha.Cells[12].Value);
+
+                    linhasSelecionadas++;
+                }
+                else
+                {
+                    valor -= Convert.ToDecimal(linha.Cells[12].Value);
+
+                    linhasSelecionadas--;
+                }
+            }
+
+            lblTotalLancamentoSelecionado.Text = String.Format("{0:C}", valor);
+
+            lblNumeroLancamentosSelecionados.Text = linhasSelecionadas.ToString();
+        }
+    }
+}
