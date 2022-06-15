@@ -730,6 +730,8 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Atualizar Despesa
 
+        #region Atualizar Codigo Despesa e Custo
+
         public void AlterarCodigoDespesaCusto(int _codigo, string _descricao)
         {
             try
@@ -751,5 +753,50 @@ namespace Sistema_de_Gerenciamento.Classes
                 Erro.ErroAoAtualizarCodigoDespesaCustoNoBanco(ex);
             }
         }
+
+        #endregion Atualizar Codigo Despesa e Custo
+
+        #region Atualizar Status Pagamento Despesa e Custo
+
+        public void AtualizarPagamento(DateTime _dataPagamento, decimal _descontoTaxas, decimal _jurosMulta,
+            decimal _valorPago, int _codigo, string _quantidadeParcelas, string _statusPagamento, Image _imagem)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_DespesasCustos set dc_data_pagamento = @dataPagamento, " +
+                                   "dc_desconto_taxas = @descontoTaxas , dc_juros_multa = @jurosMulta, " +
+                                   "dc_valor_pago = @valorPago, dc_estatus_pagamento = @statusPagamento, " +
+                                   "dc_imagem_pagamento = @imagem " +
+                                   "where dc_codigo = @codigo and dc_quantidade_parcelas = @quantidadeParcelas";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    byte[] arr;
+                    ImageConverter converter = new ImageConverter();
+                    arr = (byte[])converter.ConvertTo(_imagem, typeof(byte[]));
+
+                    adapter.SelectCommand.Parameters.AddWithValue("@dataPagamento", _dataPagamento);
+                    adapter.SelectCommand.Parameters.AddWithValue("@descontoTaxas", _descontoTaxas);
+                    adapter.SelectCommand.Parameters.AddWithValue("@jurosMulta", _jurosMulta);
+                    adapter.SelectCommand.Parameters.AddWithValue("@valorPago", _valorPago);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigo", _codigo);
+                    adapter.SelectCommand.Parameters.AddWithValue("@quantidadeParcelas", _quantidadeParcelas);
+                    adapter.SelectCommand.Parameters.AddWithValue("@statusPagamento", _statusPagamento);
+                    adapter.SelectCommand.Parameters.Add("@imagem", SqlDbType.Image).Value = arr;
+
+                    adapter.SelectCommand.ExecuteReader();
+
+                    AvisoCantoInferiorDireito.Inclusao();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarPagamentoNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Status Pagamento Despesa e Custo
     }
 }

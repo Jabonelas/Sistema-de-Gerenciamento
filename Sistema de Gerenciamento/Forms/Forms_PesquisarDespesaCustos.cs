@@ -128,7 +128,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (gdvPesquisarDespesa.RowCount > 0)
             {
-                int indice = 1;
+                int indice = 5;
 
                 despesas.txtCodigo.Text = gdvPesquisarDespesa.SelectedCells[indice += 1].Value.ToString();
                 despesas.cmbTipoDespesa.Text = gdvPesquisarDespesa.SelectedCells[indice += 1].Value.ToString();

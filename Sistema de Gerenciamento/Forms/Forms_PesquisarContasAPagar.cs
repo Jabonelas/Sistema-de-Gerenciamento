@@ -94,7 +94,7 @@ namespace Sistema_de_Gerenciamento
 
         private void TotalPagamento()
         {
-            Buscar.BuscarValorTotalDespesaCustoPagas();
+            lblTotalPagamento.Text = String.Format("{0:C}", Buscar.BuscarValorTotalDespesaCustoPagas());
         }
 
         #endregion Preencher Label Com Os Valores Total de Contas Pagas
@@ -119,7 +119,11 @@ namespace Sistema_de_Gerenciamento
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            PesquisarCliente();
+            valor = 0;
+
+            linhasSelecionadas = 0;
+
+            PesquisarDespesaCusto();
 
             NumeroLancamentosSelecionado();
 
@@ -134,7 +138,7 @@ namespace Sistema_de_Gerenciamento
 
         #region Pesquisar Despesa e Custo por Codigo,Titulo, Descricao e Status do Pagamento
 
-        private void PesquisarCliente()
+        private void PesquisarDespesaCusto()
         {
             if (txtCodigoDespesa.Text != string.Empty)
             {
@@ -163,7 +167,7 @@ namespace Sistema_de_Gerenciamento
             else
             {
                 DialogResult OpcaoDoUsuario = new DialogResult();
-                OpcaoDoUsuario = MessageBox.Show("Deseja Exibir Todos Os Clientes?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                OpcaoDoUsuario = MessageBox.Show("Deseja Exibir Todas As Despesa/Custo?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (OpcaoDoUsuario == DialogResult.Yes)
                 {
                     bool isCadastroExiste =
@@ -259,6 +263,7 @@ namespace Sistema_de_Gerenciamento
 
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
+            AbrirPreencherEditarPagamento();
         }
 
         private void gdvContarPagar_DoubleClick(object sender, EventArgs e)
@@ -266,29 +271,57 @@ namespace Sistema_de_Gerenciamento
             AbrirPreencherEditarPagamento();
         }
 
-        #region Abrir e Preencher Editar Pagamento
+        #region Abrir Tela de Edicao de Pagametno e Preencher Editar Pagamento
 
         private void AbrirPreencherEditarPagamento()
         {
-            Forms_EditarPagamento editarPagamento = new Forms_EditarPagamento(this);
+            if (gdvContarPagar.Rows.Count > 0)
+            {
+                Forms_EditarPagamento editarPagamento = new Forms_EditarPagamento(this);
 
-            editarPagamento.txtCodigo.Text = gdvContarPagar.SelectedCells[1].Value.ToString();
-            editarPagamento.txtTipoDespesa.Text = gdvContarPagar.SelectedCells[3].Value.ToString();
-            editarPagamento.txtTitulo.Text = gdvContarPagar.SelectedCells[4].Value.ToString();
-            editarPagamento.txtDescricao.Text = gdvContarPagar.SelectedCells[5].Value.ToString();
-            editarPagamento.txtCNPJ.Text = gdvContarPagar.SelectedCells[6].Value.ToString();
-            editarPagamento.txtEmissao.Text = Convert.ToDateTime(gdvContarPagar.SelectedCells[7].Value).ToShortDateString();
-            editarPagamento.txtVencimento.Text = Convert.ToDateTime(gdvContarPagar.SelectedCells[8].Value).ToShortDateString();
-            editarPagamento.txtValor.Text = String.Format("{0:C}", (gdvContarPagar.SelectedCells[10].Value));
-            editarPagamento.txtQuantParcelas.Text = gdvContarPagar.SelectedCells[11].Value.ToString();
-            editarPagamento.txtValorParcela.Text = String.Format("{0:C}", (gdvContarPagar.SelectedCells[12].Value));
+                editarPagamento.txtCodigo.Text = gdvContarPagar.SelectedCells[2].Value.ToString();
+                editarPagamento.txtTipoDespesa.Text = gdvContarPagar.SelectedCells[3].Value.ToString();
+                editarPagamento.txtTitulo.Text = gdvContarPagar.SelectedCells[4].Value.ToString();
+                editarPagamento.txtDescricao.Text = gdvContarPagar.SelectedCells[5].Value.ToString();
+                editarPagamento.txtCNPJ.Text = gdvContarPagar.SelectedCells[6].Value.ToString();
+                editarPagamento.txtEmissao.Text = Convert.ToDateTime(gdvContarPagar.SelectedCells[7].Value).ToShortDateString();
+                editarPagamento.txtVencimento.Text = Convert.ToDateTime(gdvContarPagar.SelectedCells[8].Value).ToShortDateString();
+                editarPagamento.txtValor.Text = String.Format("{0:C}", (gdvContarPagar.SelectedCells[10].Value));
+                editarPagamento.txtQuantParcelas.Text = gdvContarPagar.SelectedCells[11].Value.ToString();
+                editarPagamento.txtValorParcela.Text = String.Format("{0:C}", (gdvContarPagar.SelectedCells[12].Value));
+                editarPagamento.lblVerificacaoPagamento.Text = gdvContarPagar.SelectedCells[14].Value.ToString();
 
-            editarPagamento.ShowDialog();
+                //for (int i = 1; i < 30; i++)
+                //{
+                //    MessageBox.Show($"{i} = {gdvContarPagar.SelectedCells[i].Value.ToString()}");
+                //}
+
+                if (gdvContarPagar.SelectedCells[19].Value.ToString() == "0,00")
+                {
+                    editarPagamento.txtValorPago.Text = String.Format("{0:C}", (gdvContarPagar.SelectedCells[12].Value));
+                }
+                else
+                {
+                    editarPagamento.txtDataPagamento.Text = Convert.ToDateTime(gdvContarPagar.SelectedCells[16].Value).ToShortDateString();
+                    editarPagamento.txtDescontoTaxas.Text = String.Format("{0:P}", Convert.ToDecimal(gdvContarPagar.SelectedCells[17].Value) / 100);
+                    editarPagamento.txtJurosMulta.Text = String.Format("{0:P}", Convert.ToDecimal(gdvContarPagar.SelectedCells[18].Value) / 100);
+                    editarPagamento.txtValorPago.Text = String.Format("{0:C}", gdvContarPagar.SelectedCells[19].Value);
+                }
+
+                editarPagamento.ShowDialog();
+            }
         }
 
-        #endregion Abrir e Preencher Editar Pagamento
+        #endregion Abrir Tela de Edicao de Pagametno e Preencher Editar Pagamento
 
         private void gdvContarPagar_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SelecaoGridView(e);
+        }
+
+        #region Selecao GridView
+
+        private void SelecaoGridView(DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == 0)
             {
@@ -314,5 +347,7 @@ namespace Sistema_de_Gerenciamento
 
             lblNumeroLancamentosSelecionados.Text = linhasSelecionadas.ToString();
         }
+
+        #endregion Selecao GridView
     }
 }

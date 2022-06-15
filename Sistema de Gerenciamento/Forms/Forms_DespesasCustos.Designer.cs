@@ -763,7 +763,7 @@
             this.txtEmissao.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEmissao.Lines = new string[0];
             this.txtEmissao.Location = new System.Drawing.Point(26, 334);
-            this.txtEmissao.MaxLength = 100;
+            this.txtEmissao.MaxLength = 10;
             this.txtEmissao.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtEmissao.Modified = false;
             this.txtEmissao.Multiline = false;
@@ -1218,7 +1218,7 @@
             this.txtVencimento.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtVencimento.Lines = new string[0];
             this.txtVencimento.Location = new System.Drawing.Point(241, 334);
-            this.txtVencimento.MaxLength = 100;
+            this.txtVencimento.MaxLength = 10;
             this.txtVencimento.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtVencimento.Modified = false;
             this.txtVencimento.Multiline = false;

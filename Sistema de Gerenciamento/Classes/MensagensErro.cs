@@ -282,6 +282,11 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(INS-DE03) Erro ao Inserir Imagem de Pagamento Despesa e Custo \n\nErro: {_e}", "Erro Inserir Imagem Pagamento Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoAdicionarDespesaCustoFixaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(INS-DE04) Erro ao Inserir Despesa e Custo Fixo \n\nErro: {_e}", "Erro Inserir Despesa/Custo Fixo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Despesa
 
         #region Estoque Produto
@@ -412,6 +417,15 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Desepesa e Custo
+
+        #region Edição Pagamento
+
+        public void ErroAoAtualizarPagamentoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-EP01) Erro ao Atualizar Pagamento de Despesa e Custo! \n\nErro: {_e}", "Erro Atualizacao Pagamento de Despesa e Custo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Edição Pagamento
 
         #endregion Atualizacao Do Banco
 
@@ -781,6 +795,11 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoBuscarDespesaCustoVencidasNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-DE17) Erro ao Realizar Busca de Despesa e Custo Contas Vencidas \n\nErro: {_e}", "Erro Busca Despesa e Custo Contas Vencidas!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarDespesaCustoFixaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE18) Erro ao Realizar Busca de Despesa e Custo Fixa \n\nErro: {_e}", "Erro Busca Despesa e Custo Fixa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Pesquisar Despesa

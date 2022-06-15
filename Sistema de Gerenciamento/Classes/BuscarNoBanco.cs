@@ -2011,13 +2011,13 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query =
-                        "select dc_id,dc_codigo, dc_tipo, dc_fornecedor_titulo, dc_descricao, dc_cnpj, dc_emissao, " +
-                        "dc_vencimento, dc_frequencia,dc_valor, dc_quantidade_parcelas, dc_valor_parcela, " +
-                        "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento " +
-                        "from tb_DespesasCustos " +
-                        "where dc_codigo = @codigo and dc_emissao > @dataInicial and dc_vencimento < @dataFinal " +
-                        "order by dc_vencimento asc ";
+                    string query = "select dc_id,dc_codigo, dc_tipo, dc_fornecedor_titulo, dc_descricao, dc_cnpj, dc_emissao, " +
+                                   "dc_vencimento, dc_frequencia,dc_valor, dc_quantidade_parcelas, dc_valor_parcela, " +
+                                   "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento,dc_data_pagamento, dc_desconto_taxas," +
+                                   "dc_juros_multa, dc_valor_pago" +
+                                   "from tb_DespesasCustos " +
+                                   "where dc_codigo = @codigo and dc_emissao > @dataInicial and dc_vencimento < @dataFinal " +
+                                   "order by dc_vencimento asc ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@codigo", _codigo);
@@ -2054,6 +2054,44 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Despesa/Custo Por Codigo
+
+        public List<DadosDespesaCusto> BuscarListaDespesaCustoFixa()
+        {
+            List<DadosDespesaCusto> listaDespesas = new List<DadosDespesaCusto>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select dc_tipo, dc_descricao, dc_fornecedor_titulo, dc_cnpj, dc_emissao, dc_vencimento," +
+                                   "dc_frequencia,dc_valor,dc_quantidade_parcelas,dc_valor_parcela,dc_categoria " +
+                                   "from tb_DespesasCustos " +
+                                   "where dc_tipo = 'Fixa'";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr;
+                    dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaDespesas.Add(new DadosDespesaCusto(dr.GetString(0),
+                            dr.GetString(1), dr.GetString(2), dr.GetString(3),
+                            dr.GetDateTime(4), dr.GetDateTime(5), dr.GetString(6),
+                            dr.GetDecimal(7), dr.GetString(8), dr.GetDecimal(9),
+                            dr.GetString(10)));
+                    }
+                }
+
+                return listaDespesas;
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarDespesaCustoFixaNoBanco(ex);
+
+                return listaDespesas;
+            }
+        }
 
         #region Buscar Lista Com Titulo Despesa e Custo
 
@@ -2107,7 +2145,8 @@ namespace Sistema_de_Gerenciamento.Classes
                 {
                     string query = "select dc_id,dc_codigo, dc_tipo, dc_fornecedor_titulo, dc_descricao, dc_cnpj, dc_emissao, " +
                                    "dc_vencimento, dc_frequencia,dc_valor, dc_quantidade_parcelas, dc_valor_parcela, " +
-                                   "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento " +
+                                   "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento,dc_data_pagamento, dc_desconto_taxas," +
+                                   "dc_juros_multa, dc_valor_pago " +
                                    "from tb_DespesasCustos " +
                                    "where dc_fornecedor_titulo = @titulo and dc_vencimento > @dataInicial and dc_vencimento < @dataFinal " +
                                    "order by dc_vencimento asc ";
@@ -2157,12 +2196,13 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select dc_id, dc_codigo, dc_tipo, dc_fornecedor_titulo, dc_descricao, dc_cnpj, dc_emissao, " +
-                    "dc_vencimento, dc_frequencia,dc_valor, dc_quantidade_parcelas, dc_valor_parcela, " +
-                        "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento " +
-                        "from tb_DespesasCustos " +
-                        "where dc_descricao like @descricao and dc_vencimento > @dataInicial and dc_vencimento < @dataFinal " +
-                    "order by dc_vencimento asc ";
+                    string query = "select dc_id,dc_codigo, dc_tipo, dc_fornecedor_titulo, dc_descricao, dc_cnpj, dc_emissao, " +
+                                   "dc_vencimento, dc_frequencia,dc_valor, dc_quantidade_parcelas, dc_valor_parcela, " +
+                                   "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento,dc_data_pagamento, dc_desconto_taxas," +
+                                   "dc_juros_multa, dc_valor_pago " +
+                                   "from tb_DespesasCustos " +
+                                   "where dc_descricao like @descricao and dc_vencimento > @dataInicial and dc_vencimento < @dataFinal " +
+                                   "order by dc_vencimento asc ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@descricao", string.Format("%{0}%", _descricao));
@@ -2209,9 +2249,10 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select dc_id, dc_codigo, dc_tipo, dc_fornecedor_titulo, dc_descricao, dc_cnpj, dc_emissao, " +
+                    string query = "select dc_id,dc_codigo, dc_tipo, dc_fornecedor_titulo, dc_descricao, dc_cnpj, dc_emissao, " +
                                    "dc_vencimento, dc_frequencia,dc_valor, dc_quantidade_parcelas, dc_valor_parcela, " +
-                                   "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento " +
+                                   "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento,dc_data_pagamento, dc_desconto_taxas," +
+                                   "dc_juros_multa, dc_valor_pago " +
                                    "from tb_DespesasCustos " +
                                    "where dc_estatus_pagamento = @estatusPagamento and dc_vencimento > @dataInicial and dc_vencimento < @dataFinal " +
                                    "order by dc_vencimento asc ";
@@ -2260,9 +2301,10 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select dc_id, dc_codigo, dc_tipo, dc_fornecedor_titulo, dc_descricao, dc_cnpj, dc_emissao, " +
+                    string query = "select dc_id,dc_codigo, dc_tipo, dc_fornecedor_titulo, dc_descricao, dc_cnpj, dc_emissao, " +
                                    "dc_vencimento, dc_frequencia,dc_valor, dc_quantidade_parcelas, dc_valor_parcela, " +
-                                   "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento " +
+                                   "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento,dc_data_pagamento, dc_desconto_taxas," +
+                                   "dc_juros_multa, dc_valor_pago " +
                                    "from tb_DespesasCustos " +
                                    "where dc_vencimento > @dataInicial and dc_vencimento < @dataFinal " +
                                    "order by dc_vencimento asc ";
@@ -2312,7 +2354,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 {
                     string query = "select sum(dc_valor_parcela) " +
                                    "from tb_DespesasCustos " +
-                                   "where dc_emissao > @dataInicial and dc_vencimento < @dataFinal and " +
+                                   "where dc_vencimento > @dataInicial and dc_vencimento < @dataFinal and " +
                                    "dc_estatus_pagamento = 'Pago'";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -2352,7 +2394,7 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select sum(dc_valor_parcela) " +
+                    string query = "select sum(dc_valor_pago) " +
                                    "from tb_DespesasCustos " +
                                    "where dc_estatus_pagamento = 'Pago'";
 

@@ -8,16 +8,66 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sistema_de_Gerenciamento.Classes;
 
 namespace Sistema_de_Gerenciamento
 {
     public partial class Forms_TelaAdministrador : Form
     {
+        private BuscarNoBanco Buscar = new BuscarNoBanco();
+
+        private AdicionarNoBanco Salvar = new AdicionarNoBanco();
+
         private Forms_Login login;
 
         public Forms_TelaAdministrador()
         {
             InitializeComponent();
+        }
+
+        private void Teste()
+        {
+            int frequencia = 0;
+
+            List<DadosDespesaCusto> listaDespesasCustos = Buscar.BuscarListaDespesaCustoFixa();
+
+            //listaDespesasCustos.ForEach(dado => dado.tipo.Equals("Fixa"));
+
+            foreach (DadosDespesaCusto despesaCusto in listaDespesasCustos)
+            {
+                if (despesaCusto.vencimento == DateTime.Today)
+                {
+                    if (despesaCusto.frequencia == "Semanal")
+                    {
+                        frequencia = 7;
+                    }
+                    else if (despesaCusto.frequencia == "Quinzenal")
+                    {
+                        frequencia = 15;
+                    }
+                    else if (despesaCusto.frequencia == "Mensal")
+                    {
+                        frequencia = 30;
+                    }
+                    else if (despesaCusto.frequencia == "Bimestral")
+                    {
+                        frequencia = 90;
+                    }
+                    else if (despesaCusto.frequencia == "Semestral")
+                    {
+                        frequencia = 180;
+                    }
+                    else if (despesaCusto.frequencia == "Anual")
+                    {
+                        frequencia = 365;
+                    }
+
+                    Salvar.DespesaCustosFixo(despesaCusto.tipo, despesaCusto.descricao, despesaCusto.forncedorTitulo,
+                        despesaCusto.cnpj, despesaCusto.emissao, despesaCusto.vencimento.AddDays(frequencia), despesaCusto.frequencia,
+                        despesaCusto.valor, despesaCusto.quantidadeParcelas, despesaCusto.valorParcela, despesaCusto.categoria,
+                        ptbStatusPagamento.Image);
+                }
+            }
         }
 
         public Forms_TelaAdministrador(Forms_Login _login)
@@ -176,6 +226,11 @@ namespace Sistema_de_Gerenciamento
         {
             Forms_PesquisarCliente pesquisarCliente = new Forms_PesquisarCliente("Cliente");
             pesquisarCliente.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Teste();
         }
     }
 }

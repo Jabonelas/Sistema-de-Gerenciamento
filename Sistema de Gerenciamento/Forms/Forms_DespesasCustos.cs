@@ -179,7 +179,6 @@ namespace Sistema_de_Gerenciamento.Forms
 
                                 Atualizar.AlterarCodigoDespesaCusto(Convert.ToInt32(txtCodigo.Text), txtDescricao.Text);
 
-
                                 cont++;
                             }
                         }
@@ -431,11 +430,15 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void VerificarDataDatePicker(BunifuDatePicker _datePicker)
         {
-            if (Convert.ToDateTime(txtEmissao.Text) > Convert.ToDateTime(txtVencimento.Text))
+            if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtVencimento) == true)
             {
-                MessageBox.Show("A Data de Emissão Não Pode Ser Maior que a Data De Vencimento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (Convert.ToDateTime(txtEmissao.Text) > Convert.ToDateTime(txtVencimento.Text))
+                {
+                    MessageBox.Show("A Data de Emissão Não Pode Ser Maior que a Data De Vencimento!", "Atenção!",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                _datePicker.Focus();
+                    _datePicker.Focus();
+                }
             }
         }
 
