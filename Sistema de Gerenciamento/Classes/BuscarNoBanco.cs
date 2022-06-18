@@ -1968,8 +1968,8 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select dc_tipo, dc_descricao, dc_fornecedor_titulo, dc_cnpj, dc_emissao, dc_vencimento," +
-                                   "dc_frequencia,dc_valor,dc_quantidade_parcelas,dc_valor_parcela,dc_categoria " +
+                    string query = "select dc_codigo, dc_tipo, dc_descricao, dc_fornecedor_titulo, dc_cnpj, dc_emissao, dc_vencimento," +
+                                   "dc_frequencia,dc_valor,dc_quantidade_parcelas,dc_valor_parcela,dc_categoria, dc_verificar " +
                                    "from tb_DespesasCustos " +
                                    "where dc_tipo = @tipo and dc_categoria = @categoria";
 
@@ -1983,11 +1983,11 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     while (dr.Read())
                     {
-                        listaDespesas.Add(new DadosDespesaCusto(dr.GetString(0),
-                            dr.GetString(1), dr.GetString(2), dr.GetString(3),
-                            dr.GetDateTime(4), dr.GetDateTime(5), dr.GetString(6),
-                            dr.GetDecimal(7), dr.GetString(8), dr.GetDecimal(9),
-                            dr.GetString(10)));
+                        listaDespesas.Add(new DadosDespesaCusto(dr.GetInt32(0), dr.GetString(1),
+                            dr.GetString(2), dr.GetString(3), dr.GetString(4),
+                            dr.GetDateTime(5), dr.GetDateTime(6), dr.GetString(7),
+                            dr.GetDecimal(8), dr.GetString(9), dr.GetDecimal(10),
+                            dr.GetString(11), dr.GetString(12)));
                     }
                 }
 
@@ -2063,8 +2063,8 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select dc_tipo, dc_descricao, dc_fornecedor_titulo, dc_cnpj, dc_emissao, dc_vencimento," +
-                                   "dc_frequencia,dc_valor,dc_quantidade_parcelas,dc_valor_parcela,dc_categoria " +
+                    string query = "select dc_codigo,dc_tipo, dc_descricao, dc_fornecedor_titulo, dc_cnpj, dc_emissao, dc_vencimento," +
+                                   "dc_frequencia,dc_valor,dc_quantidade_parcelas,dc_valor_parcela,dc_categoria,dc_verificar " +
                                    "from tb_DespesasCustos " +
                                    "where dc_tipo = 'Fixa'";
 
@@ -2075,11 +2075,11 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     while (dr.Read())
                     {
-                        listaDespesas.Add(new DadosDespesaCusto(dr.GetString(0),
-                            dr.GetString(1), dr.GetString(2), dr.GetString(3),
-                            dr.GetDateTime(4), dr.GetDateTime(5), dr.GetString(6),
-                            dr.GetDecimal(7), dr.GetString(8), dr.GetDecimal(9),
-                            dr.GetString(10)));
+                        listaDespesas.Add(new DadosDespesaCusto(dr.GetInt32(0), dr.GetString(1),
+                            dr.GetString(2), dr.GetString(3), dr.GetString(4),
+                            dr.GetDateTime(5), dr.GetDateTime(6), dr.GetString(7),
+                            dr.GetDecimal(8), dr.GetString(9), dr.GetDecimal(10),
+                            dr.GetString(11), dr.GetString(12)));
                     }
                 }
 
@@ -2477,7 +2477,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 {
                     string query = "select sum(dc_valor_parcela) " +
                                    "from tb_DespesasCustos " +
-                                   "where dc_vencimento < getdate() and " +
+                                   "where dc_vencimento < DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE())) and " +
                                    "dc_estatus_pagamento = 'Nao Pago'";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);

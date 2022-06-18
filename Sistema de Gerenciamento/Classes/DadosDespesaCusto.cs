@@ -20,13 +20,14 @@ namespace Sistema_de_Gerenciamento.Classes
         public string quantidadeParcelas { get; set; }
         public decimal valorParcela { get; set; }
         public string categoria { get; set; }
+        public string verificar { get; set; }
 
-        public DadosDespesaCusto(string _tipo, string _descricao, string _forncedorTitulo, string _cnpj,
+        public DadosDespesaCusto(int _codigo, string _tipo, string _descricao, string _forncedorTitulo, string _cnpj,
             DateTime _emissao,
             DateTime _vencimento, string _frequencia, decimal _valor, string _quantidadeParcelas,
-            decimal _valorParcela, string _categoria)
+            decimal _valorParcela, string _categoria, string _verificar)
         {
-            //codigo = _codigo;
+            codigo = _codigo;
             tipo = _tipo;
             descricao = _descricao;
             forncedorTitulo = _forncedorTitulo;
@@ -38,6 +39,7 @@ namespace Sistema_de_Gerenciamento.Classes
             quantidadeParcelas = _quantidadeParcelas;
             valorParcela = _valorParcela;
             categoria = _categoria;
+            verificar = _verificar;
         }
     }
 }

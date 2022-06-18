@@ -416,6 +416,11 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(ATU-DE02) Erro ao Atualizar Codigo Despesa e Custo \n\nErro: {_e}", "Erro Atualizacao Codigo Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoAtualizarCodigoDespesaCustoFixoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-DE03) Erro ao Atualizar Codigo Despesa e Custo Fixo \n\nErro: {_e}", "Erro Atualizacao Codigo Despesa/Custo Fixo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Desepesa e Custo
 
         #region Edição Pagamento

@@ -26,7 +26,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private int cont = 1;
 
-        private int frequencia = 1;
+        private int dias = 1;
 
         public Forms_DespesasCustos(string _tituloForm)
         {
@@ -129,30 +129,12 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     if (listaDespesas.Find(lista => lista.descricao == txtDescricao.Text && lista.forncedorTitulo == cmbFornecedorTitulo.Text) == null)
                     {
-                        if (cmbFrequencia.Text == "Semanal")
-                        {
-                            frequencia = 7;
-                        }
-                        else if (cmbFrequencia.Text == "Quinzenal")
-                        {
-                            frequencia = 15;
-                        }
-                        else if (cmbFrequencia.Text == "Mensal")
-                        {
-                            frequencia = 30;
-                        }
-                        else if (cmbFrequencia.Text == "Bimestral")
-                        {
-                            frequencia = 90;
-                        }
-                        else if (cmbFrequencia.Text == "Semestral")
-                        {
-                            frequencia = 180;
-                        }
-                        else if (cmbFrequencia.Text == "Anual")
-                        {
-                            frequencia = 365;
-                        }
+                        bool semanal = cmbFrequencia.Text == "Semanal" ? Convert.ToBoolean(dias = 7) : false;
+                        bool quinzenal = cmbFrequencia.Text == "Quinzenal" ? Convert.ToBoolean(dias = 15) : false;
+                        bool mensal = cmbFrequencia.Text == "Mensal" ? Convert.ToBoolean(dias = 30) : false;
+                        bool bimestral = cmbFrequencia.Text == "Bimestral" ? Convert.ToBoolean(dias = 90) : false;
+                        bool semestral = cmbFrequencia.Text == "Semestral" ? Convert.ToBoolean(dias = 180) : false;
+                        bool anual = cmbFrequencia.Text == "Anual" ? Convert.ToBoolean(dias = 365) : false;
 
                         for (int i = 1; i <= Convert.ToInt32(cmbQuantidadeParcelas.Text.Replace("x", "")); i++)
                         {
@@ -172,7 +154,7 @@ namespace Sistema_de_Gerenciamento.Forms
                             {
                                 Salvar.InserirDespesaCusto(cmbTipoDespesa.Text, txtDescricao.Text, cmbFornecedorTitulo.Text,
                                     txtCNPJ.Text, Convert.ToDateTime(txtEmissao.Text),
-                                    Convert.ToDateTime(txtVencimento.Text).AddDays(frequencia * cont), cmbFrequencia.Text,
+                                    Convert.ToDateTime(txtVencimento.Text).AddDays(dias * cont), cmbFrequencia.Text,
                                     Convert.ToDecimal(txtValor.Text.Replace("R$ ", "")),
                                     ($"{i}/" + cmbQuantidadeParcelas.Text.Replace("x", "")),
                                     Convert.ToDecimal(txtValorParcelas.Text.Replace("R$ ", "")), lblCategoria.Text);
@@ -236,6 +218,10 @@ namespace Sistema_de_Gerenciamento.Forms
         private void btnNovaVenda_Click(object sender, EventArgs e)
         {
             ManipulacaoTextBox.ApagandoTextBox(this);
+
+            txtCNPJ.Text = "-";
+            txtValorParcelas.Text = "0";
+            cmbQuantidadeParcelas.Text = "1";
         }
 
         private void cmbTipoDespesa_SelectedValueChanged(object sender, EventArgs e)

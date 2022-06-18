@@ -464,9 +464,9 @@ namespace Sistema_de_Gerenciamento
                     string query = "insert into tb_DespesasCustos ( dc_tipo, dc_descricao, dc_fornecedor_titulo, dc_cnpj, " +
                                    "dc_emissao, dc_vencimento, dc_frequencia, dc_valor, dc_quantidade_parcelas, " +
                                    "dc_valor_parcela, dc_categoria, dc_estatus_pagamento," +
-                                   "dc_desconto_taxas, dc_juros_multa, dc_valor_pago) " +
+                                   "dc_desconto_taxas, dc_juros_multa, dc_valor_pago,dc_verificar) " +
                                    "values(@tipo,@descricao,@fornecedorTitulo,@cnpj,@emissao,@vencimento,@frequencia," +
-                                   "@valor,@quantidadeParcelas,@valorParcelas,@categoria,'Nao Pago',0,0,0)";
+                                   "@valor,@quantidadeParcelas,@valorParcelas,@categoria,'Nao Pago',0,0,0,'nok')";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
                     cmd.Parameters.AddWithValue("@tipo", SqlDbType.VarChar).Value = _tipo;
@@ -556,7 +556,9 @@ namespace Sistema_de_Gerenciamento
 
         #endregion InserirImagemStatusPagamento
 
-        public void DespesaCustosFixo(string _tipo, string _descricao, string _fornecedorTitulo, string _cnpj,
+        #region Despesa Custos Fixo Repeticao
+
+        public void DespesaCustosFixoRepeticao(int _codigo, string _tipo, string _descricao, string _fornecedorTitulo, string _cnpj,
             DateTime _emissao, DateTime _vencimento, string _frequencia, decimal _valor, string _quantidadeParcela,
             decimal _valorParcela, string _categoria, Image _imagem)
         {
@@ -564,31 +566,19 @@ namespace Sistema_de_Gerenciamento
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "insert into tb_DespesasCustos " +
-                                   "(dc_tipo," +
-                                   "dc_descricao, " +
-                                   "dc_fornecedor_titulo," +
-                                   "dc_cnpj, " +
-                                   "dc_emissao, " +
-                                   "dc_vencimento, " +
-                                   "dc_frequencia," +
-                                   "dc_valor, " +
-                                   "dc_quantidade_parcelas," +
-                                   "dc_valor_parcela, " +
-                                   "dc_categoria, " +
-                                   "dc_imagem_pagamento" +
-                                   "dc_estatus_pagamento," +
-                                   "dc_desconto_taxas," +
-                                   "dc_juros_multa, " +
-                                   "dc_valor_pago) " +
-                                   "values (@tipo,@descricao,@fornecedorTitulo,@cnpj,@emissao,@vencimento,@frequencia,@valor,@quantidadeParcela," +
-                                   "@valorParcela,@categoria,@imagem,'Nao Pago',0,0,0)";
+                    string query = "insert into tb_DespesasCustos (dc_codigo ,dc_tipo, dc_descricao, dc_fornecedor_titulo,dc_cnpj, " +
+                                   "dc_emissao, dc_vencimento, dc_frequencia,dc_valor, dc_quantidade_parcelas, dc_valor_parcela, " +
+                                   "dc_categoria, dc_imagem_pagamento, dc_estatus_pagamento, dc_desconto_taxas," +
+                                   "dc_juros_multa, dc_valor_pago, dc_verificar) " +
+                                   "values (@codigo,@tipo,@descricao,@fornecedorTitulo,@cnpj,@emissao,@vencimento,@frequencia,@valor,@quantidadeParcela," +
+                                   "@valorParcela,@categoria,@imagem,'Nao Pago',0,0,0,'nok')";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
                     byte[] arr;
                     ImageConverter converter = new ImageConverter();
                     arr = (byte[])converter.ConvertTo(_imagem, typeof(byte[]));
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigo", _codigo);
                     adapter.SelectCommand.Parameters.AddWithValue("@tipo", _tipo);
                     adapter.SelectCommand.Parameters.AddWithValue("@descricao", _descricao);
                     adapter.SelectCommand.Parameters.AddWithValue("@fornecedorTitulo", _fornecedorTitulo);
@@ -601,11 +591,6 @@ namespace Sistema_de_Gerenciamento
                     adapter.SelectCommand.Parameters.AddWithValue("@valorParcela", _valorParcela);
                     adapter.SelectCommand.Parameters.AddWithValue("@categoria", _categoria);
                     adapter.SelectCommand.Parameters.Add("@imagem", SqlDbType.Image).Value = arr;
-                    //adapter.SelectCommand.Parameters.AddWithValue("@statusPagamento", _tipo);
-                    //adapter.SelectCommand.Parameters.AddWithValue("@dataPagamento", _tipo);
-                    //adapter.SelectCommand.Parameters.AddWithValue("@descontoTaxas", _descontoTaxas);
-                    //adapter.SelectCommand.Parameters.AddWithValue("@jurosMulta", _jurosMulta);
-                    //adapter.SelectCommand.Parameters.AddWithValue("@valorPago", _valorPago);
 
                     adapter.SelectCommand.ExecuteReader();
 
@@ -617,5 +602,7 @@ namespace Sistema_de_Gerenciamento
                 Erro.ErroAoAdicionarDespesaCustoFixaNoBanco(ex);
             }
         }
+
+        #endregion Despesa Custos Fixo Repeticao
     }
 }

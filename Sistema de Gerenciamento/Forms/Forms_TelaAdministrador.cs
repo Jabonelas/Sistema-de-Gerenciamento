@@ -18,6 +18,8 @@ namespace Sistema_de_Gerenciamento
 
         private AdicionarNoBanco Salvar = new AdicionarNoBanco();
 
+        private AtualizacaoNoBanco Atualizar = new AtualizacaoNoBanco();
+
         private Forms_Login login;
 
         public Forms_TelaAdministrador()
@@ -25,80 +27,25 @@ namespace Sistema_de_Gerenciamento
             InitializeComponent();
         }
 
-        private void Teste()
-        {
-            int frequencia = 0;
-
-            List<DadosDespesaCusto> listaDespesasCustos = Buscar.BuscarListaDespesaCustoFixa();
-
-            //listaDespesasCustos.ForEach(dado => dado.tipo.Equals("Fixa"));
-
-            foreach (DadosDespesaCusto despesaCusto in listaDespesasCustos)
-            {
-                if (despesaCusto.vencimento == DateTime.Today)
-                {
-                    if (despesaCusto.frequencia == "Semanal")
-                    {
-                        frequencia = 7;
-                    }
-                    else if (despesaCusto.frequencia == "Quinzenal")
-                    {
-                        frequencia = 15;
-                    }
-                    else if (despesaCusto.frequencia == "Mensal")
-                    {
-                        frequencia = 30;
-                    }
-                    else if (despesaCusto.frequencia == "Bimestral")
-                    {
-                        frequencia = 90;
-                    }
-                    else if (despesaCusto.frequencia == "Semestral")
-                    {
-                        frequencia = 180;
-                    }
-                    else if (despesaCusto.frequencia == "Anual")
-                    {
-                        frequencia = 365;
-                    }
-
-                    Salvar.DespesaCustosFixo(despesaCusto.tipo, despesaCusto.descricao, despesaCusto.forncedorTitulo,
-                        despesaCusto.cnpj, despesaCusto.emissao, despesaCusto.vencimento.AddDays(frequencia), despesaCusto.frequencia,
-                        despesaCusto.valor, despesaCusto.quantidadeParcelas, despesaCusto.valorParcela, despesaCusto.categoria,
-                        ptbStatusPagamento.Image);
-                }
-            }
-        }
-
         public Forms_TelaAdministrador(Forms_Login _login)
         {
             InitializeComponent();
 
+            LayoutUsuario();
+
+            TimerVerificarDespesaCustoFixo.Enabled = true;
+
             login = _login;
-
-            if (Global.tipoDeUsuario == "ADMIN")
-            {
-                tabControl.Visible = true;
-            }
-            else
-            {
-                btnVendaConsole.Location = new Point(93, 100);
-                btnOrdemServicoConsole.Location = new Point(245, 100);
-                btnProdutoConsole.Location = new Point(394, 100);
-                btnClienteConsole.Location = new Point(546, 100);
-                btnContasReceberConsole.Location = new Point(695, 100);
-
-                btnDevolucaoConsole.Location = new Point(6, 400);
-                btnDespesasConsole.Location = new Point(161, 400);
-                btnComprasConsole.Location = new Point(317, 400);
-                btnResumoVendasConsole.Location = new Point(472, 400);
-                btnFluxoCaixaConsole.Location = new Point(625, 400);
-                btnSair.Location = new Point(778, 400);
-                tabControl.Visible = false;
-            }
         }
 
         private void tabCadastro_Click(object sender, EventArgs e)
+        {
+            LayoutUsuario();
+        }
+
+        #region Layout Usuario
+
+        private void LayoutUsuario()
         {
             if (Global.tipoDeUsuario == "ADMIN")
             {
@@ -121,6 +68,8 @@ namespace Sistema_de_Gerenciamento
                 tabControl.Visible = false;
             }
         }
+
+        #endregion Layout Usuario
 
         private void btnCadastroProduto_Click(object sender, EventArgs e)
         {
@@ -228,9 +177,44 @@ namespace Sistema_de_Gerenciamento
             pesquisarCliente.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void TimerVerificarDespesaCustoFixo_Tick(object sender, EventArgs e)
         {
-            Teste();
+            AutomatizacaoDespesaCustoFixo();
         }
+
+        #region Automatizacao Despesa e Custo Fixo
+
+        private void AutomatizacaoDespesaCustoFixo()
+        {
+            int dias = 0;
+
+            List<DadosDespesaCusto> listaDespesasCustos = Buscar.BuscarListaDespesaCustoFixa();
+
+            listaDespesasCustos.ForEach(lista => lista.vencimento.Equals(DateTime.Today));
+
+            //listaDespesasCustos.Find(lista => lista.vencimento == DateTime.Today);
+
+            foreach (DadosDespesaCusto despesaCusto in listaDespesasCustos)
+            {
+                if (despesaCusto.vencimento == DateTime.Today && despesaCusto.verificar == "nok")
+                {
+                    Atualizar.AtualziarCodigoDespesaCustosFixoRepeticao(despesaCusto.codigo);
+
+                    bool semanal = despesaCusto.frequencia == "Semanal" ? Convert.ToBoolean(dias = 7) : false;
+                    bool quinzenal = despesaCusto.frequencia == "Quinzenal" ? Convert.ToBoolean(dias = 15) : false;
+                    bool mensal = despesaCusto.frequencia == "Mensal" ? Convert.ToBoolean(dias = 30) : false;
+                    bool bimestral = despesaCusto.frequencia == "Bimestral" ? Convert.ToBoolean(dias = 90) : false;
+                    bool semestral = despesaCusto.frequencia == "Semestral" ? Convert.ToBoolean(dias = 180) : false;
+                    bool anual = despesaCusto.frequencia == "Anual" ? Convert.ToBoolean(dias = 365) : false;
+
+                    Salvar.DespesaCustosFixoRepeticao(despesaCusto.codigo, despesaCusto.tipo, despesaCusto.descricao, despesaCusto.forncedorTitulo,
+                        despesaCusto.cnpj, despesaCusto.emissao, despesaCusto.vencimento.AddDays(dias), despesaCusto.frequencia,
+                        despesaCusto.valor, despesaCusto.quantidadeParcelas, despesaCusto.valorParcela, despesaCusto.categoria,
+                        ptbStatusPagamento.Image);
+                }
+            }
+        }
+
+        #endregion Automatizacao Despesa e Custo Fixo
     }
 }

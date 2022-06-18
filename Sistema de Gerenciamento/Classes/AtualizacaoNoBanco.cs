@@ -798,5 +798,30 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Atualizar Status Pagamento Despesa e Custo
+
+        #region Atualizar Codigo de Despesa e Custos Fixo com Repeticao
+
+        public void AtualziarCodigoDespesaCustosFixoRepeticao(int _codigo)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_DespesasCustos set dc_verificar = 'ok' " +
+                                   "where dc_codigo = @codigo ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigo", _codigo);
+
+                    adapter.SelectCommand.ExecuteReader();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarCodigoDespesaCustoFixoNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Codigo de Despesa e Custos Fixo com Repeticao
     }
 }
