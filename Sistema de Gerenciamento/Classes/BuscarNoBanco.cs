@@ -2555,8 +2555,7 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query =
-                        "select * from tb_EstoqueProduto where ep_codigo_barras = @codigoBarras ";
+                    string query = "select * from tb_EstoqueProduto where ep_codigo_barras = @codigoBarras ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@codigoBarras", ep_codigo_barras);

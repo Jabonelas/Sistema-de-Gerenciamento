@@ -149,6 +149,8 @@ namespace Sistema_de_Gerenciamento.Forms
                                 txtCodigo.Text = Buscar.BuscarCodigo(txtDescricao.Text).ToString();
 
                                 Atualizar.AlterarCodigoDespesaCusto(Convert.ToInt32(txtCodigo.Text), txtDescricao.Text);
+
+                                btnSalvar.Enabled = false;
                             }
                             else
                             {
@@ -222,6 +224,8 @@ namespace Sistema_de_Gerenciamento.Forms
             txtCNPJ.Text = "-";
             txtValorParcelas.Text = "0";
             cmbQuantidadeParcelas.Text = "1";
+
+            btnSalvar.Enabled = true;
         }
 
         private void cmbTipoDespesa_SelectedValueChanged(object sender, EventArgs e)

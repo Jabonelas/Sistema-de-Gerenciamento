@@ -216,5 +216,11 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Automatizacao Despesa e Custo Fixo
+
+        private void btnPDV_Click(object sender, EventArgs e)
+        {
+            Forms_TelaPDV telaPdv = new Forms_TelaPDV();
+            telaPdv.ShowDialog();
+        }
     }
 }

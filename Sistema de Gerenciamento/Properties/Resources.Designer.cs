@@ -553,6 +553,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap png_transparent_logo_pharmacy_pills_miscellaneous_trademark_pharmaceutical_drug {
+            get {
+                object obj = ResourceManager.GetObject("png-transparent-logo-pharmacy-pills-miscellaneous-trademark-pharmaceutical-drug", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap procurar {
             get {
                 object obj = ResourceManager.GetObject("procurar", resourceCulture);
