@@ -76,8 +76,7 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query =
-                        "select cc_id,cc_data_cadastro,cc_nome_cliente,cc_tipo,cc_cpf_cnpj,cc_rg,cc_emissor," +
+                    string query = "select cc_id,cc_data_cadastro,cc_nome_cliente,cc_tipo,cc_cpf_cnpj,cc_rg,cc_emissor," +
                         "cc_data_emissao,cc_ins_est,cc_cep,cc_endereco,cc_numero,cc_complemento,cc_bairro,cc_cidade,cc_uf," +
                         "cc_naturalidade,cc_data_nasc,cc_estado_civil,cc_credito,cc_saldo,cc_bloqueio,cc_celular,cc_tel_residencial," +
                         "cc_email,cc_observacoes " +
@@ -2899,5 +2898,52 @@ namespace Sistema_de_Gerenciamento.Classes
         #endregion PreencherGridView Com Dados do Estoque Produto
 
         #endregion Buscar Compra
+
+        #region Buscar Cliente Tela PDV
+
+        public string BuscarClienteTelaPDVPorCPF(string _cpf)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select cc_nome_cliente " +
+                        "from tb_CadastroClientes " +
+                        "where cc_cpf_cnpj = @cpf ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@cpf", _cpf);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    string x;
+
+                    while (dr.Read())
+                    {
+                        if (dr.IsDBNull(0) == null)
+                        {
+                            x = "CLIENTE";
+                            return x;
+                        }
+                        else if (dr.IsDBNull(0) != null)
+                        {
+                            x = dr.GetString(0);
+                            return x;
+                        }
+                    }
+                }
+                return "CLIENTE" ;
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarClientePorCPFTelaPDVNoBanco(ex);
+
+                return string.Empty;
+            }
+        }
+
+        #endregion Buscar Cliente Tela PDV
     }
 }

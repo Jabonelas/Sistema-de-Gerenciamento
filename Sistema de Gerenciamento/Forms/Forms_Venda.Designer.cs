@@ -2946,6 +2946,7 @@
             this.Name = "Forms_Venda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Venda";
+            this.Load += new System.EventHandler(this.Forms_Venda_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gdvVenda)).EndInit();
             this.grupboxCredito.ResumeLayout(false);
             this.grupboxCredito.PerformLayout();

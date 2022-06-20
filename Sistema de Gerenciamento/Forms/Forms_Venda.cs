@@ -713,5 +713,17 @@ namespace Sistema_de_Gerenciamento.Forms
         }
 
         #endregion Apagando Dados dos TextBox
+
+        private void Forms_Venda_Load(object sender, EventArgs e)
+        {
+            Task.Run(() =>
+            {
+                //listaProduto = Buscar.BuscarProdutos();
+
+                //ListaFinanceiro = Buscar.BuscarFinanceiro();
+            });
+
+            //ListaFinanceiro.ForEach(finac => financeiro = finac);
+        }
     }
 }

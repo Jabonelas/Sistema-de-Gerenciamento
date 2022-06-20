@@ -25,25 +25,128 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private int cont = 0;
 
+        private string verificar;
+
         public Forms_TelaPDV()
         {
             InitializeComponent();
 
             listaProduto = Buscar.BuscarProdutos();
 
-            this.Height = Screen.PrimaryScreen.Bounds.Height;
+            //this.Height = Screen.PrimaryScreen.Bounds.Height;
 
-            this.Width = Screen.PrimaryScreen.Bounds.Width;
+            //this.Width = Screen.PrimaryScreen.Bounds.Width;
 
-            this.TopMost = true;
+            //this.TopMost = true;
         }
 
-        private void Forms_TelaPDV_KeyPress(object sender, KeyPressEventArgs e)
+        private void Forms_TelaPDV_Load(object sender, EventArgs e)
         {
-            if (e.KeyChar == (char)27)
+            txtCodigoBarras.Focus();
+        }
+
+        private void Forms_TelaPDV_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape) // Finalziar tela Esc
             {
                 this.Close();
             }
+
+            if (e.KeyCode == Keys.F7) // Finalizar Compra F7
+            {
+                FormatoTelaPagamento("Pagamento");
+            }
+
+            if (e.KeyCode == Keys.F6) // inserir quantidade F6
+            {
+                lblTituloCPFQuant.Text = "QUANTIDADE";
+
+                txtCPF.Visible = false;
+
+                txtInserirQuant.Visible = true;
+                txtInserirQuant.Enabled = true;
+                txtInserirQuant.Focus();
+            }
+
+            if (e.KeyCode == Keys.F1) // nova venda F1
+            {
+                gdvPDV.Rows.Clear();
+
+                pcbPDV.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\png-transparent-logo-pharmacy-pills-miscellaneous-trademark-pharmaceutical-drug.png");
+
+                lblSubtotal.Text = "R$ 0,00";
+                lblTroco.Text = "R$ 0,00";
+                lblTotalRecebido.Text = "R$ 0,00";
+                txtCPF.Text = "-";
+                lblCodigoProduto.Text = "-";
+                lblTotaldoItem.Text = "R$ 0,00";
+                lblValorUnitario.Text = "R$ 0,00";
+                pnlFachada.BackgroundColor = Color.Lime;
+                lblFachada.Text = "CAIXA DISPONÍVEL";
+
+                txtCPF.UseSystemPasswordChar = false;
+
+                FormatoTelaPagamento("Cancelamento");
+            }
+
+            if (e.KeyCode == Keys.F2) // excluir item F2
+            {
+                RemoverProduto();
+            }
+
+            if (e.KeyCode == Keys.F3) // inserir cpf F3
+            {
+                txtCPF.Text = string.Empty;
+
+                txtCPF.ReadOnly = true;
+                txtCPF.Enabled = true;
+                txtCPF.Focus();
+            }
+        }
+
+        private void FormatoTelaPagamento(string _verificar)
+        {
+            bool retorno = (_verificar == "Pagamento") ? retorno = true : retorno = false;
+
+            pcbPDV.Visible = !retorno;
+            pnlFundoCliente.Visible = retorno;
+            lblCliente.Visible = retorno;
+            lblNomeCliente.Visible = retorno;
+
+            //painel com forma de pagamento
+            lblFormaPamento.Visible = retorno;
+            pnlFormaPagamento.Visible = retorno;
+            lblTipoPagamento.Visible = retorno;
+
+            //painel com desconto
+
+            lblDesconto.Visible = retorno;
+            lblValorDesconto.Visible = retorno;
+            pnlDesconto.Visible = retorno;
+
+            //painel carne
+            pnlCarne.Visible = retorno;
+            lblTituloCarne.Visible = retorno;
+            lblValorCarne.Visible = retorno;
+
+            //painel Credito
+            pnlCredito.Visible = retorno;
+            lblTituloCredito.Visible = retorno;
+            lblValorCredito.Visible = retorno;
+
+            //painel Debito
+            pnlDebito.Visible = retorno;
+            lblTituloDebito.Visible = retorno;
+            lblValorDebito.Visible = retorno;
+
+            //painel Dinheiro
+            pnlDinheiro.Visible = retorno;
+            lblTituloDinheiro.Visible = retorno;
+            txtValorDinheiro.Visible = retorno;
+
+            //painel com as teclas
+            pnlpagamento2.Visible = retorno;
+            pnlPagamento3.Visible = retorno;
         }
 
         private void txtcodigoBarras(object sender, EventArgs e)
@@ -58,6 +161,18 @@ namespace Sistema_de_Gerenciamento.Forms
 
                 pcbPDV.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigo.Text));
 
+                //mudando quando iniciar uma compra
+                pnlFachada.BackgroundColor = Color.Red;
+
+                lblFachada.Text = "CAIXA OCUPADO";
+
+                // mudando quando colocar quantidade
+                lblTituloCPFQuant.Text = "CPF NA NOTA";
+
+                txtCPF.Visible = true;
+
+                txtInserirQuant.Visible = false;
+
                 cont++;
             }
             else
@@ -65,6 +180,8 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtCodigoBarras.Text = string.Empty;
 
                 cont = 0;
+
+                txtInserirQuant.Text = "1";
             }
         }
 
@@ -119,7 +236,7 @@ namespace Sistema_de_Gerenciamento.Forms
         private void PreenchendoGridView()
         {
             var rows = new List<string[]>();
-            string[] row1 = new string[] { txtCodigo.Text, txtDescricao.Text, txtQtd.Text,
+            string[] row1 = new string[] { txtCodigo.Text, txtDescricao.Text, txtInserirQuant.Text,
                 lblValorUnitario.Text, lblTotaldoItem.Text,txtDesconto.Text};
             rows.Add(row1);
 
@@ -153,7 +270,7 @@ namespace Sistema_de_Gerenciamento.Forms
                         lblCodigoProduto.Text = produto.codigoProduto.ToString();
                         lblUnidade.Text = produto.unidade;
                         lblValorUnitario.Text = string.Format("{0:C}", (produto.preco - (produto.desconto * produto.preco / 100)));
-                        lblTotaldoItem.Text = string.Format("{0:C}", Convert.ToDecimal(txtQtd.Text) * (produto.preco - (produto.desconto * produto.preco / 100)));
+                        lblTotaldoItem.Text = string.Format("{0:C}", Convert.ToDecimal(txtInserirQuant.Text) * (produto.preco - (produto.desconto * produto.preco / 100)));
 
                         string desconto = ((produto.desconto / 100) > 0) ? string.Format("{0:P}", produto.desconto / 100) : "Sem Desconto";
 
@@ -173,7 +290,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         #endregion Buscar Produto e Preencher os TextBox Conforme a Busca
 
-        #region Setar o Design Do Forms
+        #region Setar o Design Do Forms Coluna de Valores Com R$
 
         private void SetarDesignColunaGridView()
         {
@@ -181,13 +298,72 @@ namespace Sistema_de_Gerenciamento.Forms
             this.gdvPDV.Columns["VlrUnit"].DefaultCellStyle.Format = "c";
         }
 
-        #endregion Setar o Design Do Forms
+        #endregion Setar o Design Do Forms Coluna de Valores Com R$
 
         private void txtCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoFoiNumero(e);
         }
 
-    
+        private void txtCPF_Enter(object sender, EventArgs e)
+        {
+            txtCPF.UseSystemPasswordChar = false;
+        }
+
+        private void txtCPF_Leave(object sender, EventArgs e)
+        {
+            txtCPF.UseSystemPasswordChar = true;
+
+            txtCPF.ReadOnly = true;
+
+            lblNomeCliente.Text = Buscar.BuscarClienteTelaPDVPorCPF(txtCPF.Text).ToUpper();
+        }
+
+        private void txtCPF_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.FormatoCPF(e, txtCPF);
+            }
+        }
+
+        #region Remover Produto do GridView
+
+        private void RemoverProduto()
+        {
+            if (gdvPDV.RowCount > 0)
+            {
+                DialogResult OpcaoDoUsuario = new DialogResult();
+                OpcaoDoUsuario = MessageBox.Show("Deseja Remover O Item?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (OpcaoDoUsuario == DialogResult.Yes)
+                {
+                    gdvPDV.Rows.RemoveAt(gdvPDV.CurrentRow.Index);
+
+                    ValorTotal();
+
+                    //ApagandoTextbox();
+                }
+            }
+        }
+
+        #endregion Remover Produto do GridView
+
+        private void txtInserirQuant_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
+
+        private void pnlDebito_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void lblTituloDebito_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void lblTituloCarne_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

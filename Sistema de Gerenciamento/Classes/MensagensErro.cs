@@ -809,6 +809,15 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Pesquisar Despesa
 
+        #region Buscar Cliente Tela PDV
+
+        public void ErroAoBuscarClientePorCPFTelaPDVNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PDV01) Erro ao Realizar Busca Cliente Por CPF \n\nErro: {_e}", "Erro Busca Cliente Por CPF!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Buscar Cliente Tela PDV
+
         #endregion Buscar No Banco
 
         #region Verificar Existencia No Banco
