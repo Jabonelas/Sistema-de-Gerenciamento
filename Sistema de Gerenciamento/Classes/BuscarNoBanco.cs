@@ -2546,7 +2546,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Numero de Nota Fiscal de Saida
 
-        #region Buscar Estoque Produto
+        #region Buscar Estoque Produto Por Codigo De Barras
 
         public bool BuscarEstoqueProdutoPorCodigo(string ep_codigo_barras)
         {
@@ -2582,7 +2582,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
-        #endregion Buscar Estoque Produto
+        #endregion Buscar Estoque Produto Por Codigo De Barras
 
         #region Buscar Financeiro
 
@@ -2934,7 +2934,7 @@ namespace Sistema_de_Gerenciamento.Classes
                         }
                     }
                 }
-                return "CLIENTE" ;
+                return "CLIENTE";
             }
             catch (Exception ex)
             {
@@ -2945,5 +2945,39 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Cliente Tela PDV
+
+        public bool BuscarProdutoPorCodigo(int _codigoProduto)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+
+                {
+                    string query = "select * from tb_EstoqueProduto where ep_codigo_produto = @codigoProduto";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigoProduto", _codigoProduto);
+
+                    SqlDataReader reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarProdutoPorCodigoTelaPDVNoBanco(ex);
+
+                return false;
+            }
+        }
     }
 }

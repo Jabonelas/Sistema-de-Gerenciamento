@@ -28,51 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Forms_TelaPDV));
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties13 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties14 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties15 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties17 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties18 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties19 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties20 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties21 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties22 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties23 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties24 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties25 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties26 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties27 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties28 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties29 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties30 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties31 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties32 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties33 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties34 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties35 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties36 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties37 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties38 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties39 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties40 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties41 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties42 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties43 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties44 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties45 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties46 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties47 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties48 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties53 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties54 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties55 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties56 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties57 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties58 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties59 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties60 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties61 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties62 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties63 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties64 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties65 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties66 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties67 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties68 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties69 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties70 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties71 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties72 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties49 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties50 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties51 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties52 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.gdvPDV = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,21 +81,26 @@
             this.pnlFachada = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblFachada = new System.Windows.Forms.Label();
             this.bunifuPanel8 = new Bunifu.UI.WinForms.BunifuPanel();
-            this.lblCodigoProduto = new System.Windows.Forms.Label();
+            this.txtCodigoProduto = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.bunifuPanel7 = new Bunifu.UI.WinForms.BunifuPanel();
-            this.txtCPF = new Bunifu.UI.WinForms.BunifuTextBox();
             this.lblTituloCPFQuant = new System.Windows.Forms.Label();
+            this.txtCPF = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtInserirQuant = new Bunifu.UI.WinForms.BunifuTextBox();
             this.bunifuPanel6 = new Bunifu.UI.WinForms.BunifuPanel();
-            this.pnlCarne = new Bunifu.UI.WinForms.BunifuPanel();
-            this.lblValorCarne = new System.Windows.Forms.Label();
-            this.lblTituloCarne = new System.Windows.Forms.Label();
             this.lblTotaldoItem = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.pnlCarne = new Bunifu.UI.WinForms.BunifuPanel();
+            this.lblValorParcela = new System.Windows.Forms.Label();
+            this.lblValorJuros = new System.Windows.Forms.Label();
+            this.lblParcelas = new System.Windows.Forms.Label();
+            this.lblTituloJuros = new System.Windows.Forms.Label();
+            this.cmbParcelas = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.lblTituloValorParcela = new System.Windows.Forms.Label();
+            this.lblTituloFormaPagamento = new System.Windows.Forms.Label();
             this.bunifuPanel5 = new Bunifu.UI.WinForms.BunifuPanel();
             this.pnlFormaPagamento = new Bunifu.UI.WinForms.BunifuPanel();
-            this.lblTipoPagamento = new System.Windows.Forms.Label();
+            this.cmbFormaPagamento = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lblFormaPamento = new System.Windows.Forms.Label();
             this.lblValorUnitario = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -110,7 +111,6 @@
             this.lblTroco = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.bunifuPanel2 = new Bunifu.UI.WinForms.BunifuPanel();
-            this.lblTotalRecebido = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -143,22 +143,18 @@
             this.pnlDesconto = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblValorDesconto = new System.Windows.Forms.Label();
             this.lblDesconto = new System.Windows.Forms.Label();
-            this.pnlCredito = new Bunifu.UI.WinForms.BunifuPanel();
-            this.lblValorCredito = new System.Windows.Forms.Label();
-            this.lblTituloCredito = new System.Windows.Forms.Label();
-            this.lblValorDebito = new System.Windows.Forms.Label();
-            this.lblTituloDebito = new System.Windows.Forms.Label();
-            this.pnlDebito = new Bunifu.UI.WinForms.BunifuPanel();
-            this.txtValorDinheiro = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.lblTituloDinheiro = new System.Windows.Forms.Label();
             this.pnlDinheiro = new Bunifu.UI.WinForms.BunifuPanel();
-            this.bunifuTextBox2 = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.lblValorTotal = new System.Windows.Forms.Label();
+            this.lblTituloValorTotal = new System.Windows.Forms.Label();
             this.pnlpagamento1 = new Bunifu.UI.WinForms.BunifuPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.pnlPagamento3 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.txtValorDinheiro = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.lblTotalRecebido = new System.Windows.Forms.Label();
+            this.lblValorDebito = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPDV)).BeginInit();
             this.bunifuPanel10.SuspendLayout();
             this.pnlFachada.SuspendLayout();
@@ -179,8 +175,6 @@
             this.bunifuPanel14.SuspendLayout();
             this.pnlFundoCliente.SuspendLayout();
             this.pnlDesconto.SuspendLayout();
-            this.pnlCredito.SuspendLayout();
-            this.pnlDebito.SuspendLayout();
             this.pnlDinheiro.SuspendLayout();
             this.pnlpagamento1.SuspendLayout();
             this.pnlPagamento3.SuspendLayout();
@@ -191,21 +185,21 @@
             this.gdvPDV.AllowCustomTheming = false;
             this.gdvPDV.AllowUserToAddRows = false;
             this.gdvPDV.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.gdvPDV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            this.gdvPDV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.gdvPDV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gdvPDV.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gdvPDV.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.gdvPDV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gdvPDV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gdvPDV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.gdvPDV.ColumnHeadersHeight = 40;
             this.gdvPDV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
@@ -232,14 +226,14 @@
             this.gdvPDV.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
             this.gdvPDV.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
             this.gdvPDV.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gdvPDV.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gdvPDV.DefaultCellStyle = dataGridViewCellStyle7;
             this.gdvPDV.EnableHeadersVisualStyles = false;
             this.gdvPDV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.gdvPDV.HeaderBackColor = System.Drawing.Color.DodgerBlue;
@@ -251,11 +245,11 @@
             this.gdvPDV.RowHeadersVisible = false;
             this.gdvPDV.RowHeadersWidth = 50;
             this.gdvPDV.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gdvPDV.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gdvPDV.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.gdvPDV.RowTemplate.Height = 40;
             this.gdvPDV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvPDV.Size = new System.Drawing.Size(557, 301);
+            this.gdvPDV.Size = new System.Drawing.Size(557, 316);
             this.gdvPDV.TabIndex = 2;
             this.gdvPDV.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             // 
@@ -360,7 +354,7 @@
             this.bunifuPanel8.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuPanel8.BorderRadius = 50;
             this.bunifuPanel8.BorderThickness = 1;
-            this.bunifuPanel8.Controls.Add(this.lblCodigoProduto);
+            this.bunifuPanel8.Controls.Add(this.txtCodigoProduto);
             this.bunifuPanel8.Controls.Add(this.label10);
             this.bunifuPanel8.Location = new System.Drawing.Point(12, 535);
             this.bunifuPanel8.Name = "bunifuPanel8";
@@ -368,18 +362,83 @@
             this.bunifuPanel8.Size = new System.Drawing.Size(182, 80);
             this.bunifuPanel8.TabIndex = 8;
             // 
-            // lblCodigoProduto
+            // txtCodigoProduto
             // 
-            this.lblCodigoProduto.AutoSize = true;
-            this.lblCodigoProduto.BackColor = System.Drawing.Color.Transparent;
-            this.lblCodigoProduto.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoProduto.ForeColor = System.Drawing.Color.White;
-            this.lblCodigoProduto.Location = new System.Drawing.Point(81, 37);
-            this.lblCodigoProduto.Name = "lblCodigoProduto";
-            this.lblCodigoProduto.Size = new System.Drawing.Size(24, 36);
-            this.lblCodigoProduto.TabIndex = 182;
-            this.lblCodigoProduto.Text = "-";
-            this.lblCodigoProduto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.txtCodigoProduto.AcceptsReturn = false;
+            this.txtCodigoProduto.AcceptsTab = false;
+            this.txtCodigoProduto.AnimationSpeed = 200;
+            this.txtCodigoProduto.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.txtCodigoProduto.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txtCodigoProduto.BackColor = System.Drawing.Color.Transparent;
+            this.txtCodigoProduto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtCodigoProduto.BackgroundImage")));
+            this.txtCodigoProduto.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.txtCodigoProduto.BorderColorDisabled = System.Drawing.Color.DodgerBlue;
+            this.txtCodigoProduto.BorderColorHover = System.Drawing.Color.DodgerBlue;
+            this.txtCodigoProduto.BorderColorIdle = System.Drawing.Color.Transparent;
+            this.txtCodigoProduto.BorderRadius = 1;
+            this.txtCodigoProduto.BorderThickness = 1;
+            this.txtCodigoProduto.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtCodigoProduto.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCodigoProduto.DefaultFont = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoProduto.DefaultText = "";
+            this.txtCodigoProduto.FillColor = System.Drawing.Color.DodgerBlue;
+            this.txtCodigoProduto.ForeColor = System.Drawing.Color.White;
+            this.txtCodigoProduto.HideSelection = true;
+            this.txtCodigoProduto.IconLeft = null;
+            this.txtCodigoProduto.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCodigoProduto.IconPadding = 10;
+            this.txtCodigoProduto.IconRight = null;
+            this.txtCodigoProduto.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCodigoProduto.Lines = new string[0];
+            this.txtCodigoProduto.Location = new System.Drawing.Point(17, 31);
+            this.txtCodigoProduto.MaxLength = 32767;
+            this.txtCodigoProduto.MinimumSize = new System.Drawing.Size(1, 1);
+            this.txtCodigoProduto.Modified = false;
+            this.txtCodigoProduto.Multiline = false;
+            this.txtCodigoProduto.Name = "txtCodigoProduto";
+            stateProperties37.BorderColor = System.Drawing.Color.AliceBlue;
+            stateProperties37.FillColor = System.Drawing.Color.Empty;
+            stateProperties37.ForeColor = System.Drawing.Color.Empty;
+            stateProperties37.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCodigoProduto.OnActiveState = stateProperties37;
+            stateProperties38.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties38.FillColor = System.Drawing.Color.DodgerBlue;
+            stateProperties38.ForeColor = System.Drawing.Color.DodgerBlue;
+            stateProperties38.PlaceholderForeColor = System.Drawing.Color.DodgerBlue;
+            this.txtCodigoProduto.OnDisabledState = stateProperties38;
+            stateProperties39.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties39.FillColor = System.Drawing.Color.Empty;
+            stateProperties39.ForeColor = System.Drawing.Color.Empty;
+            stateProperties39.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCodigoProduto.OnHoverState = stateProperties39;
+            stateProperties40.BorderColor = System.Drawing.Color.Transparent;
+            stateProperties40.FillColor = System.Drawing.Color.DodgerBlue;
+            stateProperties40.ForeColor = System.Drawing.Color.White;
+            stateProperties40.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCodigoProduto.OnIdleState = stateProperties40;
+            this.txtCodigoProduto.Padding = new System.Windows.Forms.Padding(3);
+            this.txtCodigoProduto.PasswordChar = '\0';
+            this.txtCodigoProduto.PlaceholderForeColor = System.Drawing.Color.Transparent;
+            this.txtCodigoProduto.PlaceholderText = "-";
+            this.txtCodigoProduto.ReadOnly = true;
+            this.txtCodigoProduto.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtCodigoProduto.SelectedText = "";
+            this.txtCodigoProduto.SelectionLength = 0;
+            this.txtCodigoProduto.SelectionStart = 0;
+            this.txtCodigoProduto.ShortcutsEnabled = false;
+            this.txtCodigoProduto.Size = new System.Drawing.Size(150, 40);
+            this.txtCodigoProduto.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.txtCodigoProduto.TabIndex = 181;
+            this.txtCodigoProduto.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtCodigoProduto.TextMarginBottom = 0;
+            this.txtCodigoProduto.TextMarginLeft = 3;
+            this.txtCodigoProduto.TextMarginTop = 0;
+            this.txtCodigoProduto.TextPlaceholder = "-";
+            this.txtCodigoProduto.UseSystemPasswordChar = false;
+            this.txtCodigoProduto.WordWrap = true;
+            this.txtCodigoProduto.TextChange += new System.EventHandler(this.txtCodigoProduto_TextChange);
+            this.txtCodigoProduto.TextChanged += new System.EventHandler(this.txtCodigoProduto_TextChanged);
+            this.txtCodigoProduto.Leave += new System.EventHandler(this.txtCodigoProduto_Leave);
             // 
             // label10
             // 
@@ -401,14 +460,27 @@
             this.bunifuPanel7.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuPanel7.BorderRadius = 50;
             this.bunifuPanel7.BorderThickness = 1;
-            this.bunifuPanel7.Controls.Add(this.txtCPF);
             this.bunifuPanel7.Controls.Add(this.lblTituloCPFQuant);
+            this.bunifuPanel7.Controls.Add(this.txtCPF);
             this.bunifuPanel7.Controls.Add(this.txtInserirQuant);
             this.bunifuPanel7.Location = new System.Drawing.Point(202, 535);
             this.bunifuPanel7.Name = "bunifuPanel7";
             this.bunifuPanel7.ShowBorders = true;
             this.bunifuPanel7.Size = new System.Drawing.Size(229, 80);
             this.bunifuPanel7.TabIndex = 7;
+            this.bunifuPanel7.Click += new System.EventHandler(this.bunifuPanel7_Click);
+            // 
+            // lblTituloCPFQuant
+            // 
+            this.lblTituloCPFQuant.AutoSize = true;
+            this.lblTituloCPFQuant.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloCPFQuant.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloCPFQuant.ForeColor = System.Drawing.Color.White;
+            this.lblTituloCPFQuant.Location = new System.Drawing.Point(43, 3);
+            this.lblTituloCPFQuant.Name = "lblTituloCPFQuant";
+            this.lblTituloCPFQuant.Size = new System.Drawing.Size(147, 29);
+            this.lblTituloCPFQuant.TabIndex = 176;
+            this.lblTituloCPFQuant.Text = "CPF NA NOTA";
             // 
             // txtCPF
             // 
@@ -446,26 +518,26 @@
             this.txtCPF.Modified = false;
             this.txtCPF.Multiline = false;
             this.txtCPF.Name = "txtCPF";
-            stateProperties1.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties1.FillColor = System.Drawing.Color.Empty;
-            stateProperties1.ForeColor = System.Drawing.Color.Empty;
-            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtCPF.OnActiveState = stateProperties1;
-            stateProperties2.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties2.FillColor = System.Drawing.Color.DodgerBlue;
-            stateProperties2.ForeColor = System.Drawing.Color.DodgerBlue;
-            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DodgerBlue;
-            this.txtCPF.OnDisabledState = stateProperties2;
-            stateProperties3.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties3.FillColor = System.Drawing.Color.Empty;
-            stateProperties3.ForeColor = System.Drawing.Color.Empty;
-            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtCPF.OnHoverState = stateProperties3;
-            stateProperties4.BorderColor = System.Drawing.Color.Transparent;
-            stateProperties4.FillColor = System.Drawing.Color.DodgerBlue;
-            stateProperties4.ForeColor = System.Drawing.Color.White;
-            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtCPF.OnIdleState = stateProperties4;
+            stateProperties41.BorderColor = System.Drawing.Color.AliceBlue;
+            stateProperties41.FillColor = System.Drawing.Color.Empty;
+            stateProperties41.ForeColor = System.Drawing.Color.Empty;
+            stateProperties41.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCPF.OnActiveState = stateProperties41;
+            stateProperties42.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties42.FillColor = System.Drawing.Color.DodgerBlue;
+            stateProperties42.ForeColor = System.Drawing.Color.DodgerBlue;
+            stateProperties42.PlaceholderForeColor = System.Drawing.Color.DodgerBlue;
+            this.txtCPF.OnDisabledState = stateProperties42;
+            stateProperties43.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties43.FillColor = System.Drawing.Color.Empty;
+            stateProperties43.ForeColor = System.Drawing.Color.Empty;
+            stateProperties43.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCPF.OnHoverState = stateProperties43;
+            stateProperties44.BorderColor = System.Drawing.Color.Transparent;
+            stateProperties44.FillColor = System.Drawing.Color.DodgerBlue;
+            stateProperties44.ForeColor = System.Drawing.Color.White;
+            stateProperties44.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCPF.OnIdleState = stateProperties44;
             this.txtCPF.Padding = new System.Windows.Forms.Padding(3);
             this.txtCPF.PasswordChar = '\0';
             this.txtCPF.PlaceholderForeColor = System.Drawing.Color.Transparent;
@@ -490,18 +562,6 @@
             this.txtCPF.Enter += new System.EventHandler(this.txtCPF_Enter);
             this.txtCPF.Leave += new System.EventHandler(this.txtCPF_Leave);
             // 
-            // lblTituloCPFQuant
-            // 
-            this.lblTituloCPFQuant.AutoSize = true;
-            this.lblTituloCPFQuant.BackColor = System.Drawing.Color.Transparent;
-            this.lblTituloCPFQuant.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloCPFQuant.ForeColor = System.Drawing.Color.White;
-            this.lblTituloCPFQuant.Location = new System.Drawing.Point(43, 3);
-            this.lblTituloCPFQuant.Name = "lblTituloCPFQuant";
-            this.lblTituloCPFQuant.Size = new System.Drawing.Size(147, 29);
-            this.lblTituloCPFQuant.TabIndex = 176;
-            this.lblTituloCPFQuant.Text = "CPF NA NOTA";
-            // 
             // txtInserirQuant
             // 
             this.txtInserirQuant.AcceptsReturn = false;
@@ -521,7 +581,6 @@
             this.txtInserirQuant.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtInserirQuant.DefaultFont = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInserirQuant.DefaultText = "1";
-            this.txtInserirQuant.Enabled = false;
             this.txtInserirQuant.FillColor = System.Drawing.Color.DodgerBlue;
             this.txtInserirQuant.ForeColor = System.Drawing.Color.White;
             this.txtInserirQuant.HideSelection = true;
@@ -532,53 +591,54 @@
             this.txtInserirQuant.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtInserirQuant.Lines = new string[] {
         "1"};
-            this.txtInserirQuant.Location = new System.Drawing.Point(21, 33);
-            this.txtInserirQuant.MaxLength = 5;
+            this.txtInserirQuant.Location = new System.Drawing.Point(32, 31);
+            this.txtInserirQuant.MaxLength = 32767;
             this.txtInserirQuant.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtInserirQuant.Modified = false;
             this.txtInserirQuant.Multiline = false;
             this.txtInserirQuant.Name = "txtInserirQuant";
-            stateProperties5.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties5.FillColor = System.Drawing.Color.Empty;
-            stateProperties5.ForeColor = System.Drawing.Color.Empty;
-            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtInserirQuant.OnActiveState = stateProperties5;
-            stateProperties6.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties6.FillColor = System.Drawing.Color.DodgerBlue;
-            stateProperties6.ForeColor = System.Drawing.Color.DodgerBlue;
-            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DodgerBlue;
-            this.txtInserirQuant.OnDisabledState = stateProperties6;
-            stateProperties7.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties7.FillColor = System.Drawing.Color.Empty;
-            stateProperties7.ForeColor = System.Drawing.Color.Empty;
-            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtInserirQuant.OnHoverState = stateProperties7;
-            stateProperties8.BorderColor = System.Drawing.Color.Transparent;
-            stateProperties8.FillColor = System.Drawing.Color.DodgerBlue;
-            stateProperties8.ForeColor = System.Drawing.Color.White;
-            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtInserirQuant.OnIdleState = stateProperties8;
+            stateProperties45.BorderColor = System.Drawing.Color.AliceBlue;
+            stateProperties45.FillColor = System.Drawing.Color.Empty;
+            stateProperties45.ForeColor = System.Drawing.Color.Empty;
+            stateProperties45.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtInserirQuant.OnActiveState = stateProperties45;
+            stateProperties46.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties46.FillColor = System.Drawing.Color.DodgerBlue;
+            stateProperties46.ForeColor = System.Drawing.Color.DodgerBlue;
+            stateProperties46.PlaceholderForeColor = System.Drawing.Color.DodgerBlue;
+            this.txtInserirQuant.OnDisabledState = stateProperties46;
+            stateProperties47.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties47.FillColor = System.Drawing.Color.Empty;
+            stateProperties47.ForeColor = System.Drawing.Color.Empty;
+            stateProperties47.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtInserirQuant.OnHoverState = stateProperties47;
+            stateProperties48.BorderColor = System.Drawing.Color.Transparent;
+            stateProperties48.FillColor = System.Drawing.Color.DodgerBlue;
+            stateProperties48.ForeColor = System.Drawing.Color.White;
+            stateProperties48.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtInserirQuant.OnIdleState = stateProperties48;
             this.txtInserirQuant.Padding = new System.Windows.Forms.Padding(3);
             this.txtInserirQuant.PasswordChar = '\0';
             this.txtInserirQuant.PlaceholderForeColor = System.Drawing.Color.Transparent;
             this.txtInserirQuant.PlaceholderText = "";
-            this.txtInserirQuant.ReadOnly = false;
+            this.txtInserirQuant.ReadOnly = true;
             this.txtInserirQuant.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtInserirQuant.SelectedText = "";
             this.txtInserirQuant.SelectionLength = 0;
-            this.txtInserirQuant.SelectionStart = 0;
+            this.txtInserirQuant.SelectionStart = 1;
             this.txtInserirQuant.ShortcutsEnabled = false;
-            this.txtInserirQuant.Size = new System.Drawing.Size(191, 40);
+            this.txtInserirQuant.Size = new System.Drawing.Size(174, 40);
             this.txtInserirQuant.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtInserirQuant.TabIndex = 180;
+            this.txtInserirQuant.TabIndex = 182;
             this.txtInserirQuant.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtInserirQuant.TextMarginBottom = 0;
             this.txtInserirQuant.TextMarginLeft = 3;
             this.txtInserirQuant.TextMarginTop = 0;
             this.txtInserirQuant.TextPlaceholder = "";
             this.txtInserirQuant.UseSystemPasswordChar = false;
+            this.txtInserirQuant.Visible = false;
             this.txtInserirQuant.WordWrap = true;
-            this.txtInserirQuant.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtInserirQuant_KeyPress);
+            this.txtInserirQuant.TextChanged += new System.EventHandler(this.txtInserirQuant_TextChanged);
             // 
             // bunifuPanel6
             // 
@@ -588,7 +648,6 @@
             this.bunifuPanel6.BorderColor = System.Drawing.Color.Transparent;
             this.bunifuPanel6.BorderRadius = 50;
             this.bunifuPanel6.BorderThickness = 1;
-            this.bunifuPanel6.Controls.Add(this.pnlCarne);
             this.bunifuPanel6.Controls.Add(this.lblTotaldoItem);
             this.bunifuPanel6.Controls.Add(this.label9);
             this.bunifuPanel6.Location = new System.Drawing.Point(202, 429);
@@ -596,51 +655,6 @@
             this.bunifuPanel6.ShowBorders = true;
             this.bunifuPanel6.Size = new System.Drawing.Size(229, 80);
             this.bunifuPanel6.TabIndex = 6;
-            // 
-            // pnlCarne
-            // 
-            this.pnlCarne.BackgroundColor = System.Drawing.Color.DodgerBlue;
-            this.pnlCarne.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlCarne.BackgroundImage")));
-            this.pnlCarne.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlCarne.BorderColor = System.Drawing.Color.Transparent;
-            this.pnlCarne.BorderRadius = 50;
-            this.pnlCarne.BorderThickness = 1;
-            this.pnlCarne.Controls.Add(this.lblValorCarne);
-            this.pnlCarne.Controls.Add(this.lblTituloCarne);
-            this.pnlCarne.Location = new System.Drawing.Point(0, 0);
-            this.pnlCarne.Name = "pnlCarne";
-            this.pnlCarne.ShowBorders = true;
-            this.pnlCarne.Size = new System.Drawing.Size(232, 85);
-            this.pnlCarne.TabIndex = 181;
-            this.pnlCarne.Visible = false;
-            // 
-            // lblValorCarne
-            // 
-            this.lblValorCarne.AutoSize = true;
-            this.lblValorCarne.BackColor = System.Drawing.Color.Transparent;
-            this.lblValorCarne.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorCarne.ForeColor = System.Drawing.Color.White;
-            this.lblValorCarne.Location = new System.Drawing.Point(57, 41);
-            this.lblValorCarne.Name = "lblValorCarne";
-            this.lblValorCarne.Size = new System.Drawing.Size(105, 36);
-            this.lblValorCarne.TabIndex = 178;
-            this.lblValorCarne.Text = "R$ 0,00";
-            this.lblValorCarne.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblValorCarne.Visible = false;
-            // 
-            // lblTituloCarne
-            // 
-            this.lblTituloCarne.AutoSize = true;
-            this.lblTituloCarne.BackColor = System.Drawing.Color.Transparent;
-            this.lblTituloCarne.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloCarne.ForeColor = System.Drawing.Color.White;
-            this.lblTituloCarne.Location = new System.Drawing.Point(79, 5);
-            this.lblTituloCarne.Name = "lblTituloCarne";
-            this.lblTituloCarne.Size = new System.Drawing.Size(83, 29);
-            this.lblTituloCarne.TabIndex = 180;
-            this.lblTituloCarne.Text = "CARNÊ";
-            this.lblTituloCarne.Visible = false;
-            this.lblTituloCarne.Click += new System.EventHandler(this.lblTituloCarne_Click);
             // 
             // lblTotaldoItem
             // 
@@ -667,6 +681,147 @@
             this.label9.TabIndex = 180;
             this.label9.Text = "TOTAL DO ITEM";
             // 
+            // pnlCarne
+            // 
+            this.pnlCarne.BackgroundColor = System.Drawing.Color.DodgerBlue;
+            this.pnlCarne.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlCarne.BackgroundImage")));
+            this.pnlCarne.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlCarne.BorderColor = System.Drawing.Color.Transparent;
+            this.pnlCarne.BorderRadius = 30;
+            this.pnlCarne.BorderThickness = 1;
+            this.pnlCarne.Controls.Add(this.lblValorDebito);
+            this.pnlCarne.Controls.Add(this.lblValorParcela);
+            this.pnlCarne.Controls.Add(this.lblValorJuros);
+            this.pnlCarne.Controls.Add(this.txtValorDinheiro);
+            this.pnlCarne.Controls.Add(this.lblParcelas);
+            this.pnlCarne.Controls.Add(this.lblTituloJuros);
+            this.pnlCarne.Controls.Add(this.cmbParcelas);
+            this.pnlCarne.Controls.Add(this.lblTituloValorParcela);
+            this.pnlCarne.Controls.Add(this.lblTituloFormaPagamento);
+            this.pnlCarne.Location = new System.Drawing.Point(12, 407);
+            this.pnlCarne.Name = "pnlCarne";
+            this.pnlCarne.ShowBorders = true;
+            this.pnlCarne.Size = new System.Drawing.Size(419, 121);
+            this.pnlCarne.TabIndex = 181;
+            this.pnlCarne.Visible = false;
+            // 
+            // lblValorParcela
+            // 
+            this.lblValorParcela.AutoSize = true;
+            this.lblValorParcela.BackColor = System.Drawing.Color.Transparent;
+            this.lblValorParcela.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorParcela.ForeColor = System.Drawing.Color.White;
+            this.lblValorParcela.Location = new System.Drawing.Point(259, 81);
+            this.lblValorParcela.Name = "lblValorParcela";
+            this.lblValorParcela.Size = new System.Drawing.Size(86, 29);
+            this.lblValorParcela.TabIndex = 183;
+            this.lblValorParcela.Text = "R$ 0,00";
+            this.lblValorParcela.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblValorParcela.Visible = false;
+            // 
+            // lblValorJuros
+            // 
+            this.lblValorJuros.AutoSize = true;
+            this.lblValorJuros.BackColor = System.Drawing.Color.Transparent;
+            this.lblValorJuros.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorJuros.ForeColor = System.Drawing.Color.White;
+            this.lblValorJuros.Location = new System.Drawing.Point(151, 81);
+            this.lblValorJuros.Name = "lblValorJuros";
+            this.lblValorJuros.Size = new System.Drawing.Size(73, 29);
+            this.lblValorJuros.TabIndex = 183;
+            this.lblValorJuros.Text = "0,00%";
+            this.lblValorJuros.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblValorJuros.Visible = false;
+            // 
+            // lblParcelas
+            // 
+            this.lblParcelas.AutoSize = true;
+            this.lblParcelas.BackColor = System.Drawing.Color.Transparent;
+            this.lblParcelas.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblParcelas.ForeColor = System.Drawing.Color.White;
+            this.lblParcelas.Location = new System.Drawing.Point(17, 49);
+            this.lblParcelas.Name = "lblParcelas";
+            this.lblParcelas.Size = new System.Drawing.Size(90, 23);
+            this.lblParcelas.TabIndex = 183;
+            this.lblParcelas.Text = "PARCELAS";
+            this.lblParcelas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblParcelas.Visible = false;
+            // 
+            // lblTituloJuros
+            // 
+            this.lblTituloJuros.AutoSize = true;
+            this.lblTituloJuros.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloJuros.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloJuros.ForeColor = System.Drawing.Color.White;
+            this.lblTituloJuros.Location = new System.Drawing.Point(155, 49);
+            this.lblTituloJuros.Name = "lblTituloJuros";
+            this.lblTituloJuros.Size = new System.Drawing.Size(61, 23);
+            this.lblTituloJuros.TabIndex = 182;
+            this.lblTituloJuros.Text = "JUROS";
+            this.lblTituloJuros.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTituloJuros.Visible = false;
+            // 
+            // cmbParcelas
+            // 
+            this.cmbParcelas.BackColor = System.Drawing.Color.Transparent;
+            this.cmbParcelas.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbParcelas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbParcelas.FillColor = System.Drawing.Color.DodgerBlue;
+            this.cmbParcelas.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbParcelas.FocusedState.Parent = this.cmbParcelas;
+            this.cmbParcelas.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbParcelas.ForeColor = System.Drawing.Color.White;
+            this.cmbParcelas.FormattingEnabled = true;
+            this.cmbParcelas.HoverState.Parent = this.cmbParcelas;
+            this.cmbParcelas.ItemHeight = 30;
+            this.cmbParcelas.Items.AddRange(new object[] {
+            "1x",
+            "2x",
+            "3x",
+            "4x",
+            "5x",
+            "6x",
+            "7x",
+            "8x",
+            "9x",
+            "10x",
+            "11x",
+            "12x"});
+            this.cmbParcelas.ItemsAppearance.Parent = this.cmbParcelas;
+            this.cmbParcelas.Location = new System.Drawing.Point(26, 79);
+            this.cmbParcelas.Name = "cmbParcelas";
+            this.cmbParcelas.ShadowDecoration.Parent = this.cmbParcelas;
+            this.cmbParcelas.Size = new System.Drawing.Size(71, 36);
+            this.cmbParcelas.TabIndex = 181;
+            this.cmbParcelas.Visible = false;
+            this.cmbParcelas.SelectedValueChanged += new System.EventHandler(this.cmbParcelas_SelectedValueChanged);
+            // 
+            // lblTituloValorParcela
+            // 
+            this.lblTituloValorParcela.AutoSize = true;
+            this.lblTituloValorParcela.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloValorParcela.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloValorParcela.ForeColor = System.Drawing.Color.White;
+            this.lblTituloValorParcela.Location = new System.Drawing.Point(260, 26);
+            this.lblTituloValorParcela.Name = "lblTituloValorParcela";
+            this.lblTituloValorParcela.Size = new System.Drawing.Size(96, 46);
+            this.lblTituloValorParcela.TabIndex = 178;
+            this.lblTituloValorParcela.Text = "VALOR DA \r\nPARCELA";
+            this.lblTituloValorParcela.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTituloValorParcela.Visible = false;
+            // 
+            // lblTituloFormaPagamento
+            // 
+            this.lblTituloFormaPagamento.AutoSize = true;
+            this.lblTituloFormaPagamento.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloFormaPagamento.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloFormaPagamento.ForeColor = System.Drawing.Color.White;
+            this.lblTituloFormaPagamento.Location = new System.Drawing.Point(9, 5);
+            this.lblTituloFormaPagamento.Name = "lblTituloFormaPagamento";
+            this.lblTituloFormaPagamento.Size = new System.Drawing.Size(145, 29);
+            this.lblTituloFormaPagamento.TabIndex = 180;
+            this.lblTituloFormaPagamento.Text = "PAGAMENTO";
+            // 
             // bunifuPanel5
             // 
             this.bunifuPanel5.BackgroundColor = System.Drawing.Color.DodgerBlue;
@@ -692,7 +847,7 @@
             this.pnlFormaPagamento.BorderColor = System.Drawing.Color.Transparent;
             this.pnlFormaPagamento.BorderRadius = 50;
             this.pnlFormaPagamento.BorderThickness = 1;
-            this.pnlFormaPagamento.Controls.Add(this.lblTipoPagamento);
+            this.pnlFormaPagamento.Controls.Add(this.cmbFormaPagamento);
             this.pnlFormaPagamento.Controls.Add(this.lblFormaPamento);
             this.pnlFormaPagamento.Location = new System.Drawing.Point(0, 0);
             this.pnlFormaPagamento.Name = "pnlFormaPagamento";
@@ -701,19 +856,34 @@
             this.pnlFormaPagamento.TabIndex = 182;
             this.pnlFormaPagamento.Visible = false;
             // 
-            // lblTipoPagamento
+            // cmbFormaPagamento
             // 
-            this.lblTipoPagamento.AutoSize = true;
-            this.lblTipoPagamento.BackColor = System.Drawing.Color.Transparent;
-            this.lblTipoPagamento.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTipoPagamento.ForeColor = System.Drawing.Color.White;
-            this.lblTipoPagamento.Location = new System.Drawing.Point(57, 41);
-            this.lblTipoPagamento.Name = "lblTipoPagamento";
-            this.lblTipoPagamento.Size = new System.Drawing.Size(105, 36);
-            this.lblTipoPagamento.TabIndex = 181;
-            this.lblTipoPagamento.Text = "R$ 0,00";
-            this.lblTipoPagamento.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblTipoPagamento.Visible = false;
+            this.cmbFormaPagamento.BackColor = System.Drawing.Color.Transparent;
+            this.cmbFormaPagamento.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbFormaPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFormaPagamento.FillColor = System.Drawing.Color.DodgerBlue;
+            this.cmbFormaPagamento.FocusedColor = System.Drawing.Color.Empty;
+            this.cmbFormaPagamento.FocusedState.Parent = this.cmbFormaPagamento;
+            this.cmbFormaPagamento.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbFormaPagamento.ForeColor = System.Drawing.Color.White;
+            this.cmbFormaPagamento.FormattingEnabled = true;
+            this.cmbFormaPagamento.HoverState.Parent = this.cmbFormaPagamento;
+            this.cmbFormaPagamento.ItemHeight = 30;
+            this.cmbFormaPagamento.Items.AddRange(new object[] {
+            "CARNÊ",
+            "CRÉDITO",
+            "DÉBITO",
+            "DINHEIRO"});
+            this.cmbFormaPagamento.ItemsAppearance.Parent = this.cmbFormaPagamento;
+            this.cmbFormaPagamento.Location = new System.Drawing.Point(37, 37);
+            this.cmbFormaPagamento.Name = "cmbFormaPagamento";
+            this.cmbFormaPagamento.ShadowDecoration.Parent = this.cmbFormaPagamento;
+            this.cmbFormaPagamento.Size = new System.Drawing.Size(161, 36);
+            this.cmbFormaPagamento.TabIndex = 180;
+            this.cmbFormaPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.cmbFormaPagamento.Visible = false;
+            this.cmbFormaPagamento.SelectedValueChanged += new System.EventHandler(this.cmbFormaPagamento_SelectedValueChanged);
+            this.cmbFormaPagamento.Leave += new System.EventHandler(this.cmbFormaPagamento_Leave);
             // 
             // lblFormaPamento
             // 
@@ -788,7 +958,7 @@
             this.txtCodigoBarras.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCodigoBarras.DefaultFont = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigoBarras.DefaultText = "";
-            this.txtCodigoBarras.FillColor = System.Drawing.Color.LightSkyBlue;
+            this.txtCodigoBarras.FillColor = System.Drawing.Color.DodgerBlue;
             this.txtCodigoBarras.ForeColor = System.Drawing.Color.White;
             this.txtCodigoBarras.HideSelection = true;
             this.txtCodigoBarras.IconLeft = null;
@@ -803,26 +973,26 @@
             this.txtCodigoBarras.Modified = false;
             this.txtCodigoBarras.Multiline = false;
             this.txtCodigoBarras.Name = "txtCodigoBarras";
-            stateProperties9.BorderColor = System.Drawing.Color.Black;
-            stateProperties9.FillColor = System.Drawing.Color.Empty;
-            stateProperties9.ForeColor = System.Drawing.Color.Empty;
-            stateProperties9.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtCodigoBarras.OnActiveState = stateProperties9;
-            stateProperties10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties10.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties10.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtCodigoBarras.OnDisabledState = stateProperties10;
-            stateProperties11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties11.FillColor = System.Drawing.Color.Empty;
-            stateProperties11.ForeColor = System.Drawing.Color.Empty;
-            stateProperties11.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtCodigoBarras.OnHoverState = stateProperties11;
-            stateProperties12.BorderColor = System.Drawing.Color.Transparent;
-            stateProperties12.FillColor = System.Drawing.Color.LightSkyBlue;
-            stateProperties12.ForeColor = System.Drawing.Color.White;
-            stateProperties12.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtCodigoBarras.OnIdleState = stateProperties12;
+            stateProperties53.BorderColor = System.Drawing.Color.AliceBlue;
+            stateProperties53.FillColor = System.Drawing.Color.Empty;
+            stateProperties53.ForeColor = System.Drawing.Color.Empty;
+            stateProperties53.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCodigoBarras.OnActiveState = stateProperties53;
+            stateProperties54.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties54.FillColor = System.Drawing.Color.DodgerBlue;
+            stateProperties54.ForeColor = System.Drawing.Color.DodgerBlue;
+            stateProperties54.PlaceholderForeColor = System.Drawing.Color.DodgerBlue;
+            this.txtCodigoBarras.OnDisabledState = stateProperties54;
+            stateProperties55.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties55.FillColor = System.Drawing.Color.Empty;
+            stateProperties55.ForeColor = System.Drawing.Color.Empty;
+            stateProperties55.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCodigoBarras.OnHoverState = stateProperties55;
+            stateProperties56.BorderColor = System.Drawing.Color.Transparent;
+            stateProperties56.FillColor = System.Drawing.Color.DodgerBlue;
+            stateProperties56.ForeColor = System.Drawing.Color.White;
+            stateProperties56.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCodigoBarras.OnIdleState = stateProperties56;
             this.txtCodigoBarras.Padding = new System.Windows.Forms.Padding(3);
             this.txtCodigoBarras.PasswordChar = '\0';
             this.txtCodigoBarras.PlaceholderForeColor = System.Drawing.Color.Transparent;
@@ -914,81 +1084,6 @@
             this.bunifuPanel2.Size = new System.Drawing.Size(267, 80);
             this.bunifuPanel2.TabIndex = 4;
             // 
-            // lblTotalRecebido
-            // 
-            this.lblTotalRecebido.AcceptsReturn = false;
-            this.lblTotalRecebido.AcceptsTab = false;
-            this.lblTotalRecebido.AnimationSpeed = 200;
-            this.lblTotalRecebido.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.lblTotalRecebido.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.lblTotalRecebido.BackColor = System.Drawing.Color.Transparent;
-            this.lblTotalRecebido.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lblTotalRecebido.BackgroundImage")));
-            this.lblTotalRecebido.BorderColorActive = System.Drawing.Color.Black;
-            this.lblTotalRecebido.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.lblTotalRecebido.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.lblTotalRecebido.BorderColorIdle = System.Drawing.Color.Transparent;
-            this.lblTotalRecebido.BorderRadius = 1;
-            this.lblTotalRecebido.BorderThickness = 1;
-            this.lblTotalRecebido.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.lblTotalRecebido.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.lblTotalRecebido.DefaultFont = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalRecebido.DefaultText = "";
-            this.lblTotalRecebido.FillColor = System.Drawing.Color.DodgerBlue;
-            this.lblTotalRecebido.ForeColor = System.Drawing.Color.Transparent;
-            this.lblTotalRecebido.HideSelection = true;
-            this.lblTotalRecebido.IconLeft = null;
-            this.lblTotalRecebido.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.lblTotalRecebido.IconPadding = 10;
-            this.lblTotalRecebido.IconRight = null;
-            this.lblTotalRecebido.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.lblTotalRecebido.Lines = new string[0];
-            this.lblTotalRecebido.Location = new System.Drawing.Point(66, 30);
-            this.lblTotalRecebido.MaxLength = 32767;
-            this.lblTotalRecebido.MinimumSize = new System.Drawing.Size(1, 1);
-            this.lblTotalRecebido.Modified = false;
-            this.lblTotalRecebido.Multiline = false;
-            this.lblTotalRecebido.Name = "lblTotalRecebido";
-            stateProperties13.BorderColor = System.Drawing.Color.Black;
-            stateProperties13.FillColor = System.Drawing.Color.Empty;
-            stateProperties13.ForeColor = System.Drawing.Color.Empty;
-            stateProperties13.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.lblTotalRecebido.OnActiveState = stateProperties13;
-            stateProperties14.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties14.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties14.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.lblTotalRecebido.OnDisabledState = stateProperties14;
-            stateProperties15.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties15.FillColor = System.Drawing.Color.Empty;
-            stateProperties15.ForeColor = System.Drawing.Color.Empty;
-            stateProperties15.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.lblTotalRecebido.OnHoverState = stateProperties15;
-            stateProperties16.BorderColor = System.Drawing.Color.Transparent;
-            stateProperties16.FillColor = System.Drawing.Color.DodgerBlue;
-            stateProperties16.ForeColor = System.Drawing.Color.Transparent;
-            stateProperties16.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.lblTotalRecebido.OnIdleState = stateProperties16;
-            this.lblTotalRecebido.Padding = new System.Windows.Forms.Padding(3);
-            this.lblTotalRecebido.PasswordChar = '\0';
-            this.lblTotalRecebido.PlaceholderForeColor = System.Drawing.Color.Transparent;
-            this.lblTotalRecebido.PlaceholderText = "R$ 0,00";
-            this.lblTotalRecebido.ReadOnly = false;
-            this.lblTotalRecebido.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.lblTotalRecebido.SelectedText = "";
-            this.lblTotalRecebido.SelectionLength = 0;
-            this.lblTotalRecebido.SelectionStart = 0;
-            this.lblTotalRecebido.ShortcutsEnabled = true;
-            this.lblTotalRecebido.Size = new System.Drawing.Size(142, 46);
-            this.lblTotalRecebido.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.lblTotalRecebido.TabIndex = 0;
-            this.lblTotalRecebido.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.lblTotalRecebido.TextMarginBottom = 0;
-            this.lblTotalRecebido.TextMarginLeft = 3;
-            this.lblTotalRecebido.TextMarginTop = 0;
-            this.lblTotalRecebido.TextPlaceholder = "R$ 0,00";
-            this.lblTotalRecebido.UseSystemPasswordChar = false;
-            this.lblTotalRecebido.WordWrap = true;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -1037,9 +1132,9 @@
             this.lblSubtotal.ForeColor = System.Drawing.Color.White;
             this.lblSubtotal.Location = new System.Drawing.Point(139, 5);
             this.lblSubtotal.Name = "lblSubtotal";
-            this.lblSubtotal.Size = new System.Drawing.Size(308, 97);
+            this.lblSubtotal.Size = new System.Drawing.Size(290, 97);
             this.lblSubtotal.TabIndex = 173;
-            this.lblSubtotal.Text = " R$ 0,00";
+            this.lblSubtotal.Text = "R$ 0,00";
             this.lblSubtotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pcbPDV
@@ -1086,26 +1181,26 @@
             this.txtCodigo.Modified = false;
             this.txtCodigo.Multiline = false;
             this.txtCodigo.Name = "txtCodigo";
-            stateProperties17.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties17.FillColor = System.Drawing.Color.Empty;
-            stateProperties17.ForeColor = System.Drawing.Color.Empty;
-            stateProperties17.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtCodigo.OnActiveState = stateProperties17;
-            stateProperties18.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties18.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties18.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtCodigo.OnDisabledState = stateProperties18;
-            stateProperties19.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties19.FillColor = System.Drawing.Color.Empty;
-            stateProperties19.ForeColor = System.Drawing.Color.Empty;
-            stateProperties19.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtCodigo.OnHoverState = stateProperties19;
-            stateProperties20.BorderColor = System.Drawing.Color.Silver;
-            stateProperties20.FillColor = System.Drawing.Color.White;
-            stateProperties20.ForeColor = System.Drawing.Color.Empty;
-            stateProperties20.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtCodigo.OnIdleState = stateProperties20;
+            stateProperties57.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties57.FillColor = System.Drawing.Color.Empty;
+            stateProperties57.ForeColor = System.Drawing.Color.Empty;
+            stateProperties57.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCodigo.OnActiveState = stateProperties57;
+            stateProperties58.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties58.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties58.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties58.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtCodigo.OnDisabledState = stateProperties58;
+            stateProperties59.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties59.FillColor = System.Drawing.Color.Empty;
+            stateProperties59.ForeColor = System.Drawing.Color.Empty;
+            stateProperties59.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCodigo.OnHoverState = stateProperties59;
+            stateProperties60.BorderColor = System.Drawing.Color.Silver;
+            stateProperties60.FillColor = System.Drawing.Color.White;
+            stateProperties60.ForeColor = System.Drawing.Color.Empty;
+            stateProperties60.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCodigo.OnIdleState = stateProperties60;
             this.txtCodigo.Padding = new System.Windows.Forms.Padding(3);
             this.txtCodigo.PasswordChar = '\0';
             this.txtCodigo.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1161,26 +1256,26 @@
             this.txtDescricao.Modified = false;
             this.txtDescricao.Multiline = false;
             this.txtDescricao.Name = "txtDescricao";
-            stateProperties21.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties21.FillColor = System.Drawing.Color.Empty;
-            stateProperties21.ForeColor = System.Drawing.Color.Empty;
-            stateProperties21.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtDescricao.OnActiveState = stateProperties21;
-            stateProperties22.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties22.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties22.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtDescricao.OnDisabledState = stateProperties22;
-            stateProperties23.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties23.FillColor = System.Drawing.Color.Empty;
-            stateProperties23.ForeColor = System.Drawing.Color.Empty;
-            stateProperties23.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtDescricao.OnHoverState = stateProperties23;
-            stateProperties24.BorderColor = System.Drawing.Color.Silver;
-            stateProperties24.FillColor = System.Drawing.Color.White;
-            stateProperties24.ForeColor = System.Drawing.Color.Empty;
-            stateProperties24.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtDescricao.OnIdleState = stateProperties24;
+            stateProperties61.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties61.FillColor = System.Drawing.Color.Empty;
+            stateProperties61.ForeColor = System.Drawing.Color.Empty;
+            stateProperties61.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtDescricao.OnActiveState = stateProperties61;
+            stateProperties62.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties62.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties62.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties62.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtDescricao.OnDisabledState = stateProperties62;
+            stateProperties63.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties63.FillColor = System.Drawing.Color.Empty;
+            stateProperties63.ForeColor = System.Drawing.Color.Empty;
+            stateProperties63.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtDescricao.OnHoverState = stateProperties63;
+            stateProperties64.BorderColor = System.Drawing.Color.Silver;
+            stateProperties64.FillColor = System.Drawing.Color.White;
+            stateProperties64.ForeColor = System.Drawing.Color.Empty;
+            stateProperties64.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtDescricao.OnIdleState = stateProperties64;
             this.txtDescricao.Padding = new System.Windows.Forms.Padding(3);
             this.txtDescricao.PasswordChar = '\0';
             this.txtDescricao.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1237,26 +1332,26 @@
             this.txtQtd.Modified = false;
             this.txtQtd.Multiline = false;
             this.txtQtd.Name = "txtQtd";
-            stateProperties25.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties25.FillColor = System.Drawing.Color.Empty;
-            stateProperties25.ForeColor = System.Drawing.Color.Empty;
-            stateProperties25.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtQtd.OnActiveState = stateProperties25;
-            stateProperties26.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties26.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties26.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtQtd.OnDisabledState = stateProperties26;
-            stateProperties27.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties27.FillColor = System.Drawing.Color.Empty;
-            stateProperties27.ForeColor = System.Drawing.Color.Empty;
-            stateProperties27.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtQtd.OnHoverState = stateProperties27;
-            stateProperties28.BorderColor = System.Drawing.Color.Silver;
-            stateProperties28.FillColor = System.Drawing.Color.White;
-            stateProperties28.ForeColor = System.Drawing.Color.Empty;
-            stateProperties28.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtQtd.OnIdleState = stateProperties28;
+            stateProperties65.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties65.FillColor = System.Drawing.Color.Empty;
+            stateProperties65.ForeColor = System.Drawing.Color.Empty;
+            stateProperties65.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtQtd.OnActiveState = stateProperties65;
+            stateProperties66.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties66.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties66.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties66.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtQtd.OnDisabledState = stateProperties66;
+            stateProperties67.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties67.FillColor = System.Drawing.Color.Empty;
+            stateProperties67.ForeColor = System.Drawing.Color.Empty;
+            stateProperties67.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtQtd.OnHoverState = stateProperties67;
+            stateProperties68.BorderColor = System.Drawing.Color.Silver;
+            stateProperties68.FillColor = System.Drawing.Color.White;
+            stateProperties68.ForeColor = System.Drawing.Color.Empty;
+            stateProperties68.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtQtd.OnIdleState = stateProperties68;
             this.txtQtd.Padding = new System.Windows.Forms.Padding(3);
             this.txtQtd.PasswordChar = '\0';
             this.txtQtd.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1312,26 +1407,26 @@
             this.txtDesconto.Modified = false;
             this.txtDesconto.Multiline = false;
             this.txtDesconto.Name = "txtDesconto";
-            stateProperties29.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties29.FillColor = System.Drawing.Color.Empty;
-            stateProperties29.ForeColor = System.Drawing.Color.Empty;
-            stateProperties29.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtDesconto.OnActiveState = stateProperties29;
-            stateProperties30.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties30.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties30.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtDesconto.OnDisabledState = stateProperties30;
-            stateProperties31.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties31.FillColor = System.Drawing.Color.Empty;
-            stateProperties31.ForeColor = System.Drawing.Color.Empty;
-            stateProperties31.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtDesconto.OnHoverState = stateProperties31;
-            stateProperties32.BorderColor = System.Drawing.Color.Silver;
-            stateProperties32.FillColor = System.Drawing.Color.White;
-            stateProperties32.ForeColor = System.Drawing.Color.Empty;
-            stateProperties32.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtDesconto.OnIdleState = stateProperties32;
+            stateProperties69.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties69.FillColor = System.Drawing.Color.Empty;
+            stateProperties69.ForeColor = System.Drawing.Color.Empty;
+            stateProperties69.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtDesconto.OnActiveState = stateProperties69;
+            stateProperties70.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties70.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties70.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties70.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtDesconto.OnDisabledState = stateProperties70;
+            stateProperties71.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties71.FillColor = System.Drawing.Color.Empty;
+            stateProperties71.ForeColor = System.Drawing.Color.Empty;
+            stateProperties71.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtDesconto.OnHoverState = stateProperties71;
+            stateProperties72.BorderColor = System.Drawing.Color.Silver;
+            stateProperties72.FillColor = System.Drawing.Color.White;
+            stateProperties72.ForeColor = System.Drawing.Color.Empty;
+            stateProperties72.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtDesconto.OnIdleState = stateProperties72;
             this.txtDesconto.Padding = new System.Windows.Forms.Padding(3);
             this.txtDesconto.PasswordChar = '\0';
             this.txtDesconto.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1644,11 +1739,11 @@
             this.lblValorDesconto.BackColor = System.Drawing.Color.Transparent;
             this.lblValorDesconto.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValorDesconto.ForeColor = System.Drawing.Color.White;
-            this.lblValorDesconto.Location = new System.Drawing.Point(81, 37);
+            this.lblValorDesconto.Location = new System.Drawing.Point(39, 35);
             this.lblValorDesconto.Name = "lblValorDesconto";
-            this.lblValorDesconto.Size = new System.Drawing.Size(24, 36);
+            this.lblValorDesconto.Size = new System.Drawing.Size(105, 36);
             this.lblValorDesconto.TabIndex = 182;
-            this.lblValorDesconto.Text = "-";
+            this.lblValorDesconto.Text = "R$ 0,00";
             this.lblValorDesconto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblValorDesconto.Visible = false;
             // 
@@ -1665,186 +1760,6 @@
             this.lblDesconto.Text = "DESCONTO";
             this.lblDesconto.Visible = false;
             // 
-            // pnlCredito
-            // 
-            this.pnlCredito.BackgroundColor = System.Drawing.Color.DodgerBlue;
-            this.pnlCredito.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlCredito.BackgroundImage")));
-            this.pnlCredito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlCredito.BorderColor = System.Drawing.Color.Transparent;
-            this.pnlCredito.BorderRadius = 50;
-            this.pnlCredito.BorderThickness = 1;
-            this.pnlCredito.Controls.Add(this.lblValorCredito);
-            this.pnlCredito.Controls.Add(this.lblTituloCredito);
-            this.pnlCredito.Location = new System.Drawing.Point(11, 429);
-            this.pnlCredito.Name = "pnlCredito";
-            this.pnlCredito.ShowBorders = true;
-            this.pnlCredito.Size = new System.Drawing.Size(182, 80);
-            this.pnlCredito.TabIndex = 183;
-            this.pnlCredito.Visible = false;
-            // 
-            // lblValorCredito
-            // 
-            this.lblValorCredito.AutoSize = true;
-            this.lblValorCredito.BackColor = System.Drawing.Color.Transparent;
-            this.lblValorCredito.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorCredito.ForeColor = System.Drawing.Color.White;
-            this.lblValorCredito.Location = new System.Drawing.Point(81, 37);
-            this.lblValorCredito.Name = "lblValorCredito";
-            this.lblValorCredito.Size = new System.Drawing.Size(24, 36);
-            this.lblValorCredito.TabIndex = 182;
-            this.lblValorCredito.Text = "-";
-            this.lblValorCredito.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblValorCredito.Visible = false;
-            // 
-            // lblTituloCredito
-            // 
-            this.lblTituloCredito.AutoSize = true;
-            this.lblTituloCredito.BackColor = System.Drawing.Color.Transparent;
-            this.lblTituloCredito.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloCredito.ForeColor = System.Drawing.Color.White;
-            this.lblTituloCredito.Location = new System.Drawing.Point(39, 0);
-            this.lblTituloCredito.Name = "lblTituloCredito";
-            this.lblTituloCredito.Size = new System.Drawing.Size(100, 29);
-            this.lblTituloCredito.TabIndex = 181;
-            this.lblTituloCredito.Text = "CREDITO";
-            this.lblTituloCredito.Visible = false;
-            // 
-            // lblValorDebito
-            // 
-            this.lblValorDebito.AutoSize = true;
-            this.lblValorDebito.BackColor = System.Drawing.Color.Transparent;
-            this.lblValorDebito.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorDebito.ForeColor = System.Drawing.Color.White;
-            this.lblValorDebito.Location = new System.Drawing.Point(81, 37);
-            this.lblValorDebito.Name = "lblValorDebito";
-            this.lblValorDebito.Size = new System.Drawing.Size(24, 36);
-            this.lblValorDebito.TabIndex = 182;
-            this.lblValorDebito.Text = "-";
-            this.lblValorDebito.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblValorDebito.Visible = false;
-            // 
-            // lblTituloDebito
-            // 
-            this.lblTituloDebito.AutoSize = true;
-            this.lblTituloDebito.BackColor = System.Drawing.Color.Transparent;
-            this.lblTituloDebito.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloDebito.ForeColor = System.Drawing.Color.White;
-            this.lblTituloDebito.Location = new System.Drawing.Point(53, 2);
-            this.lblTituloDebito.Name = "lblTituloDebito";
-            this.lblTituloDebito.Size = new System.Drawing.Size(86, 29);
-            this.lblTituloDebito.TabIndex = 181;
-            this.lblTituloDebito.Text = "DÉBITO";
-            this.lblTituloDebito.Visible = false;
-            this.lblTituloDebito.Click += new System.EventHandler(this.lblTituloDebito_Click);
-            // 
-            // pnlDebito
-            // 
-            this.pnlDebito.BackgroundColor = System.Drawing.Color.DodgerBlue;
-            this.pnlDebito.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlDebito.BackgroundImage")));
-            this.pnlDebito.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlDebito.BorderColor = System.Drawing.Color.Transparent;
-            this.pnlDebito.BorderRadius = 50;
-            this.pnlDebito.BorderThickness = 1;
-            this.pnlDebito.Controls.Add(this.lblValorDebito);
-            this.pnlDebito.Controls.Add(this.lblTituloDebito);
-            this.pnlDebito.Location = new System.Drawing.Point(11, 536);
-            this.pnlDebito.Name = "pnlDebito";
-            this.pnlDebito.ShowBorders = true;
-            this.pnlDebito.Size = new System.Drawing.Size(182, 80);
-            this.pnlDebito.TabIndex = 183;
-            this.pnlDebito.Visible = false;
-            this.pnlDebito.Click += new System.EventHandler(this.pnlDebito_Click);
-            // 
-            // txtValorDinheiro
-            // 
-            this.txtValorDinheiro.AcceptsReturn = false;
-            this.txtValorDinheiro.AcceptsTab = false;
-            this.txtValorDinheiro.AnimationSpeed = 200;
-            this.txtValorDinheiro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.txtValorDinheiro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.txtValorDinheiro.BackColor = System.Drawing.Color.Transparent;
-            this.txtValorDinheiro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtValorDinheiro.BackgroundImage")));
-            this.txtValorDinheiro.BorderColorActive = System.Drawing.Color.DodgerBlue;
-            this.txtValorDinheiro.BorderColorDisabled = System.Drawing.Color.DodgerBlue;
-            this.txtValorDinheiro.BorderColorHover = System.Drawing.Color.DodgerBlue;
-            this.txtValorDinheiro.BorderColorIdle = System.Drawing.Color.Transparent;
-            this.txtValorDinheiro.BorderRadius = 1;
-            this.txtValorDinheiro.BorderThickness = 1;
-            this.txtValorDinheiro.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.txtValorDinheiro.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtValorDinheiro.DefaultFont = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorDinheiro.DefaultText = "";
-            this.txtValorDinheiro.Enabled = false;
-            this.txtValorDinheiro.FillColor = System.Drawing.Color.DodgerBlue;
-            this.txtValorDinheiro.ForeColor = System.Drawing.Color.White;
-            this.txtValorDinheiro.HideSelection = true;
-            this.txtValorDinheiro.IconLeft = null;
-            this.txtValorDinheiro.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtValorDinheiro.IconPadding = 10;
-            this.txtValorDinheiro.IconRight = null;
-            this.txtValorDinheiro.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtValorDinheiro.Lines = new string[0];
-            this.txtValorDinheiro.Location = new System.Drawing.Point(21, 35);
-            this.txtValorDinheiro.MaxLength = 32767;
-            this.txtValorDinheiro.MinimumSize = new System.Drawing.Size(1, 1);
-            this.txtValorDinheiro.Modified = false;
-            this.txtValorDinheiro.Multiline = false;
-            this.txtValorDinheiro.Name = "txtValorDinheiro";
-            stateProperties33.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties33.FillColor = System.Drawing.Color.Empty;
-            stateProperties33.ForeColor = System.Drawing.Color.Empty;
-            stateProperties33.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtValorDinheiro.OnActiveState = stateProperties33;
-            stateProperties34.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties34.FillColor = System.Drawing.Color.DodgerBlue;
-            stateProperties34.ForeColor = System.Drawing.Color.DodgerBlue;
-            stateProperties34.PlaceholderForeColor = System.Drawing.Color.DodgerBlue;
-            this.txtValorDinheiro.OnDisabledState = stateProperties34;
-            stateProperties35.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties35.FillColor = System.Drawing.Color.Empty;
-            stateProperties35.ForeColor = System.Drawing.Color.Empty;
-            stateProperties35.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtValorDinheiro.OnHoverState = stateProperties35;
-            stateProperties36.BorderColor = System.Drawing.Color.Transparent;
-            stateProperties36.FillColor = System.Drawing.Color.DodgerBlue;
-            stateProperties36.ForeColor = System.Drawing.Color.White;
-            stateProperties36.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtValorDinheiro.OnIdleState = stateProperties36;
-            this.txtValorDinheiro.Padding = new System.Windows.Forms.Padding(3);
-            this.txtValorDinheiro.PasswordChar = '\0';
-            this.txtValorDinheiro.PlaceholderForeColor = System.Drawing.Color.Transparent;
-            this.txtValorDinheiro.PlaceholderText = "R$ 0,00";
-            this.txtValorDinheiro.ReadOnly = true;
-            this.txtValorDinheiro.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txtValorDinheiro.SelectedText = "";
-            this.txtValorDinheiro.SelectionLength = 0;
-            this.txtValorDinheiro.SelectionStart = 0;
-            this.txtValorDinheiro.ShortcutsEnabled = false;
-            this.txtValorDinheiro.Size = new System.Drawing.Size(191, 40);
-            this.txtValorDinheiro.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtValorDinheiro.TabIndex = 179;
-            this.txtValorDinheiro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtValorDinheiro.TextMarginBottom = 0;
-            this.txtValorDinheiro.TextMarginLeft = 3;
-            this.txtValorDinheiro.TextMarginTop = 0;
-            this.txtValorDinheiro.TextPlaceholder = "R$ 0,00";
-            this.txtValorDinheiro.UseSystemPasswordChar = false;
-            this.txtValorDinheiro.Visible = false;
-            this.txtValorDinheiro.WordWrap = true;
-            // 
-            // lblTituloDinheiro
-            // 
-            this.lblTituloDinheiro.AutoSize = true;
-            this.lblTituloDinheiro.BackColor = System.Drawing.Color.Transparent;
-            this.lblTituloDinheiro.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloDinheiro.ForeColor = System.Drawing.Color.White;
-            this.lblTituloDinheiro.Location = new System.Drawing.Point(60, 3);
-            this.lblTituloDinheiro.Name = "lblTituloDinheiro";
-            this.lblTituloDinheiro.Size = new System.Drawing.Size(113, 29);
-            this.lblTituloDinheiro.TabIndex = 176;
-            this.lblTituloDinheiro.Text = "DINHEIRO";
-            this.lblTituloDinheiro.Visible = false;
-            // 
             // pnlDinheiro
             // 
             this.pnlDinheiro.BackgroundColor = System.Drawing.Color.DodgerBlue;
@@ -1853,92 +1768,42 @@
             this.pnlDinheiro.BorderColor = System.Drawing.Color.Transparent;
             this.pnlDinheiro.BorderRadius = 50;
             this.pnlDinheiro.BorderThickness = 1;
-            this.pnlDinheiro.Controls.Add(this.txtValorDinheiro);
-            this.pnlDinheiro.Controls.Add(this.lblTituloDinheiro);
-            this.pnlDinheiro.Controls.Add(this.bunifuTextBox2);
-            this.pnlDinheiro.Location = new System.Drawing.Point(202, 536);
+            this.pnlDinheiro.Controls.Add(this.lblValorTotal);
+            this.pnlDinheiro.Controls.Add(this.lblTituloValorTotal);
+            this.pnlDinheiro.Location = new System.Drawing.Point(11, 536);
             this.pnlDinheiro.Name = "pnlDinheiro";
             this.pnlDinheiro.ShowBorders = true;
-            this.pnlDinheiro.Size = new System.Drawing.Size(229, 80);
+            this.pnlDinheiro.Size = new System.Drawing.Size(420, 80);
             this.pnlDinheiro.TabIndex = 181;
             this.pnlDinheiro.Visible = false;
+            this.pnlDinheiro.Click += new System.EventHandler(this.pnlDinheiro_Click);
             // 
-            // bunifuTextBox2
+            // lblValorTotal
             // 
-            this.bunifuTextBox2.AcceptsReturn = false;
-            this.bunifuTextBox2.AcceptsTab = false;
-            this.bunifuTextBox2.AnimationSpeed = 200;
-            this.bunifuTextBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
-            this.bunifuTextBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
-            this.bunifuTextBox2.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuTextBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuTextBox2.BackgroundImage")));
-            this.bunifuTextBox2.BorderColorActive = System.Drawing.Color.DodgerBlue;
-            this.bunifuTextBox2.BorderColorDisabled = System.Drawing.Color.DodgerBlue;
-            this.bunifuTextBox2.BorderColorHover = System.Drawing.Color.DodgerBlue;
-            this.bunifuTextBox2.BorderColorIdle = System.Drawing.Color.Transparent;
-            this.bunifuTextBox2.BorderRadius = 1;
-            this.bunifuTextBox2.BorderThickness = 1;
-            this.bunifuTextBox2.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
-            this.bunifuTextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuTextBox2.DefaultFont = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bunifuTextBox2.DefaultText = "1";
-            this.bunifuTextBox2.Enabled = false;
-            this.bunifuTextBox2.FillColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuTextBox2.ForeColor = System.Drawing.Color.White;
-            this.bunifuTextBox2.HideSelection = true;
-            this.bunifuTextBox2.IconLeft = null;
-            this.bunifuTextBox2.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuTextBox2.IconPadding = 10;
-            this.bunifuTextBox2.IconRight = null;
-            this.bunifuTextBox2.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
-            this.bunifuTextBox2.Lines = new string[] {
-        "1"};
-            this.bunifuTextBox2.Location = new System.Drawing.Point(21, 33);
-            this.bunifuTextBox2.MaxLength = 5;
-            this.bunifuTextBox2.MinimumSize = new System.Drawing.Size(1, 1);
-            this.bunifuTextBox2.Modified = false;
-            this.bunifuTextBox2.Multiline = false;
-            this.bunifuTextBox2.Name = "bunifuTextBox2";
-            stateProperties37.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties37.FillColor = System.Drawing.Color.Empty;
-            stateProperties37.ForeColor = System.Drawing.Color.Empty;
-            stateProperties37.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.bunifuTextBox2.OnActiveState = stateProperties37;
-            stateProperties38.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties38.FillColor = System.Drawing.Color.DodgerBlue;
-            stateProperties38.ForeColor = System.Drawing.Color.DodgerBlue;
-            stateProperties38.PlaceholderForeColor = System.Drawing.Color.DodgerBlue;
-            this.bunifuTextBox2.OnDisabledState = stateProperties38;
-            stateProperties39.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties39.FillColor = System.Drawing.Color.Empty;
-            stateProperties39.ForeColor = System.Drawing.Color.Empty;
-            stateProperties39.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.bunifuTextBox2.OnHoverState = stateProperties39;
-            stateProperties40.BorderColor = System.Drawing.Color.Transparent;
-            stateProperties40.FillColor = System.Drawing.Color.DodgerBlue;
-            stateProperties40.ForeColor = System.Drawing.Color.White;
-            stateProperties40.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.bunifuTextBox2.OnIdleState = stateProperties40;
-            this.bunifuTextBox2.Padding = new System.Windows.Forms.Padding(3);
-            this.bunifuTextBox2.PasswordChar = '\0';
-            this.bunifuTextBox2.PlaceholderForeColor = System.Drawing.Color.Transparent;
-            this.bunifuTextBox2.PlaceholderText = "";
-            this.bunifuTextBox2.ReadOnly = false;
-            this.bunifuTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.bunifuTextBox2.SelectedText = "";
-            this.bunifuTextBox2.SelectionLength = 0;
-            this.bunifuTextBox2.SelectionStart = 0;
-            this.bunifuTextBox2.ShortcutsEnabled = false;
-            this.bunifuTextBox2.Size = new System.Drawing.Size(191, 40);
-            this.bunifuTextBox2.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.bunifuTextBox2.TabIndex = 180;
-            this.bunifuTextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.bunifuTextBox2.TextMarginBottom = 0;
-            this.bunifuTextBox2.TextMarginLeft = 3;
-            this.bunifuTextBox2.TextMarginTop = 0;
-            this.bunifuTextBox2.TextPlaceholder = "";
-            this.bunifuTextBox2.UseSystemPasswordChar = false;
-            this.bunifuTextBox2.WordWrap = true;
+            this.lblValorTotal.AutoSize = true;
+            this.lblValorTotal.BackColor = System.Drawing.Color.Transparent;
+            this.lblValorTotal.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorTotal.ForeColor = System.Drawing.Color.White;
+            this.lblValorTotal.Location = new System.Drawing.Point(91, 16);
+            this.lblValorTotal.Name = "lblValorTotal";
+            this.lblValorTotal.Size = new System.Drawing.Size(171, 59);
+            this.lblValorTotal.TabIndex = 185;
+            this.lblValorTotal.Text = "R$ 0,00";
+            this.lblValorTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblValorTotal.Click += new System.EventHandler(this.lblValorTotal_Click);
+            // 
+            // lblTituloValorTotal
+            // 
+            this.lblTituloValorTotal.AutoSize = true;
+            this.lblTituloValorTotal.BackColor = System.Drawing.Color.Transparent;
+            this.lblTituloValorTotal.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTituloValorTotal.ForeColor = System.Drawing.Color.White;
+            this.lblTituloValorTotal.Location = new System.Drawing.Point(12, 4);
+            this.lblTituloValorTotal.Name = "lblTituloValorTotal";
+            this.lblTituloValorTotal.Size = new System.Drawing.Size(74, 29);
+            this.lblTituloValorTotal.TabIndex = 184;
+            this.lblTituloValorTotal.Text = "TOTAL";
+            this.lblTituloValorTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlpagamento1
             // 
@@ -2026,37 +1891,141 @@
             this.pnlPagamento3.TabIndex = 190;
             this.pnlPagamento3.Visible = false;
             // 
+            // txtValorDinheiro
+            // 
+            this.txtValorDinheiro.AcceptsReturn = false;
+            this.txtValorDinheiro.AcceptsTab = false;
+            this.txtValorDinheiro.AnimationSpeed = 200;
+            this.txtValorDinheiro.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.txtValorDinheiro.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txtValorDinheiro.BackColor = System.Drawing.Color.Transparent;
+            this.txtValorDinheiro.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtValorDinheiro.BackgroundImage")));
+            this.txtValorDinheiro.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.txtValorDinheiro.BorderColorDisabled = System.Drawing.Color.DodgerBlue;
+            this.txtValorDinheiro.BorderColorHover = System.Drawing.Color.DodgerBlue;
+            this.txtValorDinheiro.BorderColorIdle = System.Drawing.Color.Transparent;
+            this.txtValorDinheiro.BorderRadius = 1;
+            this.txtValorDinheiro.BorderThickness = 1;
+            this.txtValorDinheiro.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtValorDinheiro.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtValorDinheiro.DefaultFont = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorDinheiro.DefaultText = "";
+            this.txtValorDinheiro.FillColor = System.Drawing.Color.SkyBlue;
+            this.txtValorDinheiro.ForeColor = System.Drawing.Color.White;
+            this.txtValorDinheiro.HideSelection = true;
+            this.txtValorDinheiro.IconLeft = null;
+            this.txtValorDinheiro.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtValorDinheiro.IconPadding = 10;
+            this.txtValorDinheiro.IconRight = null;
+            this.txtValorDinheiro.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtValorDinheiro.Lines = new string[0];
+            this.txtValorDinheiro.Location = new System.Drawing.Point(14, 32);
+            this.txtValorDinheiro.MaxLength = 32767;
+            this.txtValorDinheiro.MinimumSize = new System.Drawing.Size(1, 1);
+            this.txtValorDinheiro.Modified = false;
+            this.txtValorDinheiro.Multiline = false;
+            this.txtValorDinheiro.Name = "txtValorDinheiro";
+            stateProperties49.BorderColor = System.Drawing.Color.AliceBlue;
+            stateProperties49.FillColor = System.Drawing.Color.Empty;
+            stateProperties49.ForeColor = System.Drawing.Color.Empty;
+            stateProperties49.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtValorDinheiro.OnActiveState = stateProperties49;
+            stateProperties50.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties50.FillColor = System.Drawing.Color.DodgerBlue;
+            stateProperties50.ForeColor = System.Drawing.Color.DodgerBlue;
+            stateProperties50.PlaceholderForeColor = System.Drawing.Color.DodgerBlue;
+            this.txtValorDinheiro.OnDisabledState = stateProperties50;
+            stateProperties51.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties51.FillColor = System.Drawing.Color.Empty;
+            stateProperties51.ForeColor = System.Drawing.Color.Empty;
+            stateProperties51.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtValorDinheiro.OnHoverState = stateProperties51;
+            stateProperties52.BorderColor = System.Drawing.Color.Transparent;
+            stateProperties52.FillColor = System.Drawing.Color.SkyBlue;
+            stateProperties52.ForeColor = System.Drawing.Color.White;
+            stateProperties52.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtValorDinheiro.OnIdleState = stateProperties52;
+            this.txtValorDinheiro.Padding = new System.Windows.Forms.Padding(3);
+            this.txtValorDinheiro.PasswordChar = '\0';
+            this.txtValorDinheiro.PlaceholderForeColor = System.Drawing.Color.Transparent;
+            this.txtValorDinheiro.PlaceholderText = "R$ 0,00";
+            this.txtValorDinheiro.ReadOnly = true;
+            this.txtValorDinheiro.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtValorDinheiro.SelectedText = "";
+            this.txtValorDinheiro.SelectionLength = 0;
+            this.txtValorDinheiro.SelectionStart = 0;
+            this.txtValorDinheiro.ShortcutsEnabled = false;
+            this.txtValorDinheiro.Size = new System.Drawing.Size(390, 79);
+            this.txtValorDinheiro.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.txtValorDinheiro.TabIndex = 179;
+            this.txtValorDinheiro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtValorDinheiro.TextMarginBottom = 0;
+            this.txtValorDinheiro.TextMarginLeft = 3;
+            this.txtValorDinheiro.TextMarginTop = 0;
+            this.txtValorDinheiro.TextPlaceholder = "R$ 0,00";
+            this.txtValorDinheiro.UseSystemPasswordChar = false;
+            this.txtValorDinheiro.Visible = false;
+            this.txtValorDinheiro.WordWrap = true;
+            this.txtValorDinheiro.TextChange += new System.EventHandler(this.txtValorDinheiro_TextChange);
+            this.txtValorDinheiro.TextChanged += new System.EventHandler(this.txtValorDinheiro_TextChanged);
+            this.txtValorDinheiro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorDinheiro_KeyPress_1);
+            // 
+            // lblTotalRecebido
+            // 
+            this.lblTotalRecebido.AutoSize = true;
+            this.lblTotalRecebido.BackColor = System.Drawing.Color.Transparent;
+            this.lblTotalRecebido.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalRecebido.ForeColor = System.Drawing.Color.White;
+            this.lblTotalRecebido.Location = new System.Drawing.Point(85, 35);
+            this.lblTotalRecebido.Name = "lblTotalRecebido";
+            this.lblTotalRecebido.Size = new System.Drawing.Size(105, 36);
+            this.lblTotalRecebido.TabIndex = 177;
+            this.lblTotalRecebido.Text = "R$ 0,00";
+            // 
+            // lblValorDebito
+            // 
+            this.lblValorDebito.AutoSize = true;
+            this.lblValorDebito.BackColor = System.Drawing.Color.Transparent;
+            this.lblValorDebito.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorDebito.ForeColor = System.Drawing.Color.White;
+            this.lblValorDebito.Location = new System.Drawing.Point(90, 45);
+            this.lblValorDebito.Name = "lblValorDebito";
+            this.lblValorDebito.Size = new System.Drawing.Size(171, 59);
+            this.lblValorDebito.TabIndex = 186;
+            this.lblValorDebito.Text = "R$ 0,00";
+            this.lblValorDebito.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblValorDebito.Visible = false;
+            // 
             // Forms_TelaPDV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1036, 770);
+            this.Controls.Add(this.pnlCarne);
             this.Controls.Add(this.pnlPagamento3);
             this.Controls.Add(this.pnlpagamento1);
-            this.Controls.Add(this.pnlDinheiro);
-            this.Controls.Add(this.pnlDebito);
-            this.Controls.Add(this.pnlCredito);
             this.Controls.Add(this.pnlDesconto);
-            this.Controls.Add(this.pnlFundoCliente);
             this.Controls.Add(this.bunifuPanel14);
             this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.bunifuPanel13);
             this.Controls.Add(this.bunifuPanel12);
             this.Controls.Add(this.txtCodigo);
-            this.Controls.Add(this.bunifuPanel8);
             this.Controls.Add(this.txtDesconto);
             this.Controls.Add(this.txtQtd);
             this.Controls.Add(this.bunifuPanel10);
-            this.Controls.Add(this.bunifuPanel7);
             this.Controls.Add(this.bunifuPanel6);
             this.Controls.Add(this.bunifuPanel5);
-            this.Controls.Add(this.bunifuPanel4);
             this.Controls.Add(this.gdvPDV);
             this.Controls.Add(this.bunifuPanel3);
             this.Controls.Add(this.bunifuPanel2);
             this.Controls.Add(this.bunifuPanel1);
-            this.Controls.Add(this.pcbPDV);
             this.Controls.Add(this.pnlFachada);
+            this.Controls.Add(this.pnlDinheiro);
+            this.Controls.Add(this.pnlFundoCliente);
+            this.Controls.Add(this.bunifuPanel4);
+            this.Controls.Add(this.bunifuPanel7);
+            this.Controls.Add(this.bunifuPanel8);
+            this.Controls.Add(this.pcbPDV);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "Forms_TelaPDV";
@@ -2102,10 +2071,6 @@
             this.pnlFundoCliente.PerformLayout();
             this.pnlDesconto.ResumeLayout(false);
             this.pnlDesconto.PerformLayout();
-            this.pnlCredito.ResumeLayout(false);
-            this.pnlCredito.PerformLayout();
-            this.pnlDebito.ResumeLayout(false);
-            this.pnlDebito.PerformLayout();
             this.pnlDinheiro.ResumeLayout(false);
             this.pnlDinheiro.PerformLayout();
             this.pnlpagamento1.ResumeLayout(false);
@@ -2141,7 +2106,6 @@
         private System.Windows.Forms.Label label10;
         private Bunifu.UI.WinForms.BunifuPanel pnlFachada;
         private System.Windows.Forms.Label lblFachada;
-        private Bunifu.UI.WinForms.BunifuTextBox lblTotalRecebido;
         private Bunifu.UI.WinForms.BunifuTextBox txtCodigoBarras;
         private System.Windows.Forms.Label lblTituloCPFQuant;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel10;
@@ -2160,7 +2124,6 @@
         private System.Windows.Forms.Label label2;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel13;
         private System.Windows.Forms.Label lblDescricaoItem;
-        private System.Windows.Forms.Label lblCodigoProduto;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel14;
         private System.Windows.Forms.Label lblUnidade;
         private System.Windows.Forms.Label label21;
@@ -2172,7 +2135,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private Bunifu.UI.WinForms.BunifuTextBox txtCPF;
-        private Bunifu.UI.WinForms.BunifuTextBox txtInserirQuant;
         private Bunifu.UI.WinForms.BunifuPanel pnlFundoCliente;
         private System.Windows.Forms.Label lblNomeCliente;
         private System.Windows.Forms.Label lblCliente;
@@ -2180,29 +2142,32 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label24;
         private Bunifu.UI.WinForms.BunifuPanel pnlFormaPagamento;
-        private System.Windows.Forms.Label lblTipoPagamento;
         private System.Windows.Forms.Label lblFormaPamento;
         private Bunifu.UI.WinForms.BunifuPanel pnlDesconto;
         private System.Windows.Forms.Label lblValorDesconto;
         private System.Windows.Forms.Label lblDesconto;
         private Bunifu.UI.WinForms.BunifuPanel pnlCarne;
-        private System.Windows.Forms.Label lblValorCarne;
-        private System.Windows.Forms.Label lblTituloCarne;
-        private Bunifu.UI.WinForms.BunifuPanel pnlCredito;
-        private System.Windows.Forms.Label lblValorCredito;
-        private System.Windows.Forms.Label lblTituloCredito;
-        private System.Windows.Forms.Label lblValorDebito;
-        private System.Windows.Forms.Label lblTituloDebito;
-        private Bunifu.UI.WinForms.BunifuPanel pnlDebito;
-        private Bunifu.UI.WinForms.BunifuTextBox txtValorDinheiro;
-        private System.Windows.Forms.Label lblTituloDinheiro;
+        private System.Windows.Forms.Label lblTituloValorParcela;
+        private System.Windows.Forms.Label lblTituloFormaPagamento;
         private Bunifu.UI.WinForms.BunifuPanel pnlDinheiro;
-        private Bunifu.UI.WinForms.BunifuTextBox bunifuTextBox2;
         private Bunifu.UI.WinForms.BunifuPanel pnlpagamento1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label label11;
         private Bunifu.UI.WinForms.BunifuPanel pnlPagamento3;
+        private Bunifu.UI.WinForms.BunifuTextBox txtCodigoProduto;
+        private Bunifu.UI.WinForms.BunifuTextBox txtInserirQuant;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbFormaPagamento;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbParcelas;
+        private System.Windows.Forms.Label lblTituloValorTotal;
+        private System.Windows.Forms.Label lblParcelas;
+        private System.Windows.Forms.Label lblTituloJuros;
+        private System.Windows.Forms.Label lblValorTotal;
+        private System.Windows.Forms.Label lblValorParcela;
+        private System.Windows.Forms.Label lblValorJuros;
+        private Bunifu.UI.WinForms.BunifuTextBox txtValorDinheiro;
+        private System.Windows.Forms.Label lblValorDebito;
+        private System.Windows.Forms.Label lblTotalRecebido;
     }
 }

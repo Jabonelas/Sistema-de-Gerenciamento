@@ -138,7 +138,12 @@ namespace Sistema_de_Gerenciamento
 
         public void ErroAoBuscarEstoqueProduto(Exception _e)
         {
-            MessageBox.Show($"(BUS-EP01) Erro ao Buscar Estoque Produto \n\nErro: {_e}", "Erro Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(ESP-EP01) Erro ao Buscar Estoque Produto \n\nErro: {_e}", "Erro Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAdicionarEstoqueProduto(Exception _e)
+        {
+            MessageBox.Show($"(ESP-EP02) Erro ao Adicionar Estoque Produto \n\nErro: {_e}", "Erro Adicionar Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Estoque Produto
@@ -147,22 +152,22 @@ namespace Sistema_de_Gerenciamento
 
         public void ErroAoBuscarNotaFiscalEntrada(Exception _e)
         {
-            MessageBox.Show($"(BUS-EP01) Erro ao Buscar Estoque Produto \n\nErro: {_e}", "Erro Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(COM-EP01) Erro ao Buscar Estoque Produto \n\nErro: {_e}", "Erro Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoAlterarCodigoBarrasNotaFiscalEntrada(Exception _e)
         {
-            MessageBox.Show($"(ALT-EP01) Erro ao Alterar Codigo de Barras Nota Fiscal Entrada \n\nErro: {_e}", "Erro Alterar Codigo de Barras Nota Fiscal Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(COM-EP02) Erro ao Alterar Codigo de Barras Nota Fiscal Entrada \n\nErro: {_e}", "Erro Alterar Codigo de Barras Nota Fiscal Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoSalvarNotaFiscalEntrada(Exception _e)
         {
-            MessageBox.Show($"(SAL-EP01) Erro ao Salvar Nota Fiscal de Entrada \n\nErro: {_e}", "Erro Salvar Nota Fiscal de Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(COM-EP03) Erro ao Salvar Nota Fiscal de Entrada \n\nErro: {_e}", "Erro Salvar Nota Fiscal de Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroExcluirNotaFiscalEntrada(Exception _e)
         {
-            MessageBox.Show($"(EXC-EP01) Erro ao Excluir Nota Fiscal de Entrada \n\nErro: {_e}", "Erro Excluit Nota Fiscal de Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(COM-EP03) Erro ao Excluir Nota Fiscal de Entrada \n\nErro: {_e}", "Erro Excluit Nota Fiscal de Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Compras
@@ -171,12 +176,12 @@ namespace Sistema_de_Gerenciamento
 
         public void ErroAoBuscarDadosParaPreencherTextBox(Exception _e)
         {
-            MessageBox.Show($"(BUS-GC01) Erro ao Buscar Dados Para Preenchimento TextBox \n\nErro: {_e}", "Erro Preencher TextBox!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(GEC-VE01) Erro ao Buscar Dados Para Preenchimento TextBox \n\nErro: {_e}", "Erro Preencher TextBox!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoBuscarJurosGerarCarne(Exception _e)
         {
-            MessageBox.Show($"(BUS-GC02) Erro ao Buscar Juros Do Carne \n\nErro: {_e}", "Erro Buscar Juros !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(GEC-VE02) Erro ao Buscar Juros Do Carne \n\nErro: {_e}", "Erro Buscar Juros !", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Gerar Carne
@@ -185,10 +190,29 @@ namespace Sistema_de_Gerenciamento
 
         public void ErroAoInserirDadosDespesa(Exception _e)
         {
-            MessageBox.Show($"(INS-DE01) Erro ao Inserir Dados de Despesa \n\nErro: {_e}", "Erro Inserir Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(DES-DE01) Erro ao Inserir Dados de Despesa \n\nErro: {_e}", "Erro Inserir Despesa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Despesa
+
+        #region Tela PDV
+
+        public void ErroAoBuscarProdutoPorCodigoProduto(Exception _e)
+        {
+            MessageBox.Show($"(PDV-VE01) Erro ao Buscar Produto Por Codigo \n\nErro: {_e}", "Erro Produto Por Codigo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarProdutoPorCodigoBarras(Exception _e)
+        {
+            MessageBox.Show($"(PDV-VE02) Erro ao Buscar Produto Por Codigo Barras  \n\nErro: {_e}", "Erro Produto Por Codigo Barras!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoInserirProdutoTelaPDV(Exception _e)
+        {
+            MessageBox.Show($"(PDV-VE03) Erro ao Inserir Produto \n\nErro: {_e}", "Erro Inserir Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Tela PDV
 
         #endregion Forms
 
@@ -293,7 +317,7 @@ namespace Sistema_de_Gerenciamento
 
         public void ErroAoAdicionarEstoqueProdutoNoBanco(Exception _e)
         {
-            MessageBox.Show($"(INS-CP01) Erro ao Inserir Estoque de Produto \n\nErro: {_e}", "Erro Inserir Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(INS-EP01) Erro ao Inserir Estoque de Produto \n\nErro: {_e}", "Erro Inserir Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Estoque Produto
@@ -814,6 +838,11 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoBuscarClientePorCPFTelaPDVNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-PDV01) Erro ao Realizar Busca Cliente Por CPF \n\nErro: {_e}", "Erro Busca Cliente Por CPF!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarProdutoPorCodigoTelaPDVNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PDV02) Erro ao Realizar Busca Produto Por Codigo \n\nErro: {_e}", "Erro Busca Produto Por Codigo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Buscar Cliente Tela PDV

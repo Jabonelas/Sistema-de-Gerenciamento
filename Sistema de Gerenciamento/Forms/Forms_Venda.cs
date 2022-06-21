@@ -117,7 +117,7 @@ namespace Sistema_de_Gerenciamento.Forms
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscarEstoqueProduto(ex);
+                Erro.ErroAoAdicionarEstoqueProduto(ex);
             }
         }
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Bunifu.UI.WinForms;
 using Sistema_de_Gerenciamento.Classes;
 
 namespace Sistema_de_Gerenciamento.Forms
@@ -19,7 +20,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private List<DadosProduto> listaProduto = new List<DadosProduto>();
 
+        private List<DadosFinanceiro> listaFinanceiro = new List<DadosFinanceiro>();
+
         private DadosProduto produto;
+
+        private DadosFinanceiro financeiro;
 
         private decimal valorBruto = 0;
 
@@ -32,6 +37,8 @@ namespace Sistema_de_Gerenciamento.Forms
             InitializeComponent();
 
             listaProduto = Buscar.BuscarProdutos();
+
+            listaFinanceiro = Buscar.BuscarFinanceiro();
 
             //this.Height = Screen.PrimaryScreen.Bounds.Height;
 
@@ -52,24 +59,10 @@ namespace Sistema_de_Gerenciamento.Forms
                 this.Close();
             }
 
-            if (e.KeyCode == Keys.F7) // Finalizar Compra F7
-            {
-                FormatoTelaPagamento("Pagamento");
-            }
-
-            if (e.KeyCode == Keys.F6) // inserir quantidade F6
-            {
-                lblTituloCPFQuant.Text = "QUANTIDADE";
-
-                txtCPF.Visible = false;
-
-                txtInserirQuant.Visible = true;
-                txtInserirQuant.Enabled = true;
-                txtInserirQuant.Focus();
-            }
-
             if (e.KeyCode == Keys.F1) // nova venda F1
             {
+                //if (gdvPDV.Rows.Count <= 0)
+                //{
                 gdvPDV.Rows.Clear();
 
                 pcbPDV.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\png-transparent-logo-pharmacy-pills-miscellaneous-trademark-pharmaceutical-drug.png");
@@ -78,7 +71,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 lblTroco.Text = "R$ 0,00";
                 lblTotalRecebido.Text = "R$ 0,00";
                 txtCPF.Text = "-";
-                lblCodigoProduto.Text = "-";
+                txtCodigoProduto.Text = "-";
                 lblTotaldoItem.Text = "R$ 0,00";
                 lblValorUnitario.Text = "R$ 0,00";
                 pnlFachada.BackgroundColor = Color.Lime;
@@ -87,6 +80,12 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtCPF.UseSystemPasswordChar = false;
 
                 FormatoTelaPagamento("Cancelamento");
+
+                txtCodigoBarras.Focus();
+
+                lblDescricaoItem.Text = "DESCRIÇÃO DO ITEM";
+                lblUnidade.Text = "UN";
+                //}
             }
 
             if (e.KeyCode == Keys.F2) // excluir item F2
@@ -102,6 +101,43 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtCPF.Enabled = true;
                 txtCPF.Focus();
             }
+
+            if (e.KeyCode == Keys.F4) // Buscar Por Codigo F4
+            {
+                txtCodigoProduto.Enabled = true;
+                txtCodigoProduto.Visible = true;
+                txtCodigoProduto.Text = String.Empty;
+                txtCodigoProduto.Focus();
+
+                //txtCodigoProduto.Visible = true;
+            }
+
+            if (e.KeyCode == Keys.F6) // inserir quantidade F6
+            {
+                lblTituloCPFQuant.Text = "QUANTIDADE";
+
+                txtCPF.Visible = false;
+
+                txtInserirQuant.Visible = true;
+                txtInserirQuant.Enabled = true;
+                txtInserirQuant.Focus();
+            }
+
+            if (e.KeyCode == Keys.F7) // Finalizar Compra F7
+            {
+                //if (gdvPDV.Rows.Count >= 0)
+                //{
+                FormatoTelaPagamento("Pagamento");
+
+                //depois ve se ainda esta bugado
+                txtValorDinheiro.Visible = false;
+                lblTituloValorParcela.Visible = false;
+
+                cmbFormaPagamento.Focus();
+                lblDescricaoItem.Text = "PAGAMENTO";
+                lblUnidade.Text = string.Empty;
+                //}
+            }
         }
 
         private void FormatoTelaPagamento(string _verificar)
@@ -116,7 +152,7 @@ namespace Sistema_de_Gerenciamento.Forms
             //painel com forma de pagamento
             lblFormaPamento.Visible = retorno;
             pnlFormaPagamento.Visible = retorno;
-            lblTipoPagamento.Visible = retorno;
+            cmbFormaPagamento.Visible = retorno;
 
             //painel com desconto
 
@@ -126,22 +162,22 @@ namespace Sistema_de_Gerenciamento.Forms
 
             //painel carne
             pnlCarne.Visible = retorno;
-            lblTituloCarne.Visible = retorno;
-            lblValorCarne.Visible = retorno;
+            lblTituloFormaPagamento.Visible = retorno;
+            lblTituloValorParcela.Visible = retorno;
 
             //painel Credito
-            pnlCredito.Visible = retorno;
-            lblTituloCredito.Visible = retorno;
-            lblValorCredito.Visible = retorno;
+            //pnlCredito.Visible = retorno;
+            //lblTituloCredito.Visible = retorno;
+            //lblValorCredito.Visible = retorno;
 
             //painel Debito
-            pnlDebito.Visible = retorno;
-            lblTituloDebito.Visible = retorno;
-            lblValorDebito.Visible = retorno;
+            //pnlDebito.Visible = retorno;
+            //lblTituloDebito.Visible = retorno;
+            //lblValorDebito.Visible = retorno;
 
             //painel Dinheiro
             pnlDinheiro.Visible = retorno;
-            lblTituloDinheiro.Visible = retorno;
+            //lblTituloDinheiro.Visible = retorno;
             txtValorDinheiro.Visible = retorno;
 
             //painel com as teclas
@@ -153,9 +189,9 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (cont <= 0)
             {
-                BuscarProduto();
+                BuscarProdutoPorCodigoBarras();
 
-                AdicionarProduto();
+                AdicionarProdutoPorCodigoBarras();
 
                 SetarDesignColunaGridView();
 
@@ -185,9 +221,7 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #region Adicionar Produto
-
-        private void AdicionarProduto()
+        private void AdicionarProdutoPorCodigoBarras()
         {
             try
             {
@@ -211,11 +245,9 @@ namespace Sistema_de_Gerenciamento.Forms
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscarEstoqueProduto(ex);
+                Erro.ErroAoInserirProdutoTelaPDV(ex);
             }
         }
-
-        #region Valor Total
 
         private void ValorTotal()
         {
@@ -228,10 +260,6 @@ namespace Sistema_de_Gerenciamento.Forms
 
             lblSubtotal.Text = string.Format("{0:C}", valorBruto);
         }
-
-        #endregion Valor Total
-
-        #region Preencher GridView
 
         private void PreenchendoGridView()
         {
@@ -246,13 +274,7 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Preencher GridView
-
-        #endregion Adicionar Produto
-
-        #region Buscar Produto e Preencher os TextBox Conforme a Busca
-
-        private void BuscarProduto()
+        private void BuscarProdutoPorCodigoBarras()
         {
             try
             {
@@ -267,7 +289,7 @@ namespace Sistema_de_Gerenciamento.Forms
                         txtCodigo.Text = produto.codigoProduto.ToString();
                         txtDescricao.Text = produto.descricaoProduto;
                         lblDescricaoItem.Text = produto.descricaoProduto;
-                        lblCodigoProduto.Text = produto.codigoProduto.ToString();
+                        txtCodigoProduto.Text = produto.codigoProduto.ToString();
                         lblUnidade.Text = produto.unidade;
                         lblValorUnitario.Text = string.Format("{0:C}", (produto.preco - (produto.desconto * produto.preco / 100)));
                         lblTotaldoItem.Text = string.Format("{0:C}", Convert.ToDecimal(txtInserirQuant.Text) * (produto.preco - (produto.desconto * produto.preco / 100)));
@@ -278,27 +300,21 @@ namespace Sistema_de_Gerenciamento.Forms
                     }
                     else if (isCadastroExiste == false)
                     {
-                        MessageBox.Show("Codigo de Barras Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Codigo De Barras Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscarEstoqueProduto(ex);
+                Erro.ErroAoBuscarProdutoPorCodigoBarras(ex);
             }
         }
-
-        #endregion Buscar Produto e Preencher os TextBox Conforme a Busca
-
-        #region Setar o Design Do Forms Coluna de Valores Com R$
 
         private void SetarDesignColunaGridView()
         {
             this.gdvPDV.Columns["Total"].DefaultCellStyle.Format = "c";
             this.gdvPDV.Columns["VlrUnit"].DefaultCellStyle.Format = "c";
         }
-
-        #endregion Setar o Design Do Forms Coluna de Valores Com R$
 
         private void txtCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -327,8 +343,6 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #region Remover Produto do GridView
-
         private void RemoverProduto()
         {
             if (gdvPDV.RowCount > 0)
@@ -346,24 +360,228 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Remover Produto do GridView
-
         private void txtInserirQuant_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoFoiNumero(e);
         }
 
-        private void pnlDebito_Click(object sender, EventArgs e)
+        private void txtCodigoProduto_TextChange(object sender, EventArgs e)
+        {
+            if (txtCodigoProduto.Text != string.Empty)
+            {
+                BuscarProdutoPorCodigoProduto();
+
+                pcbPDV.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigo.Text));
+            }
+        }
+
+        private void BuscarProdutoPorCodigoProduto()
+        {
+            try
+            {
+                if (txtCodigoProduto.Text != string.Empty && txtCodigoProduto.Text != "-")
+                {
+                    bool isCadastroExiste = Buscar.BuscarProdutoPorCodigo(Convert.ToInt32(txtCodigoProduto.Text));
+
+                    if (isCadastroExiste == true)
+                    {
+                        produto = listaProduto.Find(prod => prod.codigoProduto.ToString().StartsWith(txtCodigoProduto.Text));
+
+                        txtCodigo.Text = produto.codigoProduto.ToString();
+                        txtDescricao.Text = produto.descricaoProduto;
+                        lblDescricaoItem.Text = produto.descricaoProduto;
+                        lblUnidade.Text = produto.unidade;
+                        lblValorUnitario.Text = string.Format("{0:C}", (produto.preco - (produto.desconto * produto.preco / 100)));
+                        lblTotaldoItem.Text = string.Format("{0:C}", Convert.ToDecimal(txtInserirQuant.Text) * (produto.preco - (produto.desconto * produto.preco / 100)));
+
+                        string desconto = ((produto.desconto / 100) > 0) ? string.Format("{0:P}", produto.desconto / 100) : "Sem Desconto";
+
+                        txtDesconto.Text = desconto;
+                    }
+                    else if (isCadastroExiste == false)
+                    {
+                        MessageBox.Show("Codigo do Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarProdutoPorCodigoProduto(ex);
+            }
+        }
+
+        private void txtCodigoProduto_Leave(object sender, EventArgs e)
+        {
+            AdicionarProdutoPorCodigoProduto();
+
+            SetarDesignColunaGridView();
+        }
+
+        private void AdicionarProdutoPorCodigoProduto()
+        {
+            try
+            {
+                if (txtCodigoBarras.Text != string.Empty)
+                {
+                    bool isCadastroExiste = Buscar.BuscarProdutoPorCodigo(Convert.ToInt32(txtCodigoProduto.Text));
+
+                    if (isCadastroExiste == true)
+                    {
+                        PreenchendoGridView();
+
+                        ValorTotal();
+
+                        //ApagandoTextbox();
+                    }
+                    else if (isCadastroExiste == false)
+                    {
+                        MessageBox.Show("Codigo do Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoInserirProdutoTelaPDV(ex);
+            }
+        }
+
+        private void pnlDinheiro_Click(object sender, EventArgs e)
         {
         }
 
-        private void lblTituloDebito_Click(object sender, EventArgs e)
+        private void bunifuPanel7_Click(object sender, EventArgs e)
         {
         }
 
-        private void lblTituloCarne_Click(object sender, EventArgs e)
+        private void txtCodigoProduto_TextChanged(object sender, EventArgs e)
         {
+        }
 
+        private void txtInserirQuant_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void cmbFormaPagamento_Leave(object sender, EventArgs e)
+        {
+        }
+
+        private void cmbFormaPagamento_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbFormaPagamento.Text == "CARNÊ")
+            {
+                LayoutTipoPagamentoCredito(false);
+
+                lblValorDebito.Visible = false;
+
+                lblTituloFormaPagamento.Text = "CARNÊ";
+
+                lblValorDesconto.Text = "R$ 0,00";
+            }
+            else if (cmbFormaPagamento.Text == "CRÉDITO")
+            {
+                LayoutTipoPagamentoCredito(true);
+
+                lblValorDebito.Visible = false;
+
+                txtValorDinheiro.Visible = false;
+
+                lblTituloFormaPagamento.Text = "CRÉDITO";
+
+                lblValorDesconto.Text = "R$ 0,00";
+
+                cmbParcelas.Text = "1x";
+
+                lblValorTotal.Text = String.Format("{0:C}", valorBruto);
+            }
+            else if (cmbFormaPagamento.Text == "DÉBITO")
+            {
+                LayoutTipoPagamentoCredito(false);
+
+                lblTituloFormaPagamento.Text = "DÉBITO";
+
+                lblValorDebito.Visible = true;
+
+                lblValorTotal.Text = string.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+
+                lblValorDebito.Text = string.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+
+                lblValorDesconto.Text = String.Format("{0:C}", (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+            }
+            else if (cmbFormaPagamento.Text == "DINHEIRO")
+            {
+                LayoutTipoPagamentoCredito(false);
+
+                lblTituloFormaPagamento.Text = "DINHEIRO";
+
+                lblValorDebito.Visible = false;
+
+                txtValorDinheiro.Visible = true;
+
+                lblValorDesconto.Text = String.Format("{0:C}", (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+
+                lblValorTotal.Text = string.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+
+                //txtValorDinheiro.Focus();
+            }
+        }
+
+        private void LayoutTipoPagamentoCredito(bool _ativa)
+        {
+            lblParcelas.Visible = _ativa;
+            cmbParcelas.Visible = _ativa;
+            lblTituloJuros.Visible = _ativa;
+            lblValorJuros.Visible = _ativa;
+
+            lblTituloValorParcela.Visible = _ativa;
+            lblValorParcela.Visible = _ativa;
+
+            txtValorDinheiro.Visible = _ativa;
+
+            //lblTituloValorTotal.Visible = _ativa;
+            //lblValorTotal.Visible = _ativa;
+        }
+
+        private void cmbParcelas_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(cmbParcelas.Text.Replace("x", "")) > listaFinanceiro[0].parcelasCredito)
+            {
+                lblValorJuros.Text = string.Format("{0:P}", (listaFinanceiro[0].jurosCredito / 100));
+
+                lblValorParcela.Text = String.Format("{0:C}", (((valorBruto * (listaFinanceiro[0].jurosCredito) / 100) + valorBruto)
+                    / Convert.ToDecimal(cmbParcelas.Text.Replace("x", ""))));
+
+                lblValorTotal.Text = String.Format("{0:C}", ((valorBruto * (listaFinanceiro[0].jurosCredito) / 100) + valorBruto));
+            }
+            else
+            {
+                lblValorJuros.Text = "0,0%";
+
+                lblValorParcela.Text = String.Format("{0:C}", (valorBruto / Convert.ToDecimal(cmbParcelas.Text.Replace("x", ""))));
+
+                lblValorTotal.Text = String.Format("{0:C}", valorBruto);
+            }
+        }
+
+        private void txtValorDinheiro_TextChange(object sender, EventArgs e)
+        {
+            lblTotalRecebido.Text = txtValorDinheiro.Text;
+            lblTroco.Text = string.Format("{0:C}", (Convert.ToDecimal(lblTotalRecebido.Text.Replace("R$", "")) - Convert.ToDecimal(lblValorTotal.Text.Replace("R$", ""))));
+        }
+
+        private void txtValorDinheiro_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void lblValorTotal_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void txtValorDinheiro_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.FormatoDinheiro(e, sender, txtValorDinheiro);
+            }
         }
     }
 }
