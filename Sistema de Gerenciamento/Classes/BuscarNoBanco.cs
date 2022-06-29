@@ -1968,7 +1968,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select dc_codigo, dc_tipo, dc_descricao, dc_fornecedor_titulo, dc_cnpj, dc_emissao, dc_vencimento," +
-                                   "dc_frequencia,dc_valor,dc_quantidade_parcelas,dc_valor_parcela,dc_categoria, dc_verificar " +
+                                   "dc_frequencia,dc_valor,dc_quantidade_parcelas,dc_valor_parcela,dc_categoria, dc_verificar, dc_estatus_pagamento " +
                                    "from tb_DespesasCustos " +
                                    "where dc_tipo = @tipo and dc_categoria = @categoria";
 
@@ -1986,7 +1986,7 @@ namespace Sistema_de_Gerenciamento.Classes
                             dr.GetString(2), dr.GetString(3), dr.GetString(4),
                             dr.GetDateTime(5), dr.GetDateTime(6), dr.GetString(7),
                             dr.GetDecimal(8), dr.GetString(9), dr.GetDecimal(10),
-                            dr.GetString(11), dr.GetString(12)));
+                            dr.GetString(11), dr.GetString(12), dr.GetString(13)));
                     }
                 }
 
@@ -2063,7 +2063,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select dc_codigo,dc_tipo, dc_descricao, dc_fornecedor_titulo, dc_cnpj, dc_emissao, dc_vencimento," +
-                                   "dc_frequencia,dc_valor,dc_quantidade_parcelas,dc_valor_parcela,dc_categoria,dc_verificar " +
+                                   "dc_frequencia,dc_valor,dc_quantidade_parcelas,dc_valor_parcela,dc_categoria,dc_verificar, dc_estatus_pagamento " +
                                    "from tb_DespesasCustos " +
                                    "where dc_tipo = 'Fixa'";
 
@@ -2078,7 +2078,7 @@ namespace Sistema_de_Gerenciamento.Classes
                             dr.GetString(2), dr.GetString(3), dr.GetString(4),
                             dr.GetDateTime(5), dr.GetDateTime(6), dr.GetString(7),
                             dr.GetDecimal(8), dr.GetString(9), dr.GetDecimal(10),
-                            dr.GetString(11), dr.GetString(12)));
+                            dr.GetString(11), dr.GetString(12), dr.GetString(13)));
                     }
                 }
 

@@ -33,6 +33,8 @@ namespace Sistema_de_Gerenciamento
 
             LayoutUsuario();
 
+            AutomatizacaoDespesaCustoFixo();
+
             TimerVerificarDespesaCustoFixo.Enabled = true;
 
             login = _login;
@@ -190,14 +192,16 @@ namespace Sistema_de_Gerenciamento
 
             List<DadosDespesaCusto> listaDespesasCustos = Buscar.BuscarListaDespesaCustoFixa();
 
-            listaDespesasCustos.ForEach(lista => lista.vencimento.Equals(DateTime.Today));
-
-            //listaDespesasCustos.Find(lista => lista.vencimento == DateTime.Today);
-
             foreach (DadosDespesaCusto despesaCusto in listaDespesasCustos)
             {
-                if (despesaCusto.vencimento == DateTime.Today && despesaCusto.verificar == "nok")
+                if (despesaCusto.vencimento <= DateTime.Today && despesaCusto.verificar == "nok")
                 {
+                    if (Global.tipoDeUsuario == "ADMIN" && despesaCusto.statusPagamento == "Nao Pago")
+                    {
+                        MessageBox.Show($"Despesa/Custo - {despesaCusto.forncedorTitulo}\n\nVencimento {despesaCusto.vencimento.ToShortDateString()}",
+                            "Pagamento Pendente Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
                     Atualizar.AtualziarCodigoDespesaCustosFixoRepeticao(despesaCusto.codigo);
 
                     bool semanal = despesaCusto.frequencia == "Semanal" ? Convert.ToBoolean(dias = 7) : false;

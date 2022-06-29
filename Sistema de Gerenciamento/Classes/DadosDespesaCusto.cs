@@ -22,10 +22,11 @@ namespace Sistema_de_Gerenciamento.Classes
         public string categoria { get; set; }
         public string verificar { get; set; }
 
+        public string statusPagamento { get; set; }
+
         public DadosDespesaCusto(int _codigo, string _tipo, string _descricao, string _forncedorTitulo, string _cnpj,
-            DateTime _emissao,
-            DateTime _vencimento, string _frequencia, decimal _valor, string _quantidadeParcelas,
-            decimal _valorParcela, string _categoria, string _verificar)
+            DateTime _emissao, DateTime _vencimento, string _frequencia, decimal _valor, string _quantidadeParcelas,
+            decimal _valorParcela, string _categoria, string _verificar, string _statusPàgamento)
         {
             codigo = _codigo;
             tipo = _tipo;
@@ -40,6 +41,7 @@ namespace Sistema_de_Gerenciamento.Classes
             valorParcela = _valorParcela;
             categoria = _categoria;
             verificar = _verificar;
+            statusPagamento = _statusPàgamento;
         }
     }
 }

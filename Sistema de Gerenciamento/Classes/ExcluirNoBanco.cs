@@ -250,7 +250,9 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "delete tb_DespesasCustos where dc_id = @codigo";
+                    //string query = "delete tb_DespesasCustos where dc_id = @codigo";
+                    string query = "update tb_DespesasCustos set dc_estatus_pagamento = '-', dc_verificar = '-'" +
+                        "where dc_codigo = @codigo and dc_vencimento >= (SELECT DATEADD(dd, 0, DATEDIFF(dd, 0, GETDATE())))";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
 

@@ -127,7 +127,6 @@
             this.btnProdutoConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnOrdemServicoConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnVendaConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.RepetirDespesaCusto = new System.Windows.Forms.Timer(this.components);
             this.TimerVerificarDespesaCustoFixo = new System.Windows.Forms.Timer(this.components);
             this.tabControl.SuspendLayout();
             this.tabCadastro.SuspendLayout();
@@ -3126,13 +3125,9 @@
             this.btnVendaConsole.UseDefaultRadiusAndThickness = true;
             this.btnVendaConsole.Click += new System.EventHandler(this.btnVendaConsole_Click);
             // 
-            // RepetirDespesaCusto
-            // 
-            this.RepetirDespesaCusto.Interval = 72000000;
-            // 
             // TimerVerificarDespesaCustoFixo
             // 
-            this.TimerVerificarDespesaCustoFixo.Interval = 9000000;
+            this.TimerVerificarDespesaCustoFixo.Interval = 72000000;
             this.TimerVerificarDespesaCustoFixo.Tick += new System.EventHandler(this.TimerVerificarDespesaCustoFixo_Tick);
             // 
             // Forms_TelaAdministrador
@@ -3235,7 +3230,6 @@
         private System.Windows.Forms.Label lblCodigo;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Timer RepetirDespesaCusto;
         private System.Windows.Forms.Timer TimerVerificarDespesaCustoFixo;
     }
 }

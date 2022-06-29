@@ -594,7 +594,6 @@ namespace Sistema_de_Gerenciamento
 
                     adapter.SelectCommand.ExecuteReader();
 
-                    AvisoCantoInferiorDireito.Inclusao();
                 }
             }
             catch (Exception ex)
