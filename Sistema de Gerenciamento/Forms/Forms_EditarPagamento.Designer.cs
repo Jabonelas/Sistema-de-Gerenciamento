@@ -148,9 +148,9 @@
             this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(467, 162);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 15);
+            this.label1.Size = new System.Drawing.Size(64, 15);
             this.label1.TabIndex = 290;
-            this.label1.Text = "Valor";
+            this.label1.Text = "Valor Total";
             // 
             // label6
             // 
@@ -788,6 +788,7 @@
             this.txtDescontoTaxas.PasswordChar = '\0';
             this.txtDescontoTaxas.PlaceholderText = "";
             this.txtDescontoTaxas.SelectedText = "";
+            this.txtDescontoTaxas.SelectionStart = 6;
             this.txtDescontoTaxas.ShadowDecoration.Parent = this.txtDescontoTaxas;
             this.txtDescontoTaxas.Size = new System.Drawing.Size(103, 28);
             this.txtDescontoTaxas.TabIndex = 321;
@@ -817,6 +818,7 @@
             this.txtJurosMulta.PasswordChar = '\0';
             this.txtJurosMulta.PlaceholderText = "";
             this.txtJurosMulta.SelectedText = "";
+            this.txtJurosMulta.SelectionStart = 6;
             this.txtJurosMulta.ShadowDecoration.Parent = this.txtJurosMulta;
             this.txtJurosMulta.Size = new System.Drawing.Size(103, 28);
             this.txtJurosMulta.TabIndex = 322;

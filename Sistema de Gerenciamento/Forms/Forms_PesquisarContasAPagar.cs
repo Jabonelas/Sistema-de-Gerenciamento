@@ -226,6 +226,12 @@ namespace Sistema_de_Gerenciamento
         private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             PreencherComboBoxTitulo();
+
+            if (cmbTipo.Text == String.Empty)
+            {
+                cmbCategoria.Text = String.Empty;
+                cmbTitulo.Text = String.Empty;
+            }
         }
 
         private void cmbTitulo_Enter(object sender, EventArgs e)
@@ -279,33 +285,36 @@ namespace Sistema_de_Gerenciamento
             {
                 Forms_EditarPagamento editarPagamento = new Forms_EditarPagamento(this);
 
-                editarPagamento.txtCodigo.Text = gdvContarPagar.SelectedCells[2].Value.ToString();
-                editarPagamento.txtTipoDespesa.Text = gdvContarPagar.SelectedCells[3].Value.ToString();
-                editarPagamento.txtTitulo.Text = gdvContarPagar.SelectedCells[4].Value.ToString();
-                editarPagamento.txtDescricao.Text = gdvContarPagar.SelectedCells[5].Value.ToString();
-                editarPagamento.txtCNPJ.Text = gdvContarPagar.SelectedCells[6].Value.ToString();
-                editarPagamento.txtEmissao.Text = Convert.ToDateTime(gdvContarPagar.SelectedCells[7].Value).ToShortDateString();
-                editarPagamento.txtVencimento.Text = Convert.ToDateTime(gdvContarPagar.SelectedCells[8].Value).ToShortDateString();
-                editarPagamento.txtValor.Text = String.Format("{0:C}", (gdvContarPagar.SelectedCells[10].Value));
-                editarPagamento.txtQuantParcelas.Text = gdvContarPagar.SelectedCells[11].Value.ToString();
-                editarPagamento.txtValorParcela.Text = String.Format("{0:C}", (gdvContarPagar.SelectedCells[12].Value));
-                editarPagamento.lblVerificacaoPagamento.Text = gdvContarPagar.SelectedCells[14].Value.ToString();
+                int indice = 2;
+
+                editarPagamento.txtCodigo.Text = gdvContarPagar.SelectedCells[indice += 1].Value.ToString();
+                editarPagamento.txtTipoDespesa.Text = gdvContarPagar.SelectedCells[indice += 1].Value.ToString();
+                editarPagamento.txtTitulo.Text = gdvContarPagar.SelectedCells[indice += 1].Value.ToString();
+                editarPagamento.txtDescricao.Text = gdvContarPagar.SelectedCells[indice += 1].Value.ToString();
+                editarPagamento.txtCNPJ.Text = gdvContarPagar.SelectedCells[indice += 1].Value.ToString();
+                editarPagamento.txtEmissao.Text = Convert.ToDateTime(gdvContarPagar.SelectedCells[indice += 1].Value).ToShortDateString();
+                editarPagamento.txtVencimento.Text = Convert.ToDateTime(gdvContarPagar.SelectedCells[indice += 1].Value).ToShortDateString();
+                editarPagamento.txtValor.Text = String.Format("{0:C}", (gdvContarPagar.SelectedCells[indice += 2].Value));
+                editarPagamento.txtQuantParcelas.Text = gdvContarPagar.SelectedCells[indice += 1].Value.ToString();
+                editarPagamento.txtValorParcela.Text = String.Format("{0:C}", (gdvContarPagar.SelectedCells[indice += 1].Value));
+                editarPagamento.lblVerificacaoPagamento.Text = gdvContarPagar.SelectedCells[indice += 2].Value.ToString();
 
                 //for (int i = 1; i < 30; i++)
                 //{
                 //    MessageBox.Show($"{i} = {gdvContarPagar.SelectedCells[i].Value.ToString()}");
                 //}
 
-                if (gdvContarPagar.SelectedCells[19].Value.ToString() == "0,00")
+                //verificar se o pagamento foi realizado
+                if (gdvContarPagar.SelectedCells[20].Value.ToString() == "0,00")
                 {
-                    editarPagamento.txtValorPago.Text = String.Format("{0:C}", (gdvContarPagar.SelectedCells[12].Value));
+                    editarPagamento.txtValorPago.Text = String.Format("{0:C}", (gdvContarPagar.SelectedCells[13].Value));
                 }
                 else
                 {
-                    editarPagamento.txtDataPagamento.Text = Convert.ToDateTime(gdvContarPagar.SelectedCells[16].Value).ToShortDateString();
-                    editarPagamento.txtDescontoTaxas.Text = String.Format("{0:P}", Convert.ToDecimal(gdvContarPagar.SelectedCells[17].Value) / 100);
-                    editarPagamento.txtJurosMulta.Text = String.Format("{0:P}", Convert.ToDecimal(gdvContarPagar.SelectedCells[18].Value) / 100);
-                    editarPagamento.txtValorPago.Text = String.Format("{0:C}", gdvContarPagar.SelectedCells[19].Value);
+                    editarPagamento.txtDataPagamento.Text = Convert.ToDateTime(gdvContarPagar.SelectedCells[17].Value).ToShortDateString();
+                    editarPagamento.txtDescontoTaxas.Text = String.Format("{0:P}", Convert.ToDecimal(gdvContarPagar.SelectedCells[18].Value) / 100);
+                    editarPagamento.txtJurosMulta.Text = String.Format("{0:P}", Convert.ToDecimal(gdvContarPagar.SelectedCells[19].Value) / 100);
+                    editarPagamento.txtValorPago.Text = String.Format("{0:C}", gdvContarPagar.SelectedCells[20].Value);
                 }
 
                 editarPagamento.ShowDialog();
@@ -349,5 +358,14 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Selecao GridView
+
+        private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbCategoria.Text == String.Empty)
+            {
+                cmbTipo.Text = String.Empty;
+                cmbTitulo.Text = String.Empty;
+            }
+        }
     }
 }
