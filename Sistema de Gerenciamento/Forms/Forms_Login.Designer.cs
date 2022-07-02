@@ -189,7 +189,7 @@
             this.txtSenha.TextPlaceholder = "";
             this.txtSenha.UseSystemPasswordChar = false;
             this.txtSenha.WordWrap = true;
-            this.txtSenha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSenha_KeyPress);
+            this.txtSenha.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSenha_KeyUp);
             // 
             // btnCancelar
             // 
@@ -444,9 +444,9 @@
             this.txtUsuario.TextPlaceholder = "";
             this.txtUsuario.UseSystemPasswordChar = false;
             this.txtUsuario.WordWrap = true;
-            this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
+            this.txtUsuario.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtUsuario_KeyUp);
             // 
-            // Login
+            // Forms_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -460,7 +460,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Login";
+            this.Name = "Forms_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

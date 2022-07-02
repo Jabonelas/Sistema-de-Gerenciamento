@@ -112,7 +112,6 @@
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.ptbStatusPagamento = new System.Windows.Forms.PictureBox();
             this.lblCodigo = new System.Windows.Forms.Label();
@@ -2075,7 +2074,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.ptbStatusPagamento);
             this.panel1.Controls.Add(this.lblCodigo);
@@ -2095,15 +2093,6 @@
             this.panel1.Size = new System.Drawing.Size(923, 670);
             this.panel1.TabIndex = 3;
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(844, 246);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(72, 42);
-            this.button2.TabIndex = 36;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(0, 0);
@@ -2121,6 +2110,7 @@
             this.ptbStatusPagamento.Size = new System.Drawing.Size(27, 29);
             this.ptbStatusPagamento.TabIndex = 34;
             this.ptbStatusPagamento.TabStop = false;
+            this.ptbStatusPagamento.Visible = false;
             // 
             // lblCodigo
             // 
@@ -2130,6 +2120,7 @@
             this.lblCodigo.Size = new System.Drawing.Size(35, 13);
             this.lblCodigo.TabIndex = 33;
             this.lblCodigo.Text = "label8";
+            this.lblCodigo.Visible = false;
             // 
             // btnSair
             // 
@@ -3228,7 +3219,6 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnContasAPagar;
         private System.Windows.Forms.PictureBox ptbStatusPagamento;
         private System.Windows.Forms.Label lblCodigo;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer TimerVerificarDespesaCustoFixo;
     }

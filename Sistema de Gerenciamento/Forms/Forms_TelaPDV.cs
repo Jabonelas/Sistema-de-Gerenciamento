@@ -24,13 +24,13 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private DadosProduto produto;
 
-        private DadosFinanceiro financeiro;
+        //private DadosFinanceiro financeiro;
 
         private decimal valorBruto = 0;
 
         private int cont = 0;
 
-        private string verificar;
+        //private string verificar;
 
         public Forms_TelaPDV()
         {
@@ -49,7 +49,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void Forms_TelaPDV_Load(object sender, EventArgs e)
         {
-            txtCodigoBarras.Focus();
+            txtCodigoDeBarras.Focus();
         }
 
         private void Forms_TelaPDV_KeyDown(object sender, KeyEventArgs e)
@@ -75,13 +75,15 @@ namespace Sistema_de_Gerenciamento.Forms
                 lblTotaldoItem.Text = "R$ 0,00";
                 lblValorUnitario.Text = "R$ 0,00";
                 pnlFachada.BackgroundColor = Color.Lime;
+
+                lblFachada.Location = new Point(97, -9);
                 lblFachada.Text = "CAIXA DISPONÍVEL";
 
                 txtCPF.UseSystemPasswordChar = false;
 
                 FormatoTelaPagamento("Cancelamento");
 
-                txtCodigoBarras.Focus();
+                txtCodigoDeBarras.Focus();
 
                 lblDescricaoItem.Text = "DESCRIÇÃO DO ITEM";
                 lblUnidade.Text = "UN";
@@ -90,7 +92,18 @@ namespace Sistema_de_Gerenciamento.Forms
 
             if (e.KeyCode == Keys.F2) // excluir item F2
             {
-                RemoverProduto();
+                if (gdvPDV.Rows.Count > 0)
+                {
+                    if (Global.tipoDeUsuario == "ADMIN")
+                    {
+                        RemoverProduto();
+                    }
+                    else
+                    {
+                        Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this);
+                        controleADMIN.ShowDialog();
+                    }
+                }
             }
 
             if (e.KeyCode == Keys.F3) // inserir cpf F3
@@ -213,7 +226,7 @@ namespace Sistema_de_Gerenciamento.Forms
             }
             else
             {
-                txtCodigoBarras.Text = string.Empty;
+                txtCodigoDeBarras.Text = string.Empty;
 
                 cont = 0;
 
@@ -225,9 +238,9 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             try
             {
-                if (txtCodigoBarras.Text != string.Empty)
+                if (txtCodigoDeBarras.Text != string.Empty)
                 {
-                    bool isCadastroExiste = Buscar.BuscarEstoqueProdutoPorCodigo(txtCodigoBarras.Text);
+                    bool isCadastroExiste = Buscar.BuscarEstoqueProdutoPorCodigo(txtCodigoDeBarras.Text);
 
                     if (isCadastroExiste == true)
                     {
@@ -249,7 +262,7 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        private void ValorTotal()
+        public void ValorTotal()
         {
             valorBruto = 0;
 
@@ -278,13 +291,13 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             try
             {
-                if (txtCodigoBarras.Text != string.Empty)
+                if (txtCodigoDeBarras.Text != string.Empty)
                 {
-                    bool isCadastroExiste = Buscar.BuscarEstoqueProdutoPorCodigo(txtCodigoBarras.Text);
+                    bool isCadastroExiste = Buscar.BuscarEstoqueProdutoPorCodigo(txtCodigoDeBarras.Text);
 
                     if (isCadastroExiste == true)
                     {
-                        produto = listaProduto.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodigoBarras.Text));
+                        produto = listaProduto.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodigoDeBarras.Text));
 
                         txtCodigo.Text = produto.codigoProduto.ToString();
                         txtDescricao.Text = produto.descricaoProduto;
@@ -316,11 +329,6 @@ namespace Sistema_de_Gerenciamento.Forms
             this.gdvPDV.Columns["VlrUnit"].DefaultCellStyle.Format = "c";
         }
 
-        private void txtCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiNumero(e);
-        }
-
         private void txtCPF_Enter(object sender, EventArgs e)
         {
             txtCPF.UseSystemPasswordChar = false;
@@ -328,11 +336,13 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtCPF_Leave(object sender, EventArgs e)
         {
-            txtCPF.UseSystemPasswordChar = true;
+            //txtCPF.UseSystemPasswordChar = true;
 
             txtCPF.ReadOnly = true;
 
             lblNomeCliente.Text = Buscar.BuscarClienteTelaPDVPorCPF(txtCPF.Text).ToUpper();
+
+            txtCodigoDeBarras.Focus();
         }
 
         private void txtCPF_KeyPress(object sender, KeyPressEventArgs e)
@@ -343,26 +353,23 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        private void RemoverProduto()
+        public void RemoverProduto()
         {
-            if (gdvPDV.RowCount > 0)
+            //if (gdvPDV.RowCount > 0)
+            //{
+            DialogResult OpcaoDoUsuario = new DialogResult();
+            OpcaoDoUsuario = MessageBox.Show("Deseja Remover O Item?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (OpcaoDoUsuario == DialogResult.Yes)
             {
-                DialogResult OpcaoDoUsuario = new DialogResult();
-                OpcaoDoUsuario = MessageBox.Show("Deseja Remover O Item?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (OpcaoDoUsuario == DialogResult.Yes)
-                {
-                    gdvPDV.Rows.RemoveAt(gdvPDV.CurrentRow.Index);
+                //_gridView.Rows.RemoveAt(_gridView.CurrentRow.Index);
 
-                    ValorTotal();
+                gdvPDV.Rows.RemoveAt(gdvPDV.CurrentRow.Index);
 
-                    //ApagandoTextbox();
-                }
+                ValorTotal();
+
+                //ApagandoTextbox();
             }
-        }
-
-        private void txtInserirQuant_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiNumero(e);
+            //}
         }
 
         private void txtCodigoProduto_TextChange(object sender, EventArgs e)
@@ -412,16 +419,25 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtCodigoProduto_Leave(object sender, EventArgs e)
         {
-            AdicionarProdutoPorCodigoProduto();
+            if (cont == 0)
+            {
+                AdicionarProdutoPorCodigoProduto();
 
-            SetarDesignColunaGridView();
+                SetarDesignColunaGridView();
+
+                cont++;
+            }
+            else
+            {
+                cont = 0;
+            }
         }
 
         private void AdicionarProdutoPorCodigoProduto()
         {
             try
             {
-                if (txtCodigoBarras.Text != string.Empty)
+                if (txtCodigoDeBarras.Text == string.Empty)
                 {
                     bool isCadastroExiste = Buscar.BuscarProdutoPorCodigo(Convert.ToInt32(txtCodigoProduto.Text));
 
@@ -523,10 +539,20 @@ namespace Sistema_de_Gerenciamento.Forms
 
                 //txtValorDinheiro.Focus();
             }
+            else if (cmbFormaPagamento.Text == "PIX")
+            {
+                lblTituloFormaPagamento.Text = "PIX";
+
+                txtValorDinheiro.Visible = false;
+
+                pcbPix.Visible = true;
+            }
         }
 
         private void LayoutTipoPagamentoCredito(bool _ativa)
         {
+            pcbPix.Visible = false;
+
             lblParcelas.Visible = _ativa;
             cmbParcelas.Visible = _ativa;
             lblTituloJuros.Visible = _ativa;
@@ -582,6 +608,21 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 ManipulacaoTextBox.FormatoDinheiro(e, sender, txtValorDinheiro);
             }
+        }
+
+        private void txtCodigoDeBarras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
+
+        private void txtCodigoDeBarras_TextChange(object sender, EventArgs e)
+        {
+            txtcodigoBarras(sender, e);
+        }
+
+        private void txtCodigoDeBarras_Enter(object sender, EventArgs e)
+        {
+            txtCPF.UseSystemPasswordChar = true;
         }
     }
 }

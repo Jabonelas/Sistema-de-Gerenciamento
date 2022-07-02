@@ -220,6 +220,10 @@ namespace Sistema_de_Gerenciamento
             {
                 lblTipoDeCliente.Text = "CNPJ";
             }
+            else
+            {
+                txtCPF_CNPJ.Text = String.Empty;
+            }
         }
 
         #endregion Formatacao da Label Por Tipo de Cliente
@@ -298,7 +302,5 @@ namespace Sistema_de_Gerenciamento
         {
             ManipulacaoTextBox.DigitoFoiLetras(e);
         }
-
-        
     }
 }

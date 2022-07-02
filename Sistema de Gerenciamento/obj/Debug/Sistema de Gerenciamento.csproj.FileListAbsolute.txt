@@ -39,3 +39,4 @@ C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\ob
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_PesquisarCadastroDespesaCusto.resources
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_EditarPagamento.resources
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_TelaPDV.resources
+C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_ControleADMIN.resources

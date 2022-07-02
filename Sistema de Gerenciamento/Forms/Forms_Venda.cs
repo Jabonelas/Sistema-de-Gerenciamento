@@ -25,11 +25,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private List<DadosProduto> listaProduto = new List<DadosProduto>();
 
-        private List<DadosFinanceiro> ListaFinanceiro = new List<DadosFinanceiro>();
+        private List<DadosFinanceiro> listaFinanceiro = new List<DadosFinanceiro>();
 
         private DadosProduto produto;
 
-        private DadosFinanceiro financeiro;
+        //private DadosFinanceiro financeiro;
 
         private decimal valorBruto = 0;
 
@@ -44,18 +44,14 @@ namespace Sistema_de_Gerenciamento.Forms
             CarregarDadosBanco();
         }
 
-        #region Carregar Dados Banco
-
         private void CarregarDadosBanco()
         {
             listaProduto = Buscar.BuscarProdutos();
 
-            ListaFinanceiro = Buscar.BuscarFinanceiro();
+            listaFinanceiro = Buscar.BuscarFinanceiro();
 
-            ListaFinanceiro.ForEach(finac => financeiro = finac);
+            //listaFinanceiro.ForEach(finac => financeiro = finac);
         }
-
-        #endregion Carregar Dados Banco
 
         private void btnAbriCadastroCliente_Click(object sender, EventArgs e)
         {
@@ -72,8 +68,6 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             AdicionarProduto();
         }
-
-        #region Adicionar Produto
 
         private void AdicionarProduto()
         {
@@ -121,8 +115,6 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #region Valor Total
-
         private void ValorTotal()
         {
             valorBruto = 0;
@@ -137,10 +129,6 @@ namespace Sistema_de_Gerenciamento.Forms
             txtTotalItens.Text = gdvVenda.RowCount.ToString();
         }
 
-        #endregion Valor Total
-
-        #region Preencher GridView
-
         private void PreenchendoGridView()
         {
             var rows = new List<string[]>();
@@ -153,10 +141,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 gdvVenda.Rows.Add(item);
             }
         }
-
-        #endregion Preencher GridView
-
-        #endregion Adicionar Produto
 
         private void btnGerarBoleto_Click(object sender, EventArgs e)
         {
@@ -350,9 +334,9 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     txtTotalPagoAvista.ReadOnly = false;
 
-                    txtValorAvista.Text = string.Format("{0:C}", (valorBruto - (financeiro.descontoAvista) * valorBruto / 100));
+                    txtValorAvista.Text = string.Format("{0:C}", (valorBruto - (listaFinanceiro[0].descontoAvista) * valorBruto / 100));
 
-                    txtDescontoAvista.Text = string.Format("{0:P}", financeiro.descontoAvista / 100);
+                    txtDescontoAvista.Text = string.Format("{0:P}", listaFinanceiro[0].descontoAvista / 100);
                 }
                 else if (chbAvista.Checked == false)
                 {
@@ -545,9 +529,9 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (cmbParcelaCredito.Text != String.Empty)
             {
-                if (Convert.ToInt32(cmbParcelaCredito.Text.Replace("x", "")) > financeiro.parcelasCredito)
+                if (Convert.ToInt32(cmbParcelaCredito.Text.Replace("x", "")) > listaFinanceiro[0].parcelasCredito)
                 {
-                    txtJurosCredito.Text = string.Format("{0:P}", financeiro.jurosCredito / 100);
+                    txtJurosCredito.Text = string.Format("{0:P}", listaFinanceiro[0].jurosCredito / 100);
 
                     txtValorParcelaCredito.Text = string.Format("{0:C}", ((Convert.ToDecimal(txtValorTotal.Text.Replace("R$ ", "")) +
                                                                          (Convert.ToDecimal(txtJurosCredito.Text.Replace("%", "")) *

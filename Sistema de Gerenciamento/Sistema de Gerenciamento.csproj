@@ -265,6 +265,12 @@
     <Compile Include="Classes\Imprimir.cs" />
     <Compile Include="Classes\Temperatures.cs" />
     <Compile Include="Classes\VerificacaoDeExistencia.cs" />
+    <Compile Include="Forms\Forms_ControleADMIN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_ControleADMIN.Designer.cs">
+      <DependentUpon>Forms_ControleADMIN.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Forms_EditarPagamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -446,6 +452,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_ConfiguracaoGerencial.resx">
       <DependentUpon>Forms_ConfiguracaoGerencial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_ControleADMIN.resx">
+      <DependentUpon>Forms_ControleADMIN.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_DespesasCustos.resx">
       <DependentUpon>Forms_DespesasCustos.cs</DependentUpon>
@@ -739,6 +748,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\png-transparent-logo-pharmacy-pills-miscellaneous-trademark-pharmaceutical-drug.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pix.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\frame.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.5.5\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.5\build\Fody.targets')" />

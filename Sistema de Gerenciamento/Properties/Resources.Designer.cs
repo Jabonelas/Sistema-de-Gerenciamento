@@ -363,6 +363,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap frame {
+            get {
+                object obj = ResourceManager.GetObject("frame", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imagem_do_usuario_com_fundo_preto {
             get {
                 object obj = ResourceManager.GetObject("imagem-do-usuario-com-fundo-preto", resourceCulture);
@@ -546,6 +556,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         internal static System.Drawing.Bitmap pasta__2_ {
             get {
                 object obj = ResourceManager.GetObject("pasta (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pix {
+            get {
+                object obj = ResourceManager.GetObject("pix", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

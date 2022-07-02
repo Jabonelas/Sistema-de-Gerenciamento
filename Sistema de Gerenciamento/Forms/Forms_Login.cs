@@ -75,20 +75,6 @@ namespace Sistema_de_Gerenciamento.Forms
             this.Close();
         }
 
-        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            txtUsuario.CharacterCasing = CharacterCasing.Upper;
-
-            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
-        }
-
-        private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            txtSenha.UseSystemPasswordChar = true;
-
-            ManipulacaoTextBox.DigitoValidoParaSenha(e);
-        }
-
         private void btnMostraSenha_Login_Click(object sender, EventArgs e)
         {
             MostraOuEsconderSenha();
@@ -113,5 +99,19 @@ namespace Sistema_de_Gerenciamento.Forms
         }
 
         #endregion Mostra ou Esconder Senha
+
+        private void txtSenha_KeyUp(object sender, KeyEventArgs e)
+        {
+            txtSenha.UseSystemPasswordChar = true;
+
+            ManipulacaoTextBox.DigitoValidoParaSenha(e);
+        }
+
+        private void txtUsuario_KeyUp(object sender, KeyEventArgs e)
+        {
+            txtUsuario.CharacterCasing = CharacterCasing.Upper;
+
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumerosParaUsuario(e);
+        }
     }
 }

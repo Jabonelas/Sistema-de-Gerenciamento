@@ -19,30 +19,26 @@ namespace Sistema_de_Gerenciamento.Forms
 
         public Forms_Venda forms;
 
-        private List<DadosFinanceiro> ListaFinanceiro = new List<DadosFinanceiro>();
-
-        private DadosFinanceiro financeiro;
+        private List<DadosFinanceiro> listaFinanceiro = new List<DadosFinanceiro>();
 
         public Forms_GerarCarne(Forms_Venda _forms)
         {
             InitializeComponent();
 
-            DadosDoCarneParaPreenchimentoTextBox();
+            listaFinanceiro = Buscar.BuscarFinanceiro();
 
-            ListaFinanceiro = Buscar.BuscarFinanceiro();
+            DadosDoCarneParaPreenchimentoTextBox();
 
             forms = _forms;
         }
-
-        #region Dados Do Carne Para Preencher Os Textbox
 
         private void DadosDoCarneParaPreenchimentoTextBox()
         {
             try
             {
-                txtPrazo.Text = financeiro.prazoCarne.ToString();
+                txtPrazo.Text = listaFinanceiro[0].prazoCarne.ToString();
 
-                txtParcelasQueGeramJuros.Text = financeiro.parcelasCarne.ToString();
+                txtParcelasQueGeramJuros.Text = listaFinanceiro[0].parcelasCarne.ToString();
 
                 txtPrimeiraParcela.Text = DateTime.Today.AddDays(Convert.ToDouble(txtPrazo.Text)).ToShortDateString();
             }
@@ -51,8 +47,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 Erro.ErroAoBuscarDadosParaPreencherTextBox(ex);
             }
         }
-
-        #endregion Dados Do Carne Para Preencher Os Textbox
 
         public Forms_GerarCarne()
         {
@@ -99,17 +93,13 @@ namespace Sistema_de_Gerenciamento.Forms
 
         #endregion Preencher GridView
 
-        #region CalcularJuros
-
         private void CalcularJuros()
         {
             try
             {
-                ListaFinanceiro.ForEach(finac => financeiro = finac);
-
                 if (Convert.ToInt32(cmbParcelaCarne.Text.Replace("x", "")) > Convert.ToInt32(txtParcelasQueGeramJuros.Text))
                 {
-                    txtJurosCarne.Text = string.Format("{0:P}", financeiro.jurosCarne / 100).ToString();
+                    txtJurosCarne.Text = string.Format("{0:P}", listaFinanceiro[0].jurosCarne / 100).ToString();
 
                     txtValorTotalCarne.Text = string.Format("{0:C}", (Convert.ToDecimal(txtJurosCarne.Text.Replace("%", "")) *
                                                                          Convert.ToDecimal(forms.txtValorTotal.Text.Replace("R$ ", "")) / 100) +
@@ -137,7 +127,5 @@ namespace Sistema_de_Gerenciamento.Forms
                 Erro.ErroAoBuscarJurosGerarCarne(ex);
             }
         }
-
-        #endregion CalcularJuros
     }
 }

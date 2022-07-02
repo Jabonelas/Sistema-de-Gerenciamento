@@ -160,6 +160,9 @@
   <data name="descricao-do-produto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\descricao-do-produto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="imagem-do-usuario-com-fundo-preto" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imagem-do-usuario-com-fundo-preto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="entregador1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\entregador1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -196,8 +199,8 @@
   <data name="NaoPagamento" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NaoPagamento.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="companhia" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\companhia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pix" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pix.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="camera2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\camera2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -244,8 +247,8 @@
   <data name="despesas1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\despesas1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="adicionar-usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\adicionar-usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fornecedor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fornecedor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="adicionar-produto1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\adicionar-produto1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -255,6 +258,9 @@
   </data>
   <data name="sair1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sair1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="png-transparent-logo-pharmacy-pills-miscellaneous-trademark-pharmaceutical-drug" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\png-transparent-logo-pharmacy-pills-miscellaneous-trademark-pharmaceutical-drug.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="invisible_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\invisible_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -280,14 +286,14 @@
   <data name="NaoPago5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NaoPago5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imagem-do-usuario-com-fundo-preto" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imagem-do-usuario-com-fundo-preto.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="adicionar-usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\adicionar-usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fornecedor" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\fornecedor.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Receber" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Receber.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pagar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pagar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="companhia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\companhia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="caixa-de-retorno" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\caixa-de-retorno.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -298,13 +304,13 @@
   <data name="Pago1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pago1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Receber" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Receber.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pagar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pagar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="eye_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\eye_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="png-transparent-logo-pharmacy-pills-miscellaneous-trademark-pharmaceutical-drug" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\png-transparent-logo-pharmacy-pills-miscellaneous-trademark-pharmaceutical-drug.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="frame" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\frame.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

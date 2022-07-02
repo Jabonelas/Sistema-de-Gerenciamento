@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema_de_Gerenciamento.Classes;
+using System.Threading;
 
 namespace Sistema_de_Gerenciamento
 {
@@ -31,9 +32,9 @@ namespace Sistema_de_Gerenciamento
         {
             InitializeComponent();
 
-            Task.Run(async delegate
+            Task.Run(() =>
             {
-                await Task.Delay(1000);
+                Thread.Sleep(1000);
                 AutomatizacaoDespesaCustoFixo();
             });
 
@@ -206,19 +207,19 @@ namespace Sistema_de_Gerenciamento
                             "Pagamento Pendente Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
-                    //Atualizar.AtualziarCodigoDespesaCustosFixoRepeticao(despesaCusto.codigo);
+                    Atualizar.AtualziarCodigoDespesaCustosFixoRepeticao(despesaCusto.codigo);
 
-                    //bool semanal = despesaCusto.frequencia == "Semanal" ? Convert.ToBoolean(dias = 7) : false;
-                    //bool quinzenal = despesaCusto.frequencia == "Quinzenal" ? Convert.ToBoolean(dias = 15) : false;
-                    //bool mensal = despesaCusto.frequencia == "Mensal" ? Convert.ToBoolean(dias = 30) : false;
-                    //bool bimestral = despesaCusto.frequencia == "Bimestral" ? Convert.ToBoolean(dias = 90) : false;
-                    //bool semestral = despesaCusto.frequencia == "Semestral" ? Convert.ToBoolean(dias = 180) : false;
-                    //bool anual = despesaCusto.frequencia == "Anual" ? Convert.ToBoolean(dias = 365) : false;
+                    bool semanal = despesaCusto.frequencia == "Semanal" ? Convert.ToBoolean(dias = 7) : false;
+                    bool quinzenal = despesaCusto.frequencia == "Quinzenal" ? Convert.ToBoolean(dias = 15) : false;
+                    bool mensal = despesaCusto.frequencia == "Mensal" ? Convert.ToBoolean(dias = 30) : false;
+                    bool bimestral = despesaCusto.frequencia == "Bimestral" ? Convert.ToBoolean(dias = 90) : false;
+                    bool semestral = despesaCusto.frequencia == "Semestral" ? Convert.ToBoolean(dias = 180) : false;
+                    bool anual = despesaCusto.frequencia == "Anual" ? Convert.ToBoolean(dias = 365) : false;
 
-                    //Salvar.DespesaCustosFixoRepeticao(despesaCusto.codigo, despesaCusto.tipo, despesaCusto.descricao, despesaCusto.forncedorTitulo,
-                    //    despesaCusto.cnpj, despesaCusto.emissao, despesaCusto.vencimento.AddDays(dias), despesaCusto.frequencia,
-                    //    despesaCusto.valor, despesaCusto.quantidadeParcelas, despesaCusto.valorParcela, despesaCusto.categoria,
-                    //    ptbStatusPagamento.Image);
+                    Salvar.DespesaCustosFixoRepeticao(despesaCusto.codigo, despesaCusto.tipo, despesaCusto.descricao, despesaCusto.forncedorTitulo,
+                        despesaCusto.cnpj, despesaCusto.emissao, despesaCusto.vencimento.AddDays(dias), despesaCusto.frequencia,
+                        despesaCusto.valor, despesaCusto.quantidadeParcelas, despesaCusto.valorParcela, despesaCusto.categoria,
+                        ptbStatusPagamento.Image);
                 }
             }
         }

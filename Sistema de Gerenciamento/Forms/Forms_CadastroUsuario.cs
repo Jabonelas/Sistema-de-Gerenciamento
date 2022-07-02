@@ -108,7 +108,7 @@ namespace Sistema_de_Gerenciamento
             ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
         }
 
-        private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtSenha_KeyUp(object sender, KeyEventArgs e)
         {
             ManipulacaoTextBox.DigitoValidoParaSenha(e);
         }
