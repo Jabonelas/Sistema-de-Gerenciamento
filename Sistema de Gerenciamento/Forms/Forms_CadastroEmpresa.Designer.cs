@@ -84,6 +84,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties49 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties50 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties51 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties52 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties53 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties54 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties55 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties56 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnAlterar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -99,7 +107,6 @@
             this.cmbUF = new Guna.UI.WinForms.GunaComboBox();
             this.txtEndereco = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtCEP = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.label21 = new System.Windows.Forms.Label();
             this.txtNumero = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtCidade = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtBairro = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -135,11 +142,22 @@
             this.ce_numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ce_telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ce_email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ce_texto_padrao_os = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_texto_padrao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ce_imagem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_codigo_pix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_chave_pix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ce_qr_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblce_id = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtCodigoQRCodePix = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.pcbQRCodePix = new Guna.UI.WinForms.GunaPictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtChavePix = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEmpresa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarEmpresa)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbQRCodePix)).BeginInit();
             this.SuspendLayout();
             // 
             // panel4
@@ -435,11 +453,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(13, 411);
+            this.label2.Location = new System.Drawing.Point(13, 502);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 15);
+            this.label2.Size = new System.Drawing.Size(93, 15);
             this.label2.TabIndex = 106;
-            this.label2.Text = "TEXTO PADRÃO OS";
+            this.label2.Text = "TEXTO PADRÃO ";
             // 
             // txtTextPadrao
             // 
@@ -468,7 +486,7 @@
             this.txtTextPadrao.IconRight = null;
             this.txtTextPadrao.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTextPadrao.Lines = new string[0];
-            this.txtTextPadrao.Location = new System.Drawing.Point(16, 429);
+            this.txtTextPadrao.Location = new System.Drawing.Point(16, 520);
             this.txtTextPadrao.MaxLength = 200;
             this.txtTextPadrao.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtTextPadrao.Modified = false;
@@ -504,7 +522,7 @@
             this.txtTextPadrao.SelectionLength = 0;
             this.txtTextPadrao.SelectionStart = 0;
             this.txtTextPadrao.ShortcutsEnabled = true;
-            this.txtTextPadrao.Size = new System.Drawing.Size(760, 53);
+            this.txtTextPadrao.Size = new System.Drawing.Size(772, 53);
             this.txtTextPadrao.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.txtTextPadrao.TabIndex = 105;
             this.txtTextPadrao.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -543,7 +561,7 @@
             this.txtTelefone.IconRight = null;
             this.txtTelefone.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTelefone.Lines = new string[0];
-            this.txtTelefone.Location = new System.Drawing.Point(16, 367);
+            this.txtTelefone.Location = new System.Drawing.Point(16, 468);
             this.txtTelefone.MaxLength = 15;
             this.txtTelefone.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtTelefone.Modified = false;
@@ -704,7 +722,7 @@
             this.txtEmail.IconRight = null;
             this.txtEmail.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtEmail.Lines = new string[0];
-            this.txtEmail.Location = new System.Drawing.Point(211, 367);
+            this.txtEmail.Location = new System.Drawing.Point(211, 468);
             this.txtEmail.MaxLength = 100;
             this.txtEmail.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtEmail.Modified = false;
@@ -756,7 +774,7 @@
             // 
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.Location = new System.Drawing.Point(208, 351);
+            this.label32.Location = new System.Drawing.Point(208, 450);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(40, 15);
             this.label32.TabIndex = 100;
@@ -802,7 +820,7 @@
             "SE",
             "TO",
             ""});
-            this.cmbUF.Location = new System.Drawing.Point(309, 314);
+            this.cmbUF.Location = new System.Drawing.Point(277, 314);
             this.cmbUF.Name = "cmbUF";
             this.cmbUF.OnHoverItemBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.cmbUF.OnHoverItemForeColor = System.Drawing.Color.White;
@@ -960,16 +978,6 @@
             this.txtCEP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCEP_KeyPress);
             this.txtCEP.Leave += new System.EventHandler(this.txtCEP_Leave);
             // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(13, 351);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(54, 15);
-            this.label21.TabIndex = 96;
-            this.label21.Text = "Telefone";
-            // 
             // txtNumero
             // 
             this.txtNumero.AcceptsReturn = false;
@@ -997,7 +1005,7 @@
             this.txtNumero.IconRight = null;
             this.txtNumero.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNumero.Lines = new string[0];
-            this.txtNumero.Location = new System.Drawing.Point(382, 314);
+            this.txtNumero.Location = new System.Drawing.Point(344, 314);
             this.txtNumero.MaxLength = 6;
             this.txtNumero.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtNumero.Modified = false;
@@ -1108,7 +1116,7 @@
             this.txtCidade.SelectionLength = 0;
             this.txtCidade.SelectionStart = 0;
             this.txtCidade.ShortcutsEnabled = true;
-            this.txtCidade.Size = new System.Drawing.Size(142, 28);
+            this.txtCidade.Size = new System.Drawing.Size(117, 28);
             this.txtCidade.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.txtCidade.TabIndex = 94;
             this.txtCidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -1199,7 +1207,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(379, 296);
+            this.label18.Location = new System.Drawing.Point(341, 296);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(22, 15);
             this.label18.TabIndex = 92;
@@ -1209,7 +1217,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(306, 296);
+            this.label17.Location = new System.Drawing.Point(274, 296);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(21, 15);
             this.label17.TabIndex = 91;
@@ -1344,7 +1352,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(656, 139);
+            this.label10.Location = new System.Drawing.Point(655, 156);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(99, 15);
             this.label10.TabIndex = 84;
@@ -1441,7 +1449,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(646, 370);
+            this.label3.Location = new System.Drawing.Point(652, 386);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 42);
             this.label3.TabIndex = 81;
@@ -1454,9 +1462,9 @@
             this.pcbEmpresa.BaseColor = System.Drawing.Color.White;
             this.pcbEmpresa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pcbEmpresa.Image = global::Sistema_de_Gerenciamento.Properties.Resources.camera3;
-            this.pcbEmpresa.Location = new System.Drawing.Point(643, 157);
+            this.pcbEmpresa.Location = new System.Drawing.Point(642, 174);
             this.pcbEmpresa.Name = "pcbEmpresa";
-            this.pcbEmpresa.Size = new System.Drawing.Size(134, 163);
+            this.pcbEmpresa.Size = new System.Drawing.Size(146, 163);
             this.pcbEmpresa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcbEmpresa.TabIndex = 80;
             this.pcbEmpresa.TabStop = false;
@@ -1593,7 +1601,7 @@
             this.btnInserirImagem.IdleIconLeftImage = null;
             this.btnInserirImagem.IdleIconRightImage = null;
             this.btnInserirImagem.IndicateFocus = false;
-            this.btnInserirImagem.Location = new System.Drawing.Point(643, 326);
+            this.btnInserirImagem.Location = new System.Drawing.Point(642, 343);
             this.btnInserirImagem.Name = "btnInserirImagem";
             this.btnInserirImagem.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnInserirImagem.OnDisabledState.BorderRadius = 1;
@@ -1627,7 +1635,7 @@
             this.btnInserirImagem.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnInserirImagem.OnPressedState.IconLeftImage = null;
             this.btnInserirImagem.OnPressedState.IconRightImage = null;
-            this.btnInserirImagem.Size = new System.Drawing.Size(134, 39);
+            this.btnInserirImagem.Size = new System.Drawing.Size(146, 39);
             this.btnInserirImagem.TabIndex = 107;
             this.btnInserirImagem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnInserirImagem.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1648,7 +1656,7 @@
             this.bunifuSeparator1.Location = new System.Drawing.Point(12, 118);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
             this.bunifuSeparator1.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.bunifuSeparator1.Size = new System.Drawing.Size(776, 20);
+            this.bunifuSeparator1.Size = new System.Drawing.Size(790, 20);
             this.bunifuSeparator1.TabIndex = 159;
             // 
             // bunifuSeparator2
@@ -1660,10 +1668,10 @@
             this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuSeparator2.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded;
             this.bunifuSeparator2.LineThickness = 3;
-            this.bunifuSeparator2.Location = new System.Drawing.Point(12, 489);
+            this.bunifuSeparator2.Location = new System.Drawing.Point(12, 578);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
             this.bunifuSeparator2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.bunifuSeparator2.Size = new System.Drawing.Size(776, 20);
+            this.bunifuSeparator2.Size = new System.Drawing.Size(790, 20);
             this.bunifuSeparator2.TabIndex = 160;
             // 
             // gdvPesquisarEmpresa
@@ -1701,8 +1709,11 @@
             this.ce_numero,
             this.ce_telefone,
             this.ce_email,
-            this.ce_texto_padrao_os,
-            this.ce_imagem});
+            this.ce_texto_padrao,
+            this.ce_imagem,
+            this.ce_codigo_pix,
+            this.ce_chave_pix,
+            this.ce_qr_code});
             this.gdvPesquisarEmpresa.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.gdvPesquisarEmpresa.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.gdvPesquisarEmpresa.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -1734,7 +1745,7 @@
             this.gdvPesquisarEmpresa.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.gdvPesquisarEmpresa.HeaderBgColor = System.Drawing.Color.Empty;
             this.gdvPesquisarEmpresa.HeaderForeColor = System.Drawing.Color.White;
-            this.gdvPesquisarEmpresa.Location = new System.Drawing.Point(349, 22);
+            this.gdvPesquisarEmpresa.Location = new System.Drawing.Point(326, 26);
             this.gdvPesquisarEmpresa.Name = "gdvPesquisarEmpresa";
             this.gdvPesquisarEmpresa.ReadOnly = true;
             this.gdvPesquisarEmpresa.RowHeadersVisible = false;
@@ -1834,12 +1845,12 @@
             this.ce_email.Name = "ce_email";
             this.ce_email.ReadOnly = true;
             // 
-            // ce_texto_padrao_os
+            // ce_texto_padrao
             // 
-            this.ce_texto_padrao_os.DataPropertyName = "ce_texto_padrao_os";
-            this.ce_texto_padrao_os.HeaderText = "ce_texto_padrao_os";
-            this.ce_texto_padrao_os.Name = "ce_texto_padrao_os";
-            this.ce_texto_padrao_os.ReadOnly = true;
+            this.ce_texto_padrao.DataPropertyName = "ce_texto_padrao";
+            this.ce_texto_padrao.HeaderText = "ce_texto_padrao";
+            this.ce_texto_padrao.Name = "ce_texto_padrao";
+            this.ce_texto_padrao.ReadOnly = true;
             // 
             // ce_imagem
             // 
@@ -1847,6 +1858,27 @@
             this.ce_imagem.HeaderText = "ce_imagem";
             this.ce_imagem.Name = "ce_imagem";
             this.ce_imagem.ReadOnly = true;
+            // 
+            // ce_codigo_pix
+            // 
+            this.ce_codigo_pix.DataPropertyName = "ce_codigo_pix";
+            this.ce_codigo_pix.HeaderText = "ce_codigo_pix";
+            this.ce_codigo_pix.Name = "ce_codigo_pix";
+            this.ce_codigo_pix.ReadOnly = true;
+            // 
+            // ce_chave_pix
+            // 
+            this.ce_chave_pix.DataPropertyName = "ce_chave_pix";
+            this.ce_chave_pix.HeaderText = "ce_chave_pix";
+            this.ce_chave_pix.Name = "ce_chave_pix";
+            this.ce_chave_pix.ReadOnly = true;
+            // 
+            // ce_qr_code
+            // 
+            this.ce_qr_code.DataPropertyName = "ce_qr_code";
+            this.ce_qr_code.HeaderText = "ce_qr_code";
+            this.ce_qr_code.Name = "ce_qr_code";
+            this.ce_qr_code.ReadOnly = true;
             // 
             // lblce_id
             // 
@@ -1858,11 +1890,221 @@
             this.lblce_id.Text = "1";
             this.lblce_id.Visible = false;
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(13, 450);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(54, 15);
+            this.label21.TabIndex = 96;
+            this.label21.Text = "Telefone";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(13, 348);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(165, 15);
+            this.label6.TabIndex = 163;
+            this.label6.Text = "Código QR Code Simples - Pix";
+            // 
+            // txtCodigoQRCodePix
+            // 
+            this.txtCodigoQRCodePix.AcceptsReturn = false;
+            this.txtCodigoQRCodePix.AcceptsTab = false;
+            this.txtCodigoQRCodePix.AnimationSpeed = 200;
+            this.txtCodigoQRCodePix.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.txtCodigoQRCodePix.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txtCodigoQRCodePix.BackColor = System.Drawing.Color.Transparent;
+            this.txtCodigoQRCodePix.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtCodigoQRCodePix.BackgroundImage")));
+            this.txtCodigoQRCodePix.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.txtCodigoQRCodePix.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.txtCodigoQRCodePix.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.txtCodigoQRCodePix.BorderColorIdle = System.Drawing.Color.Silver;
+            this.txtCodigoQRCodePix.BorderRadius = 1;
+            this.txtCodigoQRCodePix.BorderThickness = 1;
+            this.txtCodigoQRCodePix.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtCodigoQRCodePix.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCodigoQRCodePix.DefaultFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoQRCodePix.DefaultText = "";
+            this.txtCodigoQRCodePix.FillColor = System.Drawing.Color.White;
+            this.txtCodigoQRCodePix.HideSelection = true;
+            this.txtCodigoQRCodePix.IconLeft = null;
+            this.txtCodigoQRCodePix.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCodigoQRCodePix.IconPadding = 10;
+            this.txtCodigoQRCodePix.IconRight = null;
+            this.txtCodigoQRCodePix.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtCodigoQRCodePix.Lines = new string[0];
+            this.txtCodigoQRCodePix.Location = new System.Drawing.Point(16, 366);
+            this.txtCodigoQRCodePix.MaxLength = 150;
+            this.txtCodigoQRCodePix.MinimumSize = new System.Drawing.Size(1, 1);
+            this.txtCodigoQRCodePix.Modified = false;
+            this.txtCodigoQRCodePix.Multiline = false;
+            this.txtCodigoQRCodePix.Name = "txtCodigoQRCodePix";
+            stateProperties49.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties49.FillColor = System.Drawing.Color.Empty;
+            stateProperties49.ForeColor = System.Drawing.Color.Empty;
+            stateProperties49.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCodigoQRCodePix.OnActiveState = stateProperties49;
+            stateProperties50.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties50.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties50.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties50.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtCodigoQRCodePix.OnDisabledState = stateProperties50;
+            stateProperties51.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties51.FillColor = System.Drawing.Color.Empty;
+            stateProperties51.ForeColor = System.Drawing.Color.Empty;
+            stateProperties51.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCodigoQRCodePix.OnHoverState = stateProperties51;
+            stateProperties52.BorderColor = System.Drawing.Color.Silver;
+            stateProperties52.FillColor = System.Drawing.Color.White;
+            stateProperties52.ForeColor = System.Drawing.Color.Empty;
+            stateProperties52.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCodigoQRCodePix.OnIdleState = stateProperties52;
+            this.txtCodigoQRCodePix.Padding = new System.Windows.Forms.Padding(3);
+            this.txtCodigoQRCodePix.PasswordChar = '\0';
+            this.txtCodigoQRCodePix.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtCodigoQRCodePix.PlaceholderText = "";
+            this.txtCodigoQRCodePix.ReadOnly = false;
+            this.txtCodigoQRCodePix.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtCodigoQRCodePix.SelectedText = "";
+            this.txtCodigoQRCodePix.SelectionLength = 0;
+            this.txtCodigoQRCodePix.SelectionStart = 0;
+            this.txtCodigoQRCodePix.ShortcutsEnabled = true;
+            this.txtCodigoQRCodePix.Size = new System.Drawing.Size(395, 28);
+            this.txtCodigoQRCodePix.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.txtCodigoQRCodePix.TabIndex = 164;
+            this.txtCodigoQRCodePix.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtCodigoQRCodePix.TextMarginBottom = 0;
+            this.txtCodigoQRCodePix.TextMarginLeft = 3;
+            this.txtCodigoQRCodePix.TextMarginTop = 0;
+            this.txtCodigoQRCodePix.TextPlaceholder = "";
+            this.txtCodigoQRCodePix.UseSystemPasswordChar = false;
+            this.txtCodigoQRCodePix.WordWrap = true;
+            this.txtCodigoQRCodePix.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoQRCodePix_KeyPress);
+            this.txtCodigoQRCodePix.Leave += new System.EventHandler(this.txtCodigoQRCodePix_Leave);
+            // 
+            // pcbQRCodePix
+            // 
+            this.pcbQRCodePix.BackColor = System.Drawing.Color.Transparent;
+            this.pcbQRCodePix.BaseColor = System.Drawing.Color.White;
+            this.pcbQRCodePix.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pcbQRCodePix.Image = global::Sistema_de_Gerenciamento.Properties.Resources.camera3;
+            this.pcbQRCodePix.Location = new System.Drawing.Point(451, 314);
+            this.pcbQRCodePix.Name = "pcbQRCodePix";
+            this.pcbQRCodePix.Size = new System.Drawing.Size(137, 132);
+            this.pcbQRCodePix.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pcbQRCodePix.TabIndex = 165;
+            this.pcbQRCodePix.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(457, 296);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(125, 15);
+            this.label7.TabIndex = 166;
+            this.label7.Text = "QR Code Simples - Pix";
+            // 
+            // txtChavePix
+            // 
+            this.txtChavePix.AcceptsReturn = false;
+            this.txtChavePix.AcceptsTab = false;
+            this.txtChavePix.AnimationSpeed = 200;
+            this.txtChavePix.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.None;
+            this.txtChavePix.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.None;
+            this.txtChavePix.BackColor = System.Drawing.Color.Transparent;
+            this.txtChavePix.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("txtChavePix.BackgroundImage")));
+            this.txtChavePix.BorderColorActive = System.Drawing.Color.DodgerBlue;
+            this.txtChavePix.BorderColorDisabled = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.txtChavePix.BorderColorHover = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.txtChavePix.BorderColorIdle = System.Drawing.Color.Silver;
+            this.txtChavePix.BorderRadius = 1;
+            this.txtChavePix.BorderThickness = 1;
+            this.txtChavePix.CharacterCasing = System.Windows.Forms.CharacterCasing.Normal;
+            this.txtChavePix.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtChavePix.DefaultFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtChavePix.DefaultText = "";
+            this.txtChavePix.FillColor = System.Drawing.Color.White;
+            this.txtChavePix.HideSelection = true;
+            this.txtChavePix.IconLeft = null;
+            this.txtChavePix.IconLeftCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtChavePix.IconPadding = 10;
+            this.txtChavePix.IconRight = null;
+            this.txtChavePix.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtChavePix.Lines = new string[0];
+            this.txtChavePix.Location = new System.Drawing.Point(16, 418);
+            this.txtChavePix.MaxLength = 100;
+            this.txtChavePix.MinimumSize = new System.Drawing.Size(1, 1);
+            this.txtChavePix.Modified = false;
+            this.txtChavePix.Multiline = false;
+            this.txtChavePix.Name = "txtChavePix";
+            stateProperties53.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties53.FillColor = System.Drawing.Color.Empty;
+            stateProperties53.ForeColor = System.Drawing.Color.Empty;
+            stateProperties53.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtChavePix.OnActiveState = stateProperties53;
+            stateProperties54.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties54.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties54.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties54.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtChavePix.OnDisabledState = stateProperties54;
+            stateProperties55.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties55.FillColor = System.Drawing.Color.Empty;
+            stateProperties55.ForeColor = System.Drawing.Color.Empty;
+            stateProperties55.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtChavePix.OnHoverState = stateProperties55;
+            stateProperties56.BorderColor = System.Drawing.Color.Silver;
+            stateProperties56.FillColor = System.Drawing.Color.White;
+            stateProperties56.ForeColor = System.Drawing.Color.Empty;
+            stateProperties56.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtChavePix.OnIdleState = stateProperties56;
+            this.txtChavePix.Padding = new System.Windows.Forms.Padding(3);
+            this.txtChavePix.PasswordChar = '\0';
+            this.txtChavePix.PlaceholderForeColor = System.Drawing.Color.Silver;
+            this.txtChavePix.PlaceholderText = "";
+            this.txtChavePix.ReadOnly = false;
+            this.txtChavePix.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtChavePix.SelectedText = "";
+            this.txtChavePix.SelectionLength = 0;
+            this.txtChavePix.SelectionStart = 0;
+            this.txtChavePix.ShortcutsEnabled = true;
+            this.txtChavePix.Size = new System.Drawing.Size(395, 28);
+            this.txtChavePix.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
+            this.txtChavePix.TabIndex = 167;
+            this.txtChavePix.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.txtChavePix.TextMarginBottom = 0;
+            this.txtChavePix.TextMarginLeft = 3;
+            this.txtChavePix.TextMarginTop = 0;
+            this.txtChavePix.TextPlaceholder = "";
+            this.txtChavePix.UseSystemPasswordChar = false;
+            this.txtChavePix.WordWrap = true;
+            this.txtChavePix.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtChavePix_KeyPress);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(13, 400);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(59, 15);
+            this.label8.TabIndex = 168;
+            this.label8.Text = "Chave Pix";
+            // 
             // Forms_CadastroEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 516);
+            this.ClientSize = new System.Drawing.Size(814, 605);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtChavePix);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.pcbQRCodePix);
+            this.Controls.Add(this.txtCodigoQRCodePix);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.lblce_id);
             this.Controls.Add(this.gdvPesquisarEmpresa);
             this.Controls.Add(this.bunifuSeparator2);
@@ -1908,6 +2150,7 @@
             this.Text = "Cadastro Empresa";
             ((System.ComponentModel.ISupportInitialize)(this.pcbEmpresa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarEmpresa)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbQRCodePix)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1930,7 +2173,6 @@
         private Guna.UI.WinForms.GunaComboBox cmbUF;
         private Bunifu.UI.WinForms.BunifuTextBox txtEndereco;
         private Bunifu.UI.WinForms.BunifuTextBox txtCEP;
-        private System.Windows.Forms.Label label21;
         private Bunifu.UI.WinForms.BunifuTextBox txtNumero;
         private Bunifu.UI.WinForms.BunifuTextBox txtCidade;
         private Bunifu.UI.WinForms.BunifuTextBox txtBairro;
@@ -1954,6 +2196,13 @@
         private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator2;
         private Bunifu.UI.WinForms.BunifuDataGridView gdvPesquisarEmpresa;
         private System.Windows.Forms.Label lblce_id;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label6;
+        private Bunifu.UI.WinForms.BunifuTextBox txtCodigoQRCodePix;
+        private Guna.UI.WinForms.GunaPictureBox pcbQRCodePix;
+        private System.Windows.Forms.Label label7;
+        private Bunifu.UI.WinForms.BunifuTextBox txtChavePix;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridViewTextBoxColumn ce_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn ce_razao_social;
         private System.Windows.Forms.DataGridViewTextBoxColumn ce_cnpj;
@@ -1967,7 +2216,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ce_numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn ce_telefone;
         private System.Windows.Forms.DataGridViewTextBoxColumn ce_email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ce_texto_padrao_os;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_texto_padrao;
         private System.Windows.Forms.DataGridViewTextBoxColumn ce_imagem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_codigo_pix;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_chave_pix;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ce_qr_code;
     }
 }

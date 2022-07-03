@@ -19,11 +19,15 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private Forms_CadastroCliente cadastroCliente;
 
-        public Forms_ControleADMIN(Forms_TelaPDV _telaPDV)
+        private string tipo = "";
+
+        public Forms_ControleADMIN(Forms_TelaPDV _telaPDV, string _tipo)
         {
             InitializeComponent();
 
             telaPDV = _telaPDV;
+
+            pcbEmpresa.Image = Buscar.BuscarLogoEmpresa(Convert.ToInt32(lblce_id.Text));
         }
 
         public Forms_ControleADMIN()
@@ -38,22 +42,31 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text == "ADMIN" && Buscar.BuscarUsuario(txtUsuario.Text, txtSenha.Text))
+            if (tipo == "Remover Produto")
             {
-                //RemoverProduto();
+                if (txtUsuario.Text == "ADMIN" && Buscar.BuscarUsuario(txtUsuario.Text, txtSenha.Text))
+                {
+                    //RemoverProduto();
 
-                //if (telaPDV.gdvPDV.RowCount > 0)
-                //{
-                //telaPDV.gdvPDV.Rows.RemoveAt(telaPDV.gdvPDV.CurrentRow.Index);
+                    //if (telaPDV.gdvPDV.RowCount > 0)
+                    //{
+                    //telaPDV.gdvPDV.Rows.RemoveAt(telaPDV.gdvPDV.CurrentRow.Index);
 
-                telaPDV.RemoverProduto();
+                    telaPDV.RemoverProduto();
 
-                telaPDV.ValorTotal();
+                    telaPDV.ValorTotal();
+
+                    this.Close();
+
+                    //ApagandoTextbox();
+                    //}
+                }
+            }
+            else
+            {
+                telaPDV.NovaVenda();
 
                 this.Close();
-
-                //ApagandoTextbox();
-                //}
             }
         }
 

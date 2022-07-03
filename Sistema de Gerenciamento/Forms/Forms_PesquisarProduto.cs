@@ -67,7 +67,7 @@ namespace Sistema_de_Gerenciamento
             SelecaoGridViewPreencherTextBox();
         }
 
-        private void gdvPesquisarProduto_DoubleClick(object sender, EventArgs e)
+        public void gdvPesquisarProduto_DoubleClick(object sender, EventArgs e)
         {
             SelecaoGridViewPreencherTextBox();
         }

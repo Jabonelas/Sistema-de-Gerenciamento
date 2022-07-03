@@ -40,6 +40,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
             listaFinanceiro = Buscar.BuscarFinanceiro();
 
+            pcbPDV.Image = Buscar.BuscarLogoEmpresa(1);
+
             //this.Height = Screen.PrimaryScreen.Bounds.Height;
 
             //this.Width = Screen.PrimaryScreen.Bounds.Width;
@@ -61,33 +63,10 @@ namespace Sistema_de_Gerenciamento.Forms
 
             if (e.KeyCode == Keys.F1) // nova venda F1
             {
-                //if (gdvPDV.Rows.Count <= 0)
-                //{
-                gdvPDV.Rows.Clear();
-
-                pcbPDV.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\png-transparent-logo-pharmacy-pills-miscellaneous-trademark-pharmaceutical-drug.png");
-
-                lblSubtotal.Text = "R$ 0,00";
-                lblTroco.Text = "R$ 0,00";
-                lblTotalRecebido.Text = "R$ 0,00";
-                txtCPF.Text = "-";
-                txtCodigoProduto.Text = "-";
-                lblTotaldoItem.Text = "R$ 0,00";
-                lblValorUnitario.Text = "R$ 0,00";
-                pnlFachada.BackgroundColor = Color.Lime;
-
-                lblFachada.Location = new Point(97, -9);
-                lblFachada.Text = "CAIXA DISPONÍVEL";
-
-                txtCPF.UseSystemPasswordChar = false;
-
-                FormatoTelaPagamento("Cancelamento");
-
-                txtCodigoDeBarras.Focus();
-
-                lblDescricaoItem.Text = "DESCRIÇÃO DO ITEM";
-                lblUnidade.Text = "UN";
-                //}
+                if (gdvPDV.Rows.Count <= 0)
+                {
+                    NovaVenda();
+                }
             }
 
             if (e.KeyCode == Keys.F2) // excluir item F2
@@ -100,7 +79,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     }
                     else
                     {
-                        Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this);
+                        Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "Remover Produto");
                         controleADMIN.ShowDialog();
                     }
                 }
@@ -109,7 +88,6 @@ namespace Sistema_de_Gerenciamento.Forms
             if (e.KeyCode == Keys.F3) // inserir cpf F3
             {
                 txtCPF.Text = string.Empty;
-
                 txtCPF.ReadOnly = true;
                 txtCPF.Enabled = true;
                 txtCPF.Focus();
@@ -130,6 +108,8 @@ namespace Sistema_de_Gerenciamento.Forms
                 Forms_PesquisarProduto pesquisarProduto = new Forms_PesquisarProduto(this);
                 pesquisarProduto.ShowDialog();
 
+                pesquisarProduto.gdvPesquisarProduto.DoubleClick -= pesquisarProduto.gdvPesquisarProduto_DoubleClick;
+
                 txtCodigoProduto.Focus();
             }
 
@@ -148,19 +128,65 @@ namespace Sistema_de_Gerenciamento.Forms
 
             if (e.KeyCode == Keys.F7) // Finalizar Compra F7
             {
-                //if (gdvPDV.Rows.Count >= 0)
-                //{
-                FormatoTelaPagamento("Pagamento");
+                if (gdvPDV.Rows.Count > 0)
+                {
+                    FormatoTelaPagamento("Pagamento");
 
-                //depois ve se ainda esta bugado
-                txtValorDinheiro.Visible = false;
-                lblTituloValorParcela.Visible = false;
+                    //depois ve se ainda esta bugado
+                    txtValorDinheiro.Visible = false;
+                    lblTituloValorParcela.Visible = false;
 
-                cmbFormaPagamento.Focus();
-                lblDescricaoItem.Text = "PAGAMENTO";
-                lblUnidade.Text = string.Empty;
-                //}
+                    cmbFormaPagamento.Focus();
+                    lblDescricaoItem.Text = "PAGAMENTO";
+                    lblUnidade.Text = String.Empty;
+                }
             }
+
+            if (e.KeyCode == Keys.F12) // Cancelar Compra F12
+            {
+                if (gdvPDV.Rows.Count > 0)
+                {
+                    if (Global.tipoDeUsuario == "ADMIN")
+                    {
+                        NovaVenda();
+                    }
+                    else
+                    {
+                        Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "");
+                        controleADMIN.ShowDialog();
+                    }
+                }
+            }
+        }
+
+        public void NovaVenda()
+        {
+            //if (gdvPDV.Rows.Count <= 0)
+            //{
+            //pcbPDV.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\png-transparent-logo-pharmacy-pills-miscellaneous-trademark-pharmaceutical-drug.png");
+
+            //pcbPDV.Image = Buscar.BuscarLogoEmpresa(1);
+
+            cmbFormaPagamento.Text = String.Empty;
+            gdvPDV.Rows.Clear();
+            lblSubtotal.Text = "R$ 0,00";
+            lblTroco.Text = "R$ 0,00";
+            lblTotalRecebido.Text = "R$ 0,00";
+            txtCPF.Text = "-";
+            txtCodigoProduto.Text = "-";
+            lblTotaldoItem.Text = "R$ 0,00";
+            lblValorUnitario.Text = "R$ 0,00";
+            pnlFachada.BackgroundColor = Color.Lime;
+            lblFachada.Location = new Point(97, -9);
+            lblFachada.Text = "CAIXA DISPONÍVEL";
+            txtCPF.UseSystemPasswordChar = false;
+            FormatoTelaPagamento("Cancelamento");
+            txtCodigoDeBarras.Focus();
+            lblDescricaoItem.Text = "DESCRIÇÃO DO ITEM";
+            lblUnidade.Text = "UN";
+            pcbPDV.Image = Buscar.BuscarLogoEmpresa(1);
+
+            //}
         }
 
         private void FormatoTelaPagamento(string _verificar)
@@ -472,26 +498,6 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        private void pnlDinheiro_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void bunifuPanel7_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void txtCodigoProduto_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void txtInserirQuant_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void cmbFormaPagamento_Leave(object sender, EventArgs e)
-        {
-        }
-
         private void cmbFormaPagamento_SelectedValueChanged(object sender, EventArgs e)
         {
             if (cmbFormaPagamento.Text == "CARNÊ")
@@ -526,11 +532,17 @@ namespace Sistema_de_Gerenciamento.Forms
 
                 lblTituloFormaPagamento.Text = "DÉBITO";
 
+                lblValorDebito.Font = new Font("Calibri", 36);
+
+                lblValorDebito.Font = new Font("Calibri", 36, FontStyle.Bold);
+
                 lblValorDebito.Visible = true;
 
-                lblValorTotal.Text = string.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+                lblValorDebito.Location = new Point(90, 45);
 
-                lblValorDebito.Text = string.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+                lblValorTotal.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+
+                lblValorDebito.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
 
                 lblValorDesconto.Text = String.Format("{0:C}", (valorBruto * listaFinanceiro[0].descontoAvista / 100));
             }
@@ -546,13 +558,23 @@ namespace Sistema_de_Gerenciamento.Forms
 
                 lblValorDesconto.Text = String.Format("{0:C}", (valorBruto * listaFinanceiro[0].descontoAvista / 100));
 
-                lblValorTotal.Text = string.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+                lblValorTotal.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
 
                 //txtValorDinheiro.Focus();
             }
             else if (cmbFormaPagamento.Text == "PIX")
             {
                 lblTituloFormaPagamento.Text = "PIX";
+
+                pcbPix.Image = Buscar.BuscarQrCodePix(1);
+
+                lblValorDebito.Visible = true;
+
+                lblValorDebito.Font = new Font("Calibri", 28, FontStyle.Bold);
+
+                lblValorDebito.Location = new Point(40, 45);
+
+                lblValorDebito.Text = Buscar.BuscarChavePix();
 
                 txtValorDinheiro.Visible = false;
 
@@ -605,14 +627,6 @@ namespace Sistema_de_Gerenciamento.Forms
             lblTroco.Text = string.Format("{0:C}", (Convert.ToDecimal(lblTotalRecebido.Text.Replace("R$", "")) - Convert.ToDecimal(lblValorTotal.Text.Replace("R$", ""))));
         }
 
-        private void txtValorDinheiro_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void lblValorTotal_Click(object sender, EventArgs e)
-        {
-        }
-
         private void txtValorDinheiro_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
@@ -634,10 +648,6 @@ namespace Sistema_de_Gerenciamento.Forms
         private void txtCodigoDeBarras_Enter(object sender, EventArgs e)
         {
             txtCPF.UseSystemPasswordChar = true;
-        }
-
-        private void txtInserirQuant_Enter(object sender, EventArgs e)
-        {
         }
 
         private void txtInserirQuant_Leave(object sender, EventArgs e)

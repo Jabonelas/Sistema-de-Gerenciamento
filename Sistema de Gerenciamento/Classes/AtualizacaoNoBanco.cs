@@ -279,7 +279,8 @@ namespace Sistema_de_Gerenciamento.Classes
         #region Atualizar Cadastro Empresa
 
         public void AtualizarCadastroEmpresa(string _razaoSocial, string _cnpj, string _nomeFantasia, string _cep, string _endereco, string _complemento,
-            string _bairro, string _cidade, string _uf, int _numero, string _telefone, string _email, string _textoPadraoSO, int _ce_id)
+            string _bairro, string _cidade, string _uf, int _numero, string _telefone, string _email, string _textoPadrao, string _codigoPix,
+            string _chavePix, int _ce_id)
         {
             try
             {
@@ -288,7 +289,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     string query = "update tb_CadastroEmpresa set ce_razao_social=@razaoSocial,ce_cnpj=@cnpj," +
                         "ce_nome_fantasia=@nomeFantasia,ce_cep=@cep,ce_endereco=@endereco,ce_complemento=@complemento," +
                         "ce_bairro=@bairro,ce_cidade=@cidade,ce_uf=@uf,ce_numero=@numero,ce_telefone=@telefone," +
-                        "ce_email=@email,ce_texto_padrao_os=@textoPadraoSO " +
+                        "ce_email=@email,ce_texto_padrao=@textoPadrao,ce_codigo_pix=@codigoPix,ce_chave_pix=@chavePix " +
                         "where ce_id = @ce_id ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -304,7 +305,9 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@numero", SqlDbType.Int).Value = _numero;
                     adapter.SelectCommand.Parameters.AddWithValue("@telefone", SqlDbType.VarChar).Value = _telefone;
                     adapter.SelectCommand.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = _email;
-                    adapter.SelectCommand.Parameters.AddWithValue("@textoPadraoSO", SqlDbType.VarChar).Value = _textoPadraoSO;
+                    adapter.SelectCommand.Parameters.AddWithValue("@textoPadrao", SqlDbType.VarChar).Value = _textoPadrao;
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigoPix", SqlDbType.VarChar).Value = _codigoPix;
+                    adapter.SelectCommand.Parameters.AddWithValue("@chavePix", SqlDbType.VarChar).Value = _chavePix;
                     adapter.SelectCommand.Parameters.AddWithValue("@ce_id", SqlDbType.Int).Value = _ce_id;
 
                     adapter.SelectCommand.ExecuteNonQuery();
@@ -322,20 +325,24 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Atualizar Imagem Empresa
 
-        public void AtualizarImagemNoCadastroEmpresa(Image _imagem, int _ce_id)
+        public void AtualizarImagemNoCadastroEmpresa(Image _logoEmpresa, Image _qrCode, int _ce_id)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update tb_CadastroEmpresa set ce_imagem = @imagem where ce_id = @ce_id ";
+                    string query = "update tb_CadastroEmpresa set ce_logo_empresa = @logoEmpresa, ce_qr_code = @qrCode " +
+                        "where ce_id = @ce_id ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
                     byte[] arr;
+                    byte[] err;
                     ImageConverter converter = new ImageConverter();
-                    arr = (byte[])converter.ConvertTo(_imagem, typeof(byte[]));
-                    adapter.SelectCommand.Parameters.Add("@imagem", SqlDbType.Image).Value = arr;
+                    arr = (byte[])converter.ConvertTo(_logoEmpresa, typeof(byte[]));
+                    err = (byte[])converter.ConvertTo(_qrCode, typeof(byte[]));
+                    adapter.SelectCommand.Parameters.Add("@logoEmpresa", SqlDbType.Image).Value = arr;
+                    adapter.SelectCommand.Parameters.Add("@qrCode", SqlDbType.Image).Value = err;
                     adapter.SelectCommand.Parameters.AddWithValue("@ce_id", SqlDbType.VarChar).Value = _ce_id;
 
                     adapter.SelectCommand.ExecuteNonQuery();

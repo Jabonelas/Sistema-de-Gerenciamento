@@ -1212,10 +1212,11 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query =
-                        "select ce_razao_social,ce_cnpj,ce_nome_fantasia,ce_cep,ce_endereco,ce_complemento," +
-                        "ce_bairro,ce_cidade,ce_uf,ce_numero,ce_telefone,ce_email,ce_texto_padrao_os " +
-                        "from tb_CadastroEmpresa where ce_id = @ce_id";
+                    //string query ="select ce_razao_social,ce_cnpj,ce_nome_fantasia,ce_cep,ce_endereco,ce_complemento," +
+                    //    "ce_bairro,ce_cidade,ce_uf,ce_numero,ce_telefone,ce_email,ce_texto_padrao_os " +
+                    //    "from tb_CadastroEmpresa where ce_id = @ce_id";
+
+                    string query = "select * from tb_CadastroEmpresa where ce_id = @ce_id";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@ce_id", _ce_id);
@@ -1255,14 +1256,14 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Imagem Empresa
 
-        public Image BuscarImagemEmpresa(int _ce_id)
+        public Image BuscarLogoEmpresa(int _ce_id)
         {
-            Image imagem;
+            Image logoEmpresa;
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select ce_imagem from tb_CadastroEmpresa where ce_id = @ce_id";
+                    string query = "select ce_logo_empresa from tb_CadastroEmpresa where ce_id = @ce_id";
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
                     cmd.Parameters.AddWithValue("@ce_id", _ce_id);
 
@@ -1273,11 +1274,11 @@ namespace Sistema_de_Gerenciamento.Classes
                         reader.Read();
                     }
 
-                    byte[] img = (byte[])(reader["ce_imagem"]);
+                    byte[] img = (byte[])(reader["ce_logo_empresa"]);
                     MemoryStream ms = new MemoryStream(img);
 
-                    imagem = System.Drawing.Image.FromStream(ms);
-                    return imagem;
+                    logoEmpresa = System.Drawing.Image.FromStream(ms);
+                    return logoEmpresa;
                 }
             }
             catch (Exception ex)
@@ -1288,6 +1289,71 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Imagem Empresa
+
+        #region Buscar QRCode Pix
+
+        public Image BuscarQrCodePix(int _ce_id)
+        {
+            Image qrCode;
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ce_qr_code from tb_CadastroEmpresa where ce_id = @ce_id";
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+                    cmd.Parameters.AddWithValue("@ce_id", _ce_id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        reader.Read();
+                    }
+
+                    byte[] img = (byte[])(reader["ce_qr_code"]);
+                    MemoryStream ms = new MemoryStream(img);
+
+                    qrCode = System.Drawing.Image.FromStream(ms);
+                    return qrCode;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+                Erro.ErroAoBuscarQRCodeNoBanco(ex);
+            }
+        }
+
+        #endregion Buscar QRCode Pix
+
+        #region BuscarChavePix
+
+        public string BuscarChavePix()
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ce_chave_pix from tb_CadastroEmpresa";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    //adapter.SelectCommand.Parameters.AddWithValue("@ce_id", _ce_id);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+                    dr.Read();
+
+                    string x = dr.GetString(0);
+                    return x;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        #endregion BuscarChavePix
 
         #endregion Buscar Empresa
 

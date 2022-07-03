@@ -11,5 +11,10 @@
             public string Localidade { get; set; }
             public string Uf { get; set; }
         }
+
+        public partial class Temperatures1
+        {
+            public byte Dado { get; set; }
+        }
     }
 }

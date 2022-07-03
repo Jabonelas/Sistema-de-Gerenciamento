@@ -516,12 +516,14 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.gdvPesquisarProduto.DefaultCellStyle = dataGridViewCellStyle3;
+            this.gdvPesquisarProduto.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.gdvPesquisarProduto.EnableHeadersVisualStyles = false;
             this.gdvPesquisarProduto.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
             this.gdvPesquisarProduto.HeaderBackColor = System.Drawing.Color.DodgerBlue;
             this.gdvPesquisarProduto.HeaderBgColor = System.Drawing.Color.Empty;
             this.gdvPesquisarProduto.HeaderForeColor = System.Drawing.Color.White;
             this.gdvPesquisarProduto.Location = new System.Drawing.Point(12, 144);
+            this.gdvPesquisarProduto.MultiSelect = false;
             this.gdvPesquisarProduto.Name = "gdvPesquisarProduto";
             this.gdvPesquisarProduto.ReadOnly = true;
             this.gdvPesquisarProduto.RowHeadersVisible = false;
@@ -1156,7 +1158,6 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnImprimir;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnExportar;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnFechar;
-        private Bunifu.UI.WinForms.BunifuDataGridView gdvPesquisarProduto;
         private Bunifu.UI.WinForms.BunifuTextBox txtMarca;
         private Bunifu.UI.WinForms.BunifuTextBox txtDescicao;
         private Bunifu.UI.WinForms.BunifuTextBox txtCodigoProduto;
@@ -1189,5 +1190,6 @@
         public System.Windows.Forms.ComboBox cmbGrupo;
         public System.Windows.Forms.ComboBox cmbSubGrupo;
         private Bunifu.UI.WinForms.BunifuGroupBox bunifuGroupBox1;
+        public Bunifu.UI.WinForms.BunifuDataGridView gdvPesquisarProduto;
     }
 }

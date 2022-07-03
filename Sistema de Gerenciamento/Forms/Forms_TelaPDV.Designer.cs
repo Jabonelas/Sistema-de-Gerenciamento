@@ -70,6 +70,13 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties107 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties108 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.gdvPDV = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VlrUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoBarras = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlDinheiro = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblValorTotal = new System.Windows.Forms.Label();
             this.lblTituloValorTotal = new System.Windows.Forms.Label();
@@ -147,13 +154,6 @@
             this.pnlFundoCliente = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblNomeCliente = new System.Windows.Forms.Label();
             this.lblCliente = new System.Windows.Forms.Label();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VlrUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Desconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigoBarras = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPDV)).BeginInit();
             this.pnlDinheiro.SuspendLayout();
             this.pnlPagamento3.SuspendLayout();
@@ -254,6 +254,57 @@
             this.gdvPDV.TabIndex = 2;
             this.gdvPDV.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             // 
+            // Codigo
+            // 
+            this.Codigo.FillWeight = 80.58376F;
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // Descricao
+            // 
+            this.Descricao.FillWeight = 177.665F;
+            this.Descricao.HeaderText = "Descricao";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            // 
+            // Qtd
+            // 
+            this.Qtd.FillWeight = 80.58376F;
+            this.Qtd.HeaderText = "Qtd";
+            this.Qtd.Name = "Qtd";
+            this.Qtd.ReadOnly = true;
+            // 
+            // VlrUnit
+            // 
+            this.VlrUnit.DataPropertyName = "VlrUnit";
+            this.VlrUnit.FillWeight = 80.58376F;
+            this.VlrUnit.HeaderText = "Vlr Unit";
+            this.VlrUnit.Name = "VlrUnit";
+            this.VlrUnit.ReadOnly = true;
+            // 
+            // Total
+            // 
+            this.Total.DataPropertyName = "Total";
+            this.Total.FillWeight = 80.58376F;
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            // 
+            // Desconto
+            // 
+            this.Desconto.HeaderText = "Desconto";
+            this.Desconto.Name = "Desconto";
+            this.Desconto.ReadOnly = true;
+            this.Desconto.Visible = false;
+            // 
+            // codigoBarras
+            // 
+            this.codigoBarras.HeaderText = "codigoBarras";
+            this.codigoBarras.Name = "codigoBarras";
+            this.codigoBarras.ReadOnly = true;
+            this.codigoBarras.Visible = false;
+            // 
             // pnlDinheiro
             // 
             this.pnlDinheiro.BackgroundColor = System.Drawing.Color.DodgerBlue;
@@ -270,7 +321,6 @@
             this.pnlDinheiro.Size = new System.Drawing.Size(420, 80);
             this.pnlDinheiro.TabIndex = 181;
             this.pnlDinheiro.Visible = false;
-            this.pnlDinheiro.Click += new System.EventHandler(this.pnlDinheiro_Click);
             // 
             // lblValorTotal
             // 
@@ -284,7 +334,6 @@
             this.lblValorTotal.TabIndex = 185;
             this.lblValorTotal.Text = "R$ 0,00";
             this.lblValorTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblValorTotal.Click += new System.EventHandler(this.lblValorTotal_Click);
             // 
             // lblTituloValorTotal
             // 
@@ -317,7 +366,6 @@
             // 
             // pcbPix
             // 
-            this.pcbPix.Image = global::Sistema_de_Gerenciamento.Properties.Resources.frame;
             this.pcbPix.Location = new System.Drawing.Point(1, -1);
             this.pcbPix.Name = "pcbPix";
             this.pcbPix.Size = new System.Drawing.Size(181, 120);
@@ -1016,7 +1064,6 @@
             this.cmbFormaPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.cmbFormaPagamento.Visible = false;
             this.cmbFormaPagamento.SelectedValueChanged += new System.EventHandler(this.cmbFormaPagamento_SelectedValueChanged);
-            this.cmbFormaPagamento.Leave += new System.EventHandler(this.cmbFormaPagamento_Leave);
             // 
             // lblFormaPamento
             // 
@@ -1327,7 +1374,6 @@
             this.bunifuPanel7.ShowBorders = true;
             this.bunifuPanel7.Size = new System.Drawing.Size(229, 80);
             this.bunifuPanel7.TabIndex = 7;
-            this.bunifuPanel7.Click += new System.EventHandler(this.bunifuPanel7_Click);
             // 
             // lblTituloCPFQuant
             // 
@@ -1497,8 +1543,6 @@
             this.txtInserirQuant.UseSystemPasswordChar = false;
             this.txtInserirQuant.Visible = false;
             this.txtInserirQuant.WordWrap = true;
-            this.txtInserirQuant.TextChanged += new System.EventHandler(this.txtInserirQuant_TextChanged);
-            this.txtInserirQuant.Enter += new System.EventHandler(this.txtInserirQuant_Enter);
             this.txtInserirQuant.Leave += new System.EventHandler(this.txtInserirQuant_Leave);
             // 
             // bunifuPanel8
@@ -1592,7 +1636,6 @@
             this.txtCodigoProduto.UseSystemPasswordChar = false;
             this.txtCodigoProduto.WordWrap = true;
             this.txtCodigoProduto.TextChange += new System.EventHandler(this.txtCodigoProduto_TextChange);
-            this.txtCodigoProduto.TextChanged += new System.EventHandler(this.txtCodigoProduto_TextChanged);
             this.txtCodigoProduto.Leave += new System.EventHandler(this.txtCodigoProduto_Leave);
             // 
             // label10
@@ -1749,7 +1792,6 @@
             this.txtValorDinheiro.Visible = false;
             this.txtValorDinheiro.WordWrap = true;
             this.txtValorDinheiro.TextChange += new System.EventHandler(this.txtValorDinheiro_TextChange);
-            this.txtValorDinheiro.TextChanged += new System.EventHandler(this.txtValorDinheiro_TextChanged);
             this.txtValorDinheiro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtValorDinheiro_KeyPress_1);
             // 
             // lblParcelas
@@ -1935,57 +1977,6 @@
             this.lblCliente.TabIndex = 178;
             this.lblCliente.Text = "CLIENTE";
             this.lblCliente.Visible = false;
-            // 
-            // Codigo
-            // 
-            this.Codigo.FillWeight = 80.58376F;
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
-            // Descricao
-            // 
-            this.Descricao.FillWeight = 177.665F;
-            this.Descricao.HeaderText = "Descricao";
-            this.Descricao.Name = "Descricao";
-            this.Descricao.ReadOnly = true;
-            // 
-            // Qtd
-            // 
-            this.Qtd.FillWeight = 80.58376F;
-            this.Qtd.HeaderText = "Qtd";
-            this.Qtd.Name = "Qtd";
-            this.Qtd.ReadOnly = true;
-            // 
-            // VlrUnit
-            // 
-            this.VlrUnit.DataPropertyName = "VlrUnit";
-            this.VlrUnit.FillWeight = 80.58376F;
-            this.VlrUnit.HeaderText = "Vlr Unit";
-            this.VlrUnit.Name = "VlrUnit";
-            this.VlrUnit.ReadOnly = true;
-            // 
-            // Total
-            // 
-            this.Total.DataPropertyName = "Total";
-            this.Total.FillWeight = 80.58376F;
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
-            // Desconto
-            // 
-            this.Desconto.HeaderText = "Desconto";
-            this.Desconto.Name = "Desconto";
-            this.Desconto.ReadOnly = true;
-            this.Desconto.Visible = false;
-            // 
-            // codigoBarras
-            // 
-            this.codigoBarras.HeaderText = "codigoBarras";
-            this.codigoBarras.Name = "codigoBarras";
-            this.codigoBarras.ReadOnly = true;
-            this.codigoBarras.Visible = false;
             // 
             // Forms_TelaPDV
             // 

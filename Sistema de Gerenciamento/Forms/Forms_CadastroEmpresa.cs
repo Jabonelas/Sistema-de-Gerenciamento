@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Bunifu.UI.WinForms;
+using QRCoder;
 using Sistema_de_Gerenciamento.Classes;
 using Sistema_de_Gerenciamento.Forms;
 
@@ -32,12 +33,19 @@ namespace Sistema_de_Gerenciamento
             PreenchimentoDosTextBox();
         }
 
+        //private void Imagem()
+        //{
+        //    QRCodeGenerator qrGenerator = new QRCodeGenerator();
+        //    QRCodeData qrCodeData = qrGenerator.CreateQrCode(txtTextoQR.Text, QRCodeGenerator.ECCLevel.Q);
+        //    QRCode qrCode = new QRCode(qrCodeData);
+        //    Bitmap qrCodeImage = qrCode.GetGraphic(20);
+        //    pcbImagemQR.Image = qrCodeImage;
+        //}
+
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             SalvarCadastroEmpresa();
         }
-
-        #region Salvar Cadastro Empresa
 
         private void SalvarCadastroEmpresa()
         {
@@ -61,7 +69,10 @@ namespace Sistema_de_Gerenciamento
                             txtTelefone.Text,
                             txtEmail.Text,
                             txtTextPadrao.Text,
-                            pcbEmpresa.Image);
+                            pcbEmpresa.Image,
+                            txtCodigoQRCodePix.Text,
+                            txtChavePix.Text,
+                            pcbQRCodePix.Image);
                     }
                     else
                     {
@@ -76,14 +87,10 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Salvar Cadastro Empresa
-
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             AtualziarCadastroEmpresa();
         }
-
-        #region Atualizar Cadastro Empresa
 
         private void AtualziarCadastroEmpresa()
         {
@@ -107,9 +114,11 @@ namespace Sistema_de_Gerenciamento
                             txtTelefone.Text,
                             txtEmail.Text,
                             txtTextPadrao.Text,
+                            txtCodigoQRCodePix.Text,
+                            txtChavePix.Text,
                             Convert.ToInt32(lblce_id.Text));
 
-                        Atualizar.AtualizarImagemNoCadastroEmpresa(pcbEmpresa.Image, Convert.ToInt32(lblce_id.Text));
+                        Atualizar.AtualizarImagemNoCadastroEmpresa(pcbEmpresa.Image, pcbQRCodePix.Image, Convert.ToInt32(lblce_id.Text));
                     }
                 }
             }
@@ -118,8 +127,6 @@ namespace Sistema_de_Gerenciamento
                 Erro.ErroAoAtualizarCadastroEmpresa(ex);
             }
         }
-
-        #endregion Atualizar Cadastro Empresa
 
         private void bntSair_Click(object sender, EventArgs e)
         {
@@ -249,7 +256,7 @@ namespace Sistema_de_Gerenciamento
 
                 if (gdvPesquisarEmpresa.RowCount >= 1)
                 {
-                    int indice = 3;
+                    int indice = 4;
                     txtRazaoSocial.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
                     txtCNPJ.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
                     txtNomeFantasia.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
@@ -263,8 +270,12 @@ namespace Sistema_de_Gerenciamento
                     txtTelefone.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
                     txtEmail.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
                     txtTextPadrao.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
+                    txtCodigoQRCodePix.Text = gdvPesquisarEmpresa.SelectedCells[indice += 2].Value.ToString();
+                    txtChavePix.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
 
-                    pcbEmpresa.Image = Buscar.BuscarImagemEmpresa(Convert.ToInt32(lblce_id.Text));
+                    pcbEmpresa.Image = Buscar.BuscarLogoEmpresa(Convert.ToInt32(lblce_id.Text));
+
+                    pcbQRCodePix.Image = Buscar.BuscarQrCodePix(Convert.ToInt32(lblce_id.Text));
                 }
             }
             catch (Exception ex)
@@ -313,6 +324,30 @@ namespace Sistema_de_Gerenciamento
         private void txtTextPadrao_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtChavePix_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoValidoParaChavePix(e);
+        }
+
+        private void txtCodigoQRCodePix_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoValidoParaEmail(e);
+        }
+
+        private void txtCodigoQRCodePix_Leave(object sender, EventArgs e)
+        {
+            QRCodeImagem();
+        }
+
+        private void QRCodeImagem()
+        {
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(txtCodigoQRCodePix.Text, QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(qrCodeData);
+            Bitmap qrCodeImage = qrCode.GetGraphic(20);
+            pcbQRCodePix.Image = qrCodeImage;
         }
     }
 }

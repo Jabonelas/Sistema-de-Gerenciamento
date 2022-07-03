@@ -450,7 +450,8 @@ namespace Sistema_de_Gerenciamento
         public static bool DigitoValidoParaEmail(KeyPressEventArgs e)
         {
             if (!Char.IsLetter(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)64
-                && !Char.IsDigit(e.KeyChar) && e.KeyChar != (char)45 && e.KeyChar != (char)46 && e.KeyChar != (char)95)
+                && !Char.IsDigit(e.KeyChar) && e.KeyChar != (char)45 && e.KeyChar != (char)46
+                && e.KeyChar != (char)95 && e.KeyChar != (char)47)
             {
                 e.Handled = true;
             }
@@ -506,5 +507,23 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Validar Data
+
+        #region Formato Pix
+
+        public static bool DigitoValidoParaChavePix(KeyPressEventArgs e)
+        {
+            if (!Char.IsLetter(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)64
+                && !Char.IsDigit(e.KeyChar) && e.KeyChar != (char)45 && e.KeyChar != (char)46
+                && e.KeyChar != (char)95 && e.KeyChar != (char)47 && e.KeyChar != (char)32
+                && e.KeyChar != (char)40 && e.KeyChar != (char)41)
+
+            {
+                e.Handled = true;
+            }
+
+            return true;
+        }
+
+        #endregion Formato Pix
     }
 }

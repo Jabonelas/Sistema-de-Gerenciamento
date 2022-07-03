@@ -657,6 +657,11 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-EM02) Erro ao Realizar Busca de Imagem da Emrpesa \n\nErro: {_e}", "Erro Busca Imagem Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoBuscarQRCodeNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EM03) Erro ao Realizar Busca de QR Code Pix da Emrpesa \n\nErro: {_e}", "Erro Busca QR Code Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Empresa
 
         #region Cadastro Despesa Custo

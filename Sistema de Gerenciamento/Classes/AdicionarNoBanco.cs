@@ -348,17 +348,17 @@ namespace Sistema_de_Gerenciamento
         #region Inserir Empresa
 
         public void InserirCadastroEmpresa(string _razaoSocial, string _cnpj, string _nomeFantasia, string _cep, string _endereco, string _complemento,
-        string _bairro, string _cidade, string _uf, int _numero, string _telefone, string _email, string _textoPadraoSO, Image _imagem)
+        string _bairro, string _cidade, string _uf, int _numero, string _telefone, string _email, string _textoPadrao, Image _logoEmpresa,
+        string _codigoPix, string _chavePix, Image _qrCode)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query =
-                        "insert into tb_CadastroEmpresa (ce_razao_social,ce_cnpj,ce_nome_fantasia,ce_cep,ce_endereco,ce_complemento," +
-                        "ce_bairro,ce_cidade,ce_uf,ce_numero,ce_telefone,ce_email,ce_texto_padrao_os,ce_imagem)" +
+                    string query = "insert into tb_CadastroEmpresa (ce_razao_social,ce_cnpj,ce_nome_fantasia,ce_cep,ce_endereco,ce_complemento," +
+                        "ce_bairro,ce_cidade,ce_uf,ce_numero,ce_telefone,ce_email,ce_texto_padrao,ce_logo_empresa,ce_codigo_pix,ce_chave_pix,ce_qr_code)" +
                         " values(@razaoSocial,@cnpj,@nomeFantasia,@cep,@endereco,@complemento,@bairro,@cidade,@uf,@numero,@telefone," +
-                        "@email,@textoPadraoSO,@imagem)";
+                        "@email,@textoPadrao,@logoEmpresa,@codigoPix,@chavePix,@qrCode)";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
 
@@ -374,12 +374,17 @@ namespace Sistema_de_Gerenciamento
                     cmd.Parameters.AddWithValue("@numero", SqlDbType.Int).Value = _numero;
                     cmd.Parameters.AddWithValue("@telefone", SqlDbType.VarChar).Value = _telefone;
                     cmd.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = _email;
-                    cmd.Parameters.AddWithValue("@textoPadraoSO", SqlDbType.VarChar).Value = _textoPadraoSO;
+                    cmd.Parameters.AddWithValue("@textoPadrao", SqlDbType.VarChar).Value = _textoPadrao;
+                    cmd.Parameters.AddWithValue("@codigoPix", SqlDbType.VarChar).Value = _codigoPix;
+                    cmd.Parameters.AddWithValue("@chavePix", SqlDbType.VarChar).Value = _chavePix;
 
                     byte[] arr;
+                    byte[] err;
                     ImageConverter converter = new ImageConverter();
-                    arr = (byte[])converter.ConvertTo(_imagem, typeof(byte[]));
-                    cmd.Parameters.Add("@imagem", SqlDbType.Image).Value = arr;
+                    arr = (byte[])converter.ConvertTo(_logoEmpresa, typeof(byte[]));
+                    err = (byte[])converter.ConvertTo(_qrCode, typeof(byte[]));
+                    cmd.Parameters.Add("@logoEmpresa", SqlDbType.Image).Value = arr;
+                    cmd.Parameters.Add("@qrCode", SqlDbType.Image).Value = err;
 
                     cmd.ExecuteNonQuery();
 
@@ -593,7 +598,6 @@ namespace Sistema_de_Gerenciamento
                     adapter.SelectCommand.Parameters.Add("@imagem", SqlDbType.Image).Value = arr;
 
                     adapter.SelectCommand.ExecuteReader();
-
                 }
             }
             catch (Exception ex)
