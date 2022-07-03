@@ -49,7 +49,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void Forms_TelaPDV_Load(object sender, EventArgs e)
         {
-            txtCodigoDeBarras.Focus();
+            //txtCodigoDeBarras.Focus();
         }
 
         private void Forms_TelaPDV_KeyDown(object sender, KeyEventArgs e)
@@ -125,11 +125,21 @@ namespace Sistema_de_Gerenciamento.Forms
                 //txtCodigoProduto.Visible = true;
             }
 
+            if (e.KeyCode == Keys.F5) // Pesquisar Produto F5
+            {
+                Forms_PesquisarProduto pesquisarProduto = new Forms_PesquisarProduto(this);
+                pesquisarProduto.ShowDialog();
+
+                txtCodigoProduto.Focus();
+            }
+
             if (e.KeyCode == Keys.F6) // inserir quantidade F6
             {
                 lblTituloCPFQuant.Text = "QUANTIDADE";
 
                 txtCPF.Visible = false;
+
+                txtInserirQuant.Text = String.Empty;
 
                 txtInserirQuant.Visible = true;
                 txtInserirQuant.Enabled = true;
@@ -278,7 +288,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             var rows = new List<string[]>();
             string[] row1 = new string[] { txtCodigo.Text, txtDescricao.Text, txtInserirQuant.Text,
-                lblValorUnitario.Text, lblTotaldoItem.Text,txtDesconto.Text};
+                lblValorUnitario.Text, lblTotaldoItem.Text,txtDesconto.Text,txtCodigoDeBarras.Text};
             rows.Add(row1);
 
             foreach (string[] item in rows)
@@ -429,6 +439,7 @@ namespace Sistema_de_Gerenciamento.Forms
             }
             else
             {
+                txtCodigoDeBarras.Focus();
                 cont = 0;
             }
         }
@@ -623,6 +634,15 @@ namespace Sistema_de_Gerenciamento.Forms
         private void txtCodigoDeBarras_Enter(object sender, EventArgs e)
         {
             txtCPF.UseSystemPasswordChar = true;
+        }
+
+        private void txtInserirQuant_Enter(object sender, EventArgs e)
+        {
+        }
+
+        private void txtInserirQuant_Leave(object sender, EventArgs e)
+        {
+            txtCodigoDeBarras.Focus();
         }
     }
 }

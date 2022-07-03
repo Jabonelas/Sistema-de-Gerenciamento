@@ -57,7 +57,6 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        ////////////////////////////////////////////////////////////////////////
         private void txtUsuario_KeyUp(object sender, KeyEventArgs e)
         {
             txtUsuario.CharacterCasing = CharacterCasing.Upper;
@@ -67,6 +66,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtSenha_KeyUp(object sender, KeyEventArgs e)
         {
+            txtSenha.UseSystemPasswordChar = true;
+
             ManipulacaoTextBox.DigitoValidoParaSenha(e);
         }
     }

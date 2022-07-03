@@ -9,14 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DGVPrinterHelper;
+using Sistema_de_Gerenciamento.Forms;
 
 namespace Sistema_de_Gerenciamento
 {
     public partial class Forms_PesquisarProduto : Form
     {
+        private BuscarNoBanco Buscar = new BuscarNoBanco();
+
         private Forms_CadastroProduto cadastroProduto;
 
-        private BuscarNoBanco Buscar = new BuscarNoBanco();
+        private Forms_TelaPDV telaPDV;
 
         public Forms_PesquisarProduto(Forms_CadastroProduto _cadastroProduto)
         {
@@ -27,7 +30,25 @@ namespace Sistema_de_Gerenciamento
             PreencherComboBoxGrupo();
         }
 
-        #region Preencher ComboBox Grupo
+        public Forms_PesquisarProduto(Forms_TelaPDV _telaPDV)
+        {
+            InitializeComponent();
+
+            telaPDV = _telaPDV;
+
+            PreencherComboBoxGrupo();
+
+            LayoutPesquisarProdutosTelaPDV();
+        }
+
+        private void LayoutPesquisarProdutosTelaPDV()
+        {
+            btnImprimir.Visible = false;
+            btnExportar.Visible = false;
+            btnSelecionar.Visible = false;
+            btnFechar.Location = new Point(343, 437);
+            btnFechar.TabIndex = 7;
+        }
 
         private void PreencherComboBoxGrupo()
 
@@ -41,8 +62,6 @@ namespace Sistema_de_Gerenciamento
             listaGrupo.ForEach(prod => cmbGrupo.Items.Add(prod.grupo));
         }
 
-        #endregion Preencher ComboBox Grupo
-
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
             SelecaoGridViewPreencherTextBox();
@@ -52,8 +71,6 @@ namespace Sistema_de_Gerenciamento
         {
             SelecaoGridViewPreencherTextBox();
         }
-
-        #region Selecionar Linha No Gridview Para Preencher TextBox na Tela De Cadastro de Produto
 
         private void SelecaoGridViewPreencherTextBox()
         {
@@ -103,14 +120,10 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Selecionar Linha No Gridview Para Preencher TextBox na Tela De Cadastro de Produto
-
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             PesquisarProduto();
         }
-
-        #region Pesquisar Produto
 
         private void PesquisarProduto()
         {
@@ -166,8 +179,6 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Pesquisar Produto
-
         private void btnFechar_Click_1(object sender, EventArgs e)
         {
             this.Close();
@@ -193,8 +204,6 @@ namespace Sistema_de_Gerenciamento
             PreencherComboBoxSubGrupo();
         }
 
-        #region Preencher ComboBox Sug-Grupo
-
         private void PreencherComboBoxSubGrupo()
         {
             List<DadosSubGrupoMaterial> ListaSubGrupo = new List<DadosSubGrupoMaterial>();
@@ -206,26 +215,26 @@ namespace Sistema_de_Gerenciamento
             ListaSubGrupo.ForEach(grupoProduto => cmbSubGrupo.Items.Add(grupoProduto.sub_grupo));
         }
 
-        #endregion Preencher ComboBox Sug-Grupo
-
-        private void cmbSubGrupo_Enter(object sender, EventArgs e)
+        private void cmbSubGrupo_SelectedIndexChanged(object sender, EventArgs e)
         {
             VerificarPreencimentoComboBoxGrupo();
         }
 
-        #region Vrificar Preechimento do ComboBox Grupo
-
         private void VerificarPreencimentoComboBoxGrupo()
         {
-            if (cmbGrupo.Text == string.Empty)
+            int cont = 0;
+
+            if (cmbGrupo.Text == string.Empty && cont == 0 && cmbSubGrupo.Text != String.Empty)
             {
+                cmbGrupo.Focus();
+
+                cmbSubGrupo.Text = string.Empty;
+
                 MessageBox.Show("Por Favor Preencha Primeiro O Campo Grupo!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                cmbGrupo.Focus();
+                cont++;
             }
         }
-
-        #endregion Vrificar Preechimento do ComboBox Grupo
 
         private void txtDescicao_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -235,6 +244,16 @@ namespace Sistema_de_Gerenciamento
         private void txtMarca_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void gdvPesquisarProduto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                telaPDV.txtCodigoProduto.Text = gdvPesquisarProduto.SelectedCells[1].Value.ToString();
+
+                this.Close();
+            }
         }
     }
 }
