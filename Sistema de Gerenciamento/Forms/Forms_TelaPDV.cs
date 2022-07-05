@@ -132,13 +132,47 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     FormatoTelaPagamento("Pagamento");
 
-                    //depois ve se ainda esta bugado
                     txtValorDinheiro.Visible = false;
                     lblTituloValorParcela.Visible = false;
-
                     cmbFormaPagamento.Focus();
                     lblDescricaoItem.Text = "PAGAMENTO";
                     lblUnidade.Text = String.Empty;
+                }
+            }
+
+            if (e.KeyCode == Keys.F8) // Excluir Venda F8
+            {
+                if (gdvPDV.Rows.Count > 0)
+                {
+                    if (Global.tipoDeUsuario == "ADMIN")
+                    {
+                        NovaVenda();
+                    }
+                    else
+                    {
+                        Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "");
+                        controleADMIN.ShowDialog();
+                    }
+                }
+            }
+
+            if (e.KeyCode == Keys.F9) // Devolução / Troca F9
+            {
+                if (gdvPDV.Rows.Count <= 0)
+                {
+                    if (Global.tipoDeUsuario == "ADMIN")
+                    {
+                        Forms_TelaDevolucaoTroca telaDevolucaoTroca = new Forms_TelaDevolucaoTroca();
+                        telaDevolucaoTroca.ShowDialog();
+                    }
+                    else
+                    {
+                        Forms_TelaDevolucaoTroca telaDevolucaoTroca = new Forms_TelaDevolucaoTroca();
+                        telaDevolucaoTroca.ShowDialog();
+
+                        //Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "");
+                        //controleADMIN.ShowDialog();
+                    }
                 }
             }
 
@@ -161,18 +195,24 @@ namespace Sistema_de_Gerenciamento.Forms
 
         public void NovaVenda()
         {
-            //if (gdvPDV.Rows.Count <= 0)
-            //{
-            //pcbPDV.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\png-transparent-logo-pharmacy-pills-miscellaneous-trademark-pharmaceutical-drug.png");
+            LayoutTipoPagamentoCredito(false);
 
-            //pcbPDV.Image = Buscar.BuscarLogoEmpresa(1);
-
-            cmbFormaPagamento.Text = String.Empty;
             gdvPDV.Rows.Clear();
+
+            FormatoTelaPagamento("Cancelamento");
+
+            cmbFormaPagamento.SelectedIndex = -1;
+            lblValorDesconto.Text = "R$ 0,00";
+            lblTituloFormaPagamento.Text = "PAGAMENTO";
+            lblValorDebito.Text = "R$ 0,00";
+            txtCPF.Text = "-";
+            txtCPF.ReadOnly = false;
+            txtCPF.Enabled = false;
+            lblValorTotal.Text = "R$ 0,00";
+            lblNomeCliente.Text = "CLIENTE";
             lblSubtotal.Text = "R$ 0,00";
             lblTroco.Text = "R$ 0,00";
             lblTotalRecebido.Text = "R$ 0,00";
-            txtCPF.Text = "-";
             txtCodigoProduto.Text = "-";
             lblTotaldoItem.Text = "R$ 0,00";
             lblValorUnitario.Text = "R$ 0,00";
@@ -180,13 +220,11 @@ namespace Sistema_de_Gerenciamento.Forms
             lblFachada.Location = new Point(97, -9);
             lblFachada.Text = "CAIXA DISPONÍVEL";
             txtCPF.UseSystemPasswordChar = false;
-            FormatoTelaPagamento("Cancelamento");
             txtCodigoDeBarras.Focus();
             lblDescricaoItem.Text = "DESCRIÇÃO DO ITEM";
             lblUnidade.Text = "UN";
-            pcbPDV.Image = Buscar.BuscarLogoEmpresa(1);
 
-            //}
+            pcbPDV.Image = Buscar.BuscarLogoEmpresa(1);
         }
 
         private void FormatoTelaPagamento(string _verificar)
@@ -518,6 +556,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
                 txtValorDinheiro.Visible = false;
 
+                lblValorParcela.Text = lblSubtotal.Text;
+
                 lblTituloFormaPagamento.Text = "CRÉDITO";
 
                 lblValorDesconto.Text = "R$ 0,00";
@@ -653,6 +693,14 @@ namespace Sistema_de_Gerenciamento.Forms
         private void txtInserirQuant_Leave(object sender, EventArgs e)
         {
             txtCodigoDeBarras.Focus();
+        }
+
+        private void label24_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void pnlpagamento2_Click(object sender, EventArgs e)
+        {
         }
     }
 }
