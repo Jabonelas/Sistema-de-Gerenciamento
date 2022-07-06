@@ -607,5 +607,48 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Despesa Custos Fixo Repeticao
+
+        public void NotaFiscalSaida(
+            string _cpfCpnjCliente,
+            int _numeroNF,
+            int _codigoProduto,
+            string _descricao,
+            decimal _quantidade,
+             decimal _valorTotal,
+             DateTime _emissao,
+             int _codigoBarras,
+             string _vendedor,
+             DateTime _prazo)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "insert into tb_NotaFiscalSaida " +
+                        "(ns_cpf_cpnj_cliente, ns_numero_nf,ns_codigo_produto, ns_descricao, ns_quantidade, ns_valor_total," +
+                        "ns_emissao, ns_codigo_barras, ns_vendedor, ns_prazo) " +
+                        "values(  @cpfCpnjCliente, @numeroNF, @codigoProduto, @descricao, @quantidade, " +
+                        "@valorTotal, @emissao, @codigoBarras, @vendedor, @prazo)";
+
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+                    cmd.Parameters.AddWithValue("@cpfCpnjCliente", _cpfCpnjCliente);
+                    cmd.Parameters.AddWithValue("@numeroNF", _numeroNF);
+                    cmd.Parameters.AddWithValue("@codigoProduto", _codigoProduto);
+                    cmd.Parameters.AddWithValue("@descricao", _descricao);
+                    cmd.Parameters.AddWithValue("@valorTotal", _valorTotal);
+                    cmd.Parameters.AddWithValue("@quantidade", _quantidade);
+                    cmd.Parameters.AddWithValue("@emissao", _emissao);
+                    cmd.Parameters.AddWithValue("@codigoBarras", _codigoBarras);
+                    cmd.Parameters.AddWithValue("@vendedor", _vendedor);
+                    cmd.Parameters.AddWithValue("@prazo", _prazo);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAdicionarNotaFiscalSaidaNoBanco(ex);
+            }
+        }
     }
 }

@@ -16,6 +16,8 @@ namespace Sistema_de_Gerenciamento.Forms
     {
         private BuscarNoBanco Buscar = new BuscarNoBanco();
 
+        private AdicionarNoBanco Salvar = new AdicionarNoBanco();
+
         private MensagensErro Erro = new MensagensErro();
 
         private List<DadosProduto> listaProduto = new List<DadosProduto>();
@@ -41,6 +43,8 @@ namespace Sistema_de_Gerenciamento.Forms
             listaFinanceiro = Buscar.BuscarFinanceiro();
 
             pcbPDV.Image = Buscar.BuscarLogoEmpresa(1);
+
+            txtVendedor.Text = Global.tipoDeUsuario;
 
             //this.Height = Screen.PrimaryScreen.Bounds.Height;
 
@@ -176,6 +180,41 @@ namespace Sistema_de_Gerenciamento.Forms
                 }
             }
 
+            if (e.KeyCode == Keys.F10) // Finalizar Venda F10
+            {
+                DialogResult OpcaoDoUsuario = new DialogResult();
+                OpcaoDoUsuario = MessageBox.Show("Deseja Finalzar a Venda?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (OpcaoDoUsuario == DialogResult.Yes)
+                {
+                    lblDescricaoItem.Text = "Nº NOTA FISCAL:";
+                    lblNumeroNotaFiscalSaida.Visible = true;
+                    lblNumeroNotaFiscalSaida.Text = "11111111";
+
+                    for (int i = 0; i < gdvPDV.RowCount; i++)
+                    {
+                        //MessageBox.Show(gdvPDV.Rows[i].Cells[1].Value.ToString());
+
+                        //MessageBox.Show($"codigo produto { (gdvPDV.Rows[i].Cells[0].Value.ToString())}");
+                        //MessageBox.Show($"descricao { (gdvPDV.Rows[i].Cells[1].Value.ToString())}");
+                        //MessageBox.Show($"quantidade { (gdvPDV.Rows[i].Cells[2].Value.ToString())}");
+                        //MessageBox.Show($"valor total { (gdvPDV.Rows[i].Cells[4].Value.ToString())}");
+                        //MessageBox.Show($"codigo de barras { (gdvPDV.Rows[i].Cells[6].Value.ToString())}");
+
+                        Salvar.NotaFiscalSaida(
+                            txtCPF.Text,
+                            Convert.ToInt32(lblNumeroNotaFiscalSaida.Text),
+                        Convert.ToInt32(gdvPDV.Rows[i].Cells[0].Value),
+                        gdvPDV.Rows[i].Cells[1].Value.ToString(),
+                        Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value),
+                        Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value),
+                        DateTime.Today,
+                        Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value),
+                        txtVendedor.Text,
+                        Convert.ToDateTime(txtPrazo.Text));
+                    }
+                }
+            }
+
             if (e.KeyCode == Keys.F12) // Cancelar Compra F12
             {
                 if (gdvPDV.Rows.Count > 0)
@@ -201,6 +240,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             FormatoTelaPagamento("Cancelamento");
 
+            lblNumeroNotaFiscalSaida.Visible = false;
             cmbFormaPagamento.SelectedIndex = -1;
             lblValorDesconto.Text = "R$ 0,00";
             lblTituloFormaPagamento.Text = "PAGAMENTO";
@@ -693,14 +733,6 @@ namespace Sistema_de_Gerenciamento.Forms
         private void txtInserirQuant_Leave(object sender, EventArgs e)
         {
             txtCodigoDeBarras.Focus();
-        }
-
-        private void label24_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void pnlpagamento2_Click(object sender, EventArgs e)
-        {
         }
     }
 }

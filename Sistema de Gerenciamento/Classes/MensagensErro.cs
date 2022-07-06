@@ -322,6 +322,15 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Estoque Produto
 
+        #region Nota Fiscal Saida
+
+        public void ErroAoAdicionarNotaFiscalSaidaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(INS-NFS01) Erro ao Inserir Nota Fiscal Saida \n\nErro: {_e}", "Erro Inserir Nota Fiscal Saida!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Nota Fiscal Saida
+
         #endregion Inserir No Banco
 
         #region Atualizacao Do Banco

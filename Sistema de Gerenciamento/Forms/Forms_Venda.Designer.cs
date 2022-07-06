@@ -1107,7 +1107,7 @@
             this.txtValorTotalCredito.SelectionLength = 0;
             this.txtValorTotalCredito.SelectionStart = 0;
             this.txtValorTotalCredito.ShortcutsEnabled = false;
-            this.txtValorTotalCredito.Size = new System.Drawing.Size(145, 36);
+            this.txtValorTotalCredito.Size = new System.Drawing.Size(145, 28);
             this.txtValorTotalCredito.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.txtValorTotalCredito.TabIndex = 215;
             this.txtValorTotalCredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1257,7 +1257,7 @@
             this.txtValorParcelaCredito.SelectionLength = 0;
             this.txtValorParcelaCredito.SelectionStart = 0;
             this.txtValorParcelaCredito.ShortcutsEnabled = false;
-            this.txtValorParcelaCredito.Size = new System.Drawing.Size(145, 36);
+            this.txtValorParcelaCredito.Size = new System.Drawing.Size(145, 28);
             this.txtValorParcelaCredito.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.txtValorParcelaCredito.TabIndex = 208;
             this.txtValorParcelaCredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -2766,7 +2766,7 @@
             this.txtJurosCredito.SelectionLength = 0;
             this.txtJurosCredito.SelectionStart = 0;
             this.txtJurosCredito.ShortcutsEnabled = false;
-            this.txtJurosCredito.Size = new System.Drawing.Size(145, 36);
+            this.txtJurosCredito.Size = new System.Drawing.Size(145, 28);
             this.txtJurosCredito.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.txtJurosCredito.TabIndex = 243;
             this.txtJurosCredito.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
