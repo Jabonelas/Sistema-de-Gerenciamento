@@ -2577,11 +2577,12 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Numero de Nota Fiscal de Saida
 
-        public string ContarNFSaidaGerando()
+        public string BuscarUltimaNotaFiscalSaida()
         {
             using (SqlConnection conexaoSQL = AbrirConexao())
             {
-                string query = "select NF_Saida from NF_Saida where NF_Saida = (select max(NF_Saida) from NF_Saida)";
+                string query = "select ns_numero_nf from tb_NotaFiscalSaida " +
+                    "where ns_numero_nf = (select max(ns_numero_nf) from tb_NotaFiscalSaida)";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
                 SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
@@ -3009,6 +3010,8 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Cliente Tela PDV
 
+        #region Buscar Produto Por Codigo
+
         public bool BuscarProdutoPorCodigo(int _codigoProduto)
         {
             try
@@ -3041,6 +3044,79 @@ namespace Sistema_de_Gerenciamento.Classes
 
                 return false;
             }
+        }
+
+        #endregion Buscar Produto Por Codigo
+
+        public void BuscarVendaPorNotaFiscalSaida(int _notaFiscalSaida, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * from tb_NotaFiscalSaida where ns_numero_nf = @numeroNotaFiscalSaida";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.AddWithValue("@numeroNotaFiscalSaida", _notaFiscalSaida);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    //if (reader.HasRows == true)
+                    //{
+                    //    return true;
+                    //}
+                    //else
+                    //{
+                    //    return false;
+                    //}
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarNotaFiscalSaidaNoBanco(ex);
+            }
+        }
+
+        public List<DadosNotaFiscalSaida> ListaNotaFiscalSaida(int _numeroNotaFiscalSaida)
+        {
+            List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidas = new List<DadosNotaFiscalSaida>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ns_vendedor, ns_garantia, ns_nome_cliente, ns_codigo_barras " +
+                        "from tb_NotaFiscalSaida where ns_numero_nf = @numeroNotaFiscalSaida ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@numeroNotaFiscalSaida", _numeroNotaFiscalSaida);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaDadosNotaFiscalSaidas.Add(new DadosNotaFiscalSaida(dr.GetString(0), dr.GetDateTime(1),
+                            dr.GetString(2), dr.GetInt32(3)));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarListaNotaFiscalSaidaNoBanco(ex);
+            }
+            return listaDadosNotaFiscalSaidas;
         }
     }
 }

@@ -221,7 +221,7 @@ namespace Sistema_de_Gerenciamento.Forms
                         OpcaoDoUsuario = MessageBox.Show("Deseja Realmente Excluir a Nota Fiscal?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                         if (OpcaoDoUsuario == DialogResult.Yes)
                         {
-                            Atualizar.AtualizarQuantidadeCanceladaEstoqueProduto(Convert.ToInt32(txtNumeroNotaFiscal.Text));
+                            Atualizar.AtualizarQuantidadeEstoqueProdutoNotaFiscalEntradaCancelada(Convert.ToInt32(txtNumeroNotaFiscal.Text));
 
                             Atualizar.AtualizarDataLancamentoNotaFiscalEntradaQuandoCancelada(Convert.ToInt32(txtNumeroNotaFiscal.Text));
 

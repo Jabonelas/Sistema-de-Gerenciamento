@@ -19,7 +19,7 @@ namespace Sistema_de_Gerenciamento
 
         private Forms_CadastroProduto cadastroProduto;
 
-        private Forms_TelaPDV telaPDV;
+        private Forms_PDV telaPDV;
 
         public Forms_PesquisarProduto(Forms_CadastroProduto _cadastroProduto)
         {
@@ -30,7 +30,7 @@ namespace Sistema_de_Gerenciamento
             PreencherComboBoxGrupo();
         }
 
-        public Forms_PesquisarProduto(Forms_TelaPDV _telaPDV)
+        public Forms_PesquisarProduto(Forms_PDV _telaPDV)
         {
             InitializeComponent();
 

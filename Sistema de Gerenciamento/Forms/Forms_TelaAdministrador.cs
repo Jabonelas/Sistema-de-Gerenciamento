@@ -228,7 +228,7 @@ namespace Sistema_de_Gerenciamento
 
         private void btnPDV_Click(object sender, EventArgs e)
         {
-            Forms_TelaPDV telaPdv = new Forms_TelaPDV();
+            Forms_PDV telaPdv = new Forms_PDV();
             telaPdv.ShowDialog();
         }
     }

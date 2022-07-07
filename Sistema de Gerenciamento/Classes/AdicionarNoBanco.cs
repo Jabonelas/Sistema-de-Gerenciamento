@@ -614,33 +614,47 @@ namespace Sistema_de_Gerenciamento
             int _codigoProduto,
             string _descricao,
             decimal _quantidade,
-             decimal _valorTotal,
+             decimal _valorUnitario,
              DateTime _emissao,
              int _codigoBarras,
              string _vendedor,
-             DateTime _prazo)
+             DateTime _garantia,
+             string _nomeCliente,
+             string _tipoPagamento,
+             decimal _valorDesconto,
+             int _quantidadeParcelas,
+             decimal _valorJuros,
+             decimal _valorPago)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "insert into tb_NotaFiscalSaida " +
-                        "(ns_cpf_cpnj_cliente, ns_numero_nf,ns_codigo_produto, ns_descricao, ns_quantidade, ns_valor_total," +
-                        "ns_emissao, ns_codigo_barras, ns_vendedor, ns_prazo) " +
+                        "(ns_cpf_cpnj_cliente, ns_numero_nf,ns_codigo_produto, ns_descricao, ns_quantidade, ns_valor_unitario," +
+                        "ns_emissao, ns_codigo_barras, ns_vendedor, ns_garantia,ns_nome_cliente, ns_tipo_pagamento,ns_valor_desconto," +
+                        "ns_quantidade_parcelas,ns_valor_juros,ns_valor_pago) " +
                         "values(  @cpfCpnjCliente, @numeroNF, @codigoProduto, @descricao, @quantidade, " +
-                        "@valorTotal, @emissao, @codigoBarras, @vendedor, @prazo)";
+                        "@valorUnitario, @emissao, @codigoBarras, @vendedor, @garantia, @nomeCliente, @tipoPagamento,@valorDesconto,@quantidadeParcelas," +
+                        "@valorJuros,@valorPago)";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
                     cmd.Parameters.AddWithValue("@cpfCpnjCliente", _cpfCpnjCliente);
                     cmd.Parameters.AddWithValue("@numeroNF", _numeroNF);
                     cmd.Parameters.AddWithValue("@codigoProduto", _codigoProduto);
                     cmd.Parameters.AddWithValue("@descricao", _descricao);
-                    cmd.Parameters.AddWithValue("@valorTotal", _valorTotal);
+                    cmd.Parameters.AddWithValue("@valorUnitario", _valorUnitario);
                     cmd.Parameters.AddWithValue("@quantidade", _quantidade);
                     cmd.Parameters.AddWithValue("@emissao", _emissao);
                     cmd.Parameters.AddWithValue("@codigoBarras", _codigoBarras);
                     cmd.Parameters.AddWithValue("@vendedor", _vendedor);
-                    cmd.Parameters.AddWithValue("@prazo", _prazo);
+                    cmd.Parameters.AddWithValue("@garantia", _garantia);
+                    cmd.Parameters.AddWithValue("@nomeCliente", _nomeCliente);
+                    cmd.Parameters.AddWithValue("@tipoPagamento", _tipoPagamento);
+                    cmd.Parameters.AddWithValue("@valorDesconto", _valorDesconto);
+                    cmd.Parameters.AddWithValue("@quantidadeParcelas", _quantidadeParcelas);
+                    cmd.Parameters.AddWithValue("@valorJuros", _valorJuros);
+                    cmd.Parameters.AddWithValue("@valorPago", _valorPago);
 
                     cmd.ExecuteNonQuery();
                 }

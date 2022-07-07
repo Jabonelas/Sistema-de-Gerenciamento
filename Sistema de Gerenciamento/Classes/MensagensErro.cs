@@ -411,14 +411,24 @@ namespace Sistema_de_Gerenciamento
 
         #region Estoque Produto
 
-        public void ErroAoAtualizarQuantidadeEstoqueProdutoNoBanco(Exception _e)
+        public void ErroAoAtualizarQuantidadeDataEntradaEstoqueProdutoNoBanco(Exception _e)
         {
             MessageBox.Show($"(ATU-EP01) Erro ao Atualizar Quantidade de Estoque! \n\nErro: {_e}", "Erro Atualizacao Quantidade Estoque!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoAtualizarQuantidadeCanceladaEstoqueProdutoNoBanco(Exception _e)
+        public void ErroAoAtualizarQuantidadeEstoqueProdutoNotaFiscalEntradaCanceladaNoBanco(Exception _e)
         {
             MessageBox.Show($"(ATU-EP02) Erro ao Atualizar Quantidade de Estoque! \n\nErro: {_e}", "Erro Atualizacao Quantidade Estoque!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAtualizarQuantidadeEstoqueProdutoPosVendaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-EP03) Erro ao Atualizar Quantidade de Estoque Pós Venda! \n\nErro: {_e}", "Erro Atualizacao Quantidade Estoque Pós Venda!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoAtualizarCodigoBarrasEstoqueProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-EP04) Erro ao Atualizar Codigo de Barras de Produto! \n\nErro: {_e}", "Erro Atualizacao Codigo de Barras de Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Estoque Produto
@@ -860,6 +870,20 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Buscar Cliente Tela PDV
+
+        #region Buscar Nota Fiscal Saida
+
+        public void ErroAoBuscarNotaFiscalSaidaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-NFSV01) Erro ao Realizar Busca Nota Fiscal Saida \n\nErro: {_e}", "Erro Busca Nota Fiscal Saida!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarListaNotaFiscalSaidaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-NFSV02) Erro ao Realizar Busca Lista Nota Fiscal Saida \n\nErro: {_e}", "Erro Busca Lista Nota Fiscal Saida!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Buscar Nota Fiscal Saida
 
         #endregion Buscar No Banco
 

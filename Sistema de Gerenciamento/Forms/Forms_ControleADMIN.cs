@@ -15,17 +15,19 @@ namespace Sistema_de_Gerenciamento.Forms
     {
         private BuscarNoBanco Buscar = new BuscarNoBanco();
 
-        private Forms_TelaPDV telaPDV;
+        private Forms_PDV telaPDV;
 
         private Forms_CadastroCliente cadastroCliente;
 
         private string tipo = "";
 
-        public Forms_ControleADMIN(Forms_TelaPDV _telaPDV, string _tipo)
+        public Forms_ControleADMIN(Forms_PDV _telaPDV, string _tipo)
         {
             InitializeComponent();
 
             telaPDV = _telaPDV;
+
+            tipo = _tipo;
 
             pcbEmpresa.Image = Buscar.BuscarLogoEmpresa(Convert.ToInt32(lblce_id.Text));
         }

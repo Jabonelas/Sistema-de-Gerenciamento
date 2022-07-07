@@ -436,13 +436,13 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoAtualizarQuantidadeEstoqueProdutoNoBanco(ex);
+                Erro.ErroAoAtualizarQuantidadeDataEntradaEstoqueProdutoNoBanco(ex);
             }
         }
 
         #region Atualizar Estoque Produto Quando a Nota Fiscal De Entrada É Cancelada
 
-        public void AtualizarQuantidadeCanceladaEstoqueProduto(int _numeroNF)
+        public void AtualizarQuantidadeEstoqueProdutoNotaFiscalEntradaCancelada(int _numeroNF)
         {
             try
             {
@@ -459,7 +459,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoAtualizarQuantidadeCanceladaEstoqueProdutoNoBanco(ex);
+                Erro.ErroAoAtualizarQuantidadeEstoqueProdutoNotaFiscalEntradaCanceladaNoBanco(ex);
             }
         }
 
@@ -487,7 +487,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoAtualizarQuantidadeEstoqueProdutoNoBanco(ex);
+                Erro.ErroAoAtualizarCodigoBarrasEstoqueProdutoNoBanco(ex);
             }
         }
 
@@ -830,5 +830,31 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Atualizar Codigo de Despesa e Custos Fixo com Repeticao
+
+        #region Atualizar Quantidade Estoque Depois da Venda
+
+        public void AtualizarQuantidadeEstoquePosVenda(decimal _quantidade, int _codigoBarras)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_EstoqueProduto set ep_quantidade = (ep_quantidade - @quantidade ) " +
+                        "where ep_codigo_barras = @codigoBarras";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@quantidade", _quantidade);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigoBarras", _codigoBarras);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarQuantidadeEstoqueProdutoPosVendaNoBanco(ex);
+            }
+        }
+
+        #endregion Atualizar Quantidade Estoque Depois da Venda
     }
 }
