@@ -16,12 +16,29 @@ namespace Sistema_de_Gerenciamento.Classes
 
         public int codigoBarras { get; set; }
 
-        public DadosNotaFiscalSaida(string _vendedor, DateTime _validadeTroca, string _nomeCliente, int _codigoBarras)
+        public int codigoProduto { get; set; }
+
+        public string descricao { get; set; }
+
+        public decimal quantidade { get; set; }
+
+        public string unidade { get; set; }
+
+        public decimal preco { get; set; }
+
+        public DadosNotaFiscalSaida(string _vendedor, DateTime _validadeTroca, string _nomeCliente,
+            int _codigoBarras, int _codigoProduto, string _descricao, decimal _quantidade, string _unidade,
+            decimal _preco)
         {
-            this.vendedor = _vendedor;
-            this.ValidadeTroca = _validadeTroca;
-            this.nomeCliente = _nomeCliente;
-            this.codigoBarras = _codigoBarras;
+            vendedor = _vendedor;
+            ValidadeTroca = _validadeTroca;
+            nomeCliente = _nomeCliente;
+            codigoBarras = _codigoBarras;
+            codigoProduto = _codigoProduto;
+            descricao = _descricao;
+            quantidade = _quantidade;
+            unidade = _unidade;
+            preco = _preco;
         }
     }
 }

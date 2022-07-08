@@ -192,7 +192,7 @@ namespace Sistema_de_Gerenciamento.Forms
                         lblNumeroNotaFiscalSaida.Text = Buscar.BuscarUltimaNotaFiscalSaida();
                         //lblNumeroNotaFiscalSaida.Text = "1";
 
-                        txtVendedor.Text = "israel";
+                        //txtVendedor.Text = "israel";
                         //txtDataAtual.Text = DateTime.Today.ToShortDateString();
 
                         lblDescricaoItem.Text = "Nº NOTA FISCAL:";
@@ -255,7 +255,8 @@ namespace Sistema_de_Gerenciamento.Forms
                             Convert.ToDecimal(lblValorDescontoCadaItem.Text),
                             Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
                             Convert.ToDecimal(lblJurosCadaItem.Text),
-                            Convert.ToDecimal(lblValorPagoCadaItem.Text));
+                            Convert.ToDecimal(lblValorPagoCadaItem.Text),
+                            gdvPDV.Rows[i].Cells[7].Value.ToString());
 
                             pnlVendaFinalizada.Visible = true;
 
@@ -367,7 +368,7 @@ namespace Sistema_de_Gerenciamento.Forms
             pnlFinalizarPagamento1.Visible = retorno;
         }
 
-        private void txtcodigoBarras(object sender, EventArgs e)
+        private void PreencherDados(object sender, EventArgs e)
         {
             if (cont <= 0)
             {
@@ -447,7 +448,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             var rows = new List<string[]>();
             string[] row1 = new string[] { txtCodigo.Text, txtDescricao.Text, txtInserirQuant.Text,
-                lblValorUnitario.Text, lblTotaldoItem.Text,txtDesconto.Text,txtCodigoDeBarras.Text};
+                lblValorUnitario.Text, lblTotaldoItem.Text,txtDesconto.Text,txtCodigoDeBarras.Text,txtUnidade.Text};
             rows.Add(row1);
 
             foreach (string[] item in rows)
@@ -475,6 +476,7 @@ namespace Sistema_de_Gerenciamento.Forms
                         lblUnidade.Text = produto.unidade;
                         lblValorUnitario.Text = string.Format("{0:C}", (produto.preco - (produto.desconto * produto.preco / 100)));
                         lblTotaldoItem.Text = string.Format("{0:C}", Convert.ToDecimal(txtInserirQuant.Text) * (produto.preco - (produto.desconto * produto.preco / 100)));
+                        txtUnidade.Text = produto.unidade;
 
                         string desconto = ((produto.desconto / 100) > 0) ? string.Format("{0:P}", produto.desconto / 100) : "Sem Desconto";
 
@@ -779,7 +781,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtCodigoDeBarras_TextChange(object sender, EventArgs e)
         {
-            txtcodigoBarras(sender, e);
+            PreencherDados(sender, e);
         }
 
         private void txtCodigoDeBarras_Enter(object sender, EventArgs e)
@@ -790,6 +792,28 @@ namespace Sistema_de_Gerenciamento.Forms
         private void txtInserirQuant_Leave(object sender, EventArgs e)
         {
             txtCodigoDeBarras.Focus();
+        }
+
+        private void cmbFormaPagamento_Layout(object sender, LayoutEventArgs e)
+        {
+            if (cmbFormaPagamento.Text == "CRÉDITO")
+            {
+                cmbParcelas.Focus();
+            }
+            else if (cmbFormaPagamento.Text == "DINHEIRO")
+            {
+                txtValorDinheiro.Focus();
+            }
+        }
+
+        private void txtCodigoProduto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
+
+        private void txtInserirQuant_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
         }
     }
 }

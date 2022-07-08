@@ -138,6 +138,9 @@
   <metadata name="codigoBarras.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="unidade.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pnlDinheiro.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -388,6 +391,14 @@
         AEIpmxelNnZLTJHiviw7EPC4rW6jdp3ZZInn6tkBgUdqnIjstGZzU8YmO27a/t/04MCjEO/ZbPzoe5fE
         Y/M4aHYywMMUnyvEz03sdVbzf4mDxsFjwSg7OeBhiKKJ12Ru/DaqVsZbraMoHx9/wsNwOZEYS6Ydjstl
         fjcTj8fiJMOqhIB7If66wuraPRsOy+UsInIf8+TJf0LIYDaBj6opAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="txtUnidade.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAE8AAAAiCAYAAAAeXoQCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACCSURBVGhD7dCxCQMxAARB9V+VHpXhMlyAH4ESZ29vOguX
+        XDhDsbXWa875sWfbXodujH3oedvr0MH7NXgheCF4IXgheCF4IXgheCF4IXgheCF4IXgheCF4IXgheCF4
+        IXgheCF4IXgheCF4IXgheCF4IXihL7zrut77sGfbXodO/zXGDflSvWb8PiPCAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="bunifuPanel2.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

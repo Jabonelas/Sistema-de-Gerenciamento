@@ -189,6 +189,7 @@
             this.txtSenha.TextPlaceholder = "";
             this.txtSenha.UseSystemPasswordChar = false;
             this.txtSenha.WordWrap = true;
+            this.txtSenha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSenha_KeyPress);
             this.txtSenha.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSenha_KeyUp);
             // 
             // btnCancelar
@@ -444,6 +445,7 @@
             this.txtUsuario.TextPlaceholder = "";
             this.txtUsuario.UseSystemPasswordChar = false;
             this.txtUsuario.WordWrap = true;
+            this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             this.txtUsuario.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtUsuario_KeyUp);
             // 
             // Forms_Login

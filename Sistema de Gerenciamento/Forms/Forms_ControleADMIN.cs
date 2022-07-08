@@ -76,14 +76,19 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             txtUsuario.CharacterCasing = CharacterCasing.Upper;
 
-            ManipulacaoTextBox.DigitoFoiLetrasOuNumerosParaUsuario(e);
+            //ManipulacaoTextBox.DigitoFoiLetrasOuNumerosParaUsuario(e);
         }
 
         private void txtSenha_KeyUp(object sender, KeyEventArgs e)
         {
             txtSenha.UseSystemPasswordChar = true;
 
-            ManipulacaoTextBox.DigitoValidoParaSenha(e);
+            //ManipulacaoTextBox.DigitoValidoParaSenha(e);
+        }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
         }
     }
 }

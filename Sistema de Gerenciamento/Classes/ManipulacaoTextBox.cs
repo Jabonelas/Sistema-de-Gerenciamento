@@ -435,16 +435,6 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Digitar Apenas Letras e Numeros
 
-        public static bool DigitoFoiLetrasOuNumerosParaUsuario(KeyEventArgs e)
-        {
-            if (!char.IsLetter((char)e.KeyValue) && e.KeyCode != Keys.Back && e.KeyCode != Keys.Escape && !char.IsLetter((char)e.KeyValue))
-            {
-                e.Handled = true;
-            }
-
-            return true;
-        }
-
         #region Formatar TextBox Email
 
         public static bool DigitoValidoParaEmail(KeyPressEventArgs e)
@@ -463,13 +453,13 @@ namespace Sistema_de_Gerenciamento
 
         #region Formatacao Para Senha
 
-        public static bool DigitoValidoParaSenha(KeyEventArgs e)
+        public static bool DigitoValidoParaSenha(KeyPressEventArgs e)
         {
-            if (!char.IsLetter((char)e.KeyValue) && e.KeyCode != (Keys)8 && e.KeyCode != (Keys)64
-                && !char.IsDigit((char)e.KeyCode) && e.KeyCode != (Keys)45 && e.KeyCode != (Keys)46 && e.KeyCode != (Keys)95
-                && e.KeyCode != (Keys)33 && e.KeyCode != (Keys)35 && e.KeyCode != (Keys)36 && e.KeyCode != (Keys)37
-                && e.KeyCode != (Keys)168 && e.KeyCode != (Keys)38 && e.KeyCode != (Keys)42 && e.KeyCode != (Keys)61
-                && e.KeyCode != (Keys)43)
+            if (!Char.IsLetter(e.KeyChar) && e.KeyChar != (char)8 && e.KeyChar != (char)64
+                && !Char.IsDigit(e.KeyChar) && e.KeyChar != (char)45 && e.KeyChar != (char)46 && e.KeyChar != (char)95
+                && e.KeyChar != (char)33 && e.KeyChar != (char)35 && e.KeyChar != (char)36 && e.KeyChar != (char)37
+                && e.KeyChar != (char)168 && e.KeyChar != (char)38 && e.KeyChar != (char)42 && e.KeyChar != (char)61
+                && e.KeyChar != (char)43)
             {
                 e.Handled = true;
             }

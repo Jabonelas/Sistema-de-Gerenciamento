@@ -156,8 +156,6 @@ namespace Sistema_de_Gerenciamento.Forms
             BuscarProduto();
         }
 
-        #region Buscar Produto e Preencher os TextBox Conforme a Busca
-
         private void BuscarProduto()
         {
             try
@@ -189,8 +187,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 Erro.ErroAoBuscarEstoqueProduto(ex);
             }
         }
-
-        #endregion Buscar Produto e Preencher os TextBox Conforme a Busca
 
         private void btnRemoverItem_Click(object sender, EventArgs e)
         {
@@ -322,8 +318,6 @@ namespace Sistema_de_Gerenciamento.Forms
             PagamentoAvistaSelecionado();
         }
 
-        #region Pagamento Avista Selecionado
-
         private void PagamentoAvistaSelecionado()
         {
             if (gdvVenda.RowCount > 0)
@@ -354,8 +348,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 }
             }
         }
-
-        #endregion Pagamento Avista Selecionado
 
         private void chbAvista_Click(object sender, EventArgs e)
         {
@@ -410,8 +402,6 @@ namespace Sistema_de_Gerenciamento.Forms
             VendaSelecionada();
         }
 
-        #region Venda Selecionada
-
         private void VendaSelecionada()
         {
             if (chbVenda.Checked == true)
@@ -456,8 +446,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 ManipulacaoTextBox.ApagandoTextBox(this);
             }
         }
-
-        #endregion Venda Selecionada
 
         private void chbOrcamento_Click(object sender, EventArgs e)
         {

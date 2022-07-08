@@ -103,15 +103,21 @@ namespace Sistema_de_Gerenciamento.Forms
         private void txtSenha_KeyUp(object sender, KeyEventArgs e)
         {
             txtSenha.UseSystemPasswordChar = true;
+        }
 
+        private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
+        {
             ManipulacaoTextBox.DigitoValidoParaSenha(e);
         }
 
         private void txtUsuario_KeyUp(object sender, KeyEventArgs e)
         {
             txtUsuario.CharacterCasing = CharacterCasing.Upper;
+        }
 
-            ManipulacaoTextBox.DigitoFoiLetrasOuNumerosParaUsuario(e);
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
         }
     }
 }

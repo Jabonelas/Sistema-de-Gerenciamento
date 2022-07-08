@@ -414,7 +414,7 @@
             this.txtSenha.TextPlaceholder = "";
             this.txtSenha.UseSystemPasswordChar = false;
             this.txtSenha.WordWrap = true;
-            this.txtSenha.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtSenha_KeyUp);
+            this.txtSenha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSenha_KeyPress);
             // 
             // label21
             // 
@@ -500,6 +500,7 @@
             this.txtUsuario.UseSystemPasswordChar = false;
             this.txtUsuario.WordWrap = true;
             this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
+            this.txtUsuario.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtUsuario_KeyUp);
             // 
             // label1
             // 

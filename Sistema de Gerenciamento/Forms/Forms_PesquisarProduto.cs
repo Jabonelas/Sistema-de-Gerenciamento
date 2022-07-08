@@ -255,5 +255,13 @@ namespace Sistema_de_Gerenciamento
                 this.Close();
             }
         }
+
+        private void Forms_PesquisarProduto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

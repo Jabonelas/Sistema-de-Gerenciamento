@@ -37,8 +37,6 @@ namespace Sistema_de_Gerenciamento
             SalvarUsuario();
         }
 
-        #region SalvarUsuario
-
         private void SalvarUsuario()
         {
             try
@@ -66,14 +64,10 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion SalvarUsuario
-
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             AlterarUsuario();
         }
-
-        #region Alterar Usuario
 
         private void AlterarUsuario()
         {
@@ -99,16 +93,17 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Alterar Usuario
+        private void txtUsuario_KeyUp(object sender, KeyEventArgs e)
+        {
+            txtUsuario.CharacterCasing = CharacterCasing.Upper;
+        }
 
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            txtUsuario.CharacterCasing = CharacterCasing.Upper;
-
             ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
         }
 
-        private void txtSenha_KeyUp(object sender, KeyEventArgs e)
+        private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoValidoParaSenha(e);
         }

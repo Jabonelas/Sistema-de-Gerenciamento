@@ -1143,9 +1143,11 @@
             this.Controls.Add(this.btnSelecionar);
             this.Controls.Add(this.bunifuGroupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.KeyPreview = true;
             this.Name = "Forms_PesquisarProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisar Produto";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_PesquisarProduto_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarProduto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1076,8 +1076,7 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query =
-                        "select ep_codigo_produto,ep_descricao,ep_quantidade,ep_unidade,ep_valor_unitario,ep_desconto_por_item,ep_codigo_barras " +
+                    string query = "select ep_codigo_produto,ep_descricao,ep_quantidade,ep_unidade,ep_valor_unitario,ep_desconto_por_item,ep_codigo_barras " +
                         "from tb_EstoqueProduto";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -3089,6 +3088,8 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
+        #region Lista Nota Fiscal Saida
+
         public List<DadosNotaFiscalSaida> ListaNotaFiscalSaida(int _numeroNotaFiscalSaida)
         {
             List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidas = new List<DadosNotaFiscalSaida>();
@@ -3097,7 +3098,8 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select ns_vendedor, ns_garantia, ns_nome_cliente, ns_codigo_barras " +
+                    string query = "select ns_vendedor, ns_garantia, ns_nome_cliente, ns_codigo_barras, ns_codigo_produto, " +
+                        "ns_descricao, ns_quantidade, ns_unidade, ns_valor_pago " +
                         "from tb_NotaFiscalSaida where ns_numero_nf = @numeroNotaFiscalSaida ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -3108,7 +3110,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     while (dr.Read())
                     {
                         listaDadosNotaFiscalSaidas.Add(new DadosNotaFiscalSaida(dr.GetString(0), dr.GetDateTime(1),
-                            dr.GetString(2), dr.GetInt32(3)));
+                            dr.GetString(2), dr.GetInt32(3), dr.GetInt32(4), dr.GetString(5), dr.GetDecimal(6), dr.GetString(7),
+                            dr.GetDecimal(8)));
                     }
                 }
             }
@@ -3118,5 +3121,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             return listaDadosNotaFiscalSaidas;
         }
+
+        #endregion Lista Nota Fiscal Saida
     }
 }
