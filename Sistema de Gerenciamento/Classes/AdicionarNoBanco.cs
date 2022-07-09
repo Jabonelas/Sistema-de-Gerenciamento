@@ -401,17 +401,24 @@ namespace Sistema_de_Gerenciamento
 
         #region Inserir Usuario
 
-        public void InserirUsuario(string _usuario, string _senha)
+        public void InserirUsuario(string _usuario, string _senha, string _excluirItem, string _devolucaoTroca,
+            string _cancelarVenda, string _cancelarPagamento)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "insert into tb_CadastroUsuario (cu_usuario,cu_senha) values(@usuario,@senha)";
+                    string query = "insert into tb_CadastroUsuario (cu_usuario,cu_senha, cu_excluir_item," +
+                        "cu_devolucao_troca,cu_cancelar_venda,cu_cancelar_pagamento) " +
+                        "values(@usuario,@senha,@excluirItem,@devolucaoTroca,@cancelarVenda,@cancelarPagamento)";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
                     cmd.Parameters.AddWithValue("@usuario", SqlDbType.Date).Value = _usuario;
                     cmd.Parameters.AddWithValue("@senha", SqlDbType.VarChar).Value = _senha;
+                    cmd.Parameters.AddWithValue("@excluirItem", SqlDbType.VarChar).Value = _excluirItem;
+                    cmd.Parameters.AddWithValue("@devolucaoTroca", SqlDbType.VarChar).Value = _devolucaoTroca;
+                    cmd.Parameters.AddWithValue("@cancelarVenda", SqlDbType.VarChar).Value = _cancelarVenda;
+                    cmd.Parameters.AddWithValue("@cancelarPagamento", SqlDbType.VarChar).Value = _cancelarPagamento;
 
                     cmd.ExecuteNonQuery();
 

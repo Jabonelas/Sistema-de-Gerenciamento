@@ -207,9 +207,19 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(PDV-VE02) Erro ao Buscar Produto Por Codigo Barras  \n\nErro: {_e}", "Erro Produto Por Codigo Barras!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoInserirProdutoTelaPDV(Exception _e)
+        public void ErroAoInserirProdutoPorCodigoProdutoTelaPDV(Exception _e)
         {
-            MessageBox.Show($"(PDV-VE03) Erro ao Inserir Produto \n\nErro: {_e}", "Erro Inserir Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(PDV-VE03) Erro ao Inserir Produto Por Codigo de Produto \n\nErro: {_e}", "Erro Inserir Produto Por Codigo de Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoInserirProdutoPorCodigoBarrasTelaPDV(Exception _e)
+        {
+            MessageBox.Show($"(PDV-VE04) Erro ao Inserir Produto Por Codigo de Barras \n\nErro: {_e}", "Erro Inserir Produto Por Codigo de Barras!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoInserirDadosNaNotaFiscalSaidaTelaPDV(Exception _e)
+        {
+            MessageBox.Show($"(PDV-VE05) Erro ao Inserir Dados Nota Fiscal Saida \n\nErro: {_e}", "Erro Inserir Dados Nota Fiscal Saida!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Tela PDV
@@ -881,6 +891,11 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoBuscarListaNotaFiscalSaidaNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-NFSV02) Erro ao Realizar Busca Lista Nota Fiscal Saida \n\nErro: {_e}", "Erro Busca Lista Nota Fiscal Saida!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarListaPermissoesNotaFiscalSaidaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-NFSV03) Erro ao Realizar Busca Lista de Permissões Nota Fiscal Saida \n\nErro: {_e}", "Erro Busca Lista de Permissões Nota Fiscal Saida!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Buscar Nota Fiscal Saida

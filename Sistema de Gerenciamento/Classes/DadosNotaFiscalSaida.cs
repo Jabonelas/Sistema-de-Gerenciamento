@@ -26,9 +26,11 @@ namespace Sistema_de_Gerenciamento.Classes
 
         public decimal preco { get; set; }
 
+        public decimal valorUnitario { get; set; }
+
         public DadosNotaFiscalSaida(string _vendedor, DateTime _validadeTroca, string _nomeCliente,
             int _codigoBarras, int _codigoProduto, string _descricao, decimal _quantidade, string _unidade,
-            decimal _preco)
+            decimal _preco, decimal _valorUnitario)
         {
             vendedor = _vendedor;
             ValidadeTroca = _validadeTroca;
@@ -39,6 +41,7 @@ namespace Sistema_de_Gerenciamento.Classes
             quantidade = _quantidade;
             unidade = _unidade;
             preco = _preco;
+            valorUnitario = _valorUnitario;
         }
     }
 }

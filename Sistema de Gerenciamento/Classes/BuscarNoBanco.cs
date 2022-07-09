@@ -3099,7 +3099,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select ns_vendedor, ns_garantia, ns_nome_cliente, ns_codigo_barras, ns_codigo_produto, " +
-                        "ns_descricao, ns_quantidade, ns_unidade, ns_valor_pago " +
+                        "ns_descricao, ns_quantidade, ns_unidade, ns_valor_pago, ns_valor_unitario " +
                         "from tb_NotaFiscalSaida where ns_numero_nf = @numeroNotaFiscalSaida ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -3111,7 +3111,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     {
                         listaDadosNotaFiscalSaidas.Add(new DadosNotaFiscalSaida(dr.GetString(0), dr.GetDateTime(1),
                             dr.GetString(2), dr.GetInt32(3), dr.GetInt32(4), dr.GetString(5), dr.GetDecimal(6), dr.GetString(7),
-                            dr.GetDecimal(8)));
+                            dr.GetDecimal(8), dr.GetDecimal(9)));
                     }
                 }
             }
@@ -3123,5 +3123,34 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Lista Nota Fiscal Saida
+
+        public List<DadosPermissoes> ListaPermissoes(string _usuario)
+        {
+            List<DadosPermissoes> listaPermissoes = new List<DadosPermissoes>();
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select cu_excluir_item, cu_devolucao_troca, cu_cancelar_venda, cu_cancelar_pagamento " +
+                        "from tb_CadastroUsuario where cu_usuario = @usuario";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@usuario", _usuario);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaPermissoes.Add(new DadosPermissoes(dr.GetString(0), dr.GetString(1),
+                            dr.GetString(2), dr.GetString(3)));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarListaPermissoesNotaFiscalSaidaNoBanco(ex);
+            }
+            return listaPermissoes;
+        }
     }
 }

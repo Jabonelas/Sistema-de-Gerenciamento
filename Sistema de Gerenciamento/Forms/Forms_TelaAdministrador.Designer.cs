@@ -58,6 +58,7 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges26 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges27 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges28 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges29 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabCadastro = new System.Windows.Forms.TabPage();
             this.btnCadastroDespesasCusto = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -112,7 +113,6 @@
             this.gunaControlBox1 = new Guna.UI.WinForms.GunaControlBox();
             this.gunaControlBox2 = new Guna.UI.WinForms.GunaControlBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.ptbStatusPagamento = new System.Windows.Forms.PictureBox();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.btnSair = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -127,6 +127,7 @@
             this.btnOrdemServicoConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnVendaConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.TimerVerificarDespesaCustoFixo = new System.Windows.Forms.Timer(this.components);
+            this.btnPDVConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.tabControl.SuspendLayout();
             this.tabCadastro.SuspendLayout();
             this.tabMovimentacao.SuspendLayout();
@@ -2074,7 +2075,6 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.ptbStatusPagamento);
             this.panel1.Controls.Add(this.lblCodigo);
             this.panel1.Controls.Add(this.btnSair);
@@ -2088,19 +2088,11 @@
             this.panel1.Controls.Add(this.btnProdutoConsole);
             this.panel1.Controls.Add(this.btnOrdemServicoConsole);
             this.panel1.Controls.Add(this.btnVendaConsole);
+            this.panel1.Controls.Add(this.btnPDVConsole);
             this.panel1.Location = new System.Drawing.Point(6, 16);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(923, 670);
             this.panel1.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 35;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // ptbStatusPagamento
             // 
@@ -2983,7 +2975,7 @@
             this.btnOrdemServicoConsole.IdleIconRightImage = null;
             this.btnOrdemServicoConsole.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnOrdemServicoConsole.IndicateFocus = false;
-            this.btnOrdemServicoConsole.Location = new System.Drawing.Point(245, 179);
+            this.btnOrdemServicoConsole.Location = new System.Drawing.Point(0, 144);
             this.btnOrdemServicoConsole.Name = "btnOrdemServicoConsole";
             this.btnOrdemServicoConsole.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnOrdemServicoConsole.OnDisabledState.BorderRadius = 1;
@@ -3024,6 +3016,7 @@
             this.btnOrdemServicoConsole.TextMarginLeft = 0;
             this.btnOrdemServicoConsole.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnOrdemServicoConsole.UseDefaultRadiusAndThickness = true;
+            this.btnOrdemServicoConsole.Visible = false;
             // 
             // btnVendaConsole
             // 
@@ -3120,6 +3113,97 @@
             // 
             this.TimerVerificarDespesaCustoFixo.Interval = 72000000;
             this.TimerVerificarDespesaCustoFixo.Tick += new System.EventHandler(this.TimerVerificarDespesaCustoFixo_Tick);
+            // 
+            // btnPDVConsole
+            // 
+            this.btnPDVConsole.AllowAnimations = true;
+            this.btnPDVConsole.AllowMouseEffects = true;
+            this.btnPDVConsole.AllowToggling = false;
+            this.btnPDVConsole.AnimationSpeed = 200;
+            this.btnPDVConsole.AutoGenerateColors = false;
+            this.btnPDVConsole.AutoRoundBorders = false;
+            this.btnPDVConsole.AutoSizeLeftIcon = true;
+            this.btnPDVConsole.AutoSizeRightIcon = true;
+            this.btnPDVConsole.BackColor = System.Drawing.Color.Transparent;
+            this.btnPDVConsole.BackColor1 = System.Drawing.Color.Transparent;
+            this.btnPDVConsole.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPDVConsole.BackgroundImage")));
+            this.btnPDVConsole.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnPDVConsole.ButtonText = "PDV";
+            this.btnPDVConsole.ButtonTextMarginLeft = 0;
+            this.btnPDVConsole.ColorContrastOnClick = 45;
+            this.btnPDVConsole.ColorContrastOnHover = 45;
+            this.btnPDVConsole.Cursor = System.Windows.Forms.Cursors.Default;
+            borderEdges29.BottomLeft = true;
+            borderEdges29.BottomRight = true;
+            borderEdges29.TopLeft = true;
+            borderEdges29.TopRight = true;
+            this.btnPDVConsole.CustomizableEdges = borderEdges29;
+            this.btnPDVConsole.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnPDVConsole.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnPDVConsole.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnPDVConsole.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnPDVConsole.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btnPDVConsole.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPDVConsole.ForeColor = System.Drawing.Color.Black;
+            this.btnPDVConsole.IconLeftAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPDVConsole.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnPDVConsole.IconLeftPadding = new System.Windows.Forms.Padding(11, 1, 3, 3);
+            this.btnPDVConsole.IconMarginLeft = 11;
+            this.btnPDVConsole.IconPadding = 17;
+            this.btnPDVConsole.IconRightAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnPDVConsole.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnPDVConsole.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnPDVConsole.IconSize = 25;
+            this.btnPDVConsole.IdleBorderColor = System.Drawing.Color.Transparent;
+            this.btnPDVConsole.IdleBorderRadius = 1;
+            this.btnPDVConsole.IdleBorderThickness = 1;
+            this.btnPDVConsole.IdleFillColor = System.Drawing.Color.Transparent;
+            this.btnPDVConsole.IdleIconLeftImage = global::Sistema_de_Gerenciamento.Properties.Resources.venda_rapida;
+            this.btnPDVConsole.IdleIconRightImage = null;
+            this.btnPDVConsole.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnPDVConsole.IndicateFocus = false;
+            this.btnPDVConsole.Location = new System.Drawing.Point(245, 179);
+            this.btnPDVConsole.Name = "btnPDVConsole";
+            this.btnPDVConsole.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnPDVConsole.OnDisabledState.BorderRadius = 1;
+            this.btnPDVConsole.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnPDVConsole.OnDisabledState.BorderThickness = 1;
+            this.btnPDVConsole.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnPDVConsole.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnPDVConsole.OnDisabledState.IconLeftImage = null;
+            this.btnPDVConsole.OnDisabledState.IconRightImage = null;
+            this.btnPDVConsole.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnPDVConsole.onHoverState.BorderRadius = 1;
+            this.btnPDVConsole.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnPDVConsole.onHoverState.BorderThickness = 1;
+            this.btnPDVConsole.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnPDVConsole.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnPDVConsole.onHoverState.IconLeftImage = null;
+            this.btnPDVConsole.onHoverState.IconRightImage = null;
+            this.btnPDVConsole.OnIdleState.BorderColor = System.Drawing.Color.Transparent;
+            this.btnPDVConsole.OnIdleState.BorderRadius = 1;
+            this.btnPDVConsole.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnPDVConsole.OnIdleState.BorderThickness = 1;
+            this.btnPDVConsole.OnIdleState.FillColor = System.Drawing.Color.Transparent;
+            this.btnPDVConsole.OnIdleState.ForeColor = System.Drawing.Color.Black;
+            this.btnPDVConsole.OnIdleState.IconLeftImage = global::Sistema_de_Gerenciamento.Properties.Resources.venda_rapida;
+            this.btnPDVConsole.OnIdleState.IconRightImage = null;
+            this.btnPDVConsole.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnPDVConsole.OnPressedState.BorderRadius = 1;
+            this.btnPDVConsole.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnPDVConsole.OnPressedState.BorderThickness = 1;
+            this.btnPDVConsole.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnPDVConsole.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnPDVConsole.OnPressedState.IconLeftImage = null;
+            this.btnPDVConsole.OnPressedState.IconRightImage = null;
+            this.btnPDVConsole.Size = new System.Drawing.Size(138, 165);
+            this.btnPDVConsole.TabIndex = 35;
+            this.btnPDVConsole.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnPDVConsole.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnPDVConsole.TextMarginLeft = 0;
+            this.btnPDVConsole.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnPDVConsole.UseDefaultRadiusAndThickness = true;
+            this.btnPDVConsole.Click += new System.EventHandler(this.btnPDVConsole_Click);
             // 
             // Forms_TelaAdministrador
             // 
@@ -3219,8 +3303,8 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnContasAPagar;
         private System.Windows.Forms.PictureBox ptbStatusPagamento;
         private System.Windows.Forms.Label lblCodigo;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Timer TimerVerificarDespesaCustoFixo;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnPDVConsole;
     }
 }
 

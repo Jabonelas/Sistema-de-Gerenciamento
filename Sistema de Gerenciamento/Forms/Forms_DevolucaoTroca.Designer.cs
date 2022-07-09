@@ -102,12 +102,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            this.pcbPDV = new System.Windows.Forms.PictureBox();
+            this.pcbImagemProduto = new System.Windows.Forms.PictureBox();
             this.lblCodProduto = new System.Windows.Forms.Label();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblValorProdDevolvido = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.txtNotaFiscal = new Bunifu.UI.WinForms.BunifuTextBox();
             this.btnBuscar = new Guna.UI.WinForms.GunaButton();
@@ -139,7 +139,7 @@
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.lblTroca = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblValorProdTroca = new System.Windows.Forms.Label();
             this.pnlValorProdutoDevolvido = new Bunifu.UI.WinForms.BunifuPanel();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -169,26 +169,28 @@
             this.ns_valor_desconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ns_valor_juros = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ns_valor_pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ns_unidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlValorPrudutoTroca = new Bunifu.UI.WinForms.BunifuPanel();
             this.pnlValorAPagar = new Bunifu.UI.WinForms.BunifuPanel();
             this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbPDV)).BeginInit();
+            this.btnBuscarCodigoProduto = new Guna.UI.WinForms.GunaButton();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbImagemProduto)).BeginInit();
             this.pnlValorProdutoDevolvido.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvDevolucaoTroca)).BeginInit();
             this.pnlValorPrudutoTroca.SuspendLayout();
             this.pnlValorAPagar.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pcbPDV
+            // pcbImagemProduto
             // 
-            this.pcbPDV.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pcbPDV.Image = global::Sistema_de_Gerenciamento.Properties.Resources.png_transparent_logo_pharmacy_pills_miscellaneous_trademark_pharmaceutical_drug;
-            this.pcbPDV.Location = new System.Drawing.Point(9, 61);
-            this.pcbPDV.Name = "pcbPDV";
-            this.pcbPDV.Size = new System.Drawing.Size(182, 284);
-            this.pcbPDV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pcbPDV.TabIndex = 1;
-            this.pcbPDV.TabStop = false;
+            this.pcbImagemProduto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pcbImagemProduto.Image = global::Sistema_de_Gerenciamento.Properties.Resources.png_transparent_logo_pharmacy_pills_miscellaneous_trademark_pharmaceutical_drug;
+            this.pcbImagemProduto.Location = new System.Drawing.Point(9, 61);
+            this.pcbImagemProduto.Name = "pcbImagemProduto";
+            this.pcbImagemProduto.Size = new System.Drawing.Size(182, 284);
+            this.pcbImagemProduto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbImagemProduto.TabIndex = 1;
+            this.pcbImagemProduto.TabStop = false;
             // 
             // lblCodProduto
             // 
@@ -236,15 +238,15 @@
             this.label4.TabIndex = 235;
             this.label4.Text = "Valor Prod. Devolvido";
             // 
-            // label6
+            // lblValorProdDevolvido
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(65, 56);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(105, 36);
-            this.label6.TabIndex = 237;
-            this.label6.Text = "R$ 0,00";
+            this.lblValorProdDevolvido.AutoSize = true;
+            this.lblValorProdDevolvido.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorProdDevolvido.Location = new System.Drawing.Point(65, 56);
+            this.lblValorProdDevolvido.Name = "lblValorProdDevolvido";
+            this.lblValorProdDevolvido.Size = new System.Drawing.Size(105, 36);
+            this.lblValorProdDevolvido.TabIndex = 237;
+            this.lblValorProdDevolvido.Text = "R$ 0,00";
             // 
             // label14
             // 
@@ -329,6 +331,7 @@
             this.txtNotaFiscal.TextPlaceholder = "";
             this.txtNotaFiscal.UseSystemPasswordChar = false;
             this.txtNotaFiscal.WordWrap = true;
+            this.txtNotaFiscal.Leave += new System.EventHandler(this.txtNotaFiscal_Leave);
             // 
             // btnBuscar
             // 
@@ -588,6 +591,7 @@
             this.txtPrecoDevolucao.TextPlaceholder = "";
             this.txtPrecoDevolucao.UseSystemPasswordChar = false;
             this.txtPrecoDevolucao.WordWrap = true;
+            this.txtPrecoDevolucao.TextChange += new System.EventHandler(this.txtPrecoDevolucao_TextChange);
             // 
             // lblPreco
             // 
@@ -790,6 +794,8 @@
             this.txtQuantidadeDevolucao.WordWrap = true;
             this.txtQuantidadeDevolucao.TextChange += new System.EventHandler(this.txtQuantidadeDevolucao_TextChange);
             this.txtQuantidadeDevolucao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidadeDevolucao_KeyPress);
+            this.txtQuantidadeDevolucao.Enter += new System.EventHandler(this.txtQuantidadeDevolucao_Enter);
+            this.txtQuantidadeDevolucao.Leave += new System.EventHandler(this.txtQuantidadeDevolucao_Leave);
             // 
             // txtProdutoDevolucao
             // 
@@ -1013,7 +1019,7 @@
             this.txtCodProdutoTroca.PasswordChar = '\0';
             this.txtCodProdutoTroca.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.txtCodProdutoTroca.PlaceholderText = "";
-            this.txtCodProdutoTroca.ReadOnly = true;
+            this.txtCodProdutoTroca.ReadOnly = false;
             this.txtCodProdutoTroca.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtCodProdutoTroca.SelectedText = "";
             this.txtCodProdutoTroca.SelectionLength = 0;
@@ -1029,6 +1035,8 @@
             this.txtCodProdutoTroca.TextPlaceholder = "";
             this.txtCodProdutoTroca.UseSystemPasswordChar = false;
             this.txtCodProdutoTroca.WordWrap = true;
+            this.txtCodProdutoTroca.TextChange += new System.EventHandler(this.txtCodProdutoTroca_TextChange);
+            this.txtCodProdutoTroca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodProdutoTroca_KeyPress);
             // 
             // label10
             // 
@@ -1189,6 +1197,7 @@
             this.txtPrecoTroca.TextPlaceholder = "";
             this.txtPrecoTroca.UseSystemPasswordChar = false;
             this.txtPrecoTroca.WordWrap = true;
+            this.txtPrecoTroca.TextChange += new System.EventHandler(this.txtPrecoTroca_TextChange);
             // 
             // label2
             // 
@@ -1293,6 +1302,8 @@
             this.txtCodBarrasTroca.TextPlaceholder = "";
             this.txtCodBarrasTroca.UseSystemPasswordChar = false;
             this.txtCodBarrasTroca.WordWrap = true;
+            this.txtCodBarrasTroca.TextChange += new System.EventHandler(this.txtCodBarrasTroca_TextChange);
+            this.txtCodBarrasTroca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodBarrasTroca_KeyPress);
             // 
             // label12
             // 
@@ -1333,7 +1344,6 @@
             this.txtQuantidadeTroca.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtQuantidadeTroca.DefaultFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantidadeTroca.DefaultText = "";
-            this.txtQuantidadeTroca.Enabled = false;
             this.txtQuantidadeTroca.FillColor = System.Drawing.Color.White;
             this.txtQuantidadeTroca.HideSelection = true;
             this.txtQuantidadeTroca.IconLeft = null;
@@ -1372,7 +1382,7 @@
             this.txtQuantidadeTroca.PasswordChar = '\0';
             this.txtQuantidadeTroca.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.txtQuantidadeTroca.PlaceholderText = "";
-            this.txtQuantidadeTroca.ReadOnly = true;
+            this.txtQuantidadeTroca.ReadOnly = false;
             this.txtQuantidadeTroca.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtQuantidadeTroca.SelectedText = "";
             this.txtQuantidadeTroca.SelectionLength = 0;
@@ -1388,6 +1398,7 @@
             this.txtQuantidadeTroca.TextPlaceholder = "";
             this.txtQuantidadeTroca.UseSystemPasswordChar = false;
             this.txtQuantidadeTroca.WordWrap = true;
+            this.txtQuantidadeTroca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidadeTroca_KeyPress);
             // 
             // bunifuSeparator1
             // 
@@ -1424,15 +1435,15 @@
             this.label13.TabIndex = 280;
             this.label13.Text = "Devolução";
             // 
-            // label5
+            // lblValorProdTroca
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(70, 56);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 36);
-            this.label5.TabIndex = 281;
-            this.label5.Text = "R$ 0,00";
+            this.lblValorProdTroca.AutoSize = true;
+            this.lblValorProdTroca.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorProdTroca.Location = new System.Drawing.Point(70, 56);
+            this.lblValorProdTroca.Name = "lblValorProdTroca";
+            this.lblValorProdTroca.Size = new System.Drawing.Size(105, 36);
+            this.lblValorProdTroca.TabIndex = 281;
+            this.lblValorProdTroca.Text = "R$ 0,00";
             // 
             // pnlValorProdutoDevolvido
             // 
@@ -1443,7 +1454,7 @@
             this.pnlValorProdutoDevolvido.BorderRadius = 30;
             this.pnlValorProdutoDevolvido.BorderThickness = 1;
             this.pnlValorProdutoDevolvido.Controls.Add(this.label4);
-            this.pnlValorProdutoDevolvido.Controls.Add(this.label6);
+            this.pnlValorProdutoDevolvido.Controls.Add(this.lblValorProdDevolvido);
             this.pnlValorProdutoDevolvido.Location = new System.Drawing.Point(12, 542);
             this.pnlValorProdutoDevolvido.Name = "pnlValorProdutoDevolvido";
             this.pnlValorProdutoDevolvido.ShowBorders = true;
@@ -1847,7 +1858,8 @@
             this.ns_quantidade_parcelas,
             this.ns_valor_desconto,
             this.ns_valor_juros,
-            this.ns_valor_pago});
+            this.ns_valor_pago,
+            this.ns_unidade});
             this.gdvDevolucaoTroca.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.gdvDevolucaoTroca.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.gdvDevolucaoTroca.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -1928,6 +1940,7 @@
             // ns_codigo_produto
             // 
             this.ns_codigo_produto.DataPropertyName = "ns_codigo_produto";
+            this.ns_codigo_produto.FillWeight = 72.41963F;
             this.ns_codigo_produto.HeaderText = "Código ";
             this.ns_codigo_produto.Name = "ns_codigo_produto";
             this.ns_codigo_produto.ReadOnly = true;
@@ -1935,6 +1948,7 @@
             // ns_descricao
             // 
             this.ns_descricao.DataPropertyName = "ns_descricao";
+            this.ns_descricao.FillWeight = 182.7411F;
             this.ns_descricao.HeaderText = "Descrição";
             this.ns_descricao.Name = "ns_descricao";
             this.ns_descricao.ReadOnly = true;
@@ -1950,6 +1964,7 @@
             // ns_quantidade
             // 
             this.ns_quantidade.DataPropertyName = "ns_quantidade";
+            this.ns_quantidade.FillWeight = 72.41963F;
             this.ns_quantidade.HeaderText = "Qtd";
             this.ns_quantidade.Name = "ns_quantidade";
             this.ns_quantidade.ReadOnly = true;
@@ -2021,9 +2036,18 @@
             // ns_valor_pago
             // 
             this.ns_valor_pago.DataPropertyName = "ns_valor_pago";
+            this.ns_valor_pago.FillWeight = 72.41963F;
             this.ns_valor_pago.HeaderText = "Valor";
             this.ns_valor_pago.Name = "ns_valor_pago";
             this.ns_valor_pago.ReadOnly = true;
+            // 
+            // ns_unidade
+            // 
+            this.ns_unidade.DataPropertyName = "ns_unidade";
+            this.ns_unidade.HeaderText = "ns_unidade";
+            this.ns_unidade.Name = "ns_unidade";
+            this.ns_unidade.ReadOnly = true;
+            this.ns_unidade.Visible = false;
             // 
             // pnlValorPrudutoTroca
             // 
@@ -2034,7 +2058,7 @@
             this.pnlValorPrudutoTroca.BorderRadius = 30;
             this.pnlValorPrudutoTroca.BorderThickness = 1;
             this.pnlValorPrudutoTroca.Controls.Add(this.label3);
-            this.pnlValorPrudutoTroca.Controls.Add(this.label5);
+            this.pnlValorPrudutoTroca.Controls.Add(this.lblValorProdTroca);
             this.pnlValorPrudutoTroca.Location = new System.Drawing.Point(317, 542);
             this.pnlValorPrudutoTroca.Name = "pnlValorPrudutoTroca";
             this.pnlValorPrudutoTroca.ShowBorders = true;
@@ -2147,11 +2171,36 @@
             this.btnFechar.UseDefaultRadiusAndThickness = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
+            // btnBuscarCodigoProduto
+            // 
+            this.btnBuscarCodigoProduto.AnimationHoverSpeed = 0.07F;
+            this.btnBuscarCodigoProduto.AnimationSpeed = 0.03F;
+            this.btnBuscarCodigoProduto.BaseColor = System.Drawing.Color.Transparent;
+            this.btnBuscarCodigoProduto.BorderColor = System.Drawing.Color.Black;
+            this.btnBuscarCodigoProduto.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnBuscarCodigoProduto.FocusedColor = System.Drawing.Color.Empty;
+            this.btnBuscarCodigoProduto.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnBuscarCodigoProduto.ForeColor = System.Drawing.Color.White;
+            this.btnBuscarCodigoProduto.Image = global::Sistema_de_Gerenciamento.Properties.Resources.procurar;
+            this.btnBuscarCodigoProduto.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnBuscarCodigoProduto.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnBuscarCodigoProduto.Location = new System.Drawing.Point(224, 483);
+            this.btnBuscarCodigoProduto.Name = "btnBuscarCodigoProduto";
+            this.btnBuscarCodigoProduto.OnHoverBaseColor = System.Drawing.Color.DodgerBlue;
+            this.btnBuscarCodigoProduto.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnBuscarCodigoProduto.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnBuscarCodigoProduto.OnHoverImage = null;
+            this.btnBuscarCodigoProduto.OnPressedColor = System.Drawing.Color.Black;
+            this.btnBuscarCodigoProduto.Size = new System.Drawing.Size(20, 20);
+            this.btnBuscarCodigoProduto.TabIndex = 295;
+            this.btnBuscarCodigoProduto.Click += new System.EventHandler(this.btnBuscarCodigoProduto_Click);
+            // 
             // Forms_DevolucaoTroca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(876, 734);
+            this.Controls.Add(this.btnBuscarCodigoProduto);
             this.Controls.Add(this.pnlValorAPagar);
             this.Controls.Add(this.pnlValorPrudutoTroca);
             this.Controls.Add(this.pnlValorProdutoDevolvido);
@@ -2198,12 +2247,14 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.cmbTipo);
             this.Controls.Add(this.lblCodProduto);
-            this.Controls.Add(this.pcbPDV);
+            this.Controls.Add(this.pcbImagemProduto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Name = "Forms_DevolucaoTroca";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Devolução/Troca";
-            ((System.ComponentModel.ISupportInitialize)(this.pcbPDV)).EndInit();
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_DevolucaoTroca_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.pcbImagemProduto)).EndInit();
             this.pnlValorProdutoDevolvido.ResumeLayout(false);
             this.pnlValorProdutoDevolvido.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvDevolucaoTroca)).EndInit();
@@ -2218,12 +2269,12 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pcbPDV;
+        private System.Windows.Forms.PictureBox pcbImagemProduto;
         private System.Windows.Forms.Label lblCodProduto;
         public System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblValorProdDevolvido;
         private System.Windows.Forms.Label label14;
         public Bunifu.UI.WinForms.BunifuTextBox txtNotaFiscal;
         private Guna.UI.WinForms.GunaButton btnBuscar;
@@ -2255,7 +2306,7 @@
         private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator1;
         private System.Windows.Forms.Label lblTroca;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblValorProdTroca;
         private Bunifu.UI.WinForms.BunifuPanel pnlValorProdutoDevolvido;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
@@ -2288,5 +2339,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ns_valor_desconto;
         private System.Windows.Forms.DataGridViewTextBoxColumn ns_valor_juros;
         private System.Windows.Forms.DataGridViewTextBoxColumn ns_valor_pago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ns_unidade;
+        private Guna.UI.WinForms.GunaButton btnBuscarCodigoProduto;
     }
 }

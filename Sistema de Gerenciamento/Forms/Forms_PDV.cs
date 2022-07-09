@@ -26,6 +26,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private List<DadosFinanceiro> listaFinanceiro = new List<DadosFinanceiro>();
 
+        private List<DadosPermissoes> listaPermissao = new List<DadosPermissoes>();
+
         private DadosProduto produto;
 
         private decimal valorBruto = 0;
@@ -38,66 +40,123 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             InitializeComponent();
 
+            PreenchimentoDados();
+
+            //FormatoFullScreen();
+        }
+
+        private void PreenchimentoDados()
+        {
             listaProduto = Buscar.BuscarProdutos();
 
             listaFinanceiro = Buscar.BuscarFinanceiro();
 
+            listaPermissao = Buscar.ListaPermissoes(Global.NomeDeUsuario);
+
             pcbPDV.Image = Buscar.BuscarLogoEmpresa(1);
 
-            txtVendedor.Text = Global.tipoDeUsuario;
-
-            //this.Height = Screen.PrimaryScreen.Bounds.Height;
-
-            //this.Width = Screen.PrimaryScreen.Bounds.Width;
-
-            //this.TopMost = true;
+            txtVendedor.Text = Global.NomeDeUsuario;
         }
 
-        private void Forms_TelaPDV_Load(object sender, EventArgs e)
+        private void FormatoFullScreen()
         {
-            //txtCodigoDeBarras.Focus();
+            this.Height = Screen.PrimaryScreen.Bounds.Height;
+
+            this.Width = Screen.PrimaryScreen.Bounds.Width;
+
+            this.TopMost = true;
         }
 
         private void Forms_TelaPDV_KeyDown(object sender, KeyEventArgs e)
         {
+            AtalhoFecharTela(e);
+
+            AtalhoNovaVenda(e);
+
+            AtalhoExluirItem(e);
+
+            AtalhoInserirCPF(e);
+
+            AtalhoBuscarPorCodigoProduto(e);
+
+            AtalhoTelaPesquisarProduto(e);
+
+            AtalhoInserirQuantidade(e);
+
+            AtalhoPagamento(e);
+
+            AtalhoCancelarVenda(e);
+
+            AtalhoDevolucaoTroca(e);
+
+            AtalhoFinalizarVenda(e);
+
+            AtalhoCancelarPagamento(e);
+        }
+
+        private void AtalhoFecharTela(KeyEventArgs e)
+        {
             if (e.KeyCode == Keys.Escape) // Finalziar tela Esc
             {
-                this.Close();
+                if (lblDescricaoItem.Text != "PAGAMENTO" && gdvPDV.Rows.Count <= 0)
+                {
+                    this.Close();
+                }
             }
+        }
 
+        private void AtalhoNovaVenda(KeyEventArgs e)
+        {
             if (e.KeyCode == Keys.F1) // nova venda F1
             {
                 //if (gdvPDV.Rows.Count <= 0)
                 if (lblFachada.Text == "CAIXA ABERTO" || lblDescricaoItem.Text == "Nº NOTA FISCAL:")
                 {
-                    NovaVenda();
+                    FormatandoParaNovaVenda();
+
+                    return;
                 }
             }
+        }
 
+        private void AtalhoExluirItem(KeyEventArgs e)
+        {
             if (e.KeyCode == Keys.F2) // excluir item F2
             {
-                if (gdvPDV.Rows.Count > 0)
+                if (gdvPDV.Rows.Count > 0 && lblDescricaoItem.Text != "PAGAMENTO")
                 {
-                    if (Global.tipoDeUsuario == "ADMIN")
+                    if (Global.NomeDeUsuario == "ADMIN" || listaPermissao[0].excluirItem == "true")
                     {
                         RemoverProduto();
+
+                        return;
                     }
                     else
                     {
                         Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "Remover Produto");
                         controleADMIN.ShowDialog();
+
+                        return;
                     }
                 }
             }
+        }
 
-            if (e.KeyCode == Keys.F3) // inserir cpf F3
+        private void AtalhoInserirCPF(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3 && lblDescricaoItem.Text != "PAGAMENTO") // inserir cpf F3
             {
                 txtCPF.Text = string.Empty;
                 txtCPF.ReadOnly = true;
                 txtCPF.Enabled = true;
                 txtCPF.Focus();
-            }
 
+                return;
+            }
+        }
+
+        private void AtalhoBuscarPorCodigoProduto(KeyEventArgs e)
+        {
             if (e.KeyCode == Keys.F4) // Buscar Por Codigo F4
             {
                 txtCodigoProduto.Enabled = true;
@@ -105,37 +164,48 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtCodigoProduto.Text = String.Empty;
                 txtCodigoProduto.Focus();
 
-                //txtCodigoProduto.Visible = true;
+                return;
             }
+        }
 
-            if (e.KeyCode == Keys.F5) // Pesquisar Produto F5
+        private void AtalhoTelaPesquisarProduto(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F5 && lblDescricaoItem.Text != "PAGAMENTO") // Pesquisar Produto F5
             {
-                Forms_PesquisarProduto pesquisarProduto = new Forms_PesquisarProduto(this);
+                Forms_PesquisarProduto pesquisarProduto = new Forms_PesquisarProduto(this, "Tela PDV");
                 pesquisarProduto.ShowDialog();
 
+                //Desabilitar o evento DoubleClick do Grid?View
                 pesquisarProduto.gdvPesquisarProduto.DoubleClick -= pesquisarProduto.gdvPesquisarProduto_DoubleClick;
 
                 txtCodigoProduto.Focus();
-            }
 
-            if (e.KeyCode == Keys.F6) // inserir quantidade F6
+                return;
+            }
+        }
+
+        private void AtalhoInserirQuantidade(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F6 && lblDescricaoItem.Text != "PAGAMENTO") // inserir quantidade F6
             {
                 lblTituloCPFQuant.Text = "QUANTIDADE";
-
                 txtCPF.Visible = false;
-
                 txtInserirQuant.Text = String.Empty;
-
                 txtInserirQuant.Visible = true;
                 txtInserirQuant.Enabled = true;
                 txtInserirQuant.Focus();
-            }
 
-            if (e.KeyCode == Keys.F7) // Finalizar Compra F7
+                return;
+            }
+        }
+
+        private void AtalhoPagamento(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F7 && lblDescricaoItem.Text != "PAGAMENTO") // Pagamento F7
             {
                 if (gdvPDV.Rows.Count > 0)
                 {
-                    FormatoTelaPagamento("Pagamento");
+                    FormatoTelaParaPagamento("Pagamento");
 
                     txtValorDinheiro.Visible = false;
                     lblTituloValorParcela.Visible = false;
@@ -144,14 +214,19 @@ namespace Sistema_de_Gerenciamento.Forms
                     lblUnidade.Text = String.Empty;
                 }
             }
+        }
 
-            if (e.KeyCode == Keys.F8) // Excluir Venda F8
+        private void AtalhoCancelarVenda(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F8 && lblDescricaoItem.Text != "PAGAMENTO") // Cancelar Venda F8
             {
                 if (gdvPDV.Rows.Count > 0)
                 {
-                    if (Global.tipoDeUsuario == "ADMIN")
+                    if (Global.NomeDeUsuario == "ADMIN" || listaPermissao[0].cancelarVenda == "true")
                     {
-                        NovaVenda();
+                        FormatandoParaNovaVenda();
+
+                        return;
                     }
                     else
                     {
@@ -160,28 +235,35 @@ namespace Sistema_de_Gerenciamento.Forms
                     }
                 }
             }
+        }
 
-            if (e.KeyCode == Keys.F9) // Devolução / Troca F9
+        private void AtalhoDevolucaoTroca(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F9 && lblDescricaoItem.Text != "PAGAMENTO") // Devolução / Troca F9
             {
                 if (gdvPDV.Rows.Count <= 0)
                 {
-                    if (Global.tipoDeUsuario == "ADMIN")
+                    if (Global.NomeDeUsuario == "ADMIN" || listaPermissao[0].devolucaoTroca == "true")
                     {
                         Forms_DevolucaoTroca telaDevolucaoTroca = new Forms_DevolucaoTroca();
                         telaDevolucaoTroca.ShowDialog();
+
+                        return;
                     }
                     else
                     {
-                        Forms_DevolucaoTroca telaDevolucaoTroca = new Forms_DevolucaoTroca();
-                        telaDevolucaoTroca.ShowDialog();
+                        Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "Devolucao/Troca");
+                        controleADMIN.ShowDialog();
 
-                        //Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "");
-                        //controleADMIN.ShowDialog();
+                        return;
                     }
                 }
             }
+        }
 
-            if (e.KeyCode == Keys.F10) // Finalizar Venda F10
+        private void AtalhoFinalizarVenda(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F10 && lblDescricaoItem.Text == "PAGAMENTO") // Finalizar Venda F10
             {
                 if (cmbFormaPagamento.Text != "")
                 {
@@ -193,26 +275,13 @@ namespace Sistema_de_Gerenciamento.Forms
                         //lblNumeroNotaFiscalSaida.Text = "1";
 
                         //txtVendedor.Text = "israel";
-                        //txtDataAtual.Text = DateTime.Today.ToShortDateString();
 
                         lblDescricaoItem.Text = "Nº NOTA FISCAL:";
                         lblNumeroNotaFiscalSaida.Visible = true;
 
                         for (int i = 0; i < gdvPDV.RowCount; i++)
                         {
-                            //MessageBox.Show(gdvPDV.Rows[i].Cells[1].Value.ToString());
-
-                            //MessageBox.Show($"CPF {txtCPF.Text}");
-                            //MessageBox.Show($"Numero NF {lblNumeroNotaFiscalSaida.Text}");
-                            //MessageBox.Show($"codigo produto { (gdvPDV.Rows[i].Cells[0].Value.ToString())}");
-                            //MessageBox.Show($"descricao { (gdvPDV.Rows[i].Cells[1].Value.ToString())}");
-                            //MessageBox.Show($"quantidade { (gdvPDV.Rows[i].Cells[2].Value.ToString())}");
-                            //MessageBox.Show($"valor total { (gdvPDV.Rows[i].Cells[4].Value.ToString())}");
-                            //MessageBox.Show($"{txtDataAtual.Text}");
-                            //MessageBox.Show($"codigo de barras { (gdvPDV.Rows[i].Cells[6].Value.ToString())}");
-                            //MessageBox.Show(txtVendedor.Text);
-                            //MessageBox.Show(txtPrazo.Text);
-
+                            //Pagamento Sem Juros - Preenchimento dos valores de desconto, juros e valor pago de cada item
                             if (cmbFormaPagamento.Text == "DÉBITO" ||
                                 cmbFormaPagamento.Text == "DINHEIRO" || cmbFormaPagamento.Text == "PIX")
                             {
@@ -225,6 +294,7 @@ namespace Sistema_de_Gerenciamento.Forms
                                 lblValorPagoCadaItem.Text = (Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", "")) -
                                     Convert.ToDecimal(lblValorDescontoCadaItem.Text)).ToString();
                             }
+                            //Pagamento Com Juros - Preenchimento dos valores de desconto, juros e valor pago de cada item
                             else
                             {
                                 lblValorDescontoCadaItem.Text = "0";
@@ -236,31 +306,38 @@ namespace Sistema_de_Gerenciamento.Forms
                                     Convert.ToDecimal(lblJurosCadaItem.Text)).ToString();
                             }
 
-                            Atualizar.AtualizarQuantidadeEstoquePosVenda(Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value),
+                            try
+                            {
+                                Atualizar.AtualizarQuantidadeEstoquePosVenda(Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value),
                                 Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value));
 
-                            Salvar.NotaFiscalSaida(
-                            txtCPF.Text,
-                            Convert.ToInt32(lblNumeroNotaFiscalSaida.Text),
-                            Convert.ToInt32(gdvPDV.Rows[i].Cells[0].Value),
-                            gdvPDV.Rows[i].Cells[1].Value.ToString(),
-                            Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value),
-                            Convert.ToDecimal(gdvPDV.Rows[i].Cells[3].Value.ToString().Replace("R$", "")),
-                            Convert.ToDateTime(DateTime.Now),
-                            Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value),
-                            txtVendedor.Text,
-                            Convert.ToDateTime(txtGarantia.Text),
-                            lblNomeCliente.Text,
-                            cmbFormaPagamento.Text,
-                            Convert.ToDecimal(lblValorDescontoCadaItem.Text),
-                            Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
-                            Convert.ToDecimal(lblJurosCadaItem.Text),
-                            Convert.ToDecimal(lblValorPagoCadaItem.Text),
-                            gdvPDV.Rows[i].Cells[7].Value.ToString());
+                                Salvar.NotaFiscalSaida(
+                                        txtCPF.Text,
+                                        Convert.ToInt32(lblNumeroNotaFiscalSaida.Text),
+                                        Convert.ToInt32(gdvPDV.Rows[i].Cells[0].Value),
+                                        gdvPDV.Rows[i].Cells[1].Value.ToString(),
+                                        Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value),
+                                        Convert.ToDecimal(gdvPDV.Rows[i].Cells[3].Value.ToString().Replace("R$", "")),
+                                        Convert.ToDateTime(DateTime.Now),
+                                        Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value),
+                                        txtVendedor.Text,
+                                        Convert.ToDateTime(txtGarantia.Text),
+                                        lblNomeCliente.Text,
+                                        cmbFormaPagamento.Text,
+                                        Convert.ToDecimal(lblValorDescontoCadaItem.Text),
+                                        Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
+                                        Convert.ToDecimal(lblJurosCadaItem.Text),
+                                        Convert.ToDecimal(lblValorPagoCadaItem.Text),
+                                        gdvPDV.Rows[i].Cells[7].Value.ToString());
 
-                            pnlVendaFinalizada.Visible = true;
+                                pnlVendaFinalizada.Visible = true;
 
-                            //NovaVenda();
+                                return;
+                            }
+                            catch (Exception ex)
+                            {
+                                Erro.ErroAoInserirDadosNaNotaFiscalSaidaTelaPDV(ex);
+                            }
                         }
                     }
                 }
@@ -269,31 +346,38 @@ namespace Sistema_de_Gerenciamento.Forms
                     MessageBox.Show("Informe o Tipo de Pagamento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
 
-            if (e.KeyCode == Keys.F12) // Cancelar Compra F12
+        private void AtalhoCancelarPagamento(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F12 && lblDescricaoItem.Text == "PAGAMENTO") // Cancelar Pagamento F12
             {
                 if (gdvPDV.Rows.Count > 0)
                 {
-                    if (Global.tipoDeUsuario == "ADMIN")
+                    if (Global.NomeDeUsuario == "ADMIN" || listaPermissao[0].cancelarPagamento == "true")
                     {
-                        NovaVenda();
+                        FormatandoParaNovaVenda();
+
+                        return;
                     }
                     else
                     {
-                        Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "");
+                        Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "Cancelar Pagamento");
                         controleADMIN.ShowDialog();
+
+                        return;
                     }
                 }
             }
         }
 
-        public void NovaVenda()
+        public void FormatandoParaNovaVenda()
         {
             LayoutTipoPagamentoCredito(false);
 
             gdvPDV.Rows.Clear();
 
-            FormatoTelaPagamento("Cancelamento");
+            FormatoTelaParaPagamento("Cancelamento");
 
             pnlVendaFinalizada.Visible = false;
             lblNumeroNotaFiscalSaida.Visible = false;
@@ -323,9 +407,9 @@ namespace Sistema_de_Gerenciamento.Forms
             pcbPDV.Image = Buscar.BuscarLogoEmpresa(1);
         }
 
-        private void FormatoTelaPagamento(string _verificar)
+        private void FormatoTelaParaPagamento(string _verificar)
         {
-            bool retorno = (_verificar == "Pagamento") ? retorno = true : retorno = false;
+            bool retorno = _verificar == "Pagamento" ? true : false;
 
             pcbPDV.Visible = !retorno;
             pnlFundoCliente.Visible = retorno;
@@ -338,7 +422,6 @@ namespace Sistema_de_Gerenciamento.Forms
             cmbFormaPagamento.Visible = retorno;
 
             //painel com desconto
-
             lblDesconto.Visible = retorno;
             lblValorDesconto.Visible = retorno;
             pnlDesconto.Visible = retorno;
@@ -368,42 +451,6 @@ namespace Sistema_de_Gerenciamento.Forms
             pnlFinalizarPagamento1.Visible = retorno;
         }
 
-        private void PreencherDados(object sender, EventArgs e)
-        {
-            if (cont <= 0)
-            {
-                BuscarProdutoPorCodigoBarras();
-
-                AdicionarProdutoPorCodigoBarras();
-
-                SetarDesignColunaGridView();
-
-                pcbPDV.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigo.Text));
-
-                //mudando quando iniciar uma compra
-                pnlFachada.BackgroundColor = Color.Red;
-
-                lblFachada.Text = "CAIXA OCUPADO";
-
-                // mudando quando colocar quantidade
-                lblTituloCPFQuant.Text = "CPF NA NOTA";
-
-                txtCPF.Visible = true;
-
-                txtInserirQuant.Visible = false;
-
-                cont++;
-            }
-            else
-            {
-                txtCodigoDeBarras.Text = string.Empty;
-
-                cont = 0;
-
-                txtInserirQuant.Text = "1";
-            }
-        }
-
         private void AdicionarProdutoPorCodigoBarras()
         {
             try
@@ -417,8 +464,6 @@ namespace Sistema_de_Gerenciamento.Forms
                         PreenchendoGridView();
 
                         ValorTotal();
-
-                        //ApagandoTextbox();
                     }
                     else if (isCadastroExiste == false)
                     {
@@ -428,7 +473,7 @@ namespace Sistema_de_Gerenciamento.Forms
             }
             catch (Exception ex)
             {
-                Erro.ErroAoInserirProdutoTelaPDV(ex);
+                Erro.ErroAoInserirProdutoPorCodigoBarrasTelaPDV(ex);
             }
         }
 
@@ -507,13 +552,13 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtCPF_Leave(object sender, EventArgs e)
         {
-            //txtCPF.UseSystemPasswordChar = true;
-
             txtCPF.ReadOnly = true;
 
             lblNomeCliente.Text = Buscar.BuscarClienteTelaPDVPorCPF(txtCPF.Text).ToUpper();
 
             txtCodigoDeBarras.Focus();
+
+            txtCPF.UseSystemPasswordChar = true;
         }
 
         private void txtCPF_KeyPress(object sender, KeyPressEventArgs e)
@@ -526,8 +571,6 @@ namespace Sistema_de_Gerenciamento.Forms
 
         public void RemoverProduto()
         {
-            //if (gdvPDV.RowCount > 0)
-            //{
             DialogResult OpcaoDoUsuario = new DialogResult();
             OpcaoDoUsuario = MessageBox.Show("Deseja Remover O Item?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (OpcaoDoUsuario == DialogResult.Yes)
@@ -535,10 +578,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 gdvPDV.Rows.RemoveAt(gdvPDV.CurrentRow.Index);
 
                 ValorTotal();
-
-                //ApagandoTextbox();
             }
-            //}
         }
 
         private void txtCodigoProduto_TextChange(object sender, EventArgs e)
@@ -588,17 +628,22 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtCodigoProduto_Leave(object sender, EventArgs e)
         {
-            if (cont == 0)
+            if (cont == 0 && txtCodigoProduto.Text != "")
             {
+                cont++;
+
                 AdicionarProdutoPorCodigoProduto();
 
                 SetarDesignColunaGridView();
 
-                cont++;
+                //FormatandoParaNovaVenda();
             }
             else
             {
                 txtCodigoDeBarras.Focus();
+
+                txtCodigoProduto.ReadOnly = true;
+
                 cont = 0;
             }
         }
@@ -616,8 +661,6 @@ namespace Sistema_de_Gerenciamento.Forms
                         PreenchendoGridView();
 
                         ValorTotal();
-
-                        //ApagandoTextbox();
                     }
                     else if (isCadastroExiste == false)
                     {
@@ -627,7 +670,7 @@ namespace Sistema_de_Gerenciamento.Forms
             }
             catch (Exception ex)
             {
-                Erro.ErroAoInserirProdutoTelaPDV(ex);
+                Erro.ErroAoInserirProdutoPorCodigoProdutoTelaPDV(ex);
             }
         }
 
@@ -635,108 +678,127 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (cmbFormaPagamento.Text == "CARNÊ")
             {
-                LayoutTipoPagamentoCredito(false);
-
-                lblValorDebito.Visible = false;
-
-                lblTituloFormaPagamento.Text = "CARNÊ";
-
-                lblValorDesconto.Text = "R$ 0,00";
+                PagamentoCarne();
             }
             else if (cmbFormaPagamento.Text == "CRÉDITO")
             {
-                LayoutTipoPagamentoCredito(true);
-
-                lblValorDebito.Visible = false;
-
-                txtValorDinheiro.Visible = false;
-
-                lblValorParcela.Text = lblSubtotal.Text;
-
-                lblTituloFormaPagamento.Text = "CRÉDITO";
-
-                lblValorDesconto.Text = "R$ 0,00";
-
-                cmbParcelas.Text = "1x";
-
-                lblValorTotal.Text = String.Format("{0:C}", valorBruto);
+                PagamentoCredito();
             }
             else if (cmbFormaPagamento.Text == "DÉBITO")
             {
-                LayoutTipoPagamentoCredito(false);
-
-                lblTituloFormaPagamento.Text = "DÉBITO";
-
-                lblValorDebito.Font = new Font("Calibri", 36);
-
-                lblValorDebito.Font = new Font("Calibri", 36, FontStyle.Bold);
-
-                lblValorDebito.Visible = true;
-
-                lblValorDebito.Location = new Point(90, 45);
-
-                lblValorTotal.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
-
-                lblValorDebito.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
-
-                lblValorDesconto.Text = String.Format("{0:C}", (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+                PagamentoDebito();
             }
             else if (cmbFormaPagamento.Text == "DINHEIRO")
             {
-                LayoutTipoPagamentoCredito(false);
-
-                lblTituloFormaPagamento.Text = "DINHEIRO";
-
-                lblValorDebito.Visible = false;
-
-                txtValorDinheiro.Visible = true;
-
-                lblValorDesconto.Text = String.Format("{0:C}", (valorBruto * listaFinanceiro[0].descontoAvista / 100));
-
-                lblValorTotal.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
-
-                //txtValorDinheiro.Focus();
+                PagamentoDinheiro();
             }
             else if (cmbFormaPagamento.Text == "PIX")
             {
-                lblTituloFormaPagamento.Text = "PIX";
-
-                pcbPix.Image = Buscar.BuscarQrCodePix(1);
-
-                lblValorDebito.Visible = true;
-
-                lblValorDebito.Font = new Font("Calibri", 28, FontStyle.Bold);
-
-                lblValorDebito.Location = new Point(40, 45);
-
-                lblValorDebito.Text = Buscar.BuscarChavePix();
-
-                txtValorDinheiro.Visible = false;
-
-                pcbPix.Visible = true;
-
-                lblValorDesconto.Text = String.Format("{0:C}", (valorBruto * listaFinanceiro[0].descontoAvista / 100));
-
-                lblValorTotal.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+                PagamentoPIX();
             }
+        }
+
+        private void PagamentoCarne()
+        {
+            LayoutTipoPagamentoCredito(false);
+
+            lblValorDebito.Visible = false;
+
+            lblTituloFormaPagamento.Text = "CARNÊ";
+
+            lblValorDesconto.Text = "R$ 0,00";
+        }
+
+        private void PagamentoCredito()
+        {
+            LayoutTipoPagamentoCredito(true);
+
+            lblValorDebito.Visible = false;
+
+            txtValorDinheiro.Visible = false;
+
+            lblValorParcela.Text = lblSubtotal.Text;
+
+            lblTituloFormaPagamento.Text = "CRÉDITO";
+
+            lblValorDesconto.Text = "R$ 0,00";
+
+            cmbParcelas.Text = "1x";
+
+            lblValorTotal.Text = String.Format("{0:C}", valorBruto);
+        }
+
+        private void PagamentoDebito()
+        {
+            LayoutTipoPagamentoCredito(false);
+
+            lblTituloFormaPagamento.Text = "DÉBITO";
+
+            lblValorDebito.Font = new Font("Calibri", 36);
+
+            lblValorDebito.Font = new Font("Calibri", 36, FontStyle.Bold);
+
+            lblValorDebito.Visible = true;
+
+            lblValorDebito.Location = new Point(90, 45);
+
+            lblValorTotal.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+
+            lblValorDebito.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+
+            lblValorDesconto.Text = String.Format("{0:C}", (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+        }
+
+        private void PagamentoDinheiro()
+        {
+            LayoutTipoPagamentoCredito(false);
+
+            lblTituloFormaPagamento.Text = "DINHEIRO";
+
+            lblValorDebito.Visible = false;
+
+            txtValorDinheiro.Visible = true;
+
+            lblValorDesconto.Text = String.Format("{0:C}", (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+
+            lblValorTotal.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+
+            //txtValorDinheiro.Focus();
+        }
+
+        private void PagamentoPIX()
+        {
+            lblTituloFormaPagamento.Text = "PIX";
+
+            pcbPix.Image = Buscar.BuscarQrCodePix(1);
+
+            lblValorDebito.Visible = true;
+
+            lblValorDebito.Font = new Font("Calibri", 28, FontStyle.Bold);
+
+            lblValorDebito.Location = new Point(40, 45);
+
+            lblValorDebito.Text = Buscar.BuscarChavePix();
+
+            txtValorDinheiro.Visible = false;
+
+            pcbPix.Visible = true;
+
+            lblValorDesconto.Text = String.Format("{0:C}", (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+
+            lblValorTotal.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
         }
 
         private void LayoutTipoPagamentoCredito(bool _ativa)
         {
             pcbPix.Visible = false;
-
             lblParcelas.Visible = _ativa;
             cmbParcelas.Visible = _ativa;
             lblTituloJuros.Visible = _ativa;
             lblValorJuros.Visible = _ativa;
-
             lblTituloValorParcela.Visible = _ativa;
             lblValorParcela.Visible = _ativa;
-
             txtValorDinheiro.Visible = _ativa;
-
-            //lblTituloValorTotal.Visible = _ativa;
-            //lblValorTotal.Visible = _ativa;
         }
 
         private void cmbParcelas_SelectedValueChanged(object sender, EventArgs e)
@@ -781,16 +843,59 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtCodigoDeBarras_TextChange(object sender, EventArgs e)
         {
-            PreencherDados(sender, e);
+            PreencherComDadosDoProduto(sender, e);
+        }
+
+        private void PreencherComDadosDoProduto(object sender, EventArgs e)
+        {
+            if (cont <= 0)
+            {
+                BuscarProdutoPorCodigoBarras();
+
+                AdicionarProdutoPorCodigoBarras();
+
+                SetarDesignColunaGridView();
+
+                pcbPDV.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigo.Text));
+
+                //mudando quando iniciar uma compra
+                pnlFachada.BackgroundColor = Color.Red;
+
+                lblFachada.Text = "CAIXA OCUPADO";
+
+                // mudando quando colocar quantidade
+                lblTituloCPFQuant.Text = "CPF NA NOTA";
+
+                txtCPF.Visible = true;
+
+                txtInserirQuant.Visible = false;
+
+                cont++;
+            }
+            else
+            {
+                txtCodigoDeBarras.Text = string.Empty;
+
+                cont = 0;
+
+                txtInserirQuant.Text = "1";
+            }
         }
 
         private void txtCodigoDeBarras_Enter(object sender, EventArgs e)
         {
-            txtCPF.UseSystemPasswordChar = true;
+            //txtCPF.UseSystemPasswordChar = true;
         }
 
         private void txtInserirQuant_Leave(object sender, EventArgs e)
         {
+            if (txtInserirQuant.Text == string.Empty)
+            {
+                txtInserirQuant.Text = "1";
+            }
+
+            txtInserirQuant.ReadOnly = true;
+
             txtCodigoDeBarras.Focus();
         }
 
@@ -814,6 +919,18 @@ namespace Sistema_de_Gerenciamento.Forms
         private void txtInserirQuant_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
+
+        private void cmbFormaPagamento_Leave(object sender, EventArgs e)
+        {
+            if (cmbFormaPagamento.Text == "DINHEIRO")
+            {
+                txtValorDinheiro.Focus();
+            }
+            else if (cmbFormaPagamento.Text == "CRÉDITO")
+            {
+                cmbParcelas.Focus();
+            }
         }
     }
 }

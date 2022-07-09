@@ -50,6 +50,17 @@
             this.txtUsuario = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.bunifuSeparator2 = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.chbDevolucaoTroca = new System.Windows.Forms.CheckBox();
+            this.bunifuGroupBox1 = new Bunifu.UI.WinForms.BunifuGroupBox();
+            this.chbCancelarVenda = new System.Windows.Forms.CheckBox();
+            this.chbCancelarPagamento = new System.Windows.Forms.CheckBox();
+            this.chbExcluirItem = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblExluirItem = new System.Windows.Forms.Label();
+            this.lblDevolucaoTroca = new System.Windows.Forms.Label();
+            this.lblCancelarVenda = new System.Windows.Forms.Label();
+            this.lblCancelarPagamento = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bntSair
@@ -368,7 +379,7 @@
             this.txtSenha.IconRight = null;
             this.txtSenha.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSenha.Lines = new string[0];
-            this.txtSenha.Location = new System.Drawing.Point(20, 212);
+            this.txtSenha.Location = new System.Drawing.Point(20, 230);
             this.txtSenha.MaxLength = 20;
             this.txtSenha.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtSenha.Modified = false;
@@ -420,7 +431,7 @@
             // 
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(17, 194);
+            this.label21.Location = new System.Drawing.Point(17, 212);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(40, 15);
             this.label21.TabIndex = 78;
@@ -453,7 +464,7 @@
             this.txtUsuario.IconRight = null;
             this.txtUsuario.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUsuario.Lines = new string[0];
-            this.txtUsuario.Location = new System.Drawing.Point(20, 140);
+            this.txtUsuario.Location = new System.Drawing.Point(20, 158);
             this.txtUsuario.MaxLength = 20;
             this.txtUsuario.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtUsuario.Modified = false;
@@ -506,7 +517,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(17, 123);
+            this.label1.Location = new System.Drawing.Point(17, 141);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(48, 15);
             this.label1.TabIndex = 76;
@@ -517,17 +528,151 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(17, 243);
+            this.label2.Location = new System.Drawing.Point(17, 261);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(186, 28);
             this.label2.TabIndex = 80;
             this.label2.Text = "Password: Caracteres Permitidos \r\n(!,@,#,$,%,¨,& ,*,_ ,-,+,=)";
             // 
+            // bunifuSeparator2
+            // 
+            this.bunifuSeparator2.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuSeparator2.BackgroundImage")));
+            this.bunifuSeparator2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuSeparator2.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
+            this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.bunifuSeparator2.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded;
+            this.bunifuSeparator2.LineThickness = 3;
+            this.bunifuSeparator2.Location = new System.Drawing.Point(20, 121);
+            this.bunifuSeparator2.Name = "bunifuSeparator2";
+            this.bunifuSeparator2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
+            this.bunifuSeparator2.Size = new System.Drawing.Size(405, 16);
+            this.bunifuSeparator2.TabIndex = 169;
+            // 
+            // chbDevolucaoTroca
+            // 
+            this.chbDevolucaoTroca.AutoSize = true;
+            this.chbDevolucaoTroca.Location = new System.Drawing.Point(279, 198);
+            this.chbDevolucaoTroca.Name = "chbDevolucaoTroca";
+            this.chbDevolucaoTroca.Size = new System.Drawing.Size(111, 17);
+            this.chbDevolucaoTroca.TabIndex = 171;
+            this.chbDevolucaoTroca.Text = "Devolução/Troca";
+            this.chbDevolucaoTroca.UseVisualStyleBackColor = true;
+            this.chbDevolucaoTroca.Click += new System.EventHandler(this.chbDevolucaoTroca_Click);
+            // 
+            // bunifuGroupBox1
+            // 
+            this.bunifuGroupBox1.BorderColor = System.Drawing.Color.Black;
+            this.bunifuGroupBox1.BorderRadius = 1;
+            this.bunifuGroupBox1.BorderThickness = 1;
+            this.bunifuGroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bunifuGroupBox1.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.bunifuGroupBox1.LabelIndent = 10;
+            this.bunifuGroupBox1.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.bunifuGroupBox1.Location = new System.Drawing.Point(265, 158);
+            this.bunifuGroupBox1.Name = "bunifuGroupBox1";
+            this.bunifuGroupBox1.Size = new System.Drawing.Size(160, 131);
+            this.bunifuGroupBox1.TabIndex = 174;
+            this.bunifuGroupBox1.TabStop = false;
+            // 
+            // chbCancelarVenda
+            // 
+            this.chbCancelarVenda.AutoSize = true;
+            this.chbCancelarVenda.Location = new System.Drawing.Point(279, 230);
+            this.chbCancelarVenda.Name = "chbCancelarVenda";
+            this.chbCancelarVenda.Size = new System.Drawing.Size(102, 17);
+            this.chbCancelarVenda.TabIndex = 177;
+            this.chbCancelarVenda.Text = "Cancelar Venda";
+            this.chbCancelarVenda.UseVisualStyleBackColor = true;
+            this.chbCancelarVenda.Click += new System.EventHandler(this.chbCancelarVenda_Click);
+            // 
+            // chbCancelarPagamento
+            // 
+            this.chbCancelarPagamento.AutoSize = true;
+            this.chbCancelarPagamento.Location = new System.Drawing.Point(279, 262);
+            this.chbCancelarPagamento.Name = "chbCancelarPagamento";
+            this.chbCancelarPagamento.Size = new System.Drawing.Size(125, 17);
+            this.chbCancelarPagamento.TabIndex = 175;
+            this.chbCancelarPagamento.Text = "Cancelar Pagamento";
+            this.chbCancelarPagamento.UseVisualStyleBackColor = true;
+            this.chbCancelarPagamento.Click += new System.EventHandler(this.chbCancelarPagamento_Click);
+            // 
+            // chbExcluirItem
+            // 
+            this.chbExcluirItem.AutoSize = true;
+            this.chbExcluirItem.Location = new System.Drawing.Point(279, 170);
+            this.chbExcluirItem.Name = "chbExcluirItem";
+            this.chbExcluirItem.Size = new System.Drawing.Size(80, 17);
+            this.chbExcluirItem.TabIndex = 176;
+            this.chbExcluirItem.Text = "Excluir Item";
+            this.chbExcluirItem.UseVisualStyleBackColor = true;
+            this.chbExcluirItem.Click += new System.EventHandler(this.chbExcluirItem_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(262, 140);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 15);
+            this.label3.TabIndex = 178;
+            this.label3.Text = "Permissãoes";
+            // 
+            // lblExluirItem
+            // 
+            this.lblExluirItem.AutoSize = true;
+            this.lblExluirItem.Location = new System.Drawing.Point(375, 26);
+            this.lblExluirItem.Name = "lblExluirItem";
+            this.lblExluirItem.Size = new System.Drawing.Size(29, 13);
+            this.lblExluirItem.TabIndex = 179;
+            this.lblExluirItem.Text = "false";
+            this.lblExluirItem.Visible = false;
+            // 
+            // lblDevolucaoTroca
+            // 
+            this.lblDevolucaoTroca.AutoSize = true;
+            this.lblDevolucaoTroca.Location = new System.Drawing.Point(375, 50);
+            this.lblDevolucaoTroca.Name = "lblDevolucaoTroca";
+            this.lblDevolucaoTroca.Size = new System.Drawing.Size(29, 13);
+            this.lblDevolucaoTroca.TabIndex = 180;
+            this.lblDevolucaoTroca.Text = "false";
+            this.lblDevolucaoTroca.Visible = false;
+            // 
+            // lblCancelarVenda
+            // 
+            this.lblCancelarVenda.AutoSize = true;
+            this.lblCancelarVenda.Location = new System.Drawing.Point(375, 74);
+            this.lblCancelarVenda.Name = "lblCancelarVenda";
+            this.lblCancelarVenda.Size = new System.Drawing.Size(29, 13);
+            this.lblCancelarVenda.TabIndex = 181;
+            this.lblCancelarVenda.Text = "false";
+            this.lblCancelarVenda.Visible = false;
+            // 
+            // lblCancelarPagamento
+            // 
+            this.lblCancelarPagamento.AutoSize = true;
+            this.lblCancelarPagamento.Location = new System.Drawing.Point(375, 99);
+            this.lblCancelarPagamento.Name = "lblCancelarPagamento";
+            this.lblCancelarPagamento.Size = new System.Drawing.Size(29, 13);
+            this.lblCancelarPagamento.TabIndex = 182;
+            this.lblCancelarPagamento.Text = "false";
+            this.lblCancelarPagamento.Visible = false;
+            // 
             // Forms_CadastroUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(320, 290);
+            this.ClientSize = new System.Drawing.Size(437, 305);
+            this.Controls.Add(this.lblCancelarPagamento);
+            this.Controls.Add(this.lblCancelarVenda);
+            this.Controls.Add(this.lblDevolucaoTroca);
+            this.Controls.Add(this.lblExluirItem);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.chbCancelarVenda);
+            this.Controls.Add(this.chbCancelarPagamento);
+            this.Controls.Add(this.chbExcluirItem);
+            this.Controls.Add(this.chbDevolucaoTroca);
+            this.Controls.Add(this.bunifuSeparator2);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.label21);
@@ -538,6 +683,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnSalvar);
+            this.Controls.Add(this.bunifuGroupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Forms_CadastroUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -559,5 +705,16 @@
         private Bunifu.UI.WinForms.BunifuTextBox txtUsuario;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator2;
+        private System.Windows.Forms.CheckBox chbDevolucaoTroca;
+        private Bunifu.UI.WinForms.BunifuGroupBox bunifuGroupBox1;
+        private System.Windows.Forms.CheckBox chbCancelarVenda;
+        private System.Windows.Forms.CheckBox chbCancelarPagamento;
+        private System.Windows.Forms.CheckBox chbExcluirItem;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblExluirItem;
+        private System.Windows.Forms.Label lblDevolucaoTroca;
+        private System.Windows.Forms.Label lblCancelarVenda;
+        private System.Windows.Forms.Label lblCancelarPagamento;
     }
 }

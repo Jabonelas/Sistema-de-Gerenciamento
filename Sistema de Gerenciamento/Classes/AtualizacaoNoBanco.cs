@@ -362,18 +362,27 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Atualizar Usuario
 
-        public void AtualizarCadastroUsuario(string _usuario, string _senha)
+        public void AtualizarCadastroUsuario(string _usuario, string _senha, string _excluirItem, string _devolucaoTroca,
+            string _cancelarVenda, string _cancelarPagamento)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update tb_CadastroUsuario set cu_usuario = @usuario,cu_senha = @senha " +
+                    string query = "update tb_CadastroUsuario set cu_usuario = @usuario,cu_senha = @senha, " +
+                        "cu_excluir_item = @excluirItem," +
+                        "cu_devolucao_troca = @devolucaoTroca," +
+                        "cu_cancelar_venda = @cancelarVenda," +
+                        "cu_cancelar_pagamento = @cancelarPagamento " +
                         "where cu_usuario = @usuario ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@usuario", SqlDbType.VarChar).Value = _usuario;
                     adapter.SelectCommand.Parameters.AddWithValue("@senha", SqlDbType.VarChar).Value = _senha;
+                    adapter.SelectCommand.Parameters.AddWithValue("@excluirItem", SqlDbType.VarChar).Value = _excluirItem;
+                    adapter.SelectCommand.Parameters.AddWithValue("@devolucaoTroca", SqlDbType.VarChar).Value = _devolucaoTroca;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cancelarVenda", SqlDbType.VarChar).Value = _cancelarVenda;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cancelarPagamento", SqlDbType.VarChar).Value = _cancelarPagamento;
 
                     adapter.SelectCommand.ExecuteNonQuery();
 

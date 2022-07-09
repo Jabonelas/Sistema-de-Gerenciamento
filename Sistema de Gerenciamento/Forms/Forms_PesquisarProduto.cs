@@ -21,6 +21,10 @@ namespace Sistema_de_Gerenciamento
 
         private Forms_PDV telaPDV;
 
+        private string telaSolicitacao;
+
+        private Forms_DevolucaoTroca devolucaoTroca;
+
         public Forms_PesquisarProduto(Forms_CadastroProduto _cadastroProduto)
         {
             InitializeComponent();
@@ -30,11 +34,26 @@ namespace Sistema_de_Gerenciamento
             PreencherComboBoxGrupo();
         }
 
-        public Forms_PesquisarProduto(Forms_PDV _telaPDV)
+        public Forms_PesquisarProduto(Forms_PDV _telaPDV, string _telaSolicitacao)
         {
             InitializeComponent();
 
+            telaSolicitacao = _telaSolicitacao;
+
             telaPDV = _telaPDV;
+
+            PreencherComboBoxGrupo();
+
+            LayoutPesquisarProdutosTelaPDV();
+        }
+
+        public Forms_PesquisarProduto(Forms_DevolucaoTroca _devolucaoTroca, string _telaSolicitacao)
+        {
+            InitializeComponent();
+
+            telaSolicitacao = _telaSolicitacao;
+
+            devolucaoTroca = _devolucaoTroca;
 
             PreencherComboBoxGrupo();
 
@@ -248,9 +267,15 @@ namespace Sistema_de_Gerenciamento
 
         private void gdvPesquisarProduto_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter && telaSolicitacao == "Tela PDV")
             {
                 telaPDV.txtCodigoProduto.Text = gdvPesquisarProduto.SelectedCells[1].Value.ToString();
+
+                this.Close();
+            }
+            else if (e.KeyCode == Keys.Enter && telaSolicitacao == "Tela Devolucao/Troca")
+            {
+                devolucaoTroca.txtCodProdutoTroca.Text = gdvPesquisarProduto.SelectedCells[1].Value.ToString();
 
                 this.Close();
             }

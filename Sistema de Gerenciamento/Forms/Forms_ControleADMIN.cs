@@ -48,25 +48,23 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (txtUsuario.Text == "ADMIN" && Buscar.BuscarUsuario(txtUsuario.Text, txtSenha.Text))
                 {
-                    //RemoverProduto();
-
-                    //if (telaPDV.gdvPDV.RowCount > 0)
-                    //{
-                    //telaPDV.gdvPDV.Rows.RemoveAt(telaPDV.gdvPDV.CurrentRow.Index);
-
                     telaPDV.RemoverProduto();
 
                     telaPDV.ValorTotal();
 
                     this.Close();
-
-                    //ApagandoTextbox();
-                    //}
                 }
             }
-            else
+            else if (tipo == "Devolucao/Troca")
             {
-                telaPDV.NovaVenda();
+                Forms_DevolucaoTroca telaDevolucaoTroca = new Forms_DevolucaoTroca();
+                telaDevolucaoTroca.ShowDialog();
+
+                this.Close();
+            }
+            else if (tipo == "Cancelar Pagamento")
+            {
+                telaPDV.FormatandoParaNovaVenda();
 
                 this.Close();
             }

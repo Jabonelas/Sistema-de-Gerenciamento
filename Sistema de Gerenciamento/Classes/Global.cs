@@ -12,7 +12,7 @@ namespace Sistema_de_Gerenciamento
 
         public static string tipoDoAlerta = string.Empty;
 
-        public static string tipoDeUsuario = string.Empty;
+        public static string NomeDeUsuario = string.Empty;
 
         public static string tipoEntrada = string.Empty;
     }

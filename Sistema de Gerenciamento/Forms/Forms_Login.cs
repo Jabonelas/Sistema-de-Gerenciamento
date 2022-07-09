@@ -46,11 +46,11 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     if (txtUsuario.Text == "ADMIN")
                     {
-                        Global.tipoDeUsuario = "ADMIN";
+                        Global.NomeDeUsuario = "ADMIN";
                     }
                     else
                     {
-                        Global.tipoDeUsuario = txtUsuario.Text;
+                        Global.NomeDeUsuario = txtUsuario.Text;
                     }
 
                     this.Hide();

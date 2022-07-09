@@ -47,7 +47,11 @@ namespace Sistema_de_Gerenciamento
                     {
                         Salvar.InserirUsuario(
                             txtUsuario.Text,
-                            txtSenha.Text);
+                            txtSenha.Text,
+                            lblExluirItem.Text,
+                            lblDevolucaoTroca.Text,
+                            lblCancelarVenda.Text,
+                            lblCancelarPagamento.Text);
 
                         txtUsuario.Text = string.Empty;
                         txtSenha.Text = string.Empty;
@@ -79,7 +83,11 @@ namespace Sistema_de_Gerenciamento
                     {
                         Atualizar.AtualizarCadastroUsuario(
                             txtUsuario.Text,
-                            txtSenha.Text);
+                            txtSenha.Text,
+                             lblExluirItem.Text,
+                            lblDevolucaoTroca.Text,
+                            lblCancelarVenda.Text,
+                            lblCancelarPagamento.Text);
                     }
                     else if (VerificarExistencia.VerificarExistenciaDoUsuario(txtUsuario.Text) == false)
                     {
@@ -106,6 +114,54 @@ namespace Sistema_de_Gerenciamento
         private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoValidoParaSenha(e);
+        }
+
+        private void chbExcluirItem_Click(object sender, EventArgs e)
+        {
+            if (chbExcluirItem.Checked == true)
+            {
+                lblExluirItem.Text = "true";
+            }
+            else
+            {
+                lblExluirItem.Text = "false";
+            }
+        }
+
+        private void chbDevolucaoTroca_Click(object sender, EventArgs e)
+        {
+            if (chbDevolucaoTroca.Checked == true)
+            {
+                lblDevolucaoTroca.Text = "true";
+            }
+            else
+            {
+                lblDevolucaoTroca.Text = "false";
+            }
+        }
+
+        private void chbCancelarVenda_Click(object sender, EventArgs e)
+        {
+            if (chbCancelarVenda.Checked == true)
+            {
+                lblCancelarVenda.Text = "true";
+            }
+            else
+            {
+                lblCancelarVenda.Text = "false";
+            }
+        }
+
+        private void chbCancelarPagamento_Click(object sender, EventArgs e)
+        {
+            if (chbCancelarPagamento.Checked == true)
+            {
+                lblCancelarPagamento.Text = "true";
+            }
+            else
+            {
+                lblCancelarPagamento.Text = "false";
+            }
         }
     }
 }

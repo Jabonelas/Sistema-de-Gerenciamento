@@ -39,7 +39,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             txtData.Text = DateTime.Today.ToShortDateString();
 
-            txtVendedor.Text = Global.tipoDeUsuario;
+            txtVendedor.Text = Global.NomeDeUsuario;
 
             CarregarDadosBanco();
         }

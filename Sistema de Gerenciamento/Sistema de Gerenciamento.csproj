@@ -264,6 +264,7 @@
     <Compile Include="Classes\DadosFinanceiro.cs" />
     <Compile Include="Classes\DadosGrupoMaterial.cs" />
     <Compile Include="Classes\DadosNotaFiscalEntrada.cs" />
+    <Compile Include="Classes\DadosPermissoes.cs" />
     <Compile Include="Classes\DadosProduto.cs" />
     <Compile Include="Classes\DGVPrinter.cs" />
     <Compile Include="Classes\ExcluirNoBanco.cs" />

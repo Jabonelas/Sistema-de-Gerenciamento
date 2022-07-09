@@ -54,7 +54,7 @@ namespace Sistema_de_Gerenciamento
 
         private void LayoutUsuario()
         {
-            if (Global.tipoDeUsuario == "ADMIN")
+            if (Global.NomeDeUsuario == "ADMIN")
             {
                 tabControl.Visible = true;
             }
@@ -201,7 +201,7 @@ namespace Sistema_de_Gerenciamento
             {
                 if (despesaCusto.vencimento <= DateTime.Today && despesaCusto.verificar == "nok")
                 {
-                    if (Global.tipoDeUsuario == "ADMIN" && despesaCusto.statusPagamento == "Nao Pago")
+                    if (Global.NomeDeUsuario == "ADMIN" && despesaCusto.statusPagamento == "Nao Pago")
                     {
                         MessageBox.Show($"Despesa/Custo - {despesaCusto.forncedorTitulo}\n\nVencimento {despesaCusto.vencimento.ToShortDateString()}",
                             "Pagamento Pendente Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -230,6 +230,12 @@ namespace Sistema_de_Gerenciamento
         {
             Forms_PDV telaPdv = new Forms_PDV();
             telaPdv.ShowDialog();
+        }
+
+        private void btnPDVConsole_Click(object sender, EventArgs e)
+        {
+            Forms_PDV pesquisarCliente = new Forms_PDV();
+            pesquisarCliente.ShowDialog();
         }
     }
 }
