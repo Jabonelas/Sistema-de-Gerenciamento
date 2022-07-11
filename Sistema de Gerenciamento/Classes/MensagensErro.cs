@@ -224,6 +224,15 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Tela PDV
 
+        #region Devolução/Troca
+
+        public void ErroAoBuscarNotaFiscalSaida(Exception _e)
+        {
+            MessageBox.Show($"(DVT-DV01) Erro ao Buscar Nota Fiscal Saida \n\nErro: {_e}", "Erro Buscar Nota Fiscal Saida!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Devolução/Troca
+
         #endregion Forms
 
         #region Banco

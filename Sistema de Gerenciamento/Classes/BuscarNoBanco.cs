@@ -3047,7 +3047,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Produto Por Codigo
 
-        public void BuscarVendaPorNotaFiscalSaida(int _notaFiscalSaida, BunifuDataGridView _tabela)
+        public bool BuscarVendaPorNotaFiscalSaida(int _notaFiscalSaida, BunifuDataGridView _tabela)
         {
             try
             {
@@ -3072,19 +3072,21 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     reader.Read();
 
-                    //if (reader.HasRows == true)
-                    //{
-                    //    return true;
-                    //}
-                    //else
-                    //{
-                    //    return false;
-                    //}
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
             catch (Exception ex)
             {
                 Erro.ErroAoBuscarNotaFiscalSaidaNoBanco(ex);
+
+                return false;
             }
         }
 

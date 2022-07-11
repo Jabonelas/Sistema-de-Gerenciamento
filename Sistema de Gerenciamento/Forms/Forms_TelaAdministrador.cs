@@ -66,7 +66,7 @@ namespace Sistema_de_Gerenciamento
                 btnClienteConsole.Location = new Point(546, 100);
                 btnContasReceberConsole.Location = new Point(695, 100);
 
-                btnDevolucaoConsole.Location = new Point(6, 400);
+                btnTrocaConsole.Location = new Point(6, 400);
                 btnDespesasConsole.Location = new Point(161, 400);
                 btnComprasConsole.Location = new Point(317, 400);
                 btnResumoVendasConsole.Location = new Point(472, 400);
@@ -236,6 +236,12 @@ namespace Sistema_de_Gerenciamento
         {
             Forms_PDV pesquisarCliente = new Forms_PDV();
             pesquisarCliente.ShowDialog();
+        }
+
+        private void btnTrocaConsole_Click(object sender, EventArgs e)
+        {
+            Forms_DevolucaoTroca devolucaoTroca = new Forms_DevolucaoTroca();
+            devolucaoTroca.ShowDialog();
         }
     }
 }

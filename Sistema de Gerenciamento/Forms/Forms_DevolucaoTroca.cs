@@ -13,6 +13,8 @@ namespace Sistema_de_Gerenciamento.Forms
 {
     public partial class Forms_DevolucaoTroca : Form
     {
+        private MensagensErro Erro = new MensagensErro();
+
         private BuscarNoBanco Buscar = new BuscarNoBanco();
 
         private List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaida = new List<DadosNotaFiscalSaida>();
@@ -41,6 +43,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
             listaDadosEstoqueProduto = Buscar.BuscarProdutos();
 
+            cmbTipo.SelectedIndex = 1;
+
             //listaProduto = Buscar.BuscarProdutos();
         }
 
@@ -51,26 +55,29 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void BuscarDadosNotaFiscalSaida()
         {
-            Buscar.BuscarVendaPorNotaFiscalSaida(Convert.ToInt32(txtNotaFiscal.Text), gdvDevolucaoTroca);
+            try
+            {
+                if (txtNotaFiscal.Text != string.Empty && Buscar.BuscarVendaPorNotaFiscalSaida(Convert.ToInt32(txtNotaFiscal.Text), gdvDevolucaoTroca) == true)
+                {
+                    //Buscar.BuscarVendaPorNotaFiscalSaida(Convert.ToInt32(txtNotaFiscal.Text), gdvDevolucaoTroca);
 
-            listaDadosNotaFiscalSaida = Buscar.ListaNotaFiscalSaida(Convert.ToInt32(txtNotaFiscal.Text));
+                    listaDadosNotaFiscalSaida = Buscar.ListaNotaFiscalSaida(Convert.ToInt32(txtNotaFiscal.Text));
 
-            SetarDesignColunaGridView();
+                    SetarDesignColunaGridView();
 
-            Buscar.ListaNotaFiscalSaida(Convert.ToInt32(txtNotaFiscal.Text)).ForEach(nf => listaDadosNotaFiscalSaida.Add(nf));
+                    Buscar.ListaNotaFiscalSaida(Convert.ToInt32(txtNotaFiscal.Text)).ForEach(nf => listaDadosNotaFiscalSaida.Add(nf));
 
-            //foreach (var item in Buscar.ListaNotaFiscalSaida(Convert.ToInt32(txtNotaFiscal.Text)))
-            //{
-            //    listaDadosNotaFiscalSaida.Add(item);
-            //}
+                    txtVendedor.Text = listaDadosNotaFiscalSaida[0].vendedor;
+                    txtValidadeTroca.Text = listaDadosNotaFiscalSaida[0].ValidadeTroca.ToShortDateString();
+                    txtNomeCliente.Text = listaDadosNotaFiscalSaida[0].nomeCliente;
 
-            txtVendedor.Text = listaDadosNotaFiscalSaida[0].vendedor;
-            txtValidadeTroca.Text = listaDadosNotaFiscalSaida[0].ValidadeTroca.ToShortDateString();
-            txtNomeCliente.Text = listaDadosNotaFiscalSaida[0].nomeCliente;
-
-            //compras.listaDadosNotaFiscalEntrada.ForEach(nf => ListaEntrada = nf);
-
-            Buscar.ListaNotaFiscalSaida(Convert.ToInt32(txtNotaFiscal.Text));
+                    Buscar.ListaNotaFiscalSaida(Convert.ToInt32(txtNotaFiscal.Text));
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarNotaFiscalSaida(ex);
+            }
         }
 
         private void SetarDesignColunaGridView()
@@ -106,19 +113,22 @@ namespace Sistema_de_Gerenciamento.Forms
             txtUnidadeTroca.Visible = !retorno;
             txtPrecoTroca.Visible = !retorno;
             pnlValorPrudutoTroca.Visible = !retorno;
+            btnBuscarCodigoProduto.Visible = !retorno;
 
             if (retorno == true)
             {
                 pnlValorProdutoDevolvido.Location = new Point(184, 489);
                 pnlValorAPagar.Location = new Point(487, 489);
-                btnFechar.Location = new Point(350, 637);
+                btnFechar.Location = new Point(518, 630);
+                btnConfirmar.Location = new Point(215, 630);
                 this.Size = new Size(892, 735);
             }
             else
             {
                 pnlValorProdutoDevolvido.Location = new Point(12, 542);
                 pnlValorAPagar.Location = new Point(626, 542);
-                btnFechar.Location = new Point(343, 683);
+                btnFechar.Location = new Point(538, 683);
+                btnConfirmar.Location = new Point(150, 683);
                 this.Size = new Size(892, 773);
             }
         }
@@ -140,6 +150,10 @@ namespace Sistema_de_Gerenciamento.Forms
                 pcbImagemProduto.Image = Buscar.BuscarLogoEmpresa(1);
 
                 lblValorProdDevolvido.Text = "R$ 0,00";
+
+                //txtQuantidadeDevolucao.ReadOnly = true;
+
+                txtQuantidadeDevolucao.Enabled = false;
             }
             else if (Buscar.BuscarCodigoBarras(Convert.ToInt32(txtCodBarrasDevolucao.Text)) == true)
             {
@@ -167,6 +181,10 @@ namespace Sistema_de_Gerenciamento.Forms
 
                         txtPrecoDevolucao.Text = string.Format("{0:C}", dadosNotaFiscalSaida.preco);
 
+                        //txtQuantidadeDevolucao.ReadOnly = false;
+
+                        txtQuantidadeDevolucao.Enabled = true;
+
                         pcbImagemProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodProdutoDevolucao.Text));
                     }
                 }
@@ -175,6 +193,8 @@ namespace Sistema_de_Gerenciamento.Forms
                     if (cont == 1)
                     {
                         MessageBox.Show($"Item Não Pertenciente a Nota Fiscal de Nº: {txtNotaFiscal.Text} ", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        txtCodBarrasDevolucao.Text = string.Empty;
 
                         cont = 0;
                         return;
@@ -238,6 +258,12 @@ namespace Sistema_de_Gerenciamento.Forms
         private void txtPrecoDevolucao_TextChange(object sender, EventArgs e)
         {
             lblValorProdDevolvido.Text = txtPrecoDevolucao.Text;
+
+            if (cmbTipo.Text == "DEVOLUÇÃO")
+            {
+                lblValorAPagar.Text = lblValorProdDevolvido.Text;
+                lblValorAPagar.ForeColor = Color.Red;
+            }
         }
 
         private void txtCodBarrasTroca_TextChange(object sender, EventArgs e)
@@ -257,9 +283,13 @@ namespace Sistema_de_Gerenciamento.Forms
 
                 txtCodProdutoTroca.Text = dadosEstoqueProduto.codigoProduto.ToString();
                 txtProdutoTroca.Text = dadosEstoqueProduto.descricaoProduto;
-                txtQuantidadeTroca.Text = "1";
+                txtQuantidadeTroca.Text = "1,00";
                 txtUnidadeTroca.Text = dadosEstoqueProduto.unidade;
-                txtPrecoTroca.Text = dadosEstoqueProduto.preco.ToString();
+                txtPrecoTroca.Text = string.Format("{0:C}", dadosEstoqueProduto.preco);
+
+                txtQuantidadeTroca.Enabled = true;
+
+                pcbImagemProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodBarrasTroca.Text));
             }
         }
 
@@ -271,19 +301,28 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtCodProdutoTroca_TextChange(object sender, EventArgs e)
         {
-            dadosEstoqueProduto = listaDadosEstoqueProduto.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodProdutoTroca.Text));
+            if (txtCodBarrasTroca.Text == string.Empty)
+            {
+                txtCodProdutoTroca.Text = string.Empty;
+                txtProdutoTroca.Text = string.Empty;
+                txtQuantidadeTroca.Text = string.Empty;
+                txtUnidadeTroca.Text = string.Empty;
+                txtPrecoTroca.Text = string.Empty;
+            }
+            else if (Buscar.BuscarCodigoBarras(Convert.ToInt32(txtCodProdutoTroca.Text)) == true)
+            {
+                dadosEstoqueProduto = listaDadosEstoqueProduto.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodProdutoTroca.Text));
 
-            txtCodBarrasTroca.Text = dadosEstoqueProduto.codigoBarras.ToString();
+                txtCodBarrasTroca.Text = dadosEstoqueProduto.codigoBarras.ToString();
+                txtProdutoTroca.Text = dadosEstoqueProduto.descricaoProduto;
+                txtQuantidadeTroca.Text = "1";
+                txtUnidadeTroca.Text = dadosEstoqueProduto.unidade;
+                txtPrecoTroca.Text = String.Format("{0:C}", dadosEstoqueProduto.preco);
 
-            //txtCodBarrasTroca.Text = dadosEstoqueProduto.codigoProduto.ToString();
+                txtQuantidadeTroca.Enabled = true;
 
-            txtProdutoTroca.Text = dadosEstoqueProduto.descricaoProduto;
-
-            txtQuantidadeTroca.Text = "1";
-
-            txtUnidadeTroca.Text = dadosEstoqueProduto.unidade;
-
-            txtPrecoTroca.Text = String.Format("{0:C}", dadosEstoqueProduto.preco);
+                pcbImagemProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodProdutoTroca.Text));
+            }
         }
 
         private void txtCodProdutoTroca_KeyPress(object sender, KeyPressEventArgs e)
@@ -306,7 +345,26 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtPrecoTroca_TextChange(object sender, EventArgs e)
         {
-            lblValorProdTroca.Text = txtPrecoTroca.Text;
+            if (txtPrecoTroca.Text != string.Empty)
+            {
+                lblValorProdTroca.Text = txtPrecoTroca.Text;
+
+                lblValorAPagar.Text = String.Format("{0:C}", (Convert.ToDecimal(lblValorProdTroca.Text.Replace("R$ ", "")) -
+                Convert.ToDecimal(lblValorProdDevolvido.Text.Replace("R$ ", ""))));
+
+                if (Convert.ToDecimal(lblValorAPagar.Text.Replace("R$ ", "")) < 0)
+                {
+                    lblTituloValorAPagar.Text = "Valor a Pagar";
+
+                    lblValorAPagar.ForeColor = Color.Red;
+                }
+                else
+                {
+                    lblTituloValorAPagar.Text = "Valor a Receber";
+
+                    lblValorAPagar.ForeColor = Color.Green;
+                }
+            }
         }
 
         private void txtQuantidadeDevolucao_Leave(object sender, EventArgs e)
@@ -326,6 +384,32 @@ namespace Sistema_de_Gerenciamento.Forms
         private void txtQuantidadeTroca_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            ManipulacaoTextBox.TextBoxEstaVazio(this);
+        }
+
+        private void txtQuantidadeTroca_Enter(object sender, EventArgs e)
+        {
+            txtQuantidadeTroca.Text = string.Empty;
+        }
+
+        private void txtQuantidadeTroca_Leave(object sender, EventArgs e)
+        {
+            if (txtQuantidadeTroca.Text == string.Empty)
+            {
+                txtQuantidadeTroca.Focus();
+            }
+        }
+
+        private void txtQuantidadeTroca_TextChange(object sender, EventArgs e)
+        {
+            if (txtQuantidadeTroca.Text != string.Empty)
+            {
+                txtPrecoTroca.Text = String.Format("{0:C}", (Convert.ToDecimal(txtQuantidadeTroca.Text) * dadosEstoqueProduto.preco));
+            }
         }
     }
 }

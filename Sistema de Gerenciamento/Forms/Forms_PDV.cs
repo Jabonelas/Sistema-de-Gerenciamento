@@ -42,6 +42,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
             PreenchimentoDados();
 
+            cmbParcelas.SelectedIndex = 0;
+
             //FormatoFullScreen();
         }
 
@@ -98,7 +100,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (e.KeyCode == Keys.Escape) // Finalziar tela Esc
             {
-                if (lblDescricaoItem.Text != "PAGAMENTO" && gdvPDV.Rows.Count <= 0)
+                if (lblDescricaoItem.Text != "PAGAMENTO" && gdvPDV.Rows.Count <= 0 || lblNumeroNotaFiscalSaida.Enabled == true)
                 {
                     this.Close();
                 }
@@ -308,9 +310,6 @@ namespace Sistema_de_Gerenciamento.Forms
 
                             try
                             {
-                                Atualizar.AtualizarQuantidadeEstoquePosVenda(Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value),
-                                Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value));
-
                                 Salvar.NotaFiscalSaida(
                                         txtCPF.Text,
                                         Convert.ToInt32(lblNumeroNotaFiscalSaida.Text),
@@ -321,7 +320,7 @@ namespace Sistema_de_Gerenciamento.Forms
                                         Convert.ToDateTime(DateTime.Now),
                                         Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value),
                                         txtVendedor.Text,
-                                        Convert.ToDateTime(txtGarantia.Text),
+                                        Convert.ToDateTime(DateTime.Today.AddDays(30).ToShortDateString()),
                                         lblNomeCliente.Text,
                                         cmbFormaPagamento.Text,
                                         Convert.ToDecimal(lblValorDescontoCadaItem.Text),

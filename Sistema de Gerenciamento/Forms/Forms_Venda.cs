@@ -697,5 +697,10 @@ namespace Sistema_de_Gerenciamento.Forms
 
             //ListaFinanceiro.ForEach(finac => financeiro = finac);
         }
+
+        private void txtCodBarras_Leave(object sender, EventArgs e)
+        {
+            BuscarProduto();
+        }
     }
 }

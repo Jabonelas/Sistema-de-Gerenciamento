@@ -120,14 +120,14 @@
             this.btnResumoVendasConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnComprasConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnDespesasConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.btnDevolucaoConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.btnTrocaConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnContasReceberConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnClienteConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnProdutoConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnOrdemServicoConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnVendaConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.TimerVerificarDespesaCustoFixo = new System.Windows.Forms.Timer(this.components);
             this.btnPDVConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.TimerVerificarDespesaCustoFixo = new System.Windows.Forms.Timer(this.components);
             this.tabControl.SuspendLayout();
             this.tabCadastro.SuspendLayout();
             this.tabMovimentacao.SuspendLayout();
@@ -2082,7 +2082,7 @@
             this.panel1.Controls.Add(this.btnResumoVendasConsole);
             this.panel1.Controls.Add(this.btnComprasConsole);
             this.panel1.Controls.Add(this.btnDespesasConsole);
-            this.panel1.Controls.Add(this.btnDevolucaoConsole);
+            this.panel1.Controls.Add(this.btnTrocaConsole);
             this.panel1.Controls.Add(this.btnContasReceberConsole);
             this.panel1.Controls.Add(this.btnClienteConsole);
             this.panel1.Controls.Add(this.btnProdutoConsole);
@@ -2566,95 +2566,96 @@
             this.btnDespesasConsole.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnDespesasConsole.UseDefaultRadiusAndThickness = true;
             // 
-            // btnDevolucaoConsole
+            // btnTrocaConsole
             // 
-            this.btnDevolucaoConsole.AllowAnimations = true;
-            this.btnDevolucaoConsole.AllowMouseEffects = true;
-            this.btnDevolucaoConsole.AllowToggling = false;
-            this.btnDevolucaoConsole.AnimationSpeed = 200;
-            this.btnDevolucaoConsole.AutoGenerateColors = false;
-            this.btnDevolucaoConsole.AutoRoundBorders = false;
-            this.btnDevolucaoConsole.AutoSizeLeftIcon = true;
-            this.btnDevolucaoConsole.AutoSizeRightIcon = true;
-            this.btnDevolucaoConsole.BackColor = System.Drawing.Color.Transparent;
-            this.btnDevolucaoConsole.BackColor1 = System.Drawing.Color.Transparent;
-            this.btnDevolucaoConsole.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnDevolucaoConsole.BackgroundImage")));
-            this.btnDevolucaoConsole.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnDevolucaoConsole.ButtonText = "Devolução";
-            this.btnDevolucaoConsole.ButtonTextMarginLeft = 0;
-            this.btnDevolucaoConsole.ColorContrastOnClick = 45;
-            this.btnDevolucaoConsole.ColorContrastOnHover = 45;
-            this.btnDevolucaoConsole.Cursor = System.Windows.Forms.Cursors.Default;
+            this.btnTrocaConsole.AllowAnimations = true;
+            this.btnTrocaConsole.AllowMouseEffects = true;
+            this.btnTrocaConsole.AllowToggling = false;
+            this.btnTrocaConsole.AnimationSpeed = 200;
+            this.btnTrocaConsole.AutoGenerateColors = false;
+            this.btnTrocaConsole.AutoRoundBorders = false;
+            this.btnTrocaConsole.AutoSizeLeftIcon = true;
+            this.btnTrocaConsole.AutoSizeRightIcon = true;
+            this.btnTrocaConsole.BackColor = System.Drawing.Color.Transparent;
+            this.btnTrocaConsole.BackColor1 = System.Drawing.Color.Transparent;
+            this.btnTrocaConsole.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTrocaConsole.BackgroundImage")));
+            this.btnTrocaConsole.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnTrocaConsole.ButtonText = "Troca";
+            this.btnTrocaConsole.ButtonTextMarginLeft = 0;
+            this.btnTrocaConsole.ColorContrastOnClick = 45;
+            this.btnTrocaConsole.ColorContrastOnHover = 45;
+            this.btnTrocaConsole.Cursor = System.Windows.Forms.Cursors.Default;
             borderEdges23.BottomLeft = true;
             borderEdges23.BottomRight = true;
             borderEdges23.TopLeft = true;
             borderEdges23.TopRight = true;
-            this.btnDevolucaoConsole.CustomizableEdges = borderEdges23;
-            this.btnDevolucaoConsole.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnDevolucaoConsole.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnDevolucaoConsole.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnDevolucaoConsole.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnDevolucaoConsole.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
-            this.btnDevolucaoConsole.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDevolucaoConsole.ForeColor = System.Drawing.Color.Black;
-            this.btnDevolucaoConsole.IconLeftAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnDevolucaoConsole.IconLeftCursor = System.Windows.Forms.Cursors.Default;
-            this.btnDevolucaoConsole.IconLeftPadding = new System.Windows.Forms.Padding(11, 1, 3, 3);
-            this.btnDevolucaoConsole.IconMarginLeft = 11;
-            this.btnDevolucaoConsole.IconPadding = 17;
-            this.btnDevolucaoConsole.IconRightAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnDevolucaoConsole.IconRightCursor = System.Windows.Forms.Cursors.Default;
-            this.btnDevolucaoConsole.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
-            this.btnDevolucaoConsole.IconSize = 25;
-            this.btnDevolucaoConsole.IdleBorderColor = System.Drawing.Color.Transparent;
-            this.btnDevolucaoConsole.IdleBorderRadius = 1;
-            this.btnDevolucaoConsole.IdleBorderThickness = 1;
-            this.btnDevolucaoConsole.IdleFillColor = System.Drawing.Color.Transparent;
-            this.btnDevolucaoConsole.IdleIconLeftImage = global::Sistema_de_Gerenciamento.Properties.Resources.receptor;
-            this.btnDevolucaoConsole.IdleIconRightImage = null;
-            this.btnDevolucaoConsole.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnDevolucaoConsole.IndicateFocus = false;
-            this.btnDevolucaoConsole.Location = new System.Drawing.Point(6, 429);
-            this.btnDevolucaoConsole.Name = "btnDevolucaoConsole";
-            this.btnDevolucaoConsole.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnDevolucaoConsole.OnDisabledState.BorderRadius = 1;
-            this.btnDevolucaoConsole.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnDevolucaoConsole.OnDisabledState.BorderThickness = 1;
-            this.btnDevolucaoConsole.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnDevolucaoConsole.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnDevolucaoConsole.OnDisabledState.IconLeftImage = null;
-            this.btnDevolucaoConsole.OnDisabledState.IconRightImage = null;
-            this.btnDevolucaoConsole.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.btnDevolucaoConsole.onHoverState.BorderRadius = 1;
-            this.btnDevolucaoConsole.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnDevolucaoConsole.onHoverState.BorderThickness = 1;
-            this.btnDevolucaoConsole.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.btnDevolucaoConsole.onHoverState.ForeColor = System.Drawing.Color.White;
-            this.btnDevolucaoConsole.onHoverState.IconLeftImage = null;
-            this.btnDevolucaoConsole.onHoverState.IconRightImage = null;
-            this.btnDevolucaoConsole.OnIdleState.BorderColor = System.Drawing.Color.Transparent;
-            this.btnDevolucaoConsole.OnIdleState.BorderRadius = 1;
-            this.btnDevolucaoConsole.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnDevolucaoConsole.OnIdleState.BorderThickness = 1;
-            this.btnDevolucaoConsole.OnIdleState.FillColor = System.Drawing.Color.Transparent;
-            this.btnDevolucaoConsole.OnIdleState.ForeColor = System.Drawing.Color.Black;
-            this.btnDevolucaoConsole.OnIdleState.IconLeftImage = global::Sistema_de_Gerenciamento.Properties.Resources.receptor;
-            this.btnDevolucaoConsole.OnIdleState.IconRightImage = null;
-            this.btnDevolucaoConsole.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.btnDevolucaoConsole.OnPressedState.BorderRadius = 1;
-            this.btnDevolucaoConsole.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnDevolucaoConsole.OnPressedState.BorderThickness = 1;
-            this.btnDevolucaoConsole.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.btnDevolucaoConsole.OnPressedState.ForeColor = System.Drawing.Color.White;
-            this.btnDevolucaoConsole.OnPressedState.IconLeftImage = null;
-            this.btnDevolucaoConsole.OnPressedState.IconRightImage = null;
-            this.btnDevolucaoConsole.Size = new System.Drawing.Size(138, 165);
-            this.btnDevolucaoConsole.TabIndex = 27;
-            this.btnDevolucaoConsole.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnDevolucaoConsole.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnDevolucaoConsole.TextMarginLeft = 0;
-            this.btnDevolucaoConsole.TextPadding = new System.Windows.Forms.Padding(0);
-            this.btnDevolucaoConsole.UseDefaultRadiusAndThickness = true;
+            this.btnTrocaConsole.CustomizableEdges = borderEdges23;
+            this.btnTrocaConsole.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnTrocaConsole.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnTrocaConsole.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnTrocaConsole.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnTrocaConsole.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btnTrocaConsole.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTrocaConsole.ForeColor = System.Drawing.Color.Black;
+            this.btnTrocaConsole.IconLeftAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnTrocaConsole.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnTrocaConsole.IconLeftPadding = new System.Windows.Forms.Padding(11, 1, 3, 3);
+            this.btnTrocaConsole.IconMarginLeft = 11;
+            this.btnTrocaConsole.IconPadding = 17;
+            this.btnTrocaConsole.IconRightAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnTrocaConsole.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnTrocaConsole.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnTrocaConsole.IconSize = 25;
+            this.btnTrocaConsole.IdleBorderColor = System.Drawing.Color.Transparent;
+            this.btnTrocaConsole.IdleBorderRadius = 1;
+            this.btnTrocaConsole.IdleBorderThickness = 1;
+            this.btnTrocaConsole.IdleFillColor = System.Drawing.Color.Transparent;
+            this.btnTrocaConsole.IdleIconLeftImage = global::Sistema_de_Gerenciamento.Properties.Resources.receptor;
+            this.btnTrocaConsole.IdleIconRightImage = null;
+            this.btnTrocaConsole.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnTrocaConsole.IndicateFocus = false;
+            this.btnTrocaConsole.Location = new System.Drawing.Point(6, 429);
+            this.btnTrocaConsole.Name = "btnTrocaConsole";
+            this.btnTrocaConsole.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnTrocaConsole.OnDisabledState.BorderRadius = 1;
+            this.btnTrocaConsole.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnTrocaConsole.OnDisabledState.BorderThickness = 1;
+            this.btnTrocaConsole.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnTrocaConsole.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnTrocaConsole.OnDisabledState.IconLeftImage = null;
+            this.btnTrocaConsole.OnDisabledState.IconRightImage = null;
+            this.btnTrocaConsole.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnTrocaConsole.onHoverState.BorderRadius = 1;
+            this.btnTrocaConsole.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnTrocaConsole.onHoverState.BorderThickness = 1;
+            this.btnTrocaConsole.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnTrocaConsole.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnTrocaConsole.onHoverState.IconLeftImage = null;
+            this.btnTrocaConsole.onHoverState.IconRightImage = null;
+            this.btnTrocaConsole.OnIdleState.BorderColor = System.Drawing.Color.Transparent;
+            this.btnTrocaConsole.OnIdleState.BorderRadius = 1;
+            this.btnTrocaConsole.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnTrocaConsole.OnIdleState.BorderThickness = 1;
+            this.btnTrocaConsole.OnIdleState.FillColor = System.Drawing.Color.Transparent;
+            this.btnTrocaConsole.OnIdleState.ForeColor = System.Drawing.Color.Black;
+            this.btnTrocaConsole.OnIdleState.IconLeftImage = global::Sistema_de_Gerenciamento.Properties.Resources.receptor;
+            this.btnTrocaConsole.OnIdleState.IconRightImage = null;
+            this.btnTrocaConsole.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnTrocaConsole.OnPressedState.BorderRadius = 1;
+            this.btnTrocaConsole.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnTrocaConsole.OnPressedState.BorderThickness = 1;
+            this.btnTrocaConsole.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnTrocaConsole.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnTrocaConsole.OnPressedState.IconLeftImage = null;
+            this.btnTrocaConsole.OnPressedState.IconRightImage = null;
+            this.btnTrocaConsole.Size = new System.Drawing.Size(138, 165);
+            this.btnTrocaConsole.TabIndex = 27;
+            this.btnTrocaConsole.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnTrocaConsole.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnTrocaConsole.TextMarginLeft = 0;
+            this.btnTrocaConsole.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnTrocaConsole.UseDefaultRadiusAndThickness = true;
+            this.btnTrocaConsole.Click += new System.EventHandler(this.btnTrocaConsole_Click);
             // 
             // btnContasReceberConsole
             // 
@@ -3109,11 +3110,6 @@
             this.btnVendaConsole.UseDefaultRadiusAndThickness = true;
             this.btnVendaConsole.Click += new System.EventHandler(this.btnVendaConsole_Click);
             // 
-            // TimerVerificarDespesaCustoFixo
-            // 
-            this.TimerVerificarDespesaCustoFixo.Interval = 72000000;
-            this.TimerVerificarDespesaCustoFixo.Tick += new System.EventHandler(this.TimerVerificarDespesaCustoFixo_Tick);
-            // 
             // btnPDVConsole
             // 
             this.btnPDVConsole.AllowAnimations = true;
@@ -3205,6 +3201,11 @@
             this.btnPDVConsole.UseDefaultRadiusAndThickness = true;
             this.btnPDVConsole.Click += new System.EventHandler(this.btnPDVConsole_Click);
             // 
+            // TimerVerificarDespesaCustoFixo
+            // 
+            this.TimerVerificarDespesaCustoFixo.Interval = 72000000;
+            this.TimerVerificarDespesaCustoFixo.Tick += new System.EventHandler(this.TimerVerificarDespesaCustoFixo_Tick);
+            // 
             // Forms_TelaAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3276,7 +3277,7 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnResumoVendasConsole;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnComprasConsole;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnDespesasConsole;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnDevolucaoConsole;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnTrocaConsole;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnContasReceberConsole;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnClienteConsole;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnProdutoConsole;
