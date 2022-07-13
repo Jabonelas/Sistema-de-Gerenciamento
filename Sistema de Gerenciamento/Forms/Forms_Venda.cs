@@ -46,11 +46,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void CarregarDadosBanco()
         {
-            listaProduto = Buscar.BuscarProdutos();
+            listaProduto = Buscar.BuscarListaProdutos();
 
-            listaFinanceiro = Buscar.BuscarFinanceiro();
+            listaFinanceiro = Buscar.BuscarListaFinanceiro();
 
-            //listaFinanceiro.ForEach(finac => financeiro = finac);
+            //listaDadosFinanceiro.ForEach(finac => financeiro = finac);
         }
 
         private void btnAbriCadastroCliente_Click(object sender, EventArgs e)
@@ -690,9 +690,9 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             Task.Run(() =>
             {
-                //listaProduto = Buscar.BuscarProdutos();
+                //listaDadosProduto = Buscar.BuscarListaProdutos();
 
-                //ListaFinanceiro = Buscar.BuscarFinanceiro();
+                //ListaFinanceiro = Buscar.BuscarListaFinanceiro();
             });
 
             //ListaFinanceiro.ForEach(finac => financeiro = finac);

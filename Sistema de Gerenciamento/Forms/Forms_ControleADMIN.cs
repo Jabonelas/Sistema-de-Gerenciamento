@@ -57,7 +57,7 @@ namespace Sistema_de_Gerenciamento.Forms
             }
             else if (tipo == "Devolucao/Troca")
             {
-                Forms_DevolucaoTroca telaDevolucaoTroca = new Forms_DevolucaoTroca();
+                Forms_Troca telaDevolucaoTroca = new Forms_Troca();
                 telaDevolucaoTroca.ShowDialog();
 
                 this.Close();

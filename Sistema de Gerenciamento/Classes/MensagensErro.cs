@@ -907,6 +907,11 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-NFSV03) Erro ao Realizar Busca Lista de Permissões Nota Fiscal Saida \n\nErro: {_e}", "Erro Busca Lista de Permissões Nota Fiscal Saida!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoBuscarListaPermissoesNotaFiscalSaidaCompetaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-NFSV04) Erro ao Realizar Busca Lista de Permissões Nota Fiscal Saida Completa \n\nErro: {_e}", "Erro Busca Lista de Permissões Nota Fiscal Saida Completa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Buscar Nota Fiscal Saida
 
         #endregion Buscar No Banco

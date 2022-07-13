@@ -240,7 +240,7 @@ namespace Sistema_de_Gerenciamento
 
         private void btnTrocaConsole_Click(object sender, EventArgs e)
         {
-            Forms_DevolucaoTroca devolucaoTroca = new Forms_DevolucaoTroca();
+            Forms_Troca devolucaoTroca = new Forms_Troca();
             devolucaoTroca.ShowDialog();
         }
     }

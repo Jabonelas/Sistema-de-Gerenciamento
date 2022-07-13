@@ -23,7 +23,7 @@ namespace Sistema_de_Gerenciamento
 
         private string telaSolicitacao;
 
-        private Forms_DevolucaoTroca devolucaoTroca;
+        private Forms_Troca devolucaoTroca;
 
         public Forms_PesquisarProduto(Forms_CadastroProduto _cadastroProduto)
         {
@@ -47,7 +47,7 @@ namespace Sistema_de_Gerenciamento
             LayoutPesquisarProdutosTelaPDV();
         }
 
-        public Forms_PesquisarProduto(Forms_DevolucaoTroca _devolucaoTroca, string _telaSolicitacao)
+        public Forms_PesquisarProduto(Forms_Troca _devolucaoTroca, string _telaSolicitacao)
         {
             InitializeComponent();
 

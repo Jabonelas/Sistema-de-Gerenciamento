@@ -25,7 +25,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             InitializeComponent();
 
-            listaFinanceiro = Buscar.BuscarFinanceiro();
+            listaFinanceiro = Buscar.BuscarListaFinanceiro();
 
             DadosDoCarneParaPreenchimentoTextBox();
 

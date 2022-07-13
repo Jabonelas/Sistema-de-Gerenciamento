@@ -1067,7 +1067,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Produto Por Pesquisa
 
-        public List<DadosProduto> BuscarProdutos()
+        public List<DadosProduto> BuscarListaProdutos()
 
         {
             List<DadosProduto> listaProduto = new List<DadosProduto>();
@@ -2649,7 +2649,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Financeiro
 
-        public List<DadosFinanceiro> BuscarFinanceiro()
+        public List<DadosFinanceiro> BuscarListaFinanceiro()
 
         {
             List<DadosFinanceiro> listaFinanceiro = new List<DadosFinanceiro>();
@@ -3092,9 +3092,9 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Lista Nota Fiscal Saida
 
-        public List<DadosNotaFiscalSaida> ListaNotaFiscalSaida(int _numeroNotaFiscalSaida)
+        public List<DadosNotaFiscalSaida> BuscarListaNotaFiscalSaidaParcial(int _numeroNotaFiscalSaida)
         {
-            List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidas = new List<DadosNotaFiscalSaida>();
+            List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaParcial = new List<DadosNotaFiscalSaida>();
 
             try
             {
@@ -3111,7 +3111,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     while (dr.Read())
                     {
-                        listaDadosNotaFiscalSaidas.Add(new DadosNotaFiscalSaida(dr.GetString(0), dr.GetDateTime(1),
+                        listaDadosNotaFiscalSaidaParcial.Add(new DadosNotaFiscalSaida(dr.GetString(0), dr.GetDateTime(1),
                             dr.GetString(2), dr.GetInt32(3), dr.GetInt32(4), dr.GetString(5), dr.GetDecimal(6), dr.GetString(7),
                             dr.GetDecimal(8), dr.GetDecimal(9)));
                     }
@@ -3121,12 +3121,50 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 Erro.ErroAoBuscarListaNotaFiscalSaidaNoBanco(ex);
             }
-            return listaDadosNotaFiscalSaidas;
+
+            return listaDadosNotaFiscalSaidaParcial;
         }
 
         #endregion Lista Nota Fiscal Saida
 
-        public List<DadosPermissoes> ListaPermissoes(string _usuario)
+        public List<DadosNotaFiscalSaida> BuscarListaNotaFiscalSaidaCompleto(int _numeroNotaFiscalSaida)
+        {
+            List<DadosNotaFiscalSaida> listadadosNotaFiscalSaidasCompleta = new List<DadosNotaFiscalSaida>();
+
+            try
+            {
+                using (SqlConnection conexeSQL = AbrirConexao())
+                {
+                    string query = "select * from tb_NotaFiscalSaida where ns_numero_nf = @numeroNotaFiscalSaida";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexeSQL);
+
+                    adapter.SelectCommand.Parameters.AddWithValue("@numeroNotaFiscalSaida", _numeroNotaFiscalSaida);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listadadosNotaFiscalSaidasCompleta.Add(new DadosNotaFiscalSaida(
+                            dr.GetString(0), dr.GetDateTime(1), dr.GetString(2),
+                            dr.GetInt32(3), dr.GetInt32(4), dr.GetString(5), dr.GetDecimal(6), dr.GetString(7),
+                           dr.GetDecimal(8), dr.GetString(9), dr.GetInt32(10), dr.GetDateTime(11), dr.GetString(12),
+                           dr.GetInt32(13), dr.GetDecimal(14), dr.GetDecimal(15), dr.GetDecimal(16), dr.GetString(17),
+                           dr.GetString(18)));
+                    }
+                }
+
+                return listadadosNotaFiscalSaidasCompleta;
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarListaPermissoesNotaFiscalSaidaCompetaNoBanco(ex);
+
+                return listadadosNotaFiscalSaidasCompleta;
+            }
+        }
+
+        public List<DadosPermissoes> BuscarListaPermissoes(string _usuario)
         {
             List<DadosPermissoes> listaPermissoes = new List<DadosPermissoes>();
             try

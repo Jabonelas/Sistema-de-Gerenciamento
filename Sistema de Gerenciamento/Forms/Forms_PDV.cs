@@ -22,11 +22,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private MensagensErro Erro = new MensagensErro();
 
-        private List<DadosProduto> listaProduto = new List<DadosProduto>();
+        private List<DadosFinanceiro> listaDadosFinanceiro = new List<DadosFinanceiro>();
 
-        private List<DadosFinanceiro> listaFinanceiro = new List<DadosFinanceiro>();
+        private List<DadosPermissoes> listaDadosPermissao = new List<DadosPermissoes>();
 
-        private List<DadosPermissoes> listaPermissao = new List<DadosPermissoes>();
+        private List<DadosProduto> listaDadosProduto = new List<DadosProduto>();
 
         private DadosProduto produto;
 
@@ -42,22 +42,22 @@ namespace Sistema_de_Gerenciamento.Forms
 
             PreenchimentoDados();
 
-            cmbParcelas.SelectedIndex = 0;
-
             //FormatoFullScreen();
         }
 
         private void PreenchimentoDados()
         {
-            listaProduto = Buscar.BuscarProdutos();
+            listaDadosProduto = Buscar.BuscarListaProdutos();
 
-            listaFinanceiro = Buscar.BuscarFinanceiro();
+            listaDadosFinanceiro = Buscar.BuscarListaFinanceiro();
 
-            listaPermissao = Buscar.ListaPermissoes(Global.NomeDeUsuario);
+            listaDadosPermissao = Buscar.BuscarListaPermissoes(Global.NomeDeUsuario);
 
             pcbPDV.Image = Buscar.BuscarLogoEmpresa(1);
 
             txtVendedor.Text = Global.NomeDeUsuario;
+
+            cmbParcelas.SelectedIndex = 0;
         }
 
         private void FormatoFullScreen()
@@ -100,7 +100,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (e.KeyCode == Keys.Escape) // Finalziar tela Esc
             {
-                if (lblDescricaoItem.Text != "PAGAMENTO" && gdvPDV.Rows.Count <= 0 || lblNumeroNotaFiscalSaida.Enabled == true)
+                if (lblDescricaoItem.Text != "PAGAMENTO" || gdvPDV.Rows.Count <= 0 || lblNumeroNotaFiscalSaida.Visible == true)
                 {
                     this.Close();
                 }
@@ -127,7 +127,7 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (gdvPDV.Rows.Count > 0 && lblDescricaoItem.Text != "PAGAMENTO")
                 {
-                    if (Global.NomeDeUsuario == "ADMIN" || listaPermissao[0].excluirItem == "true")
+                    if (Global.NomeDeUsuario == "ADMIN" || listaDadosPermissao[0].excluirItem == "true")
                     {
                         RemoverProduto();
 
@@ -224,7 +224,7 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (gdvPDV.Rows.Count > 0)
                 {
-                    if (Global.NomeDeUsuario == "ADMIN" || listaPermissao[0].cancelarVenda == "true")
+                    if (Global.NomeDeUsuario == "ADMIN" || listaDadosPermissao[0].cancelarVenda == "true")
                     {
                         FormatandoParaNovaVenda();
 
@@ -245,9 +245,9 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (gdvPDV.Rows.Count <= 0)
                 {
-                    if (Global.NomeDeUsuario == "ADMIN" || listaPermissao[0].devolucaoTroca == "true")
+                    if (Global.NomeDeUsuario == "ADMIN" || listaDadosPermissao[0].devolucaoTroca == "true")
                     {
-                        Forms_DevolucaoTroca telaDevolucaoTroca = new Forms_DevolucaoTroca();
+                        Forms_Troca telaDevolucaoTroca = new Forms_Troca();
                         telaDevolucaoTroca.ShowDialog();
 
                         return;
@@ -288,7 +288,7 @@ namespace Sistema_de_Gerenciamento.Forms
                                 cmbFormaPagamento.Text == "DINHEIRO" || cmbFormaPagamento.Text == "PIX")
                             {
                                 lblValorDescontoCadaItem.Text = (Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", ""))
-                                    * listaFinanceiro[0].descontoAvista / 100).ToString();
+                                    * listaDadosFinanceiro[0].descontoAvista / 100).ToString();
 
                                 lblJurosCadaItem.Text = ((Convert.ToDecimal(lblValorJuros.Text.Replace("%", "")) *
                                     Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", ""))) / 100).ToString();
@@ -327,11 +327,10 @@ namespace Sistema_de_Gerenciamento.Forms
                                         Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
                                         Convert.ToDecimal(lblJurosCadaItem.Text),
                                         Convert.ToDecimal(lblValorPagoCadaItem.Text),
-                                        gdvPDV.Rows[i].Cells[7].Value.ToString());
+                                        gdvPDV.Rows[i].Cells[7].Value.ToString(),
+                                        lblStatusVenda.Text);
 
                                 pnlVendaFinalizada.Visible = true;
-
-                                return;
                             }
                             catch (Exception ex)
                             {
@@ -353,7 +352,7 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (gdvPDV.Rows.Count > 0)
                 {
-                    if (Global.NomeDeUsuario == "ADMIN" || listaPermissao[0].cancelarPagamento == "true")
+                    if (Global.NomeDeUsuario == "ADMIN" || listaDadosPermissao[0].cancelarPagamento == "true")
                     {
                         FormatandoParaNovaVenda();
 
@@ -511,7 +510,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     if (isCadastroExiste == true)
                     {
-                        produto = listaProduto.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodigoDeBarras.Text));
+                        produto = listaDadosProduto.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodigoDeBarras.Text));
 
                         txtCodigo.Text = produto.codigoProduto.ToString();
                         txtDescricao.Text = produto.descricaoProduto;
@@ -600,7 +599,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     if (isCadastroExiste == true)
                     {
-                        produto = listaProduto.Find(prod => prod.codigoProduto.ToString().StartsWith(txtCodigoProduto.Text));
+                        produto = listaDadosProduto.Find(prod => prod.codigoProduto.ToString().StartsWith(txtCodigoProduto.Text));
 
                         txtCodigo.Text = produto.codigoProduto.ToString();
                         txtDescricao.Text = produto.descricaoProduto;
@@ -741,11 +740,9 @@ namespace Sistema_de_Gerenciamento.Forms
 
             lblValorDebito.Location = new Point(90, 45);
 
-            lblValorTotal.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+            lblValorDebito.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaDadosFinanceiro[0].descontoAvista / 100));
 
-            lblValorDebito.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
-
-            lblValorDesconto.Text = String.Format("{0:C}", (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+            PagamentoComDescontos();
         }
 
         private void PagamentoDinheiro()
@@ -758,9 +755,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             txtValorDinheiro.Visible = true;
 
-            lblValorDesconto.Text = String.Format("{0:C}", (valorBruto * listaFinanceiro[0].descontoAvista / 100));
-
-            lblValorTotal.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+            PagamentoComDescontos();
 
             //txtValorDinheiro.Focus();
         }
@@ -773,6 +768,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
             lblValorDebito.Visible = true;
 
+            pcbPix.Visible = true;
+
             lblValorDebito.Font = new Font("Calibri", 28, FontStyle.Bold);
 
             lblValorDebito.Location = new Point(40, 45);
@@ -780,12 +777,13 @@ namespace Sistema_de_Gerenciamento.Forms
             lblValorDebito.Text = Buscar.BuscarChavePix();
 
             txtValorDinheiro.Visible = false;
+        }
 
-            pcbPix.Visible = true;
+        private void PagamentoComDescontos()
+        {
+            lblValorDesconto.Text = String.Format("{0:C}", (valorBruto * listaDadosFinanceiro[0].descontoAvista / 100));
 
-            lblValorDesconto.Text = String.Format("{0:C}", (valorBruto * listaFinanceiro[0].descontoAvista / 100));
-
-            lblValorTotal.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaFinanceiro[0].descontoAvista / 100));
+            lblValorTotal.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaDadosFinanceiro[0].descontoAvista / 100));
         }
 
         private void LayoutTipoPagamentoCredito(bool _ativa)
@@ -802,14 +800,14 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void cmbParcelas_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(cmbParcelas.Text.Replace("x", "")) > listaFinanceiro[0].parcelasCredito)
+            if (Convert.ToInt32(cmbParcelas.Text.Replace("x", "")) > listaDadosFinanceiro[0].parcelasCredito)
             {
-                lblValorJuros.Text = string.Format("{0:P}", (listaFinanceiro[0].jurosCredito / 100));
+                lblValorJuros.Text = string.Format("{0:P}", (listaDadosFinanceiro[0].jurosCredito / 100));
 
-                lblValorParcela.Text = String.Format("{0:C}", (((valorBruto * (listaFinanceiro[0].jurosCredito) / 100) + valorBruto)
+                lblValorParcela.Text = String.Format("{0:C}", (((valorBruto * (listaDadosFinanceiro[0].jurosCredito) / 100) + valorBruto)
                     / Convert.ToDecimal(cmbParcelas.Text.Replace("x", ""))));
 
-                lblValorTotal.Text = String.Format("{0:C}", ((valorBruto * (listaFinanceiro[0].jurosCredito) / 100) + valorBruto));
+                lblValorTotal.Text = String.Format("{0:C}", ((valorBruto * (listaDadosFinanceiro[0].jurosCredito) / 100) + valorBruto));
             }
             else
             {

@@ -318,7 +318,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(98, 420);
+            this.label11.Location = new System.Drawing.Point(318, 420);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(81, 15);
             this.label11.TabIndex = 187;
@@ -328,7 +328,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(681, 413);
+            this.label13.Location = new System.Drawing.Point(762, 413);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(66, 30);
             this.label13.TabIndex = 189;
@@ -339,7 +339,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(348, 422);
+            this.label14.Location = new System.Drawing.Point(568, 422);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(74, 15);
             this.label14.TabIndex = 190;
@@ -655,7 +655,7 @@
             this.txtPrecoComDesconto.IconRight = null;
             this.txtPrecoComDesconto.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPrecoComDesconto.Lines = new string[0];
-            this.txtPrecoComDesconto.Location = new System.Drawing.Point(670, 446);
+            this.txtPrecoComDesconto.Location = new System.Drawing.Point(751, 446);
             this.txtPrecoComDesconto.MaxLength = 100;
             this.txtPrecoComDesconto.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtPrecoComDesconto.Modified = false;
@@ -1296,7 +1296,7 @@
             this.txtValorTotal.IconRight = null;
             this.txtValorTotal.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtValorTotal.Lines = new string[0];
-            this.txtValorTotal.Location = new System.Drawing.Point(70, 438);
+            this.txtValorTotal.Location = new System.Drawing.Point(290, 438);
             this.txtValorTotal.MaxLength = 100;
             this.txtValorTotal.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtValorTotal.Modified = false;
@@ -1371,7 +1371,7 @@
             this.txtTotalItens.IconRight = null;
             this.txtTotalItens.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTotalItens.Lines = new string[0];
-            this.txtTotalItens.Location = new System.Drawing.Point(309, 438);
+            this.txtTotalItens.Location = new System.Drawing.Point(529, 438);
             this.txtTotalItens.MaxLength = 100;
             this.txtTotalItens.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtTotalItens.Modified = false;
@@ -2806,7 +2806,7 @@
             this.txtDescontoPorItem.IconRight = null;
             this.txtDescontoPorItem.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDescontoPorItem.Lines = new string[0];
-            this.txtDescontoPorItem.Location = new System.Drawing.Point(764, 446);
+            this.txtDescontoPorItem.Location = new System.Drawing.Point(845, 446);
             this.txtDescontoPorItem.MaxLength = 100;
             this.txtDescontoPorItem.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtDescontoPorItem.Modified = false;
@@ -2858,7 +2858,7 @@
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(780, 413);
+            this.label18.Location = new System.Drawing.Point(861, 413);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(61, 30);
             this.label18.TabIndex = 248;

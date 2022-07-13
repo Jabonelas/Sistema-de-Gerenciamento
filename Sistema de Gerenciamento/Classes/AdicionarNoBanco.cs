@@ -632,7 +632,8 @@ namespace Sistema_de_Gerenciamento
              int _quantidadeParcelas,
              decimal _valorJuros,
              decimal _valorPago,
-             string _unidade)
+             string _unidade,
+             string _status)
         {
             try
             {
@@ -641,10 +642,10 @@ namespace Sistema_de_Gerenciamento
                     string query = "insert into tb_NotaFiscalSaida " +
                         "(ns_cpf_cpnj_cliente, ns_numero_nf,ns_codigo_produto, ns_descricao, ns_quantidade, ns_valor_unitario," +
                         "ns_emissao, ns_codigo_barras, ns_vendedor, ns_garantia,ns_nome_cliente, ns_tipo_pagamento,ns_valor_desconto," +
-                        "ns_quantidade_parcelas,ns_valor_juros,ns_valor_pago,ns_unidade) " +
+                        "ns_quantidade_parcelas,ns_valor_juros,ns_valor_pago,ns_unidade,ns_status) " +
                         "values(  @cpfCpnjCliente, @numeroNF, @codigoProduto, @descricao, @quantidade, " +
                         "@valorUnitario, @emissao, @codigoBarras, @vendedor, @garantia, @nomeCliente, @tipoPagamento,@valorDesconto,@quantidadeParcelas," +
-                        "@valorJuros,@valorPago,@unidade)";
+                        "@valorJuros,@valorPago,@unidade,@status)";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
                     cmd.Parameters.AddWithValue("@cpfCpnjCliente", _cpfCpnjCliente);
@@ -664,6 +665,7 @@ namespace Sistema_de_Gerenciamento
                     cmd.Parameters.AddWithValue("@valorJuros", _valorJuros);
                     cmd.Parameters.AddWithValue("@valorPago", _valorPago);
                     cmd.Parameters.AddWithValue("@unidade", _unidade);
+                    cmd.Parameters.AddWithValue("@status", _status);
 
                     cmd.ExecuteNonQuery();
                 }
