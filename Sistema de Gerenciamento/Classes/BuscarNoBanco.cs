@@ -3047,7 +3047,8 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Produto Por Codigo
 
-        public bool BuscarVendaPorNotaFiscalSaida(int _notaFiscalSaida, BunifuDataGridView _tabela)
+        public bool BuscarVendaPorNotaFiscalSaida(int _notaFiscalSaida)
+        //public bool BuscarVendaPorNotaFiscalSaida(int _notaFiscalSaida, BunifuDataGridView _tabela)
         {
             try
             {
@@ -3061,11 +3062,11 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
-                    DataTable dataTable = new DataTable();
+                    //DataTable dataTable = new DataTable();
 
-                    adapter.Fill(dataTable);
-                    _tabela.DataSource = dataTable;
-                    _tabela.Refresh();
+                    //adapter.Fill(dataTable);
+                    //_tabela.DataSource = dataTable;
+                    //_tabela.Refresh();
 
                     SqlDataReader reader;
                     reader = adapter.SelectCommand.ExecuteReader();
@@ -3146,11 +3147,9 @@ namespace Sistema_de_Gerenciamento.Classes
                     while (dr.Read())
                     {
                         listadadosNotaFiscalSaidasCompleta.Add(new DadosNotaFiscalSaida(
-                            dr.GetString(0), dr.GetDateTime(1), dr.GetString(2),
-                            dr.GetInt32(3), dr.GetInt32(4), dr.GetString(5), dr.GetDecimal(6), dr.GetString(7),
-                           dr.GetDecimal(8), dr.GetString(9), dr.GetInt32(10), dr.GetDateTime(11), dr.GetString(12),
-                           dr.GetInt32(13), dr.GetDecimal(14), dr.GetDecimal(15), dr.GetDecimal(16), dr.GetString(17),
-                           dr.GetString(18)));
+                            dr.GetInt32(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3), dr.GetInt32(4), dr.GetString(5), dr.GetDateTime(6),
+                            dr.GetInt32(7), dr.GetString(8), dr.GetDateTime(9), dr.GetDecimal(10), dr.GetDecimal(11), dr.GetString(12), dr.GetString(13),
+                            dr.GetInt32(14), dr.GetDecimal(15), dr.GetDecimal(16), dr.GetDecimal(17), dr.GetString(18), dr.GetString(19)));
                     }
                 }
 

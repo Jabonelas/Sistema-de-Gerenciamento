@@ -273,8 +273,8 @@ namespace Sistema_de_Gerenciamento.Forms
                     OpcaoDoUsuario = MessageBox.Show("Deseja Finalzar a Venda?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (OpcaoDoUsuario == DialogResult.Yes)
                     {
-                        lblNumeroNotaFiscalSaida.Text = Buscar.BuscarUltimaNotaFiscalSaida();
-                        //lblNumeroNotaFiscalSaida.Text = "1";
+                        //lblNumeroNotaFiscalSaida.Text = Buscar.BuscarUltimaNotaFiscalSaida();
+                        lblNumeroNotaFiscalSaida.Text = "1";
 
                         //txtVendedor.Text = "israel";
 
@@ -328,7 +328,8 @@ namespace Sistema_de_Gerenciamento.Forms
                                         Convert.ToDecimal(lblJurosCadaItem.Text),
                                         Convert.ToDecimal(lblValorPagoCadaItem.Text),
                                         gdvPDV.Rows[i].Cells[7].Value.ToString(),
-                                        lblStatusVenda.Text);
+                                        lblStatusVenda.Text,
+                                        lblTrocaVendedor.Text);
 
                                 pnlVendaFinalizada.Visible = true;
                             }

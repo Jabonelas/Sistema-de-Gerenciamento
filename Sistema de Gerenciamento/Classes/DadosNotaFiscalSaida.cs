@@ -35,12 +35,20 @@ namespace Sistema_de_Gerenciamento.Classes
         public DateTime emissao { get; set; }
 
         public string tipoPagamento { get; set; }
+
         public decimal quantidadeParcelas { get; set; }
+
         public decimal valorDesconto { get; set; }
+
         public decimal valorJuros { get; set; }
+
         public decimal valorPago { get; set; }
+
         public string status { get; set; }
+
         public string trocarVendedor { get; set; }
+
+        public int id { get; set; }
 
         public DadosNotaFiscalSaida(string _vendedor, DateTime _validadeTroca, string _nomeCliente,
             int _codigoBarras, int _codigoProduto, string _descricao, decimal _quantidade, string _unidade,
@@ -58,12 +66,13 @@ namespace Sistema_de_Gerenciamento.Classes
             valorUnitario = _valorUnitario;
         }
 
-        public DadosNotaFiscalSaida(string _vendedor, DateTime _validadeTroca, string _nomeCliente,
-        int _codigoBarras, int _codigoProduto, string _descricao, decimal _quantidade, string _unidade,
-         decimal _valorUnitario, string _cpf, int _numeroNF, DateTime _emissao, string _tipoPagamento,
-         int _quantidadeParcelas, decimal _valorDesconto, decimal _valorJuros, decimal _valorPago, string _status,
-         string _trocarVendedor)
+        public DadosNotaFiscalSaida(int _id, int _numeroNF, string _cpf, string _nomeCliente, int _codigoProduto,
+        string _descricao, DateTime _emissao, int _codigoBarras, string _vendedor, DateTime _validadeTroca, decimal _valorUnitario,
+        decimal _quantidade, string _unidade, string _tipoPagamento, int _quantidadeParcelas, decimal _valorDesconto,
+         decimal _valorJuros, decimal _valorPago, string _status, string _trocarVendedor)
+
         {
+            id = _id;
             numeroNF = _numeroNF;
             cpf = _cpf;
             nomeCliente = _nomeCliente;

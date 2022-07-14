@@ -37,6 +37,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
             listaDadosNotaFiscalSaidasParcial = Buscar.BuscarListaNotaFiscalSaidaParcial(_notaFiscal);
 
+            listaDadosNotaFiscalSaidaCompleta = Buscar.BuscarListaNotaFiscalSaidaCompleto(_notaFiscal);
+
             //listaDadosNotaFiscalSaidasParcial = Buscar.BuscarListaNotaFiscalSaidaParcial(Convert.ToInt32(lblNumeroNotaFiscalSaida.Text));
 
             valorBruto = _valorBruto;
@@ -290,27 +292,17 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            //dadosNotaFiscalSaida = listaDadosNotaFiscalSaidas.Find(x => x.)
+            dadosNotaFiscalSaidaCompleta = listaDadosNotaFiscalSaidaCompleta.Find(x => x.numeroNF.ToString().StartsWith(lblNumeroNotaFiscalSaida.Text));
 
-            //Salvar.NotaFiscalSaida();
-
-            listaDadosNotaFiscalSaidaCompleta = Buscar.BuscarListaNotaFiscalSaidaCompleto(1);
-
-            //dadosNotaFiscalSaidaCompleta = listaDadosNotaFiscalSaidaCompleta.Find(x => dadosNotaFiscalSaida.numeroNF.Equals(lblNumeroNotaFiscalSaida.Text));
-
-            foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
-            {
-                dadosNotaFiscalSaidaCompleta = item;
-
-                MessageBox.Show($"{ item}");
-            }
-
-            //MessageBox.Show($"{dadosNotaFiscalSaidaCompleta.validadeTroca}");
-            //MessageBox.Show($"{dadosNotaFiscalSaidaCompleta.valorPago}");
-            //MessageBox.Show($"{dadosNotaFiscalSaidaCompleta.quantidadeParcelas}");
-            //MessageBox.Show($"{dadosNotaFiscalSaidaCompleta.unidade}");
-            //MessageBox.Show($"{dadosNotaFiscalSaidaCompleta.quantidade}");
-            //MessageBox.Show($"{dadosNotaFiscalSaidaCompleta.codigoProduto}");
+            //Salvar.NotaFiscalSaida(dadosNotaFiscalSaidaCompleta.cpf, dadosNotaFiscalSaidaCompleta.numeroNF,
+            //    "codigo do produto", dadosNotaFiscalSaidaCompleta.descricao,
+            //    dadosNotaFiscalSaidaCompleta.quantidade, dadosNotaFiscalSaidaCompleta.valorUnitario,
+            //    dadosNotaFiscalSaidaCompleta.emissao, "codigo de barras", dadosNotaFiscalSaidaCompleta.vendedor,
+            //    dadosNotaFiscalSaidaCompleta.validadeTroca, dadosNotaFiscalSaidaCompleta.nomeCliente,
+            //    dadosNotaFiscalSaidaCompleta.tipoPagamento, dadosNotaFiscalSaidaCompleta.valorDesconto,
+            //    dadosNotaFiscalSaidaCompleta.quantidadeParcelas, dadosNotaFiscalSaidaCompleta.valorJuros,
+            //    dadosNotaFiscalSaidaCompleta.valorPago, dadosNotaFiscalSaidaCompleta.unidade, dadosNotaFiscalSaidaCompleta.status,
+            //    Global.NomeDeUsuario);
         }
     }
 }
