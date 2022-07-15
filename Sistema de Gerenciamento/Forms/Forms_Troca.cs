@@ -19,7 +19,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaParcial = new List<DadosNotaFiscalSaida>();
 
-        private List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaCompleta = new List<DadosNotaFiscalSaida>();
+        internal List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaCompleta = new List<DadosNotaFiscalSaida>();
 
         private List<DadosProduto> listaDadosEstoqueProduto = new List<DadosProduto>();
 
@@ -36,6 +36,8 @@ namespace Sistema_de_Gerenciamento.Forms
         private decimal memoriaValorPago = 0;
 
         private decimal memoriaValorProdTroca = 0;
+
+        public int quantidadeItens = 0;
 
         //private List<DadosProduto> listaDadosProduto = new List<DadosProduto>();
 
@@ -88,6 +90,8 @@ namespace Sistema_de_Gerenciamento.Forms
                         //{
                         //    gdvDevolucaoTroca.Rows.Add(items);
                         //}
+
+                        quantidadeItens++;
                     }
 
                     //PreenchendoGridView();
@@ -167,7 +171,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void SetarDesignColunaGridView()
         {
-            gdvDevolucaoTroca.Columns["ns_valor_pago"].DefaultCellStyle.Format = "c";
+            this.gdvDevolucaoTroca.Columns["ns_valor_pago"].DefaultCellStyle.Format = "c";
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -242,18 +246,18 @@ namespace Sistema_de_Gerenciamento.Forms
             }
             else if (Buscar.BuscarCodigoBarras(Convert.ToInt32(txtCodBarrasDevolucao.Text)) == true)
             {
-                memoriaValorPago = 0;
-
-                memoriaQuantidade = 0;
-
-                DadosNotaFiscalSaida veriricacaoExistenciaNaFota;
-
                 try
                 {
+                    DadosNotaFiscalSaida veriricacaoExistenciaNaFota;
+
                     veriricacaoExistenciaNaFota = listaDadosNotaFiscalSaidaParcial.First(item => item.codigoBarras == Convert.ToInt32(txtCodBarrasDevolucao.Text));
 
-                    if (veriricacaoExistenciaNaFota != null)
+                    if (veriricacaoExistenciaNaFota != null && cont == 1)
                     {
+                        memoriaValorPago = 0;
+
+                        memoriaQuantidade = 0;
+
                         dadosNotaFiscalSaidaParcial = listaDadosNotaFiscalSaidaParcial.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
 
                         txtProdutoDevolucao.Text = dadosNotaFiscalSaidaParcial.descricao;
@@ -271,7 +275,11 @@ namespace Sistema_de_Gerenciamento.Forms
                         txtQuantidadeDevolucao.Enabled = true;
 
                         pcbImagemProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodProdutoDevolucao.Text));
+
+                        cont = 0;
+                        return;
                     }
+                    cont++;
                 }
                 catch (Exception)
                 {
@@ -502,7 +510,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
             if (e.KeyCode == Keys.F10) // Confirmar F10
             {
-                Forms_Pagamento pagamento = new Forms_Pagamento(Convert.ToDecimal(lblValorAPagar.Text.Replace("R$", "")), Convert.ToInt32(txtNotaFiscal.Text));
+                Forms_Pagamento pagamento = new Forms_Pagamento(Convert.ToDecimal(lblValorAPagar.Text.Replace("R$", "")), Convert.ToInt32(txtNotaFiscal.Text),
+                    listaDadosNotaFiscalSaidaCompleta, quantidadeItens, this);
                 pagamento.ShowDialog();
             }
         }
@@ -552,12 +561,16 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
+            if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false && lblValorAPagar.ForeColor == Color.Green)
             {
                 if (Convert.ToDecimal(lblValorAPagar.Text.Replace("R$ ", "")) >= 0)
                 {
-                    Forms_Pagamento pagamento = new Forms_Pagamento(Convert.ToDecimal(lblValorAPagar.Text.Replace("R$ ", "")), Convert.ToInt32(txtNotaFiscal.Text));
+                    Forms_Pagamento pagamento = new Forms_Pagamento(Convert.ToDecimal(lblValorAPagar.Text.Replace("R$ ", "")), Convert.ToInt32(txtNotaFiscal.Text),
+                        listaDadosNotaFiscalSaidaCompleta, quantidadeItens, this);
                     pagamento.ShowDialog();
+
+                    //Forms_Pagamento pagamento = new Forms_Pagamento(Convert.ToDecimal(lblValorAPagar.Text.Replace("R$ ", "")), listaDadosEstoqueProduto);
+                    //pagamento.ShowDialog();
                 }
                 else
                 {
@@ -596,7 +609,6 @@ namespace Sistema_de_Gerenciamento.Forms
             dadosNotaFiscalSaidaCompleta = listaDadosNotaFiscalSaidaCompleta.First(x => x.numeroNF.ToString().StartsWith(txtNotaFiscal.Text));
 
             listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(
-
             dadosNotaFiscalSaidaCompleta.id,
                 dadosNotaFiscalSaidaCompleta.numeroNF,
                 dadosNotaFiscalSaidaCompleta.cpf,
@@ -614,11 +626,39 @@ namespace Sistema_de_Gerenciamento.Forms
 
             gdvDevolucaoTroca.Rows.Clear();
 
-            DadosNotaFiscalSaida teste =
+            if (memoriaQuantidade == Convert.ToDecimal(txtQuantidadeDevolucao.Text))
+            {
+                DadosNotaFiscalSaida mudancaStatus;
+                mudancaStatus = listaDadosNotaFiscalSaidaCompleta.First(x => x.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
+                mudancaStatus.status = "Devolucao";
+            }
+            else
+            {
+                //pega a quantidade inicial na nota e seta pra quantidade que foi alterada
+                DadosNotaFiscalSaida quantidadeProdutoNaNotaFiscalSaida;
 
-            listaDadosNotaFiscalSaidaCompleta.First(x => x.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
+                //quantidadeProdutoNaNotaFiscalSaida = dadosNotaFiscalSaidaCompleta = listaDadosNotaFiscalSaidaCompleta.First(x => x.numeroNF.ToString().StartsWith(txtNotaFiscal.Text));
+                quantidadeProdutoNaNotaFiscalSaida = dadosNotaFiscalSaidaCompleta = listaDadosNotaFiscalSaidaCompleta.First(x => x.numeroNF.ToString().StartsWith(txtCodBarrasDevolucao.Text));
+                quantidadeProdutoNaNotaFiscalSaida.quantidade = quantidadeProdutoNaNotaFiscalSaida.quantidade - Convert.ToDecimal(txtQuantidadeDevolucao.Text);
+                quantidadeProdutoNaNotaFiscalSaida.valorPago = (quantidadeProdutoNaNotaFiscalSaida.valorPago / quantidadeProdutoNaNotaFiscalSaida.quantidade);
+                string casa = quantidadeProdutoNaNotaFiscalSaida.descricao;
 
-            teste.status = "Devolucao";
+                listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(
+                dadosNotaFiscalSaidaCompleta.id,
+                dadosNotaFiscalSaidaCompleta.numeroNF,
+                dadosNotaFiscalSaidaCompleta.cpf,
+                dadosNotaFiscalSaidaCompleta.nomeCliente,
+                Convert.ToInt32(txtCodProdutoDevolucao.Text),
+                txtProdutoDevolucao.Text,
+                dadosNotaFiscalSaidaCompleta.emissao,
+                Convert.ToInt32(txtCodBarrasDevolucao.Text),
+                dadosNotaFiscalSaidaCompleta.vendedor,
+                dadosNotaFiscalSaidaCompleta.validadeTroca,
+                dadosEstoqueProduto.preco,
+                Convert.ToDecimal(txtQuantidadeDevolucao.Text),
+                dadosEstoqueProduto.unidade, "",
+                0, 0, 0, Convert.ToDecimal(txtPrecoDevolucao.Text.Replace("R$", "")), "Devolucao", ""));
+            }
 
             foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
             {

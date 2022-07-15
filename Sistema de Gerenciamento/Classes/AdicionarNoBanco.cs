@@ -617,8 +617,8 @@ namespace Sistema_de_Gerenciamento
 
         public void NotaFiscalSaida(string _cpfCpnjCliente, int _numeroNF, int _codigoProduto, string _descricao,
             decimal _quantidade, decimal _valorUnitario, DateTime _emissao, int _codigoBarras, string _vendedor,
-            DateTime _garantia, string _nomeCliente, string _tipoPagamento, decimal _valorDesconto, int _quantidadeParcelas,             decimal _valorJuros,             decimal _valorPago,             string _unidade,
-             string _status, string _trocaVendedor)
+            DateTime _garantia, string _nomeCliente, string _tipoPagamento, decimal _valorDesconto, int _quantidadeParcelas, decimal _valorJuros, decimal _valorPago, string _unidade,
+             string _status, string _trocaVendedor, string _motivoTroca)
         {
             try
             {
@@ -627,10 +627,10 @@ namespace Sistema_de_Gerenciamento
                     string query = "insert into tb_NotaFiscalSaida " +
                         "(ns_cpf_cpnj_cliente, ns_numero_nf,ns_codigo_produto, ns_descricao, ns_quantidade, ns_valor_unitario," +
                         "ns_emissao, ns_codigo_barras, ns_vendedor, ns_garantia,ns_nome_cliente, ns_tipo_pagamento,ns_valor_desconto," +
-                        "ns_quantidade_parcelas,ns_valor_juros,ns_valor_pago,ns_unidade,ns_status,ns_troca_vendedor) " +
+                        "ns_quantidade_parcelas,ns_valor_juros,ns_valor_pago,ns_unidade,ns_status,ns_troca_vendedor,ns_motivo_troca) " +
                         "values(  @cpfCpnjCliente, @numeroNF, @codigoProduto, @descricao, @quantidade, " +
                         "@valorUnitario, @emissao, @codigoBarras, @vendedor, @garantia, @nomeCliente, @tipoPagamento,@valorDesconto,@quantidadeParcelas," +
-                        "@valorJuros,@valorPago,@unidade,@status,@trocaVendedor)";
+                        "@valorJuros,@valorPago,@unidade,@status,@trocaVendedor,@motivoTroca)";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
                     cmd.Parameters.AddWithValue("@cpfCpnjCliente", _cpfCpnjCliente);
@@ -652,6 +652,7 @@ namespace Sistema_de_Gerenciamento
                     cmd.Parameters.AddWithValue("@unidade", _unidade);
                     cmd.Parameters.AddWithValue("@status", _status);
                     cmd.Parameters.AddWithValue("@trocaVendedor", _trocaVendedor);
+                    cmd.Parameters.AddWithValue("@motivoTroca", _motivoTroca);
 
                     cmd.ExecuteNonQuery();
                 }

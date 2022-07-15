@@ -35,6 +35,10 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.bunifuPanel13 = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblNumeroNotaFiscalSaida = new System.Windows.Forms.Label();
             this.lblDescricaoItem = new System.Windows.Forms.Label();
@@ -69,12 +73,12 @@
             this.pnlChavePix = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblChavePix = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.gdvPagamento = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.ns_codigo_produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ns_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ns_quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ns_valor_pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ns_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bunifuPanel13.SuspendLayout();
             this.pnlDesconto.SuspendLayout();
             this.pnlFormaPagamento.SuspendLayout();
@@ -83,6 +87,7 @@
             this.pnlValorTotal.SuspendLayout();
             this.pnlTroco.SuspendLayout();
             this.pnlChavePix.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gdvPagamento)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuPanel13
@@ -98,7 +103,7 @@
             this.bunifuPanel13.Location = new System.Drawing.Point(7, 10);
             this.bunifuPanel13.Name = "bunifuPanel13";
             this.bunifuPanel13.ShowBorders = true;
-            this.bunifuPanel13.Size = new System.Drawing.Size(481, 66);
+            this.bunifuPanel13.Size = new System.Drawing.Size(435, 66);
             this.bunifuPanel13.TabIndex = 181;
             // 
             // lblNumeroNotaFiscalSaida
@@ -137,10 +142,10 @@
             this.pnlDesconto.BorderThickness = 1;
             this.pnlDesconto.Controls.Add(this.lblValorDesconto);
             this.pnlDesconto.Controls.Add(this.lblDesconto);
-            this.pnlDesconto.Location = new System.Drawing.Point(7, 85);
+            this.pnlDesconto.Location = new System.Drawing.Point(7, 89);
             this.pnlDesconto.Name = "pnlDesconto";
             this.pnlDesconto.ShowBorders = true;
-            this.pnlDesconto.Size = new System.Drawing.Size(237, 80);
+            this.pnlDesconto.Size = new System.Drawing.Size(193, 80);
             this.pnlDesconto.TabIndex = 184;
             // 
             // lblValorDesconto
@@ -149,7 +154,7 @@
             this.lblValorDesconto.BackColor = System.Drawing.Color.Transparent;
             this.lblValorDesconto.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValorDesconto.ForeColor = System.Drawing.Color.White;
-            this.lblValorDesconto.Location = new System.Drawing.Point(69, 35);
+            this.lblValorDesconto.Location = new System.Drawing.Point(44, 35);
             this.lblValorDesconto.Name = "lblValorDesconto";
             this.lblValorDesconto.Size = new System.Drawing.Size(105, 36);
             this.lblValorDesconto.TabIndex = 182;
@@ -162,7 +167,7 @@
             this.lblDesconto.BackColor = System.Drawing.Color.Transparent;
             this.lblDesconto.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDesconto.ForeColor = System.Drawing.Color.White;
-            this.lblDesconto.Location = new System.Drawing.Point(60, 6);
+            this.lblDesconto.Location = new System.Drawing.Point(38, 6);
             this.lblDesconto.Name = "lblDesconto";
             this.lblDesconto.Size = new System.Drawing.Size(123, 29);
             this.lblDesconto.TabIndex = 181;
@@ -178,7 +183,7 @@
             this.pnlFormaPagamento.BorderThickness = 1;
             this.pnlFormaPagamento.Controls.Add(this.cmbFormaPagamento);
             this.pnlFormaPagamento.Controls.Add(this.lblFormaPamento);
-            this.pnlFormaPagamento.Location = new System.Drawing.Point(251, 88);
+            this.pnlFormaPagamento.Location = new System.Drawing.Point(205, 92);
             this.pnlFormaPagamento.Name = "pnlFormaPagamento";
             this.pnlFormaPagamento.ShowBorders = true;
             this.pnlFormaPagamento.Size = new System.Drawing.Size(237, 80);
@@ -241,10 +246,10 @@
             this.pnlCarne.Controls.Add(this.cmbParcelas);
             this.pnlCarne.Controls.Add(this.lblTituloValorParcela);
             this.pnlCarne.Controls.Add(this.lblTituloFormaPagamento);
-            this.pnlCarne.Location = new System.Drawing.Point(7, 269);
+            this.pnlCarne.Location = new System.Drawing.Point(7, 283);
             this.pnlCarne.Name = "pnlCarne";
             this.pnlCarne.ShowBorders = true;
-            this.pnlCarne.Size = new System.Drawing.Size(481, 121);
+            this.pnlCarne.Size = new System.Drawing.Size(435, 121);
             this.pnlCarne.TabIndex = 186;
             // 
             // lblValorDebito
@@ -253,7 +258,7 @@
             this.lblValorDebito.BackColor = System.Drawing.Color.Transparent;
             this.lblValorDebito.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValorDebito.ForeColor = System.Drawing.Color.White;
-            this.lblValorDebito.Location = new System.Drawing.Point(157, 49);
+            this.lblValorDebito.Location = new System.Drawing.Point(128, 56);
             this.lblValorDebito.Name = "lblValorDebito";
             this.lblValorDebito.Size = new System.Drawing.Size(171, 59);
             this.lblValorDebito.TabIndex = 186;
@@ -267,7 +272,7 @@
             this.lblValorParcela.BackColor = System.Drawing.Color.Transparent;
             this.lblValorParcela.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValorParcela.ForeColor = System.Drawing.Color.White;
-            this.lblValorParcela.Location = new System.Drawing.Point(342, 78);
+            this.lblValorParcela.Location = new System.Drawing.Point(310, 78);
             this.lblValorParcela.Name = "lblValorParcela";
             this.lblValorParcela.Size = new System.Drawing.Size(86, 29);
             this.lblValorParcela.TabIndex = 183;
@@ -339,7 +344,7 @@
             this.txtValorDinheiro.SelectionLength = 0;
             this.txtValorDinheiro.SelectionStart = 0;
             this.txtValorDinheiro.ShortcutsEnabled = false;
-            this.txtValorDinheiro.Size = new System.Drawing.Size(451, 79);
+            this.txtValorDinheiro.Size = new System.Drawing.Size(401, 79);
             this.txtValorDinheiro.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
             this.txtValorDinheiro.TabIndex = 179;
             this.txtValorDinheiro.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -359,7 +364,7 @@
             this.lblValorJuros.BackColor = System.Drawing.Color.Transparent;
             this.lblValorJuros.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValorJuros.ForeColor = System.Drawing.Color.White;
-            this.lblValorJuros.Location = new System.Drawing.Point(204, 78);
+            this.lblValorJuros.Location = new System.Drawing.Point(184, 78);
             this.lblValorJuros.Name = "lblValorJuros";
             this.lblValorJuros.Size = new System.Drawing.Size(73, 29);
             this.lblValorJuros.TabIndex = 183;
@@ -373,7 +378,7 @@
             this.lblParcelas.BackColor = System.Drawing.Color.Transparent;
             this.lblParcelas.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblParcelas.ForeColor = System.Drawing.Color.White;
-            this.lblParcelas.Location = new System.Drawing.Point(41, 52);
+            this.lblParcelas.Location = new System.Drawing.Point(27, 52);
             this.lblParcelas.Name = "lblParcelas";
             this.lblParcelas.Size = new System.Drawing.Size(90, 23);
             this.lblParcelas.TabIndex = 183;
@@ -387,7 +392,7 @@
             this.lblTituloJuros.BackColor = System.Drawing.Color.Transparent;
             this.lblTituloJuros.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloJuros.ForeColor = System.Drawing.Color.White;
-            this.lblTituloJuros.Location = new System.Drawing.Point(207, 52);
+            this.lblTituloJuros.Location = new System.Drawing.Point(185, 52);
             this.lblTituloJuros.Name = "lblTituloJuros";
             this.lblTituloJuros.Size = new System.Drawing.Size(61, 23);
             this.lblTituloJuros.TabIndex = 182;
@@ -422,7 +427,7 @@
             "11x",
             "12x"});
             this.cmbParcelas.ItemsAppearance.Parent = this.cmbParcelas;
-            this.cmbParcelas.Location = new System.Drawing.Point(55, 78);
+            this.cmbParcelas.Location = new System.Drawing.Point(33, 78);
             this.cmbParcelas.Name = "cmbParcelas";
             this.cmbParcelas.ShadowDecoration.Parent = this.cmbParcelas;
             this.cmbParcelas.Size = new System.Drawing.Size(71, 36);
@@ -436,7 +441,7 @@
             this.lblTituloValorParcela.BackColor = System.Drawing.Color.Transparent;
             this.lblTituloValorParcela.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloValorParcela.ForeColor = System.Drawing.Color.White;
-            this.lblTituloValorParcela.Location = new System.Drawing.Point(340, 29);
+            this.lblTituloValorParcela.Location = new System.Drawing.Point(313, 29);
             this.lblTituloValorParcela.Name = "lblTituloValorParcela";
             this.lblTituloValorParcela.Size = new System.Drawing.Size(96, 46);
             this.lblTituloValorParcela.TabIndex = 178;
@@ -466,10 +471,10 @@
             this.pnlTotalRecebido.BorderThickness = 1;
             this.pnlTotalRecebido.Controls.Add(this.lblTotalRecebido);
             this.pnlTotalRecebido.Controls.Add(this.lblValores);
-            this.pnlTotalRecebido.Location = new System.Drawing.Point(7, 405);
+            this.pnlTotalRecebido.Location = new System.Drawing.Point(448, 304);
             this.pnlTotalRecebido.Name = "pnlTotalRecebido";
             this.pnlTotalRecebido.ShowBorders = true;
-            this.pnlTotalRecebido.Size = new System.Drawing.Size(237, 80);
+            this.pnlTotalRecebido.Size = new System.Drawing.Size(210, 80);
             this.pnlTotalRecebido.TabIndex = 187;
             this.pnlTotalRecebido.Visible = false;
             // 
@@ -479,7 +484,7 @@
             this.lblTotalRecebido.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalRecebido.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalRecebido.ForeColor = System.Drawing.Color.White;
-            this.lblTotalRecebido.Location = new System.Drawing.Point(50, 35);
+            this.lblTotalRecebido.Location = new System.Drawing.Point(51, 35);
             this.lblTotalRecebido.Name = "lblTotalRecebido";
             this.lblTotalRecebido.Size = new System.Drawing.Size(105, 36);
             this.lblTotalRecebido.TabIndex = 177;
@@ -491,7 +496,7 @@
             this.lblValores.BackColor = System.Drawing.Color.Transparent;
             this.lblValores.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValores.ForeColor = System.Drawing.Color.White;
-            this.lblValores.Location = new System.Drawing.Point(30, 2);
+            this.lblValores.Location = new System.Drawing.Point(18, 2);
             this.lblValores.Name = "lblValores";
             this.lblValores.Size = new System.Drawing.Size(180, 29);
             this.lblValores.TabIndex = 175;
@@ -507,10 +512,10 @@
             this.pnlValorTotal.BorderThickness = 1;
             this.pnlValorTotal.Controls.Add(this.lblValorTotal);
             this.pnlValorTotal.Controls.Add(this.label2);
-            this.pnlValorTotal.Location = new System.Drawing.Point(7, 176);
+            this.pnlValorTotal.Location = new System.Drawing.Point(7, 185);
             this.pnlValorTotal.Name = "pnlValorTotal";
             this.pnlValorTotal.ShowBorders = true;
-            this.pnlValorTotal.Size = new System.Drawing.Size(480, 80);
+            this.pnlValorTotal.Size = new System.Drawing.Size(435, 80);
             this.pnlValorTotal.TabIndex = 188;
             // 
             // lblValorTotal
@@ -519,7 +524,7 @@
             this.lblValorTotal.BackColor = System.Drawing.Color.Transparent;
             this.lblValorTotal.Font = new System.Drawing.Font("Calibri", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValorTotal.ForeColor = System.Drawing.Color.White;
-            this.lblValorTotal.Location = new System.Drawing.Point(157, 17);
+            this.lblValorTotal.Location = new System.Drawing.Point(128, 21);
             this.lblValorTotal.Name = "lblValorTotal";
             this.lblValorTotal.Size = new System.Drawing.Size(171, 59);
             this.lblValorTotal.TabIndex = 177;
@@ -547,12 +552,13 @@
             this.pnlTroco.BorderThickness = 1;
             this.pnlTroco.Controls.Add(this.lblTroco);
             this.pnlTroco.Controls.Add(this.label3);
-            this.pnlTroco.Location = new System.Drawing.Point(251, 405);
+            this.pnlTroco.Location = new System.Drawing.Point(696, 304);
             this.pnlTroco.Name = "pnlTroco";
             this.pnlTroco.ShowBorders = true;
-            this.pnlTroco.Size = new System.Drawing.Size(237, 80);
+            this.pnlTroco.Size = new System.Drawing.Size(219, 80);
             this.pnlTroco.TabIndex = 178;
             this.pnlTroco.Visible = false;
+            this.pnlTroco.Click += new System.EventHandler(this.pnlTroco_Click);
             // 
             // lblTroco
             // 
@@ -560,7 +566,7 @@
             this.lblTroco.BackColor = System.Drawing.Color.Transparent;
             this.lblTroco.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTroco.ForeColor = System.Drawing.Color.White;
-            this.lblTroco.Location = new System.Drawing.Point(66, 33);
+            this.lblTroco.Location = new System.Drawing.Point(59, 33);
             this.lblTroco.Name = "lblTroco";
             this.lblTroco.Size = new System.Drawing.Size(105, 36);
             this.lblTroco.TabIndex = 176;
@@ -572,7 +578,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(76, 0);
+            this.label3.Location = new System.Drawing.Point(69, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(84, 29);
             this.label3.TabIndex = 174;
@@ -625,7 +631,7 @@
             this.btnFechar.IdleIconLeftImage = null;
             this.btnFechar.IdleIconRightImage = null;
             this.btnFechar.IndicateFocus = false;
-            this.btnFechar.Location = new System.Drawing.Point(285, 542);
+            this.btnFechar.Location = new System.Drawing.Point(510, 447);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnFechar.OnDisabledState.BorderRadius = 1;
@@ -715,7 +721,7 @@
             this.btnConfirmar.IdleIconLeftImage = null;
             this.btnConfirmar.IdleIconRightImage = null;
             this.btnConfirmar.IndicateFocus = false;
-            this.btnConfirmar.Location = new System.Drawing.Point(30, 542);
+            this.btnConfirmar.Location = new System.Drawing.Point(255, 447);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnConfirmar.OnDisabledState.BorderRadius = 1;
@@ -766,12 +772,13 @@
             this.pnlQRCode.BorderColor = System.Drawing.Color.Transparent;
             this.pnlQRCode.BorderRadius = 1;
             this.pnlQRCode.BorderThickness = 1;
-            this.pnlQRCode.Location = new System.Drawing.Point(44, 392);
+            this.pnlQRCode.Location = new System.Drawing.Point(467, 277);
             this.pnlQRCode.Name = "pnlQRCode";
             this.pnlQRCode.ShowBorders = true;
             this.pnlQRCode.Size = new System.Drawing.Size(173, 135);
             this.pnlQRCode.TabIndex = 179;
             this.pnlQRCode.Visible = false;
+            this.pnlQRCode.Click += new System.EventHandler(this.pnlQRCode_Click);
             // 
             // pnlChavePix
             // 
@@ -783,10 +790,10 @@
             this.pnlChavePix.BorderThickness = 1;
             this.pnlChavePix.Controls.Add(this.lblChavePix);
             this.pnlChavePix.Controls.Add(this.label5);
-            this.pnlChavePix.Location = new System.Drawing.Point(251, 405);
+            this.pnlChavePix.Location = new System.Drawing.Point(699, 304);
             this.pnlChavePix.Name = "pnlChavePix";
             this.pnlChavePix.ShowBorders = true;
-            this.pnlChavePix.Size = new System.Drawing.Size(237, 80);
+            this.pnlChavePix.Size = new System.Drawing.Size(216, 80);
             this.pnlChavePix.TabIndex = 179;
             this.pnlChavePix.Visible = false;
             // 
@@ -796,7 +803,7 @@
             this.lblChavePix.BackColor = System.Drawing.Color.Transparent;
             this.lblChavePix.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblChavePix.ForeColor = System.Drawing.Color.White;
-            this.lblChavePix.Location = new System.Drawing.Point(15, 33);
+            this.lblChavePix.Location = new System.Drawing.Point(5, 33);
             this.lblChavePix.Name = "lblChavePix";
             this.lblChavePix.Size = new System.Drawing.Size(20, 29);
             this.lblChavePix.TabIndex = 176;
@@ -808,78 +815,132 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(55, 0);
+            this.label5.Location = new System.Drawing.Point(43, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(130, 29);
             this.label5.TabIndex = 174;
             this.label5.Text = "CHAVE - PIX";
             // 
-            // label1
+            // gdvPagamento
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(223, 488);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 299;
-            this.label1.Text = "label1";
+            this.gdvPagamento.AllowCustomTheming = false;
+            this.gdvPagamento.AllowUserToAddRows = false;
+            this.gdvPagamento.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.gdvPagamento.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.gdvPagamento.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gdvPagamento.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gdvPagamento.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.gdvPagamento.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gdvPagamento.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.gdvPagamento.ColumnHeadersHeight = 40;
+            this.gdvPagamento.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ns_codigo_produto,
+            this.ns_descricao,
+            this.ns_quantidade,
+            this.ns_valor_pago,
+            this.ns_status});
+            this.gdvPagamento.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            this.gdvPagamento.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gdvPagamento.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.gdvPagamento.CurrentTheme.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.gdvPagamento.CurrentTheme.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.gdvPagamento.CurrentTheme.BackColor = System.Drawing.Color.White;
+            this.gdvPagamento.CurrentTheme.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.gdvPagamento.CurrentTheme.HeaderStyle.BackColor = System.Drawing.Color.DodgerBlue;
+            this.gdvPagamento.CurrentTheme.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            this.gdvPagamento.CurrentTheme.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.gdvPagamento.CurrentTheme.HeaderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.gdvPagamento.CurrentTheme.HeaderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.gdvPagamento.CurrentTheme.Name = null;
+            this.gdvPagamento.CurrentTheme.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.gdvPagamento.CurrentTheme.RowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.gdvPagamento.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
+            this.gdvPagamento.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            this.gdvPagamento.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gdvPagamento.DefaultCellStyle = dataGridViewCellStyle3;
+            this.gdvPagamento.EnableHeadersVisualStyles = false;
+            this.gdvPagamento.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
+            this.gdvPagamento.HeaderBackColor = System.Drawing.Color.DodgerBlue;
+            this.gdvPagamento.HeaderBgColor = System.Drawing.Color.Empty;
+            this.gdvPagamento.HeaderForeColor = System.Drawing.Color.White;
+            this.gdvPagamento.Location = new System.Drawing.Point(448, 10);
+            this.gdvPagamento.Name = "gdvPagamento";
+            this.gdvPagamento.ReadOnly = true;
+            this.gdvPagamento.RowHeadersVisible = false;
+            this.gdvPagamento.RowHeadersWidth = 50;
+            this.gdvPagamento.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gdvPagamento.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.gdvPagamento.RowTemplate.Height = 40;
+            this.gdvPagamento.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gdvPagamento.Size = new System.Drawing.Size(467, 255);
+            this.gdvPagamento.TabIndex = 305;
+            this.gdvPagamento.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             // 
-            // label4
+            // ns_codigo_produto
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(300, 488);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
-            this.label4.TabIndex = 300;
-            this.label4.Text = "label4";
+            this.ns_codigo_produto.DataPropertyName = "ns_codigo_produto";
+            this.ns_codigo_produto.FillWeight = 76.73907F;
+            this.ns_codigo_produto.HeaderText = "Código ";
+            this.ns_codigo_produto.Name = "ns_codigo_produto";
+            this.ns_codigo_produto.ReadOnly = true;
             // 
-            // label6
+            // ns_descricao
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(376, 488);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 301;
-            this.label6.Text = "label6";
+            this.ns_descricao.DataPropertyName = "ns_descricao";
+            this.ns_descricao.FillWeight = 193.6406F;
+            this.ns_descricao.HeaderText = "Descrição";
+            this.ns_descricao.Name = "ns_descricao";
+            this.ns_descricao.ReadOnly = true;
             // 
-            // label7
+            // ns_quantidade
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(453, 488);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 302;
-            this.label7.Text = "label7";
+            this.ns_quantidade.DataPropertyName = "ns_quantidade";
+            this.ns_quantidade.FillWeight = 76.73907F;
+            this.ns_quantidade.HeaderText = "Qtd";
+            this.ns_quantidade.Name = "ns_quantidade";
+            this.ns_quantidade.ReadOnly = true;
             // 
-            // label8
+            // ns_valor_pago
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(223, 514);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 303;
-            this.label8.Text = "label8";
+            this.ns_valor_pago.DataPropertyName = "ns_valor_pago";
+            this.ns_valor_pago.FillWeight = 76.73907F;
+            this.ns_valor_pago.HeaderText = "Valor";
+            this.ns_valor_pago.Name = "ns_valor_pago";
+            this.ns_valor_pago.ReadOnly = true;
             // 
-            // label9
+            // ns_status
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(232, 296);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
-            this.label9.TabIndex = 304;
-            this.label9.Text = "label9";
+            this.ns_status.DataPropertyName = "ns_status";
+            this.ns_status.FillWeight = 76.14214F;
+            this.ns_status.HeaderText = "Status";
+            this.ns_status.Name = "ns_status";
+            this.ns_status.ReadOnly = true;
+            this.ns_status.Visible = false;
             // 
             // Forms_Pagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 605);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(927, 537);
             this.Controls.Add(this.pnlTroco);
+            this.Controls.Add(this.gdvPagamento);
             this.Controls.Add(this.pnlValorTotal);
             this.Controls.Add(this.pnlChavePix);
             this.Controls.Add(this.pnlQRCode);
@@ -913,8 +974,8 @@
             this.pnlTroco.PerformLayout();
             this.pnlChavePix.ResumeLayout(false);
             this.pnlChavePix.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gdvPagamento)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -954,11 +1015,11 @@
         private Bunifu.UI.WinForms.BunifuPanel pnlChavePix;
         private System.Windows.Forms.Label lblChavePix;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        public Bunifu.UI.WinForms.BunifuDataGridView gdvPagamento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ns_codigo_produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ns_descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ns_quantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ns_valor_pago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ns_status;
     }
 }

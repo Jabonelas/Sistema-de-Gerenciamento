@@ -27,11 +27,23 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private DadosNotaFiscalSaida dadosNotaFiscalSaidaCompleta;
 
+        private List<DadosNotaFiscalSaida> lista = new List<DadosNotaFiscalSaida>();
+
+        public Forms_Troca telaTroca;
+
         private decimal valorBruto = 0;
 
-        public Forms_Pagamento(decimal _valorBruto, int _notaFiscal)
+        private int quantidadeItens = 0;
+
+        public Forms_Pagamento(decimal _valorBruto, int _notaFiscal, List<DadosNotaFiscalSaida> _lista, int _quantidadeItens, Forms_Troca _telaTroca)
         {
             InitializeComponent();
+
+            lista = _lista;
+
+            quantidadeItens = _quantidadeItens;
+
+            telaTroca = _telaTroca;
 
             listaFinanceiro = Buscar.BuscarListaFinanceiro();
 
@@ -49,7 +61,36 @@ namespace Sistema_de_Gerenciamento.Forms
 
             cmbFormaPagamento.SelectedIndex = 0;
 
+            SetarDesignColunaGridView();
+
+            PreencherGrid();
+
+            cmbParcelas.SelectedIndex = 0;
+
             cmbFormaPagamento.Focus();
+        }
+
+        private void SetarDesignColunaGridView()
+        {
+            this.gdvPagamento.Columns["ns_valor_pago"].DefaultCellStyle.Format = "c";
+        }
+
+        private void PreencherGrid()
+        {
+            foreach (DadosNotaFiscalSaida item in lista)
+            {
+                var rows = new List<string[]>();
+                string[] row1 = new string[] {item.codigoProduto.ToString(),item.descricao,item.quantidade.ToString(),
+                            item.valorPago.ToString(),item.status };
+                //rows.Add(row1);
+
+                gdvPagamento.Rows.Add(row1);
+
+                //foreach (string[] items in rows)
+                //{
+                //    gdvDevolucaoTroca.Rows.Add(items);
+                //}
+            }
         }
 
         private void cmbFormaPagamento_SelectedValueChanged(object sender, EventArgs e)
@@ -95,6 +136,10 @@ namespace Sistema_de_Gerenciamento.Forms
 
             txtValorDinheiro.Visible = false;
 
+            lblValorTotal.Text = string.Format("{0:C}", valorBruto);
+
+            cmbParcelas.SelectedIndex = 0;
+
             //lblValorParcela.Text = lblSubtotal.Text;
 
             lblTituloFormaPagamento.Text = "CRÉDITO";
@@ -121,11 +166,9 @@ namespace Sistema_de_Gerenciamento.Forms
 
             lblTituloFormaPagamento.Text = "DÉBITO";
 
-            lblValorDebito.Font = new Font("Calibri", 36);
+            //lblValorDebito.Font = new Font("Calibri", 36);
 
-            lblValorDebito.Font = new Font("Calibri", 36, FontStyle.Bold);
-
-            lblValorDebito.Visible = true;
+            //lblValorDebito.Font = new Font("Calibri", 36, FontStyle.Bold);
 
             //lblValorDebito.Location = new Point(90, 45);
 
@@ -143,6 +186,9 @@ namespace Sistema_de_Gerenciamento.Forms
 
             PagamentoComDescontos();
 
+            lblValorDebito.Visible = true;
+
+            lblValorDebito.Text = lblValorTotal.Text;
             //lblValorTotal.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaDadosFinanceiro[0].descontoAvista / 100));
 
             //lblValorDebito.Text = String.Format("{0:C}", valorBruto - (valorBruto * listaDadosFinanceiro[0].descontoAvista / 100));
@@ -175,6 +221,8 @@ namespace Sistema_de_Gerenciamento.Forms
         private void PagamentoPIX()
         {
             lblTituloFormaPagamento.Text = "PIX";
+
+            LayoutTipoPagamentoCredito(false);
 
             //pcbPix.Image = Buscar.BuscarQrCodePix(1);
 
@@ -250,7 +298,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (Convert.ToInt32(cmbParcelas.Text.Replace("x", "")) >= listaFinanceiro[0].parcelasCredito)
             {
-                lblValorJuros.Text = listaFinanceiro[0].jurosCredito.ToString();
+                lblValorJuros.Text = string.Format("{0:P}", listaFinanceiro[0].jurosCredito / 100);
 
                 lblValorTotal.Text = string.Format("{0:C}", listaFinanceiro[0].jurosCredito * valorBruto / 100 + valorBruto);
 
@@ -294,6 +342,39 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             dadosNotaFiscalSaidaCompleta = listaDadosNotaFiscalSaidaCompleta.Find(x => x.numeroNF.ToString().StartsWith(lblNumeroNotaFiscalSaida.Text));
 
+            //MessageBox.Show($"{quantidadeItens}");
+            //MessageBox.Show($"{gdvPagamento.Rows.Count}");
+            //MessageBox.Show($"{lista[i].descricao}");
+
+            decimal valorDesconto = Convert.ToDecimal(lblValorDesconto.Text.Replace("R$", "")) / (gdvPagamento.Rows.Count - quantidadeItens);
+            decimal jurosPorProduto;
+
+            if (lblValorJuros.Text != "0,00%")
+            {
+                jurosPorProduto = (Convert.ToDecimal(lblValorTotal.Text.Replace("R$", ""))) - valorBruto / (gdvPagamento.Rows.Count - quantidadeItens);
+            }
+            else
+            {
+                jurosPorProduto = 0;
+            }
+
+            for (int i = quantidadeItens; i < gdvPagamento.Rows.Count; i++)
+            {
+                try
+                {
+                    Salvar.NotaFiscalSaida(lista[i].cpf, lista[i].numeroNF, lista[i].codigoProduto, lista[i].descricao,
+                        lista[i].quantidade, lista[i].valorUnitario, lista[i].emissao, lista[i].codigoBarras, lista[i].vendedor,
+                        lista[i].validadeTroca, lista[i].nomeCliente, cmbFormaPagamento.Text, valorDesconto,
+                        Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
+                        jurosPorProduto, (lista[i].valorPago - valorDesconto), lista[i].unidade, lista[i].status, Global.NomeDeUsuario,
+                        telaTroca.cmbMotivoTroca.Text);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"{ex}");
+                }
+            }
+
             //Salvar.NotaFiscalSaida(dadosNotaFiscalSaidaCompleta.cpf, dadosNotaFiscalSaidaCompleta.numeroNF,
             //    "codigo do produto", dadosNotaFiscalSaidaCompleta.descricao,
             //    dadosNotaFiscalSaidaCompleta.quantidade, dadosNotaFiscalSaidaCompleta.valorUnitario,
@@ -303,6 +384,14 @@ namespace Sistema_de_Gerenciamento.Forms
             //    dadosNotaFiscalSaidaCompleta.quantidadeParcelas, dadosNotaFiscalSaidaCompleta.valorJuros,
             //    dadosNotaFiscalSaidaCompleta.valorPago, dadosNotaFiscalSaidaCompleta.unidade, dadosNotaFiscalSaidaCompleta.status,
             //    Global.NomeDeUsuario);
+        }
+
+        private void pnlQRCode_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void pnlTroco_Click(object sender, EventArgs e)
+        {
         }
     }
 }

@@ -184,6 +184,7 @@
             this.lblValorPagoCadaItem = new System.Windows.Forms.Label();
             this.lblStatusVenda = new System.Windows.Forms.Label();
             this.lblTrocaVendedor = new System.Windows.Forms.Label();
+            this.lblMotivoTroca = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPDV)).BeginInit();
             this.pnlDinheiro.SuspendLayout();
             this.pnlFundoCliente.SuspendLayout();
@@ -2425,18 +2426,29 @@
             // lblTrocaVendedor
             // 
             this.lblTrocaVendedor.AutoSize = true;
-            this.lblTrocaVendedor.Location = new System.Drawing.Point(386, 190);
+            this.lblTrocaVendedor.Location = new System.Drawing.Point(369, 190);
             this.lblTrocaVendedor.Name = "lblTrocaVendedor";
             this.lblTrocaVendedor.Size = new System.Drawing.Size(10, 13);
             this.lblTrocaVendedor.TabIndex = 199;
             this.lblTrocaVendedor.Text = "-";
             this.lblTrocaVendedor.Visible = false;
             // 
+            // lblMotivoTroca
+            // 
+            this.lblMotivoTroca.AutoSize = true;
+            this.lblMotivoTroca.Location = new System.Drawing.Point(398, 190);
+            this.lblMotivoTroca.Name = "lblMotivoTroca";
+            this.lblMotivoTroca.Size = new System.Drawing.Size(10, 13);
+            this.lblMotivoTroca.TabIndex = 200;
+            this.lblMotivoTroca.Text = "-";
+            this.lblMotivoTroca.Visible = false;
+            // 
             // Forms_PDV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1036, 770);
+            this.Controls.Add(this.lblMotivoTroca);
             this.Controls.Add(this.lblTrocaVendedor);
             this.Controls.Add(this.lblStatusVenda);
             this.Controls.Add(this.pnlDinheiro);
@@ -2628,5 +2640,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn unidade;
         private System.Windows.Forms.Label lblStatusVenda;
         private System.Windows.Forms.Label lblTrocaVendedor;
+        private System.Windows.Forms.Label lblMotivoTroca;
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sistema_de_Gerenciamento.Classes
 {
-    internal class DadosNotaFiscalSaida
+    public class DadosNotaFiscalSaida
     {
         public string vendedor { get; set; }
 
@@ -36,7 +36,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         public string tipoPagamento { get; set; }
 
-        public decimal quantidadeParcelas { get; set; }
+        public int quantidadeParcelas { get; set; }
 
         public decimal valorDesconto { get; set; }
 
