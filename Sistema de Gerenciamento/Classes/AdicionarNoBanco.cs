@@ -516,9 +516,9 @@ namespace Sistema_de_Gerenciamento
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "insert into tb_EstoqueProduto (ep_nf_entrada,ep_codigo_produto,ep_descricao," +
-                                   "ep_unidade,ep_valor_unitario,ep_quantidade) " +
+                                   "ep_unidade,ep_valor_unitario,ep_quantidade,ep_status) " +
                                    "select ne_numero_nf,ne_codigo_produto,ne_descricao_produto,ne_unidade," +
-                                   "ne_valor_unitario,ne_quantidade " +
+                                   "ne_valor_unitario,ne_quantidade,'-' " +
                                    "from tb_NotaFiscalEntrada where ne_numero_nf = @ne_numero_nf";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
@@ -615,10 +615,12 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Despesa Custos Fixo Repeticao
 
+        #region Noata Fiscal Saida
+
         public void NotaFiscalSaida(string _cpfCpnjCliente, int _numeroNF, int _codigoProduto, string _descricao,
-            decimal _quantidade, decimal _valorUnitario, DateTime _emissao, int _codigoBarras, string _vendedor,
-            DateTime _garantia, string _nomeCliente, string _tipoPagamento, decimal _valorDesconto, int _quantidadeParcelas, decimal _valorJuros, decimal _valorPago, string _unidade,
-             string _status, string _trocaVendedor, string _motivoTroca)
+    decimal _quantidade, decimal _valorUnitario, DateTime _emissao, int _codigoBarras, string _vendedor,
+    DateTime _garantia, string _nomeCliente, string _tipoPagamento, decimal _valorDesconto, int _quantidadeParcelas, decimal _valorJuros, decimal _valorPago, string _unidade,
+     string _status, string _trocaVendedor, string _motivoTroca)
         {
             try
             {
@@ -660,6 +662,44 @@ namespace Sistema_de_Gerenciamento
             catch (Exception ex)
             {
                 Erro.ErroAoAdicionarNotaFiscalSaidaNoBanco(ex);
+            }
+        }
+
+        #endregion Noata Fiscal Saida
+
+        public void AdcionarNoEstoqueMaterialSegregado(int _nfEntrada, int? _codigoBarras, int _codigoProduto,
+            string _descricao, decimal _quantidade, string _unidade, decimal _valorUnitario, DateTime? _dataEntrada,
+            decimal? _descontoPorItem, string _status)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "insert into tb_EstoqueProduto (ep_nf_entrada,ep_codigo_barras," +
+                        "ep_codigo_produto, ep_descricao, ep_quantidade, ep_unidade,ep_valor_unitario," +
+                        " ep_data_entrada, ep_desconto_por_item,ep_status) " +
+                        "values(@nfEntrada,@codigoBarras,@codigoProduto,@descricao,@quantidade,@unidade,@valorUnitario," +
+                        "@dataEntrada,@descontoPorItem,@status) ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@nfEntrada", _nfEntrada);
+                    adapter.SelectCommand.Parameters.Add("@codigoBarras", _codigoBarras);
+                    adapter.SelectCommand.Parameters.Add("@codigoProduto", _codigoProduto);
+                    adapter.SelectCommand.Parameters.Add("@descricao", _descricao);
+                    adapter.SelectCommand.Parameters.Add("@quantidade", _quantidade);
+                    adapter.SelectCommand.Parameters.Add("@unidade", _unidade);
+                    adapter.SelectCommand.Parameters.Add("@valorUnitario", _valorUnitario);
+                    adapter.SelectCommand.Parameters.Add("@dataEntrada", _dataEntrada);
+                    adapter.SelectCommand.Parameters.Add("@descontoPorItem", _descontoPorItem);
+                    adapter.SelectCommand.Parameters.Add("@status", _status);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

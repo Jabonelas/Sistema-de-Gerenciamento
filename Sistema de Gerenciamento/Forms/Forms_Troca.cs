@@ -245,34 +245,48 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     DadosNotaFiscalSaida veriricacaoExistenciaNaFota;
 
-                    veriricacaoExistenciaNaFota = listaDadosNotaFiscalSaidaParcial.First(item => item.codigoBarras == Convert.ToInt32(txtCodBarrasDevolucao.Text));
+                    //veriricacaoExistenciaNaFota = listaDadosNotaFiscalSaidaParcial.First(item => item.codigoBarras == Convert.ToInt32(txtCodBarrasDevolucao.Text));
+                    dadosNotaFiscalSaidaParcial = listaDadosNotaFiscalSaidaParcial.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
 
-                    if (veriricacaoExistenciaNaFota != null && cont == 1)
+                    //if (veriricacaoExistenciaNaFota != null && cont == 1)
+                    if (dadosNotaFiscalSaidaParcial != null && cont == 1)
                     {
-                        memoriaValorPago = 0;
+                        //dadosNotaFiscalSaidaParcial = listaDadosNotaFiscalSaidaParcial.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
 
-                        memoriaQuantidade = 0;
+                        //if (veriricacaoExistenciaNaFota.quantidade > 0)
+                        if (dadosNotaFiscalSaidaParcial.quantidade > 0)
+                        {
+                            memoriaValorPago = 0;
 
-                        dadosNotaFiscalSaidaParcial = listaDadosNotaFiscalSaidaParcial.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
+                            memoriaQuantidade = 0;
 
-                        txtProdutoDevolucao.Text = dadosNotaFiscalSaidaParcial.descricao;
+                            txtProdutoDevolucao.Text = dadosNotaFiscalSaidaParcial.descricao;
+                            //txtProdutoDevolucao.Text = veriricacaoExistenciaNaFota.descricao;
 
-                        txtUnidadeDevolucao.Text = dadosNotaFiscalSaidaParcial.unidade;
+                            txtUnidadeDevolucao.Text = dadosNotaFiscalSaidaParcial.unidade;
+                            //txtUnidadeDevolucao.Text = veriricacaoExistenciaNaFota.unidade;
 
-                        txtQuantidadeDevolucao.Text = dadosNotaFiscalSaidaParcial.quantidade.ToString("N0");
+                            txtQuantidadeDevolucao.Text = dadosNotaFiscalSaidaParcial.quantidade.ToString("N0");
+                            //txtQuantidadeDevolucao.Text = veriricacaoExistenciaNaFota.quantidade.ToString("N0");
 
-                        txtCodProdutoDevolucao.Text = dadosNotaFiscalSaidaParcial.codigoProduto.ToString();
+                            txtCodProdutoDevolucao.Text = dadosNotaFiscalSaidaParcial.codigoProduto.ToString();
+                            //txtCodProdutoDevolucao.Text = veriricacaoExistenciaNaFota.codigoProduto.ToString();
 
-                        txtPrecoDevolucao.Text = string.Format("{0:C}", dadosNotaFiscalSaidaParcial.preco);
+                            txtPrecoDevolucao.Text = string.Format("{0:C}", dadosNotaFiscalSaidaParcial.preco);
+                            //txtPrecoDevolucao.Text = string.Format("{0:C}", veriricacaoExistenciaNaFota.preco);
 
-                        //txtQuantidadeDevolucao.ReadOnly = false;
+                            txtQuantidadeDevolucao.Enabled = true;
 
-                        txtQuantidadeDevolucao.Enabled = true;
+                            pcbImagemProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodProdutoDevolucao.Text));
 
-                        pcbImagemProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodProdutoDevolucao.Text));
+                            cont = 0;
 
-                        cont = 0;
-                        return;
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Item sem Saldo para Realização de Troca!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                     cont++;
                 }
@@ -617,7 +631,8 @@ namespace Sistema_de_Gerenciamento.Forms
                 dadosEstoqueProduto.preco,
                 Convert.ToDecimal(txtQuantidadeTroca.Text),
                 dadosEstoqueProduto.unidade, "",
-                0, 0, 0, Convert.ToDecimal(txtPrecoTroca.Text.Replace("R$", "")), lblStatus.Text, ""));
+                0, 0, 0, Convert.ToDecimal(txtPrecoTroca.Text.Replace("R$", "")), lblStatus.Text,
+                Global.NomeDeUsuario, ""));
 
             gdvDevolucaoTroca.Rows.Clear();
 
@@ -718,10 +733,14 @@ namespace Sistema_de_Gerenciamento.Forms
 
             if (memoriaQuantidade == Convert.ToDecimal(txtQuantidadeDevolucao.Text))
             {
+                decimal teste;
+
                 DadosNotaFiscalSaida mudancaStatus;
                 mudancaStatus = listaDadosNotaFiscalSaidaCompleta.First(x => x.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
                 mudancaStatus.status = "Devolucao";
-                mudancaStatus.valorPago = mudancaStatus.valorPago;
+                mudancaStatus.valorPago = -mudancaStatus.valorPago;
+                mudancaStatus.quantidade = -mudancaStatus.quantidade;
+                //MessageBox.Show($"{teste}");
             }
             else
             {
@@ -746,10 +765,11 @@ namespace Sistema_de_Gerenciamento.Forms
                 Convert.ToInt32(txtCodBarrasDevolucao.Text),
                 atualizarDados.vendedor,
                 atualizarDados.validadeTroca,
-                atualizarDados.valorUnitario,
-                Convert.ToDecimal(txtQuantidadeDevolucao.Text),
+               atualizarDados.valorUnitario,
+                -Convert.ToDecimal(txtQuantidadeDevolucao.Text),
                 atualizarDados.unidade, "",
-                0, 0, 0, Convert.ToDecimal(txtPrecoDevolucao.Text.Replace("R$", "")), "Devolucao", ""));
+                0, 0, 0, -Convert.ToDecimal(txtPrecoDevolucao.Text.Replace("R$", "")), "Devolucao", "",
+                ""));
 
                 // listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(
                 //atualizarDados.id,

@@ -25,7 +25,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaCompleta = new List<DadosNotaFiscalSaida>();
 
-        private DadosNotaFiscalSaida dadosNotaFiscalSaida;
+        private List<DadosEstoqueProduto> listaDadosEstoqueProdutos = new List<DadosEstoqueProduto>();
+
+        private DadosEstoqueProduto dadosEstoqueProduto;
+
+        //private DadosNotaFiscalSaida dadosNotaFiscalSaida;
 
         private DadosNotaFiscalSaida dadosNotaFiscalSaidaCompleta;
 
@@ -397,18 +401,22 @@ namespace Sistema_de_Gerenciamento.Forms
 
             foreach (DadosNotaFiscalSaida item in lista)
             {
+                //if (item.valorPago == )
+                //{
                 // Item Mantido
                 if (item.status == "-")
                 {
-
-                    Atualizar.AtualizarQuantidadePosTroca(item.quantidade, item.valorPago, item.numeroNF, item.codigoBarras);
+                    Atualizar.AtualizarQuantidadePosTroca(item.quantidade, item.valorPago, item.numeroNF, item.codigoBarras,
+                        item.status, item.trocarVendedor, "-");
                 }
 
                 //Item Trocado
                 else if (item.status == "Troca")
                 {
+                    Atualizar.AtualizarQuantidadePosTroca(item.quantidade, item.valorPago, item.numeroNF, item.codigoBarras,
+                        item.status, item.trocarVendedor, telaTroca.cmbMotivoTroca.Text);
 
-                    Atualizar.AtualizarQuantidadePosTroca(item.quantidade, item.valorPago, item.numeroNF, item.codigoBarras);
+                    Atualizar.AtualizarQuantidadeEstoquePosDevolucao(-item.quantidade, item.codigoBarras);
 
                     Salvar.NotaFiscalSaida(item.cpf, item.numeroNF, item.codigoProduto, item.descricao,
                   item.quantidade, item.valorUnitario, item.emissao, item.codigoBarras, item.vendedor,
@@ -419,18 +427,45 @@ namespace Sistema_de_Gerenciamento.Forms
                 }
 
                 // Item Devolvido
-                else if (item.valorPago >0)
+                else if (item.valorPago < 0)
                 {
+                    if (item.motivoTroca == "-")
+                    {
+                        Atualizar.AtualizarQuantidadeEstoquePosDevolucao(-item.quantidade, item.codigoBarras);
 
-                    Atualizar.AtualizarQuantidadeEstoquePosDevolucao(item.quantidade, item.codigoBarras);
+                        Atualizar.AtualizarQuantidadePosTroca(item.quantidade, item.valorPago, item.numeroNF, item.codigoBarras,
+                        item.status, item.trocarVendedor, telaTroca.cmbMotivoTroca.Text);
+                    }
+                    else
+                    {
+                        if (telaTroca.cmbMotivoTroca.Text == "Cor/Tamanho")
+                        {
+                            Atualizar.AtualizarQuantidadeEstoquePosDevolucao(-item.quantidade, item.codigoBarras);
 
-                    Salvar.NotaFiscalSaida(item.cpf, item.numeroNF, item.codigoProduto, item.descricao,
-              item.quantidade, item.valorUnitario, item.emissao, item.codigoBarras, item.vendedor,
-              item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text, valorDesconto,
-              Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
-              jurosPorProduto, -(item.valorPago - valorDesconto), item.unidade, item.status, Global.NomeDeUsuario,
-              telaTroca.cmbMotivoTroca.Text);
+                            MessageBox.Show("entrou na devolução normal");
+                        }
+                        else
+                        {
+                            MessageBox.Show("entrou na devolução que colocar no segregado");
+
+                            listaDadosEstoqueProdutos = Buscar.BuscarListaEstoqueProdutoPorCodigoBarras(item.codigoBarras);
+
+                            dadosEstoqueProduto = listaDadosEstoqueProdutos.First(x => x.codigoBarras == item.codigoBarras);
+
+                            Salvar.AdcionarNoEstoqueMaterialSegregado(dadosEstoqueProduto.numeroNF, dadosEstoqueProduto.codigoBarras,
+                                dadosEstoqueProduto.codigoProduto, dadosEstoqueProduto.descricaoProduto, item.quantidade, dadosEstoqueProduto.unidade,
+                                dadosEstoqueProduto.valorUnitario, dadosEstoqueProduto.dataEntrada, dadosEstoqueProduto.descontoItem, telaTroca.cmbMotivoTroca.Text);
+                        }
+
+                        Salvar.NotaFiscalSaida(item.cpf, item.numeroNF, item.codigoProduto, item.descricao,
+                        item.quantidade, item.valorUnitario, item.emissao, item.codigoBarras, item.vendedor,
+                        item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text, valorDesconto,
+                        Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
+                        jurosPorProduto, (item.valorPago - valorDesconto), item.unidade, item.status, Global.NomeDeUsuario,
+                        telaTroca.cmbMotivoTroca.Text);
+                    }
                 }
+                //}
             }
         }
     }

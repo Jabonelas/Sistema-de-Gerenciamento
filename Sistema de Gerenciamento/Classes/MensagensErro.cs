@@ -686,6 +686,11 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-PR17) Erro ao Realizar Busca de Cadastro do Produto Por Marca \n\nErro: {_e}", "Erro Busca Produto Por Marca!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoBuscarListaEstoqueProdutoPorCodidoBarrasNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR18) Erro ao Realizar Busca de Lista do Estoque de Produto \n\nErro: {_e}", "Erro Busca de Lista do Estoque de Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Produto
 
         #region Empresa

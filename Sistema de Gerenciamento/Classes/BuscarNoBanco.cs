@@ -2960,6 +2960,41 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion PreencherGridView Com Dados do Estoque Produto
 
+        public List<DadosEstoqueProduto> BuscarListaEstoqueProdutoPorCodigoBarras(int _codigoBarras)
+        {
+            List<DadosEstoqueProduto> listaDadosEstoqueProdutos = new List<DadosEstoqueProduto>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ep_nf_entrada,ep_codigo_barras,ep_codigo_produto,ep_descricao," +
+                                   "ep_quantidade,ep_unidade,ep_valor_unitario,ep_data_entrada,ep_desconto_por_item " +
+                                   "from tb_EstoqueProduto " +
+                                   "where ep_codigo_barras = @codigoBarras and ep_status = '-'";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@codigoBarras", _codigoBarras);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaDadosEstoqueProdutos.Add(new DadosEstoqueProduto(dr.GetInt32(0), dr.GetInt32(1),
+                            dr.GetInt32(2), dr.GetString(3), dr.GetDecimal(4), dr.GetString(5), dr.GetDecimal(6),
+                            dr.GetDateTime(7), dr.GetDecimal(8)));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarListaEstoqueProdutoPorCodidoBarrasNoBanco(ex);
+            }
+
+            return listaDadosEstoqueProdutos;
+        }
+
         #endregion Buscar Compra
 
         #region Buscar Cliente Tela PDV
@@ -3047,8 +3082,8 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Produto Por Codigo
 
-        public bool BuscarVendaPorNotaFiscalSaida(int _notaFiscalSaida)
         //public bool BuscarVendaPorNotaFiscalSaida(int _notaFiscalSaida, BunifuDataGridView _tabela)
+        public bool BuscarVendaPorNotaFiscalSaida(int _notaFiscalSaida)
         {
             try
             {
@@ -3149,7 +3184,7 @@ namespace Sistema_de_Gerenciamento.Classes
                         listadadosNotaFiscalSaidasCompleta.Add(new DadosNotaFiscalSaida(
                             dr.GetInt32(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3), dr.GetInt32(4), dr.GetString(5), dr.GetDateTime(6),
                             dr.GetInt32(7), dr.GetString(8), dr.GetDateTime(9), dr.GetDecimal(10), dr.GetDecimal(11), dr.GetString(12), dr.GetString(13),
-                            dr.GetInt32(14), dr.GetDecimal(15), dr.GetDecimal(16), dr.GetDecimal(17), dr.GetString(18), dr.GetString(19)));
+                            dr.GetInt32(14), dr.GetDecimal(15), dr.GetDecimal(16), dr.GetDecimal(17), dr.GetString(18), dr.GetString(19), dr.GetString(20)));
                     }
                 }
 
