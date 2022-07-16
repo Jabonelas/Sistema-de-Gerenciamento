@@ -273,8 +273,8 @@ namespace Sistema_de_Gerenciamento.Forms
                     OpcaoDoUsuario = MessageBox.Show("Deseja Finalzar a Venda?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (OpcaoDoUsuario == DialogResult.Yes)
                     {
-                        lblNumeroNotaFiscalSaida.Text = Buscar.BuscarUltimaNotaFiscalSaida();
-                        //lblNumeroNotaFiscalSaida.Text = "1";
+                        //lblNumeroNotaFiscalSaida.Text = Buscar.BuscarUltimaNotaFiscalSaida();
+                        lblNumeroNotaFiscalSaida.Text = "1";
 
                         //txtVendedor.Text = "israel";
 
@@ -331,6 +331,8 @@ namespace Sistema_de_Gerenciamento.Forms
                                         lblStatusVenda.Text,
                                         lblTrocaVendedor.Text,
                                         lblMotivoTroca.Text);
+
+                                Atualizar.AtualizarQuantidadeEstoquePosVenda(Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value), Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value));
 
                                 pnlVendaFinalizada.Visible = true;
                             }
@@ -539,12 +541,6 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        private void SetarDesignColunaGridView()
-        {
-            this.gdvPDV.Columns["Total"].DefaultCellStyle.Format = "c";
-            this.gdvPDV.Columns["VlrUnit"].DefaultCellStyle.Format = "c";
-        }
-
         private void txtCPF_Enter(object sender, EventArgs e)
         {
             txtCPF.UseSystemPasswordChar = false;
@@ -633,8 +629,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 cont++;
 
                 AdicionarProdutoPorCodigoProduto();
-
-                SetarDesignColunaGridView();
 
                 //FormatandoParaNovaVenda();
             }
@@ -852,8 +846,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 BuscarProdutoPorCodigoBarras();
 
                 AdicionarProdutoPorCodigoBarras();
-
-                SetarDesignColunaGridView();
 
                 pcbPDV.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigo.Text));
 

@@ -79,6 +79,8 @@
             this.ns_quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ns_valor_pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ns_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.bunifuPanel13.SuspendLayout();
             this.pnlDesconto.SuspendLayout();
             this.pnlFormaPagamento.SuspendLayout();
@@ -558,7 +560,6 @@
             this.pnlTroco.Size = new System.Drawing.Size(219, 80);
             this.pnlTroco.TabIndex = 178;
             this.pnlTroco.Visible = false;
-            this.pnlTroco.Click += new System.EventHandler(this.pnlTroco_Click);
             // 
             // lblTroco
             // 
@@ -778,7 +779,6 @@
             this.pnlQRCode.Size = new System.Drawing.Size(173, 135);
             this.pnlQRCode.TabIndex = 179;
             this.pnlQRCode.Visible = false;
-            this.pnlQRCode.Click += new System.EventHandler(this.pnlQRCode_Click);
             // 
             // pnlChavePix
             // 
@@ -934,11 +934,32 @@
             this.ns_status.ReadOnly = true;
             this.ns_status.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(21, 435);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 306;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(140, 435);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 307;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Forms_Pagamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(927, 537);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.pnlTroco);
             this.Controls.Add(this.gdvPagamento);
             this.Controls.Add(this.pnlValorTotal);
@@ -1021,5 +1042,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ns_quantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn ns_valor_pago;
         private System.Windows.Forms.DataGridViewTextBoxColumn ns_status;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

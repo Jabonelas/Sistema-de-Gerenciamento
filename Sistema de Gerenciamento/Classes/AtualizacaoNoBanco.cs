@@ -865,5 +865,51 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Atualizar Quantidade Estoque Depois da Venda
+
+        public void AtualizarQuantidadePosTroca(decimal _quantidade, decimal _valorPago, int _numeroNF, int _codigoBarras)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_NotaFiscalSaida set " +
+                        "ns_quantidade = @quantidade , ns_valor_pago = @valorPago " +
+                        "where ns_numero_nf = @numeroNF and ns_codigo_barras = @codigoBarras";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@quantidade", _quantidade);
+                    adapter.SelectCommand.Parameters.Add("@valorPago", _valorPago);
+                    adapter.SelectCommand.Parameters.Add("@numeroNF", _numeroNF);
+                    adapter.SelectCommand.Parameters.Add("@codigoBarras", _codigoBarras);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarDadosTrocaoBanco(ex);
+            }
+        }
+
+        public void AtualizarQuantidadeEstoquePosDevolucao(decimal _quantidade, int _codigoBarras)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_EstoqueProduto set ep_quantidade = (ep_quantidade + @quantidade ) " +
+                        "where ep_codigo_barras = @codigoBarras";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@quantidade", _quantidade);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigoBarras", _codigoBarras);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarQuantidadeEstoqueProdutoPosVendaNoBanco(ex);
+            }
+        }
     }
 }

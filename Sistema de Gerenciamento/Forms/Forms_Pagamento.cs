@@ -13,6 +13,8 @@ namespace Sistema_de_Gerenciamento.Forms
 {
     public partial class Forms_Pagamento : Form
     {
+        private AtualizacaoNoBanco Atualizar = new AtualizacaoNoBanco();
+
         private AdicionarNoBanco Salvar = new AdicionarNoBanco();
 
         private BuscarNoBanco Buscar = new BuscarNoBanco();
@@ -61,8 +63,6 @@ namespace Sistema_de_Gerenciamento.Forms
 
             cmbFormaPagamento.SelectedIndex = 0;
 
-            SetarDesignColunaGridView();
-
             PreencherGrid();
 
             cmbParcelas.SelectedIndex = 0;
@@ -70,18 +70,13 @@ namespace Sistema_de_Gerenciamento.Forms
             cmbFormaPagamento.Focus();
         }
 
-        private void SetarDesignColunaGridView()
-        {
-            this.gdvPagamento.Columns["ns_valor_pago"].DefaultCellStyle.Format = "c";
-        }
-
         private void PreencherGrid()
         {
             foreach (DadosNotaFiscalSaida item in lista)
             {
                 var rows = new List<string[]>();
-                string[] row1 = new string[] {item.codigoProduto.ToString(),item.descricao,item.quantidade.ToString(),
-                            item.valorPago.ToString(),item.status };
+                string[] row1 = new string[] {item.codigoProduto.ToString(),item.descricao,item.quantidade.ToString("N0"),
+                            string.Format("{0:C}",item.valorPago),item.status };
                 //rows.Add(row1);
 
                 gdvPagamento.Rows.Add(row1);
@@ -386,12 +381,57 @@ namespace Sistema_de_Gerenciamento.Forms
             //    Global.NomeDeUsuario);
         }
 
-        private void pnlQRCode_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-        }
+            decimal valorDesconto = Convert.ToDecimal(lblValorDesconto.Text.Replace("R$", "")) / (gdvPagamento.Rows.Count - quantidadeItens);
+            decimal jurosPorProduto;
 
-        private void pnlTroco_Click(object sender, EventArgs e)
-        {
+            if (lblValorJuros.Text != "0,00%")
+            {
+                jurosPorProduto = ((Convert.ToDecimal(lblValorTotal.Text.Replace("R$", ""))) - valorBruto) / (gdvPagamento.Rows.Count - quantidadeItens);
+            }
+            else
+            {
+                jurosPorProduto = 0;
+            }
+
+            foreach (DadosNotaFiscalSaida item in lista)
+            {
+                // Item Mantido
+                if (item.status == "-")
+                {
+
+                    Atualizar.AtualizarQuantidadePosTroca(item.quantidade, item.valorPago, item.numeroNF, item.codigoBarras);
+                }
+
+                //Item Trocado
+                else if (item.status == "Troca")
+                {
+
+                    Atualizar.AtualizarQuantidadePosTroca(item.quantidade, item.valorPago, item.numeroNF, item.codigoBarras);
+
+                    Salvar.NotaFiscalSaida(item.cpf, item.numeroNF, item.codigoProduto, item.descricao,
+                  item.quantidade, item.valorUnitario, item.emissao, item.codigoBarras, item.vendedor,
+                  item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text, valorDesconto,
+                  Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
+                  jurosPorProduto, (item.valorPago - valorDesconto), item.unidade, item.status, Global.NomeDeUsuario,
+                  telaTroca.cmbMotivoTroca.Text);
+                }
+
+                // Item Devolvido
+                else if (item.valorPago >0)
+                {
+
+                    Atualizar.AtualizarQuantidadeEstoquePosDevolucao(item.quantidade, item.codigoBarras);
+
+                    Salvar.NotaFiscalSaida(item.cpf, item.numeroNF, item.codigoProduto, item.descricao,
+              item.quantidade, item.valorUnitario, item.emissao, item.codigoBarras, item.vendedor,
+              item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text, valorDesconto,
+              Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
+              jurosPorProduto, -(item.valorPago - valorDesconto), item.unidade, item.status, Global.NomeDeUsuario,
+              telaTroca.cmbMotivoTroca.Text);
+                }
+            }
         }
     }
 }
