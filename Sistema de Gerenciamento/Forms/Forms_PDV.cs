@@ -98,8 +98,6 @@ namespace Sistema_de_Gerenciamento.Forms
             AtalhoCancelarPagamento(e);
 
             PreencherListaDadosProduto();
-
-
         }
 
         private void AtalhoFecharTela(KeyEventArgs e)
@@ -186,10 +184,11 @@ namespace Sistema_de_Gerenciamento.Forms
             if (e.KeyCode == Keys.F5 && lblDescricaoItem.Text != "PAGAMENTO") // Pesquisar Produto F5
             {
                 Forms_PesquisarProduto pesquisarProduto = new Forms_PesquisarProduto(this, "Tela PDV");
-                pesquisarProduto.ShowDialog();
 
                 //Desabilitar o evento DoubleClick do Grid?View
                 pesquisarProduto.gdvPesquisarProduto.DoubleClick -= pesquisarProduto.gdvPesquisarProduto_DoubleClick;
+
+                pesquisarProduto.ShowDialog();
 
                 txtCodigoProduto.Focus();
 
@@ -284,10 +283,8 @@ namespace Sistema_de_Gerenciamento.Forms
                     OpcaoDoUsuario = MessageBox.Show("Deseja Finalzar a Venda?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (OpcaoDoUsuario == DialogResult.Yes)
                     {
-                        //lblNumeroNotaFiscalSaida.Text = Buscar.BuscarUltimaNotaFiscalSaida();
-                        lblNumeroNotaFiscalSaida.Text = "1";
-
-                        //txtVendedor.Text = "israel";
+                        lblNumeroNotaFiscalSaida.Text = Buscar.BuscarUltimaNotaFiscalSaida();
+                        //lblNumeroNotaFiscalSaida.Text = "1";
 
                         lblDescricaoItem.Text = "Nº NOTA FISCAL:";
                         lblNumeroNotaFiscalSaida.Visible = true;
@@ -355,7 +352,7 @@ namespace Sistema_de_Gerenciamento.Forms
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Saldo Indisponível!", "Atenção",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                                    MessageBox.Show("Saldo Indisponível!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                             }
                             catch (Exception ex)
@@ -372,18 +369,12 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-
         private void PreencherListaDadosProduto()
         {
-
             listaDadosProduto.Clear();
 
             listaDadosProduto = Buscar.BuscarListaProdutos();
-
-
-
         }
-
 
         private void AtalhoCancelarPagamento(KeyEventArgs e)
         {
@@ -948,8 +939,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtInserirQuant.Text = "1";
             }
         }
-
-      
 
         private void txtInserirQuant_Leave(object sender, EventArgs e)
         {

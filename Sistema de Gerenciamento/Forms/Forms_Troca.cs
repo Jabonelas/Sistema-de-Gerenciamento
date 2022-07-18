@@ -27,8 +27,6 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private DadosNotaFiscalSaida dadosNotaFiscalSaidaParcial;
 
-        private DadosNotaFiscalSaida dadosNotaFiscalSaidaCompleta;
-
         private int cont = 0;
 
         private decimal memoriaQuantidade = 0;
@@ -41,19 +39,18 @@ namespace Sistema_de_Gerenciamento.Forms
 
         public int quantidadeItens = 0;
 
-        //private List<DadosProduto> listaDadosProduto = new List<DadosProduto>();
-
-        //private DadosProduto produto;
-
         public Forms_Troca()
         {
             InitializeComponent();
 
+            PreencherDados();
+        }
+
+        private void PreencherDados()
+        {
             pcbImagemProduto.Image = Buscar.BuscarLogoEmpresa(1);
 
             listaDadosEstoqueProduto = Buscar.BuscarListaProdutos();
-
-            cmbTipo.SelectedIndex = 1;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -67,38 +64,13 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (txtNotaFiscal.Text != string.Empty && Buscar.BuscarVendaPorNotaFiscalSaida(Convert.ToInt32(txtNotaFiscal.Text)) == true)
                 {
-                    //Buscar.BuscarVendaPorNotaFiscalSaida(Convert.ToInt32(txtNotaFiscal.Text), gdvDevolucaoTroca);
-
-                    //listaDadosNotaFiscalSaidaParcial = Buscar.BuscarListaNotaFiscalSaidaParcial(Convert.ToInt32(txtNotaFiscal.Text));
-
                     listaDadosNotaFiscalSaidaCompleta.Clear();
 
                     listaDadosNotaFiscalSaidaCompleta = Buscar.BuscarListaNotaFiscalSaidaCompleto(Convert.ToInt32(txtNotaFiscal.Text));
 
-                    //listaDadosNotaFiscalSaidaCompleta.ForEach(x => dadosNotaFiscalSaidaCompleta = x);
+                    PreencherGridView();
 
-                    //dadosNotaFiscalSaidaCompleta = listaDadosNotaFiscalSaidaCompleta.First(x => x.numeroNF.ToString().StartsWith(txtNotaFiscal.Text));
-
-                    gdvDevolucaoTroca.Rows.Clear();
-
-                    foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
-                    {
-                        var rows = new List<string[]>();
-                        string[] row1 = new string[] {item.codigoProduto.ToString(),item.descricao,item.quantidade.ToString("N0"),
-                            string.Format("{0:C}", item.valorPago),item.status };
-                        //rows.Add(row1);
-
-                        gdvDevolucaoTroca.Rows.Add(row1);
-
-                        //foreach (string[] items in rows)
-                        //{
-                        //    gdvDevolucaoTroca.Rows.Add(items);
-                        //}
-
-                        quantidadeItens++;
-                    }
-
-                    //PreenchendoGridView();
+                    quantidadeItens = gdvDevolucaoTroca.Rows.Count;
 
                     Buscar.BuscarListaNotaFiscalSaidaParcial(Convert.ToInt32(txtNotaFiscal.Text)).ForEach(nf => listaDadosNotaFiscalSaidaParcial.Add(nf));
 
@@ -112,7 +84,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     {
                         btnConfirmar.Enabled = false;
 
-                        MessageBox.Show("Prazo para Troca já Excedido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Prazo Para Troca Já Excedido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                         cont++;
                     }
@@ -128,47 +100,20 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 Erro.ErroAoBuscarNotaFiscalSaida(ex);
             }
+        }
 
-            ///////////////////////////////////////////////////////////////////////////////////////
+        private void PreencherGridView()
+        {
+            gdvDevolucaoTroca.Rows.Clear();
 
-            //try
-            //{
-            //    if (txtNotaFiscal.Text != string.Empty && Buscar.BuscarVendaPorNotaFiscalSaida(Convert.ToInt32(txtNotaFiscal.Text), gdvDevolucaoTroca) == true)
-            //    {
-            //        //Buscar.BuscarVendaPorNotaFiscalSaida(Convert.ToInt32(txtNotaFiscal.Text), gdvDevolucaoTroca);
+            foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
+            {
+                var rows = new List<string[]>();
+                string[] row1 = new string[] {item.codigoProduto.ToString(),item.descricao,item.quantidade.ToString("N0"),
+                            string.Format("{0:C}", item.valorPago),item.status };
 
-            //        listaDadosNotaFiscalSaidaParcial = Buscar.BuscarListaNotaFiscalSaidaParcial(Convert.ToInt32(txtNotaFiscal.Text));
-
-            //        SetarDesignColunaGridView();
-
-            //        Buscar.BuscarListaNotaFiscalSaidaParcial(Convert.ToInt32(txtNotaFiscal.Text)).ForEach(nf => listaDadosNotaFiscalSaidaParcial.Add(nf));
-
-            //        txtVendedor.Text = listaDadosNotaFiscalSaidaParcial[0].vendedor;
-            //        txtValidadeTroca.Text = listaDadosNotaFiscalSaidaParcial[0].validadeTroca.ToShortDateString();
-            //        txtNomeCliente.Text = listaDadosNotaFiscalSaidaParcial[0].nomeCliente;
-
-            //        Buscar.BuscarListaNotaFiscalSaidaParcial(Convert.ToInt32(txtNotaFiscal.Text));
-
-            //        if (Convert.ToDateTime(txtValidadeTroca.Text) < DateTime.Today && cont == 0)
-            //        {
-            //            btnConfirmar.Enabled = false;
-
-            //            MessageBox.Show("Prazo para Troca já Excedido!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            //            cont++;
-            //        }
-            //        else
-            //        {
-            //            btnConfirmar.Enabled = true;
-
-            //            cont = 0;
-            //        }
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    Erro.ErroAoBuscarNotaFiscalSaida(ex);
-            //}
+                gdvDevolucaoTroca.Rows.Add(row1);
+            }
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -176,86 +121,26 @@ namespace Sistema_de_Gerenciamento.Forms
             this.Close();
         }
 
-        private void cmbTipo_SelectedValueChanged(object sender, EventArgs e)
-        {
-            LayoutConformeNaturezaDaOperacao(cmbTipo.Text);
-        }
-
-        private void LayoutConformeNaturezaDaOperacao(string _operacao)
-        {
-            //bool retorno = _operacao == "DEVOLUÇÃO" ? true : false;
-
-            //lblTroca.Visible = !retorno;
-            //lblQuant.Visible = !retorno;
-            //lblProduto.Visible = !retorno;
-            //lblPreco.Visible = !retorno;
-            //lblCodBarras.Visible = !retorno;
-            //lblCodigoProduto.Visible = !retorno;
-            //lblUnidade.Visible = !retorno;
-            //txtCodBarrasTroca.Visible = !retorno;
-            //txtCodProdutoTroca.Visible = !retorno;
-            //txtProdutoTroca.Visible = !retorno;
-            //txtQuantidadeTroca.Visible = !retorno;
-            //txtUnidadeTroca.Visible = !retorno;
-            //txtPrecoTroca.Visible = !retorno;
-            //pnlValorPrudutoTroca.Visible = !retorno;
-            //btnBuscarCodigoProduto.Visible = !retorno;
-
-            //if (retorno == true)
-            //{
-            //    pnlValorProdutoDevolvido.Location = new Point(184, 489);
-            //    pnlValorAPagar.Location = new Point(487, 489);
-            //    btnFechar.Location = new Point(518, 630);
-            //    btnConfirmar.Location = new Point(215, 630);
-            //    this.Size = new Size(892, 735);
-            //}
-            //else
-            //{
-            //    pnlValorProdutoDevolvido.Location = new Point(12, 542);
-            //    pnlValorAPagar.Location = new Point(626, 542);
-            //    btnFechar.Location = new Point(538, 683);
-            //    btnConfirmar.Location = new Point(150, 683);
-            //    this.Size = new Size(892, 773);
-            //}
-        }
-
         private void txtCodBarrasDevolucao_TextChange(object sender, EventArgs e)
         {
             if (txtCodBarrasDevolucao.Text == string.Empty)
             {
                 txtProdutoDevolucao.Text = string.Empty;
-
                 txtUnidadeDevolucao.Text = string.Empty;
-
                 txtQuantidadeDevolucao.Text = string.Empty;
-
                 txtCodProdutoDevolucao.Text = string.Empty;
-
                 txtPrecoDevolucao.Text = string.Empty;
-
                 pcbImagemProduto.Image = Buscar.BuscarLogoEmpresa(1);
-
-                //lblValorProdDevolvido.Text = "R$ 0,00";
-
-                //txtQuantidadeDevolucao.ReadOnly = true;
-
                 txtQuantidadeDevolucao.Enabled = false;
             }
             else if (Buscar.BuscarCodigoBarras(Convert.ToInt32(txtCodBarrasDevolucao.Text)) == true)
             {
                 try
                 {
-                    DadosNotaFiscalSaida veriricacaoExistenciaNaFota;
-
-                    //veriricacaoExistenciaNaFota = listaDadosNotaFiscalSaidaParcial.First(item => item.codigoBarras == Convert.ToInt32(txtCodBarrasDevolucao.Text));
                     dadosNotaFiscalSaidaParcial = listaDadosNotaFiscalSaidaParcial.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
 
-                    //if (veriricacaoExistenciaNaFota != null && cont == 1)
-                    if (dadosNotaFiscalSaidaParcial != null && cont == 1)
+                    if (dadosNotaFiscalSaidaParcial != null && cont == 0)
                     {
-                        //dadosNotaFiscalSaidaParcial = listaDadosNotaFiscalSaidaParcial.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
-
-                        //if (veriricacaoExistenciaNaFota.quantidade > 0)
                         if (dadosNotaFiscalSaidaParcial.quantidade > 0)
                         {
                             memoriaValorPago = 0;
@@ -263,47 +148,45 @@ namespace Sistema_de_Gerenciamento.Forms
                             memoriaQuantidade = 0;
 
                             txtProdutoDevolucao.Text = dadosNotaFiscalSaidaParcial.descricao;
-                            //txtProdutoDevolucao.Text = veriricacaoExistenciaNaFota.descricao;
 
                             txtUnidadeDevolucao.Text = dadosNotaFiscalSaidaParcial.unidade;
-                            //txtUnidadeDevolucao.Text = veriricacaoExistenciaNaFota.unidade;
 
                             txtQuantidadeDevolucao.Text = dadosNotaFiscalSaidaParcial.quantidade.ToString("N0");
-                            //txtQuantidadeDevolucao.Text = veriricacaoExistenciaNaFota.quantidade.ToString("N0");
 
                             txtCodProdutoDevolucao.Text = dadosNotaFiscalSaidaParcial.codigoProduto.ToString();
-                            //txtCodProdutoDevolucao.Text = veriricacaoExistenciaNaFota.codigoProduto.ToString();
 
                             txtPrecoDevolucao.Text = string.Format("{0:C}", dadosNotaFiscalSaidaParcial.preco);
-                            //txtPrecoDevolucao.Text = string.Format("{0:C}", veriricacaoExistenciaNaFota.preco);
 
                             txtQuantidadeDevolucao.Enabled = true;
 
                             pcbImagemProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodProdutoDevolucao.Text));
 
-                            cont = 0;
-
-                            return;
+                            cont++;
                         }
                         else
                         {
                             MessageBox.Show("Item sem Saldo para Realização de Troca!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-                    cont++;
+                    else
+                    {
+                        cont = 0;
+                    }
                 }
                 catch (Exception)
                 {
-                    if (cont == 1)
+                    if (cont == 0)
                     {
                         MessageBox.Show($"Item Não Pertenciente a Nota Fiscal de Nº: {txtNotaFiscal.Text} ", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                         txtCodBarrasDevolucao.Text = string.Empty;
 
-                        cont = 0;
-                        return;
+                        cont++;
                     }
-                    cont++;
+                    else
+                    {
+                        cont = 0;
+                    }
                 }
             }
         }
@@ -325,7 +208,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 }
                 else if (Convert.ToDecimal(txtQuantidadeDevolucao.Text) > memoriaQuantidade && cont == 0)
                 {
-                    MessageBox.Show("A quantidade informada é maior que a quantidade disponivel", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("A quantidade Solicitada É Maior Que A Quantidade Disponivel Em Nota", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                     cont++;
                 }
@@ -354,17 +237,6 @@ namespace Sistema_de_Gerenciamento.Forms
             txtQuantidadeDevolucao.Text = string.Empty;
         }
 
-        private void txtPrecoDevolucao_TextChange(object sender, EventArgs e)
-        {
-            //lblValorProdDevolvido.Text = txtPrecoDevolucao.Text;
-
-            //if (cmbTipo.Text == "DEVOLUÇÃO")
-            //{
-            //    lblValorAPagar.Text = lblValorProdDevolvido.Text;
-            //    lblValorAPagar.ForeColor = Color.Red;
-            //}
-        }
-
         private void txtCodBarrasTroca_TextChange(object sender, EventArgs e)
         {
             if (txtCodBarrasTroca.Text == string.Empty)
@@ -375,6 +247,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtUnidadeTroca.Text = string.Empty;
                 txtPrecoTroca.Text = string.Empty;
                 lblValorProdTroca.Text = "R$ 0,00";
+                pcbImagemProduto.Image = Buscar.BuscarLogoEmpresa(1);
             }
             else if (Buscar.BuscarCodigoBarras(Convert.ToInt32(txtCodBarrasTroca.Text)) == true)
             {
@@ -432,7 +305,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 if (dadosEstoqueProduto.codigoProduto.ToString() == txtCodProdutoDevolucao.Text)
                 {
                     txtCodBarrasTroca.Text = dadosEstoqueProduto.codigoBarras.ToString();
-                    //txtCodProdutoTroca.Text = dadosEstoqueProduto.codigoProduto.ToString();
                     txtProdutoTroca.Text = dadosEstoqueProduto.descricaoProduto;
                     txtQuantidadeTroca.Text = "1,00";
                     txtUnidadeTroca.Text = dadosEstoqueProduto.unidade;
@@ -446,7 +318,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 else
                 {
                     txtCodBarrasTroca.Text = dadosEstoqueProduto.codigoBarras.ToString();
-                    //txtCodProdutoTroca.Text = dadosEstoqueProduto.codigoProduto.ToString();
                     txtProdutoTroca.Text = dadosEstoqueProduto.descricaoProduto;
                     txtQuantidadeTroca.Text = "1,00";
                     txtUnidadeTroca.Text = dadosEstoqueProduto.unidade;
@@ -457,47 +328,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     pcbImagemProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodProdutoTroca.Text));
 
-                    //listaDadosNotaFiscalSaidaCompleta.Clear();
-
-                    //listaDadosNotaFiscalSaidaCompleta = Buscar.BuscarListaNotaFiscalSaidaCompleto(Convert.ToInt32(txtNotaFiscal.Text));
-
-                    //////////////////////////////////////////////////////////////////////
-
-                    //listaDadosNotaFiscalSaidaCompleta.ForEach(x => dadosNotaFiscalSaidaCompleta = x);
-
-                    //dadosNotaFiscalSaidaCompleta = listaDadosNotaFiscalSaidaCompleta.First(x => x.numeroNF.ToString().StartsWith(txtNotaFiscal.Text));
-
-                    gdvDevolucaoTroca.Rows.Clear();
-
-                    foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
-                    {
-                        var rows = new List<string[]>();
-                        string[] row1 = new string[] {item.codigoProduto.ToString(),item.descricao,item.quantidade.ToString(),
-                            item.valorPago.ToString(),item.status };
-                        //rows.Add(row1);
-
-                        gdvDevolucaoTroca.Rows.Add(row1);
-
-                        //foreach (string[] items in rows)
-                        //{
-                        //    gdvDevolucaoTroca.Rows.Add(items);
-                        //}
-                    }
-
-                    //listaDadosNotaFiscalSaidaCompleta.Add(dadosNotaFiscalSaidaCompleta.id, dadosNotaFiscalSaidaCompleta.numeroNF,
-                    //    dadosNotaFiscalSaidaCompleta.cpf, dadosNotaFiscalSaidaCompleta.nomeCliente, txtCodProdutoTroca.Text,
-                    //    txtProdutoTroca.Text, dadosNotaFiscalSaidaCompleta.emissao, txtCodBarrasTroca.Text,
-                    //    dadosNotaFiscalSaidaCompleta.vendedor, dadosNotaFiscalSaidaCompleta.validadeTroca,
-                    //    dadosEstoqueProduto.preco, txtQuantidadeTroca, dadosEstoqueProduto.unidade, "",
-                    //    0, 0, 0, 0, lblStatus.Text, Global.NomeDeUsuario);
-
-                    //      listaDadosNotaFiscalSaidaCompleta.Add(dadosNotaFiscalSaidaCompleta.id, dadosNotaFiscalSaidaCompleta.numeroNF,
-                    //dadosNotaFiscalSaidaCompleta.cpf, dadosNotaFiscalSaidaCompleta.nomeCliente, txtCodProdutoTroca.Text,
-                    //txtProdutoTroca.Text, dadosNotaFiscalSaidaCompleta.emissao, txtCodBarrasTroca.Text,
-                    //dadosNotaFiscalSaidaCompleta.vendedor, dadosNotaFiscalSaidaCompleta.validadeTroca,
-                    //dadosEstoqueProduto.preco, txtQuantidadeTroca, dadosEstoqueProduto.unidade, "tipo pagamento",
-                    //"quantidade parcelas", "valor desconto",
-                    //"valor juros", "valor pago", lblStatus.Text, Global.NomeDeUsuario);
+                    PreencherGridView();
                 }
             }
         }
@@ -521,9 +352,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
             if (e.KeyCode == Keys.F10) // Confirmar F10
             {
-                //Forms_Pagamento pagamento = new Forms_Pagamento(Convert.ToDecimal(lblValorAPagar.Text.Replace("R$", "")), Convert.ToInt32(txtNotaFiscal.Text),
-                //    listaDadosNotaFiscalSaidaCompleta, quantidadeItens, this);
-                //pagamento.ShowDialog();
+                Forms_Pagamento pagamento = new Forms_Pagamento(listaDadosNotaFiscalSaidaCompleta, this);
+                pagamento.ShowDialog();
             }
         }
 
@@ -572,20 +402,21 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false && lblValorAPagar.ForeColor == Color.Green)
+            if (cmbMotivoTroca.Text != String.Empty && lblValorAPagar.ForeColor == Color.Green)
             {
                 if (Convert.ToDecimal(lblValorAPagar.Text.Replace("R$ ", "")) >= 0)
                 {
                     Forms_Pagamento pagamento = new Forms_Pagamento(listaDadosNotaFiscalSaidaCompleta, this);
                     pagamento.ShowDialog();
-
-                    //Forms_Pagamento pagamento = new Forms_Pagamento(Convert.ToDecimal(lblValorAPagar.Text.Replace("R$ ", "")), listaDadosEstoqueProduto);
-                    //pagamento.ShowDialog();
                 }
                 else
                 {
-                    MessageBox.Show("Não é possivel realizar devolução de Valores!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Não É Possivel Realizar Devolução De Valores!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Por Favos Preenchar Todos Os Campos!", "Atencção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -612,112 +443,30 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnAdcionar_Click(object sender, EventArgs e)
         {
-            //AdiconarItensNoGridView();
-
-            //listaDadosNotaFiscalSaidaCompleta = Buscar.BuscarListaNotaFiscalSaidaCompleto(Convert.ToInt32(txtNotaFiscal.Text));
-
-            dadosNotaFiscalSaidaCompleta = listaDadosNotaFiscalSaidaCompleta.First(x => x.numeroNF.ToString().StartsWith(txtNotaFiscal.Text));
-
-            listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(
-            dadosNotaFiscalSaidaCompleta.id,
-                dadosNotaFiscalSaidaCompleta.numeroNF,
-                dadosNotaFiscalSaidaCompleta.cpf,
-                dadosNotaFiscalSaidaCompleta.nomeCliente,
-                Convert.ToInt32(txtCodProdutoTroca.Text),
-                txtProdutoTroca.Text,
-                dadosNotaFiscalSaidaCompleta.emissao,
-                Convert.ToInt32(txtCodBarrasTroca.Text),
-                dadosNotaFiscalSaidaCompleta.vendedor,
-                dadosNotaFiscalSaidaCompleta.validadeTroca,
-                dadosEstoqueProduto.preco,
-                Convert.ToDecimal(txtQuantidadeTroca.Text),
-                dadosEstoqueProduto.unidade, "",
-                0, 0, 0, Convert.ToDecimal(txtPrecoTroca.Text.Replace("R$", "")), lblStatus.Text,
-                Global.NomeDeUsuario, "-", true));
-
-            gdvDevolucaoTroca.Rows.Clear();
-
-            //if (memoriaQuantidade == Convert.ToDecimal(txtQuantidadeDevolucao.Text))
-            //{
-            //    DadosNotaFiscalSaida mudancaStatus;
-            //    mudancaStatus = listaDadosNotaFiscalSaidaCompleta.First(x => x.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
-            //    mudancaStatus.status = "Devolucao";
-            //}
-            //else
-            //{
-            //    //pega a quantidade inicial na nota e seta pra quantidade que foi alterada
-            //    DadosNotaFiscalSaida atualizarDados;
-
-            //    //quantidadeProdutoNaNotaFiscalSaida = dadosNotaFiscalSaidaCompleta = listaDadosNotaFiscalSaidaCompleta.First(x => x.numeroNF.ToString().StartsWith(txtNotaFiscal.Text));
-            //    atualizarDados = dadosNotaFiscalSaidaCompleta = listaDadosNotaFiscalSaidaCompleta.First(x => x.numeroNF.ToString().StartsWith(txtCodBarrasDevolucao.Text));
-            //    atualizarDados.valorPago = atualizarDados.valorPago / atualizarDados.quantidade;
-            //    atualizarDados.quantidade = atualizarDados.quantidade - Convert.ToDecimal(txtQuantidadeDevolucao.Text);
-            //    atualizarDados.valorPago = atualizarDados.valorPago * atualizarDados.quantidade;
-
-            //    listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(
-            //    dadosNotaFiscalSaidaCompleta.id,
-            //    dadosNotaFiscalSaidaCompleta.numeroNF,
-            //    dadosNotaFiscalSaidaCompleta.cpf,
-            //    dadosNotaFiscalSaidaCompleta.nomeCliente,
-            //    Convert.ToInt32(txtCodProdutoDevolucao.Text),
-            //    txtProdutoDevolucao.Text,
-            //    dadosNotaFiscalSaidaCompleta.emissao,
-            //    Convert.ToInt32(txtCodBarrasDevolucao.Text),
-            //    dadosNotaFiscalSaidaCompleta.vendedor,
-            //    dadosNotaFiscalSaidaCompleta.validadeTroca,
-            //    dadosEstoqueProduto.preco,
-            //    Convert.ToDecimal(txtQuantidadeDevolucao.Text),
-            //    dadosEstoqueProduto.unidade, "",
-            //    0, 0, 0, Convert.ToDecimal(txtPrecoDevolucao.Text.Replace("R$", "")), "Devolucao", ""));
-            //}
-
-            foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
-            {
-                var rows = new List<string[]>();
-                string[] row1 = new string[] {item.codigoProduto.ToString(),item.descricao,item.quantidade.ToString("N0"),
-                            string.Format("{0:C}",item.valorPago),item.status };
-
-                gdvDevolucaoTroca.Rows.Add(row1);
-            }
-
-            memoriaValorProdTroca += Convert.ToDecimal(txtPrecoTroca.Text.Replace("R$", ""));
-
-            lblValorProdTroca.Text = String.Format("{0:C}", memoriaValorProdTroca);
-
-            CalcularValorAPagar();
-
-            //dadosNotaFiscalSaidaCompleta = listaDadosNotaFiscalSaidaCompleta.First(x => x.numeroNF.ToString().StartsWith(txtNotaFiscal.Text));
-
-            //listaDadosNotaFiscalSaidaCompleta.Add(dadosNotaFiscalSaidaCompleta.id, dadosNotaFiscalSaidaCompleta.numeroNF,
-            //    dadosNotaFiscalSaidaCompleta.cpf, dadosNotaFiscalSaidaCompleta.nomeCliente,txtCodProdutoTroca.Text,
-            //    txtProdutoTroca.Text, dadosNotaFiscalSaidaCompleta.emissao, txtCodBarrasTroca.Text,
-            //    dadosNotaFiscalSaidaCompleta.vendedor, dadosNotaFiscalSaidaCompleta.validadeTroca,
-            //    "valor unitario", txtQuantidadeTroca,"unidade", "tipo pagamento" , "quantidade parcelas", "valor desconto",
-            //    "valor juros", "valor pago", "status", lblStatus.Text);
+            AdcionarTroca();
         }
 
-        private void AdiconarItensNoGridView()
+        private void AdcionarTroca()
         {
-            var rows = new List<string[]>();
-            string[] row1 = new string[] { txtCodProdutoTroca.Text, txtProdutoTroca.Text, txtQuantidadeTroca.Text,
-                txtPrecoTroca.Text, lblStatus.Text};
-            rows.Add(row1);
-
-            foreach (string[] item in rows)
+            if (txtProdutoTroca.Text != String.Empty)
             {
-                //int contadoLinha = gdvDevolucaoTroca.RowCount;
+                DadosNotaFiscalSaida atualizarDados;
 
-                int indexlinha;
+                atualizarDados = listaDadosNotaFiscalSaidaCompleta.First(x => x.numeroNF.ToString().StartsWith(txtNotaFiscal.Text));
 
-                gdvDevolucaoTroca.Rows.Add(item);
+                AdicionarItensListaDadosNotaFiscalSaidaCompleta(atualizarDados, txtCodProdutoTroca.Text,
+                       txtProdutoTroca.Text, txtCodBarrasTroca.Text, lblStatus.Text, Convert.ToDecimal(txtPrecoTroca.Text.Replace("R$", "")),
+                        Convert.ToDecimal(txtQuantidadeTroca.Text), "Troca");
 
-                gdvDevolucaoTroca.Rows.Add(gdvDevolucaoTroca.Rows[1].Cells["ns_status"].Value = "Devolucao");
+                PreencherGridView();
 
-                //gdvDevolucaoTroca.Rows.Add(gdvDevolucaoTroca.Rows[1].Cells["ns_codigo_produto"].Value = 1);
+                memoriaValorProdTroca += Convert.ToDecimal(txtPrecoTroca.Text.Replace("R$", ""));
 
-                //gdvDevolucaoTroca.Rows[contadoLinha + 1].Cells["ns_codigo_produto"].Value = 1;
+                lblValorProdTroca.Text = String.Format("{0:C}", memoriaValorProdTroca);
 
-                //gdvDevolucaoTroca.Rows[1].Cells["Código"].Value = "casas";
+                CalcularValorAPagar();
+
+                txtCodBarrasTroca.Text = string.Empty;
             }
         }
 
@@ -728,98 +477,81 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnAdcionarDevolucao_Click(object sender, EventArgs e)
         {
-            gdvDevolucaoTroca.Rows.Clear();
+            AdicionarDevolucao();
+        }
 
-            //dadosNotaFiscalSaidaCompleta = listaDadosNotaFiscalSaidaCompleta.First(x => x.numeroNF.ToString().StartsWith(txtNotaFiscal.Text));
-
-            if (memoriaQuantidade == Convert.ToDecimal(txtQuantidadeDevolucao.Text))
+        private void AdicionarDevolucao()
+        {
+            if (txtCodProdutoDevolucao.Text != String.Empty)
             {
-                DadosNotaFiscalSaida mudancaStatus;
-                mudancaStatus = listaDadosNotaFiscalSaidaCompleta.First(x => x.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
-                mudancaStatus.status = "Devolucao";
-                mudancaStatus.valorPago = -mudancaStatus.valorPago;
-                mudancaStatus.quantidade = -mudancaStatus.quantidade;
-                mudancaStatus.deveTrocar = true;
-                //MessageBox.Show($"{teste}");
-            }
-            else
-            {
-                //pega a quantidade inicial na nota e seta pra quantidade que foi alterada
-
                 DadosNotaFiscalSaida atualizarDados;
 
-                //quantidadeProdutoNaNotaFiscalSaida = dadosNotaFiscalSaidaCompleta = listaDadosNotaFiscalSaidaCompleta.First(x => x.numeroNF.ToString().StartsWith(txtNotaFiscal.Text));
                 atualizarDados = listaDadosNotaFiscalSaidaCompleta.First(x => x.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
-                atualizarDados.valorPago = atualizarDados.valorPago / atualizarDados.quantidade;
-                atualizarDados.quantidade = atualizarDados.quantidade - Convert.ToDecimal(txtQuantidadeDevolucao.Text);
-                atualizarDados.valorPago = atualizarDados.valorPago * atualizarDados.quantidade;
-                atualizarDados.deveTrocar = true;
 
-                listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(
-                atualizarDados.id,
-                atualizarDados.numeroNF,
-                atualizarDados.cpf,
-                atualizarDados.nomeCliente,
-                Convert.ToInt32(txtCodProdutoDevolucao.Text),
-                txtProdutoDevolucao.Text,
-                atualizarDados.emissao,
-                Convert.ToInt32(txtCodBarrasDevolucao.Text),
-                atualizarDados.vendedor,
-                atualizarDados.validadeTroca,
-               atualizarDados.valorUnitario,
-                -Convert.ToDecimal(txtQuantidadeDevolucao.Text),
-                atualizarDados.unidade, "",
-                0, 0, 0, -Convert.ToDecimal(txtPrecoDevolucao.Text.Replace("R$", "")), "Devolucao", Global.NomeDeUsuario,
-                "-", true));
+                if (memoriaQuantidade == Convert.ToDecimal(txtQuantidadeDevolucao.Text))
+                {
+                    AlterarItensListaDadosNotaFiscalSaidaCompleta(atualizarDados);
+                }
+                else
+                {
+                    AdicionarItensListaDadosNotaFiscalSaidaCompleta(atualizarDados, txtCodProdutoDevolucao.Text,
+                        txtProdutoDevolucao.Text, txtCodBarrasDevolucao.Text, "Devolucao", -Convert.ToDecimal(txtPrecoDevolucao.Text.Replace("R$", "")),
+                         -Convert.ToDecimal(txtQuantidadeDevolucao.Text), "Devolucao");
+                }
 
-                // listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(
-                //atualizarDados.id,
-                //atualizarDados.numeroNF,
-                //atualizarDados.cpf,
-                //atualizarDados.nomeCliente,
-                //Convert.ToInt32(txtCodProdutoDevolucao.Text),
-                //txtProdutoDevolucao.Text,
-                //atualizarDados.emissao,
-                //Convert.ToInt32(txtCodBarrasDevolucao.Text),
-                //atualizarDados.vendedor,
-                //atualizarDados.validadeTroca,
-                //atualizarDados.preco,
-                //Convert.ToDecimal(txtQuantidadeDevolucao.Text),
-                //atualizarDados.unidade, "",
-                //0, 0, 0, Convert.ToDecimal(txtPrecoDevolucao.Text.Replace("R$", "")), "Devolucao", ""));
+                PreencherGridView();
 
-                ///////////////////////////////////////////////////////////////////
-                //listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(
-                //dadosNotaFiscalSaidaCompleta.id,
-                //dadosNotaFiscalSaidaCompleta.numeroNF,
-                //dadosNotaFiscalSaidaCompleta.cpf,
-                //dadosNotaFiscalSaidaCompleta.nomeCliente,
-                //Convert.ToInt32(txtCodProdutoDevolucao.Text),
-                //txtProdutoDevolucao.Text,
-                //dadosNotaFiscalSaidaCompleta.emissao,
-                //Convert.ToInt32(txtCodBarrasDevolucao.Text),
-                //dadosNotaFiscalSaidaCompleta.vendedor,
-                //dadosNotaFiscalSaidaCompleta.validadeTroca,
-                //dadosNotaFiscalSaidaCompleta.preco,
-                //Convert.ToDecimal(txtQuantidadeDevolucao.Text),
-                //dadosNotaFiscalSaidaCompleta.unidade, "",
-                //0, 0, 0, Convert.ToDecimal(txtPrecoDevolucao.Text.Replace("R$", "")), "Devolucao", ""));
+                memoriaValorProdDevolucao += Convert.ToDecimal(txtPrecoDevolucao.Text.Replace("R$", ""));
+
+                lblValorProdDevolvido.Text = String.Format("{0:C}", memoriaValorProdDevolucao);
+
+                txtCodBarrasDevolucao.Text = String.Empty;
+
+                CalcularValorAPagar();
             }
+        }
 
-            foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
+        private void AlterarItensListaDadosNotaFiscalSaidaCompleta(DadosNotaFiscalSaida _atualizarDados)
+        {
+            _atualizarDados.status = "Devolucao";
+            _atualizarDados.valorPago = -_atualizarDados.valorPago;
+            _atualizarDados.quantidade = -_atualizarDados.quantidade;
+            _atualizarDados.deveTrocar = true;
+        }
+
+        private void AdicionarItensListaDadosNotaFiscalSaidaCompleta(DadosNotaFiscalSaida _atualizarDados,
+            string _codigoProduto, string _produto, string _codBarras, string _status,
+            decimal _preco, decimal _quantidade, string _verificar)
+        {
+            if (_verificar == "Devolucao")
             {
-                var rows = new List<string[]>();
-                string[] row1 = new string[] {item.codigoProduto.ToString(),item.descricao,item.quantidade.ToString("N0"),
-                            string.Format("{0:C}",item.valorPago),item.status };
-
-                gdvDevolucaoTroca.Rows.Add(row1);
+                //Alteração da quantidade inicial na nota e seta pra quantidade que foi alterada
+                //Pega o valor total e divide por quantidade total de items retornando o valor unidatio real
+                _atualizarDados.valorPago = _atualizarDados.valorPago / _atualizarDados.quantidade;
+                //Pega a quantidade total e subtrai a quantidade declarada na devolução e retorna apenas a quantidade real
+                _atualizarDados.quantidade = _atualizarDados.quantidade - Convert.ToDecimal(txtQuantidadeDevolucao.Text);
+                //Pega o valor unitario real e multiplica pela quantidade real e retorna a valor que devera ser pago
+                _atualizarDados.valorPago = _atualizarDados.valorPago * _atualizarDados.quantidade;
+                _atualizarDados.deveTrocar = true;
             }
 
-            memoriaValorProdDevolucao += Convert.ToDecimal(txtPrecoDevolucao.Text.Replace("R$", ""));
-
-            lblValorProdDevolvido.Text = String.Format("{0:C}", memoriaValorProdDevolucao);
-
-            CalcularValorAPagar();
+            listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(
+            _atualizarDados.id,
+            _atualizarDados.numeroNF,
+            _atualizarDados.cpf,
+            _atualizarDados.nomeCliente,
+            Convert.ToInt32(_codigoProduto),
+            _produto,
+            _atualizarDados.emissao,
+            Convert.ToInt32(_codBarras),
+            _atualizarDados.vendedor,
+            _atualizarDados.validadeTroca,
+            _atualizarDados.valorUnitario,
+            _quantidade,
+            _atualizarDados.unidade, "",
+            0, 0, 0,
+            _preco, _status, Global.NomeDeUsuario,
+            "-", true));
         }
     }
 }

@@ -139,13 +139,6 @@
             this.lblFormapagamentoCredito = new System.Windows.Forms.Label();
             this.lblCodProduto = new System.Windows.Forms.Label();
             this.gdvVenda = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.CodigoProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Unidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Desconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecoSemDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecoComDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chbVenda = new System.Windows.Forms.CheckBox();
             this.chbOrcamento = new System.Windows.Forms.CheckBox();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
@@ -163,7 +156,7 @@
             this.txtValorTotal = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtTotalItens = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtTrocoAvista = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.btnAdcionar = new Guna.UI.WinForms.GunaCircleButton();
+            this.btnAdicionar = new Guna.UI.WinForms.GunaCircleButton();
             this.txtUnidade = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtPrecoSemDesconto = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtCodBarras = new Bunifu.UI.WinForms.BunifuTextBox();
@@ -188,6 +181,14 @@
             this.txtDescontoPorItem = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.cmbProduto = new System.Windows.Forms.ComboBox();
+            this.CodigoProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Unidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecoSemDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecoComDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoBarras = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gdvVenda)).BeginInit();
             this.grupboxCredito.SuspendLayout();
             this.SuspendLayout();
@@ -475,12 +476,13 @@
             this.gdvVenda.ColumnHeadersHeight = 40;
             this.gdvVenda.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CodigoProduto,
-            this.Produto,
+            this.Descrição,
             this.Quantidade,
             this.Unidade,
             this.Desconto,
             this.PrecoSemDesconto,
-            this.PrecoComDesconto});
+            this.PrecoComDesconto,
+            this.CodigoBarras});
             this.gdvVenda.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.gdvVenda.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.gdvVenda.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -525,48 +527,6 @@
             this.gdvVenda.Size = new System.Drawing.Size(923, 190);
             this.gdvVenda.TabIndex = 229;
             this.gdvVenda.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            // 
-            // CodigoProduto
-            // 
-            this.CodigoProduto.HeaderText = "Cod. Produto";
-            this.CodigoProduto.Name = "CodigoProduto";
-            this.CodigoProduto.ReadOnly = true;
-            // 
-            // Produto
-            // 
-            this.Produto.HeaderText = "Produto";
-            this.Produto.Name = "Produto";
-            this.Produto.ReadOnly = true;
-            // 
-            // Quantidade
-            // 
-            this.Quantidade.HeaderText = "Quant.";
-            this.Quantidade.Name = "Quantidade";
-            this.Quantidade.ReadOnly = true;
-            // 
-            // Unidade
-            // 
-            this.Unidade.HeaderText = "UN";
-            this.Unidade.Name = "Unidade";
-            this.Unidade.ReadOnly = true;
-            // 
-            // Desconto
-            // 
-            this.Desconto.HeaderText = "Desconto";
-            this.Desconto.Name = "Desconto";
-            this.Desconto.ReadOnly = true;
-            // 
-            // PrecoSemDesconto
-            // 
-            this.PrecoSemDesconto.HeaderText = "Preço S/ Desc.";
-            this.PrecoSemDesconto.Name = "PrecoSemDesconto";
-            this.PrecoSemDesconto.ReadOnly = true;
-            // 
-            // PrecoComDesconto
-            // 
-            this.PrecoComDesconto.HeaderText = "Preço C/ Desc.";
-            this.PrecoComDesconto.Name = "PrecoComDesconto";
-            this.PrecoComDesconto.ReadOnly = true;
             // 
             // chbVenda
             // 
@@ -1493,28 +1453,28 @@
             this.txtTrocoAvista.UseSystemPasswordChar = false;
             this.txtTrocoAvista.WordWrap = true;
             // 
-            // btnAdcionar
+            // btnAdicionar
             // 
-            this.btnAdcionar.AnimationHoverSpeed = 0.07F;
-            this.btnAdcionar.AnimationSpeed = 0.03F;
-            this.btnAdcionar.BaseColor = System.Drawing.Color.Transparent;
-            this.btnAdcionar.BorderColor = System.Drawing.Color.Black;
-            this.btnAdcionar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnAdcionar.FocusedColor = System.Drawing.Color.Empty;
-            this.btnAdcionar.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnAdcionar.ForeColor = System.Drawing.Color.White;
-            this.btnAdcionar.Image = global::Sistema_de_Gerenciamento.Properties.Resources.add_50px;
-            this.btnAdcionar.ImageSize = new System.Drawing.Size(52, 52);
-            this.btnAdcionar.Location = new System.Drawing.Point(901, 162);
-            this.btnAdcionar.Name = "btnAdcionar";
-            this.btnAdcionar.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.btnAdcionar.OnHoverBorderColor = System.Drawing.Color.Black;
-            this.btnAdcionar.OnHoverForeColor = System.Drawing.Color.White;
-            this.btnAdcionar.OnHoverImage = null;
-            this.btnAdcionar.OnPressedColor = System.Drawing.Color.Black;
-            this.btnAdcionar.Size = new System.Drawing.Size(34, 37);
-            this.btnAdcionar.TabIndex = 185;
-            this.btnAdcionar.Click += new System.EventHandler(this.btnAdcionar_Click);
+            this.btnAdicionar.AnimationHoverSpeed = 0.07F;
+            this.btnAdicionar.AnimationSpeed = 0.03F;
+            this.btnAdicionar.BaseColor = System.Drawing.Color.Transparent;
+            this.btnAdicionar.BorderColor = System.Drawing.Color.Black;
+            this.btnAdicionar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnAdicionar.FocusedColor = System.Drawing.Color.Empty;
+            this.btnAdicionar.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnAdicionar.ForeColor = System.Drawing.Color.White;
+            this.btnAdicionar.Image = global::Sistema_de_Gerenciamento.Properties.Resources.add_50px;
+            this.btnAdicionar.ImageSize = new System.Drawing.Size(52, 52);
+            this.btnAdicionar.Location = new System.Drawing.Point(901, 162);
+            this.btnAdicionar.Name = "btnAdicionar";
+            this.btnAdicionar.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.btnAdicionar.OnHoverBorderColor = System.Drawing.Color.Black;
+            this.btnAdicionar.OnHoverForeColor = System.Drawing.Color.White;
+            this.btnAdicionar.OnHoverImage = null;
+            this.btnAdicionar.OnPressedColor = System.Drawing.Color.Black;
+            this.btnAdicionar.Size = new System.Drawing.Size(34, 37);
+            this.btnAdicionar.TabIndex = 185;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdcionar_Click);
             // 
             // txtUnidade
             // 
@@ -2882,6 +2842,54 @@
             this.cmbProduto.SelectedValueChanged += new System.EventHandler(this.cmbProduto_SelectedValueChanged);
             this.cmbProduto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbProduto_KeyPress);
             // 
+            // CodigoProduto
+            // 
+            this.CodigoProduto.HeaderText = "Cod. Produto";
+            this.CodigoProduto.Name = "CodigoProduto";
+            this.CodigoProduto.ReadOnly = true;
+            // 
+            // Descrição
+            // 
+            this.Descrição.HeaderText = "Descrição";
+            this.Descrição.Name = "Descrição";
+            this.Descrição.ReadOnly = true;
+            // 
+            // Quantidade
+            // 
+            this.Quantidade.HeaderText = "Quant.";
+            this.Quantidade.Name = "Quantidade";
+            this.Quantidade.ReadOnly = true;
+            // 
+            // Unidade
+            // 
+            this.Unidade.HeaderText = "UN";
+            this.Unidade.Name = "Unidade";
+            this.Unidade.ReadOnly = true;
+            // 
+            // Desconto
+            // 
+            this.Desconto.HeaderText = "Desconto";
+            this.Desconto.Name = "Desconto";
+            this.Desconto.ReadOnly = true;
+            // 
+            // PrecoSemDesconto
+            // 
+            this.PrecoSemDesconto.HeaderText = "Preço S/ Desc.";
+            this.PrecoSemDesconto.Name = "PrecoSemDesconto";
+            this.PrecoSemDesconto.ReadOnly = true;
+            // 
+            // PrecoComDesconto
+            // 
+            this.PrecoComDesconto.HeaderText = "Preço C/ Desc.";
+            this.PrecoComDesconto.Name = "PrecoComDesconto";
+            this.PrecoComDesconto.ReadOnly = true;
+            // 
+            // CodigoBarras
+            // 
+            this.CodigoBarras.HeaderText = "CodigoBarras";
+            this.CodigoBarras.Name = "CodigoBarras";
+            this.CodigoBarras.ReadOnly = true;
+            // 
             // Forms_Venda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2917,7 +2925,7 @@
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.btnAdcionar);
+            this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.txtUnidade);
             this.Controls.Add(this.txtPrecoSemDesconto);
             this.Controls.Add(this.lblPreco);
@@ -2981,7 +2989,7 @@
         private System.Windows.Forms.Label lblPreco;
         public Bunifu.UI.WinForms.BunifuTextBox txtPrecoSemDesconto;
         public Bunifu.UI.WinForms.BunifuTextBox txtUnidade;
-        private Guna.UI.WinForms.GunaCircleButton btnAdcionar;
+        private Guna.UI.WinForms.GunaCircleButton btnAdicionar;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
@@ -3023,14 +3031,15 @@
         public Bunifu.UI.WinForms.BunifuTextBox txtJurosCredito;
         public Bunifu.UI.WinForms.BunifuTextBox txtDescontoPorItem;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ComboBox cmbProduto;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodigoProduto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descrição;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn Unidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn Desconto;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecoSemDesconto;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecoComDesconto;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ComboBox cmbProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoBarras;
     }
 }

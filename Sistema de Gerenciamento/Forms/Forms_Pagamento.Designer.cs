@@ -954,7 +954,7 @@
             this.Name = "Forms_Pagamento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pagamento";
-            this.Load += new System.EventHandler(this.Forms_Pagamento_Load);
+            //this.Load += new System.EventHandler(this.Forms_Pagamento_Load); carro
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_Pagamento_KeyDown);
             this.bunifuPanel13.ResumeLayout(false);
             this.bunifuPanel13.PerformLayout();

@@ -919,5 +919,27 @@ namespace Sistema_de_Gerenciamento.Classes
                 Erro.ErroAoAtualizarQuantidadeEstoqueProdutoPosVendaNoBanco(ex);
             }
         }
+
+        public void AtuazliarPrazoGarantia(int _numeroNF)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_NotaFiscalSaida set ns_garantia = GETDATE() " +
+                        "where ns_numero_nf = @numeroNF";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@numeroNF", _numeroNF);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarGarantiaTrocaoBanco(ex);
+            }
+        }
     }
 }

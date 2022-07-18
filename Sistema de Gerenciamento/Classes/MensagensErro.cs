@@ -497,6 +497,11 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(ATU-EP02) Erro ao Atualizar Dados Para Troca! \n\nErro: {_e}", "Erro Atualizar Dados Para Troca!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoAtualizarGarantiaTrocaoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-EP03) Erro ao Atualizar Garantia Para Troca! \n\nErro: {_e}", "Erro Atualizar Garantia Para Troca!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Edição Pagamento
 
         #endregion Atualizacao Do Banco

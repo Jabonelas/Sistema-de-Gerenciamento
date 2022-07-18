@@ -27,6 +27,10 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private List<DadosFinanceiro> listaFinanceiro = new List<DadosFinanceiro>();
 
+        private List<DadosNotaFiscalSaida> listaNotaFiscalSaidas = new List<DadosNotaFiscalSaida>();
+
+        private DadosNotaFiscalSaida DadosNotaFiscalSaida;
+
         private DadosProduto produto;
 
         //private DadosFinanceiro financeiro;
@@ -67,6 +71,16 @@ namespace Sistema_de_Gerenciamento.Forms
         private void btnAdcionar_Click(object sender, EventArgs e)
         {
             AdicionarProduto();
+        }
+
+        private void test()
+        {
+            for (int i = 0; i < gdvVenda.Rows.Count; i++)
+            {
+                //listaNotaFiscalSaidas.Add(new DadosNotaFiscalSaida(Global.NomeDeUsuario,DateTime.Today.ToShortDateString(),
+                //    cmbCliente.Text,gdvVenda.Rows[i].Cells[6].Value, gdvVenda.Rows[i].Cells[0].Value,
+                //    gdvVenda.Rows[i].Cells[6].Value,);
+            }
         }
 
         private void AdicionarProduto()
@@ -133,7 +147,8 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             var rows = new List<string[]>();
             string[] row1 = new string[] { txtCodProduto.Text, cmbProduto.Text, txtQuantidade.Text,
-                txtUnidade.Text, txtDescontoPorItem.Text, txtPrecoSemDesconto.Text,txtPrecoComDesconto.Text };
+                txtUnidade.Text, txtDescontoPorItem.Text, txtPrecoSemDesconto.Text,txtPrecoComDesconto.Text,
+                txtCodBarras.Text};
             rows.Add(row1);
 
             foreach (string[] item in rows)
@@ -439,7 +454,8 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtUnidade.Location = new Point(640, 171);
                 lblPreco.Location = new Point(766, 153);
                 txtPrecoSemDesconto.Location = new Point(769, 171);
-                btnAdcionar.Location = new Point(901, 162);
+                btnAdicionar.Location = new Point(901, 162);
+                btnSair.Location = new Point(580, 41);
 
                 gdvVenda.Rows.Clear();
 
@@ -451,8 +467,6 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             OrcamentoSelecionado();
         }
-
-        #region Orcamento Selecionado
 
         private void OrcamentoSelecionado()
         {
@@ -490,7 +504,8 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtUnidade.Location = new Point(553, 171);
                 lblPreco.Location = new Point(679, 153);
                 txtPrecoSemDesconto.Location = new Point(681, 171);
-                btnAdcionar.Location = new Point(814, 162);
+                btnAdicionar.Location = new Point(814, 162);
+                btnSair.Location = new Point(202, 41);
                 gdvVenda.Rows.Clear();
 
                 ManipulacaoTextBox.ApagandoTextBox(this);
@@ -503,8 +518,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 }
             }
         }
-
-        #endregion Orcamento Selecionado
 
         private void cmbParcelaCredito_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -701,6 +714,12 @@ namespace Sistema_de_Gerenciamento.Forms
         private void txtCodBarras_Leave(object sender, EventArgs e)
         {
             BuscarProduto();
+        }
+
+        private void btnConfirmarVenda_Click(object sender, EventArgs e)
+        {
+            Forms_Pagamento pagamento = new Forms_Pagamento();
+            pagamento.ShowDialog();
         }
     }
 }
