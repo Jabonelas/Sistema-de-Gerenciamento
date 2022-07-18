@@ -19,11 +19,13 @@ namespace Sistema_de_Gerenciamento
 
         private Forms_CadastroProduto cadastroProduto;
 
+        private Forms_TelaAdministrador telaAdministrador;
+
         private Forms_PDV telaPDV;
 
-        private string telaSolicitacao;
-
         private Forms_Troca devolucaoTroca;
+
+        private string telaSolicitacao;
 
         public Forms_PesquisarProduto(Forms_CadastroProduto _cadastroProduto)
         {
@@ -58,6 +60,15 @@ namespace Sistema_de_Gerenciamento
             PreencherComboBoxGrupo();
 
             LayoutPesquisarProdutosTelaPDV();
+        }
+
+        public Forms_PesquisarProduto(Forms_TelaAdministrador _telaAdministrador)
+        {
+            InitializeComponent();
+
+            LayoutPesquisarProdutosTelaPDV();
+
+            PreencherComboBoxGrupo();
         }
 
         private void LayoutPesquisarProdutosTelaPDV()
@@ -265,7 +276,7 @@ namespace Sistema_de_Gerenciamento
             ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
         }
 
-        private void gdvPesquisarProduto_KeyDown(object sender, KeyEventArgs e)
+        public void gdvPesquisarProduto_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter && telaSolicitacao == "Tela PDV")
             {

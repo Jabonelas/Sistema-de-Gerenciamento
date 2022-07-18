@@ -3184,7 +3184,7 @@ namespace Sistema_de_Gerenciamento.Classes
                         listadadosNotaFiscalSaidasCompleta.Add(new DadosNotaFiscalSaida(
                             dr.GetInt32(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3), dr.GetInt32(4), dr.GetString(5), dr.GetDateTime(6),
                             dr.GetInt32(7), dr.GetString(8), dr.GetDateTime(9), dr.GetDecimal(10), dr.GetDecimal(11), dr.GetString(12), dr.GetString(13),
-                            dr.GetInt32(14), dr.GetDecimal(15), dr.GetDecimal(16), dr.GetDecimal(17), dr.GetString(18), dr.GetString(19), dr.GetString(20)));
+                            dr.GetInt32(14), dr.GetDecimal(15), dr.GetDecimal(16), dr.GetDecimal(17), dr.GetString(18), dr.GetString(19), dr.GetString(20), false));
                     }
                 }
 

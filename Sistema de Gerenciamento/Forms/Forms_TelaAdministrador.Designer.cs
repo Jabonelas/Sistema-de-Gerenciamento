@@ -2927,6 +2927,7 @@
             this.btnProdutoConsole.TextMarginLeft = 0;
             this.btnProdutoConsole.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnProdutoConsole.UseDefaultRadiusAndThickness = true;
+            this.btnProdutoConsole.Click += new System.EventHandler(this.btnProdutoConsole_Click);
             // 
             // btnOrdemServicoConsole
             // 

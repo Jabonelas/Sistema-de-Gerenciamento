@@ -243,5 +243,13 @@ namespace Sistema_de_Gerenciamento
             Forms_Troca devolucaoTroca = new Forms_Troca();
             devolucaoTroca.ShowDialog();
         }
+
+        private void btnProdutoConsole_Click(object sender, EventArgs e)
+        {
+            Forms_PesquisarProduto pesquisarProduto = new Forms_PesquisarProduto(this);
+            pesquisarProduto.gdvPesquisarProduto.DoubleClick -= pesquisarProduto.gdvPesquisarProduto_DoubleClick;
+            pesquisarProduto.gdvPesquisarProduto.KeyDown -= pesquisarProduto.gdvPesquisarProduto_KeyDown;
+            pesquisarProduto.ShowDialog();
+        }
     }
 }

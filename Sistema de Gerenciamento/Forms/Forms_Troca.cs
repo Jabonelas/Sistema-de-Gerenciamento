@@ -19,7 +19,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaParcial = new List<DadosNotaFiscalSaida>();
 
-        internal List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaCompleta = new List<DadosNotaFiscalSaida>();
+        private List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaCompleta = new List<DadosNotaFiscalSaida>();
 
         private List<DadosProduto> listaDadosEstoqueProduto = new List<DadosProduto>();
 
@@ -70,6 +70,8 @@ namespace Sistema_de_Gerenciamento.Forms
                     //Buscar.BuscarVendaPorNotaFiscalSaida(Convert.ToInt32(txtNotaFiscal.Text), gdvDevolucaoTroca);
 
                     //listaDadosNotaFiscalSaidaParcial = Buscar.BuscarListaNotaFiscalSaidaParcial(Convert.ToInt32(txtNotaFiscal.Text));
+
+                    listaDadosNotaFiscalSaidaCompleta.Clear();
 
                     listaDadosNotaFiscalSaidaCompleta = Buscar.BuscarListaNotaFiscalSaidaCompleto(Convert.ToInt32(txtNotaFiscal.Text));
 
@@ -519,9 +521,9 @@ namespace Sistema_de_Gerenciamento.Forms
 
             if (e.KeyCode == Keys.F10) // Confirmar F10
             {
-                Forms_Pagamento pagamento = new Forms_Pagamento(Convert.ToDecimal(lblValorAPagar.Text.Replace("R$", "")), Convert.ToInt32(txtNotaFiscal.Text),
-                    listaDadosNotaFiscalSaidaCompleta, quantidadeItens, this);
-                pagamento.ShowDialog();
+                //Forms_Pagamento pagamento = new Forms_Pagamento(Convert.ToDecimal(lblValorAPagar.Text.Replace("R$", "")), Convert.ToInt32(txtNotaFiscal.Text),
+                //    listaDadosNotaFiscalSaidaCompleta, quantidadeItens, this);
+                //pagamento.ShowDialog();
             }
         }
 
@@ -574,8 +576,7 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (Convert.ToDecimal(lblValorAPagar.Text.Replace("R$ ", "")) >= 0)
                 {
-                    Forms_Pagamento pagamento = new Forms_Pagamento(Convert.ToDecimal(lblValorAPagar.Text.Replace("R$ ", "")), Convert.ToInt32(txtNotaFiscal.Text),
-                        listaDadosNotaFiscalSaidaCompleta, quantidadeItens, this);
+                    Forms_Pagamento pagamento = new Forms_Pagamento(listaDadosNotaFiscalSaidaCompleta, this);
                     pagamento.ShowDialog();
 
                     //Forms_Pagamento pagamento = new Forms_Pagamento(Convert.ToDecimal(lblValorAPagar.Text.Replace("R$ ", "")), listaDadosEstoqueProduto);
@@ -632,7 +633,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 Convert.ToDecimal(txtQuantidadeTroca.Text),
                 dadosEstoqueProduto.unidade, "",
                 0, 0, 0, Convert.ToDecimal(txtPrecoTroca.Text.Replace("R$", "")), lblStatus.Text,
-                Global.NomeDeUsuario, ""));
+                Global.NomeDeUsuario, "-", true));
 
             gdvDevolucaoTroca.Rows.Clear();
 
@@ -733,13 +734,12 @@ namespace Sistema_de_Gerenciamento.Forms
 
             if (memoriaQuantidade == Convert.ToDecimal(txtQuantidadeDevolucao.Text))
             {
-                decimal teste;
-
                 DadosNotaFiscalSaida mudancaStatus;
                 mudancaStatus = listaDadosNotaFiscalSaidaCompleta.First(x => x.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
                 mudancaStatus.status = "Devolucao";
                 mudancaStatus.valorPago = -mudancaStatus.valorPago;
                 mudancaStatus.quantidade = -mudancaStatus.quantidade;
+                mudancaStatus.deveTrocar = true;
                 //MessageBox.Show($"{teste}");
             }
             else
@@ -753,6 +753,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 atualizarDados.valorPago = atualizarDados.valorPago / atualizarDados.quantidade;
                 atualizarDados.quantidade = atualizarDados.quantidade - Convert.ToDecimal(txtQuantidadeDevolucao.Text);
                 atualizarDados.valorPago = atualizarDados.valorPago * atualizarDados.quantidade;
+                atualizarDados.deveTrocar = true;
 
                 listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(
                 atualizarDados.id,
@@ -768,8 +769,8 @@ namespace Sistema_de_Gerenciamento.Forms
                atualizarDados.valorUnitario,
                 -Convert.ToDecimal(txtQuantidadeDevolucao.Text),
                 atualizarDados.unidade, "",
-                0, 0, 0, -Convert.ToDecimal(txtPrecoDevolucao.Text.Replace("R$", "")), "Devolucao", "",
-                ""));
+                0, 0, 0, -Convert.ToDecimal(txtPrecoDevolucao.Text.Replace("R$", "")), "Devolucao", Global.NomeDeUsuario,
+                "-", true));
 
                 // listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(
                 //atualizarDados.id,

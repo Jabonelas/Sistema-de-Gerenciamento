@@ -51,6 +51,8 @@ namespace Sistema_de_Gerenciamento.Classes
         public int id { get; set; }
         public string motivoTroca { get; set; }
 
+        public bool deveTrocar { get; set; }
+
         public DadosNotaFiscalSaida(string _vendedor, DateTime _validadeTroca, string _nomeCliente,
             int _codigoBarras, int _codigoProduto, string _descricao, decimal _quantidade, string _unidade,
             decimal _preco, decimal _valorUnitario)
@@ -70,7 +72,7 @@ namespace Sistema_de_Gerenciamento.Classes
         public DadosNotaFiscalSaida(int _id, int _numeroNF, string _cpf, string _nomeCliente, int _codigoProduto,
         string _descricao, DateTime _emissao, int _codigoBarras, string _vendedor, DateTime _validadeTroca, decimal _valorUnitario,
         decimal _quantidade, string _unidade, string _tipoPagamento, int _quantidadeParcelas, decimal _valorDesconto,
-         decimal _valorJuros, decimal _valorPago, string _status, string _trocarVendedor, string _motivoTroca)
+         decimal _valorJuros, decimal _valorPago, string _status, string _trocarVendedor, string _motivoTroca, bool _deveTrocar)
 
         {
             id = _id;
@@ -94,6 +96,7 @@ namespace Sistema_de_Gerenciamento.Classes
             status = _status;
             trocarVendedor = _trocarVendedor;
             motivoTroca = _motivoTroca;
+            deveTrocar = _deveTrocar;
         }
     }
 }

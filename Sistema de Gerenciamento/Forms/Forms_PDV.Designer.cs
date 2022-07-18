@@ -355,7 +355,7 @@
             this.pnlDinheiro.BorderThickness = 1;
             this.pnlDinheiro.Controls.Add(this.lblTituloValorTotal);
             this.pnlDinheiro.Controls.Add(this.lblValorTotal);
-            this.pnlDinheiro.Location = new System.Drawing.Point(11, 536);
+            this.pnlDinheiro.Location = new System.Drawing.Point(11, 535);
             this.pnlDinheiro.Name = "pnlDinheiro";
             this.pnlDinheiro.ShowBorders = true;
             this.pnlDinheiro.Size = new System.Drawing.Size(420, 80);
@@ -1456,7 +1456,7 @@
             this.txtCodigoDeBarras.WordWrap = true;
             this.txtCodigoDeBarras.TextChange += new System.EventHandler(this.txtCodigoDeBarras_TextChange);
             this.txtCodigoDeBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoDeBarras_KeyPress);
-            this.txtCodigoDeBarras.Enter += new System.EventHandler(this.txtCodigoDeBarras_Enter);
+            //this.txtCodigoDeBarras.Enter += new System.EventHandler(this.txtCodigoDeBarras_Enter);
             // 
             // label7
             // 
@@ -1529,7 +1529,7 @@
             this.txtCPF.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCPF.Lines = new string[] {
         "-"};
-            this.txtCPF.Location = new System.Drawing.Point(21, 31);
+            this.txtCPF.Location = new System.Drawing.Point(22, 31);
             this.txtCPF.MaxLength = 32767;
             this.txtCPF.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtCPF.Modified = false;
@@ -2448,10 +2448,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1036, 770);
+            this.Controls.Add(this.pnlDinheiro);
             this.Controls.Add(this.lblMotivoTroca);
             this.Controls.Add(this.lblTrocaVendedor);
             this.Controls.Add(this.lblStatusVenda);
-            this.Controls.Add(this.pnlDinheiro);
             this.Controls.Add(this.pnlFundoCliente);
             this.Controls.Add(this.pnlFinalizarPagamento2);
             this.Controls.Add(this.pnlCarne);

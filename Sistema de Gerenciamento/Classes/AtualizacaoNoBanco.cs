@@ -866,8 +866,8 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Atualizar Quantidade Estoque Depois da Venda
 
-        public void AtualizarQuantidadePosTroca(decimal _quantidade, decimal _valorPago, int _numeroNF,
-            int _codigoBarras, string _status, string _trocaVendedor, string _motivoTroca)
+        public void AtualizarQuantidadePosTrocaNotaFiscalSaida(decimal _quantidade, decimal _valorPago, int _numeroNF,
+            int _codigoBarras, string _status, string _trocaVendedor, string _motivoTroca, int _id)
         {
             try
             {
@@ -876,7 +876,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     string query = "update tb_NotaFiscalSaida set " +
                         "ns_quantidade = @quantidade , ns_valor_pago = @valorPago, ns_status = @status , " +
                         "ns_troca_vendedor = @trocaVendedor, ns_motivo_troca = @motivoTroca " +
-                        "where ns_numero_nf = @numeroNF and ns_codigo_barras = @codigoBarras";
+                        "where ns_numero_nf = @numeroNF and ns_codigo_barras = @codigoBarras and ns_id = @id";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -887,6 +887,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.Add("@status", _status);
                     adapter.SelectCommand.Parameters.Add("@trocaVendedor", _trocaVendedor);
                     adapter.SelectCommand.Parameters.Add("@motivoTroca", _motivoTroca);
+                    adapter.SelectCommand.Parameters.Add("@id", _id);
 
                     adapter.SelectCommand.ExecuteNonQuery();
                 }
