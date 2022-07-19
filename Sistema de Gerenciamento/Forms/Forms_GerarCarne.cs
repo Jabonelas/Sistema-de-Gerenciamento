@@ -102,8 +102,8 @@ namespace Sistema_de_Gerenciamento.Forms
                     txtJurosCarne.Text = string.Format("{0:P}", listaFinanceiro[0].jurosCarne / 100).ToString();
 
                     txtValorTotalCarne.Text = string.Format("{0:C}", (Convert.ToDecimal(txtJurosCarne.Text.Replace("%", "")) *
-                                                                         Convert.ToDecimal(forms.txtValorTotal.Text.Replace("R$ ", "")) / 100) +
-                                                                     Convert.ToDecimal(forms.txtValorTotal.Text.Replace("R$ ", ""))).ToString();
+                                                                         Convert.ToDecimal(forms.lblValorTotal.Text.Replace("R$ ", "")) / 100) +
+                                                                     Convert.ToDecimal(forms.lblValorTotal.Text.Replace("R$ ", ""))).ToString();
 
                     txtValorParcelaCarne.Text = string.Format("{0:C}",
                         (Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$ ", "")) /
@@ -114,8 +114,8 @@ namespace Sistema_de_Gerenciamento.Forms
                     txtJurosCarne.Text = string.Format("{0:P}", "0,00%");
 
                     txtValorTotalCarne.Text = string.Format("{0:C}", (Convert.ToDecimal(txtJurosCarne.Text.Replace("%", "")) *
-                                                                         Convert.ToDecimal(forms.txtValorTotal.Text.Replace("R$ ", "")) / 100) +
-                                                                     Convert.ToDecimal(forms.txtValorTotal.Text.Replace("R$ ", ""))).ToString();
+                                                                         Convert.ToDecimal(forms.lblValorTotal.Text.Replace("R$ ", "")) / 100) +
+                                                                     Convert.ToDecimal(forms.lblValorTotal.Text.Replace("R$ ", ""))).ToString();
 
                     txtValorParcelaCarne.Text = string.Format("{0:C}",
                         (Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$ ", "")) /

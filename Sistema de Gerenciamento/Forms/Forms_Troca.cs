@@ -19,7 +19,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaParcial = new List<DadosNotaFiscalSaida>();
 
-        private List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaCompleta = new List<DadosNotaFiscalSaida>();
+        public List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaCompleta = new List<DadosNotaFiscalSaida>();
 
         private List<DadosProduto> listaDadosEstoqueProduto = new List<DadosProduto>();
 
@@ -352,7 +352,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             if (e.KeyCode == Keys.F10) // Confirmar F10
             {
-                Forms_Pagamento pagamento = new Forms_Pagamento(listaDadosNotaFiscalSaidaCompleta, this);
+                Forms_Pagamento pagamento = new Forms_Pagamento(this);
                 pagamento.ShowDialog();
             }
         }
@@ -406,7 +406,7 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (Convert.ToDecimal(lblValorAPagar.Text.Replace("R$ ", "")) >= 0)
                 {
-                    Forms_Pagamento pagamento = new Forms_Pagamento(listaDadosNotaFiscalSaidaCompleta, this);
+                    Forms_Pagamento pagamento = new Forms_Pagamento(this);
                     pagamento.ShowDialog();
                 }
                 else

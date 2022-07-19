@@ -29,45 +29,56 @@ namespace Sistema_de_Gerenciamento.Forms
 
         public Forms_Troca telaTroca;
 
+        public Forms_Venda telaVenda;
+
         private decimal valorBruto = 0;
 
         private int quantidadeItens = 0;
 
-        public Forms_Pagamento(List<DadosNotaFiscalSaida> _listaDadosNotaFiscalSaidaCompleta, Forms_Troca _telaTroca)
+        public Forms_Pagamento(Forms_Troca _telaTroca)
         {
             InitializeComponent();
 
-            PreencherGrid();
-
-            listaDadosNotaFiscalSaidaCompleta = _listaDadosNotaFiscalSaidaCompleta;
+            PreencherDados(telaTroca.listaDadosNotaFiscalSaidaCompleta, _telaTroca.quantidadeItens, Convert.ToDecimal(_telaTroca.lblValorAPagar.Text.Replace("R$ ", "")));
 
             telaTroca = _telaTroca;
 
-            PreencherDados();
+            lblNumeroNotaFiscalSaida.Text = telaTroca.txtNotaFiscal.Text;
+
+            PreencherGrid();
 
             cmbFormaPagamento.Focus();
         }
 
-        public Forms_Pagamento()
+        public Forms_Pagamento(Forms_Venda _telaVenda)
         {
             InitializeComponent();
+
+            telaVenda = _telaVenda;
+
+            PreencherDados(telaVenda.listaNotaFiscalSaida, _telaVenda.quantidadeItens, Convert.ToDecimal(_telaVenda.lblValorTotal.Text.Replace("R$ ", "")));
+
+            PreencherGrid();
+
+            cmbFormaPagamento.Focus();
         }
 
-        private void PreencherDados()
+        private void PreencherDados(List<DadosNotaFiscalSaida> _listaDadosNotaFiscalSaidaCompleta, int _quantidadeItem,
+            decimal _valoAPagar)
         {
-            quantidadeItens = telaTroca.quantidadeItens;
+            quantidadeItens = _quantidadeItem;
 
             listaFinanceiro = Buscar.BuscarListaFinanceiro();
 
-            lblNumeroNotaFiscalSaida.Text = telaTroca.txtNotaFiscal.Text;
-
-            valorBruto = Convert.ToDecimal(telaTroca.lblValorAPagar.Text.Replace("R$ ", ""));
+            valorBruto = _valoAPagar;
 
             lblValorTotal.Text = string.Format("{0:C}", valorBruto);
 
             cmbFormaPagamento.SelectedIndex = 0;
 
             cmbParcelas.SelectedIndex = 0;
+
+            listaDadosNotaFiscalSaidaCompleta = _listaDadosNotaFiscalSaidaCompleta;
         }
 
         private void PreencherGrid()

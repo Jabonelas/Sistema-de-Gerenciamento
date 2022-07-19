@@ -27,15 +27,19 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private List<DadosFinanceiro> listaFinanceiro = new List<DadosFinanceiro>();
 
-        private List<DadosNotaFiscalSaida> listaNotaFiscalSaidas = new List<DadosNotaFiscalSaida>();
+        public List<DadosNotaFiscalSaida> listaNotaFiscalSaida = new List<DadosNotaFiscalSaida>();
 
-        private DadosNotaFiscalSaida DadosNotaFiscalSaida;
+        //private DadosNotaFiscalSaida DadosNotaFiscalSaida;
 
         private DadosProduto produto;
 
-        //private DadosFinanceiro financeiro;
-
         private decimal valorBruto = 0;
+
+        private decimal memoriaQuantidade = 1;
+
+        public int quantidadeItens = 0;
+
+        private int cont = 0;
 
         public Forms_Venda()
         {
@@ -46,6 +50,8 @@ namespace Sistema_de_Gerenciamento.Forms
             txtVendedor.Text = Global.NomeDeUsuario;
 
             CarregarDadosBanco();
+
+            layoutTelaPagamento();
         }
 
         private void CarregarDadosBanco()
@@ -55,6 +61,19 @@ namespace Sistema_de_Gerenciamento.Forms
             listaFinanceiro = Buscar.BuscarListaFinanceiro();
 
             //listaDadosFinanceiro.ForEach(finac => financeiro = finac);
+        }
+
+        private void layoutTelaPagamento()
+        {
+            grupoBoxAvista.Visible = false;
+            grupboxCredito.Visible = false;
+
+            lblNomeValorTotal.Location = new Point(318, 571);
+            lblValorTotal.Location = new Point(329, 594);
+            lblNomeValorTotalItens.Location = new Point(568, 571);
+            lblTotalItens.Location = new Point(600, 594);
+            gdvVenda.Size = new Size(923, 328);
+            this.Size = new Size(967, 686);
         }
 
         private void btnAbriCadastroCliente_Click(object sender, EventArgs e)
@@ -73,13 +92,16 @@ namespace Sistema_de_Gerenciamento.Forms
             AdicionarProduto();
         }
 
-        private void test()
+        private void PreencherListaNotaFiscalSaida()
         {
             for (int i = 0; i < gdvVenda.Rows.Count; i++)
             {
-                //listaNotaFiscalSaidas.Add(new DadosNotaFiscalSaida(Global.NomeDeUsuario,DateTime.Today.ToShortDateString(),
-                //    cmbCliente.Text,gdvVenda.Rows[i].Cells[6].Value, gdvVenda.Rows[i].Cells[0].Value,
-                //    gdvVenda.Rows[i].Cells[6].Value,);
+                listaNotaFiscalSaida.Add(new DadosNotaFiscalSaida(Global.NomeDeUsuario, DateTime.Today,
+                    cmbCliente.Text, Convert.ToInt32(gdvVenda.Rows[i].Cells[7].Value), Convert.ToInt32(gdvVenda.Rows[i].Cells[0].Value),
+                    gdvVenda.Rows[i].Cells[1].Value.ToString(), Convert.ToDecimal(gdvVenda.Rows[i].Cells[2].Value),
+                    gdvVenda.Rows[i].Cells[3].Value.ToString(),
+                     Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", "")),
+                     (Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", "")) / Convert.ToDecimal(gdvVenda.Rows[i].Cells[2].Value.ToString().Replace("R$ ", "")))));
             }
         }
 
@@ -87,6 +109,8 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             try
             {
+                txtQuantidade.ReadOnly = true;
+
                 if (txtCodBarras.Text != string.Empty && cmbProduto.Text != string.Empty && chbVenda.Checked == true)
                 {
                     //Checkbox Venda
@@ -103,7 +127,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     }
                     else if (isCadastroExiste == false)
                     {
-                        MessageBox.Show("Codigo de Barras Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Codigo de Barras Não Encontrado! ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else if (cmbProduto.Text != string.Empty && chbOrcamento.Checked == true && txtCodProduto.Text != string.Empty)
@@ -138,9 +162,9 @@ namespace Sistema_de_Gerenciamento.Forms
                 valorBruto += Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", ""));
             }
 
-            txtValorTotal.Text = string.Format("{0:C}", valorBruto);
+            lblValorTotal.Text = string.Format("{0:C}", valorBruto);
 
-            txtTotalItens.Text = gdvVenda.RowCount.ToString();
+            lblTotalItens.Text = gdvVenda.RowCount.ToString();
         }
 
         private void PreenchendoGridView()
@@ -159,7 +183,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnGerarBoleto_Click(object sender, EventArgs e)
         {
-            if (txtValorTotal.Text != string.Empty)
+            if (lblValorTotal.Text != string.Empty)
             {
                 Forms_GerarCarne gerarBoleto = new Forms_GerarCarne(this);
                 gerarBoleto.ShowDialog();
@@ -168,6 +192,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            txtQuantidade.ReadOnly = false;
+
             BuscarProduto();
         }
 
@@ -182,18 +208,29 @@ namespace Sistema_de_Gerenciamento.Forms
                     if (isCadastroExiste == true)
                     {
                         produto = listaProduto.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodBarras.Text));
+                        if (produto.quantidade > 0)
+                        {
+                            cmbProduto.Text = produto.descricaoProduto;
+                            txtCodProduto.Text = produto.codigoProduto.ToString();
+                            txtQuantidade.Text = "1";
+                            //txtQuantidade.Text = produto.quantidade.ToString();
+                            txtUnidade.Text = produto.unidade;
+                            txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco);
+                            txtDescontoPorItem.Text = string.Format("{0:P}", (produto.desconto) / 100);
+                            txtPrecoComDesconto.Text = string.Format("{0:C}", ((produto.preco - (produto.preco * produto.desconto) / 100)));
 
-                        cmbProduto.Text = produto.descricaoProduto;
-                        txtCodProduto.Text = produto.codigoProduto.ToString();
-                        txtQuantidade.Text = produto.quantidade.ToString();
-                        txtUnidade.Text = produto.unidade;
-                        txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco);
-                        txtDescontoPorItem.Text = string.Format("{0:P}", (produto.desconto) / 100);
-                        txtPrecoComDesconto.Text = string.Format("{0:C}", ((produto.preco - (produto.preco * produto.desconto) / 100)));
+                            memoriaQuantidade = produto.quantidade;
+
+                            //txtCodBarras.Focus();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Saldo Indisponivel Para O Produto Solicitado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
                     }
                     else if (isCadastroExiste == false)
                     {
-                        MessageBox.Show("Codigo de Barras Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Codigo de Barras Não Encontrado!", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
@@ -207,8 +244,6 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             RemoverProduto();
         }
-
-        #region Remover Produto do GridView
 
         private void RemoverProduto()
         {
@@ -227,14 +262,10 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Remover Produto do GridView
-
         private void btnCancelarVenda_Click(object sender, EventArgs e)
         {
             CancelarCompra();
         }
-
-        #region Cancelar Compra
 
         private void CancelarCompra()
         {
@@ -251,8 +282,6 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Cancelar Compra
-
         private void btnImprimir_Click(object sender, EventArgs e)
         {
         }
@@ -261,8 +290,6 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             NovaVenda();
         }
-
-        #region Nova Venda
 
         private void NovaVenda()
         {
@@ -283,8 +310,6 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Nova Venda
-
         private void txtCodBarras_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoFoiNumero(e);
@@ -299,8 +324,6 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             ValorTroco();
         }
-
-        #region Valor Do Troco
 
         private void ValorTroco()
         {
@@ -325,8 +348,6 @@ namespace Sistema_de_Gerenciamento.Forms
             {
             }
         }
-
-        #endregion Valor Do Troco
 
         private void Avista_CheckedChanged(object sender, EventArgs e)
         {
@@ -377,8 +398,6 @@ namespace Sistema_de_Gerenciamento.Forms
             CreditoSelecionado();
         }
 
-        #region Credito Selecionado
-
         private void CreditoSelecionado()
         {
             if (gdvVenda.RowCount > 0)
@@ -401,8 +420,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 }
             }
         }
-
-        #endregion Credito Selecionado
 
         private void chbCredito_Click(object sender, EventArgs e)
         {
@@ -435,7 +452,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 lblVendedor.Visible = true;
                 txtVendedor.Visible = true;
                 btnGerarBoleto.Visible = true;
-                btnImprimir.Visible = true;
+                btnImprimir.Visible = false;
                 btnConfirmarVenda.Visible = true;
                 btnCancelarVenda.Visible = true;
                 btnAbriCadastroCliente.Visible = true;
@@ -456,6 +473,22 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtPrecoSemDesconto.Location = new Point(769, 171);
                 btnAdicionar.Location = new Point(901, 162);
                 btnSair.Location = new Point(580, 41);
+                btnImprimir.Location = new Point(392, 41);
+
+                grupoBoxAvista.Visible = false;
+                grupboxCredito.Visible = false;
+
+                lblNomeValorTotal.Location = new Point(318, 571);
+                lblValorTotal.Location = new Point(329, 594);
+                lblNomeValorTotalItens.Location = new Point(568, 571);
+                lblTotalItens.Location = new Point(600, 594);
+                gdvVenda.Size = new Size(923, 328);
+                this.Size = new Size(967, 686);
+
+                listaNotaFiscalSaida.Clear();
+                valorBruto = 0;
+                memoriaQuantidade = 1;
+                quantidadeItens = 0;
 
                 gdvVenda.Rows.Clear();
 
@@ -485,7 +518,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 lblVendedor.Visible = false;
                 txtVendedor.Visible = false;
                 btnGerarBoleto.Visible = false;
-                btnImprimir.Visible = false;
+                btnImprimir.Visible = true;
                 btnConfirmarVenda.Visible = false;
                 btnCancelarVenda.Visible = false;
                 btnAbriCadastroCliente.Visible = false;
@@ -505,7 +538,24 @@ namespace Sistema_de_Gerenciamento.Forms
                 lblPreco.Location = new Point(679, 153);
                 txtPrecoSemDesconto.Location = new Point(681, 171);
                 btnAdicionar.Location = new Point(814, 162);
-                btnSair.Location = new Point(202, 41);
+                btnImprimir.Location = new Point(202, 41);
+                btnSair.Location = new Point(297, 41);
+
+                grupoBoxAvista.Visible = true;
+                grupboxCredito.Visible = true;
+
+                lblNomeValorTotal.Location = new Point(318, 420);
+                lblValorTotal.Location = new Point(329, 443);
+                lblNomeValorTotalItens.Location = new Point(568, 422);
+                lblTotalItens.Location = new Point(598, 445);
+                gdvVenda.Size = new Size(923, 190);
+                this.Size = new Size(967, 727);
+
+                listaNotaFiscalSaida.Clear();
+                valorBruto = 0;
+                memoriaQuantidade = 1;
+                quantidadeItens = 0;
+
                 gdvVenda.Rows.Clear();
 
                 ManipulacaoTextBox.ApagandoTextBox(this);
@@ -524,8 +574,6 @@ namespace Sistema_de_Gerenciamento.Forms
             ValorJuros();
         }
 
-        #region Valor do Juros Conforme a Quantidade de Parcelas
-
         private void ValorJuros()
         {
             if (cmbParcelaCredito.Text != String.Empty)
@@ -534,41 +582,37 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     txtJurosCredito.Text = string.Format("{0:P}", listaFinanceiro[0].jurosCredito / 100);
 
-                    txtValorParcelaCredito.Text = string.Format("{0:C}", ((Convert.ToDecimal(txtValorTotal.Text.Replace("R$ ", "")) +
+                    txtValorParcelaCredito.Text = string.Format("{0:C}", ((Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) +
                                                                          (Convert.ToDecimal(txtJurosCredito.Text.Replace("%", "")) *
-                                                                             Convert.ToDecimal(txtValorTotal.Text.Replace("R$ ", "")) / 100))
+                                                                             Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) / 100))
                                                                         / Convert.ToDecimal(cmbParcelaCredito.Text.Replace("x", "")))).ToString();
 
                     txtValorTotalCredito.Text = string.Format("{0:C}",
-                        ((Convert.ToDecimal(txtValorTotal.Text.Replace("R$ ", "")) +
+                        ((Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) +
                           (Convert.ToDecimal(txtJurosCredito.Text.Replace("%", "")) *
-                              Convert.ToDecimal(txtValorTotal.Text.Replace("R$ ", "")) / 100)))).ToString();
+                              Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) / 100)))).ToString();
                 }
                 else
                 {
                     txtJurosCredito.Text = string.Format("{0:P}", "0,00%");
 
-                    txtValorParcelaCredito.Text = string.Format("{0:C}", ((Convert.ToDecimal(txtValorTotal.Text.Replace("R$ ", "")) +
+                    txtValorParcelaCredito.Text = string.Format("{0:C}", ((Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) +
                                                                            (Convert.ToDecimal(txtJurosCredito.Text.Replace("%", "")) *
-                                                                               Convert.ToDecimal(txtValorTotal.Text.Replace("R$ ", "")) / 100))
+                                                                               Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) / 100))
                                                                           / Convert.ToDecimal(cmbParcelaCredito.Text.Replace("x", "")))).ToString();
 
                     txtValorTotalCredito.Text = string.Format("{0:C}",
-                        ((Convert.ToDecimal(txtValorTotal.Text.Replace("R$ ", "")) +
+                        ((Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) +
                           (Convert.ToDecimal(txtJurosCredito.Text.Replace("%", "")) *
-                              Convert.ToDecimal(txtValorTotal.Text.Replace("R$ ", "")) / 100)))).ToString();
+                              Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) / 100)))).ToString();
                 }
             }
         }
-
-        #endregion Valor do Juros Conforme a Quantidade de Parcelas
 
         private void cmbCliente_Enter(object sender, EventArgs e)
         {
             PreencherListaClientes();
         }
-
-        #region Preencher Lista Com Clinetes
 
         private void PreencherListaClientes()
         {
@@ -582,8 +626,6 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Preencher Lista Com Clinetes
-
         private void cmbCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoFoiLetras(e);
@@ -593,8 +635,6 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             BuscarDadosCliente();
         }
-
-        #region Buscar Dados Cliente
 
         private void BuscarDadosCliente()
         {
@@ -618,14 +658,10 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Buscar Dados Cliente
-
         private void cmbProduto_KeyPress(object sender, KeyPressEventArgs e)
         {
             MostrarListaComProdutos(e);
         }
-
-        #region Mostrar Lista Com Produtos
 
         private void MostrarListaComProdutos(KeyPressEventArgs e)
         {
@@ -647,7 +683,9 @@ namespace Sistema_de_Gerenciamento.Forms
             if (produto != null)
             {
                 txtCodProduto.Text = produto.codigoProduto.ToString();
-                txtQuantidade.Text = produto.quantidade.ToString();
+                memoriaQuantidade = produto.quantidade;
+                txtQuantidade.Text = "1";
+                //txtQuantidade.Text = produto.quantidade.ToString();
                 txtUnidade.Text = produto.unidade.ToString();
                 txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco).ToString();
             }
@@ -661,14 +699,10 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Mostrar Lista Com Produtos
-
         private void cmbProduto_SelectedValueChanged(object sender, EventArgs e)
         {
             PreencherTextBoxPorProduto();
         }
-
-        #region Preencher TextBox Por Produto da Busca
 
         private void PreencherTextBoxPorProduto()
         {
@@ -677,15 +711,15 @@ namespace Sistema_de_Gerenciamento.Forms
                 produto = listaProduto.FindLast(prod => prod.descricaoProduto.ToLower().StartsWith(cmbProduto.Text.ToLower()));
 
                 txtCodProduto.Text = produto.codigoProduto.ToString();
-                txtQuantidade.Text = produto.quantidade.ToString();
+                memoriaQuantidade = produto.quantidade;
+                txtQuantidade.Text = "1";
+                //txtQuantidade.Text = produto.quantidade.ToString();
                 txtUnidade.Text = produto.unidade.ToString();
                 txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco).ToString();
+
+                txtQuantidade.ReadOnly = false;
             }
         }
-
-        #endregion Preencher TextBox Por Produto da Busca
-
-        #region Apagando Dados dos TextBox
 
         private void ApagandoTextbox()
         {
@@ -696,8 +730,6 @@ namespace Sistema_de_Gerenciamento.Forms
             txtUnidade.Text = string.Empty;
             txtPrecoSemDesconto.Text = string.Empty;
         }
-
-        #endregion Apagando Dados dos TextBox
 
         private void Forms_Venda_Load(object sender, EventArgs e)
         {
@@ -711,15 +743,65 @@ namespace Sistema_de_Gerenciamento.Forms
             //ListaFinanceiro.ForEach(finac => financeiro = finac);
         }
 
-        private void txtCodBarras_Leave(object sender, EventArgs e)
+        private void btnConfirmarVenda_Click_1(object sender, EventArgs e)
         {
-            BuscarProduto();
+            PreencherListaNotaFiscalSaida();
+
+            quantidadeItens = Convert.ToInt32(lblTotalItens.Text);
+
+            Forms_Pagamento pagamento = new Forms_Pagamento(this);
+            pagamento.ShowDialog();
         }
 
-        private void btnConfirmarVenda_Click(object sender, EventArgs e)
+        private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Forms_Pagamento pagamento = new Forms_Pagamento();
-            pagamento.ShowDialog();
+            ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
+
+        private void txtQuantidade_TextChange(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToDecimal(txtQuantidade.Text) > memoriaQuantidade && cont == 0)
+                {
+                    MessageBox.Show("Quantidade Solicitada Maior Que Quantidade Disponivel", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    cont++;
+                }
+                else
+                {
+                    cont = 0;
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void txtQuantidade_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToDecimal(txtQuantidade.Text) > memoriaQuantidade && cont == 0)
+                {
+                    MessageBox.Show("Quantidade Solicitada Maior Que Quantidade Disponivel", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    cont++;
+                }
+                else
+                {
+                    txtQuantidade.Focus();
+                    cont = 0;
+                }
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        private void cmbProduto_Leave(object sender, EventArgs e)
+        {
+            gdvVenda.Focus();
         }
     }
 }
