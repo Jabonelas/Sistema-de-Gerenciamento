@@ -27,7 +27,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private List<DadosFinanceiro> listaFinanceiro = new List<DadosFinanceiro>();
 
-        public List<DadosNotaFiscalSaida> listaNotaFiscalSaida = new List<DadosNotaFiscalSaida>();
+        public List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaCompleta = new List<DadosNotaFiscalSaida>();
 
         //private DadosNotaFiscalSaida DadosNotaFiscalSaida;
 
@@ -96,12 +96,12 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             for (int i = 0; i < gdvVenda.Rows.Count; i++)
             {
-                listaNotaFiscalSaida.Add(new DadosNotaFiscalSaida(Global.NomeDeUsuario, DateTime.Today,
-                    cmbCliente.Text, Convert.ToInt32(gdvVenda.Rows[i].Cells[7].Value), Convert.ToInt32(gdvVenda.Rows[i].Cells[0].Value),
-                    gdvVenda.Rows[i].Cells[1].Value.ToString(), Convert.ToDecimal(gdvVenda.Rows[i].Cells[2].Value),
-                    gdvVenda.Rows[i].Cells[3].Value.ToString(),
-                     Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", "")),
-                     (Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", "")) / Convert.ToDecimal(gdvVenda.Rows[i].Cells[2].Value.ToString().Replace("R$ ", "")))));
+                listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(0, 0, lblCpfCnpjCliente.Text, cmbCliente.Text,
+                    Convert.ToInt32(gdvVenda.Rows[i].Cells[0].Value), gdvVenda.Rows[i].Cells[1].Value.ToString(),
+                    DateTime.Today, Convert.ToInt32(gdvVenda.Rows[i].Cells[7].Value), Global.NomeDeUsuario,
+                    DateTime.Today.AddDays(30), Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", "")),
+                    Convert.ToDecimal(gdvVenda.Rows[i].Cells[2].Value), gdvVenda.Rows[i].Cells[3].Value.ToString(), "-", 0, 0, 0,
+                     Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", "")), "-", "-", "-", false));
             }
         }
 
@@ -485,7 +485,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 gdvVenda.Size = new Size(923, 328);
                 this.Size = new Size(967, 686);
 
-                listaNotaFiscalSaida.Clear();
+                listaDadosNotaFiscalSaidaCompleta.Clear();
                 valorBruto = 0;
                 memoriaQuantidade = 1;
                 quantidadeItens = 0;
@@ -551,7 +551,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 gdvVenda.Size = new Size(923, 190);
                 this.Size = new Size(967, 727);
 
-                listaNotaFiscalSaida.Clear();
+                listaDadosNotaFiscalSaidaCompleta.Clear();
                 valorBruto = 0;
                 memoriaQuantidade = 1;
                 quantidadeItens = 0;
@@ -645,6 +645,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 foreach (DadosCliente variable in listaCliente)
                 {
                     txtCodigoCliente.Text = variable.id.ToString();
+                    lblCpfCnpjCliente.Text = variable.cpfCpnjCliente;
                 }
             }
             else
@@ -749,7 +750,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             quantidadeItens = Convert.ToInt32(lblTotalItens.Text);
 
-            Forms_Pagamento pagamento = new Forms_Pagamento(this);
+            Forms_Pagamento pagamento = new Forms_Pagamento(this, "Venda");
             pagamento.ShowDialog();
         }
 

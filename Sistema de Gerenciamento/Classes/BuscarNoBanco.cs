@@ -374,7 +374,8 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query =
-                        "select cc_nome_cliente,cc_id from tb_CadastroClientes where cc_nome_cliente like @nomeCliente";
+                        "select cc_nome_cliente, cc_id, cc_cpf_cnpj from tb_CadastroClientes" +
+                        " where cc_nome_cliente like @nomeCliente";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@nomeCliente", string.Format("%{0}%", _nomeCliente));
@@ -383,7 +384,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     while (dr.Read())
                     {
-                        listaCliente.Add(new DadosCliente(dr.GetString(0), dr.GetInt32(1)));
+                        listaCliente.Add(new DadosCliente(dr.GetString(0), dr.GetInt32(1), dr.GetString(2)));
                     }
                 }
             }
@@ -1198,6 +1199,79 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Codigo de Barras
+
+        public bool BuscarExistenciaCodigoBarrasCadastrado(int _codigoBarras)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ep_codigo_barras " +
+                                   "from tb_EstoqueProduto " +
+                                   "where ep_codigo_barras = @codigoBarras ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigoBarras", _codigoBarras);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    if (dr.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarExistenciaCodigoBarrasProdutoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        public bool BuscarExistenciaCodigoBarrasComMesmoCodigoProduto(int _codigoBarras, int _codigoProduto)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ep_codigo_barras " +
+                                   "from tb_EstoqueProduto " +
+                                   "where ep_codigo_barras = @codigoBarras and ep_codigo_produto = @codigoProduto";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigoBarras", _codigoBarras);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigoProduto", _codigoProduto);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    if (dr.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarCodigoBarrasDoMesmoProdutoNoBanco(ex);
+
+                return false;
+            }
+        }
 
         #endregion Buscar Produto
 

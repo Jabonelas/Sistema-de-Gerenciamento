@@ -82,68 +82,81 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
             {
-                if (Buscar.BuscarCodigoBarras(Convert.ToInt32(txtCodigoBarras.Text)) == true)
+                if (Buscar.BuscarExistenciaCodigoBarrasCadastrado(Convert.ToInt32(txtCodigoBarras.Text)) == true)
                 {
-                    MessageBox.Show("Codigo de Barras Já Registrado!", "Informarção!", MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                    if (Buscar.BuscarExistenciaCodigoBarrasComMesmoCodigoProduto(Convert.ToInt32(txtCodigoBarras.Text),
+                        Convert.ToInt32(txtCodigoProduto.Text)) == true)
+                    {
+                        InserirProdutoNoEstoque();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Codigo de Barras Já Registrado!", "Informarção!", MessageBoxButtons.OK,
+                       MessageBoxIcon.Information);
+
+                        txtCodigoBarras.Focus();
+                    }
+                }
+                else
+                {
+                    InserirProdutoNoEstoque();
+                }
+            }
+        }
+
+        private void InserirProdutoNoEstoque()
+        {
+            if (Global.tipoEntrada == "Alterar")
+            {
+                Atualizar.AtualizarCodigoBarrasEstoqueProduto(Convert.ToInt32(txtCodigoBarras.Text),
+                    Convert.ToInt32(txtNumeroNotaFiscal.Text), Convert.ToInt32(txtCodigoProduto.Text));
+
+                if (cont <= (Buscar.BuscarQuantidadeDeItensNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)) - 1))
+                {
+                    txtNumeroNotaFiscal.Text = compras.listaDadosEstoqueProdutos[cont].numeroNF.ToString();
+                    txtQuantidade.Text = compras.listaDadosEstoqueProdutos[cont].quantidade.ToString();
+                    txtCodigoProduto.Text = compras.listaDadosEstoqueProdutos[cont].codigoProduto.ToString();
+                    txtDescricaoProduto.Text = compras.listaDadosEstoqueProdutos[cont].descricaoProduto;
+                    txtCodigoBarras.Text = compras.listaDadosEstoqueProdutos[cont].codigoBarras.ToString();
+
+                    pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigoProduto.Text));
+
+                    cont++;
 
                     txtCodigoBarras.Focus();
                 }
                 else
                 {
-                    if (Global.tipoEntrada == "Alterar")
-                    {
-                        Atualizar.AtualizarCodigoBarrasEstoqueProduto(Convert.ToInt32(txtCodigoBarras.Text),
-                            Convert.ToInt32(txtNumeroNotaFiscal.Text), Convert.ToInt32(txtCodigoProduto.Text));
+                    AvisoCantoInferiorDireito.Inclusao();
 
-                        if (cont <= (Buscar.BuscarQuantidadeDeItensNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)) - 1))
-                        {
-                            txtNumeroNotaFiscal.Text = compras.listaDadosEstoqueProdutos[cont].numeroNF.ToString();
-                            txtQuantidade.Text = compras.listaDadosEstoqueProdutos[cont].quantidade.ToString();
-                            txtCodigoProduto.Text = compras.listaDadosEstoqueProdutos[cont].codigoProduto.ToString();
-                            txtDescricaoProduto.Text = compras.listaDadosEstoqueProdutos[cont].descricaoProduto;
-                            txtCodigoBarras.Text = compras.listaDadosEstoqueProdutos[cont].codigoBarras.ToString();
+                    this.Close();
+                }
+            }
+            else if (Global.tipoEntrada == "Entrada")
+            {
+                Atualizar.AtualizarCodigoBarrasEstoqueProduto(Convert.ToInt32(txtCodigoBarras.Text),
+                    Convert.ToInt32(txtNumeroNotaFiscal.Text), Convert.ToInt32(txtCodigoProduto.Text));
 
-                            pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigoProduto.Text));
+                if (cont <= (Buscar.BuscarQuantidadeDeItensNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)) - 1))
+                {
+                    txtNumeroNotaFiscal.Text = compras.listaDadosNotaFiscalEntrada[cont].numeroNF.ToString();
+                    txtQuantidade.Text = compras.listaDadosNotaFiscalEntrada[cont].quantidade.ToString();
+                    txtCodigoProduto.Text = compras.listaDadosNotaFiscalEntrada[cont].codProduto.ToString();
+                    txtDescricaoProduto.Text = compras.listaDadosNotaFiscalEntrada[cont].descricao;
 
-                            cont++;
+                    pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigoProduto.Text));
 
-                            txtCodigoBarras.Focus();
-                        }
-                        else
-                        {
-                            AvisoCantoInferiorDireito.Inclusao();
+                    txtCodigoBarras.Text = string.Empty;
 
-                            this.Close();
-                        }
-                    }
-                    else if (Global.tipoEntrada == "Entrada")
-                    {
-                        Atualizar.AtualizarCodigoBarrasEstoqueProduto(Convert.ToInt32(txtCodigoBarras.Text),
-                            Convert.ToInt32(txtNumeroNotaFiscal.Text), Convert.ToInt32(txtCodigoProduto.Text));
+                    cont++;
 
-                        if (cont <= (Buscar.BuscarQuantidadeDeItensNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)) - 1))
-                        {
-                            txtNumeroNotaFiscal.Text = compras.listaDadosNotaFiscalEntrada[cont].numeroNF.ToString();
-                            txtQuantidade.Text = compras.listaDadosNotaFiscalEntrada[cont].quantidade.ToString();
-                            txtCodigoProduto.Text = compras.listaDadosNotaFiscalEntrada[cont].codProduto.ToString();
-                            txtDescricaoProduto.Text = compras.listaDadosNotaFiscalEntrada[cont].descricao;
+                    txtCodigoBarras.Focus();
+                }
+                else
+                {
+                    AvisoCantoInferiorDireito.Inclusao();
 
-                            pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigoProduto.Text));
-
-                            txtCodigoBarras.Text = string.Empty;
-
-                            cont++;
-
-                            txtCodigoBarras.Focus();
-                        }
-                        else
-                        {
-                            AvisoCantoInferiorDireito.Inclusao();
-
-                            this.Close();
-                        }
-                    }
+                    this.Close();
                 }
             }
         }

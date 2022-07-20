@@ -661,9 +661,9 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-PR11) Erro ao Realizar Busca Comissao do Produto \n\nErro: {_e}", "Erro Busca Comissao Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoBuscarCodigoBarrasProdutoNoBanco(Exception _e)
+        public void ErroAoBuscarExistenciaCodigoBarrasProdutoNoBanco(Exception _e)
         {
-            MessageBox.Show($"(BUS-PR12) Erro ao Realizar Busca de Codigo de Barras do Produto \n\nErro: {_e}", "Erro Busca Codigo de Barras Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(BUS-PR12) Erro ao Realizar Busca de Existencia Codigo de Barras do Produto \n\nErro: {_e}", "Erro Busca Existencia Codigo de Barras Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoBuscarCadastroProdutoPorCodigoNoBanco(Exception _e)
@@ -694,6 +694,16 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoBuscarListaEstoqueProdutoPorCodidoBarrasNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-PR18) Erro ao Realizar Busca de Lista do Estoque de Produto \n\nErro: {_e}", "Erro Busca de Lista do Estoque de Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCodigoBarrasDoMesmoProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR19) Erro ao Realizar Busca do Codigo de Barras do mesmo Produto no Estoque de Produto \n\nErro: {_e}", "Erro Busca do Codigo de Barras do mesmo Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCodigoBarrasProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR20) Erro ao Realizar Busca Codigo de Barras \n\nErro: {_e}", "Erro Busca Realizar Busca Codigo de Barras!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Produto

@@ -39,10 +39,7 @@ namespace Sistema_de_Gerenciamento.Classes
                         isExist = false;
                     }
 
-                    if (isExist == true)
-                    {
-                        MessageBox.Show("Cliente Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+
 
                     return isExist;
                 }

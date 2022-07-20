@@ -27,21 +27,24 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private DadosEstoqueProduto dadosEstoqueProduto;
 
-        public Forms_Troca telaTroca;
+        private Forms_Troca telaTroca;
 
-        public Forms_Venda telaVenda;
+        private Forms_Venda telaVenda;
 
         private decimal valorBruto = 0;
 
         private int quantidadeItens = 0;
 
-        public Forms_Pagamento(Forms_Troca _telaTroca)
+        private string tipoPagamento = "";
+
+        public Forms_Pagamento(Forms_Troca _telaTroca, string _tipoPagamento)
         {
             InitializeComponent();
 
-            PreencherDados(telaTroca.listaDadosNotaFiscalSaidaCompleta, _telaTroca.quantidadeItens, Convert.ToDecimal(_telaTroca.lblValorAPagar.Text.Replace("R$ ", "")));
-
             telaTroca = _telaTroca;
+
+            PreencherDados(telaTroca.listaDadosNotaFiscalSaidaCompleta, _telaTroca.quantidadeItens,
+            Convert.ToDecimal(_telaTroca.lblValorAPagar.Text.Replace("R$ ", "")), _tipoPagamento);
 
             lblNumeroNotaFiscalSaida.Text = telaTroca.txtNotaFiscal.Text;
 
@@ -50,13 +53,14 @@ namespace Sistema_de_Gerenciamento.Forms
             cmbFormaPagamento.Focus();
         }
 
-        public Forms_Pagamento(Forms_Venda _telaVenda)
+        public Forms_Pagamento(Forms_Venda _telaVenda, string _tipoPagamento)
         {
             InitializeComponent();
 
-            telaVenda = _telaVenda;
+            tipoPagamento = _tipoPagamento;
 
-            PreencherDados(telaVenda.listaNotaFiscalSaida, _telaVenda.quantidadeItens, Convert.ToDecimal(_telaVenda.lblValorTotal.Text.Replace("R$ ", "")));
+            PreencherDados(_telaVenda.listaDadosNotaFiscalSaidaCompleta, _telaVenda.quantidadeItens,
+                Convert.ToDecimal(_telaVenda.lblValorTotal.Text.Replace("R$ ", "")), _tipoPagamento);
 
             PreencherGrid();
 
@@ -64,9 +68,11 @@ namespace Sistema_de_Gerenciamento.Forms
         }
 
         private void PreencherDados(List<DadosNotaFiscalSaida> _listaDadosNotaFiscalSaidaCompleta, int _quantidadeItem,
-            decimal _valoAPagar)
+            decimal _valoAPagar, string _tipoPagamento)
         {
             quantidadeItens = _quantidadeItem;
+
+            tipoPagamento = _tipoPagamento;
 
             listaFinanceiro = Buscar.BuscarListaFinanceiro();
 
@@ -251,54 +257,36 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            decimal valorDesconto = Convert.ToDecimal(lblValorDesconto.Text.Replace("R$", "")) / (gdvPagamento.Rows.Count - quantidadeItens);
-            decimal jurosPorProduto;
+            if (tipoPagamento == "Troca")
+            {
+                decimal valorDesconto = Convert.ToDecimal(lblValorDesconto.Text.Replace("R$", "")) / (gdvPagamento.Rows.Count - quantidadeItens);
+                decimal jurosPorProduto;
 
-            if (lblValorJuros.Text != "0,00%")
-            {
-                jurosPorProduto = ((Convert.ToDecimal(lblValorTotal.Text.Replace("R$", ""))) - valorBruto) / (gdvPagamento.Rows.Count - quantidadeItens);
-            }
-            else
-            {
-                jurosPorProduto = 0;
-            }
-
-            foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
-            {
-                if (item.deveTrocar == true)
+                if (lblValorJuros.Text != "0,00%")
                 {
-                    // Item Mantido
-                    if (item.status == "-")
+                    jurosPorProduto = ((Convert.ToDecimal(lblValorTotal.Text.Replace("R$", ""))) - valorBruto) / (gdvPagamento.Rows.Count - quantidadeItens);
+                }
+                else
+                {
+                    jurosPorProduto = 0;
+                }
+                foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
+                {
+                    if (item.deveTrocar == true)
                     {
-                        Atualizar.AtualizarQuantidadePosTrocaNotaFiscalSaida(item.quantidade, item.valorPago, item.numeroNF, item.codigoBarras,
-                        item.status, item.trocarVendedor, "-", item.id);
-                    }
+                        // Item Mantido
+                        if (item.status == "-")
+                        {
+                            Atualizar.AtualizarQuantidadePosTrocaNotaFiscalSaida(item.quantidade, item.valorPago, item.numeroNF, item.codigoBarras,
+                            item.status, item.trocarVendedor, "-", item.id);
+                        }
 
-                    //Item Trocado
-                    else if (item.status == "Troca" && item.motivoTroca == "-")
-                    {
-                        Atualizar.AtualizarQuantidadeEstoquePosDevolucao(-item.quantidade, item.codigoBarras);
-
-                        Salvar.NotaFiscalSaida(item.cpf, item.numeroNF, item.codigoProduto, item.descricao,
-                        item.quantidade, item.valorUnitario, item.emissao, item.codigoBarras, item.vendedor,
-                        item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text, valorDesconto,
-                        Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
-                        jurosPorProduto, (item.valorPago - valorDesconto), item.unidade, item.status, Global.NomeDeUsuario,
-                        telaTroca.cmbMotivoTroca.Text);
-                    }
-
-                    // Item Devolvido
-                    else if (item.valorPago < 0 && item.status == "Devolucao")
-                    {
-                        if (item.quantidadeParcelas > 0)
+                        //Item Trocado
+                        else if (item.status == "Troca" && item.motivoTroca == "-")
                         {
                             Atualizar.AtualizarQuantidadeEstoquePosDevolucao(-item.quantidade, item.codigoBarras);
 
-                            Atualizar.AtualizarQuantidadePosTrocaNotaFiscalSaida(item.quantidade, item.valorPago, item.numeroNF, item.codigoBarras,
-                            item.status, item.trocarVendedor, telaTroca.cmbMotivoTroca.Text, item.id);
-                        }
-                        else
-                        {
+                            //Inserir o novo item na nota
                             Salvar.NotaFiscalSaida(item.cpf, item.numeroNF, item.codigoProduto, item.descricao,
                             item.quantidade, item.valorUnitario, item.emissao, item.codigoBarras, item.vendedor,
                             item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text, valorDesconto,
@@ -307,25 +295,92 @@ namespace Sistema_de_Gerenciamento.Forms
                             telaTroca.cmbMotivoTroca.Text);
                         }
 
-                        if (telaTroca.cmbMotivoTroca.Text == "Cor/Tamanho")
+                        // Item Devolvido
+                        else if (item.valorPago < 0 && item.status == "Devolucao")
                         {
-                            Atualizar.AtualizarQuantidadeEstoquePosDevolucao(-item.quantidade, item.codigoBarras);
-                        }
-                        else
-                        {
-                            listaDadosEstoqueProdutos = Buscar.BuscarListaEstoqueProdutoPorCodigoBarras(item.codigoBarras);
+                            //Devolução quando a quantidade Devolvida é igual a quantidade em nota
+                            if (item.quantidadeParcelas > 0)
+                            {
+                                Atualizar.AtualizarQuantidadeEstoquePosDevolucao(-item.quantidade, item.codigoBarras);
 
-                            dadosEstoqueProduto = listaDadosEstoqueProdutos.First(x => x.codigoBarras == item.codigoBarras);
+                                Atualizar.AtualizarQuantidadePosTrocaNotaFiscalSaida(item.quantidade, item.valorPago, item.numeroNF, item.codigoBarras,
+                                item.status, item.trocarVendedor, telaTroca.cmbMotivoTroca.Text, item.id);
+                            }
+                            else
+                            {
+                                //Devolução quando a quantidade devolvida é diferente da quantidade em nota
+                                Salvar.NotaFiscalSaida(item.cpf, item.numeroNF, item.codigoProduto, item.descricao,
+                                item.quantidade, item.valorUnitario, item.emissao, item.codigoBarras, item.vendedor,
+                                item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text, valorDesconto,
+                                Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
+                                jurosPorProduto, (item.valorPago - valorDesconto), item.unidade, item.status, Global.NomeDeUsuario,
+                                telaTroca.cmbMotivoTroca.Text);
+                            }
 
-                            Salvar.AdcionarNoEstoqueMaterialSegregado(dadosEstoqueProduto.numeroNF, dadosEstoqueProduto.codigoBarras,
-                            dadosEstoqueProduto.codigoProduto, dadosEstoqueProduto.descricaoProduto, item.quantidade, dadosEstoqueProduto.unidade,
-                            dadosEstoqueProduto.valorUnitario, dadosEstoqueProduto.dataEntrada, dadosEstoqueProduto.descontoItem, telaTroca.cmbMotivoTroca.Text);
+                            if (telaTroca.cmbMotivoTroca.Text == "Cor/Tamanho")
+                            {
+                                Atualizar.AtualizarQuantidadeEstoquePosDevolucao(-item.quantidade, item.codigoBarras);
+                            }
+                            else
+                            {
+                                //Devolução Danificado/Defeito
+                                listaDadosEstoqueProdutos = Buscar.BuscarListaEstoqueProdutoPorCodigoBarras(item.codigoBarras);
+
+                                dadosEstoqueProduto = listaDadosEstoqueProdutos.First(x => x.codigoBarras == item.codigoBarras);
+
+                                Salvar.AdcionarNoEstoqueMaterialSegregado(dadosEstoqueProduto.numeroNF, dadosEstoqueProduto.codigoBarras,
+                                dadosEstoqueProduto.codigoProduto, dadosEstoqueProduto.descricaoProduto, item.quantidade, dadosEstoqueProduto.unidade,
+                                dadosEstoqueProduto.valorUnitario, dadosEstoqueProduto.dataEntrada, dadosEstoqueProduto.descontoItem, telaTroca.cmbMotivoTroca.Text);
+                            }
                         }
+                    }
+                }
+
+                Atualizar.AtuazliarPrazoGarantia(listaDadosNotaFiscalSaidaCompleta[0].numeroNF,
+                    listaDadosNotaFiscalSaidaCompleta[0].validadeTroca.AddDays(30));
+            }
+            //Venda
+            else
+            {
+                lblNumeroNotaFiscalSaida.Text = Buscar.BuscarUltimaNotaFiscalSaida();
+
+                foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
+                {
+                    if (cmbFormaPagamento.Text == "DÉBITO" || cmbFormaPagamento.Text == "DINHEIRO" || cmbFormaPagamento.Text == "PIX")
+                    {
+                        //Pagamento com desconto
+                        Salvar.NotaFiscalSaida(item.cpf, Convert.ToInt32(lblNumeroNotaFiscalSaida.Text), item.codigoProduto,
+                           item.descricao, item.quantidade, item.valorUnitario - (item.valorUnitario * listaFinanceiro[0].descontoAvista / 100),
+                           item.emissao, item.codigoBarras, item.vendedor, item.validadeTroca, item.nomeCliente,
+                           cmbFormaPagamento.Text, item.valorUnitario * listaFinanceiro[0].descontoAvista / 100,
+                           Convert.ToInt32(cmbParcelas.Text.Replace("x", "")), item.valorJuros,
+                           item.valorUnitario - (item.valorUnitario * listaFinanceiro[0].descontoAvista / 100), item.unidade,
+                           item.status, item.trocarVendedor, item.motivoTroca);
+                    }
+                    else if (lblValorJuros.Text == "0,00%")
+                    {
+                        //Pagamento normal
+                        Salvar.NotaFiscalSaida(item.cpf, Convert.ToInt32(lblNumeroNotaFiscalSaida.Text), item.codigoProduto,
+                            item.descricao, item.quantidade, item.valorUnitario, item.emissao, item.codigoBarras, item.vendedor,
+                            item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text, item.valorDesconto,
+                            Convert.ToInt32(cmbParcelas.Text.Replace("x", "")), item.valorJuros, item.valorPago, item.unidade, item.status, item.trocarVendedor,
+                            item.motivoTroca);
+                    }
+                    else if (lblValorJuros.Text != "0,00%")
+                    {
+                        //Pagamento com Juros
+                        Salvar.NotaFiscalSaida(item.cpf, Convert.ToInt32(lblNumeroNotaFiscalSaida.Text), item.codigoProduto,
+                        item.descricao, item.quantidade, item.valorUnitario + (item.valorUnitario * listaFinanceiro[0].jurosCredito / 100),
+                        item.emissao, item.codigoBarras, item.vendedor, item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text,
+                        item.valorDesconto, Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
+                        (item.valorUnitario * listaFinanceiro[0].jurosCredito / 100),
+                        item.valorUnitario + (item.valorUnitario * listaFinanceiro[0].jurosCredito / 100), item.unidade, item.status,
+                        item.trocarVendedor, item.motivoTroca);
                     }
                 }
             }
 
-            Atualizar.AtuazliarPrazoGarantia(listaDadosNotaFiscalSaidaCompleta[0].numeroNF);
+            btnConfirmar.Enabled = false;
         }
     }
 }

@@ -352,7 +352,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             if (e.KeyCode == Keys.F10) // Confirmar F10
             {
-                Forms_Pagamento pagamento = new Forms_Pagamento(this);
+                Forms_Pagamento pagamento = new Forms_Pagamento(this, "Troca");
                 pagamento.ShowDialog();
             }
         }
@@ -406,7 +406,7 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (Convert.ToDecimal(lblValorAPagar.Text.Replace("R$ ", "")) >= 0)
                 {
-                    Forms_Pagamento pagamento = new Forms_Pagamento(this);
+                    Forms_Pagamento pagamento = new Forms_Pagamento(this, "Troca");
                     pagamento.ShowDialog();
                 }
                 else

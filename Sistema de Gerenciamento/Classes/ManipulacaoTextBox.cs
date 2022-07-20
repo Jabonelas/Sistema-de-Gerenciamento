@@ -36,6 +36,7 @@ namespace Sistema_de_Gerenciamento
 
                         if (textBox.Text == string.Empty)
                         {
+                            MessageBox.Show($"{tipoComponente.Name}");
                             isVazio = true;
                             break;
                         }
@@ -44,6 +45,9 @@ namespace Sistema_de_Gerenciamento
                     {
                         if (componente.Text == string.Empty)
                         {
+                            MessageBox.Show($"{tipoComponente.Name}");
+                            MessageBox.Show($"{tipoComponente.Namespace}");
+                            MessageBox.Show($"{tipoComponente.FullName}");
                             isVazio = true;
                             break;
                         }
@@ -52,6 +56,7 @@ namespace Sistema_de_Gerenciamento
                     {
                         if (componente.Text == string.Empty)
                         {
+                            MessageBox.Show($"{tipoComponente.Name}");
                             isVazio = true;
                             break;
                         }

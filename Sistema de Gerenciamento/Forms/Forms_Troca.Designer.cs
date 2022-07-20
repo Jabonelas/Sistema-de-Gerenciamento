@@ -355,9 +355,9 @@
             this.label19.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(610, 61);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(155, 15);
+            this.label19.Size = new System.Drawing.Size(93, 15);
             this.label19.TabIndex = 290;
-            this.label19.Text = "Motivo da Devolução/Troca";
+            this.label19.Text = "Motivo da Troca";
             // 
             // label20
             // 
@@ -489,7 +489,7 @@
             this.cmbMotivoTroca.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbMotivoTroca.FormattingEnabled = true;
             this.cmbMotivoTroca.Items.AddRange(new object[] {
-            "Produto Com Defeito/Danificado",
+            "Produto Com Danificado/Defeito",
             "Cor/Tamanho"});
             this.cmbMotivoTroca.Location = new System.Drawing.Point(613, 79);
             this.cmbMotivoTroca.Name = "cmbMotivoTroca";

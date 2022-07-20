@@ -30,6 +30,8 @@ namespace Sistema_de_Gerenciamento
 
         private ApiCorreios Api = new ApiCorreios();
 
+        private int cont = 0;
+
         public Forms_CadastroCliente()
         {
             InitializeComponent();
@@ -90,6 +92,10 @@ namespace Sistema_de_Gerenciamento
                             txtEmail.Text,
                             txtObservacoes.Text,
                             Convert.ToInt32(lblCodigoCliente.Text)).ToString();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cliente Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -278,7 +284,7 @@ namespace Sistema_de_Gerenciamento
                 cmbIns_Est.Enabled = false;
 
                 txtNaturalidade.Text = "----------";
-                txtNaturalidade.Visible = false;
+                txtNaturalidade.Enabled = false;
                 txtNaturalidade.ReadOnly = true;
 
                 txtDataNascimento.Text = "----------";
@@ -383,9 +389,22 @@ namespace Sistema_de_Gerenciamento
 
         private void txtDataNascimento_Leave(object sender, EventArgs e)
         {
-            if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtDataNascimento) == true)
+            if (cont == 0)
             {
-                ManipulacaoTextBox.ValidacaoData(txtDataNascimento);
+                if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtDataNascimento) == true)
+                {
+                    ManipulacaoTextBox.ValidacaoData(txtDataNascimento);
+                }
+
+                if ((Convert.ToDateTime(txtDataNascimento.Text).AddDays(6570)) > Convert.ToDateTime(DateTime.Today.ToShortDateString()))
+                {
+                    MessageBox.Show("É Necessário Que O Cliente Seja Maior De Idade!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                cont++;
+            }
+            else
+            {
+                cont = 0;
             }
         }
 

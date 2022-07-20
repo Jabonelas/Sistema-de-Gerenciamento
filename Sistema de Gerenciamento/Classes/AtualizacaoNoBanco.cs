@@ -920,18 +920,19 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
-        public void AtuazliarPrazoGarantia(int _numeroNF)
+        public void AtuazliarPrazoGarantia(int _numeroNF, DateTime _validadeTroca)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update tb_NotaFiscalSaida set ns_garantia = GETDATE() " +
+                    string query = "update tb_NotaFiscalSaida set ns_garantia = @validadeTroca " +
                         "where ns_numero_nf = @numeroNF";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
                     adapter.SelectCommand.Parameters.Add("@numeroNF", _numeroNF);
+                    adapter.SelectCommand.Parameters.Add("@validadeTroca", _validadeTroca);
 
                     adapter.SelectCommand.ExecuteNonQuery();
                 }
