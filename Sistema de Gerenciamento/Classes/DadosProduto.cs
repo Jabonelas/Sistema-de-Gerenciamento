@@ -21,8 +21,10 @@ namespace Sistema_de_Gerenciamento.Classes
         public decimal desconto { get; set; }
         public int codigoBarras { get; set; }
 
+        public int nfEntrada { get; set; }
+
         public DadosProduto(int _codigoProduto, string _descricaoProduto, decimal _quantidade,
-            string _unidade, decimal _preco, decimal _desconto, int _codigoBarras)
+            string _unidade, decimal _preco, decimal _desconto, int _codigoBarras, int _nfEntrada)
         {
             codigoProduto = _codigoProduto;
             descricaoProduto = _descricaoProduto;
@@ -31,6 +33,7 @@ namespace Sistema_de_Gerenciamento.Classes
             preco = _preco;
             desconto = _desconto;
             codigoBarras = _codigoBarras;
+            nfEntrada = _nfEntrada;
         }
     }
 }

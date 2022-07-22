@@ -842,18 +842,19 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Atualizar Quantidade Estoque Depois da Venda
 
-        public void AtualizarQuantidadeEstoquePosVenda(decimal _quantidade, int _codigoBarras)
+        public void AtualizarQuantidadeEstoquePosVenda(decimal _quantidade, int _codigoBarras, int _nfEntrada)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "update tb_EstoqueProduto set ep_quantidade = (ep_quantidade - @quantidade ) " +
-                        "where ep_codigo_barras = @codigoBarras";
+                        "where ep_codigo_barras = @codigoBarras and ep_nf_entrada = @nfEntrada";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@quantidade", _quantidade);
                     adapter.SelectCommand.Parameters.AddWithValue("@codigoBarras", _codigoBarras);
+                    adapter.SelectCommand.Parameters.AddWithValue("@nfEntrada", _nfEntrada);
 
                     adapter.SelectCommand.ExecuteNonQuery();
                 }

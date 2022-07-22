@@ -86,14 +86,6 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties51 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties52 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.gdvPDV = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VlrUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Desconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigoBarras = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlDinheiro = new Bunifu.UI.WinForms.BunifuPanel();
             this.lblTituloValorTotal = new System.Windows.Forms.Label();
             this.lblValorTotal = new System.Windows.Forms.Label();
@@ -185,6 +177,16 @@
             this.lblStatusVenda = new System.Windows.Forms.Label();
             this.lblTrocaVendedor = new System.Windows.Forms.Label();
             this.lblMotivoTroca = new System.Windows.Forms.Label();
+            this.lblNFEntrada = new System.Windows.Forms.Label();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VlrUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Desconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoBarras = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nfEntrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPDV)).BeginInit();
             this.pnlDinheiro.SuspendLayout();
             this.pnlFundoCliente.SuspendLayout();
@@ -241,7 +243,8 @@
             this.Total,
             this.Desconto,
             this.codigoBarras,
-            this.unidade});
+            this.unidade,
+            this.nfEntrada});
             this.gdvPDV.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.gdvPDV.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.gdvPDV.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -287,64 +290,6 @@
             this.gdvPDV.TabIndex = 2;
             this.gdvPDV.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             // 
-            // Codigo
-            // 
-            this.Codigo.FillWeight = 80.58376F;
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
-            // Descricao
-            // 
-            this.Descricao.FillWeight = 177.665F;
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
-            this.Descricao.ReadOnly = true;
-            // 
-            // Qtd
-            // 
-            this.Qtd.FillWeight = 80.58376F;
-            this.Qtd.HeaderText = "Qtd";
-            this.Qtd.Name = "Qtd";
-            this.Qtd.ReadOnly = true;
-            // 
-            // VlrUnit
-            // 
-            this.VlrUnit.DataPropertyName = "VlrUnit";
-            this.VlrUnit.FillWeight = 80.58376F;
-            this.VlrUnit.HeaderText = "Vlr Unit";
-            this.VlrUnit.Name = "VlrUnit";
-            this.VlrUnit.ReadOnly = true;
-            // 
-            // Total
-            // 
-            this.Total.DataPropertyName = "Total";
-            this.Total.FillWeight = 80.58376F;
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
-            // Desconto
-            // 
-            this.Desconto.HeaderText = "Desconto";
-            this.Desconto.Name = "Desconto";
-            this.Desconto.ReadOnly = true;
-            this.Desconto.Visible = false;
-            // 
-            // codigoBarras
-            // 
-            this.codigoBarras.HeaderText = "codigoBarras";
-            this.codigoBarras.Name = "codigoBarras";
-            this.codigoBarras.ReadOnly = true;
-            this.codigoBarras.Visible = false;
-            // 
-            // unidade
-            // 
-            this.unidade.HeaderText = "unidade";
-            this.unidade.Name = "unidade";
-            this.unidade.ReadOnly = true;
-            this.unidade.Visible = false;
-            // 
             // pnlDinheiro
             // 
             this.pnlDinheiro.BackgroundColor = System.Drawing.Color.DodgerBlue;
@@ -361,6 +306,7 @@
             this.pnlDinheiro.Size = new System.Drawing.Size(420, 80);
             this.pnlDinheiro.TabIndex = 181;
             this.pnlDinheiro.Visible = false;
+            this.pnlDinheiro.Click += new System.EventHandler(this.pnlDinheiro_Click);
             // 
             // lblTituloValorTotal
             // 
@@ -1456,7 +1402,6 @@
             this.txtCodigoDeBarras.WordWrap = true;
             this.txtCodigoDeBarras.TextChange += new System.EventHandler(this.txtCodigoDeBarras_TextChange);
             this.txtCodigoDeBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoDeBarras_KeyPress);
-            //this.txtCodigoDeBarras.Enter += new System.EventHandler(this.txtCodigoDeBarras_Enter);
             // 
             // label7
             // 
@@ -2443,11 +2388,86 @@
             this.lblMotivoTroca.Text = "-";
             this.lblMotivoTroca.Visible = false;
             // 
+            // lblNFEntrada
+            // 
+            this.lblNFEntrada.AutoSize = true;
+            this.lblNFEntrada.Location = new System.Drawing.Point(414, 192);
+            this.lblNFEntrada.Name = "lblNFEntrada";
+            this.lblNFEntrada.Size = new System.Drawing.Size(10, 13);
+            this.lblNFEntrada.TabIndex = 201;
+            this.lblNFEntrada.Text = "-";
+            this.lblNFEntrada.Visible = false;
+            // 
+            // Codigo
+            // 
+            this.Codigo.FillWeight = 80.58376F;
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // Descricao
+            // 
+            this.Descricao.FillWeight = 177.665F;
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
+            this.Descricao.ReadOnly = true;
+            // 
+            // Qtd
+            // 
+            this.Qtd.FillWeight = 80.58376F;
+            this.Qtd.HeaderText = "Qtd";
+            this.Qtd.Name = "Qtd";
+            this.Qtd.ReadOnly = true;
+            // 
+            // VlrUnit
+            // 
+            this.VlrUnit.DataPropertyName = "VlrUnit";
+            this.VlrUnit.FillWeight = 80.58376F;
+            this.VlrUnit.HeaderText = "Vlr Unit";
+            this.VlrUnit.Name = "VlrUnit";
+            this.VlrUnit.ReadOnly = true;
+            // 
+            // Total
+            // 
+            this.Total.DataPropertyName = "Total";
+            this.Total.FillWeight = 80.58376F;
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            // 
+            // Desconto
+            // 
+            this.Desconto.HeaderText = "Desconto";
+            this.Desconto.Name = "Desconto";
+            this.Desconto.ReadOnly = true;
+            this.Desconto.Visible = false;
+            // 
+            // codigoBarras
+            // 
+            this.codigoBarras.HeaderText = "codigoBarras";
+            this.codigoBarras.Name = "codigoBarras";
+            this.codigoBarras.ReadOnly = true;
+            this.codigoBarras.Visible = false;
+            // 
+            // unidade
+            // 
+            this.unidade.HeaderText = "unidade";
+            this.unidade.Name = "unidade";
+            this.unidade.ReadOnly = true;
+            this.unidade.Visible = false;
+            // 
+            // nfEntrada
+            // 
+            this.nfEntrada.HeaderText = "nfEntrada";
+            this.nfEntrada.Name = "nfEntrada";
+            this.nfEntrada.ReadOnly = true;
+            // 
             // Forms_PDV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1036, 770);
+            this.Controls.Add(this.lblNFEntrada);
             this.Controls.Add(this.pnlDinheiro);
             this.Controls.Add(this.lblMotivoTroca);
             this.Controls.Add(this.lblTrocaVendedor);
@@ -2630,6 +2650,10 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label25;
         private Bunifu.UI.WinForms.BunifuTextBox txtUnidade;
+        private System.Windows.Forms.Label lblStatusVenda;
+        private System.Windows.Forms.Label lblTrocaVendedor;
+        private System.Windows.Forms.Label lblMotivoTroca;
+        private System.Windows.Forms.Label lblNFEntrada;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qtd;
@@ -2638,8 +2662,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Desconto;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoBarras;
         private System.Windows.Forms.DataGridViewTextBoxColumn unidade;
-        private System.Windows.Forms.Label lblStatusVenda;
-        private System.Windows.Forms.Label lblTrocaVendedor;
-        private System.Windows.Forms.Label lblMotivoTroca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nfEntrada;
     }
 }

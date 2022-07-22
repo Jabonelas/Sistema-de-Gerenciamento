@@ -97,7 +97,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             AtalhoCancelarPagamento(e);
 
-            PreencherListaDadosProduto();
+            //PreencherListaDadosProduto();
         }
 
         private void AtalhoFecharTela(KeyEventArgs e)
@@ -124,6 +124,8 @@ namespace Sistema_de_Gerenciamento.Forms
                 if (lblFachada.Text == "CAIXA ABERTO" || lblDescricaoItem.Text == "Nº NOTA FISCAL:")
                 {
                     FormatandoParaNovaVenda();
+
+                    PreencherListaDadosProduto();
 
                     return;
                 }
@@ -302,7 +304,7 @@ namespace Sistema_de_Gerenciamento.Forms
                                     Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", ""))) / 100).ToString();
 
                                 lblValorPagoCadaItem.Text = (Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", "")) -
-                                    Convert.ToDecimal(lblValorDescontoCadaItem.Text)).ToString();
+                                    Convert.ToDecimal(lblValorDescontoCadaItem.Text)).ToString("N2");
                             }
                             //Pagamento Com Juros - Preenchimento dos valores de desconto, juros e valor pago de cada item
                             else
@@ -313,13 +315,11 @@ namespace Sistema_de_Gerenciamento.Forms
                                    Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", ""))) / 100).ToString();
 
                                 lblValorPagoCadaItem.Text = (Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", "")) +
-                                    Convert.ToDecimal(lblJurosCadaItem.Text)).ToString();
+                                    Convert.ToDecimal(lblJurosCadaItem.Text)).ToString("N2");
                             }
 
                             try
                             {
-                                PreencherListaDadosProduto();
-
                                 produto = listaDadosProduto.Find(prod => prod.codigoBarras.ToString().StartsWith(gdvPDV.Rows[i].Cells[6].Value.ToString()));
 
                                 if (produto.quantidade >= Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value))
@@ -346,7 +346,8 @@ namespace Sistema_de_Gerenciamento.Forms
                                             lblTrocaVendedor.Text,
                                             lblMotivoTroca.Text);
 
-                                    Atualizar.AtualizarQuantidadeEstoquePosVenda(Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value), Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value));
+                                    Atualizar.AtualizarQuantidadeEstoquePosVenda(Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value),
+                                        Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value), Convert.ToInt32(gdvPDV.Rows[i].Cells[8].Value));
 
                                     pnlVendaFinalizada.Visible = true;
                                 }
@@ -521,7 +522,8 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             var rows = new List<string[]>();
             string[] row1 = new string[] { txtCodigo.Text, txtDescricao.Text, txtInserirQuant.Text,
-                lblValorUnitario.Text, lblTotaldoItem.Text,txtDesconto.Text,txtCodigoDeBarras.Text,txtUnidade.Text};
+                lblValorUnitario.Text, lblTotaldoItem.Text,txtDesconto.Text,txtCodigoDeBarras.Text,
+                txtUnidade.Text, lblNFEntrada.Text};
             rows.Add(row1);
 
             foreach (string[] item in rows)
@@ -540,35 +542,27 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     if (isCadastroExiste == true)
                     {
-                        produto = listaDadosProduto.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodigoDeBarras.Text));
+                        DadosProduto produto = null;
 
-                        if (produto.quantidade >= Convert.ToDecimal(txtInserirQuant.Text))
+                        try
                         {
-                            txtCodigo.Text = produto.codigoProduto.ToString();
-                            txtDescricao.Text = produto.descricaoProduto;
-                            lblDescricaoItem.Text = produto.descricaoProduto;
-                            txtCodigoProduto.Text = produto.codigoProduto.ToString();
-                            lblUnidade.Text = produto.unidade;
-                            lblValorUnitario.Text = string.Format("{0:C}", (produto.preco - (produto.desconto * produto.preco / 100)));
-                            lblTotaldoItem.Text = string.Format("{0:C}", Convert.ToDecimal(txtInserirQuant.Text) * (produto.preco - (produto.desconto * produto.preco / 100)));
-                            txtUnidade.Text = produto.unidade;
-
-                            string desconto = ((produto.desconto / 100) > 0) ? string.Format("{0:P}", produto.desconto / 100) : "Sem Desconto";
-
-                            txtDesconto.Text = desconto;
-
-                            verificarQuantidade = produto.quantidade;
-
-                            txtInserirQuant.Focus();
-
-                            return true;
+                            produto = listaDadosProduto.First(prod => prod.codigoBarras == Convert.ToInt32(txtCodigoDeBarras.Text) &&
+                            prod.quantidade >= Convert.ToDecimal(txtInserirQuant.Text));
                         }
-                        else
+                        catch (Exception)
                         {
-                            MessageBox.Show($"Saldo Indisponível! \n\n Saldo Disponivel {produto.quantidade} {produto.unidade} ", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+                        if (produto == null)
+                        {
+                            MessageBox.Show($"Saldo Insuficiênte!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                             return false;
                         }
+
+                        PreencherTextBoxDadosProduto(produto);
+
+                        return true;
                     }
                     else if (isCadastroExiste == false)
                     {
@@ -585,6 +579,43 @@ namespace Sistema_de_Gerenciamento.Forms
 
                 return false;
             }
+        }
+
+        private void PreencherTextBoxDadosProduto(DadosProduto _dadosProduto)
+        {
+            txtCodigo.Text = _dadosProduto.codigoProduto.ToString();
+            txtDescricao.Text = _dadosProduto.descricaoProduto;
+            lblDescricaoItem.Text = _dadosProduto.descricaoProduto;
+            txtCodigoProduto.Text = _dadosProduto.codigoProduto.ToString();
+            lblUnidade.Text = _dadosProduto.unidade;
+            lblValorUnitario.Text = string.Format("{0:C}", (_dadosProduto.preco - (_dadosProduto.desconto * _dadosProduto.preco / 100)));
+            lblTotaldoItem.Text = string.Format("{0:C}", Convert.ToDecimal(txtInserirQuant.Text) * (_dadosProduto.preco - (_dadosProduto.desconto * _dadosProduto.preco / 100)));
+            txtUnidade.Text = _dadosProduto.unidade;
+            lblNFEntrada.Text = _dadosProduto.nfEntrada.ToString();
+
+            string desconto = ((_dadosProduto.desconto / 100) > 0) ? string.Format("{0:P}", _dadosProduto.desconto / 100) : "Sem Desconto";
+
+            txtDesconto.Text = desconto;
+
+            verificarQuantidade = _dadosProduto.quantidade;
+
+            txtInserirQuant.Focus();
+
+            // testando1
+
+            //decimal quantidadeInserida = Convert.ToDecimal(txtInserirQuant.Text);
+
+            //listaDadosProduto.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodigoDeBarras.Text)).quantidade -= quantidadeInserida;
+
+            _dadosProduto.quantidade -= Convert.ToDecimal(txtInserirQuant.Text);
+
+            //break;
+
+            //return true;
+
+            //MessageBox.Show($"Saldo Indisponível! \n\n Saldo Disponivel {produto.quantidade} {produto.unidade} ", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            //return false;
         }
 
         private void txtCPF_Enter(object sender, EventArgs e)
@@ -984,6 +1015,10 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 cmbParcelas.Focus();
             }
+        }
+
+        private void pnlDinheiro_Click(object sender, EventArgs e)
+        {
         }
     }
 }

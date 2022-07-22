@@ -31,6 +31,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private Forms_Venda telaVenda;
 
+        private DadosNotaFiscalSaida dadosNotaFiscalSaida;
+
         private decimal valorBruto = 0;
 
         private int quantidadeItens = 0;
@@ -356,6 +358,8 @@ namespace Sistema_de_Gerenciamento.Forms
                            Convert.ToInt32(cmbParcelas.Text.Replace("x", "")), item.valorJuros,
                            item.valorUnitario - (item.valorUnitario * listaFinanceiro[0].descontoAvista / 100), item.unidade,
                            item.status, item.trocarVendedor, item.motivoTroca);
+
+                        Atualizar.AtualizarQuantidadeEstoquePosVenda(item.quantidade, item.codigoBarras, item.numeroNF);
                     }
                     else if (lblValorJuros.Text == "0,00%")
                     {
@@ -365,6 +369,8 @@ namespace Sistema_de_Gerenciamento.Forms
                             item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text, item.valorDesconto,
                             Convert.ToInt32(cmbParcelas.Text.Replace("x", "")), item.valorJuros, item.valorPago, item.unidade, item.status, item.trocarVendedor,
                             item.motivoTroca);
+
+                        Atualizar.AtualizarQuantidadeEstoquePosVenda(item.quantidade, item.codigoBarras, item.numeroNF);
                     }
                     else if (lblValorJuros.Text != "0,00%")
                     {
@@ -376,6 +382,8 @@ namespace Sistema_de_Gerenciamento.Forms
                         (item.valorUnitario * listaFinanceiro[0].jurosCredito / 100),
                         item.valorUnitario + (item.valorUnitario * listaFinanceiro[0].jurosCredito / 100), item.unidade, item.status,
                         item.trocarVendedor, item.motivoTroca);
+
+                        Atualizar.AtualizarQuantidadeEstoquePosVenda(item.quantidade, item.codigoBarras, item.numeroNF);
                     }
                 }
             }

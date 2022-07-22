@@ -619,7 +619,8 @@ namespace Sistema_de_Gerenciamento
 
         public void NotaFiscalSaida(string _cpfCpnjCliente, int _numeroNF, int _codigoProduto, string _descricao,
     decimal _quantidade, decimal _valorUnitario, DateTime _emissao, int _codigoBarras, string _vendedor,
-    DateTime _garantia, string _nomeCliente, string _tipoPagamento, decimal _valorDesconto, int _quantidadeParcelas, decimal _valorJuros, decimal _valorPago, string _unidade,
+    DateTime _garantia, string _nomeCliente, string _tipoPagamento, decimal _valorDesconto, int _quantidadeParcelas,
+    decimal _valorJuros, decimal _valorPago, string _unidade,
      string _status, string _trocaVendedor, string _motivoTroca)
         {
             try

@@ -31,7 +31,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         //private DadosNotaFiscalSaida DadosNotaFiscalSaida;
 
-        private DadosProduto produto;
+        private DadosProduto produto = null;
 
         private decimal valorBruto = 0;
 
@@ -96,7 +96,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             for (int i = 0; i < gdvVenda.Rows.Count; i++)
             {
-                listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(0, 0, lblCpfCnpjCliente.Text, cmbCliente.Text,
+                listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(0, Convert.ToInt32(lblNFEntrada.Text), lblCpfCnpjCliente.Text, cmbCliente.Text,
                     Convert.ToInt32(gdvVenda.Rows[i].Cells[0].Value), gdvVenda.Rows[i].Cells[1].Value.ToString(),
                     DateTime.Today, Convert.ToInt32(gdvVenda.Rows[i].Cells[7].Value), Global.NomeDeUsuario,
                     DateTime.Today.AddDays(30), Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", "")),
@@ -119,6 +119,28 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     if (isCadastroExiste == true)
                     {
+                        produto = null;
+
+                        try
+                        {
+                            produto = listaProduto.First(prod => prod.codigoBarras == Convert.ToInt32(txtCodBarras.Text) &&
+                            prod.quantidade >= Convert.ToDecimal(txtQuantidade.Text));
+                        }
+                        catch (Exception ex)
+                        {
+                        }
+
+                        lblNFEntrada.Text = produto.nfEntrada.ToString();
+
+                        if (produto == null)
+                        {
+                            MessageBox.Show($"Saldo Insuficiênte!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                            return;
+                        }
+
+                        produto.quantidade -= Convert.ToDecimal(txtQuantidade.Text);
+
                         PreenchendoGridView();
 
                         ValorTotal();
@@ -207,20 +229,29 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     if (isCadastroExiste == true)
                     {
-                        produto = listaProduto.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodBarras.Text));
+                        produto = listaProduto.First(prod => prod.codigoBarras.ToString().StartsWith(txtCodBarras.Text));
+
+                        //DadosProduto produto = null;
+
+                        //try
+                        //{
+                        //    produto = listaProduto.Find(prod => prod.codigoProduto == Convert.ToInt32(txtCodBarras.Text) &&
+                        //    produto.quantidade >= Convert.ToDecimal(txtQuantidade.Text));
+                        //}
+                        //catch (Exception)
+                        //{
+                        //}
+
+                        //if (produto == null)
+                        //{
+                        //    MessageBox.Show($"Saldo Insuficiênte!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        //    return;
+                        //}
+
                         if (produto.quantidade > 0)
                         {
-                            cmbProduto.Text = produto.descricaoProduto;
-                            txtCodProduto.Text = produto.codigoProduto.ToString();
-                            txtQuantidade.Text = "1";
-                            //txtQuantidade.Text = produto.quantidade.ToString();
-                            txtUnidade.Text = produto.unidade;
-                            txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco);
-                            txtDescontoPorItem.Text = string.Format("{0:P}", (produto.desconto) / 100);
-                            txtPrecoComDesconto.Text = string.Format("{0:C}", ((produto.preco - (produto.preco * produto.desconto) / 100)));
-
-                            memoriaQuantidade = produto.quantidade;
-
+                            PreencherTextBoxDadosProduto(produto);
                             //txtCodBarras.Focus();
                         }
                         else
@@ -238,6 +269,23 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 Erro.ErroAoBuscarEstoqueProduto(ex);
             }
+        }
+
+        private void PreencherTextBoxDadosProduto(DadosProduto produto)
+        {
+            cmbProduto.Text = produto.descricaoProduto;
+            txtCodProduto.Text = produto.codigoProduto.ToString();
+            txtQuantidade.Text = "1";
+            //txtQuantidade.Text = produto.quantidade.ToString();
+            txtUnidade.Text = produto.unidade;
+            txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco);
+            txtDescontoPorItem.Text = string.Format("{0:P}", (produto.desconto) / 100);
+            txtPrecoComDesconto.Text = string.Format("{0:C}", ((produto.preco - (produto.preco * produto.desconto) / 100)));
+            lblNFEntrada.Text = produto.nfEntrada.ToString();
+
+            memoriaQuantidade = produto.quantidade;
+
+            //produto.quantidade -= Convert.ToDecimal(txtQuantidade.Text);
         }
 
         private void btnRemoverItem_Click(object sender, EventArgs e)
@@ -761,43 +809,62 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtQuantidade_TextChange(object sender, EventArgs e)
         {
-            try
+            if (txtQuantidade.Text != string.Empty)
             {
-                if (Convert.ToDecimal(txtQuantidade.Text) > memoriaQuantidade && cont == 0)
+                try
                 {
-                    MessageBox.Show("Quantidade Solicitada Maior Que Quantidade Disponivel", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    produto = listaProduto.First(prod => prod.codigoBarras == Convert.ToInt32(txtCodBarras.Text) &&
+                    produto.quantidade >= Convert.ToDecimal(txtQuantidade.Text));
+                }
+                catch (Exception)
+                {
+                }
 
-                    cont++;
-                }
-                else
+                if (produto == null)
                 {
-                    cont = 0;
+                    MessageBox.Show($"Saldo Insuficiênte!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    return;
                 }
             }
-            catch (Exception)
-            {
-            }
+
+            //try
+            //{
+            //    if (Convert.ToDecimal(txtQuantidade.Text) > memoriaQuantidade && cont == 0)
+            //    {
+            //        MessageBox.Show("Quantidade Solicitada Maior Que Quantidade Disponivel!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            //        cont++;
+            //    }
+            //    else
+            //    {
+            //        cont = 0;
+            //    }
+            //}
+            //catch (Exception)
+            //{
+            //}
         }
 
         private void txtQuantidade_Leave(object sender, EventArgs e)
         {
-            try
-            {
-                if (Convert.ToDecimal(txtQuantidade.Text) > memoriaQuantidade && cont == 0)
-                {
-                    MessageBox.Show("Quantidade Solicitada Maior Que Quantidade Disponivel", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //try
+            //{
+            //    if (Convert.ToDecimal(txtQuantidade.Text) > memoriaQuantidade && cont == 0)
+            //    {
+            //        MessageBox.Show("Quantidade Solicitada Maior Que Quantidade Disponivel", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                    cont++;
-                }
-                else
-                {
-                    txtQuantidade.Focus();
-                    cont = 0;
-                }
-            }
-            catch (Exception)
-            {
-            }
+            //        cont++;
+            //    }
+            //    else
+            //    {
+            //        txtQuantidade.Focus();
+            //        cont = 0;
+            //    }
+            //}
+            //catch (Exception)
+            //{
+            //}
         }
 
         private void cmbProduto_Leave(object sender, EventArgs e)

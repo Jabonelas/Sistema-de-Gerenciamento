@@ -1077,8 +1077,9 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select ep_codigo_produto,ep_descricao,ep_quantidade,ep_unidade,ep_valor_unitario,ep_desconto_por_item,ep_codigo_barras " +
-                        "from tb_EstoqueProduto";
+                    string query = "select ep_codigo_produto,ep_descricao,ep_quantidade,ep_unidade," +
+                        "ep_valor_unitario,ep_desconto_por_item,ep_codigo_barras,ep_nf_entrada  " +
+                        "from tb_EstoqueProduto where ep_quantidade >= 0";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -1087,7 +1088,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     while (dr.Read())
                     {
                         listaProduto.Add(new DadosProduto(dr.GetInt32(0), dr.GetString(1),
-                            dr.GetDecimal(2), dr.GetString(3), dr.GetDecimal(4), dr.GetDecimal(5), dr.GetInt32(6)));
+                            dr.GetDecimal(2), dr.GetString(3), dr.GetDecimal(4), dr.GetDecimal(5),
+                            dr.GetInt32(6), dr.GetInt32(7)));
                     }
                 }
             }
