@@ -137,7 +137,9 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 try
                 {
-                    dadosNotaFiscalSaidaParcial = listaDadosNotaFiscalSaidaParcial.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
+                    //dadosNotaFiscalSaidaParcial = listaDadosNotaFiscalSaidaParcial.Find(prod => prod.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
+
+                    dadosNotaFiscalSaidaParcial = listaDadosNotaFiscalSaidaParcial.First(prod => prod.codigoBarras == Convert.ToInt32(txtCodBarrasDevolucao.Text) && prod.quantidade > 0);
 
                     if (dadosNotaFiscalSaidaParcial != null && cont == 0)
                     {
@@ -486,7 +488,10 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 DadosNotaFiscalSaida atualizarDados;
 
-                atualizarDados = listaDadosNotaFiscalSaidaCompleta.First(x => x.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
+                //atualizarDados = listaDadosNotaFiscalSaidaCompleta.First(x => x.codigoBarras.ToString().StartsWith(txtCodBarrasDevolucao.Text));
+
+                atualizarDados = listaDadosNotaFiscalSaidaCompleta.First(prod => prod.codigoBarras == Convert.ToInt32(txtCodBarrasDevolucao.Text) &&
+                prod.quantidade > 0);
 
                 if (memoriaQuantidade == Convert.ToDecimal(txtQuantidadeDevolucao.Text))
                 {
@@ -551,7 +556,7 @@ namespace Sistema_de_Gerenciamento.Forms
             _atualizarDados.unidade, "",
             0, 0, 0,
             _preco, _status, Global.NomeDeUsuario,
-            "-", true));
+            "Motivo Troca", true, _atualizarDados.nfEntrada));
         }
     }
 }

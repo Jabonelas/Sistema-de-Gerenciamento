@@ -101,7 +101,8 @@ namespace Sistema_de_Gerenciamento.Forms
                     DateTime.Today, Convert.ToInt32(gdvVenda.Rows[i].Cells[7].Value), Global.NomeDeUsuario,
                     DateTime.Today.AddDays(30), Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", "")),
                     Convert.ToDecimal(gdvVenda.Rows[i].Cells[2].Value), gdvVenda.Rows[i].Cells[3].Value.ToString(), "-", 0, 0, 0,
-                     Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", "")), "-", "-", "-", false));
+                     Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", "")), "-", "-", "-", false,
+                     Convert.ToInt32(lblNFEntrada.Text)));
             }
         }
 

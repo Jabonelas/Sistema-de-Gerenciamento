@@ -868,7 +868,7 @@ namespace Sistema_de_Gerenciamento.Classes
         #endregion Atualizar Quantidade Estoque Depois da Venda
 
         public void AtualizarQuantidadePosTrocaNotaFiscalSaida(decimal _quantidade, decimal _valorPago, int _numeroNF,
-            int _codigoBarras, string _status, string _trocaVendedor, string _motivoTroca, int _id)
+            int _codigoBarras, string _status, string _trocaVendedor, string _motivoTroca, int _id, int _nfEntrada)
         {
             try
             {
@@ -877,7 +877,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     string query = "update tb_NotaFiscalSaida set " +
                         "ns_quantidade = @quantidade , ns_valor_pago = @valorPago, ns_status = @status , " +
                         "ns_troca_vendedor = @trocaVendedor, ns_motivo_troca = @motivoTroca " +
-                        "where ns_numero_nf = @numeroNF and ns_codigo_barras = @codigoBarras and ns_id = @id";
+                        "where ns_numero_nf = @numeroNF and ns_codigo_barras = @codigoBarras and ns_id = @id " +
+                        "and ns_nf_entrada = @nfEntrada";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -889,6 +890,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.Add("@trocaVendedor", _trocaVendedor);
                     adapter.SelectCommand.Parameters.Add("@motivoTroca", _motivoTroca);
                     adapter.SelectCommand.Parameters.Add("@id", _id);
+                    adapter.SelectCommand.Parameters.Add("@nfEntrada", _nfEntrada);
 
                     adapter.SelectCommand.ExecuteNonQuery();
                 }
@@ -899,18 +901,19 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
-        public void AtualizarQuantidadeEstoquePosDevolucao(decimal _quantidade, int _codigoBarras)
+        public void AtualizarQuantidadeEstoquePosDevolucao(decimal _quantidade, int _codigoBarras, int _nfEntrada)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "update tb_EstoqueProduto set ep_quantidade = (ep_quantidade + @quantidade ) " +
-                        "where ep_codigo_barras = @codigoBarras";
+                        "where ep_codigo_barras = @codigoBarras and ep_nf_entrada = @nfEntrada";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@quantidade", _quantidade);
                     adapter.SelectCommand.Parameters.AddWithValue("@codigoBarras", _codigoBarras);
+                    adapter.SelectCommand.Parameters.AddWithValue("@nfEntrada", _nfEntrada);
 
                     adapter.SelectCommand.ExecuteNonQuery();
                 }
