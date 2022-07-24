@@ -52,6 +52,8 @@ namespace Sistema_de_Gerenciamento.Forms
             CarregarDadosBanco();
 
             layoutTelaPagamento();
+
+            cmbCliente.Text = "CLIENTE";
         }
 
         private void CarregarDadosBanco()
@@ -59,6 +61,8 @@ namespace Sistema_de_Gerenciamento.Forms
             listaProduto = Buscar.BuscarListaProdutos();
 
             listaFinanceiro = Buscar.BuscarListaFinanceiro();
+
+            txtNumeroNF.Text = Buscar.BuscarNumeroNotaFiscalSaida();
 
             //listaDadosFinanceiro.ForEach(finac => financeiro = finac);
         }
@@ -96,12 +100,13 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             for (int i = 0; i < gdvVenda.Rows.Count; i++)
             {
-                listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(0, Convert.ToInt32(lblNFEntrada.Text), lblCpfCnpjCliente.Text, cmbCliente.Text,
+                listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(0, Convert.ToInt32(lblNFEntrada.Text), txtCpfCnpjCliente.Text, cmbCliente.Text,
                     Convert.ToInt32(gdvVenda.Rows[i].Cells[0].Value), gdvVenda.Rows[i].Cells[1].Value.ToString(),
                     DateTime.Today, Convert.ToInt32(gdvVenda.Rows[i].Cells[7].Value), Global.NomeDeUsuario,
                     DateTime.Today.AddDays(30), Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", "")),
                     Convert.ToDecimal(gdvVenda.Rows[i].Cells[2].Value), gdvVenda.Rows[i].Cells[3].Value.ToString(), "-", 0, 0, 0,
-                     Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", "")), "-", "-", "-", false,
+                     Convert.ToDecimal(gdvVenda.Rows[i].Cells[6].Value.ToString().Replace("R$ ", "")), "Status Venda",
+                     "Troca Vendedor", "Motivo Troca", false,
                      Convert.ToInt32(lblNFEntrada.Text)));
             }
         }
@@ -110,7 +115,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             try
             {
-                txtQuantidade.ReadOnly = true;
+                //txtQuantidade.ReadOnly = true;
 
                 if (txtCodBarras.Text != string.Empty && cmbProduto.Text != string.Empty && chbVenda.Checked == true)
                 {
@@ -131,14 +136,14 @@ namespace Sistema_de_Gerenciamento.Forms
                         {
                         }
 
-                        lblNFEntrada.Text = produto.nfEntrada.ToString();
-
                         if (produto == null)
                         {
-                            MessageBox.Show($"Saldo Insuficiênte!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show($"Quantidade Solicitada Maior Que A Quantidade Disponivel!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                             return;
                         }
+
+                        lblNFEntrada.Text = produto.nfEntrada.ToString();
 
                         produto.quantidade -= Convert.ToDecimal(txtQuantidade.Text);
 
@@ -206,17 +211,19 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnGerarBoleto_Click(object sender, EventArgs e)
         {
-
-            PreencherListaNotaFiscalSaida();
-
-            if (Buscar.SaldoDisponivelCliente(lblCpfCnpjCliente.Text) >= Convert.ToDecimal(lblValorTotal.Text.Replace("R$", "")))
+            if (gdvVenda.Rows.Count > 0)
             {
-                Forms_GerarCarne gerarBoleto = new Forms_GerarCarne(this);
-                gerarBoleto.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Cliente Sem Saldo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                PreencherListaNotaFiscalSaida();
+
+                if (Buscar.SaldoDisponivelCliente(txtCpfCnpjCliente.Text) >= Convert.ToDecimal(lblValorTotal.Text.Replace("R$", "")))
+                {
+                    Forms_GerarCarne gerarBoleto = new Forms_GerarCarne(this);
+                    gerarBoleto.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Cliente Sem Saldo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 
@@ -505,8 +512,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 cmbCliente.Visible = true;
                 lblCodCliente.Visible = true;
                 txtCodigoCliente.Visible = true;
-                lblVendedor.Visible = true;
-                txtVendedor.Visible = true;
                 btnGerarBoleto.Visible = true;
                 btnImprimir.Visible = false;
                 btnConfirmarVenda.Visible = true;
@@ -541,6 +546,9 @@ namespace Sistema_de_Gerenciamento.Forms
                 gdvVenda.Size = new Size(923, 328);
                 this.Size = new Size(967, 686);
 
+                lblCpfCnpjCliente.Visible = true;
+                txtCpfCnpjCliente.Visible = true;
+
                 listaDadosNotaFiscalSaidaCompleta.Clear();
                 valorBruto = 0;
                 memoriaQuantidade = 1;
@@ -571,8 +579,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 cmbCliente.Visible = false;
                 lblCodCliente.Visible = false;
                 txtCodigoCliente.Visible = false;
-                lblVendedor.Visible = false;
-                txtVendedor.Visible = false;
                 btnGerarBoleto.Visible = false;
                 btnImprimir.Visible = true;
                 btnConfirmarVenda.Visible = false;
@@ -606,6 +612,9 @@ namespace Sistema_de_Gerenciamento.Forms
                 lblTotalItens.Location = new Point(598, 445);
                 gdvVenda.Size = new Size(923, 190);
                 this.Size = new Size(967, 727);
+
+                lblCpfCnpjCliente.Visible = false;
+                txtCpfCnpjCliente.Visible = false;
 
                 listaDadosNotaFiscalSaidaCompleta.Clear();
                 valorBruto = 0;
@@ -701,7 +710,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 foreach (DadosCliente variable in listaCliente)
                 {
                     txtCodigoCliente.Text = variable.id.ToString();
-                    lblCpfCnpjCliente.Text = variable.cpfCpnjCliente;
+                    txtCpfCnpjCliente.Text = variable.cpfCpnjCliente;
                 }
             }
             else
@@ -802,77 +811,20 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnConfirmarVenda_Click_1(object sender, EventArgs e)
         {
-            PreencherListaNotaFiscalSaida();
+            if (gdvVenda.Rows.Count > 0)
+            {
+                PreencherListaNotaFiscalSaida();
 
-            quantidadeItens = Convert.ToInt32(lblTotalItens.Text);
+                quantidadeItens = Convert.ToInt32(lblTotalItens.Text);
 
-            Forms_Pagamento pagamento = new Forms_Pagamento(this, "Venda");
-            pagamento.ShowDialog();
+                Forms_Pagamento pagamento = new Forms_Pagamento(this, "Venda");
+                pagamento.ShowDialog();
+            }
         }
 
         private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoFoiNumero(e);
-        }
-
-        private void txtQuantidade_TextChange(object sender, EventArgs e)
-        {
-            if (txtQuantidade.Text != string.Empty)
-            {
-                try
-                {
-                    produto = listaProduto.First(prod => prod.codigoBarras == Convert.ToInt32(txtCodBarras.Text) &&
-                    produto.quantidade >= Convert.ToDecimal(txtQuantidade.Text));
-                }
-                catch (Exception)
-                {
-                }
-
-                if (produto == null)
-                {
-                    MessageBox.Show($"Saldo Insuficiênte!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                    return;
-                }
-            }
-
-            //try
-            //{
-            //    if (Convert.ToDecimal(txtQuantidade.Text) > memoriaQuantidade && cont == 0)
-            //    {
-            //        MessageBox.Show("Quantidade Solicitada Maior Que Quantidade Disponivel!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            //        cont++;
-            //    }
-            //    else
-            //    {
-            //        cont = 0;
-            //    }
-            //}
-            //catch (Exception)
-            //{
-            //}
-        }
-
-        private void txtQuantidade_Leave(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    if (Convert.ToDecimal(txtQuantidade.Text) > memoriaQuantidade && cont == 0)
-            //    {
-            //        MessageBox.Show("Quantidade Solicitada Maior Que Quantidade Disponivel", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            //        cont++;
-            //    }
-            //    else
-            //    {
-            //        txtQuantidade.Focus();
-            //        cont = 0;
-            //    }
-            //}
-            //catch (Exception)
-            //{
-            //}
         }
 
         private void cmbProduto_Leave(object sender, EventArgs e)
@@ -881,6 +833,10 @@ namespace Sistema_de_Gerenciamento.Forms
         }
 
         private void lblValorTotal_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void cmbCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
     }

@@ -136,13 +136,13 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnGerarCarne_Click(object sender, EventArgs e)
         {
-            decimal saldo = Buscar.SaldoDisponivelCliente(forms.lblCpfCnpjCliente.Text);
+            decimal saldo = Buscar.SaldoDisponivelCliente(forms.txtCpfCnpjCliente.Text);
 
             saldo -= Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$", ""));
 
-            Atualizar.AtualizarSaldoCliente(saldo, forms.lblCpfCnpjCliente.Text);
+            Atualizar.AtualizarSaldoCliente(saldo, forms.txtCpfCnpjCliente.Text);
 
-            int NumermoNotaFiscal = Convert.ToInt32(Buscar.BuscarUltimaNotaFiscalSaida());
+            int NumermoNotaFiscal = Convert.ToInt32(Buscar.BuscarNumeroNotaFiscalSaida());
 
             foreach (DadosNotaFiscalSaida item in forms.listaDadosNotaFiscalSaidaCompleta)
             {

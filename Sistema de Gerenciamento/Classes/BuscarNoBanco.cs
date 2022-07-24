@@ -2803,12 +2803,12 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Numero de Nota Fiscal de Saida
 
-        public string BuscarUltimaNotaFiscalSaida()
+        public string BuscarNumeroNotaFiscalSaida()
         {
             using (SqlConnection conexaoSQL = AbrirConexao())
             {
-                string query = "select ns_numero_nf from tb_NotaFiscalSaida " +
-                    "where ns_numero_nf = (select max(ns_numero_nf) from tb_NotaFiscalSaida)";
+                string query = "select max(ns_numero_nf) from tb_NotaFiscalSaida";
+
                 SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
                 SqlDataReader dr = adapter.SelectCommand.ExecuteReader();

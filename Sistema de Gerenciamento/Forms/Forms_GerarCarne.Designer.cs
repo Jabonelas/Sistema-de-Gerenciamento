@@ -727,6 +727,7 @@
             this.txtParcelasQueGeramJuros.TextMarginTop = 0;
             this.txtParcelasQueGeramJuros.TextPlaceholder = "Enter text";
             this.txtParcelasQueGeramJuros.UseSystemPasswordChar = false;
+            this.txtParcelasQueGeramJuros.Visible = false;
             this.txtParcelasQueGeramJuros.WordWrap = true;
             // 
             // label3
@@ -739,6 +740,7 @@
             this.label3.TabIndex = 242;
             this.label3.Text = "Juros pela \r\nquant. parcelas";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Visible = false;
             // 
             // btnFechar
             // 

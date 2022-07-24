@@ -112,12 +112,13 @@
             this.lblNumeroNotaFiscalSaida.BackColor = System.Drawing.Color.Transparent;
             this.lblNumeroNotaFiscalSaida.Font = new System.Drawing.Font("Calibri", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNumeroNotaFiscalSaida.ForeColor = System.Drawing.Color.White;
-            this.lblNumeroNotaFiscalSaida.Location = new System.Drawing.Point(204, 11);
+            this.lblNumeroNotaFiscalSaida.Location = new System.Drawing.Point(233, 11);
             this.lblNumeroNotaFiscalSaida.Name = "lblNumeroNotaFiscalSaida";
             this.lblNumeroNotaFiscalSaida.Size = new System.Drawing.Size(95, 39);
             this.lblNumeroNotaFiscalSaida.TabIndex = 180;
             this.lblNumeroNotaFiscalSaida.Text = "Nº NF";
             this.lblNumeroNotaFiscalSaida.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblNumeroNotaFiscalSaida.Visible = false;
             // 
             // lblDescricaoItem
             // 
@@ -127,9 +128,9 @@
             this.lblDescricaoItem.ForeColor = System.Drawing.Color.White;
             this.lblDescricaoItem.Location = new System.Drawing.Point(7, 11);
             this.lblDescricaoItem.Name = "lblDescricaoItem";
-            this.lblDescricaoItem.Size = new System.Drawing.Size(201, 39);
+            this.lblDescricaoItem.Size = new System.Drawing.Size(192, 39);
             this.lblDescricaoItem.TabIndex = 179;
-            this.lblDescricaoItem.Text = "PAGAMENTO:";
+            this.lblDescricaoItem.Text = "PAGAMENTO";
             this.lblDescricaoItem.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // pnlDesconto

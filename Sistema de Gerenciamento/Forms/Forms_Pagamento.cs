@@ -45,6 +45,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
             telaTroca = _telaTroca;
 
+            lblNumeroNotaFiscalSaida.Visible = true;
+
             PreencherDados(telaTroca.listaDadosNotaFiscalSaidaCompleta, _telaTroca.quantidadeItens,
             Convert.ToDecimal(_telaTroca.lblValorAPagar.Text.Replace("R$ ", "")), _tipoPagamento);
 
@@ -60,6 +62,8 @@ namespace Sistema_de_Gerenciamento.Forms
             InitializeComponent();
 
             tipoPagamento = _tipoPagamento;
+
+            lblNumeroNotaFiscalSaida.Visible = false;
 
             PreencherDados(_telaVenda.listaDadosNotaFiscalSaidaCompleta, _telaVenda.quantidadeItens,
                 Convert.ToDecimal(_telaVenda.lblValorTotal.Text.Replace("R$ ", "")), _tipoPagamento);
@@ -357,7 +361,11 @@ namespace Sistema_de_Gerenciamento.Forms
             //Venda
             else
             {
-                lblNumeroNotaFiscalSaida.Text = Buscar.BuscarUltimaNotaFiscalSaida();
+                lblDescricaoItem.Text = "Nº NOTA FISCAL:";
+
+                lblNumeroNotaFiscalSaida.Visible = true;
+
+                lblNumeroNotaFiscalSaida.Text = Buscar.BuscarNumeroNotaFiscalSaida();
 
                 foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
                 {
@@ -366,7 +374,7 @@ namespace Sistema_de_Gerenciamento.Forms
                         //Pagamento com desconto
                         Salvar.NotaFiscalSaida(item.cpf, Convert.ToInt32(lblNumeroNotaFiscalSaida.Text), item.codigoProduto,
                            item.descricao, item.quantidade, item.valorUnitario - (item.valorUnitario * listaFinanceiro[0].descontoAvista / 100),
-                           item.emissao, item.codigoBarras, item.vendedor, item.validadeTroca, item.nomeCliente,
+                           DateTime.Now, item.codigoBarras, item.vendedor, item.validadeTroca, item.nomeCliente,
                            cmbFormaPagamento.Text, item.valorUnitario * listaFinanceiro[0].descontoAvista / 100,
                            Convert.ToInt32(cmbParcelas.Text.Replace("x", "")), item.valorJuros,
                            item.valorUnitario - (item.valorUnitario * listaFinanceiro[0].descontoAvista / 100), item.unidade,
@@ -378,7 +386,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     {
                         //Pagamento normal
                         Salvar.NotaFiscalSaida(item.cpf, Convert.ToInt32(lblNumeroNotaFiscalSaida.Text), item.codigoProduto,
-                            item.descricao, item.quantidade, item.valorUnitario, item.emissao, item.codigoBarras, item.vendedor,
+                            item.descricao, item.quantidade, item.valorUnitario, DateTime.Now, item.codigoBarras, item.vendedor,
                             item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text, item.valorDesconto,
                             Convert.ToInt32(cmbParcelas.Text.Replace("x", "")), item.valorJuros, item.valorPago, item.unidade, item.status, item.trocarVendedor,
                             item.motivoTroca, item.nfEntrada);
@@ -390,7 +398,7 @@ namespace Sistema_de_Gerenciamento.Forms
                         //Pagamento com Juros
                         Salvar.NotaFiscalSaida(item.cpf, Convert.ToInt32(lblNumeroNotaFiscalSaida.Text), item.codigoProduto,
                         item.descricao, item.quantidade, item.valorUnitario + (item.valorUnitario * listaFinanceiro[0].jurosCredito / 100),
-                        item.emissao, item.codigoBarras, item.vendedor, item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text,
+                        DateTime.Now, item.codigoBarras, item.vendedor, item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text,
                         item.valorDesconto, Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
                         (item.valorUnitario * listaFinanceiro[0].jurosCredito / 100),
                         item.valorUnitario + (item.valorUnitario * listaFinanceiro[0].jurosCredito / 100), item.unidade, item.status,
