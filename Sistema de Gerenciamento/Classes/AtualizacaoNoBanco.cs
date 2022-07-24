@@ -107,6 +107,29 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Atualizar Imagem Cliente
 
+        public void AtualizarSaldoCliente(decimal _saldo, string _cpfCnpj)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_CadastroClientes set cc_saldo = @saldo " +
+                        "where cc_cpf_cnpj = @cpfCnpj";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@saldo", _saldo);
+                    adapter.SelectCommand.Parameters.Add("@cpfCnpj", _cpfCnpj);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarSaldoClienteNoBanco(ex);
+            }
+        }
+
         #endregion Atualizar Cliente
 
         #region Atualizar Fornecedor
@@ -775,7 +798,8 @@ namespace Sistema_de_Gerenciamento.Classes
         #region Atualizar Status Pagamento Despesa e Custo
 
         public void AtualizarPagamento(DateTime _dataPagamento, decimal _descontoTaxas, decimal _jurosMulta,
-            decimal _valorPago, int _codigo, string _quantidadeParcelas, string _statusPagamento, Image _imagem)
+            decimal _valorPago, int _codigo, string _quantidadeParcelas, string _statusPagamento, Image _imagem,
+            DateTime _dataVencimento)
         {
             try
             {
@@ -785,7 +809,8 @@ namespace Sistema_de_Gerenciamento.Classes
                                    "dc_desconto_taxas = @descontoTaxas , dc_juros_multa = @jurosMulta, " +
                                    "dc_valor_pago = @valorPago, dc_estatus_pagamento = @statusPagamento, " +
                                    "dc_imagem_pagamento = @imagem " +
-                                   "where dc_codigo = @codigo and dc_quantidade_parcelas = @quantidadeParcelas";
+                                   "where dc_codigo = @codigo and dc_quantidade_parcelas = @quantidadeParcelas and " +
+                                   "dc_vencimento = @dataVencimento";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -801,6 +826,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@quantidadeParcelas", _quantidadeParcelas);
                     adapter.SelectCommand.Parameters.AddWithValue("@statusPagamento", _statusPagamento);
                     adapter.SelectCommand.Parameters.Add("@imagem", SqlDbType.Image).Value = arr;
+                    adapter.SelectCommand.Parameters.AddWithValue("@dataVencimento", _dataVencimento);
 
                     adapter.SelectCommand.ExecuteReader();
 

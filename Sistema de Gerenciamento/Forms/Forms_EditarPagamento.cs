@@ -117,7 +117,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     Atualizar.AtualizarPagamento(Convert.ToDateTime(txtDataPagamento.Text),
                         Convert.ToDecimal(txtDescontoTaxas.Text.Replace(" %", "")), Convert.ToDecimal(txtJurosMulta.Text.Replace(" %", "")),
                         Convert.ToDecimal(txtValorPago.Text.Replace("R$ ", "")), Convert.ToInt32(txtCodigo.Text), txtQuantParcelas.Text,
-                        lblStatusPagamento.Text, pcbStatusPagamento.Image);
+                        lblStatusPagamento.Text, pcbStatusPagamento.Image, Convert.ToDateTime(txtVencimento.Text));
 
                     lblVerificacaoPagamento.Text = "Pago";
 

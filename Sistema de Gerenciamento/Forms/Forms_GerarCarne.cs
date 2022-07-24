@@ -13,13 +13,17 @@ namespace Sistema_de_Gerenciamento.Forms
 {
     public partial class Forms_GerarCarne : Form
     {
+        private AdicionarNoBanco Salvar = new AdicionarNoBanco();
+
         private BuscarNoBanco Buscar = new BuscarNoBanco();
+
+        private AtualizacaoNoBanco Atualizar = new AtualizacaoNoBanco();
 
         private MensagensErro Erro = new MensagensErro();
 
-        public Forms_Venda forms;
-
         private List<DadosFinanceiro> listaFinanceiro = new List<DadosFinanceiro>();
+
+        public Forms_Venda forms;
 
         public Forms_GerarCarne(Forms_Venda _forms)
         {
@@ -30,6 +34,8 @@ namespace Sistema_de_Gerenciamento.Forms
             DadosDoCarneParaPreenchimentoTextBox();
 
             forms = _forms;
+
+            cmbParcelaCarne.SelectedIndex = 0;
         }
 
         private void DadosDoCarneParaPreenchimentoTextBox()
@@ -125,6 +131,45 @@ namespace Sistema_de_Gerenciamento.Forms
             catch (Exception ex)
             {
                 Erro.ErroAoBuscarJurosGerarCarne(ex);
+            }
+        }
+
+        private void btnGerarCarne_Click(object sender, EventArgs e)
+        {
+            decimal saldo = Buscar.SaldoDisponivelCliente(forms.lblCpfCnpjCliente.Text);
+
+            saldo -= Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$", ""));
+
+            Atualizar.AtualizarSaldoCliente(saldo, forms.lblCpfCnpjCliente.Text);
+
+            int NumermoNotaFiscal = Convert.ToInt32(Buscar.BuscarUltimaNotaFiscalSaida());
+
+            foreach (DadosNotaFiscalSaida item in forms.listaDadosNotaFiscalSaidaCompleta)
+            {
+                if (txtJurosCarne.Text == "0,00%")
+                {
+                    //Pagamento normal
+                    Salvar.NotaFiscalSaida(item.cpf, NumermoNotaFiscal, item.codigoProduto,
+                    item.descricao, item.quantidade, item.valorUnitario, item.emissao, item.codigoBarras, item.vendedor,
+                    item.validadeTroca, item.nomeCliente, "CARNÊ", item.valorDesconto,
+                    Convert.ToInt32(cmbParcelaCarne.Text.Replace("x", "")), item.valorJuros, item.valorPago, item.unidade, item.status, item.trocarVendedor,
+                    item.motivoTroca, item.nfEntrada);
+
+                    Atualizar.AtualizarQuantidadeEstoquePosVenda(item.quantidade, item.codigoBarras, item.numeroNF);
+                }
+                else if (txtJurosCarne.Text != "0,00%")
+                {
+                    //Pagamento com Juros
+                    Salvar.NotaFiscalSaida(item.cpf, NumermoNotaFiscal, item.codigoProduto,
+                    item.descricao, item.quantidade, item.valorUnitario + (item.valorUnitario * listaFinanceiro[0].jurosCredito / 100),
+                    item.emissao, item.codigoBarras, item.vendedor, item.validadeTroca, item.nomeCliente, "CARNÊ",
+                    item.valorDesconto, Convert.ToInt32(cmbParcelaCarne.Text.Replace("x", "")),
+                    Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$", "")) - item.valorUnitario,
+                    Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$", "")), item.unidade, item.status,
+                    item.trocarVendedor, item.motivoTroca, item.nfEntrada);
+
+                    Atualizar.AtualizarQuantidadeEstoquePosVenda(item.quantidade, item.codigoBarras, item.numeroNF);
+                }
             }
         }
     }

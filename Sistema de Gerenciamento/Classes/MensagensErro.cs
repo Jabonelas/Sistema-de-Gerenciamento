@@ -366,6 +366,11 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(ATU-CL02) Erro ao Atualizar Imagem do Cliente \n\nErro: {_e}", "Erro Atualizacao Imagem Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoAtualizarSaldoClienteNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-CL03) Erro ao Atualizar Saldo do Cliente \n\nErro: {_e}", "Erro Atualizacao Saldo Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Cliente
 
         #region Fornecedor
@@ -782,6 +787,11 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-EP02) Erro ao Realizar Busca da Lista de Estoque Produto \n\nErro: {_e}", "Erro Busca Lista Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoBuscarTotalEstoqueProdutoMesmaNFEntradaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EP03) Erro ao Realizar Busca da Quantidade Total no Estoque Com a Mesma Nota Fiscal Entrada \n\nErro: {_e}", "Erro Busca Quantidade Total no Estoque Com a Mesma Nota Fiscal Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Estoque Produto
 
         #region Compras
@@ -796,6 +806,11 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-NE02) Erro ao Realizar Busca de Valor Total da Nota Fiscal Entrada \n\nErro: {_e}", "Erro Busca Valor Total Nota Fiscal Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoBuscarTotalNotaFiscalEntradaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-NE03) Erro ao Realizar Busca da Quantidade Total da Nota Fiscal Entrada \n\nErro: {_e}", "Erro Busca Quantidade Total Nota Fiscal Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Compras
 
         #region Gerar Carne
@@ -803,6 +818,11 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoBuscarListaCarneProdutoNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-GC01) Erro ao Realizar Busca de Dados do Carne \n\nErro: {_e}", "Erro Busca Dados Carne!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarSaldoClienteNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-GC02) Erro ao Realizar Busca de Dados de Cliente para Gerar Carne \n\nErro: {_e}", "Erro Busca Dados de Cliente para Gerar Carne!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Gerar Carne
@@ -897,6 +917,21 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoBuscarDespesaCustoFixaNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-DE18) Erro ao Realizar Busca de Despesa e Custo Fixa \n\nErro: {_e}", "Erro Busca Despesa e Custo Fixa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarDespesaCustoPorCodigoStatusPagamentoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE19) Erro ao Realizar Busca de Despesa e Custo Por Codigo e Status do Pagamento \n\nErro: {_e}", "Erro Busca Despesa e Custo Por Codigo e Status do Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarDespesaCustoPorTituloStatusPagamentoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE20) Erro ao Realizar Busca de Despesa e Custo Por Titulo e Status de Pagamento \n\nErro: {_e}", "Erro Busca Despesa e Custo Por Titulo e Status de Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarDespesaCustoPorDescricaoStatusPagamentoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE21) Erro ao Realizar Busca de Despesa e Custo Por Descricao e Status de Pagamento \n\nErro: {_e}", "Erro Busca Despesa e Custos Por Descricao e Status de Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Pesquisar Despesa

@@ -2190,6 +2190,54 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
+        public bool BuscarDespesaCustoPorCogigoStatusPagamento(int _codigo, BunifuDataGridView _tabela,
+            DateTime _dataInicial, DateTime _dataFinal, string _statusPagamento)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * " +
+                                   "from tb_DespesasCustos " +
+                                   "where dc_codigo = @codigo and dc_emissao >= @dataInicial and dc_vencimento <= @dataFinal " +
+                                   "and dc_estatus_pagamento = @statusPagamento " +
+                                   "order by dc_vencimento asc ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigo", _codigo);
+                    adapter.SelectCommand.Parameters.AddWithValue("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.AddWithValue("@dataFinal", _dataFinal);
+                    adapter.SelectCommand.Parameters.AddWithValue("@statusPagamento", _statusPagamento);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarDespesaCustoPorCodigoStatusPagamentoNoBanco(ex);
+
+                return false;
+            }
+        }
+
         #endregion Buscar Despesa/Custo Por Codigo
 
         public List<DadosDespesaCusto> BuscarListaDespesaCustoFixa()
@@ -2274,7 +2322,8 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Despesa Por Categoria/Tipo/Titulo
 
-        public bool BuscarDespesaCustoPorTitulo(string _titulo, BunifuDataGridView _tabela, DateTime _dataInicial, DateTime _dataFinal)
+        public bool BuscarDespesaCustoPorTitulo(string _titulo, BunifuDataGridView _tabela, DateTime _dataInicial,
+           DateTime _dataFinal)
         {
             try
             {
@@ -2322,12 +2371,114 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
+        public bool BuscarDespesaCustoPorTituloStatusPagamento(string _titulo, BunifuDataGridView _tabela, DateTime _dataInicial,
+            DateTime _dataFinal, string _statusPagamento)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select dc_id,dc_codigo, dc_tipo, dc_fornecedor_titulo, dc_descricao, dc_cnpj, dc_emissao, " +
+                                   "dc_vencimento, dc_frequencia,dc_valor, dc_quantidade_parcelas, dc_valor_parcela, " +
+                                   "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento,dc_data_pagamento, dc_desconto_taxas," +
+                                   "dc_juros_multa, dc_valor_pago " +
+                                   "from tb_DespesasCustos " +
+                                   "where dc_fornecedor_titulo = @titulo and dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                                   "and dc_estatus_pagamento = @statusPagamento " +
+                                   "order by dc_vencimento asc ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@titulo", _titulo);
+                    adapter.SelectCommand.Parameters.AddWithValue("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.AddWithValue("@dataFinal", _dataFinal);
+                    adapter.SelectCommand.Parameters.AddWithValue("@statusPagamento", _statusPagamento);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarDespesaCustoPorTituloStatusPagamentoNoBanco(ex);
+
+                return false;
+            }
+        }
+
         #endregion Buscar Despesa Por Categoria/Tipo/Titulo
 
         #region Buscar Despesa Por Descricao
 
+        public bool BuscarDespesaCustoPorDescricaoStatusPagamento(string _descricao, BunifuDataGridView _tabela,
+           DateTime _dataInicial, DateTime _dataFinal, string _statusPagamento)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select dc_id,dc_codigo, dc_tipo, dc_fornecedor_titulo, dc_descricao, dc_cnpj, dc_emissao, " +
+                                   "dc_vencimento, dc_frequencia,dc_valor, dc_quantidade_parcelas, dc_valor_parcela, " +
+                                   "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento,dc_data_pagamento, dc_desconto_taxas," +
+                                   "dc_juros_multa, dc_valor_pago " +
+                                   "from tb_DespesasCustos " +
+                                   "where dc_descricao like @descricao and dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                                   "and dc_estatus_pagamento = @statusPagamento " +
+                                   "order by dc_vencimento asc ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@descricao", string.Format("%{0}%", _descricao));
+                    adapter.SelectCommand.Parameters.AddWithValue("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.AddWithValue("@dataFinal", _dataFinal);
+                    adapter.SelectCommand.Parameters.AddWithValue("@statusPagamento", _statusPagamento);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarDespesaCustoPorDescricaoStatusPagamentoNoBanco(ex);
+
+                return false;
+            }
+        }
+
         public bool BuscarDespesaCustoPorDescricao(string _descricao, BunifuDataGridView _tabela,
-           DateTime _dataInicial, DateTime _dataFinal)
+       DateTime _dataInicial, DateTime _dataFinal)
         {
             try
             {
@@ -3071,6 +3222,35 @@ namespace Sistema_de_Gerenciamento.Classes
             return listaDadosEstoqueProdutos;
         }
 
+        public decimal QuantidadeTotalNotaEntradaMesmoNumeroNF(int _numeroNF)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(ne_quantidade) from tb_NotaFiscalEntrada " +
+                        "where ne_numero_nf = @numeroNF";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@numeroNF", _numeroNF);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    decimal x = dr.GetDecimal(0);
+
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarTotalNotaFiscalEntradaNoBanco(ex);
+
+                return 0;
+            }
+        }
+
         #endregion Buscar Compra
 
         #region Buscar Cliente Tela PDV
@@ -3286,6 +3466,7 @@ namespace Sistema_de_Gerenciamento.Classes
                         "from tb_CadastroUsuario where cu_usuario = @usuario";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
                     adapter.SelectCommand.Parameters.AddWithValue("@usuario", _usuario);
 
                     SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
@@ -3302,6 +3483,63 @@ namespace Sistema_de_Gerenciamento.Classes
                 Erro.ErroAoBuscarListaPermissoesNotaFiscalSaidaNoBanco(ex);
             }
             return listaPermissoes;
+        }
+
+        public decimal QuantidadeTotalEstoquePrpodutoMesmaNFEntrada(int _numeroNF)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(ep_quantidade) from tb_EstoqueProduto " +
+                        "where ep_nf_entrada = @numeroNF";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@numeroNF", _numeroNF);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    decimal x = dr.GetDecimal(0);
+
+                    return x;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarTotalEstoqueProdutoMesmaNFEntradaNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        public decimal SaldoDisponivelCliente(string _cpfCnpj)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select cc_saldo from tb_CadastroClientes " +
+                        "where cc_cpf_cnpj = @cpfCnpj";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.AddWithValue("@cpfCnpj", _cpfCnpj);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    return dr.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarSaldoClienteNoBanco(ex);
+
+                return 0;
+            }
         }
     }
 }

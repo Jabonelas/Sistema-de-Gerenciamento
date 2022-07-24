@@ -163,5 +163,55 @@ namespace Sistema_de_Gerenciamento
                 lblCancelarPagamento.Text = "false";
             }
         }
+
+        private void chbExcluirItem_MouseLeave_1(object sender, EventArgs e)
+        {
+            pnlExcluirItem.Visible = false;
+        }
+
+        private void chbExcluirItem_MouseEnter_1(object sender, EventArgs e)
+        {
+            pnlExcluirItem.Visible = true;
+        }
+
+        private void chbDevolucaoTroca_MouseEnter(object sender, EventArgs e)
+        {
+            pnlTroca.Visible = true;
+        }
+
+        private void chbDevolucaoTroca_MouseLeave(object sender, EventArgs e)
+        {
+            pnlTroca.Visible = false;
+        }
+
+        private void chbCancelarVenda_MouseEnter(object sender, EventArgs e)
+        {
+            pnlCancelarVenda.Visible = true;
+        }
+
+        private void chbCancelarVenda_MouseLeave(object sender, EventArgs e)
+        {
+            pnlCancelarVenda.Visible = false;
+        }
+
+        private void chbCancelarPagamento_MouseEnter(object sender, EventArgs e)
+        {
+            pnlCancelarPagamento.Visible = true;
+        }
+
+        private void chbCancelarPagamento_MouseLeave(object sender, EventArgs e)
+        {
+            pnlCancelarPagamento.Visible = false;
+        }
+
+        private void chbCancelarVenda_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlCancelarVenda_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

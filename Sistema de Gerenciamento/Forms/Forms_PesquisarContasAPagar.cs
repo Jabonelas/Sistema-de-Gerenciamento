@@ -140,19 +140,42 @@ namespace Sistema_de_Gerenciamento
 
         private void PesquisarDespesaCusto()
         {
-            if (txtCodigoDespesa.Text != string.Empty)
+            if (txtCodigoDespesa.Text != string.Empty && cmbPagamento.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarDespesaCustoPorCogigoStatusPagamento(Convert.ToInt32(txtCodigoDespesa.Text), gdvContarPagar,
+                    dtpDataInicial.Value, dtpDataFinal.Value, cmbPagamento.Text);
+
+                MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
+            }
+            else if (cmbTitulo.Text != string.Empty && cmbPagamento.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarDespesaCustoPorTituloStatusPagamento(cmbTitulo.Text, gdvContarPagar, dtpDataInicial.Value, dtpDataFinal.Value,
+                    cmbPagamento.Text);
+
+                MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
+            }
+            else if (txtDescricao.Text != string.Empty && cmbPagamento.Text != string.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarDespesaCustoPorDescricaoStatusPagamento(txtDescricao.Text, gdvContarPagar, dtpDataInicial.Value, dtpDataFinal.Value,
+                    cmbPagamento.Text);
+
+                MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
+            }
+
+            // depois da nova att
+            else if (txtCodigoDespesa.Text != string.Empty && cmbPagamento.Text == string.Empty)
             {
                 bool isCadastroExiste = Buscar.BuscarDespesaCustoPorCogigo(Convert.ToInt32(txtCodigoDespesa.Text), gdvContarPagar, dtpDataInicial.Value, dtpDataFinal.Value);
 
                 MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
             }
-            else if (cmbTitulo.Text != string.Empty)
+            else if (cmbTitulo.Text != string.Empty && cmbPagamento.Text == string.Empty)
             {
                 bool isCadastroExiste = Buscar.BuscarDespesaCustoPorTitulo(cmbTitulo.Text, gdvContarPagar, dtpDataInicial.Value, dtpDataFinal.Value);
 
                 MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
             }
-            else if (txtDescricao.Text != string.Empty)
+            else if (txtDescricao.Text != string.Empty && cmbPagamento.Text == string.Empty)
             {
                 bool isCadastroExiste = Buscar.BuscarDespesaCustoPorDescricao(txtDescricao.Text, gdvContarPagar, dtpDataInicial.Value, dtpDataFinal.Value);
 

@@ -197,10 +197,10 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (txtNumeroNotaFiscal.Text != string.Empty)
                 {
-                    if (VerificarExistencia.VerificarSeEstoqueFoiConsumido(Convert.ToInt32(txtNumeroNotaFiscal.Text)) !=
-                        Buscar.BuscarQuantidadeDeItensNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)))
+                    if (Buscar.QuantidadeTotalNotaEntradaMesmoNumeroNF(Convert.ToInt32(txtNumeroNotaFiscal.Text)) !=
+                        Buscar.QuantidadeTotalEstoquePrpodutoMesmaNFEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)))
                     {
-                        MessageBox.Show("Nota Fiscal Indisponivel Para Exclusão!", "Informação!", MessageBoxButtons.OK,
+                        MessageBox.Show("Nota Fiscal Indisponivel Para Exclusão! \n\n Saldo Já Movimentado", "Informação!", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);
                     }
                     else if ((listaDadosNotaFiscalEntrada = Buscar.BuscarNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text))) == null)

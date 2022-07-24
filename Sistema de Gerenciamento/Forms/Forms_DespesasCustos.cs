@@ -24,6 +24,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private ExcluirNoBanco Excluir = new ExcluirNoBanco();
 
+        private List<DadosCadastroDespesasCusto> listaDespesaCusto = new List<DadosCadastroDespesasCusto>();
+
         private int cont = 1;
 
         private int dias = 1;
@@ -56,10 +58,10 @@ namespace Sistema_de_Gerenciamento.Forms
 
         #endregion Data Atual DatePicker
 
-        #region Layout Tela Despesa
-
         private void layoutDespesa()
         {
+            listaDespesaCusto = Buscar.BuscarListaDespesaPorTipo(cmbTipoDespesa.Text, lblCategoria.Text);
+
             lblCNPJ.Visible = false;
             txtCNPJ.Visible = false;
             txtCNPJ.Text = "-";
@@ -70,8 +72,6 @@ namespace Sistema_de_Gerenciamento.Forms
             cmbQuantidadeParcelas.Text = "1";
             lblQuantidadeParcelas.Visible = false;
         }
-
-        #endregion Layout Tela Despesa
 
         #region Layout Tela Custos
 
@@ -251,11 +251,11 @@ namespace Sistema_de_Gerenciamento.Forms
             cmbFornecedorTitulo.Items.Clear();
             cmbFornecedorTitulo.Text = String.Empty;
 
-            List<DadosCadastroDespesasCusto> listaDespesas = Buscar.BuscarListaDespesaPorTipo(cmbTipoDespesa.Text, lblCategoria.Text);
+            listaDespesaCusto = Buscar.BuscarListaDespesaPorTipo(cmbTipoDespesa.Text, lblCategoria.Text);
 
-            if (listaDespesas.Count != 0)
+            if (listaDespesaCusto.Count != 0)
             {
-                foreach (DadosCadastroDespesasCusto item in listaDespesas)
+                foreach (DadosCadastroDespesasCusto item in listaDespesaCusto)
                 {
                     cmbFornecedorTitulo.Items.Add(item.descricao);
                 }
@@ -439,6 +439,20 @@ namespace Sistema_de_Gerenciamento.Forms
             if (txtEmissao.Text == String.Empty)
             {
                 dtpEmissao.Focus();
+            }
+        }
+
+        private void cmbFornecedorTitulo_Leave(object sender, EventArgs e)
+        {
+            DadosCadastroDespesasCusto _tituloDescricao;
+
+            _tituloDescricao = listaDespesaCusto.Find(despesasCusto => despesasCusto.descricao.Equals(cmbFornecedorTitulo.Text));
+
+            if (_tituloDescricao == null && cmbFornecedorTitulo.Text != string.Empty)
+            {
+                MessageBox.Show("Titulo Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                cmbFornecedorTitulo.Focus();
             }
         }
     }

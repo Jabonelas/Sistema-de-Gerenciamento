@@ -38,5 +38,13 @@ namespace Sistema_de_Gerenciamento.Classes
             dataEmissao = _dataEmissao;
             dataLancamento = _dataLancamento;
         }
+
+        public DadosNotaFiscalEntrada(int _numeroNF, decimal _quantidade, int _codProduto, string _descricao)
+        {
+            numeroNF = _numeroNF;
+            quantidade = _quantidade;
+            codProduto = _codProduto;
+            descricao = _descricao;
+        }
     }
 }

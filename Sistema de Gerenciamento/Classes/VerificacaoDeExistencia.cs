@@ -39,8 +39,6 @@ namespace Sistema_de_Gerenciamento.Classes
                         isExist = false;
                     }
 
-
-
                     return isExist;
                 }
             }

@@ -206,10 +206,17 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnGerarBoleto_Click(object sender, EventArgs e)
         {
-            if (lblValorTotal.Text != string.Empty)
+
+            PreencherListaNotaFiscalSaida();
+
+            if (Buscar.SaldoDisponivelCliente(lblCpfCnpjCliente.Text) >= Convert.ToDecimal(lblValorTotal.Text.Replace("R$", "")))
             {
                 Forms_GerarCarne gerarBoleto = new Forms_GerarCarne(this);
                 gerarBoleto.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Cliente Sem Saldo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -871,6 +878,10 @@ namespace Sistema_de_Gerenciamento.Forms
         private void cmbProduto_Leave(object sender, EventArgs e)
         {
             gdvVenda.Focus();
+        }
+
+        private void lblValorTotal_Click(object sender, EventArgs e)
+        {
         }
     }
 }

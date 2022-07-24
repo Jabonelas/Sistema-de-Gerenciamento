@@ -285,8 +285,8 @@ namespace Sistema_de_Gerenciamento.Forms
                     OpcaoDoUsuario = MessageBox.Show("Deseja Finalzar a Venda?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (OpcaoDoUsuario == DialogResult.Yes)
                     {
-                        //lblNumeroNotaFiscalSaida.Text = Buscar.BuscarUltimaNotaFiscalSaida();
-                        lblNumeroNotaFiscalSaida.Text = "1";
+                        lblNumeroNotaFiscalSaida.Text = Buscar.BuscarUltimaNotaFiscalSaida();
+                        //lblNumeroNotaFiscalSaida.Text = "1";
 
                         lblDescricaoItem.Text = "Nº NOTA FISCAL:";
                         lblNumeroNotaFiscalSaida.Visible = true;
