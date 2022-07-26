@@ -28,6 +28,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private List<DadosProduto> listaDadosProduto = new List<DadosProduto>();
 
+        private List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaCompleta = new List<DadosNotaFiscalSaida>();
+
         private DadosProduto produto;
 
         private decimal valorBruto = 0;
@@ -281,87 +283,163 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (cmbFormaPagamento.Text != "")
                 {
-                    DialogResult OpcaoDoUsuario = new DialogResult();
-                    OpcaoDoUsuario = MessageBox.Show("Deseja Finalzar a Venda?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (OpcaoDoUsuario == DialogResult.Yes)
+                    if (cmbFormaPagamento.Text != "CARNÊ")
                     {
-                        lblNumeroNotaFiscalSaida.Text = Buscar.BuscarNumeroNotaFiscalSaida();
-                        //lblNumeroNotaFiscalSaida.Text = "1";
+                        DialogResult OpcaoDoUsuario = new DialogResult();
+                        OpcaoDoUsuario = MessageBox.Show("Deseja Finalzar a Venda?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (OpcaoDoUsuario == DialogResult.Yes)
+                        {
+                            int numeroNFSaida = Buscar.BuscarNumeroNotaFiscalSaida();
 
-                        lblDescricaoItem.Text = "Nº NOTA FISCAL:";
-                        lblNumeroNotaFiscalSaida.Visible = true;
+                            lblNumeroNotaFiscalSaida.Text = numeroNFSaida.ToString();
+                            //lblNumeroNotaFiscalSaida.Text = "1";
+
+                            lblDescricaoItem.Text = "Nº NOTA FISCAL:";
+                            lblNumeroNotaFiscalSaida.Visible = true;
+
+                            for (int i = 0; i < gdvPDV.RowCount; i++)
+                            {
+                                //Pagamento Sem Juros - Preenchimento dos valores de desconto, juros e valor pago de cada item
+                                if (cmbFormaPagamento.Text == "DÉBITO" ||
+                                    cmbFormaPagamento.Text == "DINHEIRO" || cmbFormaPagamento.Text == "PIX")
+                                {
+                                    lblValorDescontoCadaItem.Text = (Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", ""))
+                                        * listaDadosFinanceiro[0].descontoAvista / 100).ToString();
+
+                                    lblJurosCadaItem.Text = ((Convert.ToDecimal(lblValorJuros.Text.Replace("%", "")) *
+                                        Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", ""))) / 100).ToString();
+
+                                    lblValorPagoCadaItem.Text = (Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", "")) -
+                                        Convert.ToDecimal(lblValorDescontoCadaItem.Text)).ToString("N2");
+                                }
+                                //Pagamento Com Juros - Preenchimento dos valores de desconto, juros e valor pago de cada item
+                                else
+                                {
+                                    lblValorDescontoCadaItem.Text = "0";
+
+                                    lblJurosCadaItem.Text = ((Convert.ToDecimal(lblValorJuros.Text.Replace("%", "")) *
+                                       Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", ""))) / 100).ToString();
+
+                                    lblValorPagoCadaItem.Text = (Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", "")) +
+                                        Convert.ToDecimal(lblJurosCadaItem.Text)).ToString("N2");
+                                }
+
+                                try
+                                {
+                                    produto = listaDadosProduto.Find(prod => prod.codigoBarras.ToString().StartsWith(gdvPDV.Rows[i].Cells[6].Value.ToString()));
+
+                                    if (produto.quantidade >= Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value))
+                                    {
+                                        int codigoProduto = Convert.ToInt32(gdvPDV.Rows[i].Cells[0].Value);
+                                        string descricaoProduto = gdvPDV.Rows[i].Cells[1].Value.ToString();
+                                        decimal quantidade = Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value);
+                                        decimal valorUnitario = Convert.ToDecimal(gdvPDV.Rows[i].Cells[3].Value.ToString().Replace("R$", ""));
+                                        decimal valorTotal = Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", ""));
+                                        //decimal desconto = Convert.ToDecimal(gdvPDV.Rows[i].Cells[5].Value);
+                                        int codigoBarras = Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value);
+                                        string unidade = gdvPDV.Rows[i].Cells[7].Value.ToString();
+                                        int numeroNFEntrada = Convert.ToInt32(gdvPDV.Rows[i].Cells[8].Value);
+
+                                        Salvar.NotaFiscalSaida(
+                                                txtCPF.Text,
+                                                numeroNFSaida,
+                                                codigoProduto,
+                                                descricaoProduto,
+                                                quantidade,
+                                                valorUnitario,
+                                                Convert.ToDateTime(DateTime.Now),
+                                                codigoBarras,
+                                                txtVendedor.Text,
+                                                Convert.ToDateTime(DateTime.Today.AddDays(30).ToShortDateString()),
+                                                lblNomeCliente.Text,
+                                                cmbFormaPagamento.Text,
+                                                Convert.ToDecimal(lblValorDescontoCadaItem.Text),
+                                                Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
+                                                Convert.ToDecimal(lblJurosCadaItem.Text),
+                                                Convert.ToDecimal(lblValorPagoCadaItem.Text),
+                                                unidade,
+                                                lblStatusVenda.Text,
+                                                lblTrocaVendedor.Text,
+                                                lblMotivoTroca.Text,
+                                                numeroNFEntrada);
+
+                                        Atualizar.AtualizarQuantidadeEstoquePosVenda(Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value),
+                                            Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value), Convert.ToInt32(gdvPDV.Rows[i].Cells[8].Value));
+
+                                        pnlVendaFinalizada.Visible = true;
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Saldo Indisponível!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    Erro.ErroAoInserirDadosNaNotaFiscalSaidaTelaPDV(ex);
+                                }
+                            }
+                        }
+                    }
+
+                    //Pagametno via carne
+                    else
+                    {
+                        int numeroNFSaida = Buscar.BuscarNumeroNotaFiscalSaida();
 
                         for (int i = 0; i < gdvPDV.RowCount; i++)
                         {
-                            //Pagamento Sem Juros - Preenchimento dos valores de desconto, juros e valor pago de cada item
-                            if (cmbFormaPagamento.Text == "DÉBITO" ||
-                                cmbFormaPagamento.Text == "DINHEIRO" || cmbFormaPagamento.Text == "PIX")
+                            lblValorDescontoCadaItem.Text = "0";
+
+                            lblJurosCadaItem.Text = ((Convert.ToDecimal(lblValorJuros.Text.Replace("%", "")) *
+                                      Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", ""))) / 100).ToString();
+
+                            lblValorPagoCadaItem.Text = (Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", "")) -
+                                Convert.ToDecimal(lblValorDescontoCadaItem.Text)).ToString("N2");
+
+                            if (produto.quantidade >= Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value))
                             {
-                                lblValorDescontoCadaItem.Text = (Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", ""))
-                                    * listaDadosFinanceiro[0].descontoAvista / 100).ToString();
+                                int codigoProduto = Convert.ToInt32(gdvPDV.Rows[i].Cells[0].Value);
+                                string descricaoProduto = gdvPDV.Rows[i].Cells[1].Value.ToString();
+                                decimal quantidade = Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value);
+                                decimal valorUnitario = Convert.ToDecimal(gdvPDV.Rows[i].Cells[3].Value.ToString().Replace("R$", ""));
+                                decimal valorTotal = Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", ""));
+                                //decimal desconto = Convert.ToDecimal(gdvPDV.Rows[i].Cells[5].Value);
+                                int codigoBarras = Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value);
+                                string unidade = gdvPDV.Rows[i].Cells[7].Value.ToString();
+                                int numeroNFEntrada = Convert.ToInt32(gdvPDV.Rows[i].Cells[8].Value);
 
-                                lblJurosCadaItem.Text = ((Convert.ToDecimal(lblValorJuros.Text.Replace("%", "")) *
-                                    Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", ""))) / 100).ToString();
-
-                                lblValorPagoCadaItem.Text = (Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", "")) -
-                                    Convert.ToDecimal(lblValorDescontoCadaItem.Text)).ToString("N2");
-                            }
-                            //Pagamento Com Juros - Preenchimento dos valores de desconto, juros e valor pago de cada item
-                            else
-                            {
-                                lblValorDescontoCadaItem.Text = "0";
-
-                                lblJurosCadaItem.Text = ((Convert.ToDecimal(lblValorJuros.Text.Replace("%", "")) *
-                                   Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", ""))) / 100).ToString();
-
-                                lblValorPagoCadaItem.Text = (Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", "")) +
-                                    Convert.ToDecimal(lblJurosCadaItem.Text)).ToString("N2");
-                            }
-
-                            try
-                            {
-                                produto = listaDadosProduto.Find(prod => prod.codigoBarras.ToString().StartsWith(gdvPDV.Rows[i].Cells[6].Value.ToString()));
-
-                                if (produto.quantidade >= Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value))
-                                {
-                                    Salvar.NotaFiscalSaida(
-                                            txtCPF.Text,
-                                            Convert.ToInt32(lblNumeroNotaFiscalSaida.Text),
-                                            Convert.ToInt32(gdvPDV.Rows[i].Cells[0].Value),
-                                            gdvPDV.Rows[i].Cells[1].Value.ToString(),
-                                            Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value),
-                                            Convert.ToDecimal(gdvPDV.Rows[i].Cells[3].Value.ToString().Replace("R$", "")),
-                                            Convert.ToDateTime(DateTime.Now),
-                                            Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value),
-                                            txtVendedor.Text,
-                                            Convert.ToDateTime(DateTime.Today.AddDays(30).ToShortDateString()),
-                                            lblNomeCliente.Text,
-                                            cmbFormaPagamento.Text,
-                                            Convert.ToDecimal(lblValorDescontoCadaItem.Text),
-                                            Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
-                                            Convert.ToDecimal(lblJurosCadaItem.Text),
-                                            Convert.ToDecimal(lblValorPagoCadaItem.Text),
-                                            gdvPDV.Rows[i].Cells[7].Value.ToString(),
-                                            lblStatusVenda.Text,
-                                            lblTrocaVendedor.Text,
-                                            lblMotivoTroca.Text,
-                                        Convert.ToInt32(gdvPDV.Rows[i].Cells[8].Value));
-
-                                    Atualizar.AtualizarQuantidadeEstoquePosVenda(Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value),
-                                        Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value), Convert.ToInt32(gdvPDV.Rows[i].Cells[8].Value));
-
-                                    pnlVendaFinalizada.Visible = true;
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Saldo Indisponível!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                Erro.ErroAoInserirDadosNaNotaFiscalSaidaTelaPDV(ex);
+                                listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(
+                                 0,
+                                 numeroNFSaida,
+                                 txtCPF.Text,
+                                 lblNomeCliente.Text,
+                                 codigoProduto,
+                                 descricaoProduto,
+                                 DateTime.Now,
+                                 codigoBarras,
+                                 txtVendedor.Text,
+                                 Convert.ToDateTime(DateTime.Today.AddDays(30).ToShortDateString()),
+                                 valorUnitario,
+                                 //Convert.ToDecimal(lblValorTotal.Text.Replace("R$", "")),
+                                 //valorTotal,
+                                 quantidade,
+                                 unidade,
+                                 cmbFormaPagamento.Text,
+                                 Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
+                                 0,
+                                 Convert.ToDecimal(lblJurosCadaItem.Text),
+                                 Convert.ToDecimal(lblValorTotal.Text.Replace("R$", "")),
+                                 lblStatusVenda.Text,
+                                 lblTrocaVendedor.Text,
+                                 lblMotivoTroca.Text, false,
+                                 Convert.ToInt32(gdvPDV.Rows[i].Cells[8].Value.ToString())));
                             }
                         }
+
+                        int quantidadeParcelas = Convert.ToInt32(cmbParcelas.Text.Replace("x", "")) - 1;
+
+                        Forms_GerarCarne gerarCarne = new Forms_GerarCarne(listaDadosNotaFiscalSaidaCompleta, valorBruto, quantidadeParcelas);
+                        gerarCarne.ShowDialog();
                     }
                 }
                 else
@@ -772,13 +850,21 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void PagamentoCarne()
         {
-            LayoutTipoPagamentoCredito(false);
+            LayoutTipoPagamentoCredito(true);
 
             lblValorDebito.Visible = false;
+
+            txtValorDinheiro.Visible = false;
+
+            lblValorParcela.Text = lblSubtotal.Text;
 
             lblTituloFormaPagamento.Text = "CARNÊ";
 
             lblValorDesconto.Text = "R$ 0,00";
+
+            cmbParcelas.Text = "1x";
+
+            lblValorTotal.Text = String.Format("{0:C}", valorBruto);
         }
 
         private void PagamentoCredito()
@@ -874,6 +960,18 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void cmbParcelas_SelectedValueChanged(object sender, EventArgs e)
         {
+            if (cmbFormaPagamento.Text == "CRÉDITO")
+            {
+                SelecionadoCredito();
+            }
+            else
+            {
+                SelecionadoCarne();
+            }
+        }
+
+        private void SelecionadoCredito()
+        {
             if (Convert.ToInt32(cmbParcelas.Text.Replace("x", "")) > listaDadosFinanceiro[0].parcelasCredito)
             {
                 lblValorJuros.Text = string.Format("{0:P}", (listaDadosFinanceiro[0].jurosCredito / 100));
@@ -882,6 +980,27 @@ namespace Sistema_de_Gerenciamento.Forms
                     / Convert.ToDecimal(cmbParcelas.Text.Replace("x", ""))));
 
                 lblValorTotal.Text = String.Format("{0:C}", ((valorBruto * (listaDadosFinanceiro[0].jurosCredito) / 100) + valorBruto));
+            }
+            else
+            {
+                lblValorJuros.Text = "0,0%";
+
+                lblValorParcela.Text = String.Format("{0:C}", (valorBruto / Convert.ToDecimal(cmbParcelas.Text.Replace("x", ""))));
+
+                lblValorTotal.Text = String.Format("{0:C}", valorBruto);
+            }
+        }
+
+        private void SelecionadoCarne()
+        {
+            if (Convert.ToInt32(cmbParcelas.Text.Replace("x", "")) > listaDadosFinanceiro[0].parcelasCredito)
+            {
+                lblValorJuros.Text = string.Format("{0:P}", (listaDadosFinanceiro[0].jurosCarne / 100));
+
+                lblValorParcela.Text = String.Format("{0:C}", (((valorBruto * (listaDadosFinanceiro[0].jurosCarne) / 100) + valorBruto)
+                    / Convert.ToDecimal(cmbParcelas.Text.Replace("x", ""))));
+
+                lblValorTotal.Text = String.Format("{0:C}", ((valorBruto * (listaDadosFinanceiro[0].jurosCarne) / 100) + valorBruto));
             }
             else
             {

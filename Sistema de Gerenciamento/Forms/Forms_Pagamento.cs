@@ -23,7 +23,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private List<DadosEstoqueProduto> listaDadosEstoqueProdutos = new List<DadosEstoqueProduto>();
 
-        private List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaCompleta = new List<DadosNotaFiscalSaida>();
+        public List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaCompleta = new List<DadosNotaFiscalSaida>();
 
         private DadosEstoqueProduto dadosEstoqueProduto;
 
@@ -33,7 +33,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private DadosNotaFiscalSaida dadosNotaFiscalSaida;
 
-        private decimal valorBruto = 0;
+        public decimal valorBruto = 0;
 
         private int quantidadeItens = 0;
 
@@ -131,10 +131,17 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void PagamentoCarne()
         {
-            LayoutTipoPagamentoCredito(false);
+            LayoutTipoPagamentoCredito(true);
             lblValorDebito.Visible = false;
+            txtValorDinheiro.Visible = false;
+            lblValorTotal.Text = string.Format("{0:C}", valorBruto);
+            cmbParcelas.SelectedIndex = 0;
             lblTituloFormaPagamento.Text = "CARNÊ";
             lblValorDesconto.Text = "R$ 0,00";
+            pnlTroco.Visible = false;
+            pnlTotalRecebido.Visible = false;
+            pnlQRCode.Visible = false;
+            pnlChavePix.Visible = false;
         }
 
         private void PagamentoCredito()
@@ -227,10 +234,38 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void cmbParcelas_SelectedValueChanged(object sender, EventArgs e)
         {
+            if (cmbFormaPagamento.Text == "CRÉDITO")
+            {
+                SelecionadoCredito();
+            }
+            else
+            {
+                SelecionadoCarne();
+            }
+        }
+
+        private void SelecionadoCredito()
+        {
             if (Convert.ToInt32(cmbParcelas.Text.Replace("x", "")) >= listaFinanceiro[0].parcelasCredito)
             {
                 lblValorJuros.Text = string.Format("{0:P}", listaFinanceiro[0].jurosCredito / 100);
                 lblValorTotal.Text = string.Format("{0:C}", listaFinanceiro[0].jurosCredito * valorBruto / 100 + valorBruto);
+                lblValorParcela.Text = String.Format("{0:C}", Convert.ToDecimal(lblValorTotal.Text.Replace("R$", "")) / Convert.ToDecimal(cmbParcelas.Text.Replace("x", "")));
+            }
+            else
+            {
+                lblValorTotal.Text = string.Format("{0:C}", valorBruto);
+                lblValorParcela.Text = String.Format("{0:C}", Convert.ToDecimal(lblValorTotal.Text.Replace("R$", "")) / Convert.ToDecimal(cmbParcelas.Text.Replace("x", "")));
+                lblValorJuros.Text = "0,00%";
+            }
+        }
+
+        private void SelecionadoCarne()
+        {
+            if (Convert.ToInt32(cmbParcelas.Text.Replace("x", "")) >= listaFinanceiro[0].parcelasCredito)
+            {
+                lblValorJuros.Text = string.Format("{0:P}", listaFinanceiro[0].jurosCarne / 100);
+                lblValorTotal.Text = string.Format("{0:C}", listaFinanceiro[0].jurosCarne * valorBruto / 100 + valorBruto);
                 lblValorParcela.Text = String.Format("{0:C}", Convert.ToDecimal(lblValorTotal.Text.Replace("R$", "")) / Convert.ToDecimal(cmbParcelas.Text.Replace("x", "")));
             }
             else
@@ -278,7 +313,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 }
                 foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
                 {
-                    if (item.deveTrocar == true)
+                    if (item.deveRealizarTrocar == true)
                     {
                         // Item Mantido
                         if (item.status == "Status Venda")
@@ -357,59 +392,88 @@ namespace Sistema_de_Gerenciamento.Forms
 
                 Atualizar.AtuazliarPrazoGarantia(listaDadosNotaFiscalSaidaCompleta[0].numeroNF,
                     listaDadosNotaFiscalSaidaCompleta[0].validadeTroca.AddDays(30));
+
+                AvisoCantoInferiorDireito.Confirmao();
             }
             //Venda
             else
             {
                 lblDescricaoItem.Text = "Nº NOTA FISCAL:";
 
+                int numeroNFSaida = Buscar.BuscarNumeroNotaFiscalSaida();
+
+                lblNumeroNotaFiscalSaida.Text = numeroNFSaida.ToString();
+
                 lblNumeroNotaFiscalSaida.Visible = true;
 
-                lblNumeroNotaFiscalSaida.Text = Buscar.BuscarNumeroNotaFiscalSaida();
-
-                foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
+                if (cmbFormaPagamento.Text != "CARNÊ")
                 {
-                    if (cmbFormaPagamento.Text == "DÉBITO" || cmbFormaPagamento.Text == "DINHEIRO" || cmbFormaPagamento.Text == "PIX")
+                    foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
                     {
-                        //Pagamento com desconto
-                        Salvar.NotaFiscalSaida(item.cpf, Convert.ToInt32(lblNumeroNotaFiscalSaida.Text), item.codigoProduto,
-                           item.descricao, item.quantidade, item.valorUnitario - (item.valorUnitario * listaFinanceiro[0].descontoAvista / 100),
-                           DateTime.Now, item.codigoBarras, item.vendedor, item.validadeTroca, item.nomeCliente,
-                           cmbFormaPagamento.Text, item.valorUnitario * listaFinanceiro[0].descontoAvista / 100,
-                           Convert.ToInt32(cmbParcelas.Text.Replace("x", "")), item.valorJuros,
-                           item.valorUnitario - (item.valorUnitario * listaFinanceiro[0].descontoAvista / 100), item.unidade,
-                           item.status, item.trocarVendedor, item.motivoTroca, item.nfEntrada);
+                        if (cmbFormaPagamento.Text == "DÉBITO" || cmbFormaPagamento.Text == "DINHEIRO" || cmbFormaPagamento.Text == "PIX")
+                        {
+                            //Pagamento com desconto
+                            Salvar.NotaFiscalSaida(item.cpf, numeroNFSaida, item.codigoProduto,
+                               item.descricao, item.quantidade, item.valorUnitario - (item.valorUnitario * listaFinanceiro[0].descontoAvista / 100),
+                               DateTime.Now, item.codigoBarras, item.vendedor, item.validadeTroca, item.nomeCliente,
+                               cmbFormaPagamento.Text, item.valorUnitario * listaFinanceiro[0].descontoAvista / 100,
+                               Convert.ToInt32(cmbParcelas.Text.Replace("x", "")), item.valorJuros,
+                               item.valorUnitario - (item.valorUnitario * listaFinanceiro[0].descontoAvista / 100), item.unidade,
+                               item.status, item.trocarVendedor, item.motivoTroca, item.nfEntrada);
 
-                        Atualizar.AtualizarQuantidadeEstoquePosVenda(item.quantidade, item.codigoBarras, item.numeroNF);
-                    }
-                    else if (lblValorJuros.Text == "0,00%")
-                    {
-                        //Pagamento normal
-                        Salvar.NotaFiscalSaida(item.cpf, Convert.ToInt32(lblNumeroNotaFiscalSaida.Text), item.codigoProduto,
-                            item.descricao, item.quantidade, item.valorUnitario, DateTime.Now, item.codigoBarras, item.vendedor,
-                            item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text, item.valorDesconto,
-                            Convert.ToInt32(cmbParcelas.Text.Replace("x", "")), item.valorJuros, item.valorPago, item.unidade, item.status, item.trocarVendedor,
-                            item.motivoTroca, item.nfEntrada);
+                            Atualizar.AtualizarQuantidadeEstoquePosVenda(item.quantidade, item.codigoBarras, item.numeroNF);
+                        }
+                        else if (lblValorJuros.Text == "0,00%")
+                        {
+                            //Pagamento normal
+                            Salvar.NotaFiscalSaida(item.cpf, numeroNFSaida, item.codigoProduto,
+                                item.descricao, item.quantidade, item.valorUnitario, DateTime.Now, item.codigoBarras, item.vendedor,
+                                item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text, item.valorDesconto,
+                                Convert.ToInt32(cmbParcelas.Text.Replace("x", "")), item.valorJuros, item.valorPago, item.unidade,
+                                item.status, item.trocarVendedor, item.motivoTroca, item.nfEntrada);
 
-                        Atualizar.AtualizarQuantidadeEstoquePosVenda(item.quantidade, item.codigoBarras, item.numeroNF);
-                    }
-                    else if (lblValorJuros.Text != "0,00%")
-                    {
-                        //Pagamento com Juros
-                        Salvar.NotaFiscalSaida(item.cpf, Convert.ToInt32(lblNumeroNotaFiscalSaida.Text), item.codigoProduto,
-                        item.descricao, item.quantidade, item.valorUnitario + (item.valorUnitario * listaFinanceiro[0].jurosCredito / 100),
-                        DateTime.Now, item.codigoBarras, item.vendedor, item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text,
-                        item.valorDesconto, Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
-                        (item.valorUnitario * listaFinanceiro[0].jurosCredito / 100),
-                        item.valorUnitario + (item.valorUnitario * listaFinanceiro[0].jurosCredito / 100), item.unidade, item.status,
-                        item.trocarVendedor, item.motivoTroca, item.nfEntrada);
+                            Atualizar.AtualizarQuantidadeEstoquePosVenda(item.quantidade, item.codigoBarras, item.numeroNF);
+                        }
+                        else if (lblValorJuros.Text != "0,00%")
+                        {
+                            //Pagamento com Juros
+                            Salvar.NotaFiscalSaida(item.cpf, numeroNFSaida, item.codigoProduto,
+                            item.descricao, item.quantidade, item.valorUnitario + (item.valorUnitario * listaFinanceiro[0].jurosCredito / 100),
+                            DateTime.Now, item.codigoBarras, item.vendedor, item.validadeTroca, item.nomeCliente, cmbFormaPagamento.Text,
+                            item.valorDesconto, Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
+                            (item.valorUnitario * listaFinanceiro[0].jurosCredito / 100),
+                            item.valorUnitario + (item.valorUnitario * listaFinanceiro[0].jurosCredito / 100), item.unidade, item.status,
+                            item.trocarVendedor, item.motivoTroca, item.nfEntrada);
 
-                        Atualizar.AtualizarQuantidadeEstoquePosVenda(item.quantidade, item.codigoBarras, item.numeroNF);
+                            Atualizar.AtualizarQuantidadeEstoquePosVenda(item.quantidade, item.codigoBarras, item.numeroNF);
+                        }
                     }
+
+                    AvisoCantoInferiorDireito.Confirmao();
                 }
-            }
+                else
+                {
+                    int quantidadeParcelas = Convert.ToInt32(cmbParcelas.Text.Replace("x", "")) - 1;
 
-            btnConfirmar.Enabled = false;
+                    Forms_GerarCarne gerarCarne = new Forms_GerarCarne(listaDadosNotaFiscalSaidaCompleta, valorBruto, quantidadeParcelas);
+                    gerarCarne.ShowDialog();
+
+                    //for (int i = 1; i <= Convert.ToInt32(cmbParcelas.Text.Replace("x", "")); i++)
+                    //{
+                    //    Salvar.AdicionarPagamentoCarner(numeroNFSaida, telaVenda.txtCpfCnpjCliente.Text, telaVenda.cmbCliente.Text,
+                    //    DateTime.Now, Global.NomeDeUsuario, ($"{cmbParcelas.Text.Replace("x", "")}/{i}"),
+                    //    Convert.ToDecimal(lblValorDesconto.Text.Replace("R$", "")),
+                    //    Convert.ToDecimal(lblValorTotal.Text.Replace("R$", "")) - valorBruto, Convert.ToDecimal(lblValorTotal.Text.Replace("R$", "")),
+                    //    DateTime.Today.AddDays((listaFinanceiro[0].prazoCarne) * i), "-", "Nao Pago");
+                    //}
+                }
+
+                btnConfirmar.Enabled = false;
+            }
+        }
+
+        private void cmbFormaPagamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 }

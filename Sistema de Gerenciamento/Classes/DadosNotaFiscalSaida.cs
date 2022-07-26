@@ -51,7 +51,7 @@ namespace Sistema_de_Gerenciamento.Classes
         public int id { get; set; }
         public string motivoTroca { get; set; }
 
-        public bool deveTrocar { get; set; }
+        public bool deveRealizarTrocar { get; set; }
 
         public int nfEntrada { get; set; }
 
@@ -99,7 +99,7 @@ namespace Sistema_de_Gerenciamento.Classes
             status = _status;
             trocarVendedor = _trocarVendedor;
             motivoTroca = _motivoTroca;
-            deveTrocar = _deveTrocar;
+            deveRealizarTrocar = _deveTrocar;
             nfEntrada = _nfEntrada;
         }
     }

@@ -350,6 +350,24 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Nota Fiscal Saida
 
+        #region Troca
+
+        public void ErroAoAdicionarNoEstoqueMaterialSegregadoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(INS-EMS01) Erro ao Adcionar No Estoque Material Segregado \n\nErro: {_e}", "Erro Adcionar No Estoque Material Segregado!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Troca
+
+        #region Pagamento Carne
+
+        public void ErroAoAdicionarPagamentoCarneNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(INS-PC01) Erro ao Adicionar Pagamento Carnê \n\nErro: {_e}", "Erro Adcionar Pagamento Carnê!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Pagamento Carne
+
         #endregion Inserir No Banco
 
         #region Atualizacao Do Banco
@@ -601,6 +619,46 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoBuscarListaClienteNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-CL04) Erro ao Realizar Busca de Lista do Cliente \n\nErro: {_e}", "Erro Busca Lista Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarListaDadosClienteNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CL05) Erro ao Realizar Busca de Lista de Dados do Cliente \n\nErro: {_e}", "Erro Busca Lista de Dados Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarClientePorPesquisaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CL06) Erro ao Realizar Busca da Lista Cliente Por Pesquisa \n\nErro: {_e}", "Erro Busca Lista Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCadastroClientePorCodigoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CL07) Erro ao Realizar Busca Cadastro Cliente Por Codigo \n\nErro: {_e}", "Erro Busca Cadastro Cliente Por Codigo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCadastroClienteCPF_CNPJNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CL08) Erro ao Realizar Busca Cadastro Cliente Por CPF/CNPJ \n\nErro: {_e}", "Erro Busca Cadastro Cliente Por CPF/CNPJ!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCadastroClienteRGNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CL09) Erro ao Realizar Busca Cadastro Cliente Por RG \n\nErro: {_e}", "Erro Busca Cadastro Cliente Por RG!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCadastroClientePorNomeNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CL10) Erro ao Realizar Busca Cadastro de Cliente Por Nome \n\nErro: {_e}", "Erro Busca Cadastro Cliente Por Nome!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarIdClientePorNomeNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CL11) Erro ao Realizar Busca Cadastro de ID Cliente Por Nome \n\nErro: {_e}", "Erro Busca ID Cadastro Cliente Por Nome!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCadastroCompletoClientePorNomeNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CL12) Erro ao Realizar Busca Cadastro Completo Cliente Por Nome \n\nErro: {_e}", "Erro Busca Cadastro Completo Cliente Por Nome!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Cliente

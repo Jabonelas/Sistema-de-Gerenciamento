@@ -88,6 +88,12 @@ namespace Sistema_de_Gerenciamento.Forms
                 lblInformacao.Text = "Planilha Salva \nCom Sucesso!";
                 pcbImagem.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\Salvo.png");
             }
+            else if (Global.tipoDoAlerta == "Confirmacao")
+            {
+                //this.BackColor = Color.Green;
+                lblInformacao.Text = "Realizado \nCom Sucesso!";
+                pcbImagem.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\Salvo.png");
+            }
         }
     }
 }

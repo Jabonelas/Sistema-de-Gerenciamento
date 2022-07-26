@@ -60,7 +60,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscarClienteNoBanco(ex);
+                Erro.ErroAoBuscarCadastroClientePorCodigoNoBanco(ex);
 
                 return false;
             }
@@ -108,7 +108,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscarClienteNoBanco(ex);
+                Erro.ErroAoBuscarCadastroClienteCPF_CNPJNoBanco(ex);
 
                 return false;
             }
@@ -157,7 +157,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscarClienteNoBanco(ex);
+                Erro.ErroAoBuscarCadastroClienteRGNoBanco(ex);
 
                 return false;
             }
@@ -206,7 +206,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscarClienteNoBanco(ex);
+                Erro.ErroAoBuscarCadastroClientePorNomeNoBanco(ex);
 
                 return false;
             }
@@ -236,7 +236,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscarClienteNoBanco(ex);
+                Erro.ErroAoBuscarIdClientePorNomeNoBanco(ex);
 
                 return 0;
             }
@@ -390,13 +390,77 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscarListaClienteNoBanco(ex);
+                Erro.ErroAoBuscarClientePorPesquisaNoBanco(ex);
+            }
+
+            return listaCliente;
+        }
+
+        public List<DadosCliente> BuscarClientePorPesquisaCompleta(string _nomeCliente)
+
+        {
+            List<DadosCliente> listaCliente = new List<DadosCliente>();
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query =
+                        "select cc_nome_cliente, cc_id, cc_cpf_cnpj,cc_credito,cc_saldo,cc_bloqueio from tb_CadastroClientes" +
+                        " where cc_nome_cliente like @nomeCliente";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@nomeCliente", string.Format("%{0}%", _nomeCliente));
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaCliente.Add(new DadosCliente(dr.GetString(0), dr.GetInt32(1), dr.GetString(2),
+                            dr.GetDecimal(3), dr.GetDecimal(4), dr.GetString(5)));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarCadastroCompletoClientePorNomeNoBanco(ex);
             }
 
             return listaCliente;
         }
 
         #endregion Buscar Cliente Por Pesquisa
+
+        public List<DadosCliente> BuscarListaDadosCleinte()
+        {
+            List<DadosCliente> listaDadosCliente = new List<DadosCliente>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select cc_nome_cliente,cc_id,cc_cpf_cnpj,cc_credito,cc_saldo,cc_bloqueio " +
+                        "from tb_CadastroClientes";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaDadosCliente.Add(new DadosCliente(dr.GetString(0), dr.GetInt32(1), dr.GetString(2),
+                            dr.GetDecimal(3), dr.GetDecimal(4), dr.GetString(5)));
+                    }
+                }
+
+                return listaDadosCliente;
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarListaDadosClienteNoBanco(ex);
+
+                return listaDadosCliente;
+            }
+        }
 
         #endregion Buscar Cliente
 
@@ -2803,7 +2867,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Numero de Nota Fiscal de Saida
 
-        public string BuscarNumeroNotaFiscalSaida()
+        public int BuscarNumeroNotaFiscalSaida()
         {
             using (SqlConnection conexaoSQL = AbrirConexao())
             {
@@ -2814,8 +2878,14 @@ namespace Sistema_de_Gerenciamento.Classes
                 SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
                 dr.Read();
 
+                if (dr.IsDBNull(0) == true)
+                {
+                    return 1;
+                }
+
                 int x = dr.GetInt32(0);
-                return (x + 1).ToString();
+
+                return ++x;
             }
         }
 

@@ -2441,7 +2441,6 @@
             this.Desconto.HeaderText = "Desconto";
             this.Desconto.Name = "Desconto";
             this.Desconto.ReadOnly = true;
-            this.Desconto.Visible = false;
             // 
             // codigoBarras
             // 

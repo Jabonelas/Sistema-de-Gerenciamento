@@ -62,7 +62,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             listaFinanceiro = Buscar.BuscarListaFinanceiro();
 
-            txtNumeroNF.Text = Buscar.BuscarNumeroNotaFiscalSaida();
+            txtNumeroNF.Text = Buscar.BuscarNumeroNotaFiscalSaida().ToString();
 
             //listaDadosFinanceiro.ForEach(finac => financeiro = finac);
         }
@@ -698,7 +698,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void cmbCliente_KeyUp(object sender, KeyEventArgs e)
         {
-            BuscarDadosCliente();
+            //BuscarDadosCliente();
         }
 
         private void BuscarDadosCliente()
@@ -838,6 +838,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void cmbCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void cmbCliente_TextChanged(object sender, EventArgs e)
+        {
+            BuscarDadosCliente();
         }
     }
 }

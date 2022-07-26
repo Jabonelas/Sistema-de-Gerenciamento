@@ -44,5 +44,17 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Exclusao
+
+        #region Confirmacao
+
+        public static void Confirmao()
+        {
+            Global.tipoDoAlerta = "Confirmacao";
+
+            Forms_Aviso buscarCliente = new Forms_Aviso();
+            buscarCliente.Show();
+        }
+
+        #endregion Confirmacao
     }
 }

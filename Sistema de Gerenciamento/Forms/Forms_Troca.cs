@@ -521,7 +521,7 @@ namespace Sistema_de_Gerenciamento.Forms
             _atualizarDados.status = "Devolucao";
             _atualizarDados.valorPago = -_atualizarDados.valorPago;
             _atualizarDados.quantidade = -_atualizarDados.quantidade;
-            _atualizarDados.deveTrocar = true;
+            _atualizarDados.deveRealizarTrocar = true;
         }
 
         private void AdicionarItensListaDadosNotaFiscalSaidaCompleta(DadosNotaFiscalSaida _atualizarDados,
@@ -537,7 +537,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 _atualizarDados.quantidade = _atualizarDados.quantidade - Convert.ToDecimal(txtQuantidadeDevolucao.Text);
                 //Pega o valor unitario real e multiplica pela quantidade real e retorna a valor que devera ser pago
                 _atualizarDados.valorPago = _atualizarDados.valorPago * _atualizarDados.quantidade;
-                _atualizarDados.deveTrocar = true;
+                _atualizarDados.deveRealizarTrocar = true;
             }
 
             listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(
