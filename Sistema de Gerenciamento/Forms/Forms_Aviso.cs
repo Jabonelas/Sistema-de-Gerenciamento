@@ -24,7 +24,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.Opacity = incrementando;
             mover = mover + 14;
 
-            // Para direcionar a inicializacao do forms no canto direito inferior
+            // Para direcionar a inicializacao do forms_Venda no canto direito inferior
             this.StartPosition = FormStartPosition.Manual;
             this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - this.Width + 100 - mover,
                 Screen.PrimaryScreen.WorkingArea.Height - this.Height + 100 - mover);
@@ -48,7 +48,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 decrementando = decrementando - incrementando;
                 this.Opacity = decrementando;
 
-                // Para direcionar a finalizacao do forms no canto direito inferior
+                // Para direcionar a finalizacao do forms_Venda no canto direito inferior
                 this.StartPosition = FormStartPosition.Manual;
                 this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - this.Width + mover,
                     Screen.PrimaryScreen.WorkingArea.Height - this.Height + mover);

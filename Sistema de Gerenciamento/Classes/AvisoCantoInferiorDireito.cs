@@ -47,7 +47,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Confirmacao
 
-        public static void Confirmao()
+        public static void Confirmacao()
         {
             Global.tipoDoAlerta = "Confirmacao";
 

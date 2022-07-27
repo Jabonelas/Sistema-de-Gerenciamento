@@ -39,7 +39,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         public int quantidadeItens = 0;
 
-        private int cont = 0;
+        //private int cont = 0;
 
         public Forms_Venda()
         {

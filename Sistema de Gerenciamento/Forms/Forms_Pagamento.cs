@@ -393,7 +393,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 Atualizar.AtuazliarPrazoGarantia(listaDadosNotaFiscalSaidaCompleta[0].numeroNF,
                     listaDadosNotaFiscalSaidaCompleta[0].validadeTroca.AddDays(30));
 
-                AvisoCantoInferiorDireito.Confirmao();
+                AvisoCantoInferiorDireito.Confirmacao();
             }
             //Venda
             else
@@ -449,7 +449,7 @@ namespace Sistema_de_Gerenciamento.Forms
                         }
                     }
 
-                    AvisoCantoInferiorDireito.Confirmao();
+                    AvisoCantoInferiorDireito.Confirmacao();
                 }
                 else
                 {

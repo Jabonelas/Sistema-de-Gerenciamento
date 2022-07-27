@@ -48,14 +48,18 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (txtUsuario.Text == "ADMIN" && Buscar.BuscarUsuario(txtUsuario.Text, txtSenha.Text))
                 {
-                    telaPDV.RemoverProduto();
+                    DialogResult OpcaoDoUsuario = new DialogResult();
+                    OpcaoDoUsuario = MessageBox.Show("Realmente Deseja Remover o Porduto da Lista?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (OpcaoDoUsuario == DialogResult.Yes)
+                    {
+                        telaPDV.RemoverProduto();
 
-                    telaPDV.ValorTotal();
-
-                    this.Close();
+                        //telaPDV.ValorTotal();
+                        this.Close();
+                    }
                 }
             }
-            else if (tipo == "Devolucao/Troca")
+            else if (tipo == "Troca")
             {
                 Forms_Troca telaDevolucaoTroca = new Forms_Troca();
                 telaDevolucaoTroca.ShowDialog();
@@ -64,9 +68,14 @@ namespace Sistema_de_Gerenciamento.Forms
             }
             else if (tipo == "Cancelar Pagamento")
             {
-                telaPDV.FormatandoParaNovaVenda();
+                DialogResult OpcaoDoUsuario = new DialogResult();
+                OpcaoDoUsuario = MessageBox.Show("Realmente Cancelar a Venda?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (OpcaoDoUsuario == DialogResult.Yes)
+                {
+                    telaPDV.FormatandoParaNovaVenda();
 
-                this.Close();
+                    this.Close();
+                }
             }
         }
 
