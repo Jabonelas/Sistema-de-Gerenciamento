@@ -641,20 +641,22 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Atualizar Juros Carne
 
-        public void JurosPorCarne(int _prazoCarne, decimal _jurosCarne, int _parcelasCarne)
+        public void JurosPorCarne(int _prazoCarne, decimal _jurosCarne, int _parcelasCarne, decimal _jurosAtraso, decimal _multaAtraso)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "update tb_Financeiro set fn_prazo_carne = @prazoCarne, fn_juros_carne = @jurosCarne," +
-                                   "fn_parcelas_carne = @parcelasCarne";
+                                   "fn_parcelas_carne = @parcelasCarne, fn_juros_atraso = @jurosAtraso , fn_multa_atraso = @multaAtraso  ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
                     adapter.SelectCommand.Parameters.AddWithValue("@prazoCarne", _prazoCarne);
                     adapter.SelectCommand.Parameters.AddWithValue("@jurosCarne", _jurosCarne);
                     adapter.SelectCommand.Parameters.AddWithValue("@parcelasCarne", _parcelasCarne);
+                    adapter.SelectCommand.Parameters.AddWithValue("@jurosAtraso", _jurosAtraso);
+                    adapter.SelectCommand.Parameters.AddWithValue("@multaAtraso", _multaAtraso);
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
@@ -923,7 +925,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoAtualizarDadosTrocaoBanco(ex);
+                Erro.ErroAoAtualizarDadosTrocaoNoBanco(ex);
             }
         }
 
@@ -969,7 +971,36 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoAtualizarGarantiaTrocaoBanco(ex);
+                Erro.ErroAoAtualizarGarantiaTrocaoNoBanco(ex);
+            }
+        }
+
+        public void AtualizarImagemStatusPagamentoNotaFiscalSaida(Image _imagem, int _numeroNFSaida, string _parcela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_PagamentoCarne set pc_status_imagem_pagamento = @imagem " +
+                        "where pc_numero_nf = @numeroNFSaida and pc_parcela = @parcela ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    byte[] arr;
+                    ImageConverter converter = new ImageConverter();
+                    arr = (byte[])converter.ConvertTo(_imagem, typeof(byte[]));
+                    adapter.SelectCommand.Parameters.Add("@imagem", SqlDbType.Image).Value = arr;
+                    adapter.SelectCommand.Parameters.AddWithValue("@numeroNFSaida", SqlDbType.VarChar).Value = _numeroNFSaida;
+                    adapter.SelectCommand.Parameters.AddWithValue("@parcela", SqlDbType.VarChar).Value = _parcela;
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+
+                    AvisoCantoInferiorDireito.Atualizacao();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarImagemStatusPagamentoCarneNoBanco(ex);
             }
         }
     }

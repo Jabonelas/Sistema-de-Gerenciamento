@@ -37,8 +37,10 @@ C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\ob
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_DespesasCustos.resources
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_PesquisarDespesaCustos.resources
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_PesquisarCadastroDespesaCusto.resources
-C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_EditarPagamento.resources
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_ControleADMIN.resources
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_PDV.resources
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_Troca.resources
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_Pagamento.resources
+C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_PesquisarContasAReceber.resources
+C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_EditarPagamentoAPagar.resources
+C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_EditarPagamentoAReceber.resources

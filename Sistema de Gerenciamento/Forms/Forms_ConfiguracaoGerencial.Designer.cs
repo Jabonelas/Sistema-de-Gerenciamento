@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Forms_ConfiguracaoGerencial));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges7 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges9 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges10 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges11 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges12 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbGrupoProduto = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,7 +55,11 @@
             this.txtDescontoAvista = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnConfirmarAvista = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuGroupBox4 = new Bunifu.UI.WinForms.BunifuGroupBox();
-            this.txtJurosCarne = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtMultaCarneAtrasoPagamento = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.txtJurosCarneAtrasoPagamento = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtJurosCarneParcelas = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnConfirmarCarne = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.label11 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -184,11 +188,11 @@
             this.btnConfirmarGrupo.ColorContrastOnClick = 45;
             this.btnConfirmarGrupo.ColorContrastOnHover = 45;
             this.btnConfirmarGrupo.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges7.BottomLeft = true;
-            borderEdges7.BottomRight = true;
-            borderEdges7.TopLeft = true;
-            borderEdges7.TopRight = true;
-            this.btnConfirmarGrupo.CustomizableEdges = borderEdges7;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnConfirmarGrupo.CustomizableEdges = borderEdges1;
             this.btnConfirmarGrupo.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnConfirmarGrupo.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnConfirmarGrupo.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -298,11 +302,11 @@
             this.btnFechar.ColorContrastOnClick = 45;
             this.btnFechar.ColorContrastOnHover = 45;
             this.btnFechar.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges8.BottomLeft = true;
-            borderEdges8.BottomRight = true;
-            borderEdges8.TopLeft = true;
-            borderEdges8.TopRight = true;
-            this.btnFechar.CustomizableEdges = borderEdges8;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnFechar.CustomizableEdges = borderEdges2;
             this.btnFechar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnFechar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnFechar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -465,11 +469,11 @@
             this.btnConfirmarAvista.ColorContrastOnClick = 45;
             this.btnConfirmarAvista.ColorContrastOnHover = 45;
             this.btnConfirmarAvista.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges9.BottomLeft = true;
-            borderEdges9.BottomRight = true;
-            borderEdges9.TopLeft = true;
-            borderEdges9.TopRight = true;
-            this.btnConfirmarAvista.CustomizableEdges = borderEdges9;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            this.btnConfirmarAvista.CustomizableEdges = borderEdges3;
             this.btnConfirmarAvista.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnConfirmarAvista.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnConfirmarAvista.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -541,7 +545,11 @@
             this.bunifuGroupBox4.BorderColor = System.Drawing.Color.Black;
             this.bunifuGroupBox4.BorderRadius = 1;
             this.bunifuGroupBox4.BorderThickness = 1;
-            this.bunifuGroupBox4.Controls.Add(this.txtJurosCarne);
+            this.bunifuGroupBox4.Controls.Add(this.txtMultaCarneAtrasoPagamento);
+            this.bunifuGroupBox4.Controls.Add(this.label17);
+            this.bunifuGroupBox4.Controls.Add(this.txtJurosCarneAtrasoPagamento);
+            this.bunifuGroupBox4.Controls.Add(this.label16);
+            this.bunifuGroupBox4.Controls.Add(this.txtJurosCarneParcelas);
             this.bunifuGroupBox4.Controls.Add(this.btnConfirmarCarne);
             this.bunifuGroupBox4.Controls.Add(this.label11);
             this.bunifuGroupBox4.Controls.Add(this.label9);
@@ -554,37 +562,115 @@
             this.bunifuGroupBox4.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
             this.bunifuGroupBox4.Location = new System.Drawing.Point(12, 254);
             this.bunifuGroupBox4.Name = "bunifuGroupBox4";
-            this.bunifuGroupBox4.Size = new System.Drawing.Size(282, 225);
+            this.bunifuGroupBox4.Size = new System.Drawing.Size(515, 225);
             this.bunifuGroupBox4.TabIndex = 244;
             this.bunifuGroupBox4.TabStop = false;
             // 
-            // txtJurosCarne
+            // txtMultaCarneAtrasoPagamento
             // 
-            this.txtJurosCarne.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtJurosCarne.DefaultText = "";
-            this.txtJurosCarne.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtJurosCarne.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtJurosCarne.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtJurosCarne.DisabledState.Parent = this.txtJurosCarne;
-            this.txtJurosCarne.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtJurosCarne.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtJurosCarne.FocusedState.Parent = this.txtJurosCarne;
-            this.txtJurosCarne.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtJurosCarne.ForeColor = System.Drawing.Color.Black;
-            this.txtJurosCarne.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtJurosCarne.HoverState.Parent = this.txtJurosCarne;
-            this.txtJurosCarne.Location = new System.Drawing.Point(171, 42);
-            this.txtJurosCarne.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txtJurosCarne.Name = "txtJurosCarne";
-            this.txtJurosCarne.PasswordChar = '\0';
-            this.txtJurosCarne.PlaceholderText = "";
-            this.txtJurosCarne.SelectedText = "";
-            this.txtJurosCarne.ShadowDecoration.Parent = this.txtJurosCarne;
-            this.txtJurosCarne.ShortcutsEnabled = false;
-            this.txtJurosCarne.Size = new System.Drawing.Size(97, 36);
-            this.txtJurosCarne.TabIndex = 249;
-            this.txtJurosCarne.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtJurosCarne.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtJurosCarne_KeyPress);
+            this.txtMultaCarneAtrasoPagamento.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtMultaCarneAtrasoPagamento.DefaultText = "";
+            this.txtMultaCarneAtrasoPagamento.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtMultaCarneAtrasoPagamento.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtMultaCarneAtrasoPagamento.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtMultaCarneAtrasoPagamento.DisabledState.Parent = this.txtMultaCarneAtrasoPagamento;
+            this.txtMultaCarneAtrasoPagamento.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtMultaCarneAtrasoPagamento.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMultaCarneAtrasoPagamento.FocusedState.Parent = this.txtMultaCarneAtrasoPagamento;
+            this.txtMultaCarneAtrasoPagamento.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMultaCarneAtrasoPagamento.ForeColor = System.Drawing.Color.Black;
+            this.txtMultaCarneAtrasoPagamento.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtMultaCarneAtrasoPagamento.HoverState.Parent = this.txtMultaCarneAtrasoPagamento;
+            this.txtMultaCarneAtrasoPagamento.Location = new System.Drawing.Point(171, 118);
+            this.txtMultaCarneAtrasoPagamento.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtMultaCarneAtrasoPagamento.Name = "txtMultaCarneAtrasoPagamento";
+            this.txtMultaCarneAtrasoPagamento.PasswordChar = '\0';
+            this.txtMultaCarneAtrasoPagamento.PlaceholderText = "";
+            this.txtMultaCarneAtrasoPagamento.SelectedText = "";
+            this.txtMultaCarneAtrasoPagamento.ShadowDecoration.Parent = this.txtMultaCarneAtrasoPagamento;
+            this.txtMultaCarneAtrasoPagamento.ShortcutsEnabled = false;
+            this.txtMultaCarneAtrasoPagamento.Size = new System.Drawing.Size(97, 36);
+            this.txtMultaCarneAtrasoPagamento.TabIndex = 253;
+            this.txtMultaCarneAtrasoPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMultaCarneAtrasoPagamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMultaCarneAtrasoPagamento_KeyPress);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(171, 88);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(100, 30);
+            this.label17.TabIndex = 252;
+            this.label17.Text = "Porcentagem \r\nMulta Por Atraso";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtJurosCarneAtrasoPagamento
+            // 
+            this.txtJurosCarneAtrasoPagamento.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtJurosCarneAtrasoPagamento.DefaultText = "";
+            this.txtJurosCarneAtrasoPagamento.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtJurosCarneAtrasoPagamento.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtJurosCarneAtrasoPagamento.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtJurosCarneAtrasoPagamento.DisabledState.Parent = this.txtJurosCarneAtrasoPagamento;
+            this.txtJurosCarneAtrasoPagamento.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtJurosCarneAtrasoPagamento.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtJurosCarneAtrasoPagamento.FocusedState.Parent = this.txtJurosCarneAtrasoPagamento;
+            this.txtJurosCarneAtrasoPagamento.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtJurosCarneAtrasoPagamento.ForeColor = System.Drawing.Color.Black;
+            this.txtJurosCarneAtrasoPagamento.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtJurosCarneAtrasoPagamento.HoverState.Parent = this.txtJurosCarneAtrasoPagamento;
+            this.txtJurosCarneAtrasoPagamento.Location = new System.Drawing.Point(344, 42);
+            this.txtJurosCarneAtrasoPagamento.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtJurosCarneAtrasoPagamento.Name = "txtJurosCarneAtrasoPagamento";
+            this.txtJurosCarneAtrasoPagamento.PasswordChar = '\0';
+            this.txtJurosCarneAtrasoPagamento.PlaceholderText = "";
+            this.txtJurosCarneAtrasoPagamento.SelectedText = "";
+            this.txtJurosCarneAtrasoPagamento.ShadowDecoration.Parent = this.txtJurosCarneAtrasoPagamento;
+            this.txtJurosCarneAtrasoPagamento.ShortcutsEnabled = false;
+            this.txtJurosCarneAtrasoPagamento.Size = new System.Drawing.Size(97, 36);
+            this.txtJurosCarneAtrasoPagamento.TabIndex = 251;
+            this.txtJurosCarneAtrasoPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtJurosCarneAtrasoPagamento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtJurosCarneAtrasoPagamento_KeyPress);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(327, 12);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(128, 30);
+            this.label16.TabIndex = 250;
+            this.label16.Text = "Porcentagem do Juros\r\nPor Dia de Atraso";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtJurosCarneParcelas
+            // 
+            this.txtJurosCarneParcelas.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtJurosCarneParcelas.DefaultText = "";
+            this.txtJurosCarneParcelas.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtJurosCarneParcelas.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtJurosCarneParcelas.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtJurosCarneParcelas.DisabledState.Parent = this.txtJurosCarneParcelas;
+            this.txtJurosCarneParcelas.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtJurosCarneParcelas.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtJurosCarneParcelas.FocusedState.Parent = this.txtJurosCarneParcelas;
+            this.txtJurosCarneParcelas.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtJurosCarneParcelas.ForeColor = System.Drawing.Color.Black;
+            this.txtJurosCarneParcelas.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtJurosCarneParcelas.HoverState.Parent = this.txtJurosCarneParcelas;
+            this.txtJurosCarneParcelas.Location = new System.Drawing.Point(171, 42);
+            this.txtJurosCarneParcelas.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.txtJurosCarneParcelas.Name = "txtJurosCarneParcelas";
+            this.txtJurosCarneParcelas.PasswordChar = '\0';
+            this.txtJurosCarneParcelas.PlaceholderText = "";
+            this.txtJurosCarneParcelas.SelectedText = "";
+            this.txtJurosCarneParcelas.ShadowDecoration.Parent = this.txtJurosCarneParcelas;
+            this.txtJurosCarneParcelas.ShortcutsEnabled = false;
+            this.txtJurosCarneParcelas.Size = new System.Drawing.Size(97, 36);
+            this.txtJurosCarneParcelas.TabIndex = 249;
+            this.txtJurosCarneParcelas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtJurosCarneParcelas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtJurosCarne_KeyPress);
             // 
             // btnConfirmarCarne
             // 
@@ -605,11 +691,11 @@
             this.btnConfirmarCarne.ColorContrastOnClick = 45;
             this.btnConfirmarCarne.ColorContrastOnHover = 45;
             this.btnConfirmarCarne.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges10.BottomLeft = true;
-            borderEdges10.BottomRight = true;
-            borderEdges10.TopLeft = true;
-            borderEdges10.TopRight = true;
-            this.btnConfirmarCarne.CustomizableEdges = borderEdges10;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            this.btnConfirmarCarne.CustomizableEdges = borderEdges4;
             this.btnConfirmarCarne.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnConfirmarCarne.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnConfirmarCarne.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -730,26 +816,26 @@
             this.txtPrazoCarne.Modified = false;
             this.txtPrazoCarne.Multiline = false;
             this.txtPrazoCarne.Name = "txtPrazoCarne";
-            stateProperties5.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties5.FillColor = System.Drawing.Color.Empty;
-            stateProperties5.ForeColor = System.Drawing.Color.Empty;
-            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtPrazoCarne.OnActiveState = stateProperties5;
-            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtPrazoCarne.OnDisabledState = stateProperties6;
-            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties7.FillColor = System.Drawing.Color.Empty;
-            stateProperties7.ForeColor = System.Drawing.Color.Empty;
-            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtPrazoCarne.OnHoverState = stateProperties7;
-            stateProperties8.BorderColor = System.Drawing.Color.Silver;
-            stateProperties8.FillColor = System.Drawing.Color.White;
-            stateProperties8.ForeColor = System.Drawing.Color.Empty;
-            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtPrazoCarne.OnIdleState = stateProperties8;
+            stateProperties1.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties1.FillColor = System.Drawing.Color.Empty;
+            stateProperties1.ForeColor = System.Drawing.Color.Empty;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtPrazoCarne.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtPrazoCarne.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtPrazoCarne.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.Silver;
+            stateProperties4.FillColor = System.Drawing.Color.White;
+            stateProperties4.ForeColor = System.Drawing.Color.Empty;
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtPrazoCarne.OnIdleState = stateProperties4;
             this.txtPrazoCarne.Padding = new System.Windows.Forms.Padding(3);
             this.txtPrazoCarne.PasswordChar = '\0';
             this.txtPrazoCarne.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -776,11 +862,11 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(178, 12);
+            this.label10.Location = new System.Drawing.Point(171, 12);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(83, 30);
+            this.label10.Size = new System.Drawing.Size(99, 30);
             this.label10.TabIndex = 242;
-            this.label10.Text = "Porcentagem \r\ndo Juros";
+            this.label10.Text = "Porcentagem \r\ndo Juros Parcelas";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cmbParcelasCarne
@@ -823,7 +909,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(335, 236);
+            this.label13.Location = new System.Drawing.Point(570, 236);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(175, 15);
             this.label13.TabIndex = 248;
@@ -843,7 +929,7 @@
             this.bunifuGroupBox3.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.bunifuGroupBox3.LabelIndent = 10;
             this.bunifuGroupBox3.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
-            this.bunifuGroupBox3.Location = new System.Drawing.Point(322, 254);
+            this.bunifuGroupBox3.Location = new System.Drawing.Point(557, 254);
             this.bunifuGroupBox3.Name = "bunifuGroupBox3";
             this.bunifuGroupBox3.Size = new System.Drawing.Size(205, 225);
             this.bunifuGroupBox3.TabIndex = 247;
@@ -896,11 +982,11 @@
             this.btnConfirmarCredito.ColorContrastOnClick = 45;
             this.btnConfirmarCredito.ColorContrastOnHover = 45;
             this.btnConfirmarCredito.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges11.BottomLeft = true;
-            borderEdges11.BottomRight = true;
-            borderEdges11.TopLeft = true;
-            borderEdges11.TopRight = true;
-            this.btnConfirmarCredito.CustomizableEdges = borderEdges11;
+            borderEdges5.BottomLeft = true;
+            borderEdges5.BottomRight = true;
+            borderEdges5.TopLeft = true;
+            borderEdges5.TopRight = true;
+            this.btnConfirmarCredito.CustomizableEdges = borderEdges5;
             this.btnConfirmarCredito.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnConfirmarCredito.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnConfirmarCredito.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -1089,11 +1175,11 @@
             this.btnConfirmarComissao.ColorContrastOnClick = 45;
             this.btnConfirmarComissao.ColorContrastOnHover = 45;
             this.btnConfirmarComissao.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges12.BottomLeft = true;
-            borderEdges12.BottomRight = true;
-            borderEdges12.TopLeft = true;
-            borderEdges12.TopRight = true;
-            this.btnConfirmarComissao.CustomizableEdges = borderEdges12;
+            borderEdges6.BottomLeft = true;
+            borderEdges6.BottomRight = true;
+            borderEdges6.TopLeft = true;
+            borderEdges6.TopRight = true;
+            this.btnConfirmarComissao.CustomizableEdges = borderEdges6;
             this.btnConfirmarComissao.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnConfirmarComissao.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnConfirmarComissao.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -1235,7 +1321,7 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnConfirmarAvista;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnConfirmarCarne;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnConfirmarCredito;
-        private Guna.UI2.WinForms.Guna2TextBox txtJurosCarne;
+        private Guna.UI2.WinForms.Guna2TextBox txtJurosCarneParcelas;
         private Guna.UI2.WinForms.Guna2TextBox txtJurosCredito;
         private System.Windows.Forms.Label label12;
         private Bunifu.UI.WinForms.BunifuGroupBox bunifuGroupBox5;
@@ -1244,5 +1330,9 @@
         private Guna.UI2.WinForms.Guna2TextBox txtDescontoPorGrupo;
         private Guna.UI2.WinForms.Guna2TextBox txtDescontoAvista;
         private Guna.UI2.WinForms.Guna2TextBox txtComissao;
+        private Guna.UI2.WinForms.Guna2TextBox txtMultaCarneAtrasoPagamento;
+        private System.Windows.Forms.Label label17;
+        private Guna.UI2.WinForms.Guna2TextBox txtJurosCarneAtrasoPagamento;
+        private System.Windows.Forms.Label label16;
     }
 }

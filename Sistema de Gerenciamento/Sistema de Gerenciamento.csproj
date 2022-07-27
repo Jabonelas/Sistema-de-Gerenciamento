@@ -278,17 +278,29 @@
     <Compile Include="Forms\Forms_ControleADMIN.Designer.cs">
       <DependentUpon>Forms_ControleADMIN.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Forms_EditarPagamento.cs">
+    <Compile Include="Forms\Forms_EditarPagamentoAPagar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Forms_EditarPagamento.Designer.cs">
-      <DependentUpon>Forms_EditarPagamento.cs</DependentUpon>
+    <Compile Include="Forms\Forms_EditarPagamentoAPagar.Designer.cs">
+      <DependentUpon>Forms_EditarPagamentoAPagar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms_EditarPagamentoAReceber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_EditarPagamentoAReceber.Designer.cs">
+      <DependentUpon>Forms_EditarPagamentoAReceber.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Forms_Pagamento.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Forms_Pagamento.Designer.cs">
       <DependentUpon>Forms_Pagamento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms_PesquisarContasAReceber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_PesquisarContasAReceber.Designer.cs">
+      <DependentUpon>Forms_PesquisarContasAReceber.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Forms_PesquisarDespesaCustos.cs">
       <SubType>Form</SubType>
@@ -478,8 +490,11 @@
     <EmbeddedResource Include="Forms\Forms_DespesasCustos.resx">
       <DependentUpon>Forms_DespesasCustos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Forms_EditarPagamento.resx">
-      <DependentUpon>Forms_EditarPagamento.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Forms_EditarPagamentoAPagar.resx">
+      <DependentUpon>Forms_EditarPagamentoAPagar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_EditarPagamentoAReceber.resx">
+      <DependentUpon>Forms_EditarPagamentoAReceber.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_GerarCarne.resx">
       <DependentUpon>Forms_GerarCarne.cs</DependentUpon>
@@ -502,6 +517,9 @@
     <EmbeddedResource Include="Forms\Forms_PesquisarContasAPagar.resx">
       <DependentUpon>Forms_PesquisarContasAPagar.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_PesquisarContasAReceber.resx">
+      <DependentUpon>Forms_PesquisarContasAReceber.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_PesquisarDespesaCustos.resx">
       <DependentUpon>Forms_PesquisarDespesaCustos.cs</DependentUpon>

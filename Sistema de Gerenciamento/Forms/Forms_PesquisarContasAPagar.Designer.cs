@@ -28,24 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Forms_PesquisarContasAPagar));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges7 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges9 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties9 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties10 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties11 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties13 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties14 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties15 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties16 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges10 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties1 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties2 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties3 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties4 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties5 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties6 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties7 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties8 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.gdvContarPagar = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dc_codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_fornecedor_titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_cnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_emissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_vencimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_frequencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_quantidade_parcelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_valor_parcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_estatus_pagamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_imagem_pagamento = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dc_valor_pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_data_pagamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_desconto_taxas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_juros_multa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dc_verificar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
@@ -87,27 +108,6 @@
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.btnPesquisar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.lblNumeroLancamentosSelecionados = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.dc_codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_fornecedor_titulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_cnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_emissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_vencimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_frequencia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_quantidade_parcelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_valor_parcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_estatus_pagamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_imagem_pagamento = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dc_valor_pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_data_pagamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_desconto_taxas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_juros_multa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dc_verificar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gdvContarPagar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,21 +116,21 @@
             this.gdvContarPagar.AllowCustomTheming = false;
             this.gdvContarPagar.AllowUserToAddRows = false;
             this.gdvContarPagar.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.gdvContarPagar.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.gdvContarPagar.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.gdvContarPagar.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gdvContarPagar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.gdvContarPagar.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.gdvContarPagar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DodgerBlue;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gdvContarPagar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DodgerBlue;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gdvContarPagar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gdvContarPagar.ColumnHeadersHeight = 40;
             this.gdvContarPagar.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
@@ -172,14 +172,14 @@
             this.gdvContarPagar.CurrentTheme.RowsStyle.ForeColor = System.Drawing.Color.Black;
             this.gdvContarPagar.CurrentTheme.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
             this.gdvContarPagar.CurrentTheme.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.gdvContarPagar.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(232)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gdvContarPagar.DefaultCellStyle = dataGridViewCellStyle3;
             this.gdvContarPagar.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
             this.gdvContarPagar.EnableHeadersVisualStyles = false;
             this.gdvContarPagar.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(238)))), ((int)(((byte)(255)))));
@@ -197,6 +197,179 @@
             this.gdvContarPagar.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.gdvContarPagar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gdvContarPagar_CellClick);
             this.gdvContarPagar.DoubleClick += new System.EventHandler(this.gdvContarPagar_DoubleClick);
+            // 
+            // Column1
+            // 
+            this.Column1.FalseValue = "false";
+            this.Column1.FillWeight = 22.50072F;
+            this.Column1.HeaderText = "";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column1.TrueValue = "true";
+            // 
+            // dc_codigo
+            // 
+            this.dc_codigo.DataPropertyName = "dc_codigo";
+            this.dc_codigo.FillWeight = 68.2226F;
+            this.dc_codigo.HeaderText = "Codigo";
+            this.dc_codigo.Name = "dc_codigo";
+            this.dc_codigo.ReadOnly = true;
+            // 
+            // dc_id
+            // 
+            this.dc_id.DataPropertyName = "dc_id";
+            this.dc_id.HeaderText = "dc_id";
+            this.dc_id.Name = "dc_id";
+            this.dc_id.ReadOnly = true;
+            this.dc_id.Visible = false;
+            // 
+            // dc_categoria
+            // 
+            this.dc_categoria.DataPropertyName = "dc_categoria";
+            this.dc_categoria.FillWeight = 92.02452F;
+            this.dc_categoria.HeaderText = "Categoria";
+            this.dc_categoria.Name = "dc_categoria";
+            this.dc_categoria.ReadOnly = true;
+            // 
+            // dc_tipo
+            // 
+            this.dc_tipo.DataPropertyName = "dc_tipo";
+            this.dc_tipo.FillWeight = 75.9568F;
+            this.dc_tipo.HeaderText = "Tipo";
+            this.dc_tipo.Name = "dc_tipo";
+            this.dc_tipo.ReadOnly = true;
+            // 
+            // dc_fornecedor_titulo
+            // 
+            this.dc_fornecedor_titulo.DataPropertyName = "dc_fornecedor_titulo";
+            this.dc_fornecedor_titulo.FillWeight = 79.63145F;
+            this.dc_fornecedor_titulo.HeaderText = "Titulo";
+            this.dc_fornecedor_titulo.Name = "dc_fornecedor_titulo";
+            this.dc_fornecedor_titulo.ReadOnly = true;
+            // 
+            // dc_descricao
+            // 
+            this.dc_descricao.DataPropertyName = "dc_descricao";
+            this.dc_descricao.FillWeight = 245.2517F;
+            this.dc_descricao.HeaderText = "Descricao";
+            this.dc_descricao.Name = "dc_descricao";
+            this.dc_descricao.ReadOnly = true;
+            // 
+            // dc_cnpj
+            // 
+            this.dc_cnpj.DataPropertyName = "dc_cnpj";
+            this.dc_cnpj.HeaderText = "dc_cnpj";
+            this.dc_cnpj.Name = "dc_cnpj";
+            this.dc_cnpj.ReadOnly = true;
+            this.dc_cnpj.Visible = false;
+            // 
+            // dc_emissao
+            // 
+            this.dc_emissao.DataPropertyName = "dc_emissao";
+            this.dc_emissao.HeaderText = "dc_emissao";
+            this.dc_emissao.Name = "dc_emissao";
+            this.dc_emissao.ReadOnly = true;
+            this.dc_emissao.Visible = false;
+            // 
+            // dc_vencimento
+            // 
+            this.dc_vencimento.DataPropertyName = "dc_vencimento";
+            this.dc_vencimento.FillWeight = 118.9589F;
+            this.dc_vencimento.HeaderText = "Vencimento";
+            this.dc_vencimento.Name = "dc_vencimento";
+            this.dc_vencimento.ReadOnly = true;
+            // 
+            // dc_frequencia
+            // 
+            this.dc_frequencia.DataPropertyName = "dc_frequencia";
+            this.dc_frequencia.HeaderText = "dc_frequencia";
+            this.dc_frequencia.Name = "dc_frequencia";
+            this.dc_frequencia.ReadOnly = true;
+            this.dc_frequencia.Visible = false;
+            // 
+            // dc_valor
+            // 
+            this.dc_valor.DataPropertyName = "dc_valor";
+            this.dc_valor.HeaderText = "dc_valor";
+            this.dc_valor.Name = "dc_valor";
+            this.dc_valor.ReadOnly = true;
+            this.dc_valor.Visible = false;
+            // 
+            // dc_quantidade_parcelas
+            // 
+            this.dc_quantidade_parcelas.DataPropertyName = "dc_quantidade_parcelas";
+            this.dc_quantidade_parcelas.HeaderText = "Quant. Parcelas";
+            this.dc_quantidade_parcelas.Name = "dc_quantidade_parcelas";
+            this.dc_quantidade_parcelas.ReadOnly = true;
+            this.dc_quantidade_parcelas.Visible = false;
+            // 
+            // dc_valor_parcela
+            // 
+            this.dc_valor_parcela.DataPropertyName = "dc_valor_parcela";
+            this.dc_valor_parcela.FillWeight = 106.0827F;
+            this.dc_valor_parcela.HeaderText = "Valor ";
+            this.dc_valor_parcela.Name = "dc_valor_parcela";
+            this.dc_valor_parcela.ReadOnly = true;
+            // 
+            // dc_estatus_pagamento
+            // 
+            this.dc_estatus_pagamento.DataPropertyName = "dc_estatus_pagamento";
+            this.dc_estatus_pagamento.HeaderText = "dc_estatus_pagamento";
+            this.dc_estatus_pagamento.Name = "dc_estatus_pagamento";
+            this.dc_estatus_pagamento.ReadOnly = true;
+            this.dc_estatus_pagamento.Visible = false;
+            // 
+            // dc_imagem_pagamento
+            // 
+            this.dc_imagem_pagamento.DataPropertyName = "dc_imagem_pagamento";
+            this.dc_imagem_pagamento.FillWeight = 91.37055F;
+            this.dc_imagem_pagamento.HeaderText = "Pagamento";
+            this.dc_imagem_pagamento.Name = "dc_imagem_pagamento";
+            this.dc_imagem_pagamento.ReadOnly = true;
+            this.dc_imagem_pagamento.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dc_imagem_pagamento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dc_valor_pago
+            // 
+            this.dc_valor_pago.DataPropertyName = "dc_valor_pago";
+            this.dc_valor_pago.HeaderText = "dc_valor_pago";
+            this.dc_valor_pago.Name = "dc_valor_pago";
+            this.dc_valor_pago.ReadOnly = true;
+            this.dc_valor_pago.Visible = false;
+            // 
+            // dc_data_pagamento
+            // 
+            this.dc_data_pagamento.DataPropertyName = "dc_data_pagamento";
+            this.dc_data_pagamento.HeaderText = "dc_data_pagamento";
+            this.dc_data_pagamento.Name = "dc_data_pagamento";
+            this.dc_data_pagamento.ReadOnly = true;
+            this.dc_data_pagamento.Visible = false;
+            // 
+            // dc_desconto_taxas
+            // 
+            this.dc_desconto_taxas.DataPropertyName = "dc_desconto_taxas";
+            this.dc_desconto_taxas.HeaderText = "dc_desconto_taxas";
+            this.dc_desconto_taxas.Name = "dc_desconto_taxas";
+            this.dc_desconto_taxas.ReadOnly = true;
+            this.dc_desconto_taxas.Visible = false;
+            // 
+            // dc_juros_multa
+            // 
+            this.dc_juros_multa.DataPropertyName = "dc_juros_multa";
+            this.dc_juros_multa.HeaderText = "dc_juros_multa";
+            this.dc_juros_multa.Name = "dc_juros_multa";
+            this.dc_juros_multa.ReadOnly = true;
+            this.dc_juros_multa.Visible = false;
+            // 
+            // dc_verificar
+            // 
+            this.dc_verificar.DataPropertyName = "dc_verificar";
+            this.dc_verificar.HeaderText = "dc_verificar";
+            this.dc_verificar.Name = "dc_verificar";
+            this.dc_verificar.ReadOnly = true;
+            this.dc_verificar.Visible = false;
             // 
             // cmbCategoria
             // 
@@ -573,16 +746,16 @@
             this.btnExportarParaExcel.BackColor1 = System.Drawing.Color.Transparent;
             this.btnExportarParaExcel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExportarParaExcel.BackgroundImage")));
             this.btnExportarParaExcel.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnExportarParaExcel.ButtonText = "Exportar para o Execel \r\nRelação listaDadosNotaFiscalSaidaCompleta Despesas/Custos";
+            this.btnExportarParaExcel.ButtonText = "Exportar para o Execel \r\nRelação Despesas/Custos";
             this.btnExportarParaExcel.ButtonTextMarginLeft = 0;
             this.btnExportarParaExcel.ColorContrastOnClick = 45;
             this.btnExportarParaExcel.ColorContrastOnHover = 45;
             this.btnExportarParaExcel.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges6.BottomLeft = true;
-            borderEdges6.BottomRight = true;
-            borderEdges6.TopLeft = true;
-            borderEdges6.TopRight = true;
-            this.btnExportarParaExcel.CustomizableEdges = borderEdges6;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnExportarParaExcel.CustomizableEdges = borderEdges1;
             this.btnExportarParaExcel.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnExportarParaExcel.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnExportarParaExcel.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -668,11 +841,11 @@
             this.btnImprimir.ColorContrastOnClick = 45;
             this.btnImprimir.ColorContrastOnHover = 45;
             this.btnImprimir.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges7.BottomLeft = true;
-            borderEdges7.BottomRight = true;
-            borderEdges7.TopLeft = true;
-            borderEdges7.TopRight = true;
-            this.btnImprimir.CustomizableEdges = borderEdges7;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnImprimir.CustomizableEdges = borderEdges2;
             this.btnImprimir.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnImprimir.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnImprimir.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -758,11 +931,11 @@
             this.btnSelecionar.ColorContrastOnClick = 45;
             this.btnSelecionar.ColorContrastOnHover = 45;
             this.btnSelecionar.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges8.BottomLeft = true;
-            borderEdges8.BottomRight = true;
-            borderEdges8.TopLeft = true;
-            borderEdges8.TopRight = true;
-            this.btnSelecionar.CustomizableEdges = borderEdges8;
+            borderEdges3.BottomLeft = true;
+            borderEdges3.BottomRight = true;
+            borderEdges3.TopLeft = true;
+            borderEdges3.TopRight = true;
+            this.btnSelecionar.CustomizableEdges = borderEdges3;
             this.btnSelecionar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnSelecionar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSelecionar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -848,11 +1021,11 @@
             this.btnFechar.ColorContrastOnClick = 45;
             this.btnFechar.ColorContrastOnHover = 45;
             this.btnFechar.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges9.BottomLeft = true;
-            borderEdges9.BottomRight = true;
-            borderEdges9.TopLeft = true;
-            borderEdges9.TopRight = true;
-            this.btnFechar.CustomizableEdges = borderEdges9;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            this.btnFechar.CustomizableEdges = borderEdges4;
             this.btnFechar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnFechar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnFechar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -952,26 +1125,26 @@
             this.txtCodigoDespesa.Modified = false;
             this.txtCodigoDespesa.Multiline = false;
             this.txtCodigoDespesa.Name = "txtCodigoDespesa";
-            stateProperties9.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties9.FillColor = System.Drawing.Color.Empty;
-            stateProperties9.ForeColor = System.Drawing.Color.Empty;
-            stateProperties9.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtCodigoDespesa.OnActiveState = stateProperties9;
-            stateProperties10.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties10.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties10.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtCodigoDespesa.OnDisabledState = stateProperties10;
-            stateProperties11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties11.FillColor = System.Drawing.Color.Empty;
-            stateProperties11.ForeColor = System.Drawing.Color.Empty;
-            stateProperties11.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtCodigoDespesa.OnHoverState = stateProperties11;
-            stateProperties12.BorderColor = System.Drawing.Color.Silver;
-            stateProperties12.FillColor = System.Drawing.Color.White;
-            stateProperties12.ForeColor = System.Drawing.Color.Empty;
-            stateProperties12.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtCodigoDespesa.OnIdleState = stateProperties12;
+            stateProperties1.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties1.FillColor = System.Drawing.Color.Empty;
+            stateProperties1.ForeColor = System.Drawing.Color.Empty;
+            stateProperties1.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCodigoDespesa.OnActiveState = stateProperties1;
+            stateProperties2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties2.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtCodigoDespesa.OnDisabledState = stateProperties2;
+            stateProperties3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties3.FillColor = System.Drawing.Color.Empty;
+            stateProperties3.ForeColor = System.Drawing.Color.Empty;
+            stateProperties3.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCodigoDespesa.OnHoverState = stateProperties3;
+            stateProperties4.BorderColor = System.Drawing.Color.Silver;
+            stateProperties4.FillColor = System.Drawing.Color.White;
+            stateProperties4.ForeColor = System.Drawing.Color.Empty;
+            stateProperties4.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtCodigoDespesa.OnIdleState = stateProperties4;
             this.txtCodigoDespesa.Padding = new System.Windows.Forms.Padding(3);
             this.txtCodigoDespesa.PasswordChar = '\0';
             this.txtCodigoDespesa.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1027,26 +1200,26 @@
             this.txtDescricao.Modified = false;
             this.txtDescricao.Multiline = false;
             this.txtDescricao.Name = "txtDescricao";
-            stateProperties13.BorderColor = System.Drawing.Color.DodgerBlue;
-            stateProperties13.FillColor = System.Drawing.Color.Empty;
-            stateProperties13.ForeColor = System.Drawing.Color.Empty;
-            stateProperties13.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtDescricao.OnActiveState = stateProperties13;
-            stateProperties14.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            stateProperties14.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            stateProperties14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            stateProperties14.PlaceholderForeColor = System.Drawing.Color.DarkGray;
-            this.txtDescricao.OnDisabledState = stateProperties14;
-            stateProperties15.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            stateProperties15.FillColor = System.Drawing.Color.Empty;
-            stateProperties15.ForeColor = System.Drawing.Color.Empty;
-            stateProperties15.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtDescricao.OnHoverState = stateProperties15;
-            stateProperties16.BorderColor = System.Drawing.Color.Silver;
-            stateProperties16.FillColor = System.Drawing.Color.White;
-            stateProperties16.ForeColor = System.Drawing.Color.Empty;
-            stateProperties16.PlaceholderForeColor = System.Drawing.Color.Empty;
-            this.txtDescricao.OnIdleState = stateProperties16;
+            stateProperties5.BorderColor = System.Drawing.Color.DodgerBlue;
+            stateProperties5.FillColor = System.Drawing.Color.Empty;
+            stateProperties5.ForeColor = System.Drawing.Color.Empty;
+            stateProperties5.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtDescricao.OnActiveState = stateProperties5;
+            stateProperties6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            stateProperties6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            stateProperties6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            stateProperties6.PlaceholderForeColor = System.Drawing.Color.DarkGray;
+            this.txtDescricao.OnDisabledState = stateProperties6;
+            stateProperties7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            stateProperties7.FillColor = System.Drawing.Color.Empty;
+            stateProperties7.ForeColor = System.Drawing.Color.Empty;
+            stateProperties7.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtDescricao.OnHoverState = stateProperties7;
+            stateProperties8.BorderColor = System.Drawing.Color.Silver;
+            stateProperties8.FillColor = System.Drawing.Color.White;
+            stateProperties8.ForeColor = System.Drawing.Color.Empty;
+            stateProperties8.PlaceholderForeColor = System.Drawing.Color.Empty;
+            this.txtDescricao.OnIdleState = stateProperties8;
             this.txtDescricao.Padding = new System.Windows.Forms.Padding(3);
             this.txtDescricao.PasswordChar = '\0';
             this.txtDescricao.PlaceholderForeColor = System.Drawing.Color.Silver;
@@ -1103,11 +1276,11 @@
             this.btnPesquisar.ColorContrastOnClick = 45;
             this.btnPesquisar.ColorContrastOnHover = 45;
             this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges10.BottomLeft = true;
-            borderEdges10.BottomRight = true;
-            borderEdges10.TopLeft = true;
-            borderEdges10.TopRight = true;
-            this.btnPesquisar.CustomizableEdges = borderEdges10;
+            borderEdges5.BottomLeft = true;
+            borderEdges5.BottomRight = true;
+            borderEdges5.TopLeft = true;
+            borderEdges5.TopRight = true;
+            this.btnPesquisar.CustomizableEdges = borderEdges5;
             this.btnPesquisar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnPesquisar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnPesquisar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -1183,179 +1356,6 @@
             this.lblNumeroLancamentosSelecionados.Size = new System.Drawing.Size(14, 15);
             this.lblNumeroLancamentosSelecionados.TabIndex = 290;
             this.lblNumeroLancamentosSelecionados.Text = "0";
-            // 
-            // Column1
-            // 
-            this.Column1.FalseValue = "false";
-            this.Column1.FillWeight = 22.50072F;
-            this.Column1.HeaderText = "";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Column1.TrueValue = "true";
-            // 
-            // dc_codigo
-            // 
-            this.dc_codigo.DataPropertyName = "dc_codigo";
-            this.dc_codigo.FillWeight = 68.2226F;
-            this.dc_codigo.HeaderText = "Codigo";
-            this.dc_codigo.Name = "dc_codigo";
-            this.dc_codigo.ReadOnly = true;
-            // 
-            // dc_id
-            // 
-            this.dc_id.DataPropertyName = "dc_id";
-            this.dc_id.HeaderText = "dc_id";
-            this.dc_id.Name = "dc_id";
-            this.dc_id.ReadOnly = true;
-            this.dc_id.Visible = false;
-            // 
-            // dc_categoria
-            // 
-            this.dc_categoria.DataPropertyName = "dc_categoria";
-            this.dc_categoria.FillWeight = 92.02452F;
-            this.dc_categoria.HeaderText = "Categoria";
-            this.dc_categoria.Name = "dc_categoria";
-            this.dc_categoria.ReadOnly = true;
-            // 
-            // dc_tipo
-            // 
-            this.dc_tipo.DataPropertyName = "dc_tipo";
-            this.dc_tipo.FillWeight = 75.9568F;
-            this.dc_tipo.HeaderText = "Tipo";
-            this.dc_tipo.Name = "dc_tipo";
-            this.dc_tipo.ReadOnly = true;
-            // 
-            // dc_fornecedor_titulo
-            // 
-            this.dc_fornecedor_titulo.DataPropertyName = "dc_fornecedor_titulo";
-            this.dc_fornecedor_titulo.FillWeight = 79.63145F;
-            this.dc_fornecedor_titulo.HeaderText = "Titulo";
-            this.dc_fornecedor_titulo.Name = "dc_fornecedor_titulo";
-            this.dc_fornecedor_titulo.ReadOnly = true;
-            // 
-            // dc_descricao
-            // 
-            this.dc_descricao.DataPropertyName = "dc_descricao";
-            this.dc_descricao.FillWeight = 245.2517F;
-            this.dc_descricao.HeaderText = "Descricao";
-            this.dc_descricao.Name = "dc_descricao";
-            this.dc_descricao.ReadOnly = true;
-            // 
-            // dc_cnpj
-            // 
-            this.dc_cnpj.DataPropertyName = "dc_cnpj";
-            this.dc_cnpj.HeaderText = "dc_cnpj";
-            this.dc_cnpj.Name = "dc_cnpj";
-            this.dc_cnpj.ReadOnly = true;
-            this.dc_cnpj.Visible = false;
-            // 
-            // dc_emissao
-            // 
-            this.dc_emissao.DataPropertyName = "dc_emissao";
-            this.dc_emissao.HeaderText = "dc_emissao";
-            this.dc_emissao.Name = "dc_emissao";
-            this.dc_emissao.ReadOnly = true;
-            this.dc_emissao.Visible = false;
-            // 
-            // dc_vencimento
-            // 
-            this.dc_vencimento.DataPropertyName = "dc_vencimento";
-            this.dc_vencimento.FillWeight = 118.9589F;
-            this.dc_vencimento.HeaderText = "Vencimento";
-            this.dc_vencimento.Name = "dc_vencimento";
-            this.dc_vencimento.ReadOnly = true;
-            // 
-            // dc_frequencia
-            // 
-            this.dc_frequencia.DataPropertyName = "dc_frequencia";
-            this.dc_frequencia.HeaderText = "dc_frequencia";
-            this.dc_frequencia.Name = "dc_frequencia";
-            this.dc_frequencia.ReadOnly = true;
-            this.dc_frequencia.Visible = false;
-            // 
-            // dc_valor
-            // 
-            this.dc_valor.DataPropertyName = "dc_valor";
-            this.dc_valor.HeaderText = "dc_valor";
-            this.dc_valor.Name = "dc_valor";
-            this.dc_valor.ReadOnly = true;
-            this.dc_valor.Visible = false;
-            // 
-            // dc_quantidade_parcelas
-            // 
-            this.dc_quantidade_parcelas.DataPropertyName = "dc_quantidade_parcelas";
-            this.dc_quantidade_parcelas.HeaderText = "Quant. Parcelas";
-            this.dc_quantidade_parcelas.Name = "dc_quantidade_parcelas";
-            this.dc_quantidade_parcelas.ReadOnly = true;
-            this.dc_quantidade_parcelas.Visible = false;
-            // 
-            // dc_valor_parcela
-            // 
-            this.dc_valor_parcela.DataPropertyName = "dc_valor_parcela";
-            this.dc_valor_parcela.FillWeight = 106.0827F;
-            this.dc_valor_parcela.HeaderText = "Valor ";
-            this.dc_valor_parcela.Name = "dc_valor_parcela";
-            this.dc_valor_parcela.ReadOnly = true;
-            // 
-            // dc_estatus_pagamento
-            // 
-            this.dc_estatus_pagamento.DataPropertyName = "dc_estatus_pagamento";
-            this.dc_estatus_pagamento.HeaderText = "dc_estatus_pagamento";
-            this.dc_estatus_pagamento.Name = "dc_estatus_pagamento";
-            this.dc_estatus_pagamento.ReadOnly = true;
-            this.dc_estatus_pagamento.Visible = false;
-            // 
-            // dc_imagem_pagamento
-            // 
-            this.dc_imagem_pagamento.DataPropertyName = "dc_imagem_pagamento";
-            this.dc_imagem_pagamento.FillWeight = 91.37055F;
-            this.dc_imagem_pagamento.HeaderText = "Pagamento";
-            this.dc_imagem_pagamento.Name = "dc_imagem_pagamento";
-            this.dc_imagem_pagamento.ReadOnly = true;
-            this.dc_imagem_pagamento.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dc_imagem_pagamento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dc_valor_pago
-            // 
-            this.dc_valor_pago.DataPropertyName = "dc_valor_pago";
-            this.dc_valor_pago.HeaderText = "dc_valor_pago";
-            this.dc_valor_pago.Name = "dc_valor_pago";
-            this.dc_valor_pago.ReadOnly = true;
-            this.dc_valor_pago.Visible = false;
-            // 
-            // dc_data_pagamento
-            // 
-            this.dc_data_pagamento.DataPropertyName = "dc_data_pagamento";
-            this.dc_data_pagamento.HeaderText = "dc_data_pagamento";
-            this.dc_data_pagamento.Name = "dc_data_pagamento";
-            this.dc_data_pagamento.ReadOnly = true;
-            this.dc_data_pagamento.Visible = false;
-            // 
-            // dc_desconto_taxas
-            // 
-            this.dc_desconto_taxas.DataPropertyName = "dc_desconto_taxas";
-            this.dc_desconto_taxas.HeaderText = "dc_desconto_taxas";
-            this.dc_desconto_taxas.Name = "dc_desconto_taxas";
-            this.dc_desconto_taxas.ReadOnly = true;
-            this.dc_desconto_taxas.Visible = false;
-            // 
-            // dc_juros_multa
-            // 
-            this.dc_juros_multa.DataPropertyName = "dc_juros_multa";
-            this.dc_juros_multa.HeaderText = "dc_juros_multa";
-            this.dc_juros_multa.Name = "dc_juros_multa";
-            this.dc_juros_multa.ReadOnly = true;
-            this.dc_juros_multa.Visible = false;
-            // 
-            // dc_verificar
-            // 
-            this.dc_verificar.DataPropertyName = "dc_verificar";
-            this.dc_verificar.HeaderText = "dc_verificar";
-            this.dc_verificar.Name = "dc_verificar";
-            this.dc_verificar.ReadOnly = true;
-            this.dc_verificar.Visible = false;
             // 
             // Forms_PesquisarContasAPagar
             // 

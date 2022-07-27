@@ -18,13 +18,13 @@ namespace Sistema_de_Gerenciamento
 
         //private Forms_EditarPagamento editarPagamento = new Forms_EditarPagamento();
 
-        public Forms_EditarPagamento editarPagamento;
+        public Forms_EditarPagamentoAPagar editarPagamento;
 
         private int linhasSelecionadas = 0;
 
         private decimal valor = 0;
 
-        public Forms_PesquisarContasAPagar(Forms_EditarPagamento _editarPagamento)
+        public Forms_PesquisarContasAPagar(Forms_EditarPagamentoAPagar _editarPagamento)
         {
             InitializeComponent();
 
@@ -161,8 +161,6 @@ namespace Sistema_de_Gerenciamento
 
                 MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
             }
-
-            // depois da nova att
             else if (txtCodigoDespesa.Text != string.Empty && cmbPagamento.Text == string.Empty)
             {
                 bool isCadastroExiste = Buscar.BuscarDespesaCustoPorCogigo(Convert.ToInt32(txtCodigoDespesa.Text), gdvContarPagar, dtpDataInicial.Value, dtpDataFinal.Value);
@@ -306,7 +304,7 @@ namespace Sistema_de_Gerenciamento
         {
             if (gdvContarPagar.Rows.Count > 0)
             {
-                Forms_EditarPagamento editarPagamento = new Forms_EditarPagamento(this);
+                Forms_EditarPagamentoAPagar editarPagamento = new Forms_EditarPagamentoAPagar(this);
 
                 int indice = 2;
 

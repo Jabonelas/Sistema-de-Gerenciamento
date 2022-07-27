@@ -251,5 +251,11 @@ namespace Sistema_de_Gerenciamento
             pesquisarProduto.gdvPesquisarProduto.KeyDown -= pesquisarProduto.gdvPesquisarProduto_KeyDown;
             pesquisarProduto.ShowDialog();
         }
+
+        private void btnContaReceber_Click(object sender, EventArgs e)
+        {
+            Forms_PesquisarContasAReceber contasAReceber = new Forms_PesquisarContasAReceber();
+            contasAReceber.ShowDialog();
+        }
     }
 }

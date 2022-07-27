@@ -515,17 +515,26 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(ATU-EP01) Erro ao Atualizar Pagamento de Despesa e Custo! \n\nErro: {_e}", "Erro Atualizacao Pagamento de Despesa e Custo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoAtualizarDadosTrocaoBanco(Exception _e)
+        public void ErroAoAtualizarDadosTrocaoNoBanco(Exception _e)
         {
             MessageBox.Show($"(ATU-EP02) Erro ao Atualizar Dados Para Troca! \n\nErro: {_e}", "Erro Atualizar Dados Para Troca!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoAtualizarGarantiaTrocaoBanco(Exception _e)
+        public void ErroAoAtualizarGarantiaTrocaoNoBanco(Exception _e)
         {
             MessageBox.Show($"(ATU-EP03) Erro ao Atualizar Garantia Para Troca! \n\nErro: {_e}", "Erro Atualizar Garantia Para Troca!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Edição Pagamento
+
+        #region Pagameento Carne
+
+        public void ErroAoAtualizarImagemStatusPagamentoCarneNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-PC01) Erro ao Atualizar Imagem Status Pagamento Carne! \n\nErro: {_e}", "Erro Atualizar Imagem Status Pagamento Carne!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Pagameento Carne
 
         #endregion Atualizacao Do Banco
 
@@ -1031,6 +1040,50 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Buscar Nota Fiscal Saida
+
+        #region Buscar Contas A Receber
+
+        public void ErroAoBuscarCarnePorNumeroNotaFiscalSaidaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CE01) Erro ao Realizar Busca Carnê Por Nota Fiscal Saida \n\nErro: {_e}", "Erro Busca Carnê Por Nota Fiscal Saida!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCarnePorCPFCNPJNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CE02) Erro ao Realizar Busca Carnê Por CPF/CNPJ \n\nErro: {_e}", "Erro Busca Carnê Por CPF/CNPJ!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCarnePorNomeClienteNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CE03) Erro ao Realizar Busca Carnê Por Nome Cliente \n\nErro: {_e}", "Erro Busca Carnê Por Nome Cliente!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCarnePorStatusPagamentoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CE04) Erro ao Realizar Busca Carnê Por Status Pagamento \n\nErro: {_e}", "Erro Busca Carnê Por Status Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCarnePorNumeroNotaFiscalSaidaComStatusPagamentoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CE05) Erro ao Realizar Busca Carnê Por Nota Fiscal Saida e Status Pagamento \n\nErro: {_e}", "Erro Busca Carnê Por Nota Fiscal Saida e Status Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCarnePorCPFCNPJComStatusPagamentoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CE06) Erro ao Realizar Busca Carnê Por CPF/CNPJ e Status Pagamento \n\nErro: {_e}", "Erro Busca Carnê Por CPF/CNPJ e Status Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCarnePorNomeClienteComStatusPagamentoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CE07) Erro ao Realizar Busca Carnê Por Nome Cliente e Status Pagamento \n\nErro: {_e}", "Erro Busca Carnê Por Nome Cliente e Status Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCarneBuscaCompletaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CE08) Erro ao Realizar Busca Carnê Busca Completa \n\nErro: {_e}", "Erro Busca Carnê Bucsar Completa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Buscar Contas A Receber
 
         #endregion Buscar No Banco
 

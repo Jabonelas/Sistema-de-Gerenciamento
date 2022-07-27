@@ -3611,5 +3611,356 @@ namespace Sistema_de_Gerenciamento.Classes
                 return 0;
             }
         }
+
+        public bool BuscarCarnePorNumeroNotaFiscalSaida(int _numeroNFSaida, BunifuDataGridView _tabela,
+            DateTime _dataInicial, DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * from tb_PagamentoCarne where pc_numero_nf = @numeroNFSaida and " +
+                        "pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@numeroNFSaida", _numeroNFSaida);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarCarnePorNumeroNotaFiscalSaidaNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        public bool BuscarCarnePorNumeroNotaFiscalSaidaComStatusPagamento(int _numeroNFSaida, BunifuDataGridView _tabela,
+          DateTime _dataInicial, DateTime _dataFinal, string _statusPagamento)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * from tb_PagamentoCarne where pc_numero_nf = @numeroNFSaida and " +
+                        "pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal and " +
+                        "pc_status = @statusPagamento ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@numeroNFSaida", _numeroNFSaida);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+                    adapter.SelectCommand.Parameters.Add("@statusPagamento", _statusPagamento);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarCarnePorNumeroNotaFiscalSaidaComStatusPagamentoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        public bool BuscarCarnePorCPFCNPJ(string _cpfCnpj, BunifuDataGridView _tabela, DateTime _dataInicial, DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * from tb_PagamentoCarne " +
+                        "where pc_cpf_cpnj_cliente = @cpfCnpj and pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@cpfCnpj", _cpfCnpj);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarCarnePorCPFCNPJNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        public bool BuscarCarnePorCPFCNPJComStatusPagamento(string _cpfCnpj, BunifuDataGridView _tabela, DateTime _dataInicial, DateTime _dataFinal,
+            string _statusPagamento)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * from tb_PagamentoCarne " +
+                        "where pc_cpf_cpnj_cliente = @cpfCnpj and pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal " +
+                        "and pc_status = @statusPagamento";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@cpfCnpj", _cpfCnpj);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+                    adapter.SelectCommand.Parameters.Add("@statusPagamento", _statusPagamento);
+
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarCarnePorCPFCNPJComStatusPagamentoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        public bool BuscarCarnePorNomeCliente(string _nomeCliente, BunifuDataGridView _tabela, DateTime _dataInicial,
+            DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * from tb_PagamentoCarne where pc_nome_cliente like @nomeCliente and " +
+                        "pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@nomeCliente", string.Format("%{0}%", _nomeCliente));
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarCarnePorNomeClienteNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        public bool BuscarCarnePorNomeClienteComStatusPagamento(string _nomeCliente, BunifuDataGridView _tabela, DateTime _dataInicial,
+    DateTime _dataFinal, string _statusPagamento)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * from tb_PagamentoCarne where pc_nome_cliente like @nomeCliente and " +
+                        "pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal and pc_stattus = @statusPagamento";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@nomeCliente", string.Format("%{0}%", _nomeCliente));
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+                    adapter.SelectCommand.Parameters.Add("@statusPagamento", _statusPagamento);
+
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarCarnePorNomeClienteComStatusPagamentoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        public bool BuscarCarnePorPagamento(string _statusPagamento, BunifuDataGridView _tabela, DateTime _dataInicial,
+         DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * from tb_PagamentoCarne where pc_status = @statusPagamento and " +
+                        "pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@statusPagamento", _statusPagamento);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarCarnePorStatusPagamentoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        public bool BuscarCarneBuscaCompleta(BunifuDataGridView _tabela, DateTime _dataInicial,
+ DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select * from tb_PagamentoCarne " +
+                        "where pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarCarneBuscaCompletaNoBanco(ex);
+
+                return false;
+            }
+        }
     }
 }

@@ -231,6 +231,8 @@ namespace Sistema_de_Gerenciamento.Forms
                 for (int i = 1; i <= Convert.ToInt32(cmbParcelaCarne.Text.Replace("x", "")); i++)
                 {
                     AdicionarNaTabelaCarne(i);
+
+                    AtualizarImagemStatusPagamentoCarne(i);
                 }
 
                 AvisoCantoInferiorDireito.Confirmacao();
@@ -275,6 +277,12 @@ namespace Sistema_de_Gerenciamento.Forms
             Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$", "")),
             DateTime.Today.AddDays((listaFinanceiro[0].prazoCarne) * i), "-", "Nao Pago",
             Convert.ToDecimal(txtValorParcelaCarne.Text.Replace("R$", "")));
+        }
+
+        private void AtualizarImagemStatusPagamentoCarne(int i)
+        {
+            Atualizar.AtualizarImagemStatusPagamentoNotaFiscalSaida(pcbStatusPagamento.Image, NumermoNotaFiscal,
+               ($"{cmbParcelaCarne.Text.Replace("x", "")}/{i}"));
         }
 
         private void CompenetesFormsPDV()
@@ -355,6 +363,10 @@ namespace Sistema_de_Gerenciamento.Forms
                     this.Close();
                 }
             }
+        }
+
+        private void Forms_GerarCarne_Load(object sender, EventArgs e)
+        {
         }
     }
 }

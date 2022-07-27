@@ -96,14 +96,17 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void AtualizacaoPorcentagemJurosCarne()
         {
-            if (txtPrazoCarne.Text != String.Empty && cmbParcelasCarne.Text != String.Empty && txtJurosCarne.Text != String.Empty)
+            if (txtPrazoCarne.Text != String.Empty && cmbParcelasCarne.Text != String.Empty && txtJurosCarneParcelas.Text != String.Empty)
             {
-                Atualizacao.JurosPorCarne(Convert.ToInt32(txtPrazoCarne.Text), Convert.ToDecimal(txtJurosCarne.Text.Replace("%", "")),
-                    Convert.ToInt32(cmbParcelasCarne.Text.Replace("x", "")));
+                Atualizacao.JurosPorCarne(Convert.ToInt32(txtPrazoCarne.Text), Convert.ToDecimal(txtJurosCarneParcelas.Text.Replace("%", "")),
+                    Convert.ToInt32(cmbParcelasCarne.Text.Replace("x", "")), Convert.ToDecimal(txtJurosCarneAtrasoPagamento.Text.Replace("%", "")),
+                    Convert.ToDecimal(txtMultaCarneAtrasoPagamento.Text.Replace("%", "")));
 
                 txtPrazoCarne.Text = String.Empty;
                 cmbParcelasCarne.Text = String.Empty;
-                txtJurosCarne.Text = String.Empty;
+                txtJurosCarneParcelas.Text = String.Empty;
+                txtJurosCarneAtrasoPagamento.Text = String.Empty;
+                txtMultaCarneAtrasoPagamento.Text = String.Empty;
             }
             else
             {
@@ -231,7 +234,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
             {
-                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtJurosCarne.Text.Replace("%", ""), sender);
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtJurosCarneParcelas.Text.Replace("%", ""), sender);
             }
         }
 
@@ -264,6 +267,22 @@ namespace Sistema_de_Gerenciamento.Forms
             if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
             {
                 ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtComissao.Text.Replace("%", ""), sender);
+            }
+        }
+
+        private void txtJurosCarneAtrasoPagamento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtJurosCarneAtrasoPagamento.Text.Replace("%", ""), sender);
+            }
+        }
+
+        private void txtMultaCarneAtrasoPagamento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtMultaCarneAtrasoPagamento.Text.Replace("%", ""), sender);
             }
         }
     }

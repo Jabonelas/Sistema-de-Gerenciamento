@@ -617,7 +617,6 @@
             this.cmbCliente.TextChanged += new System.EventHandler(this.cmbCliente_TextChanged);
             this.cmbCliente.Enter += new System.EventHandler(this.cmbCliente_Enter);
             this.cmbCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbCliente_KeyPress);
-            this.cmbCliente.KeyUp += new System.Windows.Forms.KeyEventHandler(this.cmbCliente_KeyUp);
             // 
             // contextMenuStrip1
             // 

@@ -696,11 +696,6 @@ namespace Sistema_de_Gerenciamento.Forms
             ManipulacaoTextBox.DigitoFoiLetras(e);
         }
 
-        private void cmbCliente_KeyUp(object sender, KeyEventArgs e)
-        {
-            //BuscarDadosCliente();
-        }
-
         private void BuscarDadosCliente()
         {
             List<DadosCliente> listaCliente = Buscar.BuscarClientePorPesquisa(cmbCliente.Text);
@@ -716,10 +711,7 @@ namespace Sistema_de_Gerenciamento.Forms
             else
             {
                 txtCodigoCliente.Text = string.Empty;
-            }
 
-            if (cmbCliente.Text == string.Empty)
-            {
                 txtCodigoCliente.Text = string.Empty;
             }
         }
