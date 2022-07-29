@@ -2956,8 +2956,8 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query =
-                        "select fn_desconto_avista,fn_juros_credito,fn_parcelas_credito,fn_prazo_carne,fn_juros_carne,fn_parcelas_carne " +
-                        "from tb_Financeiro ";
+                        "select fn_desconto_avista,fn_juros_credito,fn_parcelas_credito,fn_prazo_carne,fn_juros_carne,fn_parcelas_carne," +
+                        "fn_juros_atraso,fn_multa_atraso from tb_Financeiro ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -2966,7 +2966,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     while (dr.Read())
                     {
                         listaFinanceiro.Add(new DadosFinanceiro(dr.GetDecimal(0), dr.GetDecimal(1),
-                            dr.GetInt32(2), dr.GetInt32(3), dr.GetDecimal(4), dr.GetInt32(5)));
+                            dr.GetInt32(2), dr.GetInt32(3), dr.GetDecimal(4), dr.GetInt32(5), dr.GetDecimal(6), dr.GetDecimal(7)));
                     }
                 }
             }
@@ -3620,7 +3620,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne where pc_numero_nf = @numeroNFSaida and " +
-                        "pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal ";
+                        "pc_vencimento > @dataInicial and pc_vencimento < @dataFinal ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -3665,7 +3665,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne where pc_numero_nf = @numeroNFSaida and " +
-                        "pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal and " +
+                        "pc_vencimento > @dataInicial and pc_vencimento < @dataFinal and " +
                         "pc_status = @statusPagamento ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -3711,7 +3711,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne " +
-                        "where pc_cpf_cpnj_cliente = @cpfCnpj and pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal";
+                        "where pc_cpf_cpnj_cliente = @cpfCnpj and pc_vencimento > @dataInicial and pc_vencimento < @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.Add("@cpfCnpj", _cpfCnpj);
@@ -3754,7 +3754,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne " +
-                        "where pc_cpf_cpnj_cliente = @cpfCnpj and pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal " +
+                        "where pc_cpf_cpnj_cliente = @cpfCnpj and pc_vencimento > @dataInicial and pc_vencimento < @dataFinal " +
                         "and pc_status = @statusPagamento";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -3799,7 +3799,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne where pc_nome_cliente like @nomeCliente and " +
-                        "pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal";
+                        "pc_vencimento > @dataInicial and pc_vencimento < @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@nomeCliente", string.Format("%{0}%", _nomeCliente));
@@ -3842,7 +3842,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne where pc_nome_cliente like @nomeCliente and " +
-                        "pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal and pc_stattus = @statusPagamento";
+                        "pc_vencimento > @dataInicial and pc_vencimento < @dataFinal and pc_status = @statusPagamento";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@nomeCliente", string.Format("%{0}%", _nomeCliente));
@@ -3886,7 +3886,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne where pc_status = @statusPagamento and " +
-                        "pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal";
+                        "pc_vencimento > @dataInicial and pc_vencimento < @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@statusPagamento", _statusPagamento);
@@ -3929,7 +3929,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne " +
-                        "where pc_data_pagamento > @dataInicial and pc_data_pagamento < @dataFinal";
+                        "where pc_vencimento > @dataInicial and pc_vencimento < @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);

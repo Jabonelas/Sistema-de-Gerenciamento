@@ -65,13 +65,6 @@ namespace Sistema_de_Gerenciamento.Forms
 
                 MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
             }
-            else if (cmbStatusPagamento.Text != String.Empty)
-            {
-                bool isCadastroExiste = Buscar.BuscarCarnePorPagamento(cmbStatusPagamento.Text, gdvContarReceber,
-                    Convert.ToDateTime(dtpDataInicial.Text), Convert.ToDateTime(dtpDataFinal.Text));
-
-                MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
-            }
             else if (txtNumeroNotaFiscal.Text != String.Empty && cmbStatusPagamento.Text != String.Empty)
             {
                 bool isCadastroExiste = Buscar.BuscarCarnePorNumeroNotaFiscalSaidaComStatusPagamento(Convert.ToInt32(txtNumeroNotaFiscal.Text),
@@ -91,6 +84,13 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 bool isCadastroExiste = Buscar.BuscarCarnePorNomeClienteComStatusPagamento(txtNomeCliente.Text, gdvContarReceber,
                     Convert.ToDateTime(dtpDataInicial.Text), Convert.ToDateTime(dtpDataFinal.Text), cmbStatusPagamento.Text);
+
+                MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
+            }
+            else if (cmbStatusPagamento.Text != String.Empty)
+            {
+                bool isCadastroExiste = Buscar.BuscarCarnePorPagamento(cmbStatusPagamento.Text, gdvContarReceber,
+                    Convert.ToDateTime(dtpDataInicial.Text), Convert.ToDateTime(dtpDataFinal.Text));
 
                 MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
             }
@@ -131,8 +131,72 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void gdvContarReceber_DoubleClick(object sender, EventArgs e)
         {
-            Forms_EditarPagamentoAReceber editarPagamentoAReceber = new Forms_EditarPagamentoAReceber();
+            Forms_EditarPagamentoAReceber editarPagamentoAReceber = new Forms_EditarPagamentoAReceber(this);
             editarPagamentoAReceber.ShowDialog();
+        }
+
+        private void btnSelecionar_Click(object sender, EventArgs e)
+        {
+            Forms_EditarPagamentoAReceber editarPagamentoAReceber = new Forms_EditarPagamentoAReceber(this);
+            editarPagamentoAReceber.ShowDialog();
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            Imprimir.ImprimirGridView("Relatorio de Contas a Receber", gdvContarReceber);
+        }
+
+        private void btnExportarParaExcel_Click(object sender, EventArgs e)
+        {
+            ExportarExcel.GerarExcel(gdvContarReceber);
+        }
+
+        private void txtNumeroNotaFiscal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
+
+        private void txtCpfCpnj_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                if (cmbTipoReceberPagamento.Text == "Pess. Fisica")
+                {
+                    ManipulacaoTextBox.FormatoCPF(e, txtCpfCpnj);
+                }
+                else if (cmbTipoReceberPagamento.Text == "Pess. Juridica")
+                {
+                    ManipulacaoTextBox.FormatoCNPJ(e, txtCpfCpnj);
+                }
+            }
+        }
+
+        private void cmbTipoReceberPagamento_TextChanged(object sender, EventArgs e)
+        {
+            if (cmbTipoReceberPagamento.Text == "Pess. Fisica")
+            {
+                lblCpfCnpj.Text = "CPF";
+                txtCpfCpnj.Text = String.Empty;
+            }
+            else if (cmbTipoReceberPagamento.Text == "Pess. Juridica")
+            {
+                lblCpfCnpj.Text = "CNPJ";
+                txtCpfCpnj.Text = String.Empty;
+            }
+            else
+            {
+                txtCpfCpnj.Text = String.Empty;
+            }
+        }
+
+        private void txtCpfCpnj_Enter(object sender, EventArgs e)
+        {
+            if (cmbTipoReceberPagamento.Text == String.Empty)
+            {
+                cmbTipoReceberPagamento.Focus();
+
+                MessageBox.Show("Selecione o Tipo de Cliente Pess. Fisica/Pess. Juridica1", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

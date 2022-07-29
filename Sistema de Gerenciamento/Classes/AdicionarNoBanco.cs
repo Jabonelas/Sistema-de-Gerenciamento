@@ -706,7 +706,7 @@ namespace Sistema_de_Gerenciamento
         }
 
         public void AdicionarPagamentoCarner(int _numeroNF, string _cpfCnpjCliente, string _nomeCliente, DateTime _emissao, string _vendedor,
-            string _parcela, decimal _valorDesconto, decimal _valorJuros, decimal _valorPago, DateTime _dataPagamento,
+            string _parcela, decimal _valorDesconto, decimal _valorJuros, decimal _valorPago, DateTime _vencimento,
             string _pagamentoVendedor, string _status, decimal _valorParcela)
         {
             try
@@ -715,9 +715,9 @@ namespace Sistema_de_Gerenciamento
                 {
                     string query = "insert into tb_PagamentoCarne (pc_numero_nf, pc_cpf_cpnj_cliente, pc_nome_cliente, " +
                         "pc_emissao, pc_vendedor, pc_parcela, pc_valor_desconto, pc_valor_juros, pc_valor_pago, " +
-                        "pc_data_pagamento, pc_pagamento_vendedor, pc_status ,pc_valor_parcela) " +
+                        "pc_vencimento, pc_pagamento_vendedor, pc_status ,pc_valor_parcela) " +
                         "values (@numeroNF, @cpfCnpjCliente, @nomeCliente, @emissao,@vendedor, @parcela, @valorDesconto, " +
-                        "@valorJuros, @valorPago, @dataPagamento, @pagamentoVendedor, @status, @valorParcela)";
+                        "@valorJuros, @valorPago, @vencimento, @pagamentoVendedor, @status, @valorParcela)";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -730,7 +730,7 @@ namespace Sistema_de_Gerenciamento
                     adapter.SelectCommand.Parameters.AddWithValue("@valorDesconto", _valorDesconto);
                     adapter.SelectCommand.Parameters.AddWithValue("@valorJuros", _valorJuros);
                     adapter.SelectCommand.Parameters.AddWithValue("@valorPago", _valorPago);
-                    adapter.SelectCommand.Parameters.AddWithValue("@dataPagamento", _dataPagamento);
+                    adapter.SelectCommand.Parameters.AddWithValue("@vencimento", _vencimento);
                     adapter.SelectCommand.Parameters.AddWithValue("@pagamentoVendedor", _pagamentoVendedor);
                     adapter.SelectCommand.Parameters.AddWithValue("@status", _status);
                     adapter.SelectCommand.Parameters.AddWithValue("@valorParcela", _valorParcela);

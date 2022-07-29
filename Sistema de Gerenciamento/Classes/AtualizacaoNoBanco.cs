@@ -1003,5 +1003,37 @@ namespace Sistema_de_Gerenciamento.Classes
                 Erro.ErroAoAtualizarImagemStatusPagamentoCarneNoBanco(ex);
             }
         }
+
+        public void AtualizarStatusPagamentoCarne(Image _imagem, string _statusPagamento, int _numeroNF, string _parcela,
+            decimal _jurosAtraso, decimal _valorFinalParcela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_PagamentoCarne " +
+                        "set pc_status_imagem_pagamento = @imagem, pc_status = @statusPagamento, " +
+                        "pc_data_pagamento = GETDATE(), pc_juros_atraso = @jurosAtraso, pc_valor_final_parcela = @valorFinalParcela " +
+                        "where pc_numero_nf = @numeroNF and pc_parcela = @parcela ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    byte[] arr;
+                    ImageConverter converter = new ImageConverter();
+                    arr = (byte[])converter.ConvertTo(_imagem, typeof(byte[]));
+                    adapter.SelectCommand.Parameters.Add("@imagem", SqlDbType.Image).Value = arr;
+                    adapter.SelectCommand.Parameters.Add("@statusPagamento", _statusPagamento);
+                    adapter.SelectCommand.Parameters.Add("@numeroNF", _numeroNF);
+                    adapter.SelectCommand.Parameters.Add("@parcela", _parcela);
+                    adapter.SelectCommand.Parameters.Add("@jurosAtraso", _jurosAtraso);
+                    adapter.SelectCommand.Parameters.Add("@valorFinalParcela", _valorFinalParcela);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarImagemStatusPagamentoAReceberNoBanco(ex);
+            }
+        }
     }
 }

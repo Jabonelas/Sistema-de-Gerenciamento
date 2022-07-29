@@ -57,7 +57,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cmbStatusPagamento = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lblCpfCnpj = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.gdvContarReceber = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.pc_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,6 +65,7 @@
             this.pc_cpf_cpnj_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pc_nome_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pc_emissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pc_vencimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pc_vendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pc_parcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pc_valor_desconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -72,6 +73,8 @@
             this.pc_valor_pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pc_valor_parcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pc_data_pagamento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pc_juros_atraso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pc_valor_final_parcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pc_pagamento_vendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pc_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pc_status_imagem_pagamento = new System.Windows.Forms.DataGridViewImageColumn();
@@ -87,7 +90,11 @@
             this.txtCpfCpnj = new Bunifu.UI.WinForms.BunifuTextBox();
             this.btnExportarParaExcel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.txtNomeCliente = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbTipoReceberPagamento = new System.Windows.Forms.ComboBox();
+            this.bunifuGroupBox2 = new Bunifu.UI.WinForms.BunifuGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.gdvContarReceber)).BeginInit();
+            this.bunifuGroupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label10
@@ -142,7 +149,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(779, 15);
+            this.label3.Location = new System.Drawing.Point(836, 15);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 15);
             this.label3.TabIndex = 304;
@@ -159,7 +166,7 @@
             "Nao Pago",
             "Pago",
             ""});
-            this.cmbStatusPagamento.Location = new System.Drawing.Point(782, 38);
+            this.cmbStatusPagamento.Location = new System.Drawing.Point(839, 36);
             this.cmbStatusPagamento.Name = "cmbStatusPagamento";
             this.cmbStatusPagamento.Size = new System.Drawing.Size(79, 23);
             this.cmbStatusPagamento.TabIndex = 303;
@@ -174,21 +181,21 @@
             this.label8.TabIndex = 300;
             this.label8.Text = "Nº Nota Fiscal";
             // 
-            // label5
+            // lblCpfCnpj
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(166, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 15);
-            this.label5.TabIndex = 299;
-            this.label5.Text = "CPF/CNPJ";
+            this.lblCpfCnpj.AutoSize = true;
+            this.lblCpfCnpj.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCpfCnpj.Location = new System.Drawing.Point(266, 15);
+            this.lblCpfCnpj.Name = "lblCpfCnpj";
+            this.lblCpfCnpj.Size = new System.Drawing.Size(59, 15);
+            this.lblCpfCnpj.TabIndex = 299;
+            this.lblCpfCnpj.Text = "CPF/CNPJ";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(357, 15);
+            this.label1.Location = new System.Drawing.Point(451, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 15);
             this.label1.TabIndex = 295;
@@ -223,6 +230,7 @@
             this.pc_cpf_cpnj_cliente,
             this.pc_nome_cliente,
             this.pc_emissao,
+            this.pc_vencimento,
             this.pc_vendedor,
             this.pc_parcela,
             this.pc_valor_desconto,
@@ -230,6 +238,8 @@
             this.pc_valor_pago,
             this.pc_valor_parcela,
             this.pc_data_pagamento,
+            this.pc_juros_atraso,
+            this.pc_valor_final_parcela,
             this.pc_pagamento_vendedor,
             this.pc_status,
             this.pc_status_imagem_pagamento});
@@ -271,7 +281,7 @@
             this.gdvContarReceber.RowHeadersVisible = false;
             this.gdvContarReceber.RowTemplate.Height = 40;
             this.gdvContarReceber.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gdvContarReceber.Size = new System.Drawing.Size(908, 305);
+            this.gdvContarReceber.Size = new System.Drawing.Size(908, 365);
             this.gdvContarReceber.TabIndex = 291;
             this.gdvContarReceber.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.gdvContarReceber.DoubleClick += new System.EventHandler(this.gdvContarReceber_DoubleClick);
@@ -315,6 +325,13 @@
             this.pc_emissao.HeaderText = "Emissão";
             this.pc_emissao.Name = "pc_emissao";
             this.pc_emissao.ReadOnly = true;
+            // 
+            // pc_vencimento
+            // 
+            this.pc_vencimento.DataPropertyName = "pc_vencimento";
+            this.pc_vencimento.HeaderText = "Vencimento";
+            this.pc_vencimento.Name = "pc_vencimento";
+            this.pc_vencimento.ReadOnly = true;
             // 
             // pc_vendedor
             // 
@@ -368,9 +385,26 @@
             // 
             this.pc_data_pagamento.DataPropertyName = "pc_data_pagamento";
             this.pc_data_pagamento.FillWeight = 89.12304F;
-            this.pc_data_pagamento.HeaderText = "Vencimento";
+            this.pc_data_pagamento.HeaderText = "pc_data_pagamento";
             this.pc_data_pagamento.Name = "pc_data_pagamento";
             this.pc_data_pagamento.ReadOnly = true;
+            this.pc_data_pagamento.Visible = false;
+            // 
+            // pc_juros_atraso
+            // 
+            this.pc_juros_atraso.DataPropertyName = "pc_juros_atraso";
+            this.pc_juros_atraso.HeaderText = "pc_juros_atraso";
+            this.pc_juros_atraso.Name = "pc_juros_atraso";
+            this.pc_juros_atraso.ReadOnly = true;
+            this.pc_juros_atraso.Visible = false;
+            // 
+            // pc_valor_final_parcela
+            // 
+            this.pc_valor_final_parcela.DataPropertyName = "pc_valor_final_parcela";
+            this.pc_valor_final_parcela.HeaderText = "pc_valor_final_parcela";
+            this.pc_valor_final_parcela.Name = "pc_valor_final_parcela";
+            this.pc_valor_final_parcela.ReadOnly = true;
+            this.pc_valor_final_parcela.Visible = false;
             // 
             // pc_pagamento_vendedor
             // 
@@ -432,7 +466,7 @@
             this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuSeparator2.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded;
             this.bunifuSeparator2.LineThickness = 3;
-            this.bunifuSeparator2.Location = new System.Drawing.Point(11, 480);
+            this.bunifuSeparator2.Location = new System.Drawing.Point(11, 542);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
             this.bunifuSeparator2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.bunifuSeparator2.Size = new System.Drawing.Size(907, 14);
@@ -511,6 +545,7 @@
             this.txtNumeroNotaFiscal.TextPlaceholder = "";
             this.txtNumeroNotaFiscal.UseSystemPasswordChar = false;
             this.txtNumeroNotaFiscal.WordWrap = true;
+            this.txtNumeroNotaFiscal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumeroNotaFiscal_KeyPress);
             // 
             // bunifuSeparator1
             // 
@@ -631,7 +666,7 @@
             this.btnImprimir.BackColor1 = System.Drawing.Color.Transparent;
             this.btnImprimir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnImprimir.BackgroundImage")));
             this.btnImprimir.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnImprimir.ButtonText = "Imprimir Relação das \r\nDespesas/Custos";
+            this.btnImprimir.ButtonText = "Imprimir Relação das \r\nContas a Receber";
             this.btnImprimir.ButtonTextMarginLeft = 0;
             this.btnImprimir.ColorContrastOnClick = 45;
             this.btnImprimir.ColorContrastOnHover = 45;
@@ -664,7 +699,7 @@
             this.btnImprimir.IdleIconLeftImage = null;
             this.btnImprimir.IdleIconRightImage = null;
             this.btnImprimir.IndicateFocus = false;
-            this.btnImprimir.Location = new System.Drawing.Point(282, 680);
+            this.btnImprimir.Location = new System.Drawing.Point(282, 588);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnImprimir.OnDisabledState.BorderRadius = 1;
@@ -705,6 +740,7 @@
             this.btnImprimir.TextMarginLeft = 0;
             this.btnImprimir.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnImprimir.UseDefaultRadiusAndThickness = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnSelecionar
             // 
@@ -753,7 +789,7 @@
             this.btnSelecionar.IdleIconLeftImage = null;
             this.btnSelecionar.IdleIconRightImage = null;
             this.btnSelecionar.IndicateFocus = false;
-            this.btnSelecionar.Location = new System.Drawing.Point(85, 680);
+            this.btnSelecionar.Location = new System.Drawing.Point(85, 588);
             this.btnSelecionar.Name = "btnSelecionar";
             this.btnSelecionar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSelecionar.OnDisabledState.BorderRadius = 1;
@@ -794,6 +830,7 @@
             this.btnSelecionar.TextMarginLeft = 0;
             this.btnSelecionar.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnSelecionar.UseDefaultRadiusAndThickness = true;
+            this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
             // 
             // btnFechar
             // 
@@ -842,7 +879,7 @@
             this.btnFechar.IdleIconLeftImage = null;
             this.btnFechar.IdleIconRightImage = null;
             this.btnFechar.IndicateFocus = false;
-            this.btnFechar.Location = new System.Drawing.Point(674, 680);
+            this.btnFechar.Location = new System.Drawing.Point(674, 588);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnFechar.OnDisabledState.BorderRadius = 1;
@@ -912,8 +949,8 @@
             this.txtCpfCpnj.IconRight = null;
             this.txtCpfCpnj.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCpfCpnj.Lines = new string[0];
-            this.txtCpfCpnj.Location = new System.Drawing.Point(169, 33);
-            this.txtCpfCpnj.MaxLength = 6;
+            this.txtCpfCpnj.Location = new System.Drawing.Point(269, 33);
+            this.txtCpfCpnj.MaxLength = 20;
             this.txtCpfCpnj.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtCpfCpnj.Modified = false;
             this.txtCpfCpnj.Multiline = false;
@@ -958,6 +995,8 @@
             this.txtCpfCpnj.TextPlaceholder = "";
             this.txtCpfCpnj.UseSystemPasswordChar = false;
             this.txtCpfCpnj.WordWrap = true;
+            this.txtCpfCpnj.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCpfCpnj_KeyPress);
+            this.txtCpfCpnj.Enter += new System.EventHandler(this.txtCpfCpnj_Enter);
             // 
             // btnExportarParaExcel
             // 
@@ -973,7 +1012,7 @@
             this.btnExportarParaExcel.BackColor1 = System.Drawing.Color.Transparent;
             this.btnExportarParaExcel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExportarParaExcel.BackgroundImage")));
             this.btnExportarParaExcel.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnExportarParaExcel.ButtonText = "Exportar para o Execel \r\nRelação Despesas/Custos";
+            this.btnExportarParaExcel.ButtonText = "Exportar para o Execel \r\nRelação Contas a Receber";
             this.btnExportarParaExcel.ButtonTextMarginLeft = 0;
             this.btnExportarParaExcel.ColorContrastOnClick = 45;
             this.btnExportarParaExcel.ColorContrastOnHover = 45;
@@ -1006,7 +1045,7 @@
             this.btnExportarParaExcel.IdleIconLeftImage = null;
             this.btnExportarParaExcel.IdleIconRightImage = null;
             this.btnExportarParaExcel.IndicateFocus = false;
-            this.btnExportarParaExcel.Location = new System.Drawing.Point(475, 679);
+            this.btnExportarParaExcel.Location = new System.Drawing.Point(475, 587);
             this.btnExportarParaExcel.Name = "btnExportarParaExcel";
             this.btnExportarParaExcel.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnExportarParaExcel.OnDisabledState.BorderRadius = 1;
@@ -1047,6 +1086,7 @@
             this.btnExportarParaExcel.TextMarginLeft = 0;
             this.btnExportarParaExcel.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnExportarParaExcel.UseDefaultRadiusAndThickness = true;
+            this.btnExportarParaExcel.Click += new System.EventHandler(this.btnExportarParaExcel_Click);
             // 
             // txtNomeCliente
             // 
@@ -1075,7 +1115,7 @@
             this.txtNomeCliente.IconRight = null;
             this.txtNomeCliente.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtNomeCliente.Lines = new string[0];
-            this.txtNomeCliente.Location = new System.Drawing.Point(360, 33);
+            this.txtNomeCliente.Location = new System.Drawing.Point(454, 33);
             this.txtNomeCliente.MaxLength = 6;
             this.txtNomeCliente.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtNomeCliente.Modified = false;
@@ -1122,11 +1162,55 @@
             this.txtNomeCliente.UseSystemPasswordChar = false;
             this.txtNomeCliente.WordWrap = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(7, 2);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 15);
+            this.label2.TabIndex = 336;
+            this.label2.Text = "Tipo";
+            // 
+            // cmbTipoReceberPagamento
+            // 
+            this.cmbTipoReceberPagamento.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbTipoReceberPagamento.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbTipoReceberPagamento.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTipoReceberPagamento.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTipoReceberPagamento.FormattingEnabled = true;
+            this.cmbTipoReceberPagamento.Items.AddRange(new object[] {
+            "Pess. Fisica",
+            "Pess. Juridica",
+            ""});
+            this.cmbTipoReceberPagamento.Location = new System.Drawing.Point(152, 35);
+            this.cmbTipoReceberPagamento.Name = "cmbTipoReceberPagamento";
+            this.cmbTipoReceberPagamento.Size = new System.Drawing.Size(105, 23);
+            this.cmbTipoReceberPagamento.TabIndex = 337;
+            this.cmbTipoReceberPagamento.TextChanged += new System.EventHandler(this.cmbTipoReceberPagamento_TextChanged);
+            // 
+            // bunifuGroupBox2
+            // 
+            this.bunifuGroupBox2.BorderColor = System.Drawing.Color.Black;
+            this.bunifuGroupBox2.BorderRadius = 1;
+            this.bunifuGroupBox2.BorderThickness = 1;
+            this.bunifuGroupBox2.Controls.Add(this.label2);
+            this.bunifuGroupBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bunifuGroupBox2.LabelAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.bunifuGroupBox2.LabelIndent = 10;
+            this.bunifuGroupBox2.LineStyle = Bunifu.UI.WinForms.BunifuGroupBox.LineStyles.Solid;
+            this.bunifuGroupBox2.Location = new System.Drawing.Point(142, 13);
+            this.bunifuGroupBox2.Name = "bunifuGroupBox2";
+            this.bunifuGroupBox2.Size = new System.Drawing.Size(304, 56);
+            this.bunifuGroupBox2.TabIndex = 338;
+            this.bunifuGroupBox2.TabStop = false;
+            // 
             // Forms_PesquisarContasAReceber
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 730);
+            this.ClientSize = new System.Drawing.Size(941, 656);
+            this.Controls.Add(this.cmbTipoReceberPagamento);
             this.Controls.Add(this.txtNomeCliente);
             this.Controls.Add(this.btnExportarParaExcel);
             this.Controls.Add(this.txtCpfCpnj);
@@ -1143,13 +1227,14 @@
             this.Controls.Add(this.cmbStatusPagamento);
             this.Controls.Add(this.txtNumeroNotaFiscal);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblCpfCnpj);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bunifuSeparator1);
             this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.gdvContarReceber);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.bunifuGroupBox1);
+            this.Controls.Add(this.bunifuGroupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
             this.Name = "Forms_PesquisarContasAReceber";
@@ -1158,6 +1243,8 @@
             this.Text = "Pesquisar Contas A Receber";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_PesquisarContasAReceber_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.gdvContarReceber)).EndInit();
+            this.bunifuGroupBox2.ResumeLayout(false);
+            this.bunifuGroupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1174,7 +1261,7 @@
         private System.Windows.Forms.ComboBox cmbStatusPagamento;
         private Bunifu.UI.WinForms.BunifuTextBox txtNumeroNotaFiscal;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblCpfCnpj;
         private System.Windows.Forms.Label label1;
         private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnPesquisar;
@@ -1192,6 +1279,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pc_cpf_cpnj_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn pc_nome_cliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn pc_emissao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pc_vencimento;
         private System.Windows.Forms.DataGridViewTextBoxColumn pc_vendedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn pc_parcela;
         private System.Windows.Forms.DataGridViewTextBoxColumn pc_valor_desconto;
@@ -1199,8 +1287,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pc_valor_pago;
         private System.Windows.Forms.DataGridViewTextBoxColumn pc_valor_parcela;
         private System.Windows.Forms.DataGridViewTextBoxColumn pc_data_pagamento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pc_juros_atraso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pc_valor_final_parcela;
         private System.Windows.Forms.DataGridViewTextBoxColumn pc_pagamento_vendedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn pc_status;
         private System.Windows.Forms.DataGridViewImageColumn pc_status_imagem_pagamento;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbTipoReceberPagamento;
+        private Bunifu.UI.WinForms.BunifuGroupBox bunifuGroupBox2;
     }
 }

@@ -536,6 +536,15 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Pagameento Carne
 
+        #region Edicao Pagamento a Receber
+
+        public void ErroAoAtualizarImagemStatusPagamentoAReceberNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-PR01) Erro ao Atualizar Imagem e Status Pagamento a Receber! \n\nErro: {_e}", "Erro Atualizar Imagem e Status Pagamento a Receber!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Edicao Pagamento a Receber
+
         #endregion Atualizacao Do Banco
 
         #region Excluir No Banco

@@ -108,6 +108,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnConfirmarPagamento_Click(object sender, EventArgs e)
         {
+            ConfirmarPagamento();
+        }
+
+        private void ConfirmarPagamento()
+        {
             if (txtDataPagamento.Text != String.Empty)
             {
                 DialogResult OpcaoDoUsuario = new DialogResult();
@@ -128,6 +133,8 @@ namespace Sistema_de_Gerenciamento.Forms
                     btnConfirmarPagamento.Enabled = false;
                     btnCancelar.Enabled = false;
                     chbPago.Checked = true;
+
+                    AvisoCantoInferiorDireito.Confirmacao();
                 }
             }
         }
@@ -184,27 +191,21 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtDescontoTaxas_TextChanged(object sender, EventArgs e)
         {
-            try
+            if (txtDescontoTaxas.Text != String.Empty)
             {
                 txtValorPago.Text = String.Format("{0:C}", Convert.ToDecimal(txtValorParcela.Text.Replace("R$ ", "")) -
                                                            (Convert.ToDecimal(txtDescontoTaxas.Text.Replace("%", "")) *
                                                                Convert.ToDecimal(txtValorParcela.Text.Replace("R$ ", "")) / 100));
             }
-            catch (Exception exception)
-            {
-            }
         }
 
         private void txtJurosMulta_TextChanged(object sender, EventArgs e)
         {
-            try
+            if (txtJurosMulta.Text != String.Empty)
             {
                 txtValorPago.Text = String.Format("{0:C}", Convert.ToDecimal(txtValorParcela.Text.Replace("R$ ", "")) +
                                                            (Convert.ToDecimal(txtJurosMulta.Text.Replace("%", "")) *
                                                                Convert.ToDecimal(txtValorParcela.Text.Replace("R$ ", "")) / 100));
-            }
-            catch (Exception exception)
-            {
             }
         }
 
@@ -226,6 +227,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
+            FecharTela();
+        }
+
+        private void FecharTela()
+        {
             if (lblVerificacaoPagamento.Text == "Nao Pago")
             {
                 DialogResult OpcaoDoUsuario = new DialogResult();
@@ -239,6 +245,22 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 this.Close();
             }
+        }
+
+        private void Forms_EditarPagamentoAPagar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela();
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                ConfirmarPagamento();
+            }
+        }
+
+        private void lblVerificacaoPagamento_Click(object sender, EventArgs e)
+        {
         }
     }
 }
