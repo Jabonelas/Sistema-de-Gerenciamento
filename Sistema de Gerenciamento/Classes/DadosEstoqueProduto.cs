@@ -40,5 +40,11 @@ namespace Sistema_de_Gerenciamento.Classes
             dataEntrada = _dataEntrada;
             descontoItem = _descontoItem;
         }
+
+        public DadosEstoqueProduto(string _descricaoProduto, string _unidade)
+        {
+            descricaoProduto = _descricaoProduto;
+            unidade = _unidade;
+        }
     }
 }

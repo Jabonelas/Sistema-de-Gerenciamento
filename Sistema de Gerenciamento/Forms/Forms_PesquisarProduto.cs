@@ -21,11 +21,13 @@ namespace Sistema_de_Gerenciamento
 
         private Forms_TelaAdministrador telaAdministrador;
 
-        private Forms_PDV telaPDV;
+        private Forms_PDV forms_PDV;
 
-        private Forms_Troca devolucaoTroca;
+        private Forms_Troca forms_Troca;
 
-        private string telaSolicitacao;
+        private string nomeTelaSolicitacao;
+
+        private Forms_ConsultarEstoque forms_ConsultarEstoque;
 
         public Forms_PesquisarProduto(Forms_CadastroProduto _cadastroProduto)
         {
@@ -36,47 +38,60 @@ namespace Sistema_de_Gerenciamento
             PreencherComboBoxGrupo();
         }
 
-        public Forms_PesquisarProduto(Forms_PDV _telaPDV, string _telaSolicitacao)
+        public Forms_PesquisarProduto(Forms_PDV _forms_PDV, string _telaSolicitacao)
         {
             InitializeComponent();
 
-            telaSolicitacao = _telaSolicitacao;
+            nomeTelaSolicitacao = _telaSolicitacao;
 
-            telaPDV = _telaPDV;
+            forms_PDV = _forms_PDV;
 
             PreencherComboBoxGrupo();
 
-            LayoutPesquisarProdutosTelaPDV();
+            LayoutApenasSelecionarEFechar();
         }
 
-        public Forms_PesquisarProduto(Forms_Troca _devolucaoTroca, string _telaSolicitacao)
+        public Forms_PesquisarProduto(Forms_Troca _forms_Troca, string _telaSolicitacao)
         {
             InitializeComponent();
 
-            telaSolicitacao = _telaSolicitacao;
+            nomeTelaSolicitacao = _telaSolicitacao;
 
-            devolucaoTroca = _devolucaoTroca;
+            forms_Troca = _forms_Troca;
 
             PreencherComboBoxGrupo();
 
-            LayoutPesquisarProdutosTelaPDV();
+            LayoutApenasSelecionarEFechar();
+        }
+
+        public Forms_PesquisarProduto(Forms_ConsultarEstoque _telaConsultarEstoque, string _nomeTelaSolicitacao)
+        {
+            InitializeComponent();
+
+            forms_ConsultarEstoque = _telaConsultarEstoque;
+
+            nomeTelaSolicitacao = _nomeTelaSolicitacao;
+
+            PreencherComboBoxGrupo();
+
+            LayoutApenasSelecionarEFechar();
         }
 
         public Forms_PesquisarProduto(Forms_TelaAdministrador _telaAdministrador)
         {
             InitializeComponent();
 
-            LayoutPesquisarProdutosTelaPDV();
+            LayoutApenasSelecionarEFechar();
 
             PreencherComboBoxGrupo();
         }
 
-        private void LayoutPesquisarProdutosTelaPDV()
+        private void LayoutApenasSelecionarEFechar()
         {
             btnImprimir.Visible = false;
             btnExportar.Visible = false;
-            btnSelecionar.Visible = false;
-            btnFechar.Location = new Point(343, 437);
+            btnFechar.Location = new Point(447, 437);
+            btnSelecionar.Location = new Point(250, 437);
             btnFechar.TabIndex = 7;
         }
 
@@ -94,15 +109,92 @@ namespace Sistema_de_Gerenciamento
 
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
-            SelecaoGridViewPreencherTextBox();
+            ConfirmarSelececao();
+        }
+
+        private void btnPesquisar_Click(object sender, EventArgs e)
+        {
+            PesquisarProduto();
+        }
+
+        private void btnFechar_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnExportar_Click_1(object sender, EventArgs e)
+        {
+            ExportarExcel.GerarExcel(gdvPesquisarProduto);
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            Imprimir.ImprimirGridView("Relatorio de Produto", gdvPesquisarProduto);
+        }
+
+        private void cmbSubGrupo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            VerificarPreencimentoComboBoxGrupo();
+        }
+
+        private void cmbGrupo_SelectedValueChanged(object sender, EventArgs e)
+        {
+            PreencherComboBoxSubGrupo();
+        }
+
+        private void txtDescicao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtMarca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
+
+        public void gdvPesquisarProduto_KeyDown(object sender, KeyEventArgs e)
+        {
+            ConfirmarSelececao();
         }
 
         public void gdvPesquisarProduto_DoubleClick(object sender, EventArgs e)
         {
-            SelecaoGridViewPreencherTextBox();
+            ConfirmarSelececao();
         }
 
-        private void SelecaoGridViewPreencherTextBox()
+        private void ConfirmarSelecaoPreencherConsultarEstoque()
+        {
+            forms_ConsultarEstoque.txtCodigo.Text = gdvPesquisarProduto.SelectedCells[1].Value.ToString();
+
+            this.Close();
+        }
+
+        private void ConfirmarSelececao()
+        {
+            if (nomeTelaSolicitacao == "Tela PDV")
+            {
+                ConfirmarSelecaoPreencherTelaPDV();
+            }
+            else if (nomeTelaSolicitacao == "Tela Devolucao/Troca")
+            {
+                ConfirmarSelecaoPreencherTelaTroca();
+            }
+            else if (nomeTelaSolicitacao == "Tela Consultar Estoque")
+            {
+                ConfirmarSelecaoPreencherConsultarEstoque();
+            }
+            else
+            {
+                SelecaoGridViewPreencherTelaCadastroProduto();
+            }
+        }
+
+        private void SelecaoGridViewPreencherTelaCadastroProduto()
         {
             if (gdvPesquisarProduto.RowCount >= 1)
             {
@@ -148,11 +240,6 @@ namespace Sistema_de_Gerenciamento
 
                 this.Close();
             }
-        }
-
-        private void btnPesquisar_Click(object sender, EventArgs e)
-        {
-            PesquisarProduto();
         }
 
         private void PesquisarProduto()
@@ -209,31 +296,6 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        private void btnFechar_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnExportar_Click_1(object sender, EventArgs e)
-        {
-            ExportarExcel.GerarExcel(gdvPesquisarProduto);
-        }
-
-        private void btnImprimir_Click(object sender, EventArgs e)
-        {
-            Imprimir.ImprimirGridView("Relatorio de Produto", gdvPesquisarProduto);
-        }
-
-        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiNumero(e);
-        }
-
-        private void cmbGrupo_SelectedValueChanged(object sender, EventArgs e)
-        {
-            PreencherComboBoxSubGrupo();
-        }
-
         private void PreencherComboBoxSubGrupo()
         {
             List<DadosSubGrupoMaterial> ListaSubGrupo = new List<DadosSubGrupoMaterial>();
@@ -243,11 +305,6 @@ namespace Sistema_de_Gerenciamento
             cmbSubGrupo.Items.Clear();
 
             ListaSubGrupo.ForEach(grupoProduto => cmbSubGrupo.Items.Add(grupoProduto.sub_grupo));
-        }
-
-        private void cmbSubGrupo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            VerificarPreencimentoComboBoxGrupo();
         }
 
         private void VerificarPreencimentoComboBoxGrupo()
@@ -266,30 +323,18 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        private void txtDescicao_KeyPress(object sender, KeyPressEventArgs e)
+        private void ConfirmarSelecaoPreencherTelaPDV()
         {
-            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+            forms_PDV.txtCodigoProduto.Text = gdvPesquisarProduto.SelectedCells[1].Value.ToString();
+
+            this.Close();
         }
 
-        private void txtMarca_KeyPress(object sender, KeyPressEventArgs e)
+        private void ConfirmarSelecaoPreencherTelaTroca()
         {
-            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
-        }
+            forms_Troca.txtCodProdutoTroca.Text = gdvPesquisarProduto.SelectedCells[1].Value.ToString();
 
-        public void gdvPesquisarProduto_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter && telaSolicitacao == "Tela PDV")
-            {
-                telaPDV.txtCodigoProduto.Text = gdvPesquisarProduto.SelectedCells[1].Value.ToString();
-
-                this.Close();
-            }
-            else if (e.KeyCode == Keys.Enter && telaSolicitacao == "Tela Devolucao/Troca")
-            {
-                devolucaoTroca.txtCodProdutoTroca.Text = gdvPesquisarProduto.SelectedCells[1].Value.ToString();
-
-                this.Close();
-            }
+            this.Close();
         }
 
         private void Forms_PesquisarProduto_KeyDown(object sender, KeyEventArgs e)

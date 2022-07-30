@@ -54,7 +54,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     {
                         telaPDV.RemoverProduto();
 
-                        //telaPDV.ValorTotal();
+                        //forms_PDV.ValorTotal();
                         this.Close();
                     }
                 }

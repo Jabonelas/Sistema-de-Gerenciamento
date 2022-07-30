@@ -394,7 +394,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 {
                     string query = "update tb_CadastroUsuario set cu_usuario = @usuario,cu_senha = @senha, " +
                         "cu_excluir_item = @excluirItem," +
-                        "cu_devolucao_troca = @devolucaoTroca," +
+                        "cu_devolucao_troca = @forms_Troca," +
                         "cu_cancelar_venda = @cancelarVenda," +
                         "cu_cancelar_pagamento = @cancelarPagamento " +
                         "where cu_usuario = @usuario ";
@@ -403,7 +403,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@usuario", SqlDbType.VarChar).Value = _usuario;
                     adapter.SelectCommand.Parameters.AddWithValue("@senha", SqlDbType.VarChar).Value = _senha;
                     adapter.SelectCommand.Parameters.AddWithValue("@excluirItem", SqlDbType.VarChar).Value = _excluirItem;
-                    adapter.SelectCommand.Parameters.AddWithValue("@devolucaoTroca", SqlDbType.VarChar).Value = _devolucaoTroca;
+                    adapter.SelectCommand.Parameters.AddWithValue("@forms_Troca", SqlDbType.VarChar).Value = _devolucaoTroca;
                     adapter.SelectCommand.Parameters.AddWithValue("@cancelarVenda", SqlDbType.VarChar).Value = _cancelarVenda;
                     adapter.SelectCommand.Parameters.AddWithValue("@cancelarPagamento", SqlDbType.VarChar).Value = _cancelarPagamento;
 

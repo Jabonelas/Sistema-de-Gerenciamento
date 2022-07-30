@@ -2140,7 +2140,7 @@
             this.btnAdicionarDevolucao.TabIndex = 301;
             this.btnAdicionarDevolucao.Click += new System.EventHandler(this.btnAdcionarDevolucao_Click);
             // 
-            // Forms_Troca
+            // forms_Troca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -2198,7 +2198,7 @@
             this.Controls.Add(this.pcbImagemProduto);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
-            this.Name = "Forms_Troca";
+            this.Name = "forms_Troca";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Troca";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_DevolucaoTroca_KeyDown);

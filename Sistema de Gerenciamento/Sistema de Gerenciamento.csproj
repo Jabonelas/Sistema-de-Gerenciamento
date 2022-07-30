@@ -272,6 +272,12 @@
     <Compile Include="Classes\Imprimir.cs" />
     <Compile Include="Classes\Temperatures.cs" />
     <Compile Include="Classes\VerificacaoDeExistencia.cs" />
+    <Compile Include="Forms\Forms_ConsultarEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_ConsultarEstoque.Designer.cs">
+      <DependentUpon>Forms_ConsultarEstoque.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Forms_ControleADMIN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -483,6 +489,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_ConfiguracaoGerencial.resx">
       <DependentUpon>Forms_ConfiguracaoGerencial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_ConsultarEstoque.resx">
+      <DependentUpon>Forms_ConsultarEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_ControleADMIN.resx">
       <DependentUpon>Forms_ControleADMIN.cs</DependentUpon>

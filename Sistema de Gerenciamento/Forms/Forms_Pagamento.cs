@@ -457,19 +457,9 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     Forms_GerarCarne gerarCarne = new Forms_GerarCarne(listaDadosNotaFiscalSaidaCompleta, valorBruto, quantidadeParcelas);
                     gerarCarne.ShowDialog();
-
-                    //for (int i = 1; i <= Convert.ToInt32(cmbParcelas.Text.Replace("x", "")); i++)
-                    //{
-                    //    Salvar.AdicionarPagamentoCarner(numeroNFSaida, telaVenda.txtCpfCnpjCliente.Text, telaVenda.cmbCliente.Text,
-                    //    DateTime.Now, Global.NomeDeUsuario, ($"{cmbParcelas.Text.Replace("x", "")}/{i}"),
-                    //    Convert.ToDecimal(lblValorDesconto.Text.Replace("R$", "")),
-                    //    Convert.ToDecimal(lblValorTotal.Text.Replace("R$", "")) - valorBruto, Convert.ToDecimal(lblValorTotal.Text.Replace("R$", "")),
-                    //    DateTime.Today.AddDays((listaFinanceiro[0].prazoCarne) * i), "-", "Nao Pago");
-                    //}
                 }
-
-                btnConfirmar.Enabled = false;
             }
+            btnConfirmar.Enabled = false;
         }
 
         private void cmbFormaPagamento_SelectedIndexChanged(object sender, EventArgs e)

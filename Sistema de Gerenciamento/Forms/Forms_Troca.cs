@@ -108,6 +108,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
             foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
             {
+                if (item.status == "Status Venda")
+                {
+                    item.status = "-";
+                }
+
                 var rows = new List<string[]>();
                 string[] row1 = new string[] {item.codigoProduto.ToString(),item.descricao,item.quantidade.ToString("N0"),
                             string.Format("{0:C}", item.valorPago),item.status };

@@ -257,5 +257,11 @@ namespace Sistema_de_Gerenciamento
             Forms_PesquisarContasAReceber contasAReceber = new Forms_PesquisarContasAReceber();
             contasAReceber.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Forms_ConsultarEstoque consultarEstoque = new Forms_ConsultarEstoque();
+            consultarEstoque.ShowDialog();
+        }
     }
 }

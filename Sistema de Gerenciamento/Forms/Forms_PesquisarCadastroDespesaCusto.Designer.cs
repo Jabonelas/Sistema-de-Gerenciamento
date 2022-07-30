@@ -191,7 +191,8 @@
             this.btnExportarParaExcel.BackColor1 = System.Drawing.Color.Transparent;
             this.btnExportarParaExcel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExportarParaExcel.BackgroundImage")));
             this.btnExportarParaExcel.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnExportarParaExcel.ButtonText = "Exportar para o Execel \r\nRelação listaDadosNotaFiscalSaidaCompleta Despesas e Custos";
+            this.btnExportarParaExcel.ButtonText = "Exportar para o Execel \r\nRelação listaDadosNotaFiscalSaidaCompleta Despesas e Cus" +
+    "tos";
             this.btnExportarParaExcel.ButtonTextMarginLeft = 0;
             this.btnExportarParaExcel.ColorContrastOnClick = 45;
             this.btnExportarParaExcel.ColorContrastOnHover = 45;
@@ -916,7 +917,7 @@
             this.cmbCategoria.Size = new System.Drawing.Size(142, 23);
             this.cmbCategoria.TabIndex = 187;
             // 
-            // Forms_PesquisarDespesaCusto
+            // Forms_PesquisarCadastroDespesaCusto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -937,7 +938,7 @@
             this.Controls.Add(this.txtTipo);
             this.Controls.Add(this.label5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Forms_PesquisarDespesaCusto";
+            this.Name = "Forms_PesquisarCadastroDespesaCusto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisar Despesa";
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarDespesaCusto)).EndInit();

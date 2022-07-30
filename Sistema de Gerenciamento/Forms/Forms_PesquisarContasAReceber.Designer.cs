@@ -1161,6 +1161,7 @@
             this.txtNomeCliente.TextPlaceholder = "";
             this.txtNomeCliente.UseSystemPasswordChar = false;
             this.txtNomeCliente.WordWrap = true;
+            this.txtNomeCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomeCliente_KeyPress);
             // 
             // label2
             // 

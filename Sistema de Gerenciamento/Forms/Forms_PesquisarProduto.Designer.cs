@@ -860,7 +860,7 @@
             this.txtCodigoProduto.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCodigoProduto.Lines = new string[0];
             this.txtCodigoProduto.Location = new System.Drawing.Point(12, 29);
-            this.txtCodigoProduto.MaxLength = 10;
+            this.txtCodigoProduto.MaxLength = 5;
             this.txtCodigoProduto.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtCodigoProduto.Modified = false;
             this.txtCodigoProduto.Multiline = false;

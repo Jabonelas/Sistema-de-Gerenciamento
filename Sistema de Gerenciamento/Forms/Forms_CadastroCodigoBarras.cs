@@ -82,7 +82,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
             {
-                if (Buscar.BuscarExistenciaCodigoBarrasCadastrado(Convert.ToInt32(txtCodigoBarras.Text)) == true)
+                if (Buscar.BuscarCodigoBarras(Convert.ToInt32(txtCodigoBarras.Text)) == true)
                 {
                     if (Buscar.BuscarExistenciaCodigoBarrasComMesmoCodigoProduto(Convert.ToInt32(txtCodigoBarras.Text),
                         Convert.ToInt32(txtCodigoProduto.Text)) == true)

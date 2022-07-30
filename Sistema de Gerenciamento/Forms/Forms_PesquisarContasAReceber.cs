@@ -198,5 +198,10 @@ namespace Sistema_de_Gerenciamento.Forms
                 MessageBox.Show("Selecione o Tipo de Cliente Pess. Fisica/Pess. Juridica1", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void txtNomeCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetras(e);
+        }
     }
 }

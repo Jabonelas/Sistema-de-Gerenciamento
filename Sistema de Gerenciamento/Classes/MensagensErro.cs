@@ -1094,6 +1094,40 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Buscar Contas A Receber
 
+        #region Consultar Estoque Produto
+
+        public void ErroAoBuscarDescricaoUnidadeEstoqueProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CEP01) Erro ao Realizar Busca Descrição e Unidade na Consulta do Estoque e Produto \n\nErro: {_e}", "Erro Busca Descrição e Unidade na Consulta de Estoque de Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarQuantidadeLiberadaEstoqueProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CEP02) Erro ao Realizar Busca Quantidade Liberada Estoque e Produto \n\nErro: {_e}", "Erro Busca Quantidade Liberada Estoque de Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarQuantidadeRejeitadaEstoqueProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CEP03) Erro ao Realizar Busca Quantidade Rejeitada Estoque e Produto \n\nErro: {_e}", "Erro Busca Quantidade Rejeitada Estoque de Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarQuantidadeEmTransitoEstoqueProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CEP04) Erro ao Realizar Busca Quantidade Em Transito Estoque e Produto \n\nErro: {_e}", "Erro Busca Quantidade Em Transito Estoque de Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarQuantidadeEmTerceirosEstoqueProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CEP05) Erro ao Realizar Busca Quantidade Em Terceiros Estoque e Produto \n\nErro: {_e}", "Erro Busca Quantidade Em Terceiros Estoque de Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCompletaEstoqueProdutoPorCodigoProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CEP06) Erro ao Realizar Busca Completa em Estoque e Produto Por Codigo de Produto \n\nErro: {_e}", "Erro Busca Completa em Estoque de Produto Por Codigo de Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Consultar Estoque Produto
+
         #endregion Buscar No Banco
 
         #region Verificar Existencia No Banco

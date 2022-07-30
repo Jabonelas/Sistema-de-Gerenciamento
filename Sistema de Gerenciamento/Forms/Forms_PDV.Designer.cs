@@ -2380,7 +2380,7 @@
             this.lblNFEntrada.Text = "NF Entrada";
             this.lblNFEntrada.Visible = false;
             // 
-            // Forms_PDV
+            // forms_PDV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -2421,7 +2421,7 @@
             this.Controls.Add(this.pnlTelaInicial1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
-            this.Name = "Forms_PDV";
+            this.Name = "forms_PDV";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Forms_TelaPDV";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_TelaPDV_KeyDown);

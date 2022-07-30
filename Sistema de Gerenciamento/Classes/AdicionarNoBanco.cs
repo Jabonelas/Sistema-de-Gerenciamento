@@ -410,13 +410,13 @@ namespace Sistema_de_Gerenciamento
                 {
                     string query = "insert into tb_CadastroUsuario (cu_usuario,cu_senha, cu_excluir_item," +
                         "cu_devolucao_troca,cu_cancelar_venda,cu_cancelar_pagamento) " +
-                        "values(@usuario,@senha,@excluirItem,@devolucaoTroca,@cancelarVenda,@cancelarPagamento)";
+                        "values(@usuario,@senha,@excluirItem,@forms_Troca,@cancelarVenda,@cancelarPagamento)";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
                     cmd.Parameters.AddWithValue("@usuario", SqlDbType.Date).Value = _usuario;
                     cmd.Parameters.AddWithValue("@senha", SqlDbType.VarChar).Value = _senha;
                     cmd.Parameters.AddWithValue("@excluirItem", SqlDbType.VarChar).Value = _excluirItem;
-                    cmd.Parameters.AddWithValue("@devolucaoTroca", SqlDbType.VarChar).Value = _devolucaoTroca;
+                    cmd.Parameters.AddWithValue("@forms_Troca", SqlDbType.VarChar).Value = _devolucaoTroca;
                     cmd.Parameters.AddWithValue("@cancelarVenda", SqlDbType.VarChar).Value = _cancelarVenda;
                     cmd.Parameters.AddWithValue("@cancelarPagamento", SqlDbType.VarChar).Value = _cancelarPagamento;
 
