@@ -3223,7 +3223,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscarNotaFiscalEntradaNoBanco(ex);
+                Erro.ErroAoBuscarListaNotaFiscalEntradaNoBanco(ex);
             }
 
             return listaNotaFiscalEntrada;
@@ -3259,7 +3259,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscarNotaFiscalEntradaNoBanco(ex);
+                Erro.ErroAoBuscarNotaFiscalEntradaPreencherGridViewNoBanco(ex);
             }
         }
 
@@ -3273,8 +3273,7 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query =
-                        "select count (ne_numero_nf) from tb_NotaFiscalEntrada where ne_numero_nf = @numeroNF";
+                    string query = "select count (ne_numero_nf) from tb_NotaFiscalEntrada where ne_numero_nf = @numeroNF";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
 
@@ -3288,7 +3287,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscarNotaFiscalEntradaNoBanco(ex);
+                Erro.ErroAoBuscarQuantidadeDeItensNotaFiscalEntradaNoBanco(ex);
 
                 return 0;
             }
@@ -3359,58 +3358,6 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Quantidade de Cada Item da Nota Fiscal de Entrada
-
-        #region Buscar e Preencher Lista Estoque Produto
-
-        public List<DadosEstoqueProduto> BuscarEstoqueProdutoListaProduto(int _numeroNF)
-        {
-            List<DadosEstoqueProduto> listaEstoqueProduto = new List<DadosEstoqueProduto>();
-
-            try
-            {
-                using (SqlConnection conexaoSQL = AbrirConexao())
-                {
-                    string query = "select ep_nf_entrada,ep_codigo_barras,ep_codigo_produto,ep_descricao," +
-                                   "ep_quantidade,ep_unidade,ep_valor_unitario,ep_data_entrada,ep_desconto_por_item " +
-                                   "from tb_EstoqueProduto " +
-                                   "where ep_nf_entrada = @numeroNF";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
-
-                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        MessageBox.Show($"{  dr.GetInt32(0)} { dr.GetInt32(1) }{ dr.GetInt32(2)} { dr.GetString(3)} {dr.GetDecimal(4)} {dr.GetString(5)}  { dr.GetDecimal(6)}{ dr.GetDateTime(7)} {dr.GetDecimal(8)}   ");
-
-                        ////if (dr.IsDBNull(1) == null && dr.IsDBNull(7) == null && dr.IsDBNull(8) == null)
-                        //if (dr.IsDBNull(1) == null && dr.IsDBNull(7) == null && dr.IsDBNull(8) == null)
-                        //{
-                        //    listaEstoqueProduto.Add(new DadosEstoqueProduto(
-                        //        dr.GetInt32(0), null, dr.GetInt32(2),
-                        //        dr.GetString(3), dr.GetDecimal(4), dr.GetString(5),
-                        //        dr.GetDecimal(6), null, null));
-                        //}
-                        //else if (dr.IsDBNull(1) != null && dr.IsDBNull(7) != null && dr.IsDBNull(8) != null)
-                        //{
-                        //    listaEstoqueProduto.Add(new DadosEstoqueProduto(
-                        //        dr.GetInt32(0), dr.GetInt32(1), dr.GetInt32(2),
-                        //        dr.GetString(3), dr.GetDecimal(4), dr.GetString(5),
-                        //        dr.GetDecimal(6), dr.GetDateTime(7), dr.GetDecimal(8)));
-                        //}
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoBuscarNotaFiscalEntradaNoBanco(ex);
-            }
-
-            return listaEstoqueProduto;
-        }
-
-        #endregion Buscar e Preencher Lista Estoque Produto
 
         #region Buscar e PreencherGridView Com Dados do Estoque Produto
 
@@ -3986,7 +3933,56 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Carnê
 
-        #region Consultar Estoque
+        #region Buscar Consultar Estoque
+
+        #region Buscar e Preencher Lista Estoque Produto
+
+        public List<DadosEstoqueProduto> BuscarEstoqueProdutoListaProduto(int _numeroNF)
+        {
+            List<DadosEstoqueProduto> listaEstoqueProduto = new List<DadosEstoqueProduto>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ep_nf_entrada, ep_codigo_barras, ep_codigo_produto, ep_descricao," +
+                                   "ep_quantidade, ep_unidade, ep_valor_unitario, ep_data_entrada, ep_desconto_por_item " +
+                                   "from tb_EstoqueProduto " +
+                                   "where ep_nf_entrada = @numeroNF and ep_quantidade > 0";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        if (dr.IsDBNull(1) == true && dr.IsDBNull(7) == true && dr.IsDBNull(8) == true)
+                        {
+                            listaEstoqueProduto.Add(new DadosEstoqueProduto(
+                                dr.GetInt32(0), null, dr.GetInt32(2),
+                                dr.GetString(3), dr.GetDecimal(4), dr.GetString(5),
+                                dr.GetDecimal(6), null, null));
+                        }
+                        else if (dr.IsDBNull(1) != true && dr.IsDBNull(7) != true && dr.IsDBNull(8) != true)
+                        {
+                            listaEstoqueProduto.Add(new DadosEstoqueProduto(
+                                dr.GetInt32(0), dr.GetInt32(1), dr.GetInt32(2),
+                                dr.GetString(3), dr.GetDecimal(4), dr.GetString(5),
+                                dr.GetDecimal(6), dr.GetDateTime(7), dr.GetDecimal(8)));
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarEstoqueProdutoListaProdutoNoBanco(ex);
+            }
+
+            return listaEstoqueProduto;
+        }
+
+        #endregion Buscar e Preencher Lista Estoque Produto
 
         #region Buscar Descricao Unidade Estoque Produto
 
@@ -4037,7 +4033,8 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select SUM(ep_quantidade) from tb_EstoqueProduto " +
-                        "where ep_quantidade > 0 and ep_codigo_produto = @codigoProduto";
+                        "where ep_quantidade > 0 and ep_codigo_produto = @codigoProduto and " +
+                        "ep_codigo_barras Is not null ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.Add("@codigoProduto", _codigoPrdouto);
@@ -4185,7 +4182,8 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_EstoqueProduto " +
-                        "where ep_codigo_produto = @codigoProduto and ep_quantidade > 0  ";
+                        "where ep_codigo_produto = @codigoProduto and ep_quantidade <> 0 and " +
+                        "ep_codigo_barras Is not null ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@codigoProduto", _codigoProduto);
@@ -4221,6 +4219,171 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Estoque Produto Completo Por Codigo
 
-        #endregion Consultar Estoque
+        #region Bucsar Quantidade Itens Em Contagem
+
+        public decimal BuscarQuantidadeItensEmContagem(int _codigoProduto)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(ep_quantidade) from tb_EstoqueProduto " +
+                        "where ep_codigo_barras Is null and ep_codigo_produto = @codigoProduto";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@codigoProduto", _codigoProduto);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    if (dr.IsDBNull(0) == true)
+                    {
+                        return 0;
+                    }
+
+                    return dr.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarQuantidadeItensEmContagemNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Bucsar Quantidade Itens Em Contagem
+
+        #endregion Buscar Consultar Estoque
+
+        #region Buscar Consulta Detalhada
+
+        #region Bucsar Lista Consulta Estoque Detalhada
+
+        public List<DadosProduto> BuscarListaConsultaEstoqueDetalhada(int _numeroNFEntrada, int _codigoBarras, decimal _quantidade)
+        {
+            List<DadosProduto> listaDadosProdutoCompelta = new List<DadosProduto>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ep_nf_entrada,ep_data_entrada,ep_codigo_barras,ep_codigo_produto," +
+                        "ep_descricao,ep_quantidade,ep_unidade,ep_valor_unitario,ep_status " +
+                        "from tb_EstoqueProduto " +
+                        "where ep_nf_entrada = @numeroNFEntrada and ep_codigo_barras = @codigoBarras " +
+                        "and ep_quantidade = @quantidade";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@numeroNFEntrada", _numeroNFEntrada);
+                    adapter.SelectCommand.Parameters.Add("@codigoBarras", _codigoBarras);
+                    adapter.SelectCommand.Parameters.Add("@quantidade", _quantidade);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaDadosProdutoCompelta.Add(new DadosProduto(dr.GetInt32(0), dr.GetDateTime(1),
+                            dr.GetInt32(2), dr.GetInt32(3), dr.GetString(4), dr.GetDecimal(5), dr.GetString(6),
+                            dr.GetDecimal(7), dr.GetString(8)));
+                    }
+
+                    return listaDadosProdutoCompelta;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarListaConsultaEstoqueDetalhadaNoBanco(ex);
+
+                return listaDadosProdutoCompelta;
+            }
+        }
+
+        #endregion Bucsar Lista Consulta Estoque Detalhada
+
+        #region Buscar Usuario que Rejeitou Produto
+
+        public string BuscarUsuarioRejeitouProduto(int _numeroNFEntrada, int _codigoBarras, decimal _quantidade)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ns_troca_vendedor from tb_NotaFiscalSaida " +
+                        "where ns_nf_entrada = @numeroNFEntrada and " +
+                        "ns_codigo_barras = @codigoBarras and ns_quantidade = @quantidade";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@numeroNFEntrada", _numeroNFEntrada);
+                    adapter.SelectCommand.Parameters.Add("@codigoBarras", _codigoBarras);
+                    adapter.SelectCommand.Parameters.Add("@quantidade", _quantidade);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    return dr.GetString(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarUsuarioRejeitouProdutoNoBanco(ex);
+
+                return String.Empty;
+            }
+        }
+
+        #endregion Buscar Usuario que Rejeitou Produto
+
+        #endregion Buscar Consulta Detalhada
+
+        #region Buscar Consultar Estoque Contagem
+
+        public bool BuscarEstoqueContagem(int _codigoProduto, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ep_nf_entrada, ep_quantidade, ep_valor_unitario," +
+                        "ep_data_entrada from tb_EstoqueProduto where ep_codigo_produto = @codigoProduto " +
+                        "and ep_codigo_barras is null";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@codigoProduto", _codigoProduto);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarEstoqueContagemNoBanco(ex);
+                return false;
+            }
+        }
+
+        #endregion Buscar Consultar Estoque Contagem
     }
 }

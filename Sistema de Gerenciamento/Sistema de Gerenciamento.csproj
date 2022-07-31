@@ -272,6 +272,12 @@
     <Compile Include="Classes\Imprimir.cs" />
     <Compile Include="Classes\Temperatures.cs" />
     <Compile Include="Classes\VerificacaoDeExistencia.cs" />
+    <Compile Include="Forms\Forms_ConsultaEstoqueContagem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_ConsultaEstoqueContagem.Designer.cs">
+      <DependentUpon>Forms_ConsultaEstoqueContagem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Forms_ConsultarEstoque.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -295,6 +301,12 @@
     </Compile>
     <Compile Include="Forms\Forms_EditarPagamentoAReceber.Designer.cs">
       <DependentUpon>Forms_EditarPagamentoAReceber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Forms_ConsultaEstoqueDetalhada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_ConsultaEstoqueDetalhada.Designer.cs">
+      <DependentUpon>Forms_ConsultaEstoqueDetalhada.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Forms_Pagamento.cs">
       <SubType>Form</SubType>
@@ -490,6 +502,9 @@
     <EmbeddedResource Include="Forms\Forms_ConfiguracaoGerencial.resx">
       <DependentUpon>Forms_ConfiguracaoGerencial.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_ConsultaEstoqueContagem.resx">
+      <DependentUpon>Forms_ConsultaEstoqueContagem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_ConsultarEstoque.resx">
       <DependentUpon>Forms_ConsultarEstoque.cs</DependentUpon>
     </EmbeddedResource>
@@ -504,6 +519,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_EditarPagamentoAReceber.resx">
       <DependentUpon>Forms_EditarPagamentoAReceber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_ConsultaEstoqueDetalhada.resx">
+      <DependentUpon>Forms_ConsultaEstoqueDetalhada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_GerarCarne.resx">
       <DependentUpon>Forms_GerarCarne.cs</DependentUpon>

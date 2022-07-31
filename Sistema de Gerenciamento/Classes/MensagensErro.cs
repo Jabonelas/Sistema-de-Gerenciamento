@@ -887,6 +887,21 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-NE03) Erro ao Realizar Busca da Quantidade Total da Nota Fiscal Entrada \n\nErro: {_e}", "Erro Busca Quantidade Total Nota Fiscal Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoBuscarListaNotaFiscalEntradaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-NE04) Erro ao Realizar Busca Lista de Nota Fiscal Entrada \n\nErro: {_e}", "Erro Busca Lista Nota Fiscal Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarNotaFiscalEntradaPreencherGridViewNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-NE05) Erro ao Realizar Busca de Nota Fiscal Entrada Para Preencher GridView \n\nErro: {_e}", "Erro Busca Nota Fiscal Entrada Para Preencher GridView!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarQuantidadeDeItensNotaFiscalEntradaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-NE06) Erro ao Realizar Busca Quantidade de Itens Nota Fiscal Entrada \n\nErro: {_e}", "Erro Busca Quantidade de Itens Nota Fiscal Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Compras
 
         #region Gerar Carne
@@ -1126,7 +1141,40 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-CEP06) Erro ao Realizar Busca Completa em Estoque e Produto Por Codigo de Produto \n\nErro: {_e}", "Erro Busca Completa em Estoque de Produto Por Codigo de Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoBuscarEstoqueProdutoListaProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CEP07) Erro ao Realizar Busca Lista Estoque Produto \n\nErro: {_e}", "Erro Busca Lista Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarQuantidadeItensEmContagemNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CEP08) Erro ao Realizar Busca de Itens Em Contagem Estoque Produto \n\nErro: {_e}", "Erro Busca de Itens Em Contagem Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Consultar Estoque Produto
+
+        #region Exibir Consulta Estoque Detalhada
+
+        public void ErroAoBuscarListaConsultaEstoqueDetalhadaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CED01) Erro ao Realizar Busca Lista Consulta do Estoque Detalhada \n\nErro: {_e}", "Erro Busca Lista Consulta do Estoque Detalhada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarUsuarioRejeitouProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-CED02) Erro ao Realizar Busca de Usuário Que Realizou a Troca \n\nErro: {_e}", "Erro Busca Usuário Que Realizou a Troca!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Exibir Consulta Estoque Detalhada
+
+        #region Consultar Estoque Contagem
+
+        public void ErroAoBuscarEstoqueContagemNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EC01) Erro ao Realizar Busca de Estoque em Contagem \n\nErro: {_e}", "Erro Busca Estoque em Contagem!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Consultar Estoque Contagem
 
         #endregion Buscar No Banco
 

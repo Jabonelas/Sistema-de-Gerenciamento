@@ -515,10 +515,10 @@ namespace Sistema_de_Gerenciamento
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "insert into tb_EstoqueProduto (ep_nf_entrada,ep_codigo_produto,ep_descricao," +
-                                   "ep_unidade,ep_valor_unitario,ep_quantidade,ep_status) " +
+                    string query = "insert into tb_EstoqueProduto (ep_nf_entrada, ep_codigo_produto,ep_descricao," +
+                                   "ep_unidade,ep_valor_unitario,ep_quantidade,ep_status,ep_data_entrada) " +
                                    "select ne_numero_nf,ne_codigo_produto,ne_descricao_produto,ne_unidade," +
-                                   "ne_valor_unitario,ne_quantidade,'-' " +
+                                   "ne_valor_unitario,ne_quantidade,'-',GETDATE() " +
                                    "from tb_NotaFiscalEntrada where ne_numero_nf = @ne_numero_nf";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);

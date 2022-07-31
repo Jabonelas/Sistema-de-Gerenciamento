@@ -249,17 +249,20 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Estoque Produto Verificar Se Já Foi Excluido
 
-        public int VerificarSeEstoqueFoiConsumido(int _numeroNF)
+        public decimal VerificarSeEstoqueFoiConsumido(int _numeroNF)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select count (p.ep_quantidade) " +
-                                   "from tb_EstoqueProduto as p inner join tb_NotaFiscalEntrada pe " +
-                                   "on p.ep_quantidade = pe.ne_quantidade and " +
-                                   "p.ep_codigo_produto = pe.ne_codigo_produto " +
-                                   "where p.ep_nf_entrada = @numeroNF ";
+                    string query = "select SUM(ep_quantidade) from tb_EstoqueProduto " +
+                        "where ep_nf_entrada = @numeroNF";
+
+                    //string query = "select count (p.ep_quantidade) " +
+                    //              "from tb_EstoqueProduto as p inner join tb_NotaFiscalEntrada pe " +
+                    //              "on p.ep_quantidade = pe.ne_quantidade and " +
+                    //              "p.ep_codigo_produto = pe.ne_codigo_produto " +
+                    //              "where p.ep_nf_entrada = @numeroNF ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@numeroNF", _numeroNF);
@@ -267,9 +270,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
                     dr.Read();
 
-                    int x = dr.GetInt32(0);
-
-                    return x;
+                    return dr.GetDecimal(0);
                 }
             }
             catch (Exception ex)

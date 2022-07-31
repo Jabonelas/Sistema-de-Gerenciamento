@@ -269,7 +269,7 @@ namespace Sistema_de_Gerenciamento.Forms
                         MessageBox.Show("Nota Fiscal Não Encontrada!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else if (VerificarExistencia.VerificarSeEstoqueFoiConsumido(Convert.ToInt32(txtNumeroNotaFiscal.Text)) !=
-                        Buscar.BuscarQuantidadeDeItensNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)))
+                        Buscar.QuantidadeTotalProdutoNotaEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text)))
                     {
                         MessageBox.Show("Nota Fiscal Indisponivel Para Alteração!", "Informação!", MessageBoxButtons.OK,
                             MessageBoxIcon.Information);

@@ -37,6 +37,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            ConfirmarBuscaComVerificacao();
+        }
+
+        private void ConfirmarBuscaComVerificacao()
+        {
             if (txtCodigo.Text != string.Empty)
             {
                 bool isCadastroExiste = Buscar.BuscarProdutoPorCodigo(Convert.ToInt32(txtCodigo.Text));
@@ -63,7 +68,9 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     txtQuantidadeTotalEmEstoque.Text = (Convert.ToDecimal(txtQuantidadeLiberada.Text) + Convert.ToDecimal(txtQuantidadeRejeitada.Text)).ToString();
 
-                    Buscar.BuscarEstoqueProdutoCompletoPorCodigo(Convert.ToInt32(txtCodigo.Text), gdvContarPagar);
+                    Buscar.BuscarEstoqueProdutoCompletoPorCodigo(Convert.ToInt32(txtCodigo.Text), gdvConsultarEstoque);
+
+                    txtQuantidadeEmContagem.Text = Buscar.BuscarQuantidadeItensEmContagem(Convert.ToInt32(txtCodigo.Text)).ToString();
                 }
                 else if (isCadastroExiste == false)
                 {
@@ -72,6 +79,58 @@ namespace Sistema_de_Gerenciamento.Forms
                     ManipulacaoTextBox.ApagandoTextBox(this);
                 }
             }
+        }
+
+        private void Forms_ConsultarEstoque_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela();
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+                AbrirFormsConsultaDetalhada();
+            }
+        }
+
+        private void FecharTela()
+        {
+            DialogResult OpcaoDoUsuario = new DialogResult();
+            OpcaoDoUsuario = MessageBox.Show("Realmente Deseja Sair da Tela de Consulta Estoque?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (OpcaoDoUsuario == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void btnBuscarItensEmContagem_Click(object sender, EventArgs e)
+        {
+            if (txtDescricao.Text != String.Empty)
+            {
+                Forms_ConsultaEstoqueContagem consultaEstoqueContagem = new Forms_ConsultaEstoqueContagem(this);
+                consultaEstoqueContagem.ShowDialog();
+            }
+        }
+
+        private void gdvContarPagar_DoubleClick(object sender, EventArgs e)
+        {
+            AbrirFormsConsultaDetalhada();
+        }
+
+        private void AbrirFormsConsultaDetalhada()
+        {
+            Forms_ConsultaEstoqueDetalhada exibirConsultaEstoque = new Forms_ConsultaEstoqueDetalhada(this);
+            exibirConsultaEstoque.ShowDialog();
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            FecharTela();
+        }
+
+        private void btnSelecionar_Click(object sender, EventArgs e)
+        {
+            AbrirFormsConsultaDetalhada();
         }
     }
 }
