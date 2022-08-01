@@ -308,6 +308,12 @@
     <Compile Include="Forms\Forms_ConsultaEstoqueDetalhada.Designer.cs">
       <DependentUpon>Forms_ConsultaEstoqueDetalhada.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Forms_FluxoCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_FluxoCaixa.Designer.cs">
+      <DependentUpon>Forms_FluxoCaixa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Forms_Pagamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -522,6 +528,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_ConsultaEstoqueDetalhada.resx">
       <DependentUpon>Forms_ConsultaEstoqueDetalhada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_FluxoCaixa.resx">
+      <DependentUpon>Forms_FluxoCaixa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_GerarCarne.resx">
       <DependentUpon>Forms_GerarCarne.cs</DependentUpon>
