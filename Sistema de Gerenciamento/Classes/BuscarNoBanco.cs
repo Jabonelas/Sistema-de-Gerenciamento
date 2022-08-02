@@ -1179,7 +1179,8 @@ namespace Sistema_de_Gerenciamento.Classes
                 {
                     string query = "select ep_codigo_produto,ep_descricao,ep_quantidade,ep_unidade," +
                         "ep_valor_unitario,ep_desconto_por_item,ep_codigo_barras,ep_nf_entrada  " +
-                        "from tb_EstoqueProduto where ep_quantidade >= 0";
+                        "from tb_EstoqueProduto where ep_quantidade >= 0 and ep_quantidade is not null and " +
+                        "ep_desconto_por_item is not null and ep_codigo_barras is not null";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -1614,6 +1615,40 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Lista Permissoes Cadastro Usuario
+
+        #region Buscar Lista Usuairo
+
+        public List<DadosUsuario> BuscaListaUsuario()
+        {
+            List<DadosUsuario> listadadosUsuarios = new List<DadosUsuario>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select cu_usuario from tb_CadastroUsuario";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listadadosUsuarios.Add(new DadosUsuario(dr.GetString(0)));
+                    }
+
+                    return listadadosUsuarios;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarListaUsuarioNoBanco(ex);
+
+                return listadadosUsuarios;
+            }
+        }
+
+        #endregion Buscar Lista Usuairo
 
         #endregion Buscar Usuario
 
@@ -4385,5 +4420,100 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Consultar Estoque Contagem
+
+        #region Fluxo Caixa
+
+        #region Buscar Dado Preencher GridView Fluxo Caixa
+
+        public bool BuscarDadosPreencherGridView(string _vendedor, DateTime _dataInicial, DateTime _dataFinal
+            , BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ns_numero_nf,ns_cpf_cpnj_cliente,ns_nome_cliente,ns_codigo_produto," +
+                        "ns_descricao,ns_quantidade,ns_valor_pago " +
+                        "from tb_NotaFiscalSaida " +
+                        "where ns_tipo_pagamento <> 'CARNÊ' and ns_vendedor = @vendedor and ns_valor_pago > 0 and " +
+                        "ns_emissao > @dataInicial and ns_emissao < @dataFinal";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@vendedor", _vendedor);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaDadosParaPreencherGridviewFluxoCaixaNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Buscar Dado Preencher GridView Fluxo Caixa
+
+        #region Buscar
+
+        public decimal BuscarValorTotalFluxoCaixa(string _vendedor, DateTime _dataInicial, DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(ns_valor_pago) from tb_NotaFiscalSaida " +
+                        "where ns_tipo_pagamento <> 'CARNÊ' and ns_vendedor = @vendedor and ns_valor_pago > 0 and " +
+                        "ns_emissao > @dataInicail and ns_emissao < @dataFinal";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@vendedor", _vendedor);
+                    adapter.SelectCommand.Parameters.Add("@dataInicail", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    if (dr.IsDBNull(0) == true)
+                    {
+                        return 0;
+                    }
+
+                    return dr.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaTotalFluxoCaixaNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar
+
+        #endregion Fluxo Caixa
     }
 }

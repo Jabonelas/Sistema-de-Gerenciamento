@@ -76,6 +76,13 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     MessageBox.Show("Codigo do Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                    foreach (var item in gdvConsultarEstoque.Rows)
+                    {
+                        gdvConsultarEstoque.Rows.Remove((DataGridViewRow)item);
+                    }
+
+                    gdvConsultarEstoque.Rows.RemoveAt(gdvConsultarEstoque.Rows.Count - 1);
+
                     ManipulacaoTextBox.ApagandoTextBox(this);
                 }
             }

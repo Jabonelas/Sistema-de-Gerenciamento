@@ -1063,6 +1063,11 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-NFSV04) Erro ao Realizar Busca Lista de Permissões Nota Fiscal Saida Completa \n\nErro: {_e}", "Erro Busca Lista de Permissões Nota Fiscal Saida Completa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoBuscarListaUsuarioNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-NFSV05) Erro ao Realizar Busca Lista  Usuário \n\nErro: {_e}", "Erro Busca Lista Usuário!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Buscar Nota Fiscal Saida
 
         #region Buscar Contas A Receber
@@ -1175,6 +1180,20 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Consultar Estoque Contagem
+
+        #region Fluxo Caixa
+
+        public void ErroAoBuscaDadosParaPreencherGridviewFluxoCaixaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-FC01) Erro ao Realizar Busca para Preencher GridView \n\nErro: {_e}", "Erro Busca Preencher GridView!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscaTotalFluxoCaixaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-FC02) Erro ao Realizar Busca Total Fluxo Caixa \n\nErro: {_e}", "Erro Busca Total Fluxo Caixa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Fluxo Caixa
 
         #endregion Buscar No Banco
 

@@ -105,6 +105,7 @@
             this.btnContasAPagar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.tabRelatorios = new System.Windows.Forms.TabPage();
             this.tabConsultas = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabGerencial = new System.Windows.Forms.TabPage();
             this.tabUtilitarios = new System.Windows.Forms.TabPage();
             this.tabManutencao = new System.Windows.Forms.TabPage();
@@ -128,7 +129,6 @@
             this.btnVendaConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnPDVConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.TimerVerificarDespesaCustoFixo = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabCadastro.SuspendLayout();
             this.tabMovimentacao.SuspendLayout();
@@ -1996,6 +1996,16 @@
             this.tabConsultas.Text = "Consultas";
             this.tabConsultas.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(371, 45);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(124, 27);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // tabGerencial
             // 
             this.tabGerencial.Location = new System.Drawing.Point(4, 27);
@@ -2298,6 +2308,7 @@
             this.btnFluxoCaixaConsole.TextMarginLeft = 0;
             this.btnFluxoCaixaConsole.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnFluxoCaixaConsole.UseDefaultRadiusAndThickness = true;
+            this.btnFluxoCaixaConsole.Click += new System.EventHandler(this.btnFluxoCaixaConsole_Click);
             // 
             // btnResumoVendasConsole
             // 
@@ -3210,16 +3221,6 @@
             // 
             this.TimerVerificarDespesaCustoFixo.Interval = 72000000;
             this.TimerVerificarDespesaCustoFixo.Tick += new System.EventHandler(this.TimerVerificarDespesaCustoFixo_Tick);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(371, 45);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(124, 27);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Forms_TelaAdministrador
             // 

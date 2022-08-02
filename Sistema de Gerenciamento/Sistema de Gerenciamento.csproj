@@ -256,6 +256,7 @@
     <Compile Include="Classes\AvisoCantoInferiorDireito.cs" />
     <Compile Include="Classes\BuscarNoBanco.cs" />
     <Compile Include="Classes\ConectarBanco.cs" />
+    <Compile Include="Classes\DadosFluxoCaixa.cs" />
     <Compile Include="Classes\DadosNotaFiscalSaida.cs" />
     <Compile Include="Classes\DadosCliente.cs" />
     <Compile Include="Classes\DadosCadastroDespesasCusto.cs" />
@@ -266,6 +267,7 @@
     <Compile Include="Classes\DadosNotaFiscalEntrada.cs" />
     <Compile Include="Classes\DadosPermissoes.cs" />
     <Compile Include="Classes\DadosProduto.cs" />
+    <Compile Include="Classes\DadosUsuario.cs" />
     <Compile Include="Classes\DGVPrinter.cs" />
     <Compile Include="Classes\ExcluirNoBanco.cs" />
     <Compile Include="Classes\ExportarExcel.cs" />

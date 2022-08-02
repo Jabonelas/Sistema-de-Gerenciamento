@@ -263,5 +263,11 @@ namespace Sistema_de_Gerenciamento
             Forms_ConsultarEstoque consultarEstoque = new Forms_ConsultarEstoque();
             consultarEstoque.ShowDialog();
         }
+
+        private void btnFluxoCaixaConsole_Click(object sender, EventArgs e)
+        {
+            Forms_FluxoCaixa fluxoCaixa = new Forms_FluxoCaixa();
+            fluxoCaixa.ShowDialog();
+        }
     }
 }
