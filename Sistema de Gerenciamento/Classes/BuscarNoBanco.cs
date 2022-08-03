@@ -3046,42 +3046,6 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Estoque Produto Por Codigo De Barras
 
-        #region Buscar Financeiro
-
-        public List<DadosFinanceiro> BuscarListaFinanceiro()
-
-        {
-            List<DadosFinanceiro> listaFinanceiro = new List<DadosFinanceiro>();
-
-            try
-            {
-                using (SqlConnection conexaoSQL = AbrirConexao())
-                {
-                    string query =
-                        "select fn_desconto_avista,fn_juros_credito,fn_parcelas_credito,fn_prazo_carne,fn_juros_carne,fn_parcelas_carne," +
-                        "fn_juros_atraso,fn_multa_atraso from tb_Financeiro ";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-
-                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        listaFinanceiro.Add(new DadosFinanceiro(dr.GetDecimal(0), dr.GetDecimal(1),
-                            dr.GetInt32(2), dr.GetInt32(3), dr.GetDecimal(4), dr.GetInt32(5), dr.GetDecimal(6), dr.GetDecimal(7)));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoBuscarListaEstoqueProdutoNoBanco(ex);
-            }
-
-            return listaFinanceiro;
-        }
-
-        #endregion Buscar Financeiro
-
         #region Buscar Tudo Por Nota Fiscal Saida
 
         public bool BuscarVendaPorNotaFiscalSaida(int _notaFiscalSaida)
@@ -3593,7 +3557,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne where pc_numero_nf = @numeroNFSaida and " +
-                        "pc_vencimento > @dataInicial and pc_vencimento < @dataFinal ";
+                        "pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -3642,7 +3606,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne where pc_numero_nf = @numeroNFSaida and " +
-                        "pc_vencimento > @dataInicial and pc_vencimento < @dataFinal and " +
+                        "pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal and " +
                         "pc_status = @statusPagamento ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -3692,7 +3656,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne " +
-                        "where pc_cpf_cpnj_cliente = @cpfCnpj and pc_vencimento > @dataInicial and pc_vencimento < @dataFinal";
+                        "where pc_cpf_cpnj_cliente = @cpfCnpj and pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.Add("@cpfCnpj", _cpfCnpj);
@@ -3739,7 +3703,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne " +
-                        "where pc_cpf_cpnj_cliente = @cpfCnpj and pc_vencimento > @dataInicial and pc_vencimento < @dataFinal " +
+                        "where pc_cpf_cpnj_cliente = @cpfCnpj and pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal " +
                         "and pc_status = @statusPagamento";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -3788,7 +3752,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne where pc_nome_cliente like @nomeCliente and " +
-                        "pc_vencimento > @dataInicial and pc_vencimento < @dataFinal";
+                        "pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@nomeCliente", string.Format("%{0}%", _nomeCliente));
@@ -3835,7 +3799,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne where pc_nome_cliente like @nomeCliente and " +
-                        "pc_vencimento > @dataInicial and pc_vencimento < @dataFinal and pc_status = @statusPagamento";
+                        "pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal and pc_status = @statusPagamento";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@nomeCliente", string.Format("%{0}%", _nomeCliente));
@@ -3883,7 +3847,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne where pc_status = @statusPagamento and " +
-                        "pc_vencimento > @dataInicial and pc_vencimento < @dataFinal";
+                        "pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@statusPagamento", _statusPagamento);
@@ -3930,7 +3894,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne " +
-                        "where pc_vencimento > @dataInicial and pc_vencimento < @dataFinal";
+                        "where pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
@@ -4421,7 +4385,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Consultar Estoque Contagem
 
-        #region Fluxo Caixa
+        #region Buscar Fluxo Caixa
 
         #region Buscar Dado Preencher GridView Fluxo Caixa
 
@@ -4435,8 +4399,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     string query = "select ns_numero_nf,ns_cpf_cpnj_cliente,ns_nome_cliente,ns_codigo_produto," +
                         "ns_descricao,ns_quantidade,ns_valor_pago " +
                         "from tb_NotaFiscalSaida " +
-                        "where ns_tipo_pagamento <> 'CARNÊ' and ns_vendedor = @vendedor and ns_valor_pago > 0 and " +
-                        "ns_emissao > @dataInicial and ns_emissao < @dataFinal";
+                        "where ns_vendedor = @vendedor and ns_valor_pago > 0 and " +
+                        "ns_emissao >= @dataInicial and ns_emissao <= @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -4475,7 +4439,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Dado Preencher GridView Fluxo Caixa
 
-        #region Buscar
+        #region Buscar Valor Total Fluxo Caixa
 
         public decimal BuscarValorTotalFluxoCaixa(string _vendedor, DateTime _dataInicial, DateTime _dataFinal)
         {
@@ -4484,8 +4448,8 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select SUM(ns_valor_pago) from tb_NotaFiscalSaida " +
-                        "where ns_tipo_pagamento <> 'CARNÊ' and ns_vendedor = @vendedor and ns_valor_pago > 0 and " +
-                        "ns_emissao > @dataInicail and ns_emissao < @dataFinal";
+                        "where ns_vendedor = @vendedor and ns_valor_pago > 0 and " +
+                        "ns_emissao >= @dataInicail and ns_emissao <= @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.Add("@vendedor", _vendedor);
@@ -4512,8 +4476,148 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
-        #endregion Buscar
+        #endregion Buscar Valor Total Fluxo Caixa
 
-        #endregion Fluxo Caixa
+        #region Buscar Valor da Comissao Cada Produto
+
+        public decimal BuscarValorComissaoPorProduto(int _codigoProduto)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select cp_comissao from tb_CadastroProdutos " +
+                        "where cp_id = @codigoProduto";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@codigoProduto", _codigoProduto);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    return dr.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaComissaoCadaProdutoNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Valor da Comissao Cada Produto
+
+        #endregion Buscar Fluxo Caixa
+
+        #region Buscar Dados Financeiros
+
+        #region Buscar Financeiro
+
+        public List<DadosFinanceiro> BuscarListaDadosFinanceiro()
+
+        {
+            List<DadosFinanceiro> listaFinanceiro = new List<DadosFinanceiro>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select fn_desconto_avista,fn_juros_credito,fn_parcelas_credito,fn_prazo_carne,fn_juros_carne,fn_parcelas_carne," +
+                        "fn_juros_atraso,fn_multa_atraso from tb_Financeiro ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaFinanceiro.Add(new DadosFinanceiro(dr.GetDecimal(0), dr.GetDecimal(1),
+                            dr.GetInt32(2), dr.GetInt32(3), dr.GetDecimal(4), dr.GetInt32(5), dr.GetDecimal(6), dr.GetDecimal(7)));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarListaEstoqueProdutoNoBanco(ex);
+            }
+
+            return listaFinanceiro;
+        }
+
+        #endregion Buscar Financeiro
+
+        #region Buscar Comisão
+
+        public decimal BuscarPorcentagemComissao()
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select fn_comissao from tb_Financeiro";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    if (dr.IsDBNull(0) == true)
+                    {
+                        return 0;
+                    }
+
+                    return dr.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarPorcentagemComissaoNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Comisão
+
+        #endregion Buscar Dados Financeiros
+
+        public List<DadosNotaFiscalSaida> BuscarCodigoProdutosVendidos(string _vendedor, DateTime _dataInicial, DateTime _dataFinal)
+        {
+            List<DadosNotaFiscalSaida> ListaCodigoProdutosVendidos = new List<DadosNotaFiscalSaida>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ns_codigo_produto,ns_valor_pago from tb_NotaFiscalSaida " +
+                        "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal " +
+                        "and ns_vendedor = @vendedor";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@vendedor", _vendedor);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        ListaCodigoProdutosVendidos.Add(new DadosNotaFiscalSaida(dr.GetInt32(0), dr.GetDecimal(1)));
+                    }
+
+                    return ListaCodigoProdutosVendidos;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarCodigoProdutoVendidosNoBanco(ex);
+
+                return ListaCodigoProdutosVendidos;
+            }
+        }
     }
 }

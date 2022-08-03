@@ -39,7 +39,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             InitializeComponent();
 
-            listaFinanceiro = Buscar.BuscarListaFinanceiro();
+            listaFinanceiro = Buscar.BuscarListaDadosFinanceiro();
 
             DadosParaPreenchimentoTextBox();
 
@@ -57,7 +57,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             valorBruto = _valorBruto;
 
-            listaFinanceiro = Buscar.BuscarListaFinanceiro();
+            listaFinanceiro = Buscar.BuscarListaDadosFinanceiro();
 
             DadosParaPreenchimentoTextBox();
 
@@ -79,7 +79,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             valorBruto = _valorBruto;
 
-            listaFinanceiro = Buscar.BuscarListaFinanceiro();
+            listaFinanceiro = Buscar.BuscarListaDadosFinanceiro();
 
             DadosParaPreenchimentoTextBox();
 
@@ -204,7 +204,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void ConfirmarVenda()
         {
-            if (Convert.ToDecimal(txtSaldo.Text.Replace("R$", "")) > Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$", ""))
+            if (Convert.ToDecimal(txtSaldo.Text.Replace("R$", "")) >= Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$", ""))
               && txtStatus.Text == "Liberado")
             {
                 decimal saldo = Buscar.SaldoDisponivelCliente(listaDadosNotaFiscalSaidaCompleta[0].cpf);

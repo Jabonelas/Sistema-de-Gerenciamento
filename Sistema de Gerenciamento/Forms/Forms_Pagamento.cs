@@ -80,7 +80,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             tipoPagamento = _tipoPagamento;
 
-            listaFinanceiro = Buscar.BuscarListaFinanceiro();
+            listaFinanceiro = Buscar.BuscarListaDadosFinanceiro();
 
             valorBruto = _valoAPagar;
 

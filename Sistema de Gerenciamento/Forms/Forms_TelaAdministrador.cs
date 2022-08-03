@@ -35,6 +35,7 @@ namespace Sistema_de_Gerenciamento
             Task.Run(() =>
             {
                 Thread.Sleep(1000);
+
                 AutomatizacaoDespesaCustoFixo();
             });
 
@@ -199,27 +200,31 @@ namespace Sistema_de_Gerenciamento
 
             foreach (DadosDespesaCusto despesaCusto in listaDespesasCustos)
             {
-                if (despesaCusto.vencimento <= DateTime.Today && despesaCusto.verificar == "nok")
+                if (despesaCusto.vencimento <= DateTime.Today && despesaCusto.verificar == "nok"
+                     && Global.NomeDeUsuario == "ADMIN")
                 {
-                    if (Global.NomeDeUsuario == "ADMIN" && despesaCusto.statusPagamento == "Nao Pago")
+                    if (despesaCusto.statusPagamento == "Nao Pago")
                     {
                         MessageBox.Show($"Despesa/Custo - {despesaCusto.forncedorTitulo}\n\nVencimento {despesaCusto.vencimento.ToShortDateString()}",
-                            "Pagamento Pendente Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                "Pagamento Pendente Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
                     Atualizar.AtualziarCodigoDespesaCustosFixoRepeticao(despesaCusto.codigo);
 
-                    bool semanal = despesaCusto.frequencia == "Semanal" ? Convert.ToBoolean(dias = 7) : false;
-                    bool quinzenal = despesaCusto.frequencia == "Quinzenal" ? Convert.ToBoolean(dias = 15) : false;
-                    bool mensal = despesaCusto.frequencia == "Mensal" ? Convert.ToBoolean(dias = 30) : false;
-                    bool bimestral = despesaCusto.frequencia == "Bimestral" ? Convert.ToBoolean(dias = 90) : false;
-                    bool semestral = despesaCusto.frequencia == "Semestral" ? Convert.ToBoolean(dias = 180) : false;
-                    bool anual = despesaCusto.frequencia == "Anual" ? Convert.ToBoolean(dias = 365) : false;
+                    if (despesaCusto.tipo == "Fixa")
+                    {
+                        bool semanal = despesaCusto.frequencia == "Semanal" ? Convert.ToBoolean(dias = 7) : false;
+                        bool quinzenal = despesaCusto.frequencia == "Quinzenal" ? Convert.ToBoolean(dias = 15) : false;
+                        bool mensal = despesaCusto.frequencia == "Mensal" ? Convert.ToBoolean(dias = 30) : false;
+                        bool bimestral = despesaCusto.frequencia == "Bimestral" ? Convert.ToBoolean(dias = 90) : false;
+                        bool semestral = despesaCusto.frequencia == "Semestral" ? Convert.ToBoolean(dias = 180) : false;
+                        bool anual = despesaCusto.frequencia == "Anual" ? Convert.ToBoolean(dias = 365) : false;
 
-                    Salvar.DespesaCustosFixoRepeticao(despesaCusto.codigo, despesaCusto.tipo, despesaCusto.descricao, despesaCusto.forncedorTitulo,
-                        despesaCusto.cnpj, despesaCusto.emissao, despesaCusto.vencimento.AddDays(dias), despesaCusto.frequencia,
-                        despesaCusto.valor, despesaCusto.quantidadeParcelas, despesaCusto.valorParcela, despesaCusto.categoria,
-                        ptbStatusPagamento.Image);
+                        Salvar.DespesaCustosFixoRepeticao(despesaCusto.codigo, despesaCusto.tipo, despesaCusto.descricao, despesaCusto.forncedorTitulo,
+                            despesaCusto.cnpj, despesaCusto.emissao, despesaCusto.vencimento.AddDays(dias), despesaCusto.frequencia,
+                            despesaCusto.valor, despesaCusto.quantidadeParcelas, despesaCusto.valorParcela, despesaCusto.categoria,
+                            ptbStatusPagamento.Image);
+                    }
                 }
             }
         }
@@ -268,6 +273,12 @@ namespace Sistema_de_Gerenciamento
         {
             Forms_FluxoCaixa fluxoCaixa = new Forms_FluxoCaixa();
             fluxoCaixa.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            tesntandoComissao tesntandoComissao = new tesntandoComissao();
+            tesntandoComissao.ShowDialog();
         }
     }
 }

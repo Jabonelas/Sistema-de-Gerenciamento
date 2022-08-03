@@ -25,9 +25,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private decimal jurosAtraso;
 
-        private TimeSpan diasAtraso;
-
-        private TimeSpan diasComparacao;
+        private int QuantidadeDiasAtraso;
 
         public Forms_EditarPagamentoAReceber()
         {
@@ -45,6 +43,44 @@ namespace Sistema_de_Gerenciamento.Forms
             txtDataPagamento.Text = DateTime.Today.ToShortDateString();
         }
 
+        private void dtpPagamento_ValueChanged(object sender, EventArgs e)
+        {
+            txtDataPagamento.Text = dtpPagamento.Value.ToShortDateString();
+        }
+
+        private void btnConfirmarPagamento_Click(object sender, EventArgs e)
+        {
+            ConfirmarRecebimentoPagamento();
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            FecharTela();
+        }
+
+        private void chbPago_CheckedChanged(object sender, EventArgs e)
+        {
+            if (lblStatusPagamento.Text == "Nao Pago")
+            {
+                if (chbPago.Checked == true)
+                {
+                    CalcularValorAReceber();
+
+                    btnConfirmarPagamento.Enabled = true;
+                }
+                else
+                {
+                    btnConfirmarPagamento.Enabled = false;
+                }
+            }
+            else
+            {
+                btnConfirmarPagamento.Enabled = false;
+
+                txtValorAPagar.Text = string.Format("{0:C}", forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[14].Value);
+            }
+        }
+
         private void PegarDadosGridView()
         {
             txtNumeroNotaFiscal.Text = forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[1].Value.ToString();
@@ -60,16 +96,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void PreencherJurosMultaAtraso()
         {
-            dadosFinanceiro = Buscar.BuscarListaFinanceiro();
+            dadosFinanceiro = Buscar.BuscarListaDadosFinanceiro();
 
             txtJurosAtraso.Text = string.Format("{0:P}", dadosFinanceiro[0].jurosAtrasoCarne / 100);
 
             txtMultaAtraso.Text = string.Format("{0:P}", dadosFinanceiro[0].multaAtrasoCarne / 100);
-        }
-
-        private void btnFechar_Click(object sender, EventArgs e)
-        {
-            FecharTela();
         }
 
         private void FecharTela()
@@ -116,11 +147,9 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void CalcularValorAReceber()
         {
-            diasAtraso = Convert.ToDateTime(txtDataPagamento.Text).Subtract(Convert.ToDateTime(txtVencimento.Text));
+            QuantidadeDiasAtraso = Convert.ToInt32((DateTime.Now - Convert.ToDateTime(txtVencimento.Text)).TotalDays);
 
-            diasComparacao = DateTime.Today - DateTime.Today;
-
-            if (diasAtraso.Days > diasComparacao.Days)
+            if (QuantidadeDiasAtraso > 0)
             {
                 PreencherJurosMultaAtraso();
 
@@ -150,44 +179,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             jurosAtraso = Convert.ToDecimal(dadosFinanceiro[0].jurosAtrasoCarne *
             Convert.ToDecimal(forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[10].Value) / 100)
-            * Convert.ToDecimal(diasAtraso.Days);
-        }
-
-        private void dtpPagamento_ValueChanged(object sender, EventArgs e)
-        {
-            txtDataPagamento.Text = dtpPagamento.Value.ToShortDateString();
-        }
-
-        private void btnConfirmarPagamento_Click(object sender, EventArgs e)
-        {
-            ConfirmarRecebimentoPagamento();
-        }
-
-        private void chbPago_CheckedChanged(object sender, EventArgs e)
-        {
-            if (lblStatusPagamento.Text == "Nao Pago")
-            {
-                if (chbPago.Checked == true)
-                {
-                    CalcularValorAReceber();
-
-                    btnConfirmarPagamento.Enabled = true;
-                }
-                else
-                {
-                    btnConfirmarPagamento.Enabled = false;
-                }
-            }
-            else
-            {
-                btnConfirmarPagamento.Enabled = false;
-
-                txtValorAPagar.Text = string.Format("{0:C}", forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[14].Value);
-            }
-        }
-
-        private void lblStatusPagamento_Click(object sender, EventArgs e)
-        {
+            * Convert.ToDecimal(QuantidadeDiasAtraso);
         }
     }
 }

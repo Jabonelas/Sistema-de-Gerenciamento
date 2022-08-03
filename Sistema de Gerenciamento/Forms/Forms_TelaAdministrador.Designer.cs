@@ -129,6 +129,7 @@
             this.btnVendaConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnPDVConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.TimerVerificarDespesaCustoFixo = new System.Windows.Forms.Timer(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabCadastro.SuspendLayout();
             this.tabMovimentacao.SuspendLayout();
@@ -1987,6 +1988,7 @@
             // 
             // tabConsultas
             // 
+            this.tabConsultas.Controls.Add(this.button2);
             this.tabConsultas.Controls.Add(this.button1);
             this.tabConsultas.Location = new System.Drawing.Point(4, 27);
             this.tabConsultas.Name = "tabConsultas";
@@ -3222,6 +3224,16 @@
             this.TimerVerificarDespesaCustoFixo.Interval = 72000000;
             this.TimerVerificarDespesaCustoFixo.Tick += new System.EventHandler(this.TimerVerificarDespesaCustoFixo_Tick);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(601, 45);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(124, 27);
+            this.button2.TabIndex = 1;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Forms_TelaAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3324,6 +3336,7 @@
         private System.Windows.Forms.Timer TimerVerificarDespesaCustoFixo;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnPDVConsole;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

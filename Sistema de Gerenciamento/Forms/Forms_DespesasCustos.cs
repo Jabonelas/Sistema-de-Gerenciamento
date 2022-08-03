@@ -198,10 +198,20 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     if (listaDespesas.Find(lista => lista.descricao == txtDescricao.Text && lista.forncedorTitulo == cmbFornecedorTitulo.Text) == null)
                     {
-                        Atualizar.AtualizarDespesaCusto(cmbTipoDespesa.Text, txtDescricao.Text, cmbFornecedorTitulo.Text,
-                            txtCNPJ.Text, Convert.ToDateTime(txtEmissao.Text), Convert.ToDateTime(txtVencimento.Text), cmbFrequencia.Text,
-                            Convert.ToDecimal(txtValor.Text.Replace("R$", "")), Convert.ToInt32(cmbQuantidadeParcelas.Text),
-                            Convert.ToDecimal(txtValorParcelas.Text), lblCategoria.Text, Convert.ToInt32(txtCodigo.Text));
+                        if (cmbTipoDespesa.Text == "Fixa")
+                        {
+                            Atualizar.AtualizarDespesaCusto(cmbTipoDespesa.Text, txtDescricao.Text, cmbFornecedorTitulo.Text,
+                                txtCNPJ.Text, Convert.ToDateTime(txtEmissao.Text), Convert.ToDateTime(txtVencimento.Text), cmbFrequencia.Text,
+                                Convert.ToDecimal(txtValor.Text.Replace("R$", "")), 1,
+                                Convert.ToDecimal(txtValorParcelas.Text.Replace("R$", "")), lblCategoria.Text, Convert.ToInt32(txtCodigo.Text));
+                        }
+                        else
+                        {
+                            Atualizar.AtualizarDespesaCusto(cmbTipoDespesa.Text, txtDescricao.Text, cmbFornecedorTitulo.Text,
+                                txtCNPJ.Text, Convert.ToDateTime(txtEmissao.Text), Convert.ToDateTime(txtVencimento.Text), cmbFrequencia.Text,
+                                Convert.ToDecimal(txtValor.Text.Replace("R$", "")), Convert.ToInt32(cmbQuantidadeParcelas.Text),
+                                Convert.ToDecimal(txtValorParcelas.Text.Replace("R$", "")), lblCategoria.Text, Convert.ToInt32(txtCodigo.Text));
+                        }
                     }
                     else
                     {

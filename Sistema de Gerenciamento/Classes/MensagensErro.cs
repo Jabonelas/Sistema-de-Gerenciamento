@@ -545,6 +545,15 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Edicao Pagamento a Receber
 
+        #region Atualizacao Comissao
+
+        public void ErroAoAtualizarComissaoUsuarioNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(ATU-CU01) Erro ao Atualizar Comissão! \n\nErro: {_e}", "Erro Atualizar Comissão!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Atualizacao Comissao
+
         #endregion Atualizacao Do Banco
 
         #region Excluir No Banco
@@ -856,11 +865,6 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoBuscarEstoqueProdutoNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-EP01) Erro ao Realizar Busca do Estoque Produto \n\nErro: {_e}", "Erro Busca Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        public void ErroAoBuscarListaEstoqueProdutoNoBanco(Exception _e)
-        {
-            MessageBox.Show($"(BUS-EP02) Erro ao Realizar Busca da Lista de Estoque Produto \n\nErro: {_e}", "Erro Busca Lista Estoque Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoBuscarTotalEstoqueProdutoMesmaNFEntradaNoBanco(Exception _e)
@@ -1193,7 +1197,31 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-FC02) Erro ao Realizar Busca Total Fluxo Caixa \n\nErro: {_e}", "Erro Busca Total Fluxo Caixa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoBuscaComissaoCadaProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-FC03) Erro ao Realizar Busca Comissão Cada Produto \n\nErro: {_e}", "Erro Busca Comissão Cada Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Fluxo Caixa
+
+        #region Dados Financeiros
+
+        public void ErroAoBuscarListaEstoqueProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DF01) Erro ao Realizar Busca da Lista Dados Financeiros \n\nErro: {_e}", "Erro Busca Lista Dados Financeiros!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarPorcentagemComissaoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DF02) Erro ao Realizar Busca Pocentagem Comissao \n\nErro: {_e}", "Erro Busca Porcentagem Comissao!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCodigoProdutoVendidosNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DF03) Erro ao Realizar Busca Codigo Produtos Vendidos \n\nErro: {_e}", "Erro Busca Codigo Produtos Vendidos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Dados Financeiros
 
         #endregion Buscar No Banco
 

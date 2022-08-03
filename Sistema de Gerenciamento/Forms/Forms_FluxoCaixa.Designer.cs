@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Forms_FluxoCaixa));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.dtpDataFinal = new System.Windows.Forms.DateTimePicker();
@@ -41,6 +42,13 @@
             this.label7 = new System.Windows.Forms.Label();
             this.bunifuGroupBox1 = new Bunifu.UI.WinForms.BunifuGroupBox();
             this.gdvFluxoCaixa = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.ns_numero_nf = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ns_cpf_cpnj_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ns_nome_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ns_codigo_produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ns_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ns_quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ns_valor_pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbUsuario = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,13 +57,9 @@
             this.lblComissao = new System.Windows.Forms.Label();
             this.btnPesquisar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
-            this.ns_numero_nf = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ns_cpf_cpnj_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ns_nome_cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ns_codigo_produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ns_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ns_quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ns_valor_pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblComissaoPorProduto = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             ((System.ComponentModel.ISupportInitialize)(this.gdvFluxoCaixa)).BeginInit();
             this.SuspendLayout();
             // 
@@ -203,172 +207,6 @@
             this.gdvFluxoCaixa.TabIndex = 277;
             this.gdvFluxoCaixa.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             // 
-            // cmbUsuario
-            // 
-            this.cmbUsuario.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbUsuario.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbUsuario.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbUsuario.FormattingEnabled = true;
-            this.cmbUsuario.Location = new System.Drawing.Point(378, 55);
-            this.cmbUsuario.Name = "cmbUsuario";
-            this.cmbUsuario.Size = new System.Drawing.Size(243, 23);
-            this.cmbUsuario.TabIndex = 288;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(375, 34);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(48, 15);
-            this.label8.TabIndex = 289;
-            this.label8.Text = "Usuário";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(55, 520);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 15);
-            this.label1.TabIndex = 290;
-            this.label1.Text = "Valor Total";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(395, 520);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 15);
-            this.label2.TabIndex = 291;
-            this.label2.Text = "Comissão";
-            // 
-            // lblValorTotal
-            // 
-            this.lblValorTotal.AutoSize = true;
-            this.lblValorTotal.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorTotal.Location = new System.Drawing.Point(132, 520);
-            this.lblValorTotal.Name = "lblValorTotal";
-            this.lblValorTotal.Size = new System.Drawing.Size(48, 15);
-            this.lblValorTotal.TabIndex = 292;
-            this.lblValorTotal.Text = "R$ 0,00";
-            // 
-            // lblComissao
-            // 
-            this.lblComissao.AutoSize = true;
-            this.lblComissao.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComissao.Location = new System.Drawing.Point(468, 520);
-            this.lblComissao.Name = "lblComissao";
-            this.lblComissao.Size = new System.Drawing.Size(48, 15);
-            this.lblComissao.TabIndex = 293;
-            this.lblComissao.Text = "R$ 0,00";
-            // 
-            // btnPesquisar
-            // 
-            this.btnPesquisar.AllowAnimations = true;
-            this.btnPesquisar.AllowMouseEffects = true;
-            this.btnPesquisar.AllowToggling = false;
-            this.btnPesquisar.AnimationSpeed = 200;
-            this.btnPesquisar.AutoGenerateColors = false;
-            this.btnPesquisar.AutoRoundBorders = false;
-            this.btnPesquisar.AutoSizeLeftIcon = true;
-            this.btnPesquisar.AutoSizeRightIcon = true;
-            this.btnPesquisar.BackColor = System.Drawing.Color.Transparent;
-            this.btnPesquisar.BackColor1 = System.Drawing.Color.Transparent;
-            this.btnPesquisar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPesquisar.BackgroundImage")));
-            this.btnPesquisar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnPesquisar.ButtonText = "Pesquisar";
-            this.btnPesquisar.ButtonTextMarginLeft = 0;
-            this.btnPesquisar.ColorContrastOnClick = 45;
-            this.btnPesquisar.ColorContrastOnHover = 45;
-            this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnPesquisar.CustomizableEdges = borderEdges1;
-            this.btnPesquisar.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.btnPesquisar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnPesquisar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnPesquisar.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnPesquisar.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
-            this.btnPesquisar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisar.ForeColor = System.Drawing.Color.Black;
-            this.btnPesquisar.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPesquisar.IconLeftCursor = System.Windows.Forms.Cursors.Default;
-            this.btnPesquisar.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
-            this.btnPesquisar.IconMarginLeft = 11;
-            this.btnPesquisar.IconPadding = 10;
-            this.btnPesquisar.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPesquisar.IconRightCursor = System.Windows.Forms.Cursors.Default;
-            this.btnPesquisar.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
-            this.btnPesquisar.IconSize = 25;
-            this.btnPesquisar.IdleBorderColor = System.Drawing.Color.Black;
-            this.btnPesquisar.IdleBorderRadius = 1;
-            this.btnPesquisar.IdleBorderThickness = 1;
-            this.btnPesquisar.IdleFillColor = System.Drawing.Color.Transparent;
-            this.btnPesquisar.IdleIconLeftImage = null;
-            this.btnPesquisar.IdleIconRightImage = null;
-            this.btnPesquisar.IndicateFocus = false;
-            this.btnPesquisar.Location = new System.Drawing.Point(301, 110);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
-            this.btnPesquisar.OnDisabledState.BorderRadius = 1;
-            this.btnPesquisar.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnPesquisar.OnDisabledState.BorderThickness = 1;
-            this.btnPesquisar.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.btnPesquisar.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
-            this.btnPesquisar.OnDisabledState.IconLeftImage = null;
-            this.btnPesquisar.OnDisabledState.IconRightImage = null;
-            this.btnPesquisar.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.btnPesquisar.onHoverState.BorderRadius = 1;
-            this.btnPesquisar.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnPesquisar.onHoverState.BorderThickness = 1;
-            this.btnPesquisar.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
-            this.btnPesquisar.onHoverState.ForeColor = System.Drawing.Color.White;
-            this.btnPesquisar.onHoverState.IconLeftImage = null;
-            this.btnPesquisar.onHoverState.IconRightImage = null;
-            this.btnPesquisar.OnIdleState.BorderColor = System.Drawing.Color.Black;
-            this.btnPesquisar.OnIdleState.BorderRadius = 1;
-            this.btnPesquisar.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnPesquisar.OnIdleState.BorderThickness = 1;
-            this.btnPesquisar.OnIdleState.FillColor = System.Drawing.Color.Transparent;
-            this.btnPesquisar.OnIdleState.ForeColor = System.Drawing.Color.Black;
-            this.btnPesquisar.OnIdleState.IconLeftImage = null;
-            this.btnPesquisar.OnIdleState.IconRightImage = null;
-            this.btnPesquisar.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.btnPesquisar.OnPressedState.BorderRadius = 1;
-            this.btnPesquisar.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnPesquisar.OnPressedState.BorderThickness = 1;
-            this.btnPesquisar.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
-            this.btnPesquisar.OnPressedState.ForeColor = System.Drawing.Color.White;
-            this.btnPesquisar.OnPressedState.IconLeftImage = null;
-            this.btnPesquisar.OnPressedState.IconRightImage = null;
-            this.btnPesquisar.Size = new System.Drawing.Size(187, 39);
-            this.btnPesquisar.TabIndex = 294;
-            this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnPesquisar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
-            this.btnPesquisar.TextMarginLeft = 0;
-            this.btnPesquisar.TextPadding = new System.Windows.Forms.Padding(0);
-            this.btnPesquisar.UseDefaultRadiusAndThickness = true;
-            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
-            // 
-            // bunifuSeparator1
-            // 
-            this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuSeparator1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuSeparator1.BackgroundImage")));
-            this.bunifuSeparator1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuSeparator1.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
-            this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.bunifuSeparator1.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded;
-            this.bunifuSeparator1.LineThickness = 3;
-            this.bunifuSeparator1.Location = new System.Drawing.Point(15, 165);
-            this.bunifuSeparator1.Name = "bunifuSeparator1";
-            this.bunifuSeparator1.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.bunifuSeparator1.Size = new System.Drawing.Size(773, 14);
-            this.bunifuSeparator1.TabIndex = 295;
-            // 
             // ns_numero_nf
             // 
             this.ns_numero_nf.DataPropertyName = "ns_numero_nf";
@@ -425,11 +263,290 @@
             this.ns_valor_pago.Name = "ns_valor_pago";
             this.ns_valor_pago.ReadOnly = true;
             // 
+            // cmbUsuario
+            // 
+            this.cmbUsuario.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbUsuario.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbUsuario.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbUsuario.FormattingEnabled = true;
+            this.cmbUsuario.Location = new System.Drawing.Point(378, 55);
+            this.cmbUsuario.Name = "cmbUsuario";
+            this.cmbUsuario.Size = new System.Drawing.Size(243, 23);
+            this.cmbUsuario.TabIndex = 288;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(375, 34);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(48, 15);
+            this.label8.TabIndex = 289;
+            this.label8.Text = "Usuário";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(76, 505);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 19);
+            this.label1.TabIndex = 290;
+            this.label1.Text = "Valor Total";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(379, 505);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(112, 19);
+            this.label2.TabIndex = 291;
+            this.label2.Text = "Comissão Geral";
+            // 
+            // lblValorTotal
+            // 
+            this.lblValorTotal.AutoSize = true;
+            this.lblValorTotal.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorTotal.Location = new System.Drawing.Point(76, 530);
+            this.lblValorTotal.Name = "lblValorTotal";
+            this.lblValorTotal.Size = new System.Drawing.Size(71, 24);
+            this.lblValorTotal.TabIndex = 292;
+            this.lblValorTotal.Text = "R$ 0,00";
+            // 
+            // lblComissao
+            // 
+            this.lblComissao.AutoSize = true;
+            this.lblComissao.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblComissao.Location = new System.Drawing.Point(398, 530);
+            this.lblComissao.Name = "lblComissao";
+            this.lblComissao.Size = new System.Drawing.Size(71, 24);
+            this.lblComissao.TabIndex = 293;
+            this.lblComissao.Text = "R$ 0,00";
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.AllowAnimations = true;
+            this.btnPesquisar.AllowMouseEffects = true;
+            this.btnPesquisar.AllowToggling = false;
+            this.btnPesquisar.AnimationSpeed = 200;
+            this.btnPesquisar.AutoGenerateColors = false;
+            this.btnPesquisar.AutoRoundBorders = false;
+            this.btnPesquisar.AutoSizeLeftIcon = true;
+            this.btnPesquisar.AutoSizeRightIcon = true;
+            this.btnPesquisar.BackColor = System.Drawing.Color.Transparent;
+            this.btnPesquisar.BackColor1 = System.Drawing.Color.Transparent;
+            this.btnPesquisar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPesquisar.BackgroundImage")));
+            this.btnPesquisar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnPesquisar.ButtonText = "Pesquisar";
+            this.btnPesquisar.ButtonTextMarginLeft = 0;
+            this.btnPesquisar.ColorContrastOnClick = 45;
+            this.btnPesquisar.ColorContrastOnHover = 45;
+            this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Default;
+            borderEdges1.BottomLeft = true;
+            borderEdges1.BottomRight = true;
+            borderEdges1.TopLeft = true;
+            borderEdges1.TopRight = true;
+            this.btnPesquisar.CustomizableEdges = borderEdges1;
+            this.btnPesquisar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnPesquisar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnPesquisar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnPesquisar.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnPesquisar.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btnPesquisar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisar.ForeColor = System.Drawing.Color.Black;
+            this.btnPesquisar.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPesquisar.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnPesquisar.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnPesquisar.IconMarginLeft = 11;
+            this.btnPesquisar.IconPadding = 10;
+            this.btnPesquisar.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPesquisar.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnPesquisar.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnPesquisar.IconSize = 25;
+            this.btnPesquisar.IdleBorderColor = System.Drawing.Color.Black;
+            this.btnPesquisar.IdleBorderRadius = 1;
+            this.btnPesquisar.IdleBorderThickness = 1;
+            this.btnPesquisar.IdleFillColor = System.Drawing.Color.Transparent;
+            this.btnPesquisar.IdleIconLeftImage = null;
+            this.btnPesquisar.IdleIconRightImage = null;
+            this.btnPesquisar.IndicateFocus = false;
+            this.btnPesquisar.Location = new System.Drawing.Point(341, 112);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnPesquisar.OnDisabledState.BorderRadius = 1;
+            this.btnPesquisar.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnPesquisar.OnDisabledState.BorderThickness = 1;
+            this.btnPesquisar.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnPesquisar.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnPesquisar.OnDisabledState.IconLeftImage = null;
+            this.btnPesquisar.OnDisabledState.IconRightImage = null;
+            this.btnPesquisar.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnPesquisar.onHoverState.BorderRadius = 1;
+            this.btnPesquisar.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnPesquisar.onHoverState.BorderThickness = 1;
+            this.btnPesquisar.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnPesquisar.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnPesquisar.onHoverState.IconLeftImage = null;
+            this.btnPesquisar.onHoverState.IconRightImage = null;
+            this.btnPesquisar.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.btnPesquisar.OnIdleState.BorderRadius = 1;
+            this.btnPesquisar.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnPesquisar.OnIdleState.BorderThickness = 1;
+            this.btnPesquisar.OnIdleState.FillColor = System.Drawing.Color.Transparent;
+            this.btnPesquisar.OnIdleState.ForeColor = System.Drawing.Color.Black;
+            this.btnPesquisar.OnIdleState.IconLeftImage = null;
+            this.btnPesquisar.OnIdleState.IconRightImage = null;
+            this.btnPesquisar.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnPesquisar.OnPressedState.BorderRadius = 1;
+            this.btnPesquisar.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnPesquisar.OnPressedState.BorderThickness = 1;
+            this.btnPesquisar.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnPesquisar.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnPesquisar.OnPressedState.IconLeftImage = null;
+            this.btnPesquisar.OnPressedState.IconRightImage = null;
+            this.btnPesquisar.Size = new System.Drawing.Size(187, 39);
+            this.btnPesquisar.TabIndex = 294;
+            this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnPesquisar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnPesquisar.TextMarginLeft = 0;
+            this.btnPesquisar.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnPesquisar.UseDefaultRadiusAndThickness = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // bunifuSeparator1
+            // 
+            this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuSeparator1.BackgroundImage")));
+            this.bunifuSeparator1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bunifuSeparator1.DashCap = Bunifu.UI.WinForms.BunifuSeparator.CapStyles.Flat;
+            this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.bunifuSeparator1.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded;
+            this.bunifuSeparator1.LineThickness = 3;
+            this.bunifuSeparator1.Location = new System.Drawing.Point(15, 165);
+            this.bunifuSeparator1.Name = "bunifuSeparator1";
+            this.bunifuSeparator1.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
+            this.bunifuSeparator1.Size = new System.Drawing.Size(820, 14);
+            this.bunifuSeparator1.TabIndex = 295;
+            // 
+            // lblComissaoPorProduto
+            // 
+            this.lblComissaoPorProduto.AutoSize = true;
+            this.lblComissaoPorProduto.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblComissaoPorProduto.Location = new System.Drawing.Point(716, 530);
+            this.lblComissaoPorProduto.Name = "lblComissaoPorProduto";
+            this.lblComissaoPorProduto.Size = new System.Drawing.Size(71, 24);
+            this.lblComissaoPorProduto.TabIndex = 296;
+            this.lblComissaoPorProduto.Text = "R$ 0,00";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(667, 505);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(161, 19);
+            this.label5.TabIndex = 297;
+            this.label5.Text = "Comissão Por Produto";
+            // 
+            // btnFechar
+            // 
+            this.btnFechar.AllowAnimations = true;
+            this.btnFechar.AllowMouseEffects = true;
+            this.btnFechar.AllowToggling = false;
+            this.btnFechar.AnimationSpeed = 200;
+            this.btnFechar.AutoGenerateColors = false;
+            this.btnFechar.AutoRoundBorders = false;
+            this.btnFechar.AutoSizeLeftIcon = true;
+            this.btnFechar.AutoSizeRightIcon = true;
+            this.btnFechar.BackColor = System.Drawing.Color.Transparent;
+            this.btnFechar.BackColor1 = System.Drawing.Color.Transparent;
+            this.btnFechar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFechar.BackgroundImage")));
+            this.btnFechar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnFechar.ButtonText = "Fechar (Esc)";
+            this.btnFechar.ButtonTextMarginLeft = 0;
+            this.btnFechar.ColorContrastOnClick = 45;
+            this.btnFechar.ColorContrastOnHover = 45;
+            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Default;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnFechar.CustomizableEdges = borderEdges2;
+            this.btnFechar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnFechar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnFechar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnFechar.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnFechar.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btnFechar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFechar.ForeColor = System.Drawing.Color.Black;
+            this.btnFechar.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFechar.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnFechar.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnFechar.IconMarginLeft = 11;
+            this.btnFechar.IconPadding = 10;
+            this.btnFechar.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFechar.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnFechar.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnFechar.IconSize = 25;
+            this.btnFechar.IdleBorderColor = System.Drawing.Color.Black;
+            this.btnFechar.IdleBorderRadius = 1;
+            this.btnFechar.IdleBorderThickness = 1;
+            this.btnFechar.IdleFillColor = System.Drawing.Color.Transparent;
+            this.btnFechar.IdleIconLeftImage = null;
+            this.btnFechar.IdleIconRightImage = null;
+            this.btnFechar.IndicateFocus = false;
+            this.btnFechar.Location = new System.Drawing.Point(341, 580);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnFechar.OnDisabledState.BorderRadius = 1;
+            this.btnFechar.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnFechar.OnDisabledState.BorderThickness = 1;
+            this.btnFechar.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnFechar.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnFechar.OnDisabledState.IconLeftImage = null;
+            this.btnFechar.OnDisabledState.IconRightImage = null;
+            this.btnFechar.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnFechar.onHoverState.BorderRadius = 1;
+            this.btnFechar.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnFechar.onHoverState.BorderThickness = 1;
+            this.btnFechar.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnFechar.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnFechar.onHoverState.IconLeftImage = null;
+            this.btnFechar.onHoverState.IconRightImage = null;
+            this.btnFechar.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.btnFechar.OnIdleState.BorderRadius = 1;
+            this.btnFechar.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnFechar.OnIdleState.BorderThickness = 1;
+            this.btnFechar.OnIdleState.FillColor = System.Drawing.Color.Transparent;
+            this.btnFechar.OnIdleState.ForeColor = System.Drawing.Color.Black;
+            this.btnFechar.OnIdleState.IconLeftImage = null;
+            this.btnFechar.OnIdleState.IconRightImage = null;
+            this.btnFechar.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnFechar.OnPressedState.BorderRadius = 1;
+            this.btnFechar.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnFechar.OnPressedState.BorderThickness = 1;
+            this.btnFechar.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnFechar.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnFechar.OnPressedState.IconLeftImage = null;
+            this.btnFechar.OnPressedState.IconRightImage = null;
+            this.btnFechar.Size = new System.Drawing.Size(187, 39);
+            this.btnFechar.TabIndex = 298;
+            this.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnFechar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnFechar.TextMarginLeft = 0;
+            this.btnFechar.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnFechar.UseDefaultRadiusAndThickness = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            // 
             // Forms_FluxoCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(847, 553);
+            this.ClientSize = new System.Drawing.Size(847, 631);
+            this.Controls.Add(this.btnFechar);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lblComissaoPorProduto);
             this.Controls.Add(this.bunifuSeparator1);
             this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.lblComissao);
@@ -481,5 +598,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ns_descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn ns_quantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn ns_valor_pago;
+        private System.Windows.Forms.Label lblComissaoPorProduto;
+        private System.Windows.Forms.Label label5;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnFechar;
     }
 }

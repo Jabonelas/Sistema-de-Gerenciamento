@@ -280,7 +280,6 @@
             this.lblStatusPagamento.TabIndex = 340;
             this.lblStatusPagamento.Text = "statusPagamento";
             this.lblStatusPagamento.Visible = false;
-            this.lblStatusPagamento.Click += new System.EventHandler(this.lblStatusPagamento_Click);
             // 
             // lblValorParcelas
             // 

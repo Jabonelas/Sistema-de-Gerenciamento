@@ -191,8 +191,7 @@ namespace Sistema_de_Gerenciamento
                 OpcaoDoUsuario = MessageBox.Show("Deseja Exibir Todas As Despesa/Custo?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (OpcaoDoUsuario == DialogResult.Yes)
                 {
-                    bool isCadastroExiste =
-                        Buscar.BuscarDespesaCusto(gdvContarPagar, dtpDataInicial.Value, dtpDataFinal.Value);
+                    bool isCadastroExiste = Buscar.BuscarDespesaCusto(gdvContarPagar, dtpDataInicial.Value, dtpDataFinal.Value);
 
                     MenssagemDespesaCustoNaoEncontrado(isCadastroExiste);
                 }

@@ -60,7 +60,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             listaProduto = Buscar.BuscarListaProdutos();
 
-            listaFinanceiro = Buscar.BuscarListaFinanceiro();
+            listaFinanceiro = Buscar.BuscarListaDadosFinanceiro();
 
             txtNumeroNF.Text = Buscar.BuscarNumeroNotaFiscalSaida().ToString();
 
@@ -795,7 +795,7 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 //listaDadosProduto = Buscar.BuscarListaProdutos();
 
-                //ListaFinanceiro = Buscar.BuscarListaFinanceiro();
+                //ListaFinanceiro = Buscar.BuscarListaDadosFinanceiro();
             });
 
             //ListaFinanceiro.ForEach(finac => financeiro = finac);

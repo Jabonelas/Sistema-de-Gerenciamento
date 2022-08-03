@@ -1035,5 +1035,31 @@ namespace Sistema_de_Gerenciamento.Classes
                 Erro.ErroAoAtualizarImagemStatusPagamentoAReceberNoBanco(ex);
             }
         }
+
+        public void AtualizarComissaoDiariamente(decimal _valorComissao, string _usuario, DateTime _dataInicial, DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_DespesasCustos set dc_valor_parcela = (dc_valor_parcela + @valorComissao) " +
+                    "where dc_descricao = @usuario and dc_vencimento >= @dataInicial and " +
+                    "dc_vencimento <= @dataFinal and dc_verificar <> nok";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@valorComissao", _valorComissao);
+                    adapter.SelectCommand.Parameters.Add("@usuario", _usuario);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarComissaoUsuarioNoBanco(ex);
+            }
+        }
     }
 }

@@ -53,7 +53,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             listaDadosProduto = Buscar.BuscarListaProdutos();
 
-            listaDadosFinanceiro = Buscar.BuscarListaFinanceiro();
+            listaDadosFinanceiro = Buscar.BuscarListaDadosFinanceiro();
 
             listaDadosPermissao = Buscar.BuscarListaPermissoes(Global.NomeDeUsuario);
 

@@ -102,5 +102,11 @@ namespace Sistema_de_Gerenciamento.Classes
             deveRealizarTrocar = _deveTrocar;
             nfEntrada = _nfEntrada;
         }
+
+        public DadosNotaFiscalSaida(int _codigoProduto, decimal _preco)
+        {
+            codigoProduto = _codigoProduto;
+            preco = _preco;
+        }
     }
 }
