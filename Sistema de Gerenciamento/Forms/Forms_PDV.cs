@@ -34,11 +34,27 @@ namespace Sistema_de_Gerenciamento.Forms
 
         public decimal valorBruto = 0;
 
-        //private decimal verificarQuantidade = 0;
-
         private int cont = 0;
 
         public bool vendaFinalizada = false;
+
+        private int codigoProdutoGridView = 0;
+
+        private string descricaoProdutoGridView = string.Empty;
+
+        private decimal quantidadeGridView = 0;
+
+        private decimal valorUnitarioGridView = 0;
+
+        private decimal valorTotalGridView = 0;
+
+        private int codigoBarrasGridView = 0;
+
+        private string unidadeGridView = string.Empty;
+
+        private int numeroNFEntradaGridView = 0;
+
+        private decimal comissaoPorProduto = 0;
 
         public Forms_PDV()
         {
@@ -292,15 +308,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     int numeroNFSaida = Buscar.BuscarNumeroNotaFiscalSaida();
 
-                    int codigoProdutoGridView = 0;
-                    string descricaoProdutoGridView = string.Empty;
-                    decimal quantidadeGridView = 0;
-                    decimal valorUnitarioGridView = 0;
-                    decimal valorTotalGridView = 0;
-                    int codigoBarrasGridView = 0;
-                    string unidadeGridView = string.Empty;
-                    int numeroNFEntradaGridView = 0;
-
                     if (cmbFormaPagamento.Text != "CARNÊ")
                     {
                         DialogResult OpcaoDoUsuario = new DialogResult();
@@ -315,8 +322,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
                             for (int i = 0; i < gdvPDV.RowCount; i++)
                             {
-                                PegarDadosGridView(i, ref codigoProdutoGridView, ref descricaoProdutoGridView, ref quantidadeGridView,
-                                    ref valorUnitarioGridView, ref valorTotalGridView, ref codigoBarrasGridView, ref unidadeGridView, ref numeroNFEntradaGridView);
+                                PegarDadosGridView(i);
 
                                 if (cmbFormaPagamento.Text == "CARNÊ" || cmbFormaPagamento.Text == "CRÉDITO")
                                 {
@@ -333,30 +339,13 @@ namespace Sistema_de_Gerenciamento.Forms
 
                                     if (produto.quantidade >= quantidadeGridView)
                                     {
-                                        Salvar.NotaFiscalSaida(
-                                                txtCPF.Text,
-                                                numeroNFSaida,
-                                                codigoProdutoGridView,
-                                                descricaoProdutoGridView,
-                                                quantidadeGridView,
-                                                valorUnitarioGridView,
-                                                Convert.ToDateTime(DateTime.Now),
-                                                codigoBarrasGridView,
-                                                Global.NomeDeUsuario,
-                                                Convert.ToDateTime(DateTime.Today.AddDays(30).ToShortDateString()),
-                                                lblNomeCliente.Text,
-                                                cmbFormaPagamento.Text,
-                                                Convert.ToDecimal(lblValorDescontoCadaItem.Text),
-                                                Convert.ToInt32(cmbParcelas.Text.Replace("x", "")),
-                                                Convert.ToDecimal(lblJurosCadaItem.Text),
-                                                Convert.ToDecimal(lblValorPagoCadaItem.Text),
-                                                unidadeGridView,
-                                                lblStatusVenda.Text,
-                                                lblTrocaVendedor.Text,
-                                                lblMotivoTroca.Text,
-                                                numeroNFEntradaGridView);
+                                        DadosNotaFiscalSaida NFSaida = BuscarDadosNFSaida();
+
+                                        Salvar.NotaFiscalSaida(NFSaida);
 
                                         Atualizar.AtualizarQuantidadeEstoquePosVenda(quantidadeGridView, codigoBarrasGridView, numeroNFEntradaGridView);
+
+                                        CalcularComissaoPorProduto(codigoProdutoGridView, valorUnitarioGridView);
 
                                         pnlVendaFinalizada.Visible = true;
 
@@ -372,6 +361,15 @@ namespace Sistema_de_Gerenciamento.Forms
                                     Erro.ErroAoInserirDadosNaNotaFiscalSaidaTelaPDV(ex);
                                 }
                             }
+                            //Inseir Comissao da venda
+                            if (vendaFinalizada == true)
+                            {
+                                decimal valorComissao = CalcularComissaoGeral() + comissaoPorProduto;
+
+                                Atualizar.AtualizarComissaoDiariamente(valorComissao, Global.NomeDeUsuario);
+
+                                comissaoPorProduto = 0;
+                            }
                         }
                     }
 
@@ -380,8 +378,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     {
                         for (int i = 0; i < gdvPDV.RowCount; i++)
                         {
-                            PegarDadosGridView(i, ref codigoProdutoGridView, ref descricaoProdutoGridView, ref quantidadeGridView,
-                            ref valorUnitarioGridView, ref valorTotalGridView, ref codigoBarrasGridView, ref unidadeGridView, ref numeroNFEntradaGridView);
+                            PegarDadosGridView(i);
 
                             PreencherJurosDeCadaItem(valorTotalGridView);
 
@@ -427,6 +424,205 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
+        private DadosNotaFiscalSaida BuscarDadosNFSaida()
+        {
+            int numeroNFSaida = Buscar.BuscarNumeroNotaFiscalSaida();
+
+            DadosNotaFiscalSaida NFSaida = new DadosNotaFiscalSaida();
+
+            NFSaida.cpf = txtCPF.Text;
+            NFSaida.numeroNF = numeroNFSaida;
+            NFSaida.codigoProduto = codigoProdutoGridView;
+            NFSaida.descricao = descricaoProdutoGridView;
+            NFSaida.quantidade = quantidadeGridView;
+            NFSaida.valorUnitario = valorUnitarioGridView;
+            NFSaida.emissao = Convert.ToDateTime(DateTime.Now);
+            NFSaida.codigoBarras = codigoBarrasGridView;
+            NFSaida.validadeTroca = Convert.ToDateTime(DateTime.Today.AddDays(30).ToShortDateString());
+            NFSaida.nomeCliente = lblNomeCliente.Text;
+            NFSaida.tipoPagamento = cmbFormaPagamento.Text;
+            NFSaida.valorDesconto = Convert.ToDecimal(lblValorDescontoCadaItem.Text);
+            NFSaida.quantidadeParcelas = Convert.ToInt32(cmbParcelas.Text.Replace("x", ""));
+            NFSaida.valorJuros = Convert.ToDecimal(lblJurosCadaItem.Text);
+            NFSaida.valorPago = Convert.ToDecimal(lblValorPagoCadaItem.Text);
+            NFSaida.unidade = unidadeGridView;
+            NFSaida.status = lblStatusVenda.Text;
+            NFSaida.trocarVendedor = lblTrocaVendedor.Text;
+            NFSaida.motivoTroca = lblMotivoTroca.Text;
+            NFSaida.nfEntrada = numeroNFEntradaGridView;
+            NFSaida.vendedor = Global.NomeDeUsuario;
+
+            return NFSaida;
+        }
+
+        private void txtCPF_Enter(object sender, EventArgs e)
+        {
+            txtCPF.UseSystemPasswordChar = false;
+        }
+
+        private void txtCPF_Leave(object sender, EventArgs e)
+        {
+            txtCPF.ReadOnly = true;
+
+            lblNomeCliente.Text = Buscar.BuscarClienteTelaPDVPorCPF(txtCPF.Text).ToUpper();
+
+            txtCodigoDeBarras.Focus();
+
+            txtCPF.UseSystemPasswordChar = true;
+        }
+
+        private void txtCPF_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.FormatoCPF(e, txtCPF);
+            }
+        }
+
+        private void txtCodigoProduto_TextChange(object sender, EventArgs e)
+        {
+            if (txtCodigoProduto.Text != string.Empty)
+            {
+                BuscarProdutoPorCodigoProduto();
+
+                pcbPDV.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigo.Text));
+            }
+        }
+
+        private void txtCodigoProduto_Leave(object sender, EventArgs e)
+        {
+            if (cont == 0 && txtCodigoProduto.Text != "")
+            {
+                cont++;
+
+                AdicionarProdutoPorCodigoProduto();
+            }
+            else
+            {
+                txtCodigoDeBarras.Focus();
+
+                txtCodigoProduto.ReadOnly = true;
+
+                cont = 0;
+            }
+        }
+
+        private void txtValorDinheiro_TextChange(object sender, EventArgs e)
+        {
+            lblTotalRecebido.Text = txtValorDinheiro.Text;
+
+            lblTroco.Text = string.Format("{0:C}", (Convert.ToDecimal(lblTotalRecebido.Text.Replace("R$", "")) - Convert.ToDecimal(lblValorTotal.Text.Replace("R$", ""))));
+        }
+
+        private void txtValorDinheiro_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.FormatoDinheiro(e, sender, txtValorDinheiro);
+            }
+        }
+
+        private void txtCodigoDeBarras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
+
+        private void txtCodigoDeBarras_TextChange(object sender, EventArgs e)
+        {
+            if (txtCodigoDeBarras.Text != String.Empty)
+            {
+                PreencherComDadosDoProduto(sender, e);
+
+                txtCodigoDeBarras.Text = String.Empty;
+            }
+        }
+
+        private void txtCodigoProduto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
+
+        private void txtInserirQuant_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
+
+        private void txtInserirQuant_Leave(object sender, EventArgs e)
+        {
+            if (txtInserirQuant.Text == string.Empty)
+            {
+                txtInserirQuant.Text = "1";
+            }
+
+            txtInserirQuant.ReadOnly = true;
+
+            txtCodigoDeBarras.Focus();
+        }
+
+        private void cmbFormaPagamento_Leave(object sender, EventArgs e)
+        {
+            if (cmbFormaPagamento.Text == "DINHEIRO")
+            {
+                txtValorDinheiro.Focus();
+            }
+            else if (cmbFormaPagamento.Text == "CRÉDITO" || cmbFormaPagamento.Text == "CARNÊ")
+            {
+                cmbParcelas.Focus();
+            }
+        }
+
+        private void cmbFormaPagamento_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbFormaPagamento.Text == "CARNÊ")
+            {
+                PagamentoCarne();
+            }
+            else if (cmbFormaPagamento.Text == "CRÉDITO")
+            {
+                PagamentoCredito();
+            }
+            else if (cmbFormaPagamento.Text == "DÉBITO")
+            {
+                PagamentoDebito();
+            }
+            else if (cmbFormaPagamento.Text == "DINHEIRO")
+            {
+                PagamentoDinheiro();
+            }
+            else if (cmbFormaPagamento.Text == "PIX")
+            {
+                PagamentoPIX();
+            }
+        }
+
+        private void cmbParcelas_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cmbFormaPagamento.Text == "CRÉDITO")
+            {
+                SelecionadoCredito();
+            }
+            else
+            {
+                SelecionadoCarne();
+            }
+        }
+
+        private void CalcularComissaoPorProduto(int _codigoProduto, decimal _valorProduto)
+        {
+            decimal porcentagemComissaoPorproduto = Buscar.BuscarValorComissaoPorProduto(_codigoProduto);
+
+            comissaoPorProduto += porcentagemComissaoPorproduto * _valorProduto / 100;
+        }
+
+        private decimal CalcularComissaoGeral()
+        {
+            decimal porcentagemComissaoGeral = Buscar.BuscarPorcentagemComissao();
+
+            decimal comissaoGeral = porcentagemComissaoGeral * valorBruto / 100;
+
+            return comissaoGeral;
+        }
+
         private void AtalhoCancelarPagamento(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F12 && lblDescricaoItem.Text == "PAGAMENTO") // Cancelar Pagamento F12
@@ -455,18 +651,16 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        private void PegarDadosGridView(int i, ref int _codigoProdutoGridView, ref string _descricaoProdutoGridView, ref decimal _quantidadeGridView,
-            ref decimal _valorUnitarioGridView, ref decimal _valorTotalGridView, ref int _codigoBarrasGridView, ref string _unidadeGridView,
-            ref int _numeroNFEntradaGridView)
+        private void PegarDadosGridView(int i)
         {
-            _codigoProdutoGridView = Convert.ToInt32(gdvPDV.Rows[i].Cells[0].Value);
-            _descricaoProdutoGridView = gdvPDV.Rows[i].Cells[1].Value.ToString();
-            _quantidadeGridView = Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value);
-            _valorUnitarioGridView = Convert.ToDecimal(gdvPDV.Rows[i].Cells[3].Value.ToString().Replace("R$", ""));
-            _valorTotalGridView = Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", ""));
-            _codigoBarrasGridView = Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value);
-            _unidadeGridView = gdvPDV.Rows[i].Cells[7].Value.ToString();
-            _numeroNFEntradaGridView = Convert.ToInt32(gdvPDV.Rows[i].Cells[8].Value);
+            codigoProdutoGridView = Convert.ToInt32(gdvPDV.Rows[i].Cells[0].Value);
+            descricaoProdutoGridView = gdvPDV.Rows[i].Cells[1].Value.ToString();
+            quantidadeGridView = Convert.ToDecimal(gdvPDV.Rows[i].Cells[2].Value);
+            valorUnitarioGridView = Convert.ToDecimal(gdvPDV.Rows[i].Cells[3].Value.ToString().Replace("R$", ""));
+            valorTotalGridView = Convert.ToDecimal(gdvPDV.Rows[i].Cells[4].Value.ToString().Replace("R$", ""));
+            codigoBarrasGridView = Convert.ToInt32(gdvPDV.Rows[i].Cells[6].Value);
+            unidadeGridView = gdvPDV.Rows[i].Cells[7].Value.ToString();
+            numeroNFEntradaGridView = Convert.ToInt32(gdvPDV.Rows[i].Cells[8].Value);
         }
 
         private void PreencherJurosDeCadaItem(decimal _valorTotalGridView)
@@ -688,30 +882,6 @@ namespace Sistema_de_Gerenciamento.Forms
             _dadosProduto.quantidade -= Convert.ToDecimal(txtInserirQuant.Text);
         }
 
-        private void txtCPF_Enter(object sender, EventArgs e)
-        {
-            txtCPF.UseSystemPasswordChar = false;
-        }
-
-        private void txtCPF_Leave(object sender, EventArgs e)
-        {
-            txtCPF.ReadOnly = true;
-
-            lblNomeCliente.Text = Buscar.BuscarClienteTelaPDVPorCPF(txtCPF.Text).ToUpper();
-
-            txtCodigoDeBarras.Focus();
-
-            txtCPF.UseSystemPasswordChar = true;
-        }
-
-        private void txtCPF_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
-            {
-                ManipulacaoTextBox.FormatoCPF(e, txtCPF);
-            }
-        }
-
         public void RemoverProduto()
         {
             DialogResult OpcaoDoUsuario = new DialogResult();
@@ -721,34 +891,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 gdvPDV.Rows.RemoveAt(gdvPDV.CurrentRow.Index);
 
                 ValorTotal();
-            }
-        }
-
-        private void txtCodigoProduto_TextChange(object sender, EventArgs e)
-        {
-            if (txtCodigoProduto.Text != string.Empty)
-            {
-                BuscarProdutoPorCodigoProduto();
-
-                pcbPDV.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigo.Text));
-            }
-        }
-
-        private void txtCodigoProduto_Leave(object sender, EventArgs e)
-        {
-            if (cont == 0 && txtCodigoProduto.Text != "")
-            {
-                cont++;
-
-                AdicionarProdutoPorCodigoProduto();
-            }
-            else
-            {
-                txtCodigoDeBarras.Focus();
-
-                txtCodigoProduto.ReadOnly = true;
-
-                cont = 0;
             }
         }
 
@@ -923,18 +1065,6 @@ namespace Sistema_de_Gerenciamento.Forms
             txtValorDinheiro.Visible = _ativa;
         }
 
-        private void cmbParcelas_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (cmbFormaPagamento.Text == "CRÉDITO")
-            {
-                SelecionadoCredito();
-            }
-            else
-            {
-                SelecionadoCarne();
-            }
-        }
-
         private void SelecionadoCredito()
         {
             if (Convert.ToInt32(cmbParcelas.Text.Replace("x", "")) > listaDadosFinanceiro[0].parcelasCredito)
@@ -978,36 +1108,6 @@ namespace Sistema_de_Gerenciamento.Forms
             lblValorTotal.Text = String.Format("{0:C}", ((valorBruto * _jurosFormaPagamento / 100) + valorBruto));
         }
 
-        private void txtValorDinheiro_TextChange(object sender, EventArgs e)
-        {
-            lblTotalRecebido.Text = txtValorDinheiro.Text;
-
-            lblTroco.Text = string.Format("{0:C}", (Convert.ToDecimal(lblTotalRecebido.Text.Replace("R$", "")) - Convert.ToDecimal(lblValorTotal.Text.Replace("R$", ""))));
-        }
-
-        private void txtValorDinheiro_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
-            {
-                ManipulacaoTextBox.FormatoDinheiro(e, sender, txtValorDinheiro);
-            }
-        }
-
-        private void txtCodigoDeBarras_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiNumero(e);
-        }
-
-        private void txtCodigoDeBarras_TextChange(object sender, EventArgs e)
-        {
-            if (txtCodigoDeBarras.Text != String.Empty)
-            {
-                PreencherComDadosDoProduto(sender, e);
-
-                txtCodigoDeBarras.Text = String.Empty;
-            }
-        }
-
         private void PreencherComDadosDoProduto(object sender, EventArgs e)
         {
             if (BuscarProdutoPorCodigoBarraComSaldo() == true)
@@ -1029,64 +1129,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtInserirQuant.Visible = false;
 
                 txtInserirQuant.Text = "1";
-            }
-        }
-
-        private void txtCodigoProduto_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiNumero(e);
-        }
-
-        private void txtInserirQuant_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiNumero(e);
-        }
-
-        private void txtInserirQuant_Leave(object sender, EventArgs e)
-        {
-            if (txtInserirQuant.Text == string.Empty)
-            {
-                txtInserirQuant.Text = "1";
-            }
-
-            txtInserirQuant.ReadOnly = true;
-
-            txtCodigoDeBarras.Focus();
-        }
-
-        private void cmbFormaPagamento_Leave(object sender, EventArgs e)
-        {
-            if (cmbFormaPagamento.Text == "DINHEIRO")
-            {
-                txtValorDinheiro.Focus();
-            }
-            else if (cmbFormaPagamento.Text == "CRÉDITO" || cmbFormaPagamento.Text == "CARNÊ")
-            {
-                cmbParcelas.Focus();
-            }
-        }
-
-        private void cmbFormaPagamento_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (cmbFormaPagamento.Text == "CARNÊ")
-            {
-                PagamentoCarne();
-            }
-            else if (cmbFormaPagamento.Text == "CRÉDITO")
-            {
-                PagamentoCredito();
-            }
-            else if (cmbFormaPagamento.Text == "DÉBITO")
-            {
-                PagamentoDebito();
-            }
-            else if (cmbFormaPagamento.Text == "DINHEIRO")
-            {
-                PagamentoDinheiro();
-            }
-            else if (cmbFormaPagamento.Text == "PIX")
-            {
-                PagamentoPIX();
             }
         }
     }

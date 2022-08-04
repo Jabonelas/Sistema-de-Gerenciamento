@@ -667,9 +667,57 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
+        public void NotaFiscalSaida(DadosNotaFiscalSaida _dadosNotaFiscalSaida)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "insert into tb_NotaFiscalSaida " +
+                        "(ns_cpf_cpnj_cliente, ns_numero_nf,ns_codigo_produto, ns_descricao, ns_quantidade, ns_valor_unitario," +
+                        "ns_emissao, ns_codigo_barras, ns_vendedor, ns_garantia,ns_nome_cliente, ns_tipo_pagamento,ns_valor_desconto," +
+                        "ns_quantidade_parcelas,ns_valor_juros,ns_valor_pago,ns_unidade,ns_status,ns_troca_vendedor,ns_motivo_troca,ns_nf_entrada) " +
+                        "values(  @cpfCpnjCliente, @numeroNF, @codigoProduto, @descricao, @quantidade, " +
+                        "@valorUnitario, @emissao, @codigoBarras, @vendedor, @garantia, @nomeCliente, @tipoPagamento,@valorDesconto,@quantidadeParcelas," +
+                        "@valorJuros,@valorPago,@unidade,@status,@trocaVendedor,@motivoTroca,@nfEntrada)";
+
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+                    cmd.Parameters.AddWithValue("@cpfCpnjCliente", _dadosNotaFiscalSaida.cpf);
+                    cmd.Parameters.AddWithValue("@numeroNF", _dadosNotaFiscalSaida.numeroNF);
+                    cmd.Parameters.AddWithValue("@codigoProduto", _dadosNotaFiscalSaida.codigoProduto);
+                    cmd.Parameters.AddWithValue("@descricao", _dadosNotaFiscalSaida.descricao);
+                    cmd.Parameters.AddWithValue("@valorUnitario", _dadosNotaFiscalSaida.valorUnitario);
+                    cmd.Parameters.AddWithValue("@quantidade", _dadosNotaFiscalSaida.quantidade);
+                    cmd.Parameters.AddWithValue("@emissao", _dadosNotaFiscalSaida.emissao);
+                    cmd.Parameters.AddWithValue("@codigoBarras", _dadosNotaFiscalSaida.codigoBarras);
+                    cmd.Parameters.AddWithValue("@vendedor", _dadosNotaFiscalSaida.vendedor);
+                    cmd.Parameters.AddWithValue("@garantia", _dadosNotaFiscalSaida.validadeTroca);
+                    cmd.Parameters.AddWithValue("@nomeCliente", _dadosNotaFiscalSaida.nomeCliente);
+                    cmd.Parameters.AddWithValue("@tipoPagamento", _dadosNotaFiscalSaida.tipoPagamento);
+                    cmd.Parameters.AddWithValue("@valorDesconto", _dadosNotaFiscalSaida.valorDesconto);
+                    cmd.Parameters.AddWithValue("@quantidadeParcelas", _dadosNotaFiscalSaida.quantidadeParcelas);
+                    cmd.Parameters.AddWithValue("@valorJuros", _dadosNotaFiscalSaida.valorJuros);
+                    cmd.Parameters.AddWithValue("@valorPago", _dadosNotaFiscalSaida.valorPago);
+                    cmd.Parameters.AddWithValue("@unidade", _dadosNotaFiscalSaida.unidade);
+                    cmd.Parameters.AddWithValue("@status", _dadosNotaFiscalSaida.status);
+                    cmd.Parameters.AddWithValue("@trocaVendedor", _dadosNotaFiscalSaida.trocarVendedor);
+                    cmd.Parameters.AddWithValue("@motivoTroca", _dadosNotaFiscalSaida.motivoTroca);
+                    cmd.Parameters.AddWithValue("@nfEntrada", _dadosNotaFiscalSaida.nfEntrada);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAdicionarNotaFiscalSaidaNoBanco(ex);
+            }
+        }
+
         #endregion Noata Fiscal Saida
 
-        public void AdcionarNoEstoqueMaterialSegregado(int _nfEntrada, int? _codigoBarras, int _codigoProduto,
+        #region Adicionar No Estoque Material Segregado
+
+        public void AdicionarNoEstoqueMaterialSegregado(int _nfEntrada, int? _codigoBarras, int _codigoProduto,
             string _descricao, decimal _quantidade, string _unidade, decimal _valorUnitario, DateTime? _dataEntrada,
             decimal? _descontoPorItem, string _status)
         {
@@ -704,6 +752,10 @@ namespace Sistema_de_Gerenciamento
                 Erro.ErroAoAdicionarNoEstoqueMaterialSegregadoNoBanco(ex);
             }
         }
+
+        #endregion Adicionar No Estoque Material Segregado
+
+        #region Adicionar Pagamento Carner
 
         public void AdicionarPagamentoCarner(int _numeroNF, string _cpfCnpjCliente, string _nomeCliente, DateTime _emissao, string _vendedor,
             string _parcela, decimal _valorDesconto, decimal _valorJuros, decimal _valorPago, DateTime _vencimento,
@@ -743,5 +795,7 @@ namespace Sistema_de_Gerenciamento
                 Erro.ErroAoAdicionarPagamentoCarneNoBanco(ex);
             }
         }
+
+        #endregion Adicionar Pagamento Carner
     }
 }

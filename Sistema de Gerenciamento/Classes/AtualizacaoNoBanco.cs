@@ -729,7 +729,7 @@ namespace Sistema_de_Gerenciamento.Classes
         #region Atualizar Despesa
 
         public void AtualizarDespesaCusto(string _tipo, string _descricao, string _forncedorTitulo, string _cnpj, DateTime _emissao,
-            DateTime _vencimento, string _frequencia, decimal _valor, int _quantidadeParcelas, decimal _valorParcelas,
+            DateTime _vencimento, string _frequencia, decimal _valor, string _quantidadeParcelas, decimal _valorParcelas,
             string _categoria, int _codigo)
         {
             try
@@ -1036,22 +1036,19 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
-        public void AtualizarComissaoDiariamente(decimal _valorComissao, string _usuario, DateTime _dataInicial, DateTime _dataFinal)
+        public void AtualizarComissaoDiariamente(decimal _valorComissao, string _usuario)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "update tb_DespesasCustos set dc_valor_parcela = (dc_valor_parcela + @valorComissao) " +
-                    "where dc_descricao = @usuario and dc_vencimento >= @dataInicial and " +
-                    "dc_vencimento <= @dataFinal and dc_verificar <> nok";
+                    "where dc_descricao = @usuario and dc_verificar = 'nok'";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
                     adapter.SelectCommand.Parameters.Add("@valorComissao", _valorComissao);
                     adapter.SelectCommand.Parameters.Add("@usuario", _usuario);
-                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
-                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
 
                     adapter.SelectCommand.ExecuteNonQuery();
                 }

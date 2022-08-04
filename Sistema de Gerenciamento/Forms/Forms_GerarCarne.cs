@@ -35,6 +35,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private int NumermoNotaFiscal;
 
+        private decimal comissaoPorProduto;
+
         public Forms_GerarCarne(Forms_Venda _formsVenda)
         {
             InitializeComponent();
@@ -221,12 +223,14 @@ namespace Sistema_de_Gerenciamento.Forms
 
                         Atualizar.AtualizarQuantidadeEstoquePosVenda(item.quantidade, item.codigoBarras, item.numeroNF);
                     }
-                    else if (txtJurosCarne.Text != "0,00%")
+                    else
                     {
                         AdicionarNaTabelaNotaFiscalSaidaPagamentoComJuros(item);
 
                         Atualizar.AtualizarQuantidadeEstoquePosVenda(item.quantidade, item.codigoBarras, item.numeroNF);
                     }
+
+                    CalcularComissaoPorProduto(item.codigoProduto, item.valorUnitario);
                 }
                 for (int i = 1; i <= Convert.ToInt32(cmbParcelaCarne.Text.Replace("x", "")); i++)
                 {
@@ -239,12 +243,38 @@ namespace Sistema_de_Gerenciamento.Forms
 
                 btnGerarCarne.Enabled = false;
 
+                //Inserir Comissao
+                if (btnGerarCarne.Enabled == false)
+                {
+                    decimal valorComissao = CalcularComissaoGeral() + comissaoPorProduto;
+
+                    Atualizar.AtualizarComissaoDiariamente(valorComissao, Global.NomeDeUsuario);
+
+                    comissaoPorProduto = 0;
+                }
+
                 CompenetesFormsPDV();
             }
             else
             {
                 MessageBox.Show("Saldo Disponivel Inferior Ao Solicitado/Cliente Com Pendencia Financeira!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void CalcularComissaoPorProduto(int _codigoProduto, decimal _valorProduto)
+        {
+            decimal porcentagemComissaoPorproduto = Buscar.BuscarValorComissaoPorProduto(_codigoProduto);
+
+            comissaoPorProduto += porcentagemComissaoPorproduto * _valorProduto / 100;
+        }
+
+        private decimal CalcularComissaoGeral()
+        {
+            decimal porcentagemComissaoGeral = Buscar.BuscarPorcentagemComissao();
+
+            decimal comissaoGeral = porcentagemComissaoGeral * valorBruto / 100;
+
+            return comissaoGeral;
         }
 
         private void AdicionarNaTabelaNotaFiscalSaidaPagamentoSemJuros(DadosNotaFiscalSaida item)

@@ -108,5 +108,9 @@ namespace Sistema_de_Gerenciamento.Classes
             codigoProduto = _codigoProduto;
             preco = _preco;
         }
+
+        public DadosNotaFiscalSaida()
+        {
+        }
     }
 }

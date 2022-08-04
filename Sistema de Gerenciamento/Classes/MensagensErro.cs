@@ -1223,6 +1223,30 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Dados Financeiros
 
+        #region Resumo de Vendas
+
+        public void ErroAoBuscaResumoVendaPorDataNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-RV01) Erro ao Realizar Buscar Resumo Venda Por Data \n\nErro: {_e}", "Erro Buscar Resumo Venda Por Data!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscaResumoVendaPorDevolucaoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-RV02) Erro ao Realizar Buscar Resumo Venda Por Devolucao \n\nErro: {_e}", "Erro Buscar Resumo Venda Por Devolucao!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscaResumoVendaPorProdutoMaisVendidoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-RV03) Erro ao Realizar Buscar Resumo Venda Por Produto Mais Vendido \n\nErro: {_e}", "Erro Buscar Resumo Venda Por Produto Mais Vendido!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscaResumoVendaPorProdutoTipoPagamentoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-RV04) Erro ao Realizar Buscar Resumo Venda Por Tipo Produto \n\nErro: {_e}", "Erro Buscar Resumo Venda Tipo Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Resumo de Vendas
+
         #endregion Buscar No Banco
 
         #region Verificar Existencia No Banco

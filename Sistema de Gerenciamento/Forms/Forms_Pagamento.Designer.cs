@@ -216,7 +216,6 @@
             this.cmbFormaPagamento.Size = new System.Drawing.Size(161, 36);
             this.cmbFormaPagamento.TabIndex = 180;
             this.cmbFormaPagamento.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.cmbFormaPagamento.SelectedIndexChanged += new System.EventHandler(this.cmbFormaPagamento_SelectedIndexChanged);
             this.cmbFormaPagamento.SelectedValueChanged += new System.EventHandler(this.cmbFormaPagamento_SelectedValueChanged);
             // 
             // lblFormaPamento

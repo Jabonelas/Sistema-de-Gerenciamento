@@ -4619,5 +4619,206 @@ namespace Sistema_de_Gerenciamento.Classes
                 return ListaCodigoProdutosVendidos;
             }
         }
+
+        #region Buscar Resumo Venda Por Data
+
+        public bool BuscarResumoVendaPorData(DateTime _dataInicial, DateTime _dataFinal, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select CAST(ns_emissao as DATE) as 'Data',COUNT(ns_numero_nf) as 'Qtd NF'," +
+                            "COUNT(ns_nome_cliente) as 'Qtd Cliente',SUM(ns_quantidade) as 'Qtd Produto'," +
+                            "SUM(ns_valor_pago) as 'Valor' from tb_NotaFiscalSaida " +
+                            "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal " +
+                            "group by CAST(ns_emissao as DATE)";
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = null;
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaResumoVendaPorDataNoBanco(ex);
+                return false;
+            }
+        }
+
+        #endregion Buscar Resumo Venda Por Data
+
+        #region Buscar Resumo Venda Por Devolucao
+
+        public bool BuscarResumoPorDevolucao(DateTime _dataInicial, DateTime _dataFinal, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select CAST(ns_emissao as DATE) as 'Data', COUNT(ns_numero_nf) as 'Qtd NF', " +
+                        "COUNT(ns_nome_cliente) as 'Qtd Cliente', SUM(ns_quantidade) as 'Qtd Produto'," +
+                        "SUM(ns_valor_pago) as 'Valor' from tb_NotaFiscalSaida " +
+                        "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal and ns_status = 'Devolucao' " +
+                        "group by CAST(ns_emissao as DATE)";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = null;
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaResumoVendaPorDevolucaoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Buscar Resumo Venda Por Devolucao
+
+        #region Buscar Resumo Venda Por Produto Mais Vendidos
+
+        public bool BuscarResumoPorProdutoMaisVendido(DateTime _dataInicial, DateTime _dataFinal, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select (ns_codigo_produto) as 'Codigo Produto', (ns_descricao) as 'Descricao', " +
+                        "COUNT(ns_numero_nf) as 'Qtd NF', COUNT(ns_nome_cliente) as 'Qtd Cliente', " +
+                        "SUM(ns_quantidade) as 'Qtd Produto', SUM(ns_valor_pago) as 'Valor' " +
+                        "from tb_NotaFiscalSaida where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal " +
+                        "group by(ns_codigo_produto),(ns_descricao) order by SUM(ns_quantidade) desc";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = null;
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaResumoVendaPorProdutoMaisVendidoNoBanco(ex);
+                return false;
+            }
+        }
+
+        #endregion Buscar Resumo Venda Por Produto Mais Vendidos
+
+        #region Buscar Resumo Venda Por Tipo Pagamento
+
+        public bool BuscarResumoVendaPorTipoPagamento(DateTime _dataInicial, DateTime _dataFinal, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select (ns_tipo_pagamento) as 'Tipo Pagamento', COUNT(ns_numero_nf) as 'Quant NF', " +
+                            "COUNT(ns_nome_cliente) as 'Quant Cliente', SUM(ns_quantidade) as 'Quant Produto'," +
+                            "SUM(ns_valor_pago) as 'Valor' from tb_NotaFiscalSaida " +
+                            "where ns_emissao >= '01/08/2022' and ns_emissao <= '30/08/2022' " +
+                            "group by(ns_tipo_pagamento ) " +
+                            "order by SUM(ns_valor_pago) desc";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = null;
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaResumoVendaPorProdutoTipoPagamentoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Buscar Resumo Venda Por Tipo Pagamento
     }
 }

@@ -200,15 +200,8 @@ namespace Sistema_de_Gerenciamento
 
             foreach (DadosDespesaCusto despesaCusto in listaDespesasCustos)
             {
-                if (despesaCusto.vencimento <= DateTime.Today && despesaCusto.verificar == "nok"
-                     && Global.NomeDeUsuario == "ADMIN")
+                if (despesaCusto.vencimento <= DateTime.Today && despesaCusto.verificar == "nok")
                 {
-                    if (despesaCusto.statusPagamento == "Nao Pago")
-                    {
-                        MessageBox.Show($"Despesa/Custo - {despesaCusto.forncedorTitulo}\n\nVencimento {despesaCusto.vencimento.ToShortDateString()}",
-                                "Pagamento Pendente Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-
                     Atualizar.AtualziarCodigoDespesaCustosFixoRepeticao(despesaCusto.codigo);
 
                     if (despesaCusto.tipo == "Fixa")
@@ -220,11 +213,27 @@ namespace Sistema_de_Gerenciamento
                         bool semestral = despesaCusto.frequencia == "Semestral" ? Convert.ToBoolean(dias = 180) : false;
                         bool anual = despesaCusto.frequencia == "Anual" ? Convert.ToBoolean(dias = 365) : false;
 
-                        Salvar.DespesaCustosFixoRepeticao(despesaCusto.codigo, despesaCusto.tipo, despesaCusto.descricao, despesaCusto.forncedorTitulo,
-                            despesaCusto.cnpj, despesaCusto.emissao, despesaCusto.vencimento.AddDays(dias), despesaCusto.frequencia,
-                            despesaCusto.valor, despesaCusto.quantidadeParcelas, despesaCusto.valorParcela, despesaCusto.categoria,
-                            ptbStatusPagamento.Image);
+                        if (despesaCusto.forncedorTitulo == "Comissao")
+                        {
+                            Salvar.DespesaCustosFixoRepeticao(despesaCusto.codigo, despesaCusto.tipo, despesaCusto.descricao, despesaCusto.forncedorTitulo,
+                                despesaCusto.cnpj, despesaCusto.emissao, despesaCusto.vencimento.AddDays(dias), despesaCusto.frequencia,
+                                despesaCusto.valor, despesaCusto.quantidadeParcelas, 0, despesaCusto.categoria,
+                                ptbStatusPagamento.Image);
+                        }
+                        else
+                        {
+                            Salvar.DespesaCustosFixoRepeticao(despesaCusto.codigo, despesaCusto.tipo, despesaCusto.descricao, despesaCusto.forncedorTitulo,
+                                despesaCusto.cnpj, despesaCusto.emissao, despesaCusto.vencimento.AddDays(dias), despesaCusto.frequencia,
+                                despesaCusto.valor, despesaCusto.quantidadeParcelas, despesaCusto.valorParcela, despesaCusto.categoria,
+                                ptbStatusPagamento.Image);
+                        }
                     }
+                }
+
+                if (despesaCusto.vencimento <= DateTime.Today && despesaCusto.statusPagamento == "Nao Pago" && Global.NomeDeUsuario == "ADMIN")
+                {
+                    MessageBox.Show($"Despesa/Custo - {despesaCusto.forncedorTitulo}\n\nVencimento {despesaCusto.vencimento.ToShortDateString()}",
+                            "Pagamento Pendente Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
@@ -275,10 +284,10 @@ namespace Sistema_de_Gerenciamento
             fluxoCaixa.ShowDialog();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnResumoVendasConsole_Click(object sender, EventArgs e)
         {
-            tesntandoComissao tesntandoComissao = new tesntandoComissao();
-            tesntandoComissao.ShowDialog();
+            Forms_ResumoVendas resumoVendas = new Forms_ResumoVendas();
+            resumoVendas.ShowDialog();
         }
     }
 }
