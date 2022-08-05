@@ -116,5 +116,13 @@ namespace Sistema_de_Gerenciamento.Forms
                 lblComissaoPorProduto.Text = String.Format("{0:c}", valorComissaoPorProduto);
             }
         }
+
+        private void Forms_FluxoCaixa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
     }
 }

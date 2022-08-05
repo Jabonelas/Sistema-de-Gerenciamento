@@ -4620,6 +4620,8 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
+        #region Buscar Resumo Venda
+
         #region Buscar Resumo Venda Por Data
 
         public bool BuscarResumoVendaPorData(DateTime _dataInicial, DateTime _dataFinal, BunifuDataGridView _tabela)
@@ -4628,11 +4630,11 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select CAST(ns_emissao as DATE) as 'Data',COUNT(ns_numero_nf) as 'Qtd NF'," +
+                    string query = "select CAST(ns_emissao as DATE) as 'Data'," +
                             "COUNT(ns_nome_cliente) as 'Qtd Cliente',SUM(ns_quantidade) as 'Qtd Produto'," +
                             "SUM(ns_valor_pago) as 'Valor' from tb_NotaFiscalSaida " +
                             "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal " +
-                            "group by CAST(ns_emissao as DATE)";
+                            "group by CAST(ns_emissao as DATE) order by CAST(ns_emissao as DATE) asc";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
                     adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
@@ -4641,7 +4643,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     DataTable dataTable = new DataTable();
 
                     adapter.Fill(dataTable);
-                    _tabela.DataSource = null;
+                    //_tabela.DataSource = null;
                     _tabela.DataSource = dataTable;
                     _tabela.Refresh();
 
@@ -4677,11 +4679,11 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select CAST(ns_emissao as DATE) as 'Data', COUNT(ns_numero_nf) as 'Qtd NF', " +
+                    string query = "select CAST(ns_emissao as DATE) as 'Data', " +
                         "COUNT(ns_nome_cliente) as 'Qtd Cliente', SUM(ns_quantidade) as 'Qtd Produto'," +
                         "SUM(ns_valor_pago) as 'Valor' from tb_NotaFiscalSaida " +
                         "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal and ns_status = 'Devolucao' " +
-                        "group by CAST(ns_emissao as DATE)";
+                        "group by CAST(ns_emissao as DATE) order by CAST(ns_emissao as DATE) asc";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -4691,7 +4693,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     DataTable dataTable = new DataTable();
 
                     adapter.Fill(dataTable);
-                    _tabela.DataSource = null;
+                    //_tabela.DataSource = null;
                     _tabela.DataSource = dataTable;
                     _tabela.Refresh();
 
@@ -4729,7 +4731,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select (ns_codigo_produto) as 'Codigo Produto', (ns_descricao) as 'Descricao', " +
-                        "COUNT(ns_numero_nf) as 'Qtd NF', COUNT(ns_nome_cliente) as 'Qtd Cliente', " +
+                        "COUNT(ns_nome_cliente) as 'Qtd Cliente', " +
                         "SUM(ns_quantidade) as 'Qtd Produto', SUM(ns_valor_pago) as 'Valor' " +
                         "from tb_NotaFiscalSaida where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal " +
                         "group by(ns_codigo_produto),(ns_descricao) order by SUM(ns_quantidade) desc";
@@ -4742,7 +4744,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     DataTable dataTable = new DataTable();
 
                     adapter.Fill(dataTable);
-                    _tabela.DataSource = null;
+                    //_tabela.DataSource = null;
                     _tabela.DataSource = dataTable;
                     _tabela.Refresh();
 
@@ -4778,8 +4780,8 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select (ns_tipo_pagamento) as 'Tipo Pagamento', COUNT(ns_numero_nf) as 'Quant NF', " +
-                            "COUNT(ns_nome_cliente) as 'Quant Cliente', SUM(ns_quantidade) as 'Quant Produto'," +
+                    string query = "select (ns_tipo_pagamento) as 'Tipo Pagamento', " +
+                            "COUNT(ns_nome_cliente) as 'Qtd Cliente', SUM(ns_quantidade) as 'Qtd Produto'," +
                             "SUM(ns_valor_pago) as 'Valor' from tb_NotaFiscalSaida " +
                             "where ns_emissao >= '01/08/2022' and ns_emissao <= '30/08/2022' " +
                             "group by(ns_tipo_pagamento ) " +
@@ -4792,7 +4794,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     DataTable dataTable = new DataTable();
 
                     adapter.Fill(dataTable);
-                    _tabela.DataSource = null;
+                    //_tabela.DataSource = null;
                     _tabela.DataSource = dataTable;
                     _tabela.Refresh();
 
@@ -4820,5 +4822,198 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Resumo Venda Por Tipo Pagamento
+
+        #region Buscar Resumo Venda Por Vendedor
+
+        public bool BuscarResumoVendaPorVendedor(DateTime _dataInicial, DateTime _dataFinal, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select (ns_vendedor) as 'Usuario'," +
+                        "COUNT(ns_nome_cliente) as 'Qtd Cliente', SUM(ns_quantidade) as 'Qtd Produto', " +
+                        "SUM(ns_valor_pago) as 'Valor' from tb_NotaFiscalSaida " +
+                        "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal group by(ns_vendedor ) " +
+                        "order by SUM(ns_valor_pago) asc";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    //_tabela.DataSource = null;
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaResumoVendaPorVendedorNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Buscar Resumo Venda Por Vendedor
+
+        #region Buscar Quantidade Itens Vendidos
+
+        public decimal BuscarQuantidadeItensVendidos(DateTime _dataInicial, DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(ns_quantidade) from tb_NotaFiscalSaida " +
+                        "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    if (dr.IsDBNull(0) == true)
+                    {
+                        return 0;
+                    }
+
+                    return dr.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaQuantidadeDeItensVendidosNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Quantidade Itens Vendidos
+
+        #region Buscar Valor Bruto Vendido
+
+        public decimal BuscarValorBrutoVendido(DateTime _dataInicial, DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(ns_valor_pago) from tb_NotaFiscalSaida " +
+                        "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    if (dr.IsDBNull(0) == true)
+                    {
+                        return 0;
+                    }
+
+                    return dr.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaValorBrutoVendidoNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Valor Bruto Vendido
+
+        #region Buscar Valor Liquido Vendido
+
+        public decimal BuscarValorLiquido(DateTime _dataInicial, DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    if (dr.IsDBNull(0) == true)
+                    {
+                        return 0;
+                    }
+
+                    return dr.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaValorLiquidoVendidoNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Valor Liquido Vendido
+
+        public decimal BuscarGastosBrutos()
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select sum(cp_valor_custo*pe.ns_quantidade) from tb_CadastroProdutos as p " +
+                        "inner join tb_NotaFiscalSaida pe on p.cp_id = pe.ns_codigo_produto";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    if (dr.IsDBNull(0) == true)
+                    {
+                        return 0;
+                    }
+
+                    return dr.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaValorGastosBrutoNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Resumo Venda
     }
 }

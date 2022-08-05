@@ -42,8 +42,6 @@ namespace Sistema_de_Gerenciamento.Forms
             BuscarCompra();
         }
 
-        #region Buscar Compra
-
         private void BuscarCompra()
         {
             try
@@ -73,8 +71,6 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Buscar Compra
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             if (SalvarCompras() == true)
@@ -83,18 +79,10 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #region Salvar Compras
-
         private bool SalvarCompras()
         {
             try
             {
-                //gdvCompra.DataSource = null; //Remover a datasource
-                //gdvCompra.Columns.Clear(); //Remover as colunas
-                //gdvCompra.Rows.Clear(); //Remover as linhas
-                //gdvCompra.Refresh(); //Para a grid se actualizar
-                //emp.clear(); //limpar a dataset que é utilizado para preencher a datagrid
-
                 if (txtNumeroNotaFiscal.Text != string.Empty)
                 {
                     if ((listaDadosNotaFiscalEntrada = Buscar.BuscarNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text))) == null)
@@ -109,7 +97,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     {
                         MessageBox.Show("Produto Não Cadastrado!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    else if (VerificarExistencia.VerificarSeEstoqueFoiConsumidoSalvar(Convert.ToInt32(txtNumeroNotaFiscal.Text)) == true) //verificação de existencia de nota fiscal
+                    else if (VerificarExistencia.VerificarSeEstoqueFoiConsumidoSalvar(Convert.ToInt32(txtNumeroNotaFiscal.Text)) == true)
                     {
                         MessageBox.Show("Nota Fiscal Já Foi Dado Entrada!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
@@ -121,18 +109,21 @@ namespace Sistema_de_Gerenciamento.Forms
 
                         Global.tipoEntrada = "Entrada";
 
-                        Salvar.InserirEstoqueProduto(Convert.ToInt32(txtNumeroNotaFiscal.Text));
+                        if (ComparacaoValorCadastroProdutoNFEntrada() == true)
+                        {
+                            InserirProdutoEstoque();
 
-                        Atualizar.AtualizarDataLancamentoNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text));
+                            Atualizar.AtualizarDataLancamentoNotaFiscalEntrada(Convert.ToInt32(txtNumeroNotaFiscal.Text));
 
-                        listaDadosNotaFiscalEntrada.ForEach(nf => notaFiscalEntrada = nf);
+                            PreencherListaNotaFiscalEntradaAbrirFormsCadastroCodigoBarras();
 
-                        Forms_CadastroCodigoBarras inserirCodigoBarras = new Forms_CadastroCodigoBarras(this);
-                        inserirCodigoBarras.ShowDialog();
+                            return true;
+                        }
 
-                        return true;
+                        return false;
                     }
                 }
+
                 return false;
             }
             catch (Exception ex)
@@ -142,9 +133,44 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Salvar Compras
+        private bool ComparacaoValorCadastroProdutoNFEntrada()
+        {
+            for (int i = 0; i < gdvCompra.RowCount; i++)
+            {
+                int codigoProduto = Convert.ToInt32(gdvCompra.Rows[i].Cells[4].Value);
 
-        #region Lançar em Custos
+                int numeroNFEntrada = Convert.ToInt32(gdvCompra.Rows[i].Cells[1].Value);
+
+                bool isValoresCorretos = VerificarExistencia.ComparacaoValorProdutoCadastroNFEntrada(codigoProduto, numeroNFEntrada);
+
+                if (isValoresCorretos == false)
+                {
+                    MessageBox.Show("Valores dos Produtos Em Nota Fiscal Divergente Dos Valores No Cadastro Do Produto!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        private void PreencherListaNotaFiscalEntradaAbrirFormsCadastroCodigoBarras()
+        {
+            listaDadosNotaFiscalEntrada.ForEach(nf => notaFiscalEntrada = nf);
+
+            Forms_CadastroCodigoBarras inserirCodigoBarras = new Forms_CadastroCodigoBarras(this);
+            inserirCodigoBarras.ShowDialog();
+        }
+
+        private void InserirProdutoEstoque()
+        {
+            for (int i = 0; i < gdvCompra.RowCount; i++)
+            {
+                int codigoProduto = Convert.ToInt32(gdvCompra.Rows[i].Cells[4].Value);
+
+                Salvar.InserirEstoqueProduto(Convert.ToInt32(txtNumeroNotaFiscal.Text), codigoProduto);
+            }
+        }
 
         private void LancarCustos()
         {
@@ -177,8 +203,6 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Lançar em Custos
-
         private void bntSair_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -188,8 +212,6 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             ExlcuirCompra();
         }
-
-        #region Excluir Compras
 
         private void ExlcuirCompra()
         {
@@ -249,14 +271,10 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Excluir Compras
-
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             AlterarCodigoBarras();
         }
-
-        #region Alterar Codigo de Barras
 
         private void AlterarCodigoBarras()
         {
@@ -276,21 +294,11 @@ namespace Sistema_de_Gerenciamento.Forms
                     }
                     else if (gdvEstoque.RowCount == 0)
                     {
-                        //this.gdvEstoque.Columns["ep_valor_unitario"].DefaultCellStyle.Format = "c";
-
-                        gdvEstoque.Visible = true;
-                        gdvCompra.Visible = false;
-
                         Buscar.BuscarEstoqueProdutoPreencherGridView(Convert.ToInt32(txtNumeroNotaFiscal.Text), gdvEstoque);
 
-                        this.Size = new Size(686, 554);
+                        LayoutFormsCompra();
 
-                        Global.tipoEntrada = "Alterar";
-
-                        listaDadosEstoqueProdutos.ForEach(nf => estoqueProduto = nf);
-
-                        Forms_CadastroCodigoBarras inserirCodigoBarras = new Forms_CadastroCodigoBarras(this);
-                        inserirCodigoBarras.ShowDialog();
+                        PreencherEstoqueProdutoAbrirFormsCadastroCodiBarras();
                     }
                 }
             }
@@ -300,14 +308,28 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Alterar Codigo de Barras
+        private void LayoutFormsCompra()
+        {
+            gdvEstoque.Visible = true;
+            gdvCompra.Visible = false;
+
+            this.Size = new Size(686, 554);
+
+            Global.tipoEntrada = "Alterar";
+        }
+
+        private void PreencherEstoqueProdutoAbrirFormsCadastroCodiBarras()
+        {
+            listaDadosEstoqueProdutos.ForEach(nf => estoqueProduto = nf);
+
+            Forms_CadastroCodigoBarras inserirCodigoBarras = new Forms_CadastroCodigoBarras(this);
+            inserirCodigoBarras.ShowDialog();
+        }
 
         private void txtNumeroNotaFiscal_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.DigitoFoiNumero(e);
         }
-
-        #region Setar o Design Do Forms
 
         private void SetarDesignForms()
         {
@@ -319,7 +341,5 @@ namespace Sistema_de_Gerenciamento.Forms
 
             this.Size = new Size(958, 554);
         }
-
-        #endregion Setar o Design Do Forms
     }
 }

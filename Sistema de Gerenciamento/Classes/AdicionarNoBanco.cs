@@ -509,20 +509,23 @@ namespace Sistema_de_Gerenciamento
 
         #region Inserir Estoque Produto
 
-        public void InserirEstoqueProduto(int _ne_numero_nf)
+        public void InserirEstoqueProduto(int _ne_numero_nf, int _codigoProduto)
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "insert into tb_EstoqueProduto (ep_nf_entrada, ep_codigo_produto,ep_descricao," +
-                                   "ep_unidade,ep_valor_unitario,ep_quantidade,ep_status,ep_data_entrada) " +
-                                   "select ne_numero_nf,ne_codigo_produto,ne_descricao_produto,ne_unidade," +
-                                   "ne_valor_unitario,ne_quantidade,'-',GETDATE() " +
-                                   "from tb_NotaFiscalEntrada where ne_numero_nf = @ne_numero_nf";
+                        "ep_unidade,ep_valor_unitario,ep_quantidade,ep_status,ep_data_entrada) " +
+                        "select ne_numero_nf, ne_codigo_produto, ne_descricao_produto, ne_unidade," +
+                        "(select cp_valor_venda from tb_CadastroProdutos where cp_id = @codigoProduto), " +
+                        "ne_quantidade,'-',GETDATE() " +
+                        "from tb_NotaFiscalEntrada where ne_numero_nf = @ne_numero_nf " +
+                        "and ne_codigo_produto = @codigoProduto ";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
                     cmd.Parameters.AddWithValue("@ne_numero_nf", SqlDbType.Int).Value = _ne_numero_nf;
+                    cmd.Parameters.AddWithValue("@codigoProduto", SqlDbType.Int).Value = _codigoProduto;
 
                     cmd.ExecuteNonQuery();
                 }

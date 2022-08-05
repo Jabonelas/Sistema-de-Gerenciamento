@@ -20,6 +20,8 @@ namespace Sistema_de_Gerenciamento.Forms
             InitializeComponent();
 
             PreencherDatePicker();
+
+            FormatarGridView();
         }
 
         private void PreencherDatePicker()
@@ -39,23 +41,70 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (cmbTipoPesquisa.Text == "Data")
             {
-                Buscar.BuscarResumoVendaPorData(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+                bool isResultadoEncontrado = Buscar.BuscarResumoVendaPorData(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+
+                MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
             }
             else if (cmbTipoPesquisa.Text == "Devolucao")
             {
-                Buscar.BuscarResumoPorDevolucao(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+                bool isResultadoEncontrado = Buscar.BuscarResumoPorDevolucao(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+
+                MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
             }
             else if (cmbTipoPesquisa.Text == "Produtos mais Vendidos")
             {
-                Buscar.BuscarResumoPorProdutoMaisVendido(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+                bool isResultadoEncontrado = Buscar.BuscarResumoPorProdutoMaisVendido(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+
+                MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
             }
             else if (cmbTipoPesquisa.Text == "Tipo Pagamento")
             {
-                Buscar.BuscarResumoVendaPorTipoPagamento(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+                bool isResultadoEncontrado = Buscar.BuscarResumoVendaPorTipoPagamento(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+
+                MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
             }
             else if (cmbTipoPesquisa.Text == "Vendedor")
             {
+                bool isResultadoEncontrado = Buscar.BuscarResumoVendaPorVendedor(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+
+                MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
             }
+
+            lblQtditensVendidos.Text = Buscar.BuscarQuantidadeItensVendidos(dtpDataInicial.Value, dtpDataFinal.Value).ToString("N0");
+
+            lblValorBrutoVendido.Text = String.Format("{0:c}", Buscar.BuscarValorBrutoVendido(dtpDataInicial.Value, dtpDataFinal.Value));
+
+            lblValorGastoBruto.Text = string.Format("{0:c}", Buscar.BuscarGastosBrutos());
+        }
+
+        private void MenssagemResultadoNaoEncontrado(bool _isResultadoEncontrado)
+        {
+            if (_isResultadoEncontrado == false)
+            {
+                MessageBox.Show("Dados Não Encontrado", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void FormatarGridView()
+        {
+            this.gdvResumoVendas.Columns["Valor"].DefaultCellStyle.Format = "c";
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Forms_ResumoVendas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
+        private void Forms_ResumoVendas_Load(object sender, EventArgs e)
+        {
         }
     }
 }

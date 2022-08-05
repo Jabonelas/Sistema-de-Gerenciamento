@@ -567,6 +567,7 @@
             this.Name = "Forms_FluxoCaixa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fluxo Caixa";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_FluxoCaixa_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.gdvFluxoCaixa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

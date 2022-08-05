@@ -65,7 +65,7 @@ namespace Sistema_de_Gerenciamento
                 btnOrdemServicoConsole.Location = new Point(245, 100);
                 btnProdutoConsole.Location = new Point(394, 100);
                 btnClienteConsole.Location = new Point(546, 100);
-                btnContasReceberConsole.Location = new Point(695, 100);
+                btnCConsultarEstoqueConsole.Location = new Point(695, 100);
 
                 btnTrocaConsole.Location = new Point(6, 400);
                 btnDespesasConsole.Location = new Point(161, 400);
@@ -272,12 +272,6 @@ namespace Sistema_de_Gerenciamento
             contasAReceber.ShowDialog();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Forms_ConsultarEstoque consultarEstoque = new Forms_ConsultarEstoque();
-            consultarEstoque.ShowDialog();
-        }
-
         private void btnFluxoCaixaConsole_Click(object sender, EventArgs e)
         {
             Forms_FluxoCaixa fluxoCaixa = new Forms_FluxoCaixa();
@@ -288,6 +282,30 @@ namespace Sistema_de_Gerenciamento
         {
             Forms_ResumoVendas resumoVendas = new Forms_ResumoVendas();
             resumoVendas.ShowDialog();
+        }
+
+        private void btnCConsultarEstoqueConsole_Click(object sender, EventArgs e)
+        {
+            Forms_ConsultarEstoque consultarEstoque = new Forms_ConsultarEstoque();
+            consultarEstoque.ShowDialog();
+        }
+
+        private void btnConsultarEstoque_Click(object sender, EventArgs e)
+        {
+            Forms_ConsultarEstoque consultarEstoque = new Forms_ConsultarEstoque();
+            consultarEstoque.ShowDialog();
+        }
+
+        private void btnResumoVendas_Click(object sender, EventArgs e)
+        {
+            Forms_ResumoVendas resumoVendas = new Forms_ResumoVendas();
+            resumoVendas.ShowDialog();
+        }
+
+        private void btnFluxoCaixa_Click(object sender, EventArgs e)
+        {
+            Forms_FluxoCaixa fluxoCaixa = new Forms_FluxoCaixa();
+            fluxoCaixa.ShowDialog();
         }
     }
 }

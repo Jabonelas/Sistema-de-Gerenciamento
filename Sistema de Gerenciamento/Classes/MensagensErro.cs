@@ -796,6 +796,11 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-PR20) Erro ao Realizar Busca Codigo de Barras \n\nErro: {_e}", "Erro Busca Realizar Busca Codigo de Barras!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoBuscarProdutoPorCodigoCadastroNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-PR21) Erro ao Realizar Busca Cadastrado Produto Por Codigo \n\nErro: {_e}", "Erro Busca Cadastro Produto Por Codigo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Produto
 
         #region Empresa
@@ -1242,7 +1247,32 @@ namespace Sistema_de_Gerenciamento
 
         public void ErroAoBuscaResumoVendaPorProdutoTipoPagamentoNoBanco(Exception _e)
         {
-            MessageBox.Show($"(BUS-RV04) Erro ao Realizar Buscar Resumo Venda Por Tipo Produto \n\nErro: {_e}", "Erro Buscar Resumo Venda Tipo Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(BUS-RV04) Erro ao Realizar Buscar Resumo Venda Por Tipo Produto \n\nErro: {_e}", "Erro Buscar Resumo Venda Por Tipo Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscaResumoVendaPorVendedorNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-RV05) Erro ao Realizar Buscar Resumo Venda Por Vendedor \n\nErro: {_e}", "Erro Buscar Resumo Venda Por Vendedor!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscaQuantidadeDeItensVendidosNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-RV06) Erro ao Realizar Buscar Quantidade de Itens Vendidos \n\nErro: {_e}", "Erro Buscar Quantidade de Itens Vendidos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscaValorBrutoVendidoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-RV07) Erro ao Realizar Buscar Valor Bruto Vendido \n\nErro: {_e}", "Erro Buscar Valor Bruto Vendido!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscaValorLiquidoVendidoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-RV08) Erro ao Realizar Buscar Valor Liquido Vendido \n\nErro: {_e}", "Erro Buscar Valor Liquido Vendido!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscaValorGastosBrutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-RV09) Erro ao Realizar Buscar Valor Gastos Bruto \n\nErro: {_e}", "Erro Buscar Valor Gastos Bruto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Resumo de Vendas
@@ -1276,6 +1306,16 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(EXI-PR01) Erro ao Verificar Existencia de Produto \n\nErro: {_e}", "Erro Verificar Existencia de Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoVerificarComparacaoValorCadastroProdutoNFEntradaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(EXI-PR02) Erro ao Verificar Comparação de Valor do Produto no Cadastro e Valor do Produto Na NF de Entrada \n\nErro: {_e}", "Erro Verificar Comparação de Valores dos Produto no Cadastro e na NF Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoVerificarExistenciaDeProdutoPorCodigoProdutoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(EXI-PR03) Erro ao Verificar Existencia de Produto Por Codigo Produto \n\nErro: {_e}", "Erro Verificar Existencia de Produto Por Codigo Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Produto
 
         #region Usuario
@@ -1286,6 +1326,15 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Usuario
+
+        #region Sub Grupo
+
+        public void ErroAoVerificarExistenciaDeSubGrupoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(EXI-SG01) Erro ao Verificar Existencia de Sub Grupo \n\nErro: {_e}", "Erro Verificar Existencia de Sub Grupo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Sub Grupo
 
         #region Estoque Produto
 

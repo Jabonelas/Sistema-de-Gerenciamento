@@ -93,6 +93,8 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Cadastro Produto
 
+        #region Verificar Existencia de Descricao De Descricao de Produto
+
         public bool VerificarExistenciaDeDescricaoProduto(string _descricao)
         {
             try
@@ -128,7 +130,92 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
+        #endregion Verificar Existencia de Descricao De Descricao de Produto
+
+        #region Verificar Existencia de Cadastro de Produto Por Codigo de Produto
+
+        public bool VerificarExistenciaCadastroProdutoPorCodigo(int _codigoProduto)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+
+                {
+                    string query = "select * from tb_CadastroProdutos where cp_id = @codigoProduto";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigoProduto", _codigoProduto);
+
+                    SqlDataReader reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoVerificarExistenciaDeProdutoPorCodigoProdutoNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Verificar Existencia de Cadastro de Produto Por Codigo de Produto
+
         #endregion Cadastro Produto
+
+        #region Valor Do Produto Cadastrado é Igual o Valor do Produto na NF Entrada
+
+        public bool ComparacaoValorProdutoCadastroNFEntrada(int _codigoProduto, int _numeroNFEntrada)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    bool isExist = false;
+                    string query = "select ne_valor_unitario from tb_NotaFiscalEntrada as p " +
+                        "inner join tb_CadastroProdutos pe on p.ne_valor_unitario = pe.cp_valor_custo " +
+                        "and p.ne_codigo_produto = @codigoProduto and " +
+                        "pe.cp_id = @codigoProduto where p.ne_numero_nf = @numemroNFEntrada";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@codigoProduto", _codigoProduto);
+                    adapter.SelectCommand.Parameters.Add("@numemroNFEntrada", _numeroNFEntrada);
+
+                    SqlDataReader reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        isExist = true;
+                    }
+                    else
+                    {
+                        isExist = false;
+                    }
+
+                    return isExist;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoVerificarComparacaoValorCadastroProdutoNFEntradaNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Valor Do Produto Cadastrado é Igual o Valor do Produto na NF Entrada
 
         #region Cadastro Grupo Material
 
@@ -161,7 +248,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoVerificarExistenciaDeProdutoNoBanco(ex);
+                Erro.ErroAoVerificarExistenciaDeSubGrupoNoBanco(ex);
 
                 return false;
             }

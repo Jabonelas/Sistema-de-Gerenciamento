@@ -237,6 +237,27 @@
         AAAAAAAAAAAAAAAAAAAADmpuUAABEpPJrwAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="btnResumoVendas.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAFgAAABQCAYAAACdxrJZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAySURBVHhe7cExAQAAAMKg9U9tDB8gAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAADmpuUAABEpPJrwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnFluxoCaixa.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAFgAAABQCAYAAACdxrJZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAySURBVHhe7cExAQAAAMKg9U9tDB8gAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAADmpuUAABEpPJrwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnConsultarEstoque.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAFgAAABQCAYAAACdxrJZAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAySURBVHhe7cExAQAAAMKg9U9tDB8gAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAADmpuUAABEpPJrwAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnSair.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIoAAAClCAYAAACDfWWHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -285,7 +306,7 @@
         AAAAAAAAAAAAAAAAAAAAAF7UAGR8AAHDPo9cAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="btnContasReceberConsole.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnCConsultarEstoqueConsole.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAIoAAAClCAYAAACDfWWHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABwSURBVHhe7cEBDQAAAMKg909tDjcgAAAAAAAAAAAAAAAA

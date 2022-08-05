@@ -13,11 +13,13 @@ namespace Sistema_de_Gerenciamento.Forms
 {
     public partial class Forms_ConsultarEstoque : Form
     {
+        private BuscarNoBanco Buscar = new BuscarNoBanco();
+
+        private VerificacaoDeExistencia verificacaoDeExistencia = new VerificacaoDeExistencia();
+
         private List<DadosEstoqueProduto> listaDadosEstoqueProdutos = new List<DadosEstoqueProduto>();
 
         private DadosEstoqueProduto dadosEstoqueProduto;
-
-        private BuscarNoBanco Buscar = new BuscarNoBanco();
 
         public Forms_ConsultarEstoque()
         {
@@ -30,21 +32,45 @@ namespace Sistema_de_Gerenciamento.Forms
             pesquisarProduto.ShowDialog();
         }
 
-        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiNumero(e);
-        }
-
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             ConfirmarBuscaComVerificacao();
+        }
+
+        private void btnBuscarItensEmContagem_Click(object sender, EventArgs e)
+        {
+            if (txtDescricao.Text != String.Empty)
+            {
+                Forms_ConsultaEstoqueContagem consultaEstoqueContagem = new Forms_ConsultaEstoqueContagem(this);
+                consultaEstoqueContagem.ShowDialog();
+            }
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            FecharTela();
+        }
+
+        private void btnSelecionar_Click(object sender, EventArgs e)
+        {
+            AbrirFormsConsultaDetalhada();
+        }
+
+        private void gdvContarPagar_DoubleClick(object sender, EventArgs e)
+        {
+            AbrirFormsConsultaDetalhada();
+        }
+
+        private void txtCodigo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
         }
 
         private void ConfirmarBuscaComVerificacao()
         {
             if (txtCodigo.Text != string.Empty)
             {
-                bool isCadastroExiste = Buscar.BuscarProdutoPorCodigo(Convert.ToInt32(txtCodigo.Text));
+                bool isCadastroExiste = verificacaoDeExistencia.VerificarExistenciaCadastroProdutoPorCodigo(Convert.ToInt32(txtCodigo.Text));
 
                 if (isCadastroExiste == true)
                 {
@@ -81,7 +107,10 @@ namespace Sistema_de_Gerenciamento.Forms
                         gdvConsultarEstoque.Rows.Remove((DataGridViewRow)item);
                     }
 
-                    gdvConsultarEstoque.Rows.RemoveAt(gdvConsultarEstoque.Rows.Count - 1);
+                    if (gdvConsultarEstoque.RowCount > 0)
+                    {
+                        gdvConsultarEstoque.Rows.RemoveAt(gdvConsultarEstoque.Rows.Count - 1);
+                    }
 
                     ManipulacaoTextBox.ApagandoTextBox(this);
                 }
@@ -110,34 +139,10 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        private void btnBuscarItensEmContagem_Click(object sender, EventArgs e)
-        {
-            if (txtDescricao.Text != String.Empty)
-            {
-                Forms_ConsultaEstoqueContagem consultaEstoqueContagem = new Forms_ConsultaEstoqueContagem(this);
-                consultaEstoqueContagem.ShowDialog();
-            }
-        }
-
-        private void gdvContarPagar_DoubleClick(object sender, EventArgs e)
-        {
-            AbrirFormsConsultaDetalhada();
-        }
-
         private void AbrirFormsConsultaDetalhada()
         {
             Forms_ConsultaEstoqueDetalhada exibirConsultaEstoque = new Forms_ConsultaEstoqueDetalhada(this);
             exibirConsultaEstoque.ShowDialog();
-        }
-
-        private void btnFechar_Click(object sender, EventArgs e)
-        {
-            FecharTela();
-        }
-
-        private void btnSelecionar_Click(object sender, EventArgs e)
-        {
-            AbrirFormsConsultaDetalhada();
         }
     }
 }

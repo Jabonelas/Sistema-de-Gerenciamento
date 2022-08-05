@@ -314,17 +314,20 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void VerificarDataTextBox(BunifuTextBox _textBox)
         {
-            if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtVencimento) == true)
+            if (txtVencimento.Text != String.Empty && txtEmissao.Text != String.Empty)
             {
-                if (ManipulacaoTextBox.ValidacaoData(txtVencimento) == false)
+                if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtVencimento) == true)
                 {
-                    return;
-                }
-                if (Convert.ToDateTime(txtEmissao.Text) > Convert.ToDateTime(txtVencimento.Text))
-                {
-                    MessageBox.Show("A Data de Emissão Não Pode Ser Maior que a Data De Vencimento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (ManipulacaoTextBox.ValidacaoData(txtVencimento) == false)
+                    {
+                        return;
+                    }
+                    if (Convert.ToDateTime(txtEmissao.Text) > Convert.ToDateTime(txtVencimento.Text))
+                    {
+                        MessageBox.Show("A Data de Emissão Não Pode Ser Maior que a Data De Vencimento!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                    _textBox.Focus();
+                        _textBox.Focus();
+                    }
                 }
             }
         }
@@ -430,14 +433,17 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void VerificarDataDatePicker(BunifuDatePicker _datePicker)
         {
-            if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtVencimento) == true)
+            if (txtEmissao.Text != String.Empty && txtVencimento.Text != String.Empty)
             {
-                if (Convert.ToDateTime(txtEmissao.Text) > Convert.ToDateTime(txtVencimento.Text))
+                if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtVencimento) == true)
                 {
-                    MessageBox.Show("A Data de Emissão Não Pode Ser Maior que a Data De Vencimento!", "Atenção!",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if (Convert.ToDateTime(txtEmissao.Text) > Convert.ToDateTime(txtVencimento.Text))
+                    {
+                        MessageBox.Show("A Data de Emissão Não Pode Ser Maior que a Data De Vencimento!", "Atenção!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                    _datePicker.Focus();
+                        _datePicker.Focus();
+                    }
                 }
             }
         }
