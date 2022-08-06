@@ -195,7 +195,7 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 cmbTipoReceberPagamento.Focus();
 
-                MessageBox.Show("Selecione o Tipo de Cliente Pess. Fisica/Pess. Juridica1", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Selecione o Tipo de Cliente Pess. Fisica/Pess. Juridica", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

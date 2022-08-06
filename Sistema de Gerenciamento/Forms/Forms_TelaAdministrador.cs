@@ -21,7 +21,13 @@ namespace Sistema_de_Gerenciamento
 
         private AtualizacaoNoBanco Atualizar = new AtualizacaoNoBanco();
 
+        private List<DadosProduto> ListaProdutosComEstoqueMinimo = new List<DadosProduto>();
+
+        private DadosProduto ProdutoComEstoqueMinimo;
+
         private Forms_Login login;
+
+        private int dias = 0;
 
         public Forms_TelaAdministrador()
         {
@@ -36,7 +42,7 @@ namespace Sistema_de_Gerenciamento
             {
                 Thread.Sleep(1000);
 
-                AutomatizacaoDespesaCustoFixo();
+                AutomatizacaoVerificarDespesaCustoEstoqueMinimo();
             });
 
             LayoutUsuario();
@@ -45,39 +51,6 @@ namespace Sistema_de_Gerenciamento
 
             login = _login;
         }
-
-        private void tabCadastro_Click(object sender, EventArgs e)
-        {
-            LayoutUsuario();
-        }
-
-        #region Layout Usuario
-
-        private void LayoutUsuario()
-        {
-            if (Global.NomeDeUsuario == "ADMIN")
-            {
-                tabControl.Visible = true;
-            }
-            else
-            {
-                btnVendaConsole.Location = new Point(93, 100);
-                btnOrdemServicoConsole.Location = new Point(245, 100);
-                btnProdutoConsole.Location = new Point(394, 100);
-                btnClienteConsole.Location = new Point(546, 100);
-                btnCConsultarEstoqueConsole.Location = new Point(695, 100);
-
-                btnTrocaConsole.Location = new Point(6, 400);
-                btnDespesasConsole.Location = new Point(161, 400);
-                btnComprasConsole.Location = new Point(317, 400);
-                btnResumoVendasConsole.Location = new Point(472, 400);
-                btnFluxoCaixaConsole.Location = new Point(625, 400);
-                btnSair.Location = new Point(778, 400);
-                tabControl.Visible = false;
-            }
-        }
-
-        #endregion Layout Usuario
 
         private void btnCadastroProduto_Click(object sender, EventArgs e)
         {
@@ -127,14 +100,10 @@ namespace Sistema_de_Gerenciamento
             pesquisarContasAPagar.ShowDialog();
         }
 
-        private void bntGrupoDeMaterial_Click(object sender, EventArgs e)
+        private void btnGrupoDeMaterial_Click(object sender, EventArgs e)
         {
             Forms_CadastroGrupoProduto cadastroGrupoDeMaterial = new Forms_CadastroGrupoProduto();
             cadastroGrupoDeMaterial.ShowDialog();
-        }
-
-        private void TelaAdministrador_Load(object sender, EventArgs e)
-        {
         }
 
         private void btnVendaConsole_Click(object sender, EventArgs e)
@@ -184,61 +153,6 @@ namespace Sistema_de_Gerenciamento
             Forms_PesquisarCliente pesquisarCliente = new Forms_PesquisarCliente("Cliente");
             pesquisarCliente.ShowDialog();
         }
-
-        private void TimerVerificarDespesaCustoFixo_Tick(object sender, EventArgs e)
-        {
-            AutomatizacaoDespesaCustoFixo();
-        }
-
-        #region Automatizacao Despesa e Custo Fixo
-
-        private void AutomatizacaoDespesaCustoFixo()
-        {
-            int dias = 0;
-
-            List<DadosDespesaCusto> listaDespesasCustos = Buscar.BuscarListaDespesaCustoFixa();
-
-            foreach (DadosDespesaCusto despesaCusto in listaDespesasCustos)
-            {
-                if (despesaCusto.vencimento <= DateTime.Today && despesaCusto.verificar == "nok")
-                {
-                    Atualizar.AtualziarCodigoDespesaCustosFixoRepeticao(despesaCusto.codigo);
-
-                    if (despesaCusto.tipo == "Fixa")
-                    {
-                        bool semanal = despesaCusto.frequencia == "Semanal" ? Convert.ToBoolean(dias = 7) : false;
-                        bool quinzenal = despesaCusto.frequencia == "Quinzenal" ? Convert.ToBoolean(dias = 15) : false;
-                        bool mensal = despesaCusto.frequencia == "Mensal" ? Convert.ToBoolean(dias = 30) : false;
-                        bool bimestral = despesaCusto.frequencia == "Bimestral" ? Convert.ToBoolean(dias = 90) : false;
-                        bool semestral = despesaCusto.frequencia == "Semestral" ? Convert.ToBoolean(dias = 180) : false;
-                        bool anual = despesaCusto.frequencia == "Anual" ? Convert.ToBoolean(dias = 365) : false;
-
-                        if (despesaCusto.forncedorTitulo == "Comissao")
-                        {
-                            Salvar.DespesaCustosFixoRepeticao(despesaCusto.codigo, despesaCusto.tipo, despesaCusto.descricao, despesaCusto.forncedorTitulo,
-                                despesaCusto.cnpj, despesaCusto.emissao, despesaCusto.vencimento.AddDays(dias), despesaCusto.frequencia,
-                                despesaCusto.valor, despesaCusto.quantidadeParcelas, 0, despesaCusto.categoria,
-                                ptbStatusPagamento.Image);
-                        }
-                        else
-                        {
-                            Salvar.DespesaCustosFixoRepeticao(despesaCusto.codigo, despesaCusto.tipo, despesaCusto.descricao, despesaCusto.forncedorTitulo,
-                                despesaCusto.cnpj, despesaCusto.emissao, despesaCusto.vencimento.AddDays(dias), despesaCusto.frequencia,
-                                despesaCusto.valor, despesaCusto.quantidadeParcelas, despesaCusto.valorParcela, despesaCusto.categoria,
-                                ptbStatusPagamento.Image);
-                        }
-                    }
-                }
-
-                if (despesaCusto.vencimento <= DateTime.Today && despesaCusto.statusPagamento == "Nao Pago" && Global.NomeDeUsuario == "ADMIN")
-                {
-                    MessageBox.Show($"Despesa/Custo - {despesaCusto.forncedorTitulo}\n\nVencimento {despesaCusto.vencimento.ToShortDateString()}",
-                            "Pagamento Pendente Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-        }
-
-        #endregion Automatizacao Despesa e Custo Fixo
 
         private void btnPDV_Click(object sender, EventArgs e)
         {
@@ -306,6 +220,121 @@ namespace Sistema_de_Gerenciamento
         {
             Forms_FluxoCaixa fluxoCaixa = new Forms_FluxoCaixa();
             fluxoCaixa.ShowDialog();
+        }
+
+        private void tabCadastro_Click(object sender, EventArgs e)
+        {
+            LayoutUsuario();
+        }
+
+        private void LayoutUsuario()
+        {
+            if (Global.NomeDeUsuario == "ADMIN")
+            {
+                tabControl.Visible = true;
+            }
+            else
+            {
+                btnVendaConsole.Location = new Point(93, 100);
+                btnPDVConsole.Location = new Point(245, 100);
+                //btnOrdemServicoConsole.Location = new Point(245, 100);
+                btnProdutoConsole.Location = new Point(394, 100);
+                btnClienteConsole.Location = new Point(546, 100);
+                btnCConsultarEstoqueConsole.Location = new Point(695, 100);
+
+                btnTrocaConsole.Location = new Point(6, 400);
+                btnDespesasConsole.Location = new Point(161, 400);
+                btnComprasConsole.Location = new Point(317, 400);
+                btnResumoVendasConsole.Location = new Point(472, 400);
+                btnFluxoCaixaConsole.Location = new Point(625, 400);
+                btnSair.Location = new Point(778, 400);
+                tabControl.Visible = false;
+            }
+        }
+
+        private void TimerVerificarDespesaCustoFixo_Tick(object sender, EventArgs e)
+        {
+            AutomatizacaoVerificarDespesaCustoEstoqueMinimo();
+        }
+
+        private void AutomatizacaoVerificarDespesaCustoEstoqueMinimo()
+        {
+            List<DadosDespesaCusto> listaDespesasCustos = Buscar.BuscarListaDespesaCustoFixa();
+
+            foreach (DadosDespesaCusto despesaCusto in listaDespesasCustos)
+            {
+                AtumatizaVerificacaoContasDespesas(despesaCusto);
+            }
+
+            VerificarEstoqueMinimo();
+        }
+
+        private void VerificarEstoqueMinimo()
+        {
+            if (Global.NomeDeUsuario == "ADMIN")
+            {
+                ListaProdutosComEstoqueMinimo = Buscar.BuscarEstoqueAbaixoEstoqueMinimo();
+
+                if (ListaProdutosComEstoqueMinimo.Count != 0)
+                {
+                    foreach (DadosProduto ProdutoComEstoqueMinimo in ListaProdutosComEstoqueMinimo)
+                    {
+                        MessageBox.Show($"Estoque Minimo Atingido! \n\n Código Produto: {ProdutoComEstoqueMinimo.codigoProduto} \n\n Produto: {ProdutoComEstoqueMinimo.descricaoProduto}  ", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+        }
+
+        private void AtumatizaVerificacaoContasDespesas(DadosDespesaCusto _despesaCusto)
+        {
+            if (_despesaCusto.vencimento <= DateTime.Today && _despesaCusto.verificar == "nok")
+            {
+                Atualizar.AtualziarCodigoDespesaCustosFixoRepeticao(_despesaCusto.codigo);
+
+                if (_despesaCusto.tipo == "Fixa")
+                {
+                    TransformarFrenquenciaEmDias(_despesaCusto);
+
+                    if (_despesaCusto.forncedorTitulo == "Comissao")
+                    {
+                        _despesaCusto.valorParcela = 0;
+
+                        InserirDespesaCustosFixosRepeticao(_despesaCusto);
+                    }
+                    else
+                    {
+                        InserirDespesaCustosFixosRepeticao(_despesaCusto);
+                    }
+                }
+            }
+            VerificarUsuarioMensagemPagamentoPendente(_despesaCusto);
+        }
+
+        private void VerificarUsuarioMensagemPagamentoPendente(DadosDespesaCusto _despesaCusto)
+        {
+            if (_despesaCusto.vencimento <= DateTime.Today && _despesaCusto.statusPagamento == "Nao Pago" && Global.NomeDeUsuario == "ADMIN")
+            {
+                MessageBox.Show($"Despesa/Custo - {_despesaCusto.forncedorTitulo}\n\nVencimento {_despesaCusto.vencimento.ToShortDateString()}",
+                        "Pagamento Pendente Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void TransformarFrenquenciaEmDias(DadosDespesaCusto _despesaCusto)
+        {
+            bool semanal = _despesaCusto.frequencia == "Semanal" ? Convert.ToBoolean(dias = 7) : false;
+            bool quinzenal = _despesaCusto.frequencia == "Quinzenal" ? Convert.ToBoolean(dias = 15) : false;
+            bool mensal = _despesaCusto.frequencia == "Mensal" ? Convert.ToBoolean(dias = 30) : false;
+            bool bimestral = _despesaCusto.frequencia == "Bimestral" ? Convert.ToBoolean(dias = 90) : false;
+            bool semestral = _despesaCusto.frequencia == "Semestral" ? Convert.ToBoolean(dias = 180) : false;
+            bool anual = _despesaCusto.frequencia == "Anual" ? Convert.ToBoolean(dias = 365) : false;
+        }
+
+        private void InserirDespesaCustosFixosRepeticao(DadosDespesaCusto _despesaCusto)
+        {
+            Salvar.DespesaCustosFixoRepeticao(_despesaCusto.codigo, _despesaCusto.tipo, _despesaCusto.descricao, _despesaCusto.forncedorTitulo,
+                                _despesaCusto.cnpj, _despesaCusto.emissao, _despesaCusto.vencimento.AddDays(dias), _despesaCusto.frequencia,
+                                _despesaCusto.valor, _despesaCusto.quantidadeParcelas, _despesaCusto.valorParcela, _despesaCusto.categoria,
+                                ptbStatusPagamento.Image);
         }
     }
 }

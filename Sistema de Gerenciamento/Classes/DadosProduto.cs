@@ -54,5 +54,11 @@ namespace Sistema_de_Gerenciamento.Classes
             preco = _preco;
             status = _status;
         }
+
+        public DadosProduto(int _codigoProduto, string _descricaoProduto)
+        {
+            codigoProduto = _codigoProduto;
+            descricaoProduto = _descricaoProduto;
+        }
     }
 }

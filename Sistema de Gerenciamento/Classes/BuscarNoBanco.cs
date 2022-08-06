@@ -1382,6 +1382,45 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Produto Por Codigo
 
+        #region Buscar Verificacao Estoque com Estoque Minimo
+
+        public List<DadosProduto> BuscarEstoqueAbaixoEstoqueMinimo()
+        {
+            List<DadosProduto> listaProqudoQuantidadeEstoqueMinimo = new List<DadosProduto>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "SELECT ep.ep_codigo_produto,ep.ep_descricao from tb_EstoqueProduto as ep " +
+                        "inner join tb_CadastroProdutos cp on ep.ep_codigo_produto = cp.cp_id " +
+                        "and(select SUM(ep_quantidade) from tb_EstoqueProduto " +
+                        "where ep_codigo_produto = cp.cp_id) <= cp.cp_estoque_minimo and " +
+                        "ep.ep_quantidade <> 0 " +
+                        "group by(ep.ep_codigo_produto),(ep.ep_descricao)";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaProqudoQuantidadeEstoqueMinimo.Add(new DadosProduto(dr.GetInt32(0), dr.GetString(1)));
+                    }
+
+                    return listaProqudoQuantidadeEstoqueMinimo;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarProdutoComEstoqueMinimoNoBanco(ex);
+
+                return listaProqudoQuantidadeEstoqueMinimo;
+            }
+        }
+
+        #endregion Buscar Verificacao Estoque com Estoque Minimo
+
         #endregion Buscar Produto
 
         #region Buscar Empresa

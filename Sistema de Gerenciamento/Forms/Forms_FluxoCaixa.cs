@@ -15,6 +15,8 @@ namespace Sistema_de_Gerenciamento.Forms
     {
         private BuscarNoBanco Buscar = new BuscarNoBanco();
 
+        private MensagensErro Erro = new MensagensErro();
+
         private List<DadosUsuario> listaUsuario = new List<DadosUsuario>();
 
         private decimal valorTotal;
@@ -57,7 +59,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             listaUsuario = Buscar.BuscaListaUsuario();
 
-            foreach (var item in listaUsuario)
+            foreach (DadosUsuario item in listaUsuario)
             {
                 cmbUsuario.Items.Add(item.usuario);
             }
@@ -100,17 +102,24 @@ namespace Sistema_de_Gerenciamento.Forms
             }
             else
             {
+                decimal porcentagemComissaoPorproduto;
+                decimal porcentagem = 100;
+                decimal valorPagoProduto;
+                int codigoProduto;
+
                 for (int i = 0; i < gdvFluxoCaixa.RowCount; i++)
                 {
-                    decimal porcentagemComissaoPorproduto;
-
-                    decimal valorPagoProduto;
-
-                    porcentagemComissaoPorproduto = Buscar.BuscarValorComissaoPorProduto(Convert.ToInt32(gdvFluxoCaixa.Rows[i].Cells[3].Value));
-
-                    valorPagoProduto = Convert.ToDecimal(gdvFluxoCaixa.Rows[i].Cells[6].Value.ToString().Replace("R$", ""));
-
-                    valorComissaoPorProduto += Convert.ToDecimal(porcentagemComissaoPorproduto * valorPagoProduto / 100);
+                    try
+                    {
+                        valorPagoProduto = Convert.ToDecimal(gdvFluxoCaixa.Rows[i].Cells[6].Value.ToString().Replace("R$", ""));
+                        codigoProduto = Convert.ToInt32(gdvFluxoCaixa.Rows[i].Cells[3].Value);
+                        porcentagemComissaoPorproduto = Buscar.BuscarValorComissaoPorProduto(codigoProduto);
+                        valorComissaoPorProduto += Convert.ToDecimal(porcentagemComissaoPorproduto * valorPagoProduto / porcentagem);
+                    }
+                    catch (Exception ex)
+                    {
+                        Erro.ErroAoBuscarValorComissaoPorProduto(ex);
+                    }
                 }
 
                 lblComissaoPorProduto.Text = String.Format("{0:c}", valorComissaoPorProduto);

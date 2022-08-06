@@ -233,6 +233,15 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Devolução/Troca
 
+        #region Fluxo de Caixa
+
+        public void ErroAoBuscarValorComissaoPorProduto(Exception _e)
+        {
+            MessageBox.Show($"(FLX-FC01) Erro ao Buscar Valor da Comissão Por Produto \n\nErro: {_e}", "Erro Buscar Valor Comissão!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Fluxo de Caixa
+
         #endregion Forms
 
         #region Banco
@@ -875,6 +884,11 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoBuscarTotalEstoqueProdutoMesmaNFEntradaNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-EP03) Erro ao Realizar Busca da Quantidade Total no Estoque Com a Mesma Nota Fiscal Entrada \n\nErro: {_e}", "Erro Busca Quantidade Total no Estoque Com a Mesma Nota Fiscal Entrada!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarProdutoComEstoqueMinimoNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EP04) Erro ao Realizar Busca Produto Com Quantidade Menor Que Estoque Minimo \n\nErro: {_e}", "Erro Busca Quantidade Estoque Com Estoque Minimo!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Estoque Produto
