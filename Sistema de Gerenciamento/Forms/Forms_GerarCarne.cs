@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema_de_Gerenciamento.Classes;
+using System.IO;
 
 namespace Sistema_de_Gerenciamento.Forms
 {
@@ -105,14 +106,53 @@ namespace Sistema_de_Gerenciamento.Forms
 
                 txtParcelasQueGeramJuros.Text = listaFinanceiro[0].parcelasCarne.ToString();
 
-                txtPrimeiraParcela.Text = DateTime.Today.AddDays(Convert.ToDouble(txtPrazo.Text)).ToShortDateString();
-
                 NumermoNotaFiscal = Convert.ToInt32(Buscar.BuscarNumeroNotaFiscalSaida());
+
+                VerificarDiaPagamento();
             }
             catch (Exception ex)
             {
                 Erro.ErroAoBuscarDadosParaPreencherTextBox(ex);
             }
+        }
+
+        private void VerificarDiaPagamento()
+        {
+            DateTime dataPrimeiraParcela = DateTime.Today.AddDays(Convert.ToInt32(txtPrazo.Text));
+
+            if (dataPrimeiraParcela.DayOfWeek == DayOfWeek.Saturday)
+            {
+                dataPrimeiraParcela = DateTime.Today.AddDays(2);
+
+                txtPrimeiraParcela.Text = dataPrimeiraParcela.ToShortDateString();
+            }
+            else if (dataPrimeiraParcela.DayOfWeek == DayOfWeek.Sunday)
+            {
+                dataPrimeiraParcela = DateTime.Today.AddDays(1);
+
+                txtPrimeiraParcela.Text = dataPrimeiraParcela.ToShortDateString();
+            }
+
+
+            VerificarDiasFeriados(dataPrimeiraParcela);
+
+        }
+
+        private DateTime VerificarDiasFeriados(DateTime _dataPrimeiraParcela)
+        {
+            const string filePath = @"C:\GitHub\Sistema-de-Gerenciamento\FeriadosNacionais.txt";
+
+            string[] data = File.ReadAllLines(filePath);
+
+            foreach (var item in data)
+            {
+                if (item == _dataPrimeiraParcela.ToShortDateString())
+                {
+                    return _dataPrimeiraParcela.AddDays(1);
+                }
+            }
+
+            return _dataPrimeiraParcela;
         }
 
         public Forms_GerarCarne()

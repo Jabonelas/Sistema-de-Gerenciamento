@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Bunifu.UI.WinForms;
 using Sistema_de_Gerenciamento.Classes;
+using System.IO;
 
 namespace Sistema_de_Gerenciamento.Forms
 {
@@ -26,7 +27,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private List<DadosCadastroDespesasCusto> listaDespesaCusto = new List<DadosCadastroDespesasCusto>();
 
-        private int cont = 1;
+        private int cont = 0;
 
         private int dias = 1;
 
@@ -125,6 +126,8 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
+                    int cont = 1;
+
                     List<DadosDespesaCusto> listaDespesas = Buscar.BuscarListaDespesaCusto(cmbTipoDespesa.Text, lblCategoria.Text);
 
                     if (listaDespesas.Find(lista => lista.descricao == txtDescricao.Text && lista.forncedorTitulo == cmbFornecedorTitulo.Text) == null)
@@ -307,7 +310,16 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtVencimento_Leave(object sender, EventArgs e)
         {
-            VerificarDataTextBox(txtVencimento);
+            if (cont == 0)
+            {
+                VerificarDataTextBox(txtVencimento);
+
+                cont++;
+            }
+            else
+            {
+                cont = 0;
+            }
         }
 
         #region Verificar Data TextBox
@@ -328,11 +340,51 @@ namespace Sistema_de_Gerenciamento.Forms
 
                         _textBox.Focus();
                     }
+
+                    VerificarDiaPagamento(_textBox);
                 }
             }
         }
 
         #endregion Verificar Data TextBox
+
+        private void VerificarDiaPagamento(BunifuTextBox _textBox)
+        {
+            DateTime dataVencimento = Convert.ToDateTime(txtVencimento.Text);
+
+            if (dataVencimento.DayOfWeek == DayOfWeek.Saturday)
+            {
+                MensagemDataInvalida();
+            }
+            else if (dataVencimento.DayOfWeek == DayOfWeek.Sunday)
+            {
+                MensagemDataInvalida();
+            }
+
+            VerificarDiasFeriados(dataVencimento, _textBox);
+        }
+
+        private void VerificarDiasFeriados(DateTime _dataVencimento, BunifuTextBox _textBox)
+        {
+            const string filePath = @"C:\GitHub\Sistema-de-Gerenciamento\FeriadosNacionais.txt";
+
+            string[] data = File.ReadAllLines(filePath);
+
+            foreach (var item in data)
+            {
+                if (item == _dataVencimento.ToShortDateString())
+                {
+                    MensagemDataInvalida();
+                }
+            }
+        }
+
+        private void MensagemDataInvalida()
+        {
+            MessageBox.Show($"A Data Informada Não é Um Dia Útil.", "Atenção Data Invalida!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            return;
+        }
 
         private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -381,22 +433,19 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void cmbQuantidadeParcelas_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (txtValor.Text != "")
+            if (txtValor.Text != String.Empty)
             {
-                txtValorParcelas.Text = string.Format("R$ {0:#,##0.00}", Convert.ToDecimal(txtValor.Text.Replace("R$", "")) /
+                txtValorParcelas.Text = string.Format("R$ {0:c}", Convert.ToDecimal(txtValor.Text.Replace("R$", "")) /
                 Convert.ToDecimal(cmbQuantidadeParcelas.Text.Replace("x", "")));
             }
         }
 
         private void txtValor_KeyUp(object sender, KeyEventArgs e)
         {
-            try
+            if (txtValorParcelas.Text != String.Empty)
             {
-                txtValorParcelas.Text = string.Format("R$ {0:#,##0.00}", Convert.ToDecimal(txtValor.Text.Replace("R$", "")) /
-                Convert.ToDecimal(cmbQuantidadeParcelas.Text.Replace("x", "")));
-            }
-            catch (Exception exception)
-            {
+                txtValorParcelas.Text = string.Format("R$ {0:c}", Convert.ToDecimal(txtValor.Text.Replace("R$", "")) /
+                    Convert.ToDecimal(cmbQuantidadeParcelas.Text.Replace("x", "")));
             }
         }
 
@@ -421,6 +470,8 @@ namespace Sistema_de_Gerenciamento.Forms
             if (cmbTipoDespesa.Text != string.Empty)
             {
                 txtVencimento.Text = dtpVencimento.Value.ToShortDateString();
+
+                VerificarDiaPagamento(txtVencimento);
             }
         }
 
@@ -443,6 +494,10 @@ namespace Sistema_de_Gerenciamento.Forms
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                         _datePicker.Focus();
+                    }
+                    else
+                    {
+                        txtVencimento.Focus();
                     }
                 }
             }

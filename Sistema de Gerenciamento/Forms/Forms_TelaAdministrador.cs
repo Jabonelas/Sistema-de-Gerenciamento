@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema_de_Gerenciamento.Classes;
 using System.Threading;
+using System.IO;
 
 namespace Sistema_de_Gerenciamento
 {
@@ -297,17 +298,52 @@ namespace Sistema_de_Gerenciamento
 
                     if (_despesaCusto.forncedorTitulo == "Comissao")
                     {
+                        VerificarDiaPagamento(_despesaCusto);
+
                         _despesaCusto.valorParcela = 0;
 
                         InserirDespesaCustosFixosRepeticao(_despesaCusto);
                     }
                     else
                     {
+                        VerificarDiaPagamento(_despesaCusto);
+
                         InserirDespesaCustosFixosRepeticao(_despesaCusto);
                     }
                 }
             }
             VerificarUsuarioMensagemPagamentoPendente(_despesaCusto);
+        }
+
+        private void VerificarDiaPagamento(DadosDespesaCusto _despesaCusto)
+        {
+            DateTime data = _despesaCusto.vencimento;
+
+            if (data.DayOfWeek == DayOfWeek.Saturday)
+            {
+                _despesaCusto.vencimento.AddDays(-1);
+            }
+            else if (data.DayOfWeek == DayOfWeek.Sunday)
+            {
+                _despesaCusto.vencimento.AddDays(-2);
+            }
+
+            VerificarDiasFeriados(_despesaCusto.vencimento);
+        }
+
+        private void VerificarDiasFeriados(DateTime _dataVencimento)
+        {
+            const string filePath = @"C:\GitHub\Sistema-de-Gerenciamento\FeriadosNacionais.txt";
+
+            string[] data = File.ReadAllLines(filePath);
+
+            foreach (var item in data)
+            {
+                if (item == _dataVencimento.ToShortDateString())
+                {
+                    _dataVencimento.AddDays(-1);
+                }
+            }
         }
 
         private void VerificarUsuarioMensagemPagamentoPendente(DadosDespesaCusto _despesaCusto)
