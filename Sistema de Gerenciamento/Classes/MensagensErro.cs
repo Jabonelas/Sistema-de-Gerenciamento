@@ -1291,6 +1291,40 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Resumo de Vendas
 
+        #region Estatiscicas Financeiras
+
+        public void ErroAoBuscaValorTotalBrutoNotaFiscalPorDataSaidaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EF01) Erro ao Realizar Busca Valor Total Bruto Nota Fiscal Saida Por Data \n\nErro: {_e}", "Erro Buscar Valor Total Bruto Nota Fiscal Saida Por Data!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscaValorTotalBrutoCarnePorDataSaidaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EF02) Erro ao Realizar Busca Valor Total Bruto Carne Por Data \n\nErro: {_e}", "Erro Buscar Valor Total Bruto Carne Por Data!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscaValorTotalCustosDespesasPagosPorDataNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EF03) Erro ao Realizar Busca Valor Total Custos/Despesas Com Pagamentos Realizados \n\nErro: {_e}", "Erro Buscar Valor Total Custos/Despesas Pagos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscaValorTotalCustosDespesasComPagamentosAtrasadosPorDataNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EF04) Erro ao Realizar Busca Valor Total Custos/Despesas Com Pagamentos Atrasados \n\nErro: {_e}", "Erro Buscar Valor Total Custos/Despesas Atrasados!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscaValorContasAReceberAtrasadasPorDataNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EF05) Erro ao Realizar Busca Valor Contas a Receber Atrasadas \n\nErro: {_e}", "Erro Buscar Valor Contas a Receber Atrasadas!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscaValorProdutoPorDadaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EF06) Erro ao Realizar Busca Valor de Produtos Por Data \n\nErro: {_e}", "Erro Buscar Valor de Produtos Por Data!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Estatiscicas Financeiras
+
         #endregion Buscar No Banco
 
         #region Verificar Existencia No Banco

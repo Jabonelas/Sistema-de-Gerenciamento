@@ -106,5 +106,20 @@ namespace Sistema_de_Gerenciamento.Forms
         private void Forms_ResumoVendas_Load(object sender, EventArgs e)
         {
         }
+
+        private void lblValorGastoBruto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label55_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -80,6 +80,9 @@
     <Reference Include="Bunifu.UI.WinForms.BunifuTextbox">
       <HintPath>..\..\..\..\Downloads\Bunifu_Framework__Bunifu_DataViz\Bunifu UI WinForms 1.11.5.1\Bunifu UI WinForms v4.1.1\Bunifu.UI.WinForms.BunifuTextbox.dll</HintPath>
     </Reference>
+    <Reference Include="BunifuDataViz">
+      <HintPath>..\..\..\..\Downloads\Bunifu_Framework__Bunifu_DataViz\Bunifu Dataviz Advanced 1.1.1.5\BunifuDataViz.dll</HintPath>
+    </Reference>
     <Reference Include="Correios, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Correios-Api.1.1.1\lib\portable-net45+win\Correios.dll</HintPath>
     </Reference>
@@ -309,6 +312,12 @@
     <Compile Include="Forms\Forms_ConsultaEstoqueDetalhada.Designer.cs">
       <DependentUpon>Forms_ConsultaEstoqueDetalhada.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Forms_EstatisticasFinanceiras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_EstatisticasFinanceiras.Designer.cs">
+      <DependentUpon>Forms_EstatisticasFinanceiras.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Forms_FluxoCaixa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -535,6 +544,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_ConsultaEstoqueDetalhada.resx">
       <DependentUpon>Forms_ConsultaEstoqueDetalhada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Forms_EstatisticasFinanceiras.resx">
+      <DependentUpon>Forms_EstatisticasFinanceiras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_FluxoCaixa.resx">
       <DependentUpon>Forms_FluxoCaixa.cs</DependentUpon>

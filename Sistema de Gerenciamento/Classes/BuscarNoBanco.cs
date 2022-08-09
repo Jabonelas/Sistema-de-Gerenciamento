@@ -5054,5 +5054,241 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Resumo Venda
+
+        #region Estatisticas Financeiras
+
+        #region Buscar Valor Bruto Nota Fisal Saida Por Data
+
+        public decimal ValorBrutoNotaFinalSaidaPorData(DateTime _dataInicial, DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(ns_valor_pago) from tb_NotaFiscalSaida " +
+                        "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal " +
+                        "and ns_tipo_pagamento <> 'CARNÊ'";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    if (dr.IsDBNull(0) == true)
+                    {
+                        return 0;
+                    }
+
+                    return dr.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaValorTotalBrutoNotaFiscalPorDataSaidaNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Valor Bruto Nota Fisal Saida Por Data
+
+        #region Buscar Valor Bruto Carne Por data
+
+        public Decimal BuscarValorBrutoCarnePorData(DateTime _dataInicial, DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(pc_valor_final_parcela) from tb_PagamentoCarne " +
+                        "where pc_data_pagamento >= @dataInicial and pc_data_pagamento <= @dataFinal";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    if (dr.IsDBNull(0) == true)
+                    {
+                        return 0;
+                    }
+
+                    return dr.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaValorTotalBrutoCarnePorDataSaidaNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Valor Bruto Carne Por data
+
+        #region Buscar Valor Custo/Despesas Pagos Por Data
+
+        public decimal BuscarValorCustoDespesasPagosPorData(DateTime _dataInicial, DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(dc_valor_pago) from tb_DespesasCustos " +
+                        "where dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                        "and dc_estatus_pagamento = 'Pago'";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    if (dr.IsDBNull(0) == true)
+                    {
+                        return 0;
+                    }
+
+                    return dr.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaValorTotalCustosDespesasPagosPorDataNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Valor Custo/Despesas Pagos Por Data
+
+        #region Buscar Valor Custo/Despesas Com Pagamento Atrasado Por Data
+
+        public decimal BuscarValorCustoDespesasComPagamentoAtrasadoPorData(DateTime _dataInicial, DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(dc_valor_parcela) from tb_DespesasCustos " +
+                        "where dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                        "and dc_estatus_pagamento = 'Nao Pago'";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    if (dr.IsDBNull(0) == true)
+                    {
+                        return 0;
+                    }
+
+                    return dr.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaValorTotalCustosDespesasComPagamentosAtrasadosPorDataNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Valor Custo/Despesas Com Pagamento Atrasado Por Data
+
+        #region Buscar Valor Contas a Receber Atrasadas
+
+        public decimal BuscarValorContasAReceberAtrasadas(DateTime _dataInicial, DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(pc_valor_parcela) from tb_PagamentoCarne " +
+                        "where pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal " +
+                        "and pc_status = 'Nao Pago'";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    if (dr.IsDBNull(0) == true)
+                    {
+                        return 0;
+                    }
+
+                    return dr.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaValorContasAReceberAtrasadasPorDataNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Valor Contas a Receber Atrasadas
+
+        #region Buscar Valor Produtos Por Data
+
+        public decimal BuscarValorProdutoPorData(DateTime _dataInicial, DateTime _dataFinal)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select sum(cp_valor_custo*pe.ns_quantidade) from tb_CadastroProdutos as p " +
+                        "inner join tb_NotaFiscalSaida pe on p.cp_id = pe.ns_codigo_produto " +
+                        "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    dr.Read();
+
+                    if (dr.IsDBNull(0) == true)
+                    {
+                        return 0;
+                    }
+
+                    return dr.GetDecimal(0);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaValorProdutoPorDadaNoBanco(ex);
+
+                return 0;
+            }
+        }
+
+        #endregion Buscar Valor Produtos Por Data
+
+        #endregion Estatisticas Financeiras
     }
 }

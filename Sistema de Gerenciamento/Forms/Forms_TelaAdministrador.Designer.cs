@@ -136,10 +136,12 @@
             this.btnVendaConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnPDVConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.TimerVerificarDespesaCustoFixo = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabCadastro.SuspendLayout();
             this.tabMovimentacao.SuspendLayout();
             this.tabFinanceiro.SuspendLayout();
+            this.tabRelatorios.SuspendLayout();
             this.tabConsultas.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptbStatusPagamento)).BeginInit();
@@ -1984,6 +1986,7 @@
             // 
             // tabRelatorios
             // 
+            this.tabRelatorios.Controls.Add(this.button1);
             this.tabRelatorios.Location = new System.Drawing.Point(4, 27);
             this.tabRelatorios.Name = "tabRelatorios";
             this.tabRelatorios.Padding = new System.Windows.Forms.Padding(3);
@@ -3514,6 +3517,16 @@
             this.TimerVerificarDespesaCustoFixo.Interval = 72000000;
             this.TimerVerificarDespesaCustoFixo.Tick += new System.EventHandler(this.TimerVerificarDespesaCustoFixo_Tick);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(384, 54);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(104, 32);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Forms_TelaAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3535,6 +3548,7 @@
             this.tabMovimentacao.PerformLayout();
             this.tabFinanceiro.ResumeLayout(false);
             this.tabFinanceiro.PerformLayout();
+            this.tabRelatorios.ResumeLayout(false);
             this.tabConsultas.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -3619,6 +3633,7 @@
         private System.Windows.Forms.Panel panel7;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnResumoVendas;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnFluxoCaixa;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -1,0 +1,563 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BunifuDataViz</name>
+    </assembly>
+    <members>
+        <member name="M:Bunifu.UI.WinForms.BunifuCustomControl.initializeComponent(System.Windows.Forms.Control)">
+            <summary>
+            Checks this instance.
+            </summary>
+        </member>
+        <member name="T:Bunifu.DataViz.WinForms.BunifuDataViz">
+            <summary>
+            Class BunifuDataViz.
+            </summary>
+            <seealso cref="T:System.Windows.Forms.UserControl" />
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.BunifuDataViz.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bunifu.DataViz.WinForms.BunifuDataViz" /> class.
+            </summary>
+        </member>
+        <member name="T:Bunifu.DataViz.WinForms.BunifuDataViz._theme">
+            <summary>
+            Enum _theme
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._theme.theme1">
+            <summary>
+            The theme1
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._theme.theme2">
+            <summary>
+            The theme2
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._theme.theme3">
+            <summary>
+            The theme3
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz.__theme">
+            <summary>
+            The theme
+            </summary>
+        </member>
+        <member name="P:Bunifu.DataViz.WinForms.BunifuDataViz.Theme">
+            <summary>
+            Gets or sets the theme.
+            </summary>
+            <value>The theme.</value>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._AxisXGridColor">
+            <summary>
+            The axis x grid color
+            </summary>
+        </member>
+        <member name="P:Bunifu.DataViz.WinForms.BunifuDataViz.AxisXGridColor">
+            <summary>
+            Gets or sets the color of the axis x grid.
+            </summary>
+            <value>The color of the axis x grid.</value>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._AxisXFontColor">
+            <summary>
+            The axis x font color
+            </summary>
+        </member>
+        <member name="P:Bunifu.DataViz.WinForms.BunifuDataViz.AxisXFontColor">
+            <summary>
+            Gets or sets the color of the axis x font.
+            </summary>
+            <value>The color of the axis x font.</value>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._AxisYFontColor">
+            <summary>
+            The axis y font color
+            </summary>
+        </member>
+        <member name="P:Bunifu.DataViz.WinForms.BunifuDataViz.AxisYFontColor">
+            <summary>
+            Gets or sets the color of the axis y font.
+            </summary>
+            <value>The color of the axis y font.</value>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._AxisYGridColor">
+            <summary>
+            The axis y grid color
+            </summary>
+        </member>
+        <member name="P:Bunifu.DataViz.WinForms.BunifuDataViz.AxisYGridColor">
+            <summary>
+            Gets or sets the color of the axis y grid.
+            </summary>
+            <value>The color of the axis y grid.</value>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._AxisXGridThickness">
+            <summary>
+            The axis x grid thickness
+            </summary>
+        </member>
+        <member name="P:Bunifu.DataViz.WinForms.BunifuDataViz.AxisXGridThickness">
+            <summary>
+            Gets or sets the axis x grid thickness.
+            </summary>
+            <value>The axis x grid thickness.</value>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._AxisYGridThickness">
+            <summary>
+            The axis y grid thickness
+            </summary>
+        </member>
+        <member name="P:Bunifu.DataViz.WinForms.BunifuDataViz.AxisYGridThickness">
+            <summary>
+            Gets or sets the axis y grid thickness.
+            </summary>
+            <value>The axis y grid thickness.</value>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._title">
+            <summary>
+            The title
+            </summary>
+        </member>
+        <member name="P:Bunifu.DataViz.WinForms.BunifuDataViz.Title">
+            <summary>
+            Gets or sets the title.
+            </summary>
+            <value>The title.</value>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._animationEnabled">
+            <summary>
+            The animation enabled
+            </summary>
+        </member>
+        <member name="P:Bunifu.DataViz.WinForms.BunifuDataViz.animationEnabled">
+            <summary>
+            Gets or sets a value indicating whether [animation enabled].
+            </summary>
+            <value><c>true</c> if [animation enabled]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz.colorSet">
+            <summary>
+            The color set
+            </summary>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.BunifuDataViz.getColorSet">
+            <summary>
+            Gets the color set.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz.lastdata">
+            <summary>
+            The lastdata
+            </summary>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.BunifuDataViz.Render(Bunifu.DataViz.WinForms.Canvas)">
+            <summary>
+            Renders the specified data.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._linecolr">
+            <summary>
+            The linecolr
+            </summary>
+        </member>
+        <member name="P:Bunifu.DataViz.WinForms.BunifuDataViz.AxisLineColor">
+            <summary>
+            Gets or sets the color of the axis line.
+            </summary>
+            <value>The color of the axis line.</value>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.BunifuDataViz.Refresh">
+            <summary>
+            Forces the control to invalidate its client area and immediately redraw itself and any child controls.
+            </summary>
+            <PermissionSet>
+              <IPermission class="System.Security.Permissions.EnvironmentPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+              <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+              <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="UnmanagedCode, ControlEvidence" />
+              <IPermission class="System.Diagnostics.PerformanceCounterPermission, System, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Unrestricted="true" />
+            </PermissionSet>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.BunifuDataViz.colorToHex(System.Drawing.Color)">
+            <summary>
+            Colors to hexadecimal.
+            </summary>
+            <param name="myColor">My color.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="P:Bunifu.DataViz.WinForms.BunifuDataViz.DesignMode">
+            <summary>
+            Gets a value that indicates whether the <see cref="T:System.ComponentModel.Component" /> is currently in design mode.
+            </summary>
+            <value><c>true</c> if [design mode]; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Bunifu.DataViz.WinForms.BunifuDataViz._type">
+            <summary>
+            Enum _type
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_column">
+             <summary>
+             A column chart is a graphic representation of data. Column charts display vertical bars going across the chart horizontally, with the values axis being displayed on the left side of the chart.
+             </summary>
+             <example> 
+             This sample shows how render column chart <see cref="M:Bunifu.DataViz.WinForms.BunifuDataViz.Render(Bunifu.DataViz.WinForms.Canvas)"/> method.
+             <code>
+               Bunifu.DataViz.Canvas canvas1 = new Bunifu.DataViz.Canvas();
+               Bunifu.DataViz.DataPoint datapoint1 = new Bunifu.DataViz.DataPoint(Bunifu.DataViz.BunifuDataViz._type.Bunifu_column);
+                      {
+                         Random r = new Random();
+                         datapoint1.addLabely("SUN", r.Next(0, 100).ToString());
+                         datapoint1.addLabely("MON", r.Next(0, 100).ToString());
+                         datapoint1.addLabely("TUE", r.Next(0, 100).ToString());
+                         datapoint1.addLabely("WED", r.Next(0, 100).ToString());
+                         datapoint1.addLabely("THU", r.Next(0, 100).ToString());
+                         datapoint1.addLabely("FRI", r.Next(0, 100).ToString());
+                         datapoint1.addLabely("SAT", r.Next(0, 100).ToString());
+                         canvas1.addData(datapoint1);
+                     }
+            bunifuDataViz1.Render(canvas1);
+             </code>
+             </example>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_line">
+            <summary>
+            A line chart or line graph is a type of chart which displays information as a series of data points called 'markers' connected by straight line segments. It is a basic type of chart common in many fields.
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_stepLine">
+            <summary>
+            step-chart. Noun. (plural step charts) A chart similar to a line graph, but with the line forming a series of steps between data points.
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_spline">
+            <summary>
+            Spline charts integrate all the characteristics of a conventional line chart except for the fact that unlike line charts, which connect data points with straight lines, spline charts draw a fitted curved line to join the data points.
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_stepArea">
+            <summary>
+            An area chart or area graph displays graphically quantitative data. It is based on the line chart. The area between axis and line are commonly emphasized with colors, textures and hatchings. Commonly one compares with an area chart two or more quantities
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_area">
+            <summary>
+            An area chart or area graph displays graphically quantitative data. It is based on the line chart. The area between axis and line are commonly emphasized with colors, textures and hatchings. Commonly one compares with an area chart two or more quantities.
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_splineArea">
+            <summary>
+            An area chart or area graph displays graphically quantitative data. It is based on the line chart. The area between axis and line are commonly emphasized with colors, textures and hatchings.
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_bar">
+            <summary>
+            a diagram in which the numerical values of variables are represented by the height or length of lines or rectangles of equal width.
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_pie">
+            <summary>
+            The pie is a type of graph in which a circle is divided into sectors that each represent a proportion of the whole.
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_doughnut">
+            <summary>
+            Doughnut Charts. Definition. A doughnut chart looks similar to a pie chart but it can contain more than one data series. Use. Like a pie chart a doughnut chart shows the relationship of parts to a whole.
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_bubble">
+            <summary>
+            A bubble chart is a type of chart that displays three dimensions of data. Each entity with its triplet (v1, v2, v3) of associated data is plotted as a disk that expresses two of the vi values through the disk's xy location and the third through its size.
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_scatter">
+            <summary>
+             A scatter plot is a set of points plotted on a horizontal and vertical axes. Scatter plots are important in statistics because they can show the extent of correlation, if any, between the values of observed quantities or phenomena (called variables).
+            </summary> 
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_stackedColumn">
+            <summary>
+            The stacked column
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_stackedColumn100">
+            <summary>
+            A stacked Column chart, also known as a stacked Column graph, is a graph that is used to break down and compare parts of a whole. EachColumn in the chart represents a whole, and segments in the Column represent different parts or categories of that whole.
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_stackedArea">
+            <summary>
+            The stacked area
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_stackedArea100">
+            <summary>
+            The stacked area100
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_stackedBar">
+            <summary>
+            The stacked bar
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_stackedBar100">
+            <summary>
+            The stacked bar100
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_rangeColumn">
+            <summary>
+            The range column
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_rangeBar">
+            <summary>
+            The range bar
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_rangeArea">
+            <summary>
+            The range area
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_rangeSplineArea">
+            <summary>
+            The range spline area
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_ohlc">
+            <summary>
+            The ohlc
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz._type.Bunifu_candlestick">
+            <summary>
+            The candlestick
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz.__type">
+            <summary>
+            The type
+            </summary>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.BunifuDataViz.toJSON_Array(System.Object[])">
+            <summary>
+            To the json array.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.BunifuDataViz.toJSON_Array(System.Collections.Generic.List{Bunifu.DataViz.WinForms.DataPoint})">
+            <summary>
+            To the json array.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.BunifuDataViz.toJSON_Array(System.Collections.Generic.List{System.String})">
+            <summary>
+            To the json array.
+            </summary>
+            <param name="data">The data.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.BunifuDataViz.BunifuDataViz_Load(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Load event of the BunifuCharts control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.BunifuDataViz.BunifuDataViz_Resize(System.Object,System.EventArgs)">
+            <summary>
+            Handles the Resize event of the BunifuCharts control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.BunifuDataViz.webBrowser1_DocumentCompleted(System.Object,System.Windows.Forms.WebBrowserDocumentCompletedEventArgs)">
+            <summary>
+            Handles the DocumentCompleted event of the webBrowser1 control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Forms.WebBrowserDocumentCompletedEventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.BunifuDataViz.BunifuDataViz_BackColorChanged(System.Object,System.EventArgs)">
+            <summary>
+            Handles the BackColorChanged event of the BunifuCharts control.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.EventArgs" /> instance containing the event data.</param>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.BunifuDataViz.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.BunifuDataViz.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.BunifuDataViz.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Bunifu.DataViz.WinForms.Canvas">
+            <summary>
+            Class Canvas.
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.Canvas.type">
+            <summary>
+            The type
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.Canvas.dp">
+            <summary>
+            The dp
+            </summary>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.Canvas.getData">
+            <summary>
+            Gets the data.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.Canvas.addData(Bunifu.DataViz.WinForms.DataPoint)">
+            <summary>
+            Adds the data.
+            </summary>
+            <param name="datapoint">The datapoint.</param>
+        </member>
+        <member name="T:Bunifu.DataViz.WinForms.DataPoint">
+            <summary>
+            Class DataPoint.
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.DataPoint._ret">
+            <summary>
+            The ret
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.DataPoint.objs">
+            <summary>
+            The objs
+            </summary>
+        </member>
+        <member name="F:Bunifu.DataViz.WinForms.DataPoint.chartType">
+            <summary>
+            The chart type
+            </summary>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.DataPoint.#ctor(Bunifu.DataViz.WinForms.BunifuDataViz._type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Bunifu.DataViz.WinForms.DataPoint" /> class.
+            </summary>
+            <param name="_ChartType">Type of the chart.</param>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.DataPoint.GetDataPoint">
+            <summary>
+            Gets the data point.
+            </summary>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.DataPoint.clear">
+            <summary>
+            Clears this instance.
+            </summary>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.DataPoint.addxy(System.Object,System.Object)">
+            <summary>
+            Addxies the specified x.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.DataPoint.addLabely(System.String,System.Object)">
+            <summary>
+            Adds the labely.
+            </summary>
+            <param name="_lable">The lable.</param>
+            <param name="y">The y.</param>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.DataPoint.addxyz(System.Object,System.Object,System.Object)">
+            <summary>
+            Addxyzs the specified x.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+            <param name="z">The z.</param>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.DataPoint.addxy(System.Object,System.Object[])">
+            <summary>
+            Addxies the specified x.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+        </member>
+        <member name="M:Bunifu.DataViz.WinForms.DataPoint.addxyLabel(System.Object,System.Object,System.String)">
+            <summary>
+            Addxies the label.
+            </summary>
+            <param name="x">The x.</param>
+            <param name="y">The y.</param>
+            <param name="_Label">The label.</param>
+        </member>
+        <member name="T:Bunifu.DataViz.WinForms.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Bunifu.DataViz.WinForms.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Bunifu.DataViz.WinForms.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Bunifu.DataViz.WinForms.Properties.Resources.bunifujs">
+             <summary>
+               Looks up a localized string similar to &lt;!DOCTYPE HTML&gt;
+            &lt;html&gt;
+            &lt;head&gt;
+            	&lt;script type=&quot;text/javascript&quot;&gt;
+                    window.onload = function () {
+            
+                        CanvasJS.addColorSet(&quot;greenShades&quot;,
+                            {colorset}
+                            );
+            
+            
+            		var chart = new CanvasJS.Chart(&quot;chartContainer&quot;,
+            		{chart}
+            	);
+            		chart.render();
+            	}
+            
+            
+            	&lt;/script&gt;
+            	&lt;style type=&quot;text/css&quot;&gt;
+            body {
+                overflow:hidden;
+            }
+            &lt;/style&gt;
+            	&lt;script&gt;
+                    (function(){function O(a,b){a.prototype=Ba(b.prototype);a.prototype.constructor=a;a.base=b.prototype}functio [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+    </members>
+</doc>

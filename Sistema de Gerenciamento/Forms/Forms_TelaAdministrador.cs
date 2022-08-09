@@ -372,5 +372,11 @@ namespace Sistema_de_Gerenciamento
                                 _despesaCusto.valor, _despesaCusto.quantidadeParcelas, _despesaCusto.valorParcela, _despesaCusto.categoria,
                                 ptbStatusPagamento.Image);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Forms_EstatisticasFinanceiras estatisticasFinanceiras = new Forms_EstatisticasFinanceiras();
+            estatisticasFinanceiras.ShowDialog();
+        }
     }
 }

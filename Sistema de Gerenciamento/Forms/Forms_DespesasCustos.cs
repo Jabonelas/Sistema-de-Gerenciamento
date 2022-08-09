@@ -442,11 +442,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtValor_KeyUp(object sender, KeyEventArgs e)
         {
-            if (txtValorParcelas.Text != String.Empty)
-            {
-                txtValorParcelas.Text = string.Format("R$ {0:c}", Convert.ToDecimal(txtValor.Text.Replace("R$", "")) /
-                    Convert.ToDecimal(cmbQuantidadeParcelas.Text.Replace("x", "")));
-            }
+            //if (txtValorParcelas.Text != String.Empty)
+            //{
+            txtValorParcelas.Text = string.Format("R$ {0:c}", Convert.ToDecimal(txtValor.Text.Replace("R$", "")) /
+                Convert.ToDecimal(cmbQuantidadeParcelas.Text.Replace("x", "")));
+            //}
         }
 
         private void txtVencimento_Enter(object sender, EventArgs e)
