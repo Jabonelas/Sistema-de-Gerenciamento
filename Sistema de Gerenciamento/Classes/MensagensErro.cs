@@ -1303,12 +1303,12 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-EF02) Erro ao Realizar Busca Valor Total Bruto Carne Por Data \n\nErro: {_e}", "Erro Buscar Valor Total Bruto Carne Por Data!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoBuscaValorTotalCustosDespesasPagosPorDataNoBanco(Exception _e)
+        public void ErroAoBuscaValorTotalContasPagasPorDataNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-EF03) Erro ao Realizar Busca Valor Total Custos/Despesas Com Pagamentos Realizados \n\nErro: {_e}", "Erro Buscar Valor Total Custos/Despesas Pagos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoBuscaValorTotalCustosDespesasComPagamentosAtrasadosPorDataNoBanco(Exception _e)
+        public void ErroAoBuscaValorTotalContasComPagamentosAtrasadosPorDataNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-EF04) Erro ao Realizar Busca Valor Total Custos/Despesas Com Pagamentos Atrasados \n\nErro: {_e}", "Erro Buscar Valor Total Custos/Despesas Atrasados!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
@@ -1321,6 +1321,11 @@ namespace Sistema_de_Gerenciamento
         public void ErroAoBuscaValorProdutoPorDadaNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-EF06) Erro ao Realizar Busca Valor de Produtos Por Data \n\nErro: {_e}", "Erro Buscar Valor de Produtos Por Data!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscaValorContasPagasPorDadaAvancadasNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EF07) Erro ao Realizar Busca Valor Contas Pagas Por Data Avançadas \n\nErro: {_e}", "Erro Buscar Valor Contas Pagas Por Data Avançadas!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Estatiscicas Financeiras

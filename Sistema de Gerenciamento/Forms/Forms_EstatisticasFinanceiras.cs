@@ -16,17 +16,19 @@ namespace Sistema_de_Gerenciamento.Forms
     {
         private BuscarNoBanco Buscar = new BuscarNoBanco();
 
-        private DataPoint colunaValorBruto;
+        private DataPoint colunas;
 
-        private DataPoint colunaValorLiquido;
+        private decimal valorContasPagas = 0;
 
-        private DataPoint colunaValorProduto;
+        private decimal valorContasAReceberAtrasadas = 0;
 
-        private DataPoint colunaValorContasPagas;
+        private decimal valorContasAPagarAtrasadas = 0;
 
-        private DataPoint colunaaValorContasAPagarAtrasadas;
+        private decimal valorProdutos = 0;
 
-        private DataPoint colunaaValorContasAReceberAtrasadas;
+        private decimal valorBrutoNotaFinalSaida = 0;
+
+        private decimal valorBrutoCarne = 0;
 
         public Forms_EstatisticasFinanceiras()
         {
@@ -50,6 +52,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
+            BuscarValores();
+
             ValorBruto();
 
             ValorProdutos();
@@ -60,156 +64,236 @@ namespace Sistema_de_Gerenciamento.Forms
 
             ValorContasAPagarAtrasadas();
 
-            ValorContasAreceberAtrasadas();
+            ValorContasAReceberAtrasadas();
+        }
+
+        private void BuscarValores()
+        {
+            valorContasAReceberAtrasadas = Buscar.BuscarValorContasAReceberAtrasadas(dtpDataInicial.Value, dtpDataFinal.Value);
+
+            valorContasAPagarAtrasadas = Buscar.BuscarValorContasComPagamentoAtrasadoPorData(dtpDataInicial.Value, dtpDataFinal.Value);
+
+            valorContasPagas = Buscar.BuscarValorContasPagasPorData(dtpDataInicial.Value, dtpDataFinal.Value);
+
+            valorProdutos = Buscar.BuscarValorProdutoPorData(dtpDataInicial.Value, dtpDataFinal.Value);
+
+            valorBrutoNotaFinalSaida = Buscar.ValorBrutoNotaFinalSaidaPorData(dtpDataInicial.Value, dtpDataFinal.Value);
+
+            valorBrutoCarne = Buscar.BuscarValorBrutoCarnePorData(dtpDataInicial.Value, dtpDataFinal.Value);
         }
 
         private void ValorLiquido()
         {
-            decimal valorBruto = Convert.ToDecimal(lblValorTotalBruto.Text.Replace("R$", ""));
-
-            decimal valorContasPagas = Convert.ToDecimal(lblValorTotalContasPagas.Text.Replace("R$", ""));
-
-            decimal valorProduto = Convert.ToDecimal(lblValorTotalProduto.Text.Replace("R$", ""));
-
-            lblValorTotalLiquido.Text = String.Format("{0:c}", valorBruto - (valorContasPagas + valorProduto));
+            lblValorTotalLiquido.Text = String.Format("{0:c}", (valorBrutoNotaFinalSaida + valorBrutoCarne) - (valorContasPagas + valorProdutos));
         }
 
-        private void ValorContasAreceberAtrasadas()
+        private void ValorContasAReceberAtrasadas()
         {
-            lblContasAReceberAtrasadas.Text = String.Format("{0:c}", Buscar.BuscarValorContasAReceberAtrasadas(dtpDataInicial.Value, dtpDataFinal.Value));
+            lblContasAReceberAtrasadas.Text = String.Format("{0:c}", valorContasAReceberAtrasadas);
         }
 
         private void ValorContasAPagarAtrasadas()
         {
-            lblContasAPagarAtrasadas.Text = String.Format("{0:c}", Buscar.BuscarValorCustoDespesasComPagamentoAtrasadoPorData(dtpDataInicial.Value, dtpDataFinal.Value));
+            lblContasAPagarAtrasadas.Text = String.Format("{0:c}", valorContasAPagarAtrasadas);
         }
 
         private void ValorContasPagas()
         {
-            lblValorTotalContasPagas.Text = String.Format("{0:c}", Buscar.BuscarValorCustoDespesasPagosPorData(dtpDataInicial.Value, dtpDataFinal.Value));
+            lblValorTotalContasPagas.Text = String.Format("{0:c}", valorContasPagas);
         }
 
         private void ValorProdutos()
         {
-            lblValorTotalProduto.Text = String.Format("{0:c}", Buscar.BuscarValorProdutoPorData(dtpDataInicial.Value, dtpDataFinal.Value));
+            lblValorTotalProduto.Text = String.Format("{0:c}", valorProdutos);
         }
 
         private void ValorBruto()
         {
-            decimal valorBrutoNotaFinalSaida = Buscar.ValorBrutoNotaFinalSaidaPorData(dtpDataInicial.Value, dtpDataFinal.Value);
-
-            decimal ValorBrutoCarne = Buscar.BuscarValorBrutoCarnePorData(dtpDataInicial.Value, dtpDataFinal.Value);
-
-            lblValorTotalBruto.Text = String.Format("{0:c}", ValorBrutoCarne + valorBrutoNotaFinalSaida);
+            lblValorTotalBruto.Text = String.Format("{0:c}", valorBrutoCarne + valorBrutoNotaFinalSaida);
         }
 
         private void btnGrafico_Click(object sender, EventArgs e)
         {
             Canvas canvas = new Canvas();
 
-            ColunaValorBruto(canvas);
+            colunas = new DataPoint(BunifuDataViz._type.Bunifu_column);
 
-            ColunaValorLiquido(canvas);
+            ColunaValorBruto(canvas, colunas);
 
-            ColunaValorProduto(canvas);
+            ColunaValorLiquido(canvas, colunas);
 
-            ColunaValorContasPagas(canvas);
+            ColunaValorProduto(canvas, colunas);
 
-            ColunaValorContasAPagarAtrasadas(canvas);
+            ColunaValorContasPagas(canvas, colunas);
 
-            ColunaValorContasAReceberAtrasadas(canvas);
+            ColunaValorContasAPagarAtrasadas(canvas, colunas);
+
+            ColunaValorContasAReceberAtrasadas(canvas, colunas);
+
+            canvas.addData(colunas);
 
             bunifuDataViz1.Render(canvas);
         }
 
-        private void ColunaValorBruto(Canvas canvas)
+        private void ColunaValorBruto(Canvas canvas, DataPoint _colunas)
         {
-            colunaValorBruto = new DataPoint(BunifuDataViz._type.Bunifu_column);
+            string valorBruto = (valorBrutoCarne + valorBrutoNotaFinalSaida).ToString("N0").Replace(".", "");
 
-            decimal valorDecimal = Convert.ToDecimal(lblValorTotalBruto.Text.Replace("R$", ""));
-
-            string valorBruto = valorDecimal.ToString("N0");
-
-            colunaValorBruto.addLabely("VB", valorBruto);
+            _colunas.addLabely("VB", valorBruto);
 
             bunifuDataViz1.colorSet.Add(Color.Aqua);
-
-            canvas.addData(colunaValorBruto);
         }
 
-        private void ColunaValorLiquido(Canvas canvas)
+        private void ColunaValorLiquido(Canvas canvas, DataPoint _colunas)
         {
-            colunaValorLiquido = new DataPoint(BunifuDataViz._type.Bunifu_column);
+            string valorLiquido = ((valorBrutoNotaFinalSaida + valorBrutoCarne) - (valorContasPagas + valorProdutos)).ToString("N0").Replace(".", "");
 
-            decimal valorDecimal = Convert.ToDecimal(lblValorTotalLiquido.Text.Replace("R$ ", ""));
-
-            string valorLiquido = valorDecimal.ToString("N0");
-
-            colunaValorLiquido.addLabely("VL", valorLiquido);
+            _colunas.addLabely("VL", valorLiquido);
 
             bunifuDataViz1.colorSet.Add(Color.Black);
-
-            canvas.addData(colunaValorLiquido);
         }
 
-        private void ColunaValorProduto(Canvas canvas)
+        private void ColunaValorProduto(Canvas canvas, DataPoint _colunas)
         {
-            colunaValorProduto = new DataPoint(BunifuDataViz._type.Bunifu_column);
+            string valorProduto = valorProdutos.ToString("N0").Replace(".", "");
 
-            decimal valorDecimal = Convert.ToDecimal(lblValorTotalProduto.Text.Replace("R$", ""));
-
-            string valorProduto = valorDecimal.ToString("N0");
-
-            colunaValorLiquido.addLabely("VP", valorProduto);
+            _colunas.addLabely("VP", valorProduto);
 
             bunifuDataViz1.colorSet.Add(Color.Red);
-
-            canvas.addData(colunaValorProduto);
         }
 
-        private void ColunaValorContasPagas(Canvas canvas)
+        private void ColunaValorContasPagas(Canvas canvas, DataPoint _colunas)
         {
-            colunaValorContasPagas = new DataPoint(BunifuDataViz._type.Bunifu_column);
+            string valorContasPaga = valorContasPagas.ToString("N0").Replace(".", "");
 
-            decimal valorDecimal = Convert.ToDecimal(lblValorTotalContasPagas.Text.Replace("R$", ""));
-
-            string valorContasPagas = valorDecimal.ToString("N0");
-
-            colunaValorLiquido.addLabely("VC", valorContasPagas);
+            _colunas.addLabely("CP", valorContasPagas);
 
             bunifuDataViz1.colorSet.Add(Color.Green);
-
-            canvas.addData(colunaValorContasPagas);
         }
 
-        private void ColunaValorContasAPagarAtrasadas(Canvas canvas)
+        private void ColunaValorContasAPagarAtrasadas(Canvas canvas, DataPoint _colunas)
         {
-            colunaaValorContasAPagarAtrasadas = new DataPoint(BunifuDataViz._type.Bunifu_column);
+            string valorContasAPagarAtrasada = valorContasAPagarAtrasadas.ToString("N0").Replace(".", "");
 
-            decimal valorDecimal = Convert.ToDecimal(lblContasAPagarAtrasadas.Text.Replace("R$", ""));
-
-            string valorContasAPagarAtrasdas = valorDecimal.ToString("N0");
-
-            colunaValorLiquido.addLabely("VCA", valorContasAPagarAtrasdas);
+            _colunas.addLabely("CPA", valorContasAPagarAtrasada);
 
             bunifuDataViz1.colorSet.Add(Color.Gray);
-
-            canvas.addData(colunaaValorContasAPagarAtrasadas);
         }
 
-        private void ColunaValorContasAReceberAtrasadas(Canvas canvas)
+        private void ColunaValorContasAReceberAtrasadas(Canvas canvas, DataPoint _colunas)
         {
-            colunaaValorContasAReceberAtrasadas = new DataPoint(BunifuDataViz._type.Bunifu_column);
+            string valorContasAReceberAtrasada = valorContasAReceberAtrasadas.ToString("N0").Replace(".", "");
 
-            decimal valorDecimal = Convert.ToDecimal(lblContasAReceberAtrasadas.Text.Replace("R$", ""));
-
-            string valorContasAReceber = valorDecimal.ToString("N0");
-
-            colunaValorLiquido.addLabely("CRA", valorContasAReceber);
+            _colunas.addLabely("CRA", valorContasAReceberAtrasada);
 
             bunifuDataViz1.colorSet.Add(Color.Yellow);
+        }
 
-            canvas.addData(colunaaValorContasAReceberAtrasadas);
+        private void bunifuButton1_Click(object sender, EventArgs e)
+        {
+            List<DadosEstatiscasFinanceiras> ContasPagas = new List<DadosEstatiscasFinanceiras>();
+
+            List<DadosEstatiscasFinanceiras> ContasAtrasadas = new List<DadosEstatiscasFinanceiras>();
+
+            List<DadosEstatiscasFinanceiras> listaCompleta = new List<DadosEstatiscasFinanceiras>();
+
+            ContasPagas = Buscar.BuscarValorContasPagasPorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
+
+            ContasAtrasadas = Buscar.BuscarValorContasAtrasadasPorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
+
+            Canvas canvas = new Canvas();
+
+            colunas = new DataPoint(BunifuDataViz._type.Bunifu_column);
+
+            foreach (var item in ContasPagas)
+            {
+                listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes));
+
+                //string valorContasPaga = item.valor.ToString("N0").Replace(".", "");
+
+                //colunas.addLabely(item.mes.ToString(), valorContasPaga);
+
+                //bunifuDataViz1.colorSet.Add(Color.Green);
+            }
+
+            foreach (var item1 in ContasAtrasadas)
+            {
+                listaCompleta.Add(new DadosEstatiscasFinanceiras(item1.valor, item1.mes));
+
+                //string valorContasAPagarAtrasada = item1.valor.ToString("N0").Replace(".", "");
+
+                //colunas.addLabely(item1.mes.ToString(), valorContasAPagarAtrasada);
+
+                //bunifuDataViz1.colorSet.Add(Color.Gray);
+            }
+
+            int cont = 0;
+
+            foreach (var item in listaCompleta)
+            {
+                if (cont == 0)
+                {
+                    string valorContasPaga = item.valor.ToString("N0").Replace(".", "");
+
+                    colunas.addLabely(item.mes.ToString(), valorContasPaga);
+
+                    bunifuDataViz1.colorSet.Add(Color.Green);
+
+                    cont++;
+                }
+
+                if (item.mes == 5)
+                {
+                    string valorContasAPagarAtrasada = item.valor.ToString("N0").Replace(".", "");
+
+                    colunas.addLabely(item.mes.ToString(), valorContasAPagarAtrasada);
+
+                    bunifuDataViz1.colorSet.Add(Color.Gray);
+                }
+            }
+
+            canvas.addData(colunas);
+
+            bunifuDataViz1.Render(canvas);
+        }
+
+        private void estavadandocerto()
+        {
+            List<DadosEstatiscasFinanceiras> ContasPagas = new List<DadosEstatiscasFinanceiras>();
+
+            List<DadosEstatiscasFinanceiras> ContasAtrasadas = new List<DadosEstatiscasFinanceiras>();
+
+            ContasPagas = Buscar.BuscarValorContasPagasPorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
+
+            ContasAtrasadas = Buscar.BuscarValorContasAtrasadasPorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
+
+            Canvas canvas = new Canvas();
+
+            colunas = new DataPoint(BunifuDataViz._type.Bunifu_column);
+
+            foreach (var item in ContasPagas)
+            {
+                string valorContasPaga = item.valor.ToString("N0").Replace(".", "");
+
+                colunas.addLabely(item.mes.ToString(), valorContasPaga);
+
+                bunifuDataViz1.colorSet.Add(Color.Green);
+            }
+
+            foreach (var item1 in ContasAtrasadas)
+            {
+                string valorContasAPagarAtrasada = item1.valor.ToString("N0").Replace(".", "");
+
+                colunas.addLabely(item1.mes.ToString(), valorContasAPagarAtrasada);
+
+                bunifuDataViz1.colorSet.Add(Color.Gray);
+
+                //break;
+            }
+
+            canvas.addData(colunas);
+
+            bunifuDataViz1.Render(canvas);
         }
     }
 }

@@ -5134,9 +5134,9 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Valor Bruto Carne Por data
 
-        #region Buscar Valor Custo/Despesas Pagos Por Data
+        #region Buscar Valor Contas Pagas Por Data
 
-        public decimal BuscarValorCustoDespesasPagosPorData(DateTime _dataInicial, DateTime _dataFinal)
+        public decimal BuscarValorContasPagasPorData(DateTime _dataInicial, DateTime _dataFinal)
         {
             try
             {
@@ -5165,17 +5165,17 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscaValorTotalCustosDespesasPagosPorDataNoBanco(ex);
+                Erro.ErroAoBuscaValorTotalContasPagasPorDataNoBanco(ex);
 
                 return 0;
             }
         }
 
-        #endregion Buscar Valor Custo/Despesas Pagos Por Data
+        #endregion Buscar Valor Contas Pagas Por Data
 
-        #region Buscar Valor Custo/Despesas Com Pagamento Atrasado Por Data
+        #region Buscar Valor Contas Com Pagamento Atrasado Por Data
 
-        public decimal BuscarValorCustoDespesasComPagamentoAtrasadoPorData(DateTime _dataInicial, DateTime _dataFinal)
+        public decimal BuscarValorContasComPagamentoAtrasadoPorData(DateTime _dataInicial, DateTime _dataFinal)
         {
             try
             {
@@ -5204,13 +5204,13 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscaValorTotalCustosDespesasComPagamentosAtrasadosPorDataNoBanco(ex);
+                Erro.ErroAoBuscaValorTotalContasComPagamentosAtrasadosPorDataNoBanco(ex);
 
                 return 0;
             }
         }
 
-        #endregion Buscar Valor Custo/Despesas Com Pagamento Atrasado Por Data
+        #endregion Buscar Valor Contas Com Pagamento Atrasado Por Data
 
         #region Buscar Valor Contas a Receber Atrasadas
 
@@ -5288,6 +5288,90 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Buscar Valor Produtos Por Data
+
+        #region Bucar Valor Contas Pagas Por Data Avancada
+
+        public List<DadosEstatiscasFinanceiras> BuscarValorContasPagasPorDataAvancada(DateTime _dataInicial, DateTime _dataFinal)
+        {
+            List<DadosEstatiscasFinanceiras> listaDadosEstatiscasFinanceiras = new List<DadosEstatiscasFinanceiras>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(dc_valor_pago),month (dc_emissao) from tb_DespesasCustos " +
+                        "where dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                        "and dc_estatus_pagamento = 'Pago' " +
+                        "group by month(dc_emissao)";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        //if (dr.IsDBNull(0) == true)
+                        //{
+                        //    return listaDadosEstatiscasFinanceiras;
+                        //}
+
+                        listaDadosEstatiscasFinanceiras.Add(new DadosEstatiscasFinanceiras(dr.GetDecimal(0), dr.GetInt32(1)));
+                    }
+
+                    return listaDadosEstatiscasFinanceiras;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaValorContasPagasPorDadaAvancadasNoBanco(ex);
+
+                return listaDadosEstatiscasFinanceiras;
+            }
+        }
+
+        #endregion Bucar Valor Contas Pagas Por Data Avancada
+
+        public List<DadosEstatiscasFinanceiras> BuscarValorContasAtrasadasPorDataAvancada(DateTime _dataInicial, DateTime _dataFinal)
+        {
+            List<DadosEstatiscasFinanceiras> listaDadosEstatiscasFinanceiras = new List<DadosEstatiscasFinanceiras>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(dc_valor_pago),month (dc_emissao) from tb_DespesasCustos " +
+                        "where dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                        "and dc_estatus_pagamento = 'Nao Pago' " +
+                        "group by month(dc_emissao)";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        //if (dr.IsDBNull(0) == true)
+                        //{
+                        //    return listaDadosEstatiscasFinanceiras;
+                        //}
+
+                        listaDadosEstatiscasFinanceiras.Add(new DadosEstatiscasFinanceiras(dr.GetDecimal(0), dr.GetInt32(1)));
+                    }
+
+                    return listaDadosEstatiscasFinanceiras;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaValorContasPagasPorDadaAvancadasNoBanco(ex);
+
+                return listaDadosEstatiscasFinanceiras;
+            }
+        }
 
         #endregion Estatisticas Financeiras
     }
