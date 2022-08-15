@@ -54,6 +54,19 @@
             this.btnExportar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.gdvPesquisarProduto = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.txtMarca = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.txtDescicao = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.txtCodigoProduto = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnPesquisar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbGrupo = new System.Windows.Forms.ComboBox();
+            this.cmbSubGrupo = new System.Windows.Forms.ComboBox();
+            this.bunifuGroupBox1 = new Bunifu.UI.WinForms.BunifuGroupBox();
             this.cp_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cp_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cp_un = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,19 +86,6 @@
             this.cp_comissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cp_observacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fk_ip_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtMarca = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.txtDescicao = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.txtCodigoProduto = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnPesquisar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmbGrupo = new System.Windows.Forms.ComboBox();
-            this.cmbSubGrupo = new System.Windows.Forms.ComboBox();
-            this.bunifuGroupBox1 = new Bunifu.UI.WinForms.BunifuGroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarProduto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -536,152 +536,6 @@
             this.gdvPesquisarProduto.DoubleClick += new System.EventHandler(this.gdvPesquisarProduto_DoubleClick);
             this.gdvPesquisarProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gdvPesquisarProduto_KeyDown);
             // 
-            // cp_id
-            // 
-            this.cp_id.DataPropertyName = "cp_id";
-            this.cp_id.HeaderText = "Codigo";
-            this.cp_id.Name = "cp_id";
-            this.cp_id.ReadOnly = true;
-            // 
-            // cp_descricao
-            // 
-            this.cp_descricao.DataPropertyName = "cp_descricao";
-            this.cp_descricao.HeaderText = "Descricao";
-            this.cp_descricao.Name = "cp_descricao";
-            this.cp_descricao.ReadOnly = true;
-            // 
-            // cp_un
-            // 
-            this.cp_un.DataPropertyName = "cp_un";
-            this.cp_un.HeaderText = "cp_un";
-            this.cp_un.Name = "cp_un";
-            this.cp_un.ReadOnly = true;
-            this.cp_un.Visible = false;
-            // 
-            // cp_valor_custo
-            // 
-            this.cp_valor_custo.DataPropertyName = "cp_valor_custo";
-            this.cp_valor_custo.HeaderText = "cp_valor_custo";
-            this.cp_valor_custo.Name = "cp_valor_custo";
-            this.cp_valor_custo.ReadOnly = true;
-            this.cp_valor_custo.Visible = false;
-            // 
-            // cp_porcentagem
-            // 
-            this.cp_porcentagem.DataPropertyName = "cp_porcentagem";
-            this.cp_porcentagem.HeaderText = "cp_porcentagem";
-            this.cp_porcentagem.Name = "cp_porcentagem";
-            this.cp_porcentagem.ReadOnly = true;
-            this.cp_porcentagem.Visible = false;
-            // 
-            // cp_valor_venda
-            // 
-            this.cp_valor_venda.DataPropertyName = "cp_valor_venda";
-            this.cp_valor_venda.HeaderText = "cp_valor_venda";
-            this.cp_valor_venda.Name = "cp_valor_venda";
-            this.cp_valor_venda.ReadOnly = true;
-            this.cp_valor_venda.Visible = false;
-            // 
-            // cp_lucro
-            // 
-            this.cp_lucro.DataPropertyName = "cp_lucro";
-            this.cp_lucro.HeaderText = "cp_lucro";
-            this.cp_lucro.Name = "cp_lucro";
-            this.cp_lucro.ReadOnly = true;
-            this.cp_lucro.Visible = false;
-            // 
-            // cp_preco_atacado
-            // 
-            this.cp_preco_atacado.DataPropertyName = "cp_preco_atacado";
-            this.cp_preco_atacado.HeaderText = "cp_preco_atacado";
-            this.cp_preco_atacado.Name = "cp_preco_atacado";
-            this.cp_preco_atacado.ReadOnly = true;
-            this.cp_preco_atacado.Visible = false;
-            // 
-            // cp_grupo
-            // 
-            this.cp_grupo.DataPropertyName = "cp_grupo";
-            this.cp_grupo.HeaderText = "Grupo";
-            this.cp_grupo.Name = "cp_grupo";
-            this.cp_grupo.ReadOnly = true;
-            // 
-            // cp_sub_grupo
-            // 
-            this.cp_sub_grupo.DataPropertyName = "cp_sub_grupo";
-            this.cp_sub_grupo.HeaderText = "Sub-Grupo";
-            this.cp_sub_grupo.Name = "cp_sub_grupo";
-            this.cp_sub_grupo.ReadOnly = true;
-            // 
-            // cp_fonecedor
-            // 
-            this.cp_fonecedor.DataPropertyName = "cp_fonecedor";
-            this.cp_fonecedor.HeaderText = "Fornecedor";
-            this.cp_fonecedor.Name = "cp_fonecedor";
-            this.cp_fonecedor.ReadOnly = true;
-            // 
-            // cp_estoque_minimo
-            // 
-            this.cp_estoque_minimo.DataPropertyName = "cp_estoque_minimo";
-            this.cp_estoque_minimo.HeaderText = "cp_estoque_minimo";
-            this.cp_estoque_minimo.Name = "cp_estoque_minimo";
-            this.cp_estoque_minimo.ReadOnly = true;
-            this.cp_estoque_minimo.Visible = false;
-            // 
-            // cp_garantia
-            // 
-            this.cp_garantia.DataPropertyName = "cp_garantia";
-            this.cp_garantia.HeaderText = "cp_garantia";
-            this.cp_garantia.Name = "cp_garantia";
-            this.cp_garantia.ReadOnly = true;
-            this.cp_garantia.Visible = false;
-            // 
-            // cp_marca
-            // 
-            this.cp_marca.DataPropertyName = "cp_marca";
-            this.cp_marca.HeaderText = "Marca";
-            this.cp_marca.Name = "cp_marca";
-            this.cp_marca.ReadOnly = true;
-            // 
-            // cp_referencia
-            // 
-            this.cp_referencia.DataPropertyName = "cp_referencia";
-            this.cp_referencia.HeaderText = "cp_referencia";
-            this.cp_referencia.Name = "cp_referencia";
-            this.cp_referencia.ReadOnly = true;
-            this.cp_referencia.Visible = false;
-            // 
-            // cp_validade
-            // 
-            this.cp_validade.DataPropertyName = "cp_validade";
-            this.cp_validade.HeaderText = "cp_validade";
-            this.cp_validade.Name = "cp_validade";
-            this.cp_validade.ReadOnly = true;
-            this.cp_validade.Visible = false;
-            // 
-            // cp_comissao
-            // 
-            this.cp_comissao.DataPropertyName = "cp_comissao";
-            this.cp_comissao.HeaderText = "cp_comissao";
-            this.cp_comissao.Name = "cp_comissao";
-            this.cp_comissao.ReadOnly = true;
-            this.cp_comissao.Visible = false;
-            // 
-            // cp_observacao
-            // 
-            this.cp_observacao.DataPropertyName = "cp_observacao";
-            this.cp_observacao.HeaderText = "cp_observacao";
-            this.cp_observacao.Name = "cp_observacao";
-            this.cp_observacao.ReadOnly = true;
-            this.cp_observacao.Visible = false;
-            // 
-            // fk_ip_id
-            // 
-            this.fk_ip_id.DataPropertyName = "fk_ip_id";
-            this.fk_ip_id.HeaderText = "fk_ip_id";
-            this.fk_ip_id.Name = "fk_ip_id";
-            this.fk_ip_id.ReadOnly = true;
-            this.fk_ip_id.Visible = false;
-            // 
             // txtMarca
             // 
             this.txtMarca.AcceptsReturn = false;
@@ -1119,6 +973,152 @@
             this.bunifuGroupBox1.TabIndex = 195;
             this.bunifuGroupBox1.TabStop = false;
             // 
+            // cp_id
+            // 
+            this.cp_id.DataPropertyName = "cp_id";
+            this.cp_id.HeaderText = "Codigo";
+            this.cp_id.Name = "cp_id";
+            this.cp_id.ReadOnly = true;
+            // 
+            // cp_descricao
+            // 
+            this.cp_descricao.DataPropertyName = "cp_descricao";
+            this.cp_descricao.HeaderText = "Descricao";
+            this.cp_descricao.Name = "cp_descricao";
+            this.cp_descricao.ReadOnly = true;
+            // 
+            // cp_un
+            // 
+            this.cp_un.DataPropertyName = "cp_un";
+            this.cp_un.HeaderText = "cp_un";
+            this.cp_un.Name = "cp_un";
+            this.cp_un.ReadOnly = true;
+            this.cp_un.Visible = false;
+            // 
+            // cp_valor_custo
+            // 
+            this.cp_valor_custo.DataPropertyName = "cp_valor_custo";
+            this.cp_valor_custo.HeaderText = "cp_valor_custo";
+            this.cp_valor_custo.Name = "cp_valor_custo";
+            this.cp_valor_custo.ReadOnly = true;
+            this.cp_valor_custo.Visible = false;
+            // 
+            // cp_porcentagem
+            // 
+            this.cp_porcentagem.DataPropertyName = "cp_porcentagem";
+            this.cp_porcentagem.HeaderText = "cp_porcentagem";
+            this.cp_porcentagem.Name = "cp_porcentagem";
+            this.cp_porcentagem.ReadOnly = true;
+            this.cp_porcentagem.Visible = false;
+            // 
+            // cp_valor_venda
+            // 
+            this.cp_valor_venda.DataPropertyName = "cp_valor_venda";
+            this.cp_valor_venda.HeaderText = "cp_valor_venda";
+            this.cp_valor_venda.Name = "cp_valor_venda";
+            this.cp_valor_venda.ReadOnly = true;
+            this.cp_valor_venda.Visible = false;
+            // 
+            // cp_lucro
+            // 
+            this.cp_lucro.DataPropertyName = "cp_lucro";
+            this.cp_lucro.HeaderText = "cp_lucro";
+            this.cp_lucro.Name = "cp_lucro";
+            this.cp_lucro.ReadOnly = true;
+            this.cp_lucro.Visible = false;
+            // 
+            // cp_preco_atacado
+            // 
+            this.cp_preco_atacado.DataPropertyName = "cp_preco_atacado";
+            this.cp_preco_atacado.HeaderText = "cp_preco_atacado";
+            this.cp_preco_atacado.Name = "cp_preco_atacado";
+            this.cp_preco_atacado.ReadOnly = true;
+            this.cp_preco_atacado.Visible = false;
+            // 
+            // cp_grupo
+            // 
+            this.cp_grupo.DataPropertyName = "cp_grupo";
+            this.cp_grupo.HeaderText = "Grupo";
+            this.cp_grupo.Name = "cp_grupo";
+            this.cp_grupo.ReadOnly = true;
+            // 
+            // cp_sub_grupo
+            // 
+            this.cp_sub_grupo.DataPropertyName = "cp_sub_grupo";
+            this.cp_sub_grupo.HeaderText = "Sub-Grupo";
+            this.cp_sub_grupo.Name = "cp_sub_grupo";
+            this.cp_sub_grupo.ReadOnly = true;
+            // 
+            // cp_fonecedor
+            // 
+            this.cp_fonecedor.DataPropertyName = "cp_fonecedor";
+            this.cp_fonecedor.HeaderText = "Fornecedor";
+            this.cp_fonecedor.Name = "cp_fonecedor";
+            this.cp_fonecedor.ReadOnly = true;
+            // 
+            // cp_estoque_minimo
+            // 
+            this.cp_estoque_minimo.DataPropertyName = "cp_estoque_minimo";
+            this.cp_estoque_minimo.HeaderText = "cp_estoque_minimo";
+            this.cp_estoque_minimo.Name = "cp_estoque_minimo";
+            this.cp_estoque_minimo.ReadOnly = true;
+            this.cp_estoque_minimo.Visible = false;
+            // 
+            // cp_garantia
+            // 
+            this.cp_garantia.DataPropertyName = "cp_garantia";
+            this.cp_garantia.HeaderText = "cp_garantia";
+            this.cp_garantia.Name = "cp_garantia";
+            this.cp_garantia.ReadOnly = true;
+            this.cp_garantia.Visible = false;
+            // 
+            // cp_marca
+            // 
+            this.cp_marca.DataPropertyName = "cp_marca";
+            this.cp_marca.HeaderText = "Marca";
+            this.cp_marca.Name = "cp_marca";
+            this.cp_marca.ReadOnly = true;
+            // 
+            // cp_referencia
+            // 
+            this.cp_referencia.DataPropertyName = "cp_referencia";
+            this.cp_referencia.HeaderText = "cp_referencia";
+            this.cp_referencia.Name = "cp_referencia";
+            this.cp_referencia.ReadOnly = true;
+            this.cp_referencia.Visible = false;
+            // 
+            // cp_validade
+            // 
+            this.cp_validade.DataPropertyName = "cp_validade";
+            this.cp_validade.HeaderText = "cp_validade";
+            this.cp_validade.Name = "cp_validade";
+            this.cp_validade.ReadOnly = true;
+            this.cp_validade.Visible = false;
+            // 
+            // cp_comissao
+            // 
+            this.cp_comissao.DataPropertyName = "cp_comissao";
+            this.cp_comissao.HeaderText = "cp_comissao";
+            this.cp_comissao.Name = "cp_comissao";
+            this.cp_comissao.ReadOnly = true;
+            this.cp_comissao.Visible = false;
+            // 
+            // cp_observacao
+            // 
+            this.cp_observacao.DataPropertyName = "cp_observacao";
+            this.cp_observacao.HeaderText = "cp_observacao";
+            this.cp_observacao.Name = "cp_observacao";
+            this.cp_observacao.ReadOnly = true;
+            this.cp_observacao.Visible = false;
+            // 
+            // fk_ip_id
+            // 
+            this.fk_ip_id.DataPropertyName = "fk_ip_id";
+            this.fk_ip_id.HeaderText = "fk_ip_id";
+            this.fk_ip_id.Name = "fk_ip_id";
+            this.fk_ip_id.ReadOnly = true;
+            this.fk_ip_id.Visible = false;
+            // 
             // Forms_PesquisarProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1170,6 +1170,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
+        public System.Windows.Forms.ComboBox cmbGrupo;
+        public System.Windows.Forms.ComboBox cmbSubGrupo;
+        private Bunifu.UI.WinForms.BunifuGroupBox bunifuGroupBox1;
+        public Bunifu.UI.WinForms.BunifuDataGridView gdvPesquisarProduto;
         private System.Windows.Forms.DataGridViewTextBoxColumn cp_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn cp_descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn cp_un;
@@ -1189,9 +1193,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cp_comissao;
         private System.Windows.Forms.DataGridViewTextBoxColumn cp_observacao;
         private System.Windows.Forms.DataGridViewTextBoxColumn fk_ip_id;
-        public System.Windows.Forms.ComboBox cmbGrupo;
-        public System.Windows.Forms.ComboBox cmbSubGrupo;
-        private Bunifu.UI.WinForms.BunifuGroupBox bunifuGroupBox1;
-        public Bunifu.UI.WinForms.BunifuDataGridView gdvPesquisarProduto;
     }
 }

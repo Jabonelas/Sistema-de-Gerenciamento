@@ -53,7 +53,9 @@ namespace Sistema_de_Gerenciamento
             {
                 if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
-                    if (txtCNPJ.Text == string.Empty)
+                    bool isExisteDadosCadastrados = Buscar.BuscarExistenciaCadastroEmpresa();
+
+                    if (isExisteDadosCadastrados == true)
                     {
                         Salvar.InserirCadastroEmpresa(
                             txtRazaoSocial.Text,
@@ -256,22 +258,21 @@ namespace Sistema_de_Gerenciamento
 
                 if (gdvPesquisarEmpresa.RowCount >= 1)
                 {
-                    int indice = 4;
-                    txtRazaoSocial.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
-                    txtCNPJ.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
-                    txtNomeFantasia.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
-                    txtCEP.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
-                    txtEndereco.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
-                    txtComplemento.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
-                    txtBairro.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
-                    txtCidade.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
-                    cmbUF.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
-                    txtNumero.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
-                    txtTelefone.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
-                    txtEmail.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
-                    txtTextPadrao.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
-                    txtCodigoQRCodePix.Text = gdvPesquisarEmpresa.SelectedCells[indice += 2].Value.ToString();
-                    txtChavePix.Text = gdvPesquisarEmpresa.SelectedCells[indice += 1].Value.ToString();
+                    txtCNPJ.Text = gdvPesquisarEmpresa.SelectedCells[2].Value.ToString();
+                    txtRazaoSocial.Text = gdvPesquisarEmpresa.SelectedCells[5].Value.ToString();
+                    txtChavePix.Text = gdvPesquisarEmpresa.SelectedCells[6].Value.ToString();
+                    txtNomeFantasia.Text = gdvPesquisarEmpresa.SelectedCells[7].Value.ToString();
+                    txtCEP.Text = gdvPesquisarEmpresa.SelectedCells[8].Value.ToString();
+                    txtEndereco.Text = gdvPesquisarEmpresa.SelectedCells[9].Value.ToString();
+                    txtComplemento.Text = gdvPesquisarEmpresa.SelectedCells[10].Value.ToString();
+                    txtBairro.Text = gdvPesquisarEmpresa.SelectedCells[11].Value.ToString();
+                    txtCidade.Text = gdvPesquisarEmpresa.SelectedCells[12].Value.ToString();
+                    cmbUF.Text = gdvPesquisarEmpresa.SelectedCells[13].Value.ToString();
+                    txtNumero.Text = gdvPesquisarEmpresa.SelectedCells[14].Value.ToString();
+                    txtTelefone.Text = gdvPesquisarEmpresa.SelectedCells[15].Value.ToString();
+                    txtEmail.Text = gdvPesquisarEmpresa.SelectedCells[16].Value.ToString();
+                    txtTextPadrao.Text = gdvPesquisarEmpresa.SelectedCells[17].Value.ToString();
+                    txtCodigoQRCodePix.Text = gdvPesquisarEmpresa.SelectedCells[18].Value.ToString();
 
                     pcbEmpresa.Image = Buscar.BuscarLogoEmpresa(Convert.ToInt32(lblce_id.Text));
 

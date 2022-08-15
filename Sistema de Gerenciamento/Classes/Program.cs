@@ -17,7 +17,7 @@ namespace Sistema_de_Gerenciamento
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms_EstatisticasFinanceiras());
+            Application.Run(new Forms_TelaAdministrador());
         }
     }
 }

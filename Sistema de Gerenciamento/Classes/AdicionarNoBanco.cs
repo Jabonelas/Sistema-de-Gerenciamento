@@ -20,10 +20,7 @@ namespace Sistema_de_Gerenciamento
 
         #region Inserir Cadastro Cliente
 
-        public int InserirCadastroCliente(DateTime _dataCadastro, string _nomeCliente, string _tipo, string _cpf_cnpj,
-        string _rg, string _emissor, string _dataEmissao, string _ins_Est, string _cep, string _endereco, int _numero, string _complemento,
-        string _bairro, string _cidade, string _uF, string _naturalidade, string _dataNasc, string _estadoCivil, decimal _credito,
-        decimal _saldo, string _bloqueio, string _celular, string _tel_Residencial, string _email, string _observacoes, int _fk_ic_id)
+        public int InserirCadastroCliente(DadosCliente _dadosCliente)
         {
             try
             {
@@ -39,41 +36,41 @@ namespace Sistema_de_Gerenciamento
                         "select scope_identity()";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@DataCadastro", SqlDbType.Date).Value = _dataCadastro;
-                    adapter.SelectCommand.Parameters.AddWithValue("@NomeCliente", SqlDbType.VarChar).Value = _nomeCliente;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Tipo", SqlDbType.VarChar).Value = _tipo;
-                    adapter.SelectCommand.Parameters.AddWithValue("@cpf_cnpj", SqlDbType.VarChar).Value = _cpf_cnpj;
-                    adapter.SelectCommand.Parameters.AddWithValue("@rg", SqlDbType.VarChar).Value = _rg;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Emissor", SqlDbType.VarChar).Value = _emissor;
-                    adapter.SelectCommand.Parameters.AddWithValue("@DataEmissao", SqlDbType.VarChar).Value = _dataEmissao;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Ins_Est", SqlDbType.VarChar).Value = _ins_Est;
-                    adapter.SelectCommand.Parameters.AddWithValue("@cep", SqlDbType.VarChar).Value = _cep;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Endereco", SqlDbType.VarChar).Value = _endereco;
-                    adapter.SelectCommand.Parameters.AddWithValue("@numero", SqlDbType.Int).Value = _numero;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Complemento", SqlDbType.VarChar).Value = _complemento;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Bairro", SqlDbType.VarChar).Value = _bairro;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Cidade", SqlDbType.VarChar).Value = _cidade;
-                    adapter.SelectCommand.Parameters.AddWithValue("@UF", SqlDbType.VarChar).Value = _uF;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Naturalidade", SqlDbType.VarChar).Value = _naturalidade;
-                    adapter.SelectCommand.Parameters.AddWithValue("@DataNasc", SqlDbType.VarChar).Value = _dataNasc;
-                    adapter.SelectCommand.Parameters.AddWithValue("@EstadoCivil", SqlDbType.VarChar).Value = _estadoCivil;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Credito", SqlDbType.Decimal).Value = _credito;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Saldo", SqlDbType.Decimal).Value = _saldo;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Bloqueio", SqlDbType.VarChar).Value = _bloqueio;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Celular", SqlDbType.VarChar).Value = _celular;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Tel_Residencial", SqlDbType.VarChar).Value = _tel_Residencial;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Email", SqlDbType.VarChar).Value = _email;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Observacoes", SqlDbType.VarChar).Value = _observacoes;
-                    adapter.SelectCommand.Parameters.AddWithValue("@fk_ic_id", SqlDbType.Int).Value = _fk_ic_id;
+                    adapter.SelectCommand.Parameters.AddWithValue("@DataCadastro", SqlDbType.Date).Value = _dadosCliente.dataCadastro;
+                    adapter.SelectCommand.Parameters.AddWithValue("@NomeCliente", SqlDbType.VarChar).Value = _dadosCliente.nome;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Tipo", SqlDbType.VarChar).Value = _dadosCliente.tipo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cpf_cnpj", SqlDbType.VarChar).Value = _dadosCliente.cpfCpnjCliente;
+                    adapter.SelectCommand.Parameters.AddWithValue("@rg", SqlDbType.VarChar).Value = _dadosCliente.rg;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Emissor", SqlDbType.VarChar).Value = _dadosCliente.orgaoEmissor;
+                    adapter.SelectCommand.Parameters.AddWithValue("@DataEmissao", SqlDbType.VarChar).Value = _dadosCliente.dataEmissao;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Ins_Est", SqlDbType.VarChar).Value = _dadosCliente.insEst;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cep", SqlDbType.VarChar).Value = _dadosCliente.cep;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Endereco", SqlDbType.VarChar).Value = _dadosCliente.endereco;
+                    adapter.SelectCommand.Parameters.AddWithValue("@numero", SqlDbType.Int).Value = _dadosCliente.numero;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Complemento", SqlDbType.VarChar).Value = _dadosCliente.complemento;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Bairro", SqlDbType.VarChar).Value = _dadosCliente.bairro;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Cidade", SqlDbType.VarChar).Value = _dadosCliente.cidade;
+                    adapter.SelectCommand.Parameters.AddWithValue("@UF", SqlDbType.VarChar).Value = _dadosCliente.uf;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Naturalidade", SqlDbType.VarChar).Value = _dadosCliente.naturalidade;
+                    adapter.SelectCommand.Parameters.AddWithValue("@DataNasc", SqlDbType.VarChar).Value = _dadosCliente.dataNascimento;
+                    adapter.SelectCommand.Parameters.AddWithValue("@EstadoCivil", SqlDbType.VarChar).Value = _dadosCliente.estadoCivil;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Credito", SqlDbType.Decimal).Value = _dadosCliente.credito;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Saldo", SqlDbType.Decimal).Value = _dadosCliente.saldo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Bloqueio", SqlDbType.VarChar).Value = _dadosCliente.bloqueio;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Celular", SqlDbType.VarChar).Value = _dadosCliente.celular;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Tel_Residencial", SqlDbType.VarChar).Value = _dadosCliente.telefone;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Email", SqlDbType.VarChar).Value = _dadosCliente.email;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Observacoes", SqlDbType.VarChar).Value = _dadosCliente.observacoes;
+                    adapter.SelectCommand.Parameters.AddWithValue("@fk_ic_id", SqlDbType.Int).Value = _dadosCliente.primarykey;
 
                     SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
                     dr.Read();
 
                     decimal x = dr.GetDecimal(0);
 
-                    return Convert.ToInt32(x);
-
                     AvisoCantoInferiorDireito.Inclusao();
+
+                    return Convert.ToInt32(x);
                 }
             }
             catch (Exception ex)
@@ -143,7 +140,7 @@ namespace Sistema_de_Gerenciamento
                         "@uf,@telefone,@email,@observacoes,@fk_cf_id) select scope_identity()";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@razaoSocial", SqlDbType.Date).Value = _razaoSocial;
+                    adapter.SelectCommand.Parameters.AddWithValue("@razaoSocial", SqlDbType.VarChar).Value = _razaoSocial;
                     adapter.SelectCommand.Parameters.AddWithValue("@dataCadastro", SqlDbType.Date).Value = _dataCadastro;
                     adapter.SelectCommand.Parameters.AddWithValue("@cnpj", SqlDbType.VarChar).Value = _cnpj;
                     adapter.SelectCommand.Parameters.AddWithValue("@nomeFantasia", SqlDbType.VarChar).Value = _nomeFantasia;
@@ -154,7 +151,7 @@ namespace Sistema_de_Gerenciamento
                     adapter.SelectCommand.Parameters.AddWithValue("@bairro", SqlDbType.VarChar).Value = _bairro;
                     adapter.SelectCommand.Parameters.AddWithValue("@cidade", SqlDbType.VarChar).Value = _cidade;
                     adapter.SelectCommand.Parameters.AddWithValue("@uf", SqlDbType.VarChar).Value = _uf;
-                    adapter.SelectCommand.Parameters.AddWithValue("@telefone", SqlDbType.Int).Value = _telefone;
+                    adapter.SelectCommand.Parameters.AddWithValue("@telefone", SqlDbType.VarChar).Value = _telefone;
                     adapter.SelectCommand.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = _email;
                     adapter.SelectCommand.Parameters.AddWithValue("@observacoes", SqlDbType.VarChar).Value = _observacoes;
                     adapter.SelectCommand.Parameters.AddWithValue("@fk_cf_id", SqlDbType.Int).Value = _fk_cf_id;
@@ -164,9 +161,9 @@ namespace Sistema_de_Gerenciamento
 
                     decimal x = dr.GetDecimal(0);
 
-                    return Convert.ToInt32(x);
-
                     AvisoCantoInferiorDireito.Inclusao();
+
+                    return Convert.ToInt32(x);
                 }
             }
             catch (Exception ex)
@@ -201,9 +198,9 @@ namespace Sistema_de_Gerenciamento
 
                     decimal x = dr.GetDecimal(0);
 
-                    return Convert.ToInt32(x);
-
                     AvisoCantoInferiorDireito.Inclusao();
+
+                    return Convert.ToInt32(x);
                 }
             }
             catch (Exception ex)
@@ -218,15 +215,11 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Inserir Fornecedor
 
-        #region Inserir
+        #region Inserir Produto
 
         #region Cadastro Produto
 
-        public int InserirCadastroProduto(string _descricao, string _un, decimal _valor_custo, decimal _porcentagem,
-        decimal _valor_venda, decimal _lucro, decimal _preco_atacado, string _grupo, string _sub_grupo, string _fonecedor,
-        decimal _estoque_minimo, string _garantia, string _marca, string _referencia, DateTime _validade, decimal _comissao,
-        string _observacao, int _fk_ip_id)
-
+        public int InserirCadastroProduto(DadosProduto _dadosProduto)
         {
             try
             {
@@ -240,33 +233,33 @@ namespace Sistema_de_Gerenciamento
                         "@observacao,@fk_ip_id) select scope_identity()";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@descricao", SqlDbType.VarChar).Value = _descricao;
-                    adapter.SelectCommand.Parameters.AddWithValue("@un", SqlDbType.VarChar).Value = _un;
-                    adapter.SelectCommand.Parameters.AddWithValue("@valorCusto", SqlDbType.Decimal).Value = _valor_custo;
-                    adapter.SelectCommand.Parameters.AddWithValue("@porcentagem", SqlDbType.Decimal).Value = _porcentagem;
-                    adapter.SelectCommand.Parameters.AddWithValue("@valorVenda", SqlDbType.Decimal).Value = _valor_venda;
-                    adapter.SelectCommand.Parameters.AddWithValue("@lucro", SqlDbType.Decimal).Value = _lucro;
-                    adapter.SelectCommand.Parameters.AddWithValue("@precoAtacado", SqlDbType.Decimal).Value = _preco_atacado;
-                    adapter.SelectCommand.Parameters.AddWithValue("@grupo", SqlDbType.VarChar).Value = _grupo;
-                    adapter.SelectCommand.Parameters.AddWithValue("@subGrupo", SqlDbType.VarChar).Value = _sub_grupo;
-                    adapter.SelectCommand.Parameters.AddWithValue("@fonecedor", SqlDbType.VarChar).Value = _fonecedor;
-                    adapter.SelectCommand.Parameters.AddWithValue("@estoqueMinimo", SqlDbType.Decimal).Value = _estoque_minimo;
-                    adapter.SelectCommand.Parameters.AddWithValue("@garantia", SqlDbType.VarChar).Value = _garantia;
-                    adapter.SelectCommand.Parameters.AddWithValue("@marca", SqlDbType.VarChar).Value = _marca;
-                    adapter.SelectCommand.Parameters.AddWithValue("@referencia", SqlDbType.VarChar).Value = _referencia;
-                    adapter.SelectCommand.Parameters.AddWithValue("@validade", SqlDbType.Date).Value = _validade;
-                    adapter.SelectCommand.Parameters.AddWithValue("@comissao", SqlDbType.Decimal).Value = _comissao;
-                    adapter.SelectCommand.Parameters.AddWithValue("@observacao", SqlDbType.VarChar).Value = _observacao;
-                    adapter.SelectCommand.Parameters.AddWithValue("@fk_ip_id", SqlDbType.Int).Value = _fk_ip_id;
+                    adapter.SelectCommand.Parameters.AddWithValue("@descricao", SqlDbType.VarChar).Value = _dadosProduto.descricaoProduto;
+                    adapter.SelectCommand.Parameters.AddWithValue("@un", SqlDbType.VarChar).Value = _dadosProduto.unidade;
+                    adapter.SelectCommand.Parameters.AddWithValue("@valorCusto", SqlDbType.Decimal).Value = _dadosProduto.valorCusto;
+                    adapter.SelectCommand.Parameters.AddWithValue("@porcentagem", SqlDbType.Decimal).Value = _dadosProduto.porcentagem;
+                    adapter.SelectCommand.Parameters.AddWithValue("@valorVenda", SqlDbType.Decimal).Value = _dadosProduto.valorVenda;
+                    adapter.SelectCommand.Parameters.AddWithValue("@lucro", SqlDbType.Decimal).Value = _dadosProduto.lucro;
+                    adapter.SelectCommand.Parameters.AddWithValue("@precoAtacado", SqlDbType.Decimal).Value = _dadosProduto.precoAtacado;
+                    adapter.SelectCommand.Parameters.AddWithValue("@grupo", SqlDbType.VarChar).Value = _dadosProduto.grupo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@subGrupo", SqlDbType.VarChar).Value = _dadosProduto.subGrupo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@fonecedor", SqlDbType.VarChar).Value = _dadosProduto.fornecedor;
+                    adapter.SelectCommand.Parameters.AddWithValue("@estoqueMinimo", SqlDbType.Decimal).Value = _dadosProduto.estoqueMinimo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@garantia", SqlDbType.VarChar).Value = _dadosProduto.garantia;
+                    adapter.SelectCommand.Parameters.AddWithValue("@marca", SqlDbType.VarChar).Value = _dadosProduto.marca;
+                    adapter.SelectCommand.Parameters.AddWithValue("@referencia", SqlDbType.VarChar).Value = _dadosProduto.referencia;
+                    adapter.SelectCommand.Parameters.AddWithValue("@validade", SqlDbType.Date).Value = _dadosProduto.validade;
+                    adapter.SelectCommand.Parameters.AddWithValue("@comissao", SqlDbType.Decimal).Value = _dadosProduto.comissao;
+                    adapter.SelectCommand.Parameters.AddWithValue("@observacao", SqlDbType.VarChar).Value = _dadosProduto.observacao;
+                    adapter.SelectCommand.Parameters.AddWithValue("@fk_ip_id", SqlDbType.Int).Value = _dadosProduto.primarykey;
 
                     SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
                     dr.Read();
 
                     decimal x = dr.GetDecimal(0);
 
-                    return Convert.ToInt32(x);
-
                     AvisoCantoInferiorDireito.Inclusao();
+
+                    return Convert.ToInt32(x);
                 }
             }
             catch (Exception ex)
@@ -301,9 +294,9 @@ namespace Sistema_de_Gerenciamento
 
                     decimal x = dr.GetDecimal(0);
 
-                    return Convert.ToInt32(x);
-
                     AvisoCantoInferiorDireito.Inclusao();
+
+                    return Convert.ToInt32(x);
                 }
             }
             catch (Exception ex)
@@ -316,7 +309,7 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Inserir Imagem Cadastro Produto
 
-        #endregion Inserir
+        #endregion Inserir Produto
 
         #region Inserir Grupo de Material
 
@@ -413,7 +406,7 @@ namespace Sistema_de_Gerenciamento
                         "values(@usuario,@senha,@excluirItem,@forms_Troca,@cancelarVenda,@cancelarPagamento)";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
-                    cmd.Parameters.AddWithValue("@usuario", SqlDbType.Date).Value = _usuario;
+                    cmd.Parameters.AddWithValue("@usuario", SqlDbType.VarChar).Value = _usuario;
                     cmd.Parameters.AddWithValue("@senha", SqlDbType.VarChar).Value = _senha;
                     cmd.Parameters.AddWithValue("@excluirItem", SqlDbType.VarChar).Value = _excluirItem;
                     cmd.Parameters.AddWithValue("@forms_Troca", SqlDbType.VarChar).Value = _devolucaoTroca;
@@ -618,7 +611,7 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Despesa Custos Fixo Repeticao
 
-        #region Noata Fiscal Saida
+        #region Nota Fiscal Saida
 
         public void NotaFiscalSaida(string _cpfCpnjCliente, int _numeroNF, int _codigoProduto, string _descricao,
     decimal _quantidade, decimal _valorUnitario, DateTime _emissao, int _codigoBarras, string _vendedor,
@@ -716,7 +709,7 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Noata Fiscal Saida
+        #endregion Nota Fiscal Saida
 
         #region Adicionar No Estoque Material Segregado
 

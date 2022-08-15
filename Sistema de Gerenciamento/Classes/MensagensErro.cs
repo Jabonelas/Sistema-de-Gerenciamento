@@ -554,14 +554,14 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Edicao Pagamento a Receber
 
-        #region Atualizacao Comissao
+        #region Atualizacao ValorComissaoIndicadaPorAdmin
 
         public void ErroAoAtualizarComissaoUsuarioNoBanco(Exception _e)
         {
             MessageBox.Show($"(ATU-CU01) Erro ao Atualizar Comissão! \n\nErro: {_e}", "Erro Atualizar Comissão!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        #endregion Atualizacao Comissao
+        #endregion Atualizacao ValorComissaoIndicadaPorAdmin
 
         #endregion Atualizacao Do Banco
 
@@ -757,7 +757,7 @@ namespace Sistema_de_Gerenciamento
 
         public void ErroAoBuscarComissaoProdutoNoBanco(Exception _e)
         {
-            MessageBox.Show($"(BUS-PR11) Erro ao Realizar Busca Comissao do Produto \n\nErro: {_e}", "Erro Busca Comissao Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(BUS-PR11) Erro ao Realizar Busca ValorComissaoIndicadaPorAdmin do Produto \n\nErro: {_e}", "Erro Busca ValorComissaoIndicadaPorAdmin Produto!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoBuscarExistenciaCodigoBarrasProdutoNoBanco(Exception _e)
@@ -821,12 +821,17 @@ namespace Sistema_de_Gerenciamento
 
         public void ErroAoBuscarImagemEmpresaNoBanco(Exception _e)
         {
-            MessageBox.Show($"(BUS-EM02) Erro ao Realizar Busca de Imagem da Emrpesa \n\nErro: {_e}", "Erro Busca Imagem Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(BUS-EM02) Erro ao Realizar Busca de Imagem da Empresa \n\nErro: {_e}", "Erro Busca Imagem Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoBuscarQRCodeNoBanco(Exception _e)
         {
-            MessageBox.Show($"(BUS-EM03) Erro ao Realizar Busca de QR Code Pix da Emrpesa \n\nErro: {_e}", "Erro Busca QR Code Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(BUS-EM03) Erro ao Realizar Busca de QR Code Pix da Empresa \n\nErro: {_e}", "Erro Busca QR Code Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoBuscarCadastroEmpresaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-EM04) Erro ao Realizar Busca de Dados Cadastro Empresa \n\nErro: {_e}", "Erro Busca Dados Cadastro Empresa!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         #endregion Empresa
@@ -1232,7 +1237,7 @@ namespace Sistema_de_Gerenciamento
 
         public void ErroAoBuscarPorcentagemComissaoNoBanco(Exception _e)
         {
-            MessageBox.Show($"(BUS-DF02) Erro ao Realizar Busca Pocentagem Comissao \n\nErro: {_e}", "Erro Busca Porcentagem Comissao!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"(BUS-DF02) Erro ao Realizar Busca Pocentagem ValorComissaoIndicadaPorAdmin \n\nErro: {_e}", "Erro Busca Porcentagem ValorComissaoIndicadaPorAdmin!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public void ErroAoBuscarCodigoProdutoVendidosNoBanco(Exception _e)

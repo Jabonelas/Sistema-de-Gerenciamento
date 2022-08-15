@@ -149,7 +149,7 @@
             this.bunifuSeparator2 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.txtCodigo = new Guna.UI.WinForms.GunaTextBox();
             this.txtNumero = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.lblCodigoCliente = new System.Windows.Forms.Label();
+            this.lblCodigoImagem = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCliente)).BeginInit();
             this.SuspendLayout();
             // 
@@ -2410,24 +2410,24 @@
             this.txtNumero.WordWrap = true;
             this.txtNumero.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumero_KeyPress);
             // 
-            // lblCodigoCliente
+            // lblCodigoImagem
             // 
-            this.lblCodigoCliente.AutoSize = true;
-            this.lblCodigoCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigoCliente.ForeColor = System.Drawing.Color.Red;
-            this.lblCodigoCliente.Location = new System.Drawing.Point(764, 11);
-            this.lblCodigoCliente.Name = "lblCodigoCliente";
-            this.lblCodigoCliente.Size = new System.Drawing.Size(24, 25);
-            this.lblCodigoCliente.TabIndex = 165;
-            this.lblCodigoCliente.Text = "6";
-            this.lblCodigoCliente.Visible = false;
+            this.lblCodigoImagem.AutoSize = true;
+            this.lblCodigoImagem.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigoImagem.ForeColor = System.Drawing.Color.Red;
+            this.lblCodigoImagem.Location = new System.Drawing.Point(764, 11);
+            this.lblCodigoImagem.Name = "lblCodigoImagem";
+            this.lblCodigoImagem.Size = new System.Drawing.Size(24, 25);
+            this.lblCodigoImagem.TabIndex = 165;
+            this.lblCodigoImagem.Text = "6";
+            this.lblCodigoImagem.Visible = false;
             // 
             // Forms_CadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 575);
-            this.Controls.Add(this.lblCodigoCliente);
+            this.Controls.Add(this.lblCodigoImagem);
             this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.btnInserirImagemCliente);
@@ -2545,6 +2545,6 @@
         public Guna.UI.WinForms.GunaPictureBox pcbCliente;
         public Guna.UI.WinForms.GunaTextBox txtCodigo;
         public Bunifu.UI.WinForms.BunifuTextBox txtNumero;
-        private System.Windows.Forms.Label lblCodigoCliente;
+        private System.Windows.Forms.Label lblCodigoImagem;
     }
 }

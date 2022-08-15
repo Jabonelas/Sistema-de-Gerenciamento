@@ -8,11 +8,13 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Correios;
+using Sistema_de_Gerenciamento.Properties;
 
 namespace Sistema_de_Gerenciamento
 {
@@ -32,6 +34,8 @@ namespace Sistema_de_Gerenciamento
 
         private int cont = 0;
 
+        private bool IsCpfCnpjExiste = false;
+
         public Forms_CadastroCliente()
         {
             InitializeComponent();
@@ -45,7 +49,7 @@ namespace Sistema_de_Gerenciamento
 
             lblTipoDeCliente.Text = "CPF / CNPJ";
 
-            pcbCliente.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\imagem-do-usuario-com-fundo-preto.png");
+            pcbCliente.Image = Resources.imagem_do_usuario_com_fundo_preto;
         }
 
         private void btnSalvarCliente_Click(object sender, EventArgs e)
@@ -53,45 +57,26 @@ namespace Sistema_de_Gerenciamento
             SalvarCadastroCliente();
         }
 
-        #region Salvar Cadastro Cliente
-
         private void SalvarCadastroCliente()
         {
             try
             {
                 if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
-                    if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == false)
-                    {
-                        lblCodigoCliente.Text = Salvar.InserirImagemNoCadastroCliente(pcbCliente.Image).ToString();
+                    IsCpfCnpjExiste = VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text);
 
-                        txtCodigo.Text = Salvar.InserirCadastroCliente(
-                            Convert.ToDateTime(txtDataCadastro.Text),
-                            txtNome.Text,
-                            cmbTipo.Text,
-                            txtCPF_CNPJ.Text,
-                            txtRG.Text,
-                            cmbEmissor.Text,
-                            txtDataEmissao.Text,
-                            cmbIns_Est.Text,
-                            txtCEP.Text,
-                            txtEndereco.Text,
-                            Convert.ToInt32(txtNumero.Text),
-                            txtComplemento.Text,
-                            txtBairro.Text,
-                            txtCidade.Text,
-                            cmbUF.Text,
-                            txtNaturalidade.Text,
-                            txtDataNascimento.Text,
-                            cmbEstadoCivil.Text,
-                            Convert.ToDecimal(txtCredito.Text.Replace("R$ ", string.Empty)),
-                            Convert.ToDecimal(txtSaldo.Text.Replace("R$ ", string.Empty)),
-                            cmbBloqueio.Text,
-                            txtCelular.Text,
-                            txtTel_Residencial.Text,
-                            txtEmail.Text,
-                            txtObservacoes.Text,
-                            Convert.ToInt32(lblCodigoCliente.Text)).ToString();
+                    if (IsCpfCnpjExiste == false)
+                    {
+                        DadosCliente dadosCliente;
+                        int codigoCliente = 0;
+                        int codigoImagemCliente = 0;
+
+                        codigoImagemCliente = Salvar.InserirImagemNoCadastroCliente(pcbCliente.Image);
+                        lblCodigoImagem.Text = codigoImagemCliente.ToString();
+
+                        dadosCliente = preencherDadosCliente();
+                        codigoCliente = Salvar.InserirCadastroCliente(dadosCliente);
+                        txtCodigo.Text = codigoCliente.ToString();
                     }
                     else
                     {
@@ -105,14 +90,44 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Salvar Cadastro Cliente
+        private DadosCliente preencherDadosCliente()
+        {
+            DadosCliente dadosCliente = new DadosCliente();
+
+            dadosCliente.dataCadastro = Convert.ToDateTime(txtDataCadastro.Text);
+            dadosCliente.nome = txtNome.Text;
+            dadosCliente.tipo = cmbTipo.Text;
+            dadosCliente.cpfCpnjCliente = txtCPF_CNPJ.Text;
+            dadosCliente.rg = txtRG.Text;
+            dadosCliente.orgaoEmissor = cmbEmissor.Text;
+            dadosCliente.dataEmissao = txtDataEmissao.Text;
+            dadosCliente.insEst = cmbIns_Est.Text;
+            dadosCliente.cep = txtCEP.Text;
+            dadosCliente.endereco = txtEndereco.Text;
+            dadosCliente.numero = Convert.ToInt32(txtNumero.Text);
+            dadosCliente.complemento = txtComplemento.Text;
+            dadosCliente.bairro = txtBairro.Text;
+            dadosCliente.cidade = txtCidade.Text;
+            dadosCliente.uf = cmbUF.Text;
+            dadosCliente.naturalidade = txtNaturalidade.Text;
+            dadosCliente.dataNascimento = txtDataNascimento.Text;
+            dadosCliente.estadoCivil = cmbEstadoCivil.Text;
+            dadosCliente.credito = Convert.ToDecimal(txtCredito.Text.Replace("R$ ", string.Empty));
+            dadosCliente.saldo = Convert.ToDecimal(txtSaldo.Text.Replace("R$ ", string.Empty));
+            dadosCliente.bloqueio = cmbBloqueio.Text;
+            dadosCliente.celular = txtCelular.Text;
+            dadosCliente.telefone = txtTel_Residencial.Text;
+            dadosCliente.email = txtEmail.Text;
+            dadosCliente.observacoes = txtObservacoes.Text;
+            dadosCliente.codigoCliente = Convert.ToInt32(lblCodigoImagem.Text);
+
+            return dadosCliente;
+        }
 
         private void btnAtualizarCliente_Click(object sender, EventArgs e)
         {
             AtualizarCadastroCliente();
         }
-
-        #region Atualziar Cadastro Cliente
 
         private void AtualizarCadastroCliente()
         {
@@ -120,36 +135,21 @@ namespace Sistema_de_Gerenciamento
             {
                 if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
-                    if (VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text) == true)
+                    IsCpfCnpjExiste = VerificarExistencia.VerificarExistenciaDeCPF_CNPJ_Cliente(txtCPF_CNPJ.Text);
+
+                    if (IsCpfCnpjExiste == true)
                     {
-                        Atualizar.AtualizarCadastroCliente(
-                            Convert.ToDateTime(txtDataCadastro.Text),
-                            txtNome.Text,
-                            cmbTipo.Text,
-                            txtCPF_CNPJ.Text,
-                            txtRG.Text,
-                            cmbEmissor.Text,
-                            txtDataEmissao.Text,
-                            cmbIns_Est.Text,
-                            txtCEP.Text,
-                            txtEndereco.Text,
-                            Convert.ToInt32(txtNumero.Text),
-                            txtComplemento.Text,
-                            txtBairro.Text,
-                            txtCidade.Text,
-                            cmbUF.Text,
-                            txtNaturalidade.Text,
-                            txtDataNascimento.Text,
-                            cmbEstadoCivil.Text,
-                            Convert.ToDecimal(txtCredito.Text.Replace("R$ ", "")),
-                            Convert.ToDecimal(txtSaldo.Text.Replace("R$ ", "")),
-                            cmbBloqueio.Text,
-                            txtCelular.Text,
-                            txtTel_Residencial.Text,
-                            txtEmail.Text,
-                            txtObservacoes.Text);
+                        DadosCliente dadosCliente;
+
+                        dadosCliente = preencherDadosCliente();
+
+                        Atualizar.AtualizarCadastroCliente(dadosCliente);
 
                         Atualizar.AtualizarImagemNoCadastroCliente(pcbCliente.Image, Convert.ToInt32(txtCodigo.Text));
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cliente Não Cadastrado!", "Cadastro Cliente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -158,8 +158,6 @@ namespace Sistema_de_Gerenciamento
                 Erro.ErroAoAtualizarCadastroCliente(ex);
             }
         }
-
-        #endregion Atualziar Cadastro Cliente
 
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
@@ -391,16 +389,19 @@ namespace Sistema_de_Gerenciamento
         {
             if (cont == 0)
             {
-                if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtDataNascimento) == true)
+                if (txtDataNascimento.Text != "----------")
                 {
-                    ManipulacaoTextBox.ValidacaoData(txtDataNascimento);
-                }
+                    if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtDataNascimento) == true)
+                    {
+                        ManipulacaoTextBox.ValidacaoData(txtDataNascimento);
+                    }
 
-                if ((Convert.ToDateTime(txtDataNascimento.Text).AddDays(6570)) > Convert.ToDateTime(DateTime.Today.ToShortDateString()))
-                {
-                    MessageBox.Show("É Necessário Que O Cliente Seja Maior De Idade!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if ((Convert.ToDateTime(txtDataNascimento.Text).AddDays(6570)) > Convert.ToDateTime(DateTime.Today.ToShortDateString()))
+                    {
+                        MessageBox.Show("É Necessário Que O Cliente Seja Maior De Idade!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    cont++;
                 }
-                cont++;
             }
             else
             {

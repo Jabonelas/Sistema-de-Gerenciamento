@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sistema_de_Gerenciamento.Properties;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -44,7 +45,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             if (tempoDeExibicao >= 1000)
             {
-                mover = mover + 14;
+                mover += 14;
                 decrementando = decrementando - incrementando;
                 this.Opacity = decrementando;
 
@@ -68,31 +69,31 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 //this.BackColor = Color.Green;
                 lblInformacao.Text = "Inclusão Realizada \nCom Sucesso!";
-                pcbImagem.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\Salvo.png");
+                pcbImagem.Image = Resources.Salvo;
             }
             else if (Global.tipoDoAlerta == "Atualizacao")
             {
                 //this.BackColor = Color.Blue;
                 lblInformacao.Text = "Atualização Realizada \nCom Sucesso!";
-                pcbImagem.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\atualizar.png");
+                pcbImagem.Image = Resources.atualizar;
             }
             else if (Global.tipoDoAlerta == "Exclusao")
             {
                 //this.BackColor = Color.Red;
                 lblInformacao.Text = "Exclusão Realizada \nCom Sucesso!";
-                pcbImagem.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\delete.png");
+                pcbImagem.Image = Resources.delete;
             }
             else if (Global.tipoDoAlerta == "Exportacao")
             {
                 //this.BackColor = Color.Red;
                 lblInformacao.Text = "Planilha Salva \nCom Sucesso!";
-                pcbImagem.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\Salvo.png");
+                pcbImagem.Image = Resources.Salvo;
             }
             else if (Global.tipoDoAlerta == "Confirmacao")
             {
                 //this.BackColor = Color.Green;
                 lblInformacao.Text = "Realizado \nCom Sucesso!";
-                pcbImagem.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\Salvo.png");
+                pcbImagem.Image = Resources.Salvo;
             }
         }
     }

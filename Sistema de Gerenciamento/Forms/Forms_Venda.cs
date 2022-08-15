@@ -132,7 +132,7 @@ namespace Sistema_de_Gerenciamento.Forms
                             produto = listaProduto.First(prod => prod.codigoBarras == Convert.ToInt32(txtCodBarras.Text) &&
                             prod.quantidade >= Convert.ToDecimal(txtQuantidade.Text));
                         }
-                        catch (Exception ex)
+                        catch (Exception)
                         {
                         }
 
@@ -407,7 +407,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     txtTrocoAvista.ForeColor = Color.Red;
                 }
             }
-            catch (Exception exception)
+            catch (Exception)
             {
             }
         }

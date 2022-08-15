@@ -17,9 +17,9 @@ namespace Sistema_de_Gerenciamento
     {
         private BuscarNoBanco Buscar = new BuscarNoBanco();
 
-        private Forms_CadastroProduto cadastroProduto;
+        private Forms_CadastroProduto forms_cadastroProduto;
 
-        private Forms_TelaAdministrador telaAdministrador;
+        private Forms_ConsultarEstoque forms_ConsultarEstoque;
 
         private Forms_PDV forms_PDV;
 
@@ -27,48 +27,22 @@ namespace Sistema_de_Gerenciamento
 
         private string nomeTelaSolicitacao;
 
-        private Forms_ConsultarEstoque forms_ConsultarEstoque;
-
-        public Forms_PesquisarProduto(Forms_CadastroProduto _cadastroProduto)
+        public Forms_PesquisarProduto(Forms_CadastroProduto _forms_cadastroProduto, string _nomeTelaSolicitacao)
         {
             InitializeComponent();
 
-            cadastroProduto = _cadastroProduto;
+            forms_cadastroProduto = _forms_cadastroProduto;
+
+            nomeTelaSolicitacao = _nomeTelaSolicitacao;
 
             PreencherComboBoxGrupo();
         }
 
-        public Forms_PesquisarProduto(Forms_PDV _forms_PDV, string _telaSolicitacao)
+        public Forms_PesquisarProduto(Forms_PDV _forms_PDV, string _nomeTelaSolicitacao)
         {
             InitializeComponent();
-
-            nomeTelaSolicitacao = _telaSolicitacao;
 
             forms_PDV = _forms_PDV;
-
-            PreencherComboBoxGrupo();
-
-            LayoutApenasSelecionarEFechar();
-        }
-
-        public Forms_PesquisarProduto(Forms_Troca _forms_Troca, string _telaSolicitacao)
-        {
-            InitializeComponent();
-
-            nomeTelaSolicitacao = _telaSolicitacao;
-
-            forms_Troca = _forms_Troca;
-
-            PreencherComboBoxGrupo();
-
-            LayoutApenasSelecionarEFechar();
-        }
-
-        public Forms_PesquisarProduto(Forms_ConsultarEstoque _telaConsultarEstoque, string _nomeTelaSolicitacao)
-        {
-            InitializeComponent();
-
-            forms_ConsultarEstoque = _telaConsultarEstoque;
 
             nomeTelaSolicitacao = _nomeTelaSolicitacao;
 
@@ -77,7 +51,33 @@ namespace Sistema_de_Gerenciamento
             LayoutApenasSelecionarEFechar();
         }
 
-        public Forms_PesquisarProduto(Forms_TelaAdministrador _telaAdministrador)
+        public Forms_PesquisarProduto(Forms_Troca _forms_Troca, string _nomeTelaSolicitacao)
+        {
+            InitializeComponent();
+
+            forms_Troca = _forms_Troca;
+
+            nomeTelaSolicitacao = _nomeTelaSolicitacao;
+
+            PreencherComboBoxGrupo();
+
+            LayoutApenasSelecionarEFechar();
+        }
+
+        public Forms_PesquisarProduto(Forms_ConsultarEstoque _forms_telaConsultarEstoque, string _nomeTelaSolicitacao)
+        {
+            InitializeComponent();
+
+            forms_ConsultarEstoque = _forms_telaConsultarEstoque;
+
+            nomeTelaSolicitacao = _nomeTelaSolicitacao;
+
+            PreencherComboBoxGrupo();
+
+            LayoutApenasSelecionarEFechar();
+        }
+
+        public Forms_PesquisarProduto(Forms_TelaAdministrador _forms_telaAdministrador)
         {
             InitializeComponent();
 
@@ -167,7 +167,7 @@ namespace Sistema_de_Gerenciamento
             ConfirmarSelececao();
         }
 
-        private void ConfirmarSelecaoPreencherConsultarEstoque()
+        private void ConfirmarSelecaoPreencherTelaConsultarEstoque()
         {
             forms_ConsultarEstoque.txtCodigo.Text = gdvPesquisarProduto.SelectedCells[1].Value.ToString();
 
@@ -186,57 +186,57 @@ namespace Sistema_de_Gerenciamento
             }
             else if (nomeTelaSolicitacao == "Tela Consultar Estoque")
             {
-                ConfirmarSelecaoPreencherConsultarEstoque();
+                ConfirmarSelecaoPreencherTelaConsultarEstoque();
             }
-            else
+            else if (nomeTelaSolicitacao == "Cadastro Produto")
             {
-                SelecaoGridViewPreencherTelaCadastroProduto();
+                ConfirmarSelecaoPreencherTelaCadastroProduto();
             }
         }
 
-        private void SelecaoGridViewPreencherTelaCadastroProduto()
+        private void ConfirmarSelecaoPreencherTelaCadastroProduto()
         {
             if (gdvPesquisarProduto.RowCount >= 1)
             {
                 int indice = 0;
 
-                cadastroProduto.txtCodigo.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
+                forms_cadastroProduto.txtCodigo.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
 
-                cadastroProduto.txtDescricao.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
+                forms_cadastroProduto.txtDescricao.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
 
-                cadastroProduto.cmbUn.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
+                forms_cadastroProduto.cmbUn.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
 
-                cadastroProduto.txtValorDeCusto.Text = ("R$ " + gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString());
+                forms_cadastroProduto.txtValorDeCusto.Text = string.Format("{0:c}", gdvPesquisarProduto.SelectedCells[indice += 1].Value);
 
-                cadastroProduto.txtPorcentagem.Text = (gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString() + " %");
+                forms_cadastroProduto.txtPorcentagem.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value + " %";
 
-                cadastroProduto.txtValorVenda.Text = ("R$ " + gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString());
+                forms_cadastroProduto.txtValorVenda.Text = string.Format("{0:c}", gdvPesquisarProduto.SelectedCells[indice += 1].Value);
 
-                cadastroProduto.txtLucro.Text = ("R$ " + gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString());
+                forms_cadastroProduto.txtLucro.Text = string.Format("{0:c}", gdvPesquisarProduto.SelectedCells[indice += 1].Value);
 
-                cadastroProduto.txtPrecoAtacado.Text = ("R$ " + gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString());
+                forms_cadastroProduto.txtPrecoAtacado.Text = string.Format("{0:c}", gdvPesquisarProduto.SelectedCells[indice += 1].Value);
 
-                cadastroProduto.cmbGrupo.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
+                forms_cadastroProduto.cmbGrupo.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
 
-                cadastroProduto.cmbSubGrupo.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
+                forms_cadastroProduto.cmbSubGrupo.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
 
-                cadastroProduto.cmbFornecedor.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
+                forms_cadastroProduto.cmbFornecedor.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
 
-                cadastroProduto.txtEstoqueMinimo.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
+                forms_cadastroProduto.txtEstoqueMinimo.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
 
-                cadastroProduto.txtGarantia.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
+                forms_cadastroProduto.txtGarantia.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
 
-                cadastroProduto.txtMarca.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
+                forms_cadastroProduto.txtMarca.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
 
-                cadastroProduto.txtReferencia.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
+                forms_cadastroProduto.txtReferencia.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
 
-                cadastroProduto.txtValidade.Text = (((DateTime)gdvPesquisarProduto.SelectedCells[indice += 1].Value).ToShortDateString());
+                forms_cadastroProduto.txtValidade.Text = (((DateTime)gdvPesquisarProduto.SelectedCells[indice += 1].Value).ToShortDateString());
 
-                cadastroProduto.txtComissao.Text = (gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString() + " %");
+                forms_cadastroProduto.txtComissao.Text = (gdvPesquisarProduto.SelectedCells[indice += 1].Value + " %");
 
-                cadastroProduto.txtObservacoes.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
+                forms_cadastroProduto.txtObservacoes.Text = gdvPesquisarProduto.SelectedCells[indice += 1].Value.ToString();
 
-                cadastroProduto.pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(cadastroProduto.txtCodigo.Text));
+                forms_cadastroProduto.pcbProduto.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(forms_cadastroProduto.txtCodigo.Text));
 
                 this.Close();
             }
@@ -283,7 +283,6 @@ namespace Sistema_de_Gerenciamento
                     bool isCadastroExiste = Buscar.BuscarCadastroProdutoTudo(gdvPesquisarProduto);
 
                     MessagemProdutoNaoEncontrado(isCadastroExiste);
-                    ;
                 }
             }
         }
@@ -311,7 +310,7 @@ namespace Sistema_de_Gerenciamento
         {
             int cont = 0;
 
-            if (cmbGrupo.Text == string.Empty && cont == 0 && cmbSubGrupo.Text != String.Empty)
+            if (cmbGrupo.Text == string.Empty && cont == 0 && cmbSubGrupo.Text != string.Empty)
             {
                 cmbGrupo.Focus();
 

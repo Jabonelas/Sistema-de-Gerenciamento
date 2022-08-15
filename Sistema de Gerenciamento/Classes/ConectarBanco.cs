@@ -16,7 +16,8 @@ namespace Sistema_de_Gerenciamento
         {
             try
             {
-                string conexaoString = "Server=DESKTOP-V79P1T3\\SQLEXPRESS;Database=Sistema_de_Gerenciamento;Integrated Security=True;";
+                //string conexaoString = "Server=DESKTOP-V79P1T3\\SQLEXPRESS;Database=Sistema_de_Gerenciamento;Integrated Security=True;";
+                string conexaoString = @"Server=ISRAEL\SQLEXPRESS;Database=SistemaGerenciamento;User Id=sa;Password=12345;";
                 con = new SqlConnection(conexaoString);
                 con.Open();
                 return con;

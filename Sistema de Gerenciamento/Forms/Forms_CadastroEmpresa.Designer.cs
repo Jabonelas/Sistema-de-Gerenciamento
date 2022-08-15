@@ -129,6 +129,14 @@
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.bunifuSeparator2 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.gdvPesquisarEmpresa = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.lblce_id = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtCodigoQRCodePix = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.pcbQRCodePix = new Guna.UI.WinForms.GunaPictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtChavePix = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.ce_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ce_razao_social = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ce_cnpj = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -147,14 +155,6 @@
             this.ce_codigo_pix = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ce_chave_pix = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ce_qr_code = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblce_id = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtCodigoQRCodePix = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.pcbQRCodePix = new Guna.UI.WinForms.GunaPictureBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtChavePix = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEmpresa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarEmpresa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbQRCodePix)).BeginInit();
@@ -1757,129 +1757,6 @@
             this.gdvPesquisarEmpresa.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.gdvPesquisarEmpresa.Visible = false;
             // 
-            // ce_id
-            // 
-            this.ce_id.HeaderText = "ce_id";
-            this.ce_id.Name = "ce_id";
-            this.ce_id.ReadOnly = true;
-            // 
-            // ce_razao_social
-            // 
-            this.ce_razao_social.HeaderText = "ce_razao_social";
-            this.ce_razao_social.Name = "ce_razao_social";
-            this.ce_razao_social.ReadOnly = true;
-            // 
-            // ce_cnpj
-            // 
-            this.ce_cnpj.HeaderText = "ce_cnpj";
-            this.ce_cnpj.Name = "ce_cnpj";
-            this.ce_cnpj.ReadOnly = true;
-            // 
-            // ce_nome_fantasia
-            // 
-            this.ce_nome_fantasia.DataPropertyName = "ce_nome_fantasia";
-            this.ce_nome_fantasia.HeaderText = "ce_nome_fantasia";
-            this.ce_nome_fantasia.Name = "ce_nome_fantasia";
-            this.ce_nome_fantasia.ReadOnly = true;
-            // 
-            // ce_cep
-            // 
-            this.ce_cep.DataPropertyName = "ce_cep";
-            this.ce_cep.HeaderText = "ce_cep";
-            this.ce_cep.Name = "ce_cep";
-            this.ce_cep.ReadOnly = true;
-            // 
-            // ce_endereco
-            // 
-            this.ce_endereco.DataPropertyName = "ce_endereco";
-            this.ce_endereco.HeaderText = "ce_endereco";
-            this.ce_endereco.Name = "ce_endereco";
-            this.ce_endereco.ReadOnly = true;
-            // 
-            // ce_complemento
-            // 
-            this.ce_complemento.DataPropertyName = "ce_complemento";
-            this.ce_complemento.HeaderText = "ce_complemento";
-            this.ce_complemento.Name = "ce_complemento";
-            this.ce_complemento.ReadOnly = true;
-            // 
-            // ce_bairro
-            // 
-            this.ce_bairro.DataPropertyName = "ce_bairro";
-            this.ce_bairro.HeaderText = "ce_bairro";
-            this.ce_bairro.Name = "ce_bairro";
-            this.ce_bairro.ReadOnly = true;
-            // 
-            // ce_cidade
-            // 
-            this.ce_cidade.DataPropertyName = "ce_cidade";
-            this.ce_cidade.HeaderText = "ce_cidade";
-            this.ce_cidade.Name = "ce_cidade";
-            this.ce_cidade.ReadOnly = true;
-            // 
-            // ce_uf
-            // 
-            this.ce_uf.DataPropertyName = "ce_uf";
-            this.ce_uf.HeaderText = "ce_uf";
-            this.ce_uf.Name = "ce_uf";
-            this.ce_uf.ReadOnly = true;
-            // 
-            // ce_numero
-            // 
-            this.ce_numero.DataPropertyName = "ce_numero";
-            this.ce_numero.HeaderText = "ce_numero";
-            this.ce_numero.Name = "ce_numero";
-            this.ce_numero.ReadOnly = true;
-            // 
-            // ce_telefone
-            // 
-            this.ce_telefone.DataPropertyName = "ce_telefone";
-            this.ce_telefone.HeaderText = "ce_telefone";
-            this.ce_telefone.Name = "ce_telefone";
-            this.ce_telefone.ReadOnly = true;
-            // 
-            // ce_email
-            // 
-            this.ce_email.DataPropertyName = "ce_email";
-            this.ce_email.HeaderText = "ce_email";
-            this.ce_email.Name = "ce_email";
-            this.ce_email.ReadOnly = true;
-            // 
-            // ce_texto_padrao
-            // 
-            this.ce_texto_padrao.DataPropertyName = "ce_texto_padrao";
-            this.ce_texto_padrao.HeaderText = "ce_texto_padrao";
-            this.ce_texto_padrao.Name = "ce_texto_padrao";
-            this.ce_texto_padrao.ReadOnly = true;
-            // 
-            // ce_imagem
-            // 
-            this.ce_imagem.DataPropertyName = "ce_imagem";
-            this.ce_imagem.HeaderText = "ce_imagem";
-            this.ce_imagem.Name = "ce_imagem";
-            this.ce_imagem.ReadOnly = true;
-            // 
-            // ce_codigo_pix
-            // 
-            this.ce_codigo_pix.DataPropertyName = "ce_codigo_pix";
-            this.ce_codigo_pix.HeaderText = "ce_codigo_pix";
-            this.ce_codigo_pix.Name = "ce_codigo_pix";
-            this.ce_codigo_pix.ReadOnly = true;
-            // 
-            // ce_chave_pix
-            // 
-            this.ce_chave_pix.DataPropertyName = "ce_chave_pix";
-            this.ce_chave_pix.HeaderText = "ce_chave_pix";
-            this.ce_chave_pix.Name = "ce_chave_pix";
-            this.ce_chave_pix.ReadOnly = true;
-            // 
-            // ce_qr_code
-            // 
-            this.ce_qr_code.DataPropertyName = "ce_qr_code";
-            this.ce_qr_code.HeaderText = "ce_qr_code";
-            this.ce_qr_code.Name = "ce_qr_code";
-            this.ce_qr_code.ReadOnly = true;
-            // 
             // lblce_id
             // 
             this.lblce_id.AutoSize = true;
@@ -2093,6 +1970,132 @@
             this.label8.Size = new System.Drawing.Size(59, 15);
             this.label8.TabIndex = 168;
             this.label8.Text = "Chave Pix";
+            // 
+            // ce_id
+            // 
+            this.ce_id.DataPropertyName = "ce_id";
+            this.ce_id.HeaderText = "ce_id";
+            this.ce_id.Name = "ce_id";
+            this.ce_id.ReadOnly = true;
+            // 
+            // ce_razao_social
+            // 
+            this.ce_razao_social.DataPropertyName = "ce_razao_social";
+            this.ce_razao_social.HeaderText = "ce_razao_social";
+            this.ce_razao_social.Name = "ce_razao_social";
+            this.ce_razao_social.ReadOnly = true;
+            // 
+            // ce_cnpj
+            // 
+            this.ce_cnpj.DataPropertyName = "ce_cnpj";
+            this.ce_cnpj.HeaderText = "ce_cnpj";
+            this.ce_cnpj.Name = "ce_cnpj";
+            this.ce_cnpj.ReadOnly = true;
+            // 
+            // ce_nome_fantasia
+            // 
+            this.ce_nome_fantasia.DataPropertyName = "ce_nome_fantasia";
+            this.ce_nome_fantasia.HeaderText = "ce_nome_fantasia";
+            this.ce_nome_fantasia.Name = "ce_nome_fantasia";
+            this.ce_nome_fantasia.ReadOnly = true;
+            // 
+            // ce_cep
+            // 
+            this.ce_cep.DataPropertyName = "ce_cep";
+            this.ce_cep.HeaderText = "ce_cep";
+            this.ce_cep.Name = "ce_cep";
+            this.ce_cep.ReadOnly = true;
+            // 
+            // ce_endereco
+            // 
+            this.ce_endereco.DataPropertyName = "ce_endereco";
+            this.ce_endereco.HeaderText = "ce_endereco";
+            this.ce_endereco.Name = "ce_endereco";
+            this.ce_endereco.ReadOnly = true;
+            // 
+            // ce_complemento
+            // 
+            this.ce_complemento.DataPropertyName = "ce_complemento";
+            this.ce_complemento.HeaderText = "ce_complemento";
+            this.ce_complemento.Name = "ce_complemento";
+            this.ce_complemento.ReadOnly = true;
+            // 
+            // ce_bairro
+            // 
+            this.ce_bairro.DataPropertyName = "ce_bairro";
+            this.ce_bairro.HeaderText = "ce_bairro";
+            this.ce_bairro.Name = "ce_bairro";
+            this.ce_bairro.ReadOnly = true;
+            // 
+            // ce_cidade
+            // 
+            this.ce_cidade.DataPropertyName = "ce_cidade";
+            this.ce_cidade.HeaderText = "ce_cidade";
+            this.ce_cidade.Name = "ce_cidade";
+            this.ce_cidade.ReadOnly = true;
+            // 
+            // ce_uf
+            // 
+            this.ce_uf.DataPropertyName = "ce_uf";
+            this.ce_uf.HeaderText = "ce_uf";
+            this.ce_uf.Name = "ce_uf";
+            this.ce_uf.ReadOnly = true;
+            // 
+            // ce_numero
+            // 
+            this.ce_numero.DataPropertyName = "ce_numero";
+            this.ce_numero.HeaderText = "ce_numero";
+            this.ce_numero.Name = "ce_numero";
+            this.ce_numero.ReadOnly = true;
+            // 
+            // ce_telefone
+            // 
+            this.ce_telefone.DataPropertyName = "ce_telefone";
+            this.ce_telefone.HeaderText = "ce_telefone";
+            this.ce_telefone.Name = "ce_telefone";
+            this.ce_telefone.ReadOnly = true;
+            // 
+            // ce_email
+            // 
+            this.ce_email.DataPropertyName = "ce_email";
+            this.ce_email.HeaderText = "ce_email";
+            this.ce_email.Name = "ce_email";
+            this.ce_email.ReadOnly = true;
+            // 
+            // ce_texto_padrao
+            // 
+            this.ce_texto_padrao.DataPropertyName = "ce_texto_padrao";
+            this.ce_texto_padrao.HeaderText = "ce_texto_padrao";
+            this.ce_texto_padrao.Name = "ce_texto_padrao";
+            this.ce_texto_padrao.ReadOnly = true;
+            // 
+            // ce_imagem
+            // 
+            this.ce_imagem.DataPropertyName = "ce_imagem";
+            this.ce_imagem.HeaderText = "ce_imagem";
+            this.ce_imagem.Name = "ce_imagem";
+            this.ce_imagem.ReadOnly = true;
+            // 
+            // ce_codigo_pix
+            // 
+            this.ce_codigo_pix.DataPropertyName = "ce_codigo_pix";
+            this.ce_codigo_pix.HeaderText = "ce_codigo_pix";
+            this.ce_codigo_pix.Name = "ce_codigo_pix";
+            this.ce_codigo_pix.ReadOnly = true;
+            // 
+            // ce_chave_pix
+            // 
+            this.ce_chave_pix.DataPropertyName = "ce_chave_pix";
+            this.ce_chave_pix.HeaderText = "ce_chave_pix";
+            this.ce_chave_pix.Name = "ce_chave_pix";
+            this.ce_chave_pix.ReadOnly = true;
+            // 
+            // ce_qr_code
+            // 
+            this.ce_qr_code.DataPropertyName = "ce_qr_code";
+            this.ce_qr_code.HeaderText = "ce_qr_code";
+            this.ce_qr_code.Name = "ce_qr_code";
+            this.ce_qr_code.ReadOnly = true;
             // 
             // Forms_CadastroEmpresa
             // 

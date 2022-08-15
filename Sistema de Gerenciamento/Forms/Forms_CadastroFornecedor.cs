@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sistema_de_Gerenciamento.Properties;
 
 namespace Sistema_de_Gerenciamento
 {
@@ -45,7 +46,7 @@ namespace Sistema_de_Gerenciamento
         {
             ManipulacaoTextBox.ApagandoTextBox(this);
 
-            pcbFornecedor.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\imagem-do-usuario-com-fundo-preto.png");
+            pcbFornecedor.Image = Resources.imagem_do_usuario_com_fundo_preto;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)

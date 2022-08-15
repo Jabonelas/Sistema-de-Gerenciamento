@@ -10,6 +10,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sistema_de_Gerenciamento.Properties;
 
 namespace Sistema_de_Gerenciamento
 {
@@ -27,6 +28,8 @@ namespace Sistema_de_Gerenciamento
 
         private BuscarNoBanco Buscar = new BuscarNoBanco();
 
+        private bool isDescricaoProtudoExiste;
+
         public Forms_CadastroProduto()
         {
             InitializeComponent();
@@ -38,15 +41,15 @@ namespace Sistema_de_Gerenciamento
             PreencherTextBoxComissao();
         }
 
-        #region MyRegion
-
         private void PreencherTextBoxComissao()
 
         {
-            txtComissao.Text = String.Format("{0:#,##0.00} %", Buscar.Comissao());
-        }
+            decimal valorComissaoIndicadaPorAdmin = 0;
 
-        #endregion MyRegion
+            valorComissaoIndicadaPorAdmin = Buscar.ValorComissaoIndicadaPorAdmin();
+
+            txtComissao.Text = string.Format("{0:f} %", valorComissaoIndicadaPorAdmin);
+        }
 
         private void btnNovoProduto_Click(object sender, EventArgs e)
 
@@ -54,27 +57,21 @@ namespace Sistema_de_Gerenciamento
             NovoCadastroProduto();
         }
 
-        #region Novo Cadastro Produto
-
         private void NovoCadastroProduto()
         {
             ManipulacaoTextBox.ApagandoTextBox(this);
 
-            pcbProduto.Image = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\camera3.png");
+            pcbProduto.Image = Resources.camera3;
 
             PreencherComboBoxGrupo();
 
             PreencherComboBoxFornecedor();
         }
 
-        #endregion Novo Cadastro Produto
-
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             SalvarCadastroProduto();
         }
-
-        #region Salvar Cadastro Produto
 
         private void SalvarCadastroProduto()
         {
@@ -82,28 +79,23 @@ namespace Sistema_de_Gerenciamento
             {
                 if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
-                    if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == false)
-                    {
-                        lblCodigo.Text = (Salvar.InserirImagemNoCadastroProduto(pcbProduto.Image)).ToString();
+                    isDescricaoProtudoExiste = VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text);
 
-                        txtCodigo.Text = (Salvar.InserirCadastroProduto(txtDescricao.Text,
-                            cmbUn.Text,
-                            Convert.ToDecimal(txtValorDeCusto.Text.Replace("R$ ", string.Empty)),
-                            Convert.ToDecimal(txtPorcentagem.Text.Replace(" %", string.Empty)),
-                            Convert.ToDecimal(txtValorVenda.Text.Replace("R$ ", string.Empty)),
-                            Convert.ToDecimal(txtLucro.Text.Replace("R$ ", string.Empty)),
-                            Convert.ToDecimal(txtPrecoAtacado.Text.Replace("R$ ", string.Empty)),
-                            cmbGrupo.Text,
-                            cmbSubGrupo.Text,
-                            cmbFornecedor.Text,
-                            Convert.ToDecimal(txtEstoqueMinimo.Text),
-                            txtGarantia.Text,
-                            txtMarca.Text,
-                            txtReferencia.Text,
-                            Convert.ToDateTime(txtValidade.Text),
-                            Convert.ToDecimal(txtComissao.Text.Replace(" %", string.Empty)),
-                            txtObservacoes.Text,
-                            Convert.ToInt32(lblCodigo.Text))).ToString();
+                    if (isDescricaoProtudoExiste == false)
+                    {
+                        DadosProduto dadosProduto;
+                        int codigoProduto = 0;
+                        int codigoPrimaryKey = 0;
+
+                        codigoPrimaryKey = Salvar.InserirImagemNoCadastroProduto(pcbProduto.Image);
+
+                        lblCodigoPrimaryKey.Text = codigoPrimaryKey.ToString();
+
+                        dadosProduto = PreencherDadosProdutos();
+
+                        codigoProduto = Salvar.InserirCadastroProduto(dadosProduto);
+
+                        txtCodigo.Text = codigoProduto.ToString();
                     }
                     else if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == true)
                     {
@@ -117,14 +109,37 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Salvar Cadastro Produto
-
         private void btnAlterarProduto_Click(object sender, EventArgs e)
         {
             AtualizarCadastroProduto();
         }
 
-        #region Atualizar Cadastro Produto
+        private DadosProduto PreencherDadosProdutos()
+        {
+            DadosProduto dadosProduto = new DadosProduto();
+
+            dadosProduto.codigoProduto = 0;
+            dadosProduto.descricaoProduto = txtDescricao.Text;
+            dadosProduto.unidade = cmbUn.Text;
+            dadosProduto.valorCusto = Convert.ToDecimal(txtValorDeCusto.Text.Replace("R$ ", ""));
+            dadosProduto.porcentagem = Convert.ToDecimal(txtPorcentagem.Text.Replace("%", ""));
+            dadosProduto.valorVenda = Convert.ToDecimal(txtValorVenda.Text.Replace("R$ ", ""));
+            dadosProduto.lucro = Convert.ToDecimal(txtLucro.Text.Replace("R$ ", ""));
+            dadosProduto.precoAtacado = Convert.ToDecimal(txtPrecoAtacado.Text.Replace("R$ ", ""));
+            dadosProduto.grupo = cmbGrupo.Text;
+            dadosProduto.subGrupo = cmbSubGrupo.Text;
+            dadosProduto.fornecedor = cmbFornecedor.Text;
+            dadosProduto.estoqueMinimo = Convert.ToDecimal(txtEstoqueMinimo.Text);
+            dadosProduto.garantia = Convert.ToInt32(txtGarantia.Text);
+            dadosProduto.marca = txtMarca.Text;
+            dadosProduto.referencia = txtReferencia.Text;
+            dadosProduto.validade = Convert.ToDateTime(txtValidade.Text);
+            dadosProduto.comissao = Convert.ToDecimal(txtComissao.Text.Replace("%", ""));
+            dadosProduto.observacao = txtObservacoes.Text;
+            dadosProduto.primarykey = Convert.ToInt32(lblCodigoPrimaryKey.Text);
+
+            return dadosProduto;
+        }
 
         private void AtualizarCadastroProduto()
         {
@@ -132,29 +147,19 @@ namespace Sistema_de_Gerenciamento
             {
                 if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
-                    if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == true)
+                    isDescricaoProtudoExiste = VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text);
+
+                    if (isDescricaoProtudoExiste == true)
                     {
-                        Atualizar.AtualizarCadastroProduto(txtDescricao.Text,
-                            cmbUn.Text,
-                            Convert.ToDecimal(txtValorDeCusto.Text.Replace("R$ ", string.Empty)),
-                            Convert.ToDecimal(txtPorcentagem.Text.Replace(" %", string.Empty)),
-                            Convert.ToDecimal(txtValorVenda.Text.Replace("R$ ", string.Empty)),
-                            Convert.ToDecimal(txtLucro.Text.Replace("R$ ", string.Empty)),
-                            Convert.ToDecimal(txtPrecoAtacado.Text.Replace("R$ ", string.Empty)),
-                            cmbGrupo.Text,
-                            cmbSubGrupo.Text,
-                            cmbFornecedor.Text,
-                            Convert.ToDecimal(txtEstoqueMinimo.Text),
-                            txtGarantia.Text,
-                            txtMarca.Text,
-                            txtReferencia.Text,
-                            Convert.ToDateTime(txtValidade.Text),
-                            Convert.ToDecimal(txtComissao.Text.Replace(" %", string.Empty)),
-                            txtObservacoes.Text);
+                        DadosProduto dadosProduto;
+
+                        dadosProduto = PreencherDadosProdutos();
+
+                        Atualizar.AtualizarCadastroProduto(dadosProduto);
 
                         Atualizar.AtualizarImagemNoCadastroProduto(pcbProduto.Image, Convert.ToInt32(txtCodigo.Text));
                     }
-                    else if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == false)
+                    else if (isDescricaoProtudoExiste == false)
                     {
                         MessageBox.Show("Produto Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -166,11 +171,9 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Atualizar Cadastro Produto
-
         private void btnBuscarProduto_Click(object sender, EventArgs e)
         {
-            Forms_PesquisarProduto buscarProduto = new Forms_PesquisarProduto(this);
+            Forms_PesquisarProduto buscarProduto = new Forms_PesquisarProduto(this, "Cadastro Produto");
             buscarProduto.ShowDialog();
         }
 
@@ -179,21 +182,21 @@ namespace Sistema_de_Gerenciamento
             ExcluirCadastroProduto();
         }
 
-        #region Excluir Cadastro Produto
-
         private void ExcluirCadastroProduto()
         {
             try
             {
                 if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
-                    if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == true)
+                    isDescricaoProtudoExiste = VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text);
+
+                    if (isDescricaoProtudoExiste == true)
                     {
                         Excluir.ExcluirCadastroProduto(txtDescricao.Text);
 
                         Excluir.ExcluirImagemProduto(Convert.ToInt32(txtCodigo.Text));
                     }
-                    else if (VerificarExistencia.VerificarExistenciaDeDescricaoProduto(txtDescricao.Text) == false)
+                    else if (isDescricaoProtudoExiste == false)
                     {
                         MessageBox.Show("Produto Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -205,8 +208,6 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Excluir Cadastro Produto
-
         private void bntSair_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -216,8 +217,6 @@ namespace Sistema_de_Gerenciamento
         {
             InserirImagemProduto();
         }
-
-        #region Inserir Imagem Produto
 
         private void InserirImagemProduto()
         {
@@ -230,14 +229,10 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Inserir Imagem Produto
-
         private void cmbGrupo_SelectedIndexChanged(object sender, EventArgs e)
         {
             PreenchimentoSubGrupo();
         }
-
-        #region Preenchimento do ComboBox Sub-Grupo
 
         private void PreenchimentoSubGrupo()
         {
@@ -250,14 +245,10 @@ namespace Sistema_de_Gerenciamento
             listaSubGrupo.ForEach(prod => cmbSubGrupo.Items.Add(prod.sub_grupo));
         }
 
-        #endregion Preenchimento do ComboBox Sub-Grupo
-
         private void cmbSubGrupo_Enter(object sender, EventArgs e)
         {
             VerificarPreenchimentoGrupo();
         }
-
-        #region Verificar Se o ComboBox Grupo Esta Preenchdo
 
         private void VerificarPreenchimentoGrupo()
         {
@@ -268,10 +259,6 @@ namespace Sistema_de_Gerenciamento
                 cmbGrupo.Focus();
             }
         }
-
-        #endregion Verificar Se o ComboBox Grupo Esta Preenchdo
-
-        #region Preencher Combobox Grupo
 
         private void PreencherComboBoxGrupo()
         {
@@ -284,10 +271,6 @@ namespace Sistema_de_Gerenciamento
             listaGrupo.ForEach(grupoProduto => cmbGrupo.Items.Add(grupoProduto.grupo));
         }
 
-        #endregion Preencher Combobox Grupo
-
-        #region Preencher ComboBox Fornecedor
-
         private void PreencherComboBoxFornecedor()
         {
             cmbFornecedor.Items.Clear();
@@ -297,8 +280,6 @@ namespace Sistema_de_Gerenciamento
                 cmbFornecedor.Items.Add(item);
             }
         }
-
-        #endregion Preencher ComboBox Fornecedor
 
         private void txtValorDeCusto_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -318,23 +299,22 @@ namespace Sistema_de_Gerenciamento
             GerarValorDeVenda_Lucro();
         }
 
-        #region Gerar Valor De Venda e Valor de Lucro
-
         private void GerarValorDeVenda_Lucro()
         {
-            if (txtValorDeCusto.Text != String.Empty)
+            if (txtValorDeCusto.Text != string.Empty)
             {
-                decimal valorDeCusto = Convert.ToDecimal(txtValorDeCusto.Text.Replace("R$ ", string.Empty));
-                decimal porcentagem = Convert.ToDecimal(txtPorcentagem.Text.Replace(" %", string.Empty));
-                decimal lucro = (valorDeCusto * porcentagem / 100);
+                decimal valorDeCusto = 0;
+                decimal porcentagem = 0;
+                decimal lucro = 0;
 
-                txtValorVenda.Text = ($"R$ {(valorDeCusto + lucro).ToString("N2")}");
+                valorDeCusto = Convert.ToDecimal(txtValorDeCusto.Text.Replace("R$ ", string.Empty));
+                porcentagem = Convert.ToDecimal(txtPorcentagem.Text.Replace(" %", string.Empty));
+                lucro = valorDeCusto * porcentagem / 100;
 
-                txtLucro.Text = ($"R$ {(lucro).ToString("N2")}");
+                txtValorVenda.Text = $"R$ {(valorDeCusto + lucro).ToString("N2")}";
+                txtLucro.Text = $"R$ {(lucro).ToString("N2")}";
             }
         }
-
-        #endregion Gerar Valor De Venda e Valor de Lucro
 
         private void txtPrecoAPrazoAtacado_KeyPress(object sender, KeyPressEventArgs e)
         {

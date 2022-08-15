@@ -19,10 +19,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Atualizar Cadastro Cliente
 
-        public void AtualizarCadastroCliente(DateTime _dataCadastro, string _nomeCliente, string _tipo, string _cPF_CNPJ,
-          string _rG, string _emissor, string _dataEmissao, string _ins_Est, string _cEP, string _endereco, int _numero, string _complemento,
-          string _bairro, string _cidade, string _uF, string _naturalidade, string _dataNasc, string _estadoCivil, decimal _credito,
-          decimal _saldo, string _bloqueio, string _celular, string _tel_Residencial, string _email, string _observacoes)
+        public void AtualizarCadastroCliente(DadosCliente _dadosCliente)
         {
             try
             {
@@ -37,31 +34,31 @@ namespace Sistema_de_Gerenciamento.Classes
                         "where cc_cpf_cnpj=@CPF_CNPJ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@DataCadastro", SqlDbType.Date).Value = _dataCadastro;
-                    adapter.SelectCommand.Parameters.AddWithValue("@NomeCliente", SqlDbType.VarChar).Value = _nomeCliente;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Tipo", SqlDbType.VarChar).Value = _tipo;
-                    adapter.SelectCommand.Parameters.AddWithValue("@CPF_CNPJ", SqlDbType.VarChar).Value = _cPF_CNPJ;
-                    adapter.SelectCommand.Parameters.AddWithValue("@RG", SqlDbType.VarChar).Value = _rG;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Emissor", SqlDbType.VarChar).Value = _emissor;
-                    adapter.SelectCommand.Parameters.AddWithValue("@DataEmissao", SqlDbType.VarChar).Value = _dataEmissao;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Ins_Est", SqlDbType.VarChar).Value = _ins_Est;
-                    adapter.SelectCommand.Parameters.AddWithValue("@CEP", SqlDbType.VarChar).Value = _cEP;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Endereco", SqlDbType.VarChar).Value = _endereco;
-                    adapter.SelectCommand.Parameters.AddWithValue("@numero", SqlDbType.Int).Value = _numero;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Complemento", SqlDbType.VarChar).Value = _complemento;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Bairro", SqlDbType.VarChar).Value = _bairro;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Cidade", SqlDbType.VarChar).Value = _cidade;
-                    adapter.SelectCommand.Parameters.AddWithValue("@UF", SqlDbType.VarChar).Value = _uF;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Naturalidade", SqlDbType.VarChar).Value = _naturalidade;
-                    adapter.SelectCommand.Parameters.AddWithValue("@DataNasc", SqlDbType.VarChar).Value = _dataNasc;
-                    adapter.SelectCommand.Parameters.AddWithValue("@EstadoCivil", SqlDbType.VarChar).Value = _estadoCivil;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Credito", SqlDbType.Decimal).Value = _credito;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Saldo", SqlDbType.Decimal).Value = _saldo;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Bloqueio", SqlDbType.VarChar).Value = _bloqueio;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Celular", SqlDbType.VarChar).Value = _celular;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Tel_Residencial", SqlDbType.VarChar).Value = _tel_Residencial;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Email", SqlDbType.VarChar).Value = _email;
-                    adapter.SelectCommand.Parameters.AddWithValue("@Observacoes", SqlDbType.VarChar).Value = _observacoes;
+                    adapter.SelectCommand.Parameters.AddWithValue("@DataCadastro", SqlDbType.Date).Value = _dadosCliente.dataCadastro;
+                    adapter.SelectCommand.Parameters.AddWithValue("@NomeCliente", SqlDbType.VarChar).Value = _dadosCliente.nome;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Tipo", SqlDbType.VarChar).Value = _dadosCliente.tipo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@CPF_CNPJ", SqlDbType.VarChar).Value = _dadosCliente.cpfCpnjCliente;
+                    adapter.SelectCommand.Parameters.AddWithValue("@RG", SqlDbType.VarChar).Value = _dadosCliente.rg;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Emissor", SqlDbType.VarChar).Value = _dadosCliente.orgaoEmissor;
+                    adapter.SelectCommand.Parameters.AddWithValue("@DataEmissao", SqlDbType.VarChar).Value = _dadosCliente.dataEmissao;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Ins_Est", SqlDbType.VarChar).Value = _dadosCliente.insEst;
+                    adapter.SelectCommand.Parameters.AddWithValue("@CEP", SqlDbType.VarChar).Value = _dadosCliente.cep;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Endereco", SqlDbType.VarChar).Value = _dadosCliente.endereco;
+                    adapter.SelectCommand.Parameters.AddWithValue("@numero", SqlDbType.Int).Value = _dadosCliente.numero;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Complemento", SqlDbType.VarChar).Value = _dadosCliente.complemento;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Bairro", SqlDbType.VarChar).Value = _dadosCliente.bairro;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Cidade", SqlDbType.VarChar).Value = _dadosCliente.cidade;
+                    adapter.SelectCommand.Parameters.AddWithValue("@UF", SqlDbType.VarChar).Value = _dadosCliente.uf;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Naturalidade", SqlDbType.VarChar).Value = _dadosCliente.naturalidade;
+                    adapter.SelectCommand.Parameters.AddWithValue("@DataNasc", SqlDbType.VarChar).Value = _dadosCliente.dataNascimento;
+                    adapter.SelectCommand.Parameters.AddWithValue("@EstadoCivil", SqlDbType.VarChar).Value = _dadosCliente.estadoCivil;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Credito", SqlDbType.Decimal).Value = _dadosCliente.credito;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Saldo", SqlDbType.Decimal).Value = _dadosCliente.saldo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Bloqueio", SqlDbType.VarChar).Value = _dadosCliente.bloqueio;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Celular", SqlDbType.VarChar).Value = _dadosCliente.celular;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Tel_Residencial", SqlDbType.VarChar).Value = _dadosCliente.telefone;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Email", SqlDbType.VarChar).Value = _dadosCliente.email;
+                    adapter.SelectCommand.Parameters.AddWithValue("@Observacoes", SqlDbType.VarChar).Value = _dadosCliente.observacoes;
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
@@ -215,41 +212,43 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Atualizar Cadastro Produto
 
-        public void AtualizarCadastroProduto(string _descricao, string _un, decimal _valor_custo, decimal _porcentagem,
-        decimal _valor_venda, decimal _lucro, decimal _preco_atacado, string _grupo, string _sub_grupo, string _fonecedor,
-        decimal _estoque_minimo, string _garantia, string _marca, string _referencia, DateTime _validade, decimal _comissao,
-        string _observacao)
+        //public void AtualizarCadastroProduto(string _descricao, string _un, decimal _valor_custo, decimal _porcentagem,
+        //decimal _valor_venda, decimal _lucro, decimal _preco_atacado, string _grupo, string _sub_grupo, string _fonecedor,
+        //decimal _estoque_minimo, string _garantia, string _marca, string _referencia, DateTime _validade, decimal _comissao,
+        //string _observacao)
+
+        public void AtualizarCadastroProduto(DadosProduto _dadosProduto)
 
         {
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update tb_CadastroProdutos set cp_descricao=@descricao,cp_un=@un,cp_valor_custo=@valorCusto," +
-                        "cp_porcentagem=@porcentagem,cp_valor_venda=@valorVenda,cp_lucro=@lucro,cp_preco_atacado=@precoAtacado," +
-                        "cp_grupo=@grupo,cp_sub_grupo=@subGrupo,cp_fonecedor=@fonecedor,cp_estoque_minimo=@estoqueMinimo," +
-                        "cp_garantia=@garantia,cp_marca=@marca,cp_referencia=@referencia,cp_validade=@validade,cp_comissao=@comissao," +
-                        "cp_observacao=@observacao " +
-                        "where cp_descricao=@descricao";
+                    string query = "update tb_CadastroProdutos set cp_descricao=@descricao, cp_un=@un, cp_valor_custo = @valorCusto," +
+                        "cp_porcentagem = @porcentagem, cp_valor_venda=@valorVenda, cp_lucro=@lucro, cp_preco_atacado = @precoAtacado," +
+                        "cp_grupo = @grupo,cp_sub_grupo = @subGrupo, cp_fonecedor = @fonecedor, cp_estoque_minimo = @estoqueMinimo," +
+                        "cp_garantia = @garantia,cp_marca = @marca, cp_referencia = @referencia,cp_validade = @validade, cp_comissao = @comissao," +
+                        "cp_observacao = @observacao " +
+                        "where cp_descricao = @descricao";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@descricao", SqlDbType.VarChar).Value = _descricao;
-                    adapter.SelectCommand.Parameters.AddWithValue("@un", SqlDbType.VarChar).Value = _un;
-                    adapter.SelectCommand.Parameters.AddWithValue("@valorCusto", SqlDbType.Decimal).Value = _valor_custo;
-                    adapter.SelectCommand.Parameters.AddWithValue("@porcentagem", SqlDbType.Decimal).Value = _porcentagem;
-                    adapter.SelectCommand.Parameters.AddWithValue("@valorVenda", SqlDbType.Decimal).Value = _valor_venda;
-                    adapter.SelectCommand.Parameters.AddWithValue("@lucro", SqlDbType.Decimal).Value = _lucro;
-                    adapter.SelectCommand.Parameters.AddWithValue("@precoAtacado", SqlDbType.Decimal).Value = _preco_atacado;
-                    adapter.SelectCommand.Parameters.AddWithValue("@grupo", SqlDbType.VarChar).Value = _grupo;
-                    adapter.SelectCommand.Parameters.AddWithValue("@subGrupo", SqlDbType.VarChar).Value = _sub_grupo;
-                    adapter.SelectCommand.Parameters.AddWithValue("@fonecedor", SqlDbType.VarChar).Value = _fonecedor;
-                    adapter.SelectCommand.Parameters.AddWithValue("@estoqueMinimo", SqlDbType.Decimal).Value = _estoque_minimo;
-                    adapter.SelectCommand.Parameters.AddWithValue("@garantia", SqlDbType.VarChar).Value = _garantia;
-                    adapter.SelectCommand.Parameters.AddWithValue("@marca", SqlDbType.VarChar).Value = _marca;
-                    adapter.SelectCommand.Parameters.AddWithValue("@referencia", SqlDbType.VarChar).Value = _referencia;
-                    adapter.SelectCommand.Parameters.AddWithValue("@validade", SqlDbType.Date).Value = _validade;
-                    adapter.SelectCommand.Parameters.AddWithValue("@comissao", SqlDbType.Decimal).Value = _comissao;
-                    adapter.SelectCommand.Parameters.AddWithValue("@observacao", SqlDbType.VarChar).Value = _observacao;
+                    adapter.SelectCommand.Parameters.AddWithValue("@descricao", SqlDbType.VarChar).Value = _dadosProduto.descricaoProduto;
+                    adapter.SelectCommand.Parameters.AddWithValue("@un", SqlDbType.VarChar).Value = _dadosProduto.unidade;
+                    adapter.SelectCommand.Parameters.AddWithValue("@valorCusto", SqlDbType.Decimal).Value = _dadosProduto.valorCusto;
+                    adapter.SelectCommand.Parameters.AddWithValue("@porcentagem", SqlDbType.Decimal).Value = _dadosProduto.porcentagem;
+                    adapter.SelectCommand.Parameters.AddWithValue("@valorVenda", SqlDbType.Decimal).Value = _dadosProduto.valorVenda;
+                    adapter.SelectCommand.Parameters.AddWithValue("@lucro", SqlDbType.Decimal).Value = _dadosProduto.lucro;
+                    adapter.SelectCommand.Parameters.AddWithValue("@precoAtacado", SqlDbType.Decimal).Value = _dadosProduto.precoAtacado;
+                    adapter.SelectCommand.Parameters.AddWithValue("@grupo", SqlDbType.VarChar).Value = _dadosProduto.grupo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@subGrupo", SqlDbType.VarChar).Value = _dadosProduto.subGrupo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@fonecedor", SqlDbType.VarChar).Value = _dadosProduto.fornecedor;
+                    adapter.SelectCommand.Parameters.AddWithValue("@estoqueMinimo", SqlDbType.Decimal).Value = _dadosProduto.estoqueMinimo;
+                    adapter.SelectCommand.Parameters.AddWithValue("@garantia", SqlDbType.VarChar).Value = _dadosProduto.garantia;
+                    adapter.SelectCommand.Parameters.AddWithValue("@marca", SqlDbType.VarChar).Value = _dadosProduto.marca;
+                    adapter.SelectCommand.Parameters.AddWithValue("@referencia", SqlDbType.VarChar).Value = _dadosProduto.referencia;
+                    adapter.SelectCommand.Parameters.AddWithValue("@validade", SqlDbType.Date).Value = _dadosProduto.validade;
+                    adapter.SelectCommand.Parameters.AddWithValue("@comissao", SqlDbType.Decimal).Value = _dadosProduto.comissao;
+                    adapter.SelectCommand.Parameters.AddWithValue("@observacao", SqlDbType.VarChar).Value = _dadosProduto.observacao;
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
@@ -312,7 +311,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     string query = "update tb_CadastroEmpresa set ce_razao_social=@razaoSocial,ce_cnpj=@cnpj," +
                         "ce_nome_fantasia=@nomeFantasia,ce_cep=@cep,ce_endereco=@endereco,ce_complemento=@complemento," +
                         "ce_bairro=@bairro,ce_cidade=@cidade,ce_uf=@uf,ce_numero=@numero,ce_telefone=@telefone," +
-                        "ce_email=@email,ce_texto_padrao=@textoPadrao,ce_codigo_pix=@codigoPix,ce_chave_pix=@chavePix " +
+                        "ce_email=@email,ce_texto_padrao=@textoPadrao,ce_codigo_pix=@codigoPix,ce_chave_pix= @chavePix " +
                         "where ce_id = @ce_id ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -698,7 +697,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Atualizar Juros Credito
 
-        #region Atualizar Comissao
+        #region Atualizar ValorComissaoIndicadaPorAdmin
 
         public void AtualizarComissao(decimal _comissao)
         {
@@ -722,7 +721,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
-        #endregion Atualizar Comissao
+        #endregion Atualizar ValorComissaoIndicadaPorAdmin
 
         #endregion Atualizar Configuracao Gerencial
 

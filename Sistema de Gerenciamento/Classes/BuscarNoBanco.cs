@@ -1234,9 +1234,9 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar O Desconto Por Item
 
-        #region Buscar Comissao
+        #region Buscar ValorComissaoIndicadaPorAdmin
 
-        public decimal Comissao()
+        public decimal ValorComissaoIndicadaPorAdmin()
         {
             try
             {
@@ -1262,7 +1262,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
-        #endregion Buscar Comissao
+        #endregion Buscar ValorComissaoIndicadaPorAdmin
 
         #region Buscar Codigo de Barras
 
@@ -1490,9 +1490,10 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
+                    reader.Read();
+
                     if (reader.HasRows)
                     {
-                        reader.Read();
                     }
 
                     byte[] img = (byte[])(reader["ce_logo_empresa"]);
@@ -1504,12 +1505,48 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                return null;
                 Erro.ErroAoBuscarImagemEmpresaNoBanco(ex);
+
+                return null;
             }
         }
 
         #endregion Buscar Imagem Empresa
+
+        #region Buscar Existencia de Cadastro de Empresa
+
+        public bool BuscarExistenciaCadastroEmpresa()
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ce_cnpj from tb_CadastroEmpresa";
+
+                    SqlCommand cmd = new SqlCommand(query, conexaoSQL);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        reader.Read();
+
+                        if (reader.HasRows)
+                        {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarCadastroEmpresaNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Buscar Existencia de Cadastro de Empresa
 
         #region Buscar QRCode Pix
 
@@ -4517,7 +4554,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Valor Total Fluxo Caixa
 
-        #region Buscar Valor da Comissao Cada Produto
+        #region Buscar Valor da ValorComissaoIndicadaPorAdmin Cada Produto
 
         public decimal BuscarValorComissaoPorProduto(int _codigoProduto)
         {
@@ -4547,7 +4584,7 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
-        #endregion Buscar Valor da Comissao Cada Produto
+        #endregion Buscar Valor da ValorComissaoIndicadaPorAdmin Cada Produto
 
         #endregion Buscar Fluxo Caixa
 

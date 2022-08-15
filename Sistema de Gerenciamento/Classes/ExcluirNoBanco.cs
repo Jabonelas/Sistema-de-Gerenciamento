@@ -49,7 +49,7 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "delete tb_ImagemClientes where ic_id = @codigo";
+                    string query = "delete tb_ImagemCliente where ic_id = @codigo";
 
                     SqlCommand cmd = new SqlCommand(query, conexaoSQL);
 
