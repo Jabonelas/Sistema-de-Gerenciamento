@@ -9,50 +9,28 @@ namespace Sistema_de_Gerenciamento.Classes
     public class DadosNotaFiscalSaida
     {
         public string vendedor { get; set; }
-
         public DateTime validadeTroca { get; set; }
-
         public string nomeCliente { get; set; }
-
         public int codigoBarras { get; set; }
-
         public int codigoProduto { get; set; }
-
         public string descricao { get; set; }
-
         public decimal quantidade { get; set; }
-
         public string unidade { get; set; }
-
         public decimal preco { get; set; }
-
         public decimal valorUnitario { get; set; }
-
         public string cpf { get; set; }
-
         public int numeroNF { get; set; }
-
         public DateTime emissao { get; set; }
-
         public string tipoPagamento { get; set; }
-
         public int quantidadeParcelas { get; set; }
-
         public decimal valorDesconto { get; set; }
-
         public decimal valorJuros { get; set; }
-
         public decimal valorPago { get; set; }
-
         public string status { get; set; }
-
         public string trocarVendedor { get; set; }
-
         public int id { get; set; }
         public string motivoTroca { get; set; }
-
         public bool deveRealizarTrocar { get; set; }
-
         public int nfEntrada { get; set; }
 
         public DadosNotaFiscalSaida(string _vendedor, DateTime _validadeTroca, string _nomeCliente,

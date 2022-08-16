@@ -11,7 +11,7 @@ namespace Sistema_de_Gerenciamento.Classes
 {
     internal class ApiCorreios
     {
-        private List<Temperatures> lista = new List<Temperatures>();
+        private DadosCEP temperatures = new DadosCEP();
 
         public async Task APICorreios(string _cep)
         {
@@ -19,19 +19,14 @@ namespace Sistema_de_Gerenciamento.Classes
             var response = await cliente.GetAsync(string.Empty);
             var content = await response.Content.ReadAsStringAsync();
 
-            var users = JsonConvert.DeserializeObject<Temperatures>(content);
+            var users = JsonConvert.DeserializeObject<DadosCEP>(content);
 
-            lista.Add(users);
+            temperatures = users;
         }
 
-        public List<Temperatures> RetornoApi()
+        public DadosCEP RetornoApi()
         {
-            return lista;
-        }
-
-        public void ZerarLista()
-        {
-            lista.Clear();
+            return temperatures;
         }
     }
 }

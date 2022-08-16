@@ -133,9 +133,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Atualizar Cadastro Fornecedor
 
-        public void AtualizarCadastroFornecedor(string _razaoSocial, string _cnpj, string _nomeFantasia,
-                   string _cep, string _endereco, string _complemento, int _numero, string _bairro, string _cidade, string _uf,
-                   string _telefone, string _email, string _observacoes)
+        public void AtualizarCadastroFornecedor(DadosCadastroFornecedor _dadosCadastroFornecedor)
         {
             try
             {
@@ -148,19 +146,19 @@ namespace Sistema_de_Gerenciamento.Classes
                         "where cf_cnpj=@cnpj";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@razaoSocial", SqlDbType.Date).Value = _razaoSocial;
-                    adapter.SelectCommand.Parameters.AddWithValue("@cnpj", SqlDbType.VarChar).Value = _cnpj;
-                    adapter.SelectCommand.Parameters.AddWithValue("@nomeFantasia", SqlDbType.VarChar).Value = _nomeFantasia;
-                    adapter.SelectCommand.Parameters.AddWithValue("@cep", SqlDbType.VarChar).Value = _cep;
-                    adapter.SelectCommand.Parameters.AddWithValue("@endereco", SqlDbType.VarChar).Value = _endereco;
-                    adapter.SelectCommand.Parameters.AddWithValue("@complemento", SqlDbType.VarChar).Value = _complemento;
-                    adapter.SelectCommand.Parameters.AddWithValue("@numero", SqlDbType.VarChar).Value = _numero;
-                    adapter.SelectCommand.Parameters.AddWithValue("@bairro", SqlDbType.VarChar).Value = _bairro;
-                    adapter.SelectCommand.Parameters.AddWithValue("@cidade", SqlDbType.VarChar).Value = _cidade;
-                    adapter.SelectCommand.Parameters.AddWithValue("@uf", SqlDbType.VarChar).Value = _uf;
-                    adapter.SelectCommand.Parameters.AddWithValue("@telefone", SqlDbType.Int).Value = _telefone;
-                    adapter.SelectCommand.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = _email;
-                    adapter.SelectCommand.Parameters.AddWithValue("@observacoes", SqlDbType.VarChar).Value = _observacoes;
+                    adapter.SelectCommand.Parameters.AddWithValue("@razaoSocial", SqlDbType.Date).Value = _dadosCadastroFornecedor.razaoSocial;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cnpj", SqlDbType.VarChar).Value = _dadosCadastroFornecedor.cnpj;
+                    adapter.SelectCommand.Parameters.AddWithValue("@nomeFantasia", SqlDbType.VarChar).Value = _dadosCadastroFornecedor.nomeFantasia;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cep", SqlDbType.VarChar).Value = _dadosCadastroFornecedor.cep;
+                    adapter.SelectCommand.Parameters.AddWithValue("@endereco", SqlDbType.VarChar).Value = _dadosCadastroFornecedor.endereco;
+                    adapter.SelectCommand.Parameters.AddWithValue("@complemento", SqlDbType.VarChar).Value = _dadosCadastroFornecedor.complemento;
+                    adapter.SelectCommand.Parameters.AddWithValue("@numero", SqlDbType.VarChar).Value = _dadosCadastroFornecedor.numero;
+                    adapter.SelectCommand.Parameters.AddWithValue("@bairro", SqlDbType.VarChar).Value = _dadosCadastroFornecedor.bairro;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cidade", SqlDbType.VarChar).Value = _dadosCadastroFornecedor.cidade;
+                    adapter.SelectCommand.Parameters.AddWithValue("@uf", SqlDbType.VarChar).Value = _dadosCadastroFornecedor.uf;
+                    adapter.SelectCommand.Parameters.AddWithValue("@telefone", SqlDbType.Int).Value = _dadosCadastroFornecedor.telefone;
+                    adapter.SelectCommand.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = _dadosCadastroFornecedor.email;
+                    adapter.SelectCommand.Parameters.AddWithValue("@observacoes", SqlDbType.VarChar).Value = _dadosCadastroFornecedor.observacao;
 
                     adapter.SelectCommand.ExecuteNonQuery();
 
@@ -300,9 +298,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Atualizar Cadastro Empresa
 
-        public void AtualizarCadastroEmpresa(string _razaoSocial, string _cnpj, string _nomeFantasia, string _cep, string _endereco, string _complemento,
-            string _bairro, string _cidade, string _uf, int _numero, string _telefone, string _email, string _textoPadrao, string _codigoPix,
-            string _chavePix, int _ce_id)
+        public void AtualizarCadastroEmpresa(DadosCadastroEmpresa _dadosCadastroEmpresa)
         {
             try
             {
@@ -315,22 +311,22 @@ namespace Sistema_de_Gerenciamento.Classes
                         "where ce_id = @ce_id ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@razaoSocial", SqlDbType.VarChar).Value = _razaoSocial;
-                    adapter.SelectCommand.Parameters.AddWithValue("@cnpj", SqlDbType.VarChar).Value = _cnpj;
-                    adapter.SelectCommand.Parameters.AddWithValue("@nomeFantasia", SqlDbType.VarChar).Value = _nomeFantasia;
-                    adapter.SelectCommand.Parameters.AddWithValue("@cep", SqlDbType.VarChar).Value = _cep;
-                    adapter.SelectCommand.Parameters.AddWithValue("@endereco", SqlDbType.VarChar).Value = _endereco;
-                    adapter.SelectCommand.Parameters.AddWithValue("@complemento", SqlDbType.VarChar).Value = _complemento;
-                    adapter.SelectCommand.Parameters.AddWithValue("@bairro", SqlDbType.VarChar).Value = _bairro;
-                    adapter.SelectCommand.Parameters.AddWithValue("@cidade", SqlDbType.VarChar).Value = _cidade;
-                    adapter.SelectCommand.Parameters.AddWithValue("@uf", SqlDbType.VarChar).Value = _uf;
-                    adapter.SelectCommand.Parameters.AddWithValue("@numero", SqlDbType.Int).Value = _numero;
-                    adapter.SelectCommand.Parameters.AddWithValue("@telefone", SqlDbType.VarChar).Value = _telefone;
-                    adapter.SelectCommand.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = _email;
-                    adapter.SelectCommand.Parameters.AddWithValue("@textoPadrao", SqlDbType.VarChar).Value = _textoPadrao;
-                    adapter.SelectCommand.Parameters.AddWithValue("@codigoPix", SqlDbType.VarChar).Value = _codigoPix;
-                    adapter.SelectCommand.Parameters.AddWithValue("@chavePix", SqlDbType.VarChar).Value = _chavePix;
-                    adapter.SelectCommand.Parameters.AddWithValue("@ce_id", SqlDbType.Int).Value = _ce_id;
+                    adapter.SelectCommand.Parameters.AddWithValue("@razaoSocial", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.razaoSocial;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cnpj", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.cnpj;
+                    adapter.SelectCommand.Parameters.AddWithValue("@nomeFantasia", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.nomeFantasia;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cep", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.cep;
+                    adapter.SelectCommand.Parameters.AddWithValue("@endereco", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.endereco;
+                    adapter.SelectCommand.Parameters.AddWithValue("@complemento", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.complemento;
+                    adapter.SelectCommand.Parameters.AddWithValue("@bairro", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.bairro;
+                    adapter.SelectCommand.Parameters.AddWithValue("@cidade", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.cidade;
+                    adapter.SelectCommand.Parameters.AddWithValue("@uf", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.uf;
+                    adapter.SelectCommand.Parameters.AddWithValue("@numero", SqlDbType.Int).Value = _dadosCadastroEmpresa.numero;
+                    adapter.SelectCommand.Parameters.AddWithValue("@telefone", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.telefone;
+                    adapter.SelectCommand.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = _dadosCadastroEmpresa;
+                    adapter.SelectCommand.Parameters.AddWithValue("@textoPadrao", SqlDbType.VarChar).Value = _dadosCadastroEmpresa;
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigoPix", SqlDbType.VarChar).Value = _dadosCadastroEmpresa;
+                    adapter.SelectCommand.Parameters.AddWithValue("@chavePix", SqlDbType.VarChar).Value = _dadosCadastroEmpresa;
+                    adapter.SelectCommand.Parameters.AddWithValue("@ce_id", SqlDbType.Int).Value = _dadosCadastroEmpresa.id;
 
                     adapter.SelectCommand.ExecuteNonQuery();
 

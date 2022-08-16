@@ -11,55 +11,30 @@ namespace Sistema_de_Gerenciamento.Classes
     internal class DadosProduto
     {
         public int codigoProduto { get; set; }
-
         public string descricaoProduto { get; set; }
-
         public string unidade { get; set; }
-
         public decimal valorCusto { get; set; }
-
         public decimal porcentagem { get; set; }
-
         public decimal valorVenda { get; set; }
-
         public decimal lucro { get; set; }
-
         public decimal precoAtacado { get; set; }
-
         public string grupo { get; set; }
-
         public string subGrupo { get; set; }
-
         public string fornecedor { get; set; }
-
         public decimal estoqueMinimo { get; set; }
-
         public int garantia { get; set; }
-
         public string marca { get; set; }
-
         public string referencia { get; set; }
-
         public DateTime validade { get; set; }
-
         public decimal comissao { get; set; }
-
         public string observacao { get; set; }
-
         public decimal quantidade { get; set; }
-
         public decimal preco { get; set; }
-
         public decimal desconto { get; set; }
-
         public int codigoBarras { get; set; }
-
         public int nfEntrada { get; set; }
-
         public DateTime dataEntrada { get; set; }
-
         public string status { get; set; }
-
         public int primarykey { get; set; }
 
         public DadosProduto(int _codigoProduto, string _descricaoProduto, decimal _quantidade,

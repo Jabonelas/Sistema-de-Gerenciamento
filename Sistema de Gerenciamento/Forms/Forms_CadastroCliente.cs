@@ -14,6 +14,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Correios;
+using Sistema_de_Gerenciamento.Classes.QuickType;
 using Sistema_de_Gerenciamento.Properties;
 
 namespace Sistema_de_Gerenciamento
@@ -33,6 +34,8 @@ namespace Sistema_de_Gerenciamento
         private ApiCorreios Api = new ApiCorreios();
 
         private int cont = 0;
+
+        private int qntCEPexecutado = 0;
 
         private bool IsCpfCnpjExiste = false;
 
@@ -170,8 +173,6 @@ namespace Sistema_de_Gerenciamento
             ExclucirCadastroCliente();
         }
 
-        #region Excluir Cadastro Cliente
-
         private void ExclucirCadastroCliente()
         {
             try
@@ -192,8 +193,6 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Excluir Cadastro Cliente
-
         private void bntSair_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -203,8 +202,6 @@ namespace Sistema_de_Gerenciamento
         {
             InserirImagemCliente();
         }
-
-        #region Inserir Imagem Cliente
 
         private void InserirImagemCliente()
         {
@@ -217,14 +214,10 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Inserir Imagem Cliente
-
         private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetarFormatoTextBoxCPF_CPNJ();
         }
-
-        #region Setar Formato do TextBox CPF e CNPJ
 
         private void SetarFormatoTextBoxCPF_CPNJ()
         {
@@ -232,76 +225,68 @@ namespace Sistema_de_Gerenciamento
 
             if (cmbTipo.Text == "Pess. Fisica")
             {
-                Global.tipoDeCliente = "Pess. Fisica";
-
-                lblTipoDeCliente.Text = "CPF";
-
-                txtRG.Text = string.Empty;
-                txtRG.Enabled = true;
-                txtRG.ReadOnly = false;
-
-                cmbEmissor.Text = string.Empty;
-                cmbEmissor.Enabled = true;
-
-                txtDataEmissao.Text = string.Empty;
-                txtDataEmissao.Enabled = true;
-                txtDataEmissao.ReadOnly = false;
-
-                cmbIns_Est.Text = string.Empty;
-                cmbIns_Est.Enabled = true;
-
-                txtNaturalidade.Text = string.Empty;
-                txtNaturalidade.Visible = true;
-                txtNaturalidade.ReadOnly = false;
-
-                txtDataNascimento.Text = string.Empty;
-                txtDataNascimento.Enabled = true;
-                txtDataNascimento.ReadOnly = false;
-
-                cmbEstadoCivil.Text = string.Empty;
-                cmbEstadoCivil.Enabled = true;
+                LayoutPessoaFisica();
             }
             else if (cmbTipo.Text == "Pess. Juridica")
             {
-                Global.tipoDeCliente = "Pess. Juridica";
-
-                lblTipoDeCliente.Text = "CNPJ";
-
-                txtRG.Text = "---------------";
-                txtRG.Enabled = false;
-                txtRG.ReadOnly = true;
-
-                cmbEmissor.Text = "----";
-                cmbEmissor.Enabled = false;
-
-                txtDataEmissao.Text = "----------";
-                txtDataEmissao.Enabled = false;
-                txtDataEmissao.ReadOnly = true;
-
-                cmbIns_Est.Text = "--";
-                cmbIns_Est.Enabled = false;
-
-                txtNaturalidade.Text = "----------";
-                txtNaturalidade.Enabled = false;
-                txtNaturalidade.ReadOnly = true;
-
-                txtDataNascimento.Text = "----------";
-                txtDataNascimento.Enabled = false;
-                txtDataNascimento.ReadOnly = true;
-
-                cmbEstadoCivil.Text = "--------------";
-                cmbEstadoCivil.Enabled = false;
+                LayoutPessoaJuridica();
             }
         }
 
-        #endregion Setar Formato do TextBox CPF e CNPJ
+        private void LayoutPessoaFisica()
+        {
+            Global.tipoDeCliente = "Pess. Fisica";
+
+            lblTipoDeCliente.Text = "CPF";
+            txtRG.Text = string.Empty;
+            txtRG.Enabled = true;
+            txtRG.ReadOnly = false;
+            cmbEmissor.Text = string.Empty;
+            cmbEmissor.Enabled = true;
+            txtDataEmissao.Text = string.Empty;
+            txtDataEmissao.Enabled = true;
+            txtDataEmissao.ReadOnly = false;
+            cmbIns_Est.Text = string.Empty;
+            cmbIns_Est.Enabled = true;
+            txtNaturalidade.Text = string.Empty;
+            txtNaturalidade.Visible = true;
+            txtNaturalidade.ReadOnly = false;
+            txtDataNascimento.Text = string.Empty;
+            txtDataNascimento.Enabled = true;
+            txtDataNascimento.ReadOnly = false;
+            cmbEstadoCivil.Text = string.Empty;
+            cmbEstadoCivil.Enabled = true;
+        }
+
+        private void LayoutPessoaJuridica()
+        {
+            Global.tipoDeCliente = "Pess. Juridica";
+
+            lblTipoDeCliente.Text = "CNPJ";
+            txtRG.Text = "---------------";
+            txtRG.Enabled = false;
+            txtRG.ReadOnly = true;
+            cmbEmissor.Text = "----";
+            cmbEmissor.Enabled = false;
+            txtDataEmissao.Text = "----------";
+            txtDataEmissao.Enabled = false;
+            txtDataEmissao.ReadOnly = true;
+            cmbIns_Est.Text = "--";
+            cmbIns_Est.Enabled = false;
+            txtNaturalidade.Text = "----------";
+            txtNaturalidade.Enabled = false;
+            txtNaturalidade.ReadOnly = true;
+            txtDataNascimento.Text = "----------";
+            txtDataNascimento.Enabled = false;
+            txtDataNascimento.ReadOnly = true;
+            cmbEstadoCivil.Text = "--------------";
+            cmbEstadoCivil.Enabled = false;
+        }
 
         private void txtCPF_CNPJ_KeyPress_1(object sender, KeyPressEventArgs e)
         {
             FormatarCPF_CNPJ(e);
         }
-
-        #region Formatar CPF/CNPJ
 
         private void FormatarCPF_CNPJ(KeyPressEventArgs e)
         {
@@ -318,14 +303,10 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Formatar CPF/CNPJ
-
         private void txtCPF_CNPJ_Enter(object sender, EventArgs e)
         {
             VerificacaoPreenchimentoTipoCliente();
         }
-
-        #region Verificar se o Campo Tipo de Cliente Foi Preenchido Primeiramente
 
         private void VerificacaoPreenchimentoTipoCliente()
         {
@@ -340,8 +321,6 @@ namespace Sistema_de_Gerenciamento
                 MessageBox.Show("Por Favor Preencha Primeiro O Campo Tipo!", "Informação!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-        #endregion Verificar se o Campo Tipo de Cliente Foi Preenchido Primeiramente
 
         private void txtCPF_CNPJ_Leave(object sender, EventArgs e)
         {
@@ -421,59 +400,75 @@ namespace Sistema_de_Gerenciamento
                 ManipulacaoTextBox.FormatoCEP(txtCEP);
         }
 
-        private async void txtCEP_Leave(object sender, EventArgs e)
+        private void txtCEP_Leave(object sender, EventArgs e)
         {
             PreenchimentoPorCEP(txtCEP);
         }
 
-        #region Buscar de Endereco por CEP
-
-        private async void PreenchimentoPorCEP(BunifuTextBox _textBox)
+        private void PreenchimentoPorCEP(BunifuTextBox _txtCEP_)
         {
-            try
+            if (qntCEPexecutado == 0)
             {
-                if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtDataNascimento) == true)
+                qntCEPexecutado++;
+
+                if (txtCEP.Text != string.Empty)
                 {
-                    await Api.APICorreios((_textBox.Text).Replace("-", ""));
+                    bool IsPreenchimentoCorreto;
 
-                    int cont = 0;
+                    IsPreenchimentoCorreto = ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtCEP);
 
-                    foreach (var item in Api.RetornoApi())
+                    if (IsPreenchimentoCorreto == true)
                     {
-                        if (item.Uf != null)
+                        var tarefa = Api.APICorreios((_txtCEP_.Text).Replace("-", ""));
+                        var esperador = tarefa.GetAwaiter();
+
+                        esperador.OnCompleted(() =>
                         {
-                            txtEndereco.Text = item.Logradouro;
-                            txtComplemento.Text = item.Complemento;
-                            txtBairro.Text = item.Bairro;
-                            txtCidade.Text = item.Localidade;
-                            cmbUF.Text = item.Uf;
+                            var item = Api.RetornoApi();
 
-                            Api.ZerarLista();
-
-                            _textBox.BorderColorActive = Color.DodgerBlue;
-                        }
-                        else
-                        {
-                            _textBox.Focus();
-                            Api.ZerarLista();
-
-                            if (cont == 0)
+                            if (item.Uf != null)
                             {
-                                MessageBox.Show("CEP Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                cont++;
-                            }
+                                PreenchendoCamposCEP(item);
 
-                            break;
-                        }
+                                _txtCEP_.BorderColorActive = Color.DodgerBlue;
+                            }
+                            else
+                            {
+                                _txtCEP_.Focus();
+
+                                MessageBox.Show("CEP Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        });
                     }
                 }
+                else
+                {
+                    ZerandoCamposPreenchidosCEP();
+                }
             }
-            catch (Exception)
+            else
             {
+                qntCEPexecutado = 0;
             }
         }
 
-        #endregion Buscar de Endereco por CEP
+        private void PreenchendoCamposCEP(DadosCEP _item)
+        {
+            txtEndereco.Text = _item.Logradouro;
+            txtComplemento.Text = _item.Complemento;
+            txtBairro.Text = _item.Bairro;
+            txtCidade.Text = _item.Localidade;
+            cmbUF.Text = _item.Uf;
+        }
+
+        private void ZerandoCamposPreenchidosCEP()
+        {
+            txtEndereco.Text = string.Empty;
+            txtComplemento.Text = string.Empty;
+            txtCidade.Text = string.Empty;
+            txtBairro.Text = string.Empty;
+            cmbUF.Text = string.Empty;
+        }
 
         private void txtCelular_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -501,29 +496,25 @@ namespace Sistema_de_Gerenciamento
             VerificarcaoPreencimentoCompletoTelefone(txtTel_Residencial);
         }
 
-        #region Verificacao de Preenchimento Completo Telefone
-
-        private bool VerificarcaoPreencimentoCompletoTelefone(GunaTextBox _textBox)
+        private bool VerificarcaoPreencimentoCompletoTelefone(GunaTextBox _txtTel_Residencial)
         {
-            if (_textBox.Text.Length != _textBox.MaxLength && _textBox.Text.Length != 0)
+            if (_txtTel_Residencial.Text.Length != _txtTel_Residencial.MaxLength && _txtTel_Residencial.Text.Length != 0)
             {
-                _textBox.BorderColor = Color.Red;
+                _txtTel_Residencial.BorderColor = Color.Red;
 
-                _textBox.Focus();
+                _txtTel_Residencial.Focus();
 
                 MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (_textBox.Text.Length == _textBox.MaxLength || _textBox.Text.Length == 0)
+            else if (_txtTel_Residencial.Text.Length == _txtTel_Residencial.MaxLength || _txtTel_Residencial.Text.Length == 0)
             {
-                _textBox.BorderColor = Color.DodgerBlue;
+                _txtTel_Residencial.BorderColor = Color.DodgerBlue;
 
                 return true;
             }
 
             return false;
         }
-
-        #endregion Verificacao de Preenchimento Completo Telefone
 
         private void txtCredito_KeyPress(object sender, KeyPressEventArgs e)
         {

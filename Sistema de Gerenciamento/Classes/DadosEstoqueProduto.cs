@@ -10,21 +10,13 @@ namespace Sistema_de_Gerenciamento.Classes
     public class DadosEstoqueProduto
     {
         public int numeroNF { get; set; }
-
         public int? codigoBarras { get; set; } = null;
-
         public int codigoProduto { get; set; }
-
         public string descricaoProduto { get; set; }
-
         public decimal quantidade { get; set; }
-
         public string unidade { get; set; }
-
         public decimal valorUnitario { get; set; }
-
         public DateTime? dataEntrada { get; set; } = null;
-
         public decimal? descontoItem { get; set; } = null;
 
         public DadosEstoqueProduto(int _numeroNF, int? _codigoBarras, int _codigoProduto, string _descricaoProduto,

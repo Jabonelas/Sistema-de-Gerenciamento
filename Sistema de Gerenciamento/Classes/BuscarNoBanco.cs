@@ -1427,33 +1427,35 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Cadastro Empresa
 
-        public bool BuscarCadastroEmpresa(int _ce_id, BunifuDataGridView _tabela)
+        public List<DadosCadastroEmpresa> BuscarCadastroEmpresa(int _ce_id, BunifuDataGridView _tabela)
         {
+            List<DadosCadastroEmpresa> listadadosCadastroEmpresa = new List<DadosCadastroEmpresa>();
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    //string query ="select ce_razao_social,ce_cnpj,ce_nome_fantasia,ce_cep,ce_endereco,ce_complemento," +
-                    //    "ce_bairro,ce_cidade,ce_uf,ce_numero,ce_telefone,ce_email,ce_texto_padrao_os " +
-                    //    "from tb_CadastroEmpresa where ce_id = @ce_id";
-
                     string query = "select * from tb_CadastroEmpresa where ce_id = @ce_id";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@ce_id", _ce_id);
 
-                    adapter.SelectCommand.ExecuteNonQuery();
+                    //adapter.SelectCommand.ExecuteNonQuery();
 
-                    DataTable dataTable = new DataTable();
+                    //DataTable dataTable = new DataTable();
 
-                    adapter.Fill(dataTable);
-                    _tabela.DataSource = dataTable;
-                    _tabela.Refresh();
+                    //adapter.Fill(dataTable);
+                    //_tabela.DataSource = dataTable;
+                    //_tabela.Refresh();
 
-                    SqlDataReader reader;
-                    reader = adapter.SelectCommand.ExecuteReader();
+                    SqlDataReader dr;
+                    dr = adapter.SelectCommand.ExecuteReader();
 
-                    reader.Read();
+                    while (dr.Read())
+                    {
+                        listadadosCadastroEmpresa.Add(new DadosCadastroEmpresa(dr.));
+                    }
+
+                    //reader.Read();
 
                     if (reader.HasRows == true)
                     {
@@ -1463,13 +1465,16 @@ namespace Sistema_de_Gerenciamento.Classes
                     {
                         return false;
                     }
+                    return listadadosCadastroEmpresa;
                 }
             }
             catch (Exception ex)
             {
                 Erro.ErroAoBuscarEmpresaNoBanco(ex);
 
-                return false;
+                return listadadosCadastroEmpresa;
+
+                //return false;
             }
         }
 

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Sistema_de_Gerenciamento.Classes.QuickType;
 using Sistema_de_Gerenciamento.Properties;
 
 namespace Sistema_de_Gerenciamento
@@ -54,36 +55,28 @@ namespace Sistema_de_Gerenciamento
             SalvarCadastroFornecedor();
         }
 
-        #region Salvar Cadastro Fornecedor
-
         private void SalvarCadastroFornecedor()
         {
             try
             {
                 if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
-                    if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == false)
-                    {
-                        lblForeignKey.Text = (Salvar.InserirImagemNoCadastroFornecedor(pcbFornecedor.Image)).ToString();
+                    bool IsCNPJFornecedorExiste = false;
 
-                        txtCodigo.Text = (Salvar.InserirCadastroForncedor(
-                            txtRazaoSocial.Text,
-                            Convert.ToDateTime(txtDataCadastro.Text),
-                            txtCNPJ.Text,
-                            txtNomeFantasia.Text,
-                            txtCEP.Text,
-                            txtEndereco.Text,
-                            txtComplemento.Text,
-                            Convert.ToInt32(txtNumero.Text),
-                            txtBairro.Text,
-                            txtCidade.Text,
-                            cmbUF.Text,
-                            txtTelefone.Text,
-                            txtEmail.Text,
-                            txtObservacoes.Text,
-                            Convert.ToInt32(lblForeignKey.Text))).ToString();
+                    IsCNPJFornecedorExiste = VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text);
+
+                    if (IsCNPJFornecedorExiste == false)
+                    {
+                        DadosCadastroFornecedor dadosCadastroFornecedor;
+                        int codigoFornecedor = 0;
+                        int codigoImagemFornecedor = 0;
+
+                        codigoImagemFornecedor = Salvar.InserirImagemNoCadastroFornecedor(pcbFornecedor.Image);
+                        lblForeignKey.Text = codigoImagemFornecedor.ToString();
+                        dadosCadastroFornecedor = PreencherDadosCadastroFornecedor();
+                        codigoFornecedor = Salvar.InserirCadastroFornecedor(dadosCadastroFornecedor);
                     }
-                    else if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == true)
+                    else if (IsCNPJFornecedorExiste == true)
                     {
                         MessageBox.Show("Fornecedor Já Cadastrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -95,14 +88,33 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Salvar Cadastro Fornecedor
+        private DadosCadastroFornecedor PreencherDadosCadastroFornecedor()
+        {
+            DadosCadastroFornecedor dadosCadastroFonecedo = new DadosCadastroFornecedor();
+
+            dadosCadastroFonecedo.razaoSocial = txtRazaoSocial.Text;
+            dadosCadastroFonecedo.dataCadastro = Convert.ToDateTime(txtDataCadastro.Text);
+            dadosCadastroFonecedo.cnpj = txtCNPJ.Text;
+            dadosCadastroFonecedo.nomeFantasia = txtNomeFantasia.Text;
+            dadosCadastroFonecedo.cep = txtCEP.Text;
+            dadosCadastroFonecedo.endereco = txtEndereco.Text;
+            dadosCadastroFonecedo.complemento = txtComplemento.Text;
+            dadosCadastroFonecedo.numero = Convert.ToInt32(txtNumero.Text);
+            dadosCadastroFonecedo.bairro = txtBairro.Text;
+            dadosCadastroFonecedo.cidade = txtCidade.Text;
+            dadosCadastroFonecedo.uf = cmbUF.Text;
+            dadosCadastroFonecedo.telefone = txtTelefone.Text;
+            dadosCadastroFonecedo.email = txtEmail.Text;
+            dadosCadastroFonecedo.observacao = txtObservacoes.Text;
+            dadosCadastroFonecedo.codigoFornecedor = Convert.ToInt32(lblForeignKey.Text);
+
+            return dadosCadastroFonecedo;
+        }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             AtualizarCadastroFornecedor();
         }
-
-        #region Atualizar Cadastro Fornecedor
 
         private void AtualizarCadastroFornecedor()
         {
@@ -110,25 +122,21 @@ namespace Sistema_de_Gerenciamento
             {
                 if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
-                    if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == true)
+                    bool IsCNPJFornecedorExiste = false;
+
+                    IsCNPJFornecedorExiste = VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text);
+
+                    if (IsCNPJFornecedorExiste == true)
                     {
-                        Atualizar.AtualizarCadastroFornecedor(txtRazaoSocial.Text,
-                            txtCNPJ.Text,
-                            txtNomeFantasia.Text,
-                            txtCEP.Text,
-                            txtEndereco.Text,
-                            txtComplemento.Text,
-                            Convert.ToInt32(txtNumero.Text),
-                            txtBairro.Text,
-                            txtCidade.Text,
-                            cmbUF.Text,
-                            txtTelefone.Text,
-                            txtEmail.Text,
-                            txtObservacoes.Text);
+                        DadosCadastroFornecedor dadosCadastroFornecedor;
+
+                        dadosCadastroFornecedor = PreencherDadosCadastroFornecedor();
+
+                        Atualizar.AtualizarCadastroFornecedor(dadosCadastroFornecedor);
 
                         Atualizar.AtualizarImagemNoCadastroFornecedor(pcbFornecedor.Image, Convert.ToInt32(txtCodigo.Text));
                     }
-                    else if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == false)
+                    else if (IsCNPJFornecedorExiste == false)
                     {
                         MessageBox.Show("Fornecedor Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -139,8 +147,6 @@ namespace Sistema_de_Gerenciamento
                 Erro.ErroAoAtualizarCadastroFornecedor(ex);
             }
         }
-
-        #endregion Atualizar Cadastro Fornecedor
 
         private void btnBuscarFornecedor_Click(object sender, EventArgs e)
         {
@@ -153,21 +159,23 @@ namespace Sistema_de_Gerenciamento
             ExcluirCadastroFornecedor();
         }
 
-        #region Excluir Cadastro Fornecedor
-
         private void ExcluirCadastroFornecedor()
         {
             try
             {
                 if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
                 {
-                    if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == true)
+                    bool IsCNPJFornecedorExiste = false;
+
+                    IsCNPJFornecedorExiste = VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text);
+
+                    if (IsCNPJFornecedorExiste == true)
                     {
                         Excluir.ExcluirCadastroFornecedor(txtCNPJ.Text);
 
                         Excluir.ExcluirImagemFornecedor(Convert.ToInt32(txtCodigo.Text));
                     }
-                    else if (VerificarExistencia.VerificarExistenciaDeCNPJFornecedor(txtCNPJ.Text) == false)
+                    else if (IsCNPJFornecedorExiste == false)
                     {
                         MessageBox.Show("Fornecedor Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -179,14 +187,10 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Excluir Cadastro Fornecedor
-
         private void btnInserirImagem_Click(object sender, EventArgs e)
         {
             InserirImagemFornecedor();
         }
-
-        #region Inserir Imagem Fornecedor
 
         private void InserirImagemFornecedor()
         {
@@ -198,8 +202,6 @@ namespace Sistema_de_Gerenciamento
                 pcbFornecedor.Image = Image.FromFile(abrirPesquisa.FileName);
             }
         }
-
-        #endregion Inserir Imagem Fornecedor
 
         private void txtTelefone_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -232,62 +234,50 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        private async void txtCEP_Leave(object sender, EventArgs e)
+        private void txtCEP_Leave(object sender, EventArgs e)
         {
             PreenchimentoPorCEP();
         }
 
-        #region Preenchimento dos TextBox Por Buscar Com CEP
-
-        private async void PreenchimentoPorCEP()
+        private void PreenchimentoPorCEP()
         {
             if (qntCEPexecutado == 0)
             {
                 qntCEPexecutado++;
 
-                try
+                if (txtCEP.Text != string.Empty)
                 {
-                    if (txtCEP.Text.Length != txtCEP.MaxLength && txtCEP.Text.Length != 0)
+                    bool IsPreenchimentoCorreto;
+
+                    IsPreenchimentoCorreto = ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtCEP);
+
+                    if (IsPreenchimentoCorreto == true)
                     {
-                        txtCEP.BorderColorActive = Color.Red;
+                        var tarefa = Api.APICorreios((txtCEP.Text).Replace("-", ""));
+                        var esperador = tarefa.GetAwaiter();
 
-                        MessageBox.Show("Por Favor Preencha o Campo Corretamente", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        esperador.OnCompleted(() =>
+                           {
+                               var item = Api.RetornoApi();
 
-                        txtCEP.Focus();
-                    }
-                    else if (txtCEP.Text.Length == txtCEP.MaxLength || txtCEP.Text.Length == 0)
-                    {
-                        await Api.APICorreios((txtCEP.Text).Replace("-", ""));
+                               if (item.Uf != null)
+                               {
+                                   PreenchendoCamposCEP(item);
 
-                        foreach (var item in Api.RetornoApi())
-                        {
-                            if (item.Uf != null)
-                            {
-                                txtEndereco.Text = item.Logradouro;
-                                txtComplemento.Text = item.Complemento;
-                                txtBairro.Text = item.Bairro;
-                                txtCidade.Text = item.Localidade;
-                                cmbUF.Text = item.Uf;
+                                   txtCEP.BorderColorActive = Color.DodgerBlue;
+                               }
+                               else
+                               {
+                                   txtCEP.Focus();
 
-                                Api.ZerarLista();
-
-                                txtCEP.BorderColorActive = Color.DodgerBlue;
-                            }
-                            else
-                            {
-                                txtCEP.Focus();
-
-                                Api.ZerarLista();
-
-                                MessageBox.Show("CEP Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                                break;
-                            }
-                        }
+                                   MessageBox.Show("CEP Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                               }
+                           });
                     }
                 }
-                catch (Exception)
+                else
                 {
+                    ZerandoCamposPreenchidosCEP();
                 }
             }
             else
@@ -296,7 +286,23 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        #endregion Preenchimento dos TextBox Por Buscar Com CEP
+        private void PreenchendoCamposCEP(DadosCEP _item)
+        {
+            txtEndereco.Text = _item.Logradouro;
+            txtComplemento.Text = _item.Complemento;
+            txtBairro.Text = _item.Bairro;
+            txtCidade.Text = _item.Localidade;
+            cmbUF.Text = _item.Uf;
+        }
+
+        private void ZerandoCamposPreenchidosCEP()
+        {
+            txtEndereco.Text = string.Empty;
+            txtComplemento.Text = string.Empty;
+            txtCidade.Text = string.Empty;
+            txtBairro.Text = string.Empty;
+            cmbUF.Text = string.Empty;
+        }
 
         private void txtCNPJ_KeyPress(object sender, KeyPressEventArgs e)
         {

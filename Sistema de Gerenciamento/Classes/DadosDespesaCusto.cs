@@ -21,7 +21,6 @@ namespace Sistema_de_Gerenciamento.Classes
         public decimal valorParcela { get; set; }
         public string categoria { get; set; }
         public string verificar { get; set; }
-
         public string statusPagamento { get; set; }
 
         public DadosDespesaCusto(int _codigo, string _tipo, string _descricao, string _forncedorTitulo, string _cnpj,

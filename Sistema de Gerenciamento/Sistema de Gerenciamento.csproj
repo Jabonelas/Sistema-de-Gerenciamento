@@ -265,6 +265,8 @@
     <Compile Include="Classes\AvisoCantoInferiorDireito.cs" />
     <Compile Include="Classes\BuscarNoBanco.cs" />
     <Compile Include="Classes\ConectarBanco.cs" />
+    <Compile Include="Classes\DadosCadastroEmpresa.cs" />
+    <Compile Include="Classes\DadosCadastroFornecedor.cs" />
     <Compile Include="Classes\DadosEstatiscasFinanceiras.cs" />
     <Compile Include="Classes\DadosNotaFiscalSaida.cs" />
     <Compile Include="Classes\DadosCliente.cs" />
@@ -281,7 +283,7 @@
     <Compile Include="Classes\ExcluirNoBanco.cs" />
     <Compile Include="Classes\ExportarExcel.cs" />
     <Compile Include="Classes\Imprimir.cs" />
-    <Compile Include="Classes\Temperatures.cs" />
+    <Compile Include="Classes\DadosCep.cs" />
     <Compile Include="Classes\VerificacaoDeExistencia.cs" />
     <Compile Include="Forms\Forms_ConsultaEstoqueContagem.cs">
       <SubType>Form</SubType>
@@ -509,6 +511,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_CadastroDespesasCusto.resx">
       <DependentUpon>Forms_CadastroDespesasCusto.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_CadastroEmpresa.resx">
       <DependentUpon>Forms_CadastroEmpresa.cs</DependentUpon>
@@ -572,6 +575,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_CadastroCliente.resx">
       <DependentUpon>Forms_CadastroCliente.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_CadastroProduto.resx">
       <DependentUpon>Forms_CadastroProduto.cs</DependentUpon>

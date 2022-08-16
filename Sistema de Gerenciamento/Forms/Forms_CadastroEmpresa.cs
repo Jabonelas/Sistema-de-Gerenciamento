@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Bunifu.UI.WinForms;
 using QRCoder;
 using Sistema_de_Gerenciamento.Classes;
+using Sistema_de_Gerenciamento.Classes.QuickType;
 using Sistema_de_Gerenciamento.Forms;
 
 namespace Sistema_de_Gerenciamento
@@ -26,21 +27,14 @@ namespace Sistema_de_Gerenciamento
 
         private ApiCorreios Api = new ApiCorreios();
 
+        private int qntCEPexecutado = 0;
+
         public Forms_CadastroEmpresa()
         {
             InitializeComponent();
 
             PreenchimentoDosTextBox();
         }
-
-        //private void Imagem()
-        //{
-        //    QRCodeGenerator qrGenerator = new QRCodeGenerator();
-        //    QRCodeData qrCodeData = qrGenerator.CreateQrCode(txtTextoQR.Text, QRCodeGenerator.ECCLevel.Q);
-        //    QRCode qrCode = new QRCode(qrCodeData);
-        //    Bitmap qrCodeImage = qrCode.GetGraphic(20);
-        //    pcbImagemQR.Image = qrCodeImage;
-        //}
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
@@ -57,29 +51,15 @@ namespace Sistema_de_Gerenciamento
 
                     if (isExisteDadosCadastrados == true)
                     {
-                        Salvar.InserirCadastroEmpresa(
-                            txtRazaoSocial.Text,
-                            txtCNPJ.Text,
-                            txtNomeFantasia.Text,
-                            txtCEP.Text,
-                            txtEndereco.Text,
-                            txtComplemento.Text,
-                            txtBairro.Text,
-                            txtCidade.Text,
-                            cmbUF.Text,
-                            Convert.ToInt32(txtNumero.Text),
-                            txtTelefone.Text,
-                            txtEmail.Text,
-                            txtTextPadrao.Text,
-                            pcbEmpresa.Image,
-                            txtCodigoQRCodePix.Text,
-                            txtChavePix.Text,
-                            pcbQRCodePix.Image);
+                        DadosCadastroEmpresa dadosCadastroEmpresa;
+
+                        dadosCadastroEmpresa = preencherDadosCadastroEmpresa();
+
+                        Salvar.InserirCadastroEmpresa(dadosCadastroEmpresa, pcbEmpresa.Image, pcbQRCodePix.Image);
                     }
                     else
                     {
-                        MessageBox.Show("Empresa Já Cadastrada! \nSe Deseja Realizar Alteração Click Em Altera!", "Atenção!", MessageBoxButtons.OK,
-                            MessageBoxIcon.Warning);
+                        MessageBox.Show("Empresa Já Cadastrada! \nSe Deseja Realizar Alteração Click Em Altera!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -87,6 +67,30 @@ namespace Sistema_de_Gerenciamento
             {
                 Erro.ErroAoCadastroEmpresa(ex);
             }
+        }
+
+        private DadosCadastroEmpresa preencherDadosCadastroEmpresa()
+        {
+            DadosCadastroEmpresa dadosCadastroEmpresa = new DadosCadastroEmpresa();
+
+            dadosCadastroEmpresa.razaoSocial = txtRazaoSocial.Text;
+            dadosCadastroEmpresa.cnpj = txtCNPJ.Text;
+            dadosCadastroEmpresa.nomeFantasia = txtNomeFantasia.Text;
+            dadosCadastroEmpresa.cep = txtCEP.Text;
+            dadosCadastroEmpresa.endereco = txtEndereco.Text;
+            dadosCadastroEmpresa.complemento = txtComplemento.Text;
+            dadosCadastroEmpresa.bairro = txtBairro.Text;
+            dadosCadastroEmpresa.cidade = txtCidade.Text;
+            dadosCadastroEmpresa.uf = cmbUF.Text;
+            dadosCadastroEmpresa.numero = Convert.ToInt32(txtNumero.Text);
+            dadosCadastroEmpresa.telefone = txtTelefone.Text;
+            dadosCadastroEmpresa.email = txtEmail.Text;
+            dadosCadastroEmpresa.textoPadrao = txtTextPadrao.Text;
+            dadosCadastroEmpresa.codigoQR = txtCodigoQRCodePix.Text;
+            dadosCadastroEmpresa.chavePix = txtChavePix.Text;
+            dadosCadastroEmpresa.id = Convert.ToInt32(lblce_id.Text);
+
+            return dadosCadastroEmpresa;
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
@@ -102,23 +106,11 @@ namespace Sistema_de_Gerenciamento
                 {
                     if (txtCNPJ.Text != string.Empty)
                     {
-                        Atualizar.AtualizarCadastroEmpresa(
-                            txtRazaoSocial.Text,
-                            txtCNPJ.Text,
-                            txtNomeFantasia.Text,
-                            txtCEP.Text,
-                            txtEndereco.Text,
-                            txtComplemento.Text,
-                            txtBairro.Text,
-                            txtCidade.Text,
-                            cmbUF.Text,
-                            Convert.ToInt32(txtNumero.Text),
-                            txtTelefone.Text,
-                            txtEmail.Text,
-                            txtTextPadrao.Text,
-                            txtCodigoQRCodePix.Text,
-                            txtChavePix.Text,
-                            Convert.ToInt32(lblce_id.Text));
+                        DadosCadastroEmpresa dadosCadastroEmpresa;
+
+                        dadosCadastroEmpresa = preencherDadosCadastroEmpresa();
+
+                        Atualizar.AtualizarCadastroEmpresa(dadosCadastroEmpresa);
 
                         Atualizar.AtualizarImagemNoCadastroEmpresa(pcbEmpresa.Image, pcbQRCodePix.Image, Convert.ToInt32(lblce_id.Text));
                     }
@@ -189,56 +181,76 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        private async void txtCEP_Leave(object sender, EventArgs e)
+        private void txtCEP_Leave(object sender, EventArgs e)
         {
             PreenchimentoPorCEP(txtCEP);
         }
 
         #region Buscar de Endereco por CEP
 
-        private async void PreenchimentoPorCEP(BunifuTextBox _textBox)
+        private void PreenchimentoPorCEP(BunifuTextBox _txtCEP)
         {
-            try
+            if (qntCEPexecutado == 0)
             {
-                if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtCEP) == true)
+                qntCEPexecutado++;
+
+                if (txtCEP.Text != string.Empty)
                 {
-                    await Api.APICorreios((_textBox.Text).Replace("-", ""));
+                    bool IsPreenchimentoCorreto;
 
-                    int cont = 0;
+                    IsPreenchimentoCorreto = ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtCEP);
 
-                    foreach (var item in Api.RetornoApi())
+                    if (IsPreenchimentoCorreto == true)
                     {
-                        if (item.Uf != null)
+                        var tareefa = Api.APICorreios((_txtCEP.Text).Replace("-", ""));
+                        var esperador = tareefa.GetAwaiter();
+
+                        esperador.OnCompleted(() =>
                         {
-                            txtEndereco.Text = item.Logradouro;
-                            txtComplemento.Text = item.Complemento;
-                            txtBairro.Text = item.Bairro;
-                            txtCidade.Text = item.Localidade;
-                            cmbUF.Text = item.Uf;
+                            var item = Api.RetornoApi();
 
-                            Api.ZerarLista();
-
-                            _textBox.BorderColorActive = Color.DodgerBlue;
-                        }
-                        else
-                        {
-                            _textBox.Focus();
-                            Api.ZerarLista();
-
-                            if (cont == 0)
+                            if (item.Uf != null)
                             {
-                                MessageBox.Show("CEP Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                cont++;
-                            }
+                                PreenchendoCamposCEP(item);
 
-                            break;
-                        }
+                                _txtCEP.BorderColorActive = Color.DodgerBlue;
+                            }
+                            else
+                            {
+                                _txtCEP.Focus();
+
+                                MessageBox.Show("CEP Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        });
                     }
                 }
+                else
+                {
+                    ZerandoCamposPreenchidosCEP();
+                }
             }
-            catch (Exception)
+            else
             {
+                qntCEPexecutado = 0;
             }
+        }
+
+        private void PreenchendoCamposCEP(DadosCEP _item)
+        {
+            txtEndereco.Text = _item.Logradouro;
+            txtComplemento.Text = _item.Complemento;
+            txtBairro.Text = _item.Bairro;
+            txtCidade.Text = _item.Localidade;
+            cmbUF.Text = _item.Uf;
+        }
+
+        private void ZerandoCamposPreenchidosCEP()
+        {
+            txtEndereco.Text = string.Empty;
+            txtComplemento.Text = string.Empty;
+            txtCidade.Text = string.Empty;
+            txtBairro.Text = string.Empty;
+            cmbUF.Text = string.Empty;
         }
 
         #endregion Buscar de Endereco por CEP

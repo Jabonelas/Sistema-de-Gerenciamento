@@ -10,27 +10,16 @@ namespace Sistema_de_Gerenciamento.Classes
     {
         public DateTime dataCadastro { get; set; }
         public string nome { get; set; }
-
         public string tipo { get; set; }
-
         public string cpfCpnjCliente { get; set; }
-
         public string rg { get; set; }
-
         public string orgaoEmissor { get; set; }
-
         public string dataEmissao { get; set; }
-
         public string insEst { get; set; }
-
         public string cep { get; set; }
-
         public string endereco { get; set; }
-
         public int numero { get; set; }
-
         public string complemento { get; set; }
-
         public string bairro { get; set; }
         public string cidade { get; set; }
         public string uf { get; set; }
@@ -39,15 +28,12 @@ namespace Sistema_de_Gerenciamento.Classes
         public string estadoCivil { get; set; }
         public decimal credito { get; set; }
         public decimal saldo { get; set; }
-
         public string bloqueio { get; set; }
         public string celular { get; set; }
         public string telefone { get; set; }
         public string email { get; set; }
         public string observacoes { get; set; }
-
         public int codigoCliente { get; set; }
-
         public int id { get; set; }
         public string status { get; set; }
 

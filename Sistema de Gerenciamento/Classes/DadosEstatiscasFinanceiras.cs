@@ -9,7 +9,6 @@ namespace Sistema_de_Gerenciamento.Classes
     internal class DadosEstatiscasFinanceiras
     {
         public decimal valor { get; set; }
-
         public int mes { get; set; }
 
         public DadosEstatiscasFinanceiras(decimal _valor, int _mes)
