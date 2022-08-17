@@ -132,15 +132,16 @@ namespace Sistema_de_Gerenciamento.Forms
 
                 txtPrimeiraParcela.Text = dataPrimeiraParcela.ToShortDateString();
             }
-
-
+            else
+            {
+                txtPrimeiraParcela.Text = dataPrimeiraParcela.ToShortDateString();
+            }
             VerificarDiasFeriados(dataPrimeiraParcela);
-
         }
 
         private DateTime VerificarDiasFeriados(DateTime _dataPrimeiraParcela)
         {
-            const string filePath = @"C:\GitHub\Sistema-de-Gerenciamento\FeriadosNacionais.txt";
+            const string filePath = @"C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\FeriadosNacionais.txt";
 
             string[] data = File.ReadAllLines(filePath);
 

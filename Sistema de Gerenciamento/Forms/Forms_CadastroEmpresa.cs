@@ -41,85 +41,9 @@ namespace Sistema_de_Gerenciamento
             SalvarCadastroEmpresa();
         }
 
-        private void SalvarCadastroEmpresa()
-        {
-            try
-            {
-                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
-                {
-                    bool isExisteDadosCadastrados = Buscar.BuscarExistenciaCadastroEmpresa();
-
-                    if (isExisteDadosCadastrados == true)
-                    {
-                        DadosCadastroEmpresa dadosCadastroEmpresa;
-
-                        dadosCadastroEmpresa = preencherDadosCadastroEmpresa();
-
-                        Salvar.InserirCadastroEmpresa(dadosCadastroEmpresa, pcbEmpresa.Image, pcbQRCodePix.Image);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Empresa Já Cadastrada! \nSe Deseja Realizar Alteração Click Em Altera!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoCadastroEmpresa(ex);
-            }
-        }
-
-        private DadosCadastroEmpresa preencherDadosCadastroEmpresa()
-        {
-            DadosCadastroEmpresa dadosCadastroEmpresa = new DadosCadastroEmpresa();
-
-            dadosCadastroEmpresa.razaoSocial = txtRazaoSocial.Text;
-            dadosCadastroEmpresa.cnpj = txtCNPJ.Text;
-            dadosCadastroEmpresa.nomeFantasia = txtNomeFantasia.Text;
-            dadosCadastroEmpresa.cep = txtCEP.Text;
-            dadosCadastroEmpresa.endereco = txtEndereco.Text;
-            dadosCadastroEmpresa.complemento = txtComplemento.Text;
-            dadosCadastroEmpresa.bairro = txtBairro.Text;
-            dadosCadastroEmpresa.cidade = txtCidade.Text;
-            dadosCadastroEmpresa.uf = cmbUF.Text;
-            dadosCadastroEmpresa.numero = Convert.ToInt32(txtNumero.Text);
-            dadosCadastroEmpresa.telefone = txtTelefone.Text;
-            dadosCadastroEmpresa.email = txtEmail.Text;
-            dadosCadastroEmpresa.textoPadrao = txtTextPadrao.Text;
-            dadosCadastroEmpresa.codigoQR = txtCodigoQRCodePix.Text;
-            dadosCadastroEmpresa.chavePix = txtChavePix.Text;
-            dadosCadastroEmpresa.id = Convert.ToInt32(lblce_id.Text);
-
-            return dadosCadastroEmpresa;
-        }
-
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             AtualziarCadastroEmpresa();
-        }
-
-        private void AtualziarCadastroEmpresa()
-        {
-            try
-            {
-                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
-                {
-                    if (txtCNPJ.Text != string.Empty)
-                    {
-                        DadosCadastroEmpresa dadosCadastroEmpresa;
-
-                        dadosCadastroEmpresa = preencherDadosCadastroEmpresa();
-
-                        Atualizar.AtualizarCadastroEmpresa(dadosCadastroEmpresa);
-
-                        Atualizar.AtualizarImagemNoCadastroEmpresa(pcbEmpresa.Image, pcbQRCodePix.Image, Convert.ToInt32(lblce_id.Text));
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoAtualizarCadastroEmpresa(ex);
-            }
         }
 
         private void bntSair_Click(object sender, EventArgs e)
@@ -131,21 +55,6 @@ namespace Sistema_de_Gerenciamento
         {
             InserirImagemEmpresa();
         }
-
-        #region Inserir Imagem Empresa
-
-        private void InserirImagemEmpresa()
-        {
-            OpenFileDialog abrirPesquisa = new OpenFileDialog();
-
-            abrirPesquisa.Filter = "Abrir Imagem (*.jpg; *.png; *.gif) |*.jpg; *.png; *.gif ";
-            if (abrirPesquisa.ShowDialog() == DialogResult.OK)
-            {
-                pcbEmpresa.Image = Image.FromFile(abrirPesquisa.FileName);
-            }
-        }
-
-        #endregion Inserir Imagem Empresa
 
         private void txtTelefone_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -186,7 +95,65 @@ namespace Sistema_de_Gerenciamento
             PreenchimentoPorCEP(txtCEP);
         }
 
-        #region Buscar de Endereco por CEP
+        private void txtRazaoSocial_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtNomeFantasia_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtEndereco_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtComplemento_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtBairro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtCidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetras(e);
+        }
+
+        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoValidoParaEmail(e);
+        }
+
+        private void txtTextPadrao_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
+        }
+
+        private void txtChavePix_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoValidoParaChavePix(e);
+        }
+
+        private void txtCodigoQRCodePix_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoValidoParaEmail(e);
+        }
+
+        private void txtCodigoQRCodePix_Leave(object sender, EventArgs e)
+        {
+            QRCodeImagem();
+        }
+
+        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
 
         private void PreenchimentoPorCEP(BunifuTextBox _txtCEP)
         {
@@ -253,105 +220,125 @@ namespace Sistema_de_Gerenciamento
             cmbUF.Text = string.Empty;
         }
 
-        #endregion Buscar de Endereco por CEP
-
-        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
+        private DadosCadastroEmpresa preencherDadosCadastroEmpresa()
         {
-            ManipulacaoTextBox.DigitoFoiNumero(e);
+            DadosCadastroEmpresa dadosCadastroEmpresa = new DadosCadastroEmpresa();
+
+            dadosCadastroEmpresa.razaoSocial = txtRazaoSocial.Text;
+            dadosCadastroEmpresa.cnpj = txtCNPJ.Text;
+            dadosCadastroEmpresa.nomeFantasia = txtNomeFantasia.Text;
+            dadosCadastroEmpresa.cep = txtCEP.Text;
+            dadosCadastroEmpresa.endereco = txtEndereco.Text;
+            dadosCadastroEmpresa.complemento = txtComplemento.Text;
+            dadosCadastroEmpresa.bairro = txtBairro.Text;
+            dadosCadastroEmpresa.cidade = txtCidade.Text;
+            dadosCadastroEmpresa.uf = cmbUF.Text;
+            dadosCadastroEmpresa.numero = Convert.ToInt32(txtNumero.Text);
+            dadosCadastroEmpresa.telefone = txtTelefone.Text;
+            dadosCadastroEmpresa.email = txtEmail.Text;
+            dadosCadastroEmpresa.textoPadrao = txtTextoPadrao.Text;
+            dadosCadastroEmpresa.codigoQR = txtCodigoQRCodePix.Text;
+            dadosCadastroEmpresa.chavePix = txtChavePix.Text;
+            dadosCadastroEmpresa.id = Convert.ToInt32(lblce_id.Text);
+
+            return dadosCadastroEmpresa;
         }
 
-        #region Preechimento dos TextBox Com Buscar e Pelo Gridview
+        private void SalvarCadastroEmpresa()
+        {
+            try
+            {
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
+                {
+                    bool isExisteDadosCadastrados = Buscar.BuscarExistenciaCadastroEmpresa();
+
+                    if (isExisteDadosCadastrados == true)
+                    {
+                        DadosCadastroEmpresa dadosCadastroEmpresa;
+
+                        dadosCadastroEmpresa = preencherDadosCadastroEmpresa();
+
+                        Salvar.InserirCadastroEmpresa(dadosCadastroEmpresa, pcbEmpresa.Image, pcbQRCodePix.Image);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Empresa Já Cadastrada! \nSe Deseja Realizar Alteração Click Em Altera!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoCadastroEmpresa(ex);
+            }
+        }
+
+        private void AtualziarCadastroEmpresa()
+        {
+            try
+            {
+                if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
+                {
+                    if (txtCNPJ.Text != string.Empty)
+                    {
+                        DadosCadastroEmpresa dadosCadastroEmpresa;
+
+                        dadosCadastroEmpresa = preencherDadosCadastroEmpresa();
+
+                        Atualizar.AtualizarCadastroEmpresa(dadosCadastroEmpresa);
+
+                        Atualizar.AtualizarImagemNoCadastroEmpresa(pcbEmpresa.Image, pcbQRCodePix.Image, Convert.ToInt32(lblce_id.Text));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarCadastroEmpresa(ex);
+            }
+        }
+
+        private void InserirImagemEmpresa()
+        {
+            OpenFileDialog abrirPesquisa = new OpenFileDialog();
+
+            abrirPesquisa.Filter = "Abrir Imagem (*.jpg; *.png; *.gif) |*.jpg; *.png; *.gif ";
+            if (abrirPesquisa.ShowDialog() == DialogResult.OK)
+            {
+                pcbEmpresa.Image = Image.FromFile(abrirPesquisa.FileName);
+            }
+        }
 
         private void PreenchimentoDosTextBox()
         {
             try
             {
-                bool isCadastroExiste = Buscar.BuscarCadastroEmpresa(Convert.ToInt32(lblce_id.Text), gdvPesquisarEmpresa);
+                List<DadosCadastroEmpresa> listaDadosCadastroEmpresas = new List<DadosCadastroEmpresa>();
 
-                if (gdvPesquisarEmpresa.RowCount >= 1)
-                {
-                    txtCNPJ.Text = gdvPesquisarEmpresa.SelectedCells[2].Value.ToString();
-                    txtRazaoSocial.Text = gdvPesquisarEmpresa.SelectedCells[5].Value.ToString();
-                    txtChavePix.Text = gdvPesquisarEmpresa.SelectedCells[6].Value.ToString();
-                    txtNomeFantasia.Text = gdvPesquisarEmpresa.SelectedCells[7].Value.ToString();
-                    txtCEP.Text = gdvPesquisarEmpresa.SelectedCells[8].Value.ToString();
-                    txtEndereco.Text = gdvPesquisarEmpresa.SelectedCells[9].Value.ToString();
-                    txtComplemento.Text = gdvPesquisarEmpresa.SelectedCells[10].Value.ToString();
-                    txtBairro.Text = gdvPesquisarEmpresa.SelectedCells[11].Value.ToString();
-                    txtCidade.Text = gdvPesquisarEmpresa.SelectedCells[12].Value.ToString();
-                    cmbUF.Text = gdvPesquisarEmpresa.SelectedCells[13].Value.ToString();
-                    txtNumero.Text = gdvPesquisarEmpresa.SelectedCells[14].Value.ToString();
-                    txtTelefone.Text = gdvPesquisarEmpresa.SelectedCells[15].Value.ToString();
-                    txtEmail.Text = gdvPesquisarEmpresa.SelectedCells[16].Value.ToString();
-                    txtTextPadrao.Text = gdvPesquisarEmpresa.SelectedCells[17].Value.ToString();
-                    txtCodigoQRCodePix.Text = gdvPesquisarEmpresa.SelectedCells[18].Value.ToString();
+                listaDadosCadastroEmpresas = Buscar.BuscarCadastroEmpresa(Convert.ToInt32(lblce_id.Text));
 
-                    pcbEmpresa.Image = Buscar.BuscarLogoEmpresa(Convert.ToInt32(lblce_id.Text));
+                txtCNPJ.Text = listaDadosCadastroEmpresas[0].cnpj;
+                txtRazaoSocial.Text = listaDadosCadastroEmpresas[0].razaoSocial;
+                txtChavePix.Text = listaDadosCadastroEmpresas[0].chavePix;
+                txtNomeFantasia.Text = listaDadosCadastroEmpresas[0].nomeFantasia;
+                txtCEP.Text = listaDadosCadastroEmpresas[0].cep;
+                txtEndereco.Text = listaDadosCadastroEmpresas[0].endereco;
+                txtComplemento.Text = listaDadosCadastroEmpresas[0].complemento;
+                txtBairro.Text = listaDadosCadastroEmpresas[0].bairro;
+                txtCidade.Text = listaDadosCadastroEmpresas[0].cidade;
+                cmbUF.Text = listaDadosCadastroEmpresas[0].uf;
+                txtNumero.Text = listaDadosCadastroEmpresas[0].numero.ToString();
+                txtTelefone.Text = listaDadosCadastroEmpresas[0].telefone;
+                txtEmail.Text = listaDadosCadastroEmpresas[0].email;
+                txtTextoPadrao.Text = listaDadosCadastroEmpresas[0].textoPadrao;
+                txtCodigoQRCodePix.Text = listaDadosCadastroEmpresas[0].codigoQR;
 
-                    pcbQRCodePix.Image = Buscar.BuscarQrCodePix(Convert.ToInt32(lblce_id.Text));
-                }
+                pcbEmpresa.Image = Buscar.BuscarLogoEmpresa(Convert.ToInt32(lblce_id.Text));
+
+                pcbQRCodePix.Image = Buscar.BuscarQrCodePix(Convert.ToInt32(lblce_id.Text));
             }
             catch (Exception ex)
             {
                 Erro.ErroAoCarregarDadosEmpresa(ex);
             }
-        }
-
-        #endregion Preechimento dos TextBox Com Buscar e Pelo Gridview
-
-        private void txtRazaoSocial_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
-        }
-
-        private void txtNomeFantasia_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
-        }
-
-        private void txtEndereco_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
-        }
-
-        private void txtComplemento_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
-        }
-
-        private void txtBairro_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
-        }
-
-        private void txtCidade_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiLetras(e);
-        }
-
-        private void txtEmail_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoValidoParaEmail(e);
-        }
-
-        private void txtTextPadrao_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
-        }
-
-        private void txtChavePix_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoValidoParaChavePix(e);
-        }
-
-        private void txtCodigoQRCodePix_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoValidoParaEmail(e);
-        }
-
-        private void txtCodigoQRCodePix_Leave(object sender, EventArgs e)
-        {
-            QRCodeImagem();
         }
 
         private void QRCodeImagem()

@@ -62,7 +62,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             BuscaDadosPreencherItens();
 
-            FormatoFullScreen();
+            //FormatoFullScreen();
         }
 
         private void BuscaDadosPreencherItens()
@@ -1131,7 +1131,5 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtInserirQuant.Text = "1";
             }
         }
-
-     
     }
 }

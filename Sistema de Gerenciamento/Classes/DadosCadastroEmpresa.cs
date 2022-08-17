@@ -25,7 +25,7 @@ namespace Sistema_de_Gerenciamento.Classes
         public string chavePix { get; set; }
         public int id { get; set; }
 
-        public DadosCadastroEmpresa(string _razaoSocial, DateTime _dataCadastro, string _cnpj, string _nomeFantasia, string _cep, string _endereco, string _complemento, int _numero,
+        public DadosCadastroEmpresa(string _razaoSocial, string _cnpj, string _nomeFantasia, string _cep, string _endereco, string _complemento, int _numero,
             string _bairro, string _cidade, string _uf, string _telefone, string _email, string _textoPadrao, string _codigoQR, string _chavePix, int _id)
         {
             razaoSocial = _razaoSocial;

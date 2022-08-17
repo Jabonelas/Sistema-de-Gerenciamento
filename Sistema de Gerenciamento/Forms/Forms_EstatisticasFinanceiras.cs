@@ -191,47 +191,49 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
-            List<DadosEstatiscasFinanceiras> ContasPagas = new List<DadosEstatiscasFinanceiras>();
+            List<DadosEstatiscasFinanceiras> listaValorBruto = new List<DadosEstatiscasFinanceiras>();
 
-            List<DadosEstatiscasFinanceiras> ContasAtrasadas = new List<DadosEstatiscasFinanceiras>();
+            List<DadosEstatiscasFinanceiras> listaValorLiquido = new List<DadosEstatiscasFinanceiras>();
+
+            List<DadosEstatiscasFinanceiras> listaValorProduto = new List<DadosEstatiscasFinanceiras>();
+
+            List<DadosEstatiscasFinanceiras> listaValorContasPagas = new List<DadosEstatiscasFinanceiras>();
+
+            List<DadosEstatiscasFinanceiras> listaValorAPagarContasAtrasadas = new List<DadosEstatiscasFinanceiras>();
+
+            List<DadosEstatiscasFinanceiras> listaValorAReceberContasAtrasadas = new List<DadosEstatiscasFinanceiras>();
 
             List<DadosEstatiscasFinanceiras> listaCompleta = new List<DadosEstatiscasFinanceiras>();
 
-            ContasPagas = Buscar.BuscarValorContasPagasPorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
+            listaValorContasPagas = Buscar.BuscarValorContasPagasPorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
 
-            ContasAtrasadas = Buscar.BuscarValorContasAtrasadasPorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
+            listaValorAPagarContasAtrasadas = Buscar.BuscarValorContasAtrasadasPorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
 
             Canvas canvas = new Canvas();
 
             colunas = new DataPoint(BunifuDataViz._type.Bunifu_column);
 
-            foreach (var item in ContasPagas)
+            int atribuindoValorIndice = 1;
+
+            foreach (DadosEstatiscasFinanceiras item in listaValorContasPagas)
             {
-                listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes));
-
-                //string valorContasPaga = item.valor.ToString("N0").Replace(".", "");
-
-                //colunas.addLabely(item.mes.ToString(), valorContasPaga);
-
-                //bunifuDataViz1.colorSet.Add(Color.Green);
+                listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
+                atribuindoValorIndice += 2;
             }
 
-            foreach (var item1 in ContasAtrasadas)
+            atribuindoValorIndice = 2;
+
+            foreach (DadosEstatiscasFinanceiras item in listaValorAPagarContasAtrasadas)
             {
-                listaCompleta.Add(new DadosEstatiscasFinanceiras(item1.valor, item1.mes));
-
-                //string valorContasAPagarAtrasada = item1.valor.ToString("N0").Replace(".", "");
-
-                //colunas.addLabely(item1.mes.ToString(), valorContasAPagarAtrasada);
-
-                //bunifuDataViz1.colorSet.Add(Color.Gray);
+                listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
+                atribuindoValorIndice += 2;
             }
 
-            int cont = 0;
+            int percorrerInidice = 1;
 
-            foreach (var item in listaCompleta)
+            foreach (DadosEstatiscasFinanceiras item in listaCompleta)
             {
-                if (cont == 0)
+                if (item.indice == percorrerInidice)
                 {
                     string valorContasPaga = item.valor.ToString("N0").Replace(".", "");
 
@@ -239,16 +241,22 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     bunifuDataViz1.colorSet.Add(Color.Green);
 
-                    cont++;
+                    percorrerInidice++;
+
+                    continue;
                 }
 
-                if (item.mes == 5)
+                if (item.indice == percorrerInidice)
                 {
                     string valorContasAPagarAtrasada = item.valor.ToString("N0").Replace(".", "");
 
                     colunas.addLabely(item.mes.ToString(), valorContasAPagarAtrasada);
 
                     bunifuDataViz1.colorSet.Add(Color.Gray);
+
+                    percorrerInidice++;
+
+                    continue;
                 }
             }
 

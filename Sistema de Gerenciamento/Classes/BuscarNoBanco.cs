@@ -812,6 +812,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
                     SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
                     while (dr.Read())
                     {
                         ListaFornecedor.Add(dr.GetString(0));
@@ -1153,8 +1154,6 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     imagem = System.Drawing.Image.FromStream(ms);
                     return imagem;
-
-                    //cadastroCliente.pcbCliente.Image = System.Drawing.Image.FromStream(ms);
                 }
             }
             catch (Exception ex)
@@ -1427,44 +1426,30 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Cadastro Empresa
 
-        public List<DadosCadastroEmpresa> BuscarCadastroEmpresa(int _ce_id, BunifuDataGridView _tabela)
+        public List<DadosCadastroEmpresa> BuscarCadastroEmpresa(int _ce_id)
         {
             List<DadosCadastroEmpresa> listadadosCadastroEmpresa = new List<DadosCadastroEmpresa>();
             try
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select * from tb_CadastroEmpresa where ce_id = @ce_id";
+                    string query = "select ce_razao_social, ce_cnpj, ce_nome_fantasia, ce_cep, ce_endereco, ce_complemento, ce_numero, ce_bairro, ce_cidade, ce_uf, ce_telefone, ce_email, " +
+                                   "ce_texto_padrao, ce_codigo_pix, ce_codigo_pix, ce_id " +
+                                   "from tb_CadastroEmpresa where ce_id = @ce_id";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@ce_id", _ce_id);
-
-                    //adapter.SelectCommand.ExecuteNonQuery();
-
-                    //DataTable dataTable = new DataTable();
-
-                    //adapter.Fill(dataTable);
-                    //_tabela.DataSource = dataTable;
-                    //_tabela.Refresh();
 
                     SqlDataReader dr;
                     dr = adapter.SelectCommand.ExecuteReader();
 
                     while (dr.Read())
                     {
-                        listadadosCadastroEmpresa.Add(new DadosCadastroEmpresa(dr.));
+                        listadadosCadastroEmpresa.Add(new DadosCadastroEmpresa(dr.GetString(0), dr.GetString(1), dr.GetString(2),
+                            dr.GetString(3), dr.GetString(4), dr.GetString(5), dr.GetInt32(6), dr.GetString(7), dr.GetString(8), dr.GetString(9),
+                            dr.GetString(10), dr.GetString(11), dr.GetString(12), dr.GetString(13), dr.GetString(14), dr.GetInt32(15)));
                     }
 
-                    //reader.Read();
-
-                    if (reader.HasRows == true)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
                     return listadadosCadastroEmpresa;
                 }
             }
@@ -1473,8 +1458,6 @@ namespace Sistema_de_Gerenciamento.Classes
                 Erro.ErroAoBuscarEmpresaNoBanco(ex);
 
                 return listadadosCadastroEmpresa;
-
-                //return false;
             }
         }
 
@@ -5383,7 +5366,7 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select SUM(dc_valor_pago),month (dc_emissao) from tb_DespesasCustos " +
+                    string query = "select SUM(dc_valor_parcela),month (dc_emissao) from tb_DespesasCustos " +
                         "where dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
                         "and dc_estatus_pagamento = 'Nao Pago' " +
                         "group by month(dc_emissao)";
