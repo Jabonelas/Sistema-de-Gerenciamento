@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Navigation;
@@ -5239,7 +5240,7 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Buscar Valor Contas a Receber Atrasadas
 
-        public decimal BuscarValorContasAReceberAtrasadas(DateTime _dataInicial, DateTime _dataFinal)
+        public decimal BuscarValorContasAReceberAtrasadasPorData(DateTime _dataInicial, DateTime _dataFinal)
         {
             try
             {
@@ -5399,5 +5400,147 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Estatisticas Financeiras
+
+        public List<DadosNotaFiscalSaida> BuscarValorBrutoNotaFinalSaidaPorDataAvancada(DateTime _dataInicial, DateTime _dataFinal)
+        {
+            List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidas = new List<DadosNotaFiscalSaida>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(ns_valor_pago),month (ns_emissao) from tb_NotaFiscalSaida " +
+                                   "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal " +
+                                   "and ns_tipo_pagamento<> 'CARNÊ' " +
+                                   "group by month(ns_emissao)";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaDadosNotaFiscalSaidas.Add(new DadosNotaFiscalSaida(dr.GetDecimal(0), dr.GetInt32(1), 0));
+                    }
+
+                    return listaDadosNotaFiscalSaidas;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaValorTotalBrutoNotaFiscalPorDataSaidaNoBanco(ex);
+
+                return listaDadosNotaFiscalSaidas;
+            }
+        }
+
+        public List<DadosPagamentoCarne> BuscarValorBrutoCarnePorDataAvancada(DateTime _dataInicial, DateTime _dataFinal)
+        {
+            List<DadosPagamentoCarne> listaDadosPagamentoCarnes = new List<DadosPagamentoCarne>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(pc_valor_final_parcela),month (pc_data_pagamento) from tb_PagamentoCarne " +
+                                   "where pc_data_pagamento >= @dataInicial and pc_data_pagamento <= @dataFinal " +
+                                   "group by month(pc_data_pagamento)";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaDadosPagamentoCarnes.Add(new DadosPagamentoCarne(dr.GetDecimal(0), dr.GetInt32(1), 0));
+                    }
+
+                    return listaDadosPagamentoCarnes;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaValorTotalBrutoCarnePorDataSaidaNoBanco(ex);
+
+                return listaDadosPagamentoCarnes;
+            }
+        }
+
+        public List<DadosContasAReceber> BuscarValorContasAReceberAtrasadasDataAvancada(DateTime _dataInicial, DateTime _dataFinal)
+        {
+            List<DadosContasAReceber> listaDadosContasAReceber = new List<DadosContasAReceber>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select SUM(pc_valor_parcela),month(pc_vencimento) from tb_PagamentoCarne " +
+                                   "where pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal " +
+                                   "and pc_status = 'Nao Pago' " +
+                                   "group by month(pc_vencimento)";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaDadosContasAReceber.Add(new DadosContasAReceber(dr.GetDecimal(0), dr.GetInt32(1), 0));
+                    }
+
+                    return listaDadosContasAReceber;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaValorContasAReceberAtrasadasPorDataNoBanco(ex);
+
+                return listaDadosContasAReceber;
+            }
+        }
+
+        public List<DadosProduto> BuscarValorProdutoPorDataAvancada(DateTime _dataInicial, DateTime _dataFinal)
+        {
+            List<DadosProduto> listaDadosProdutos = new List<DadosProduto>();
+
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select sum(cp_valor_custo*pe.ns_quantidade), month(ns_emissao) from tb_CadastroProdutos as p " +
+                                   "inner join tb_NotaFiscalSaida pe on p.cp_id = pe.ns_codigo_produto " +
+                                   "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal " +
+                                   "group by month(ns_emissao)";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
+
+                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
+
+                    while (dr.Read())
+                    {
+                        listaDadosProdutos.Add(new DadosProduto(dr.GetDecimal(0), dr.GetInt32(1), 0));
+                    }
+
+                    return listaDadosProdutos;
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaValorProdutoPorDadaNoBanco(ex);
+
+                return listaDadosProdutos;
+            }
+        }
     }
 }

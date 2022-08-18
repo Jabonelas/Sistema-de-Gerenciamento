@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Forms_EstatisticasFinanceiras));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges16 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges17 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges18 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.dtpDataFinal = new System.Windows.Forms.DateTimePicker();
@@ -62,6 +62,12 @@
             this.bunifuDataViz1 = new Bunifu.DataViz.WinForms.BunifuDataViz();
             this.btnGrafico = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuButton1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
             this.bunifuGroupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -147,11 +153,11 @@
             this.btnPesquisar.ColorContrastOnClick = 45;
             this.btnPesquisar.ColorContrastOnHover = 45;
             this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnPesquisar.CustomizableEdges = borderEdges1;
+            borderEdges16.BottomLeft = true;
+            borderEdges16.BottomRight = true;
+            borderEdges16.TopLeft = true;
+            borderEdges16.TopRight = true;
+            this.btnPesquisar.CustomizableEdges = borderEdges16;
             this.btnPesquisar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnPesquisar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnPesquisar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -474,11 +480,11 @@
             this.btnGrafico.ColorContrastOnClick = 45;
             this.btnGrafico.ColorContrastOnHover = 45;
             this.btnGrafico.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnGrafico.CustomizableEdges = borderEdges2;
+            borderEdges17.BottomLeft = true;
+            borderEdges17.BottomRight = true;
+            borderEdges17.TopLeft = true;
+            borderEdges17.TopRight = true;
+            this.btnGrafico.CustomizableEdges = borderEdges17;
             this.btnGrafico.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnGrafico.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnGrafico.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -564,11 +570,11 @@
             this.bunifuButton1.ColorContrastOnClick = 45;
             this.bunifuButton1.ColorContrastOnHover = 45;
             this.bunifuButton1.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            this.bunifuButton1.CustomizableEdges = borderEdges3;
+            borderEdges18.BottomLeft = true;
+            borderEdges18.BottomRight = true;
+            borderEdges18.TopLeft = true;
+            borderEdges18.TopRight = true;
+            this.bunifuButton1.CustomizableEdges = borderEdges18;
             this.bunifuButton1.DialogResult = System.Windows.Forms.DialogResult.None;
             this.bunifuButton1.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.bunifuButton1.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -635,11 +641,65 @@
             this.bunifuButton1.UseDefaultRadiusAndThickness = true;
             this.bunifuButton1.Click += new System.EventHandler(this.bunifuButton1_Click);
             // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Aqua;
+            this.panel6.Location = new System.Drawing.Point(33, 644);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(30, 25);
+            this.panel6.TabIndex = 300;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.Black;
+            this.panel7.Location = new System.Drawing.Point(137, 644);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(30, 25);
+            this.panel7.TabIndex = 301;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.Red;
+            this.panel8.Location = new System.Drawing.Point(259, 644);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(30, 25);
+            this.panel8.TabIndex = 302;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.Green;
+            this.panel9.Location = new System.Drawing.Point(400, 644);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(30, 25);
+            this.panel9.TabIndex = 303;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.Gray;
+            this.panel10.Location = new System.Drawing.Point(598, 644);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(30, 25);
+            this.panel10.TabIndex = 304;
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.Yellow;
+            this.panel11.Location = new System.Drawing.Point(832, 644);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(30, 25);
+            this.panel11.TabIndex = 305;
+            // 
             // Forms_EstatisticasFinanceiras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(951, 688);
+            this.Controls.Add(this.panel11);
+            this.Controls.Add(this.panel10);
+            this.Controls.Add(this.panel9);
+            this.Controls.Add(this.panel8);
+            this.Controls.Add(this.panel7);
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.bunifuButton1);
             this.Controls.Add(this.btnGrafico);
             this.Controls.Add(this.bunifuDataViz1);
@@ -707,5 +767,11 @@
         private Bunifu.DataViz.WinForms.BunifuDataViz bunifuDataViz1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnGrafico;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton bunifuButton1;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Panel panel11;
     }
 }

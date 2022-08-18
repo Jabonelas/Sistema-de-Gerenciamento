@@ -32,6 +32,10 @@ namespace Sistema_de_Gerenciamento.Classes
         public string motivoTroca { get; set; }
         public bool deveRealizarTrocar { get; set; }
         public int nfEntrada { get; set; }
+        public int indice { get; set; }
+        public decimal valor { get; set; }
+        public int mes { get; set; }
+        public int indece { get; set; }
 
         public DadosNotaFiscalSaida(string _vendedor, DateTime _validadeTroca, string _nomeCliente,
             int _codigoBarras, int _codigoProduto, string _descricao, decimal _quantidade, string _unidade,
@@ -79,6 +83,13 @@ namespace Sistema_de_Gerenciamento.Classes
             motivoTroca = _motivoTroca;
             deveRealizarTrocar = _deveTrocar;
             nfEntrada = _nfEntrada;
+        }
+
+        public DadosNotaFiscalSaida(decimal _valor, int _mes, int _indice)
+        {
+            valor = _valor;
+            mes = _mes;
+            indece = _indice;
         }
 
         public DadosNotaFiscalSaida(int _codigoProduto, decimal _preco)

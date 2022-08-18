@@ -37,6 +37,12 @@ namespace Sistema_de_Gerenciamento.Classes
         public string status { get; set; }
         public int primarykey { get; set; }
 
+        public decimal valor { get; set; }
+
+        public int mes { get; set; }
+
+        public int indice { get; set; }
+
         public DadosProduto(int _codigoProduto, string _descricaoProduto, decimal _quantidade,
             string _unidade, decimal _preco, decimal _desconto, int _codigoBarras, int _nfEntrada)
         {
@@ -93,6 +99,13 @@ namespace Sistema_de_Gerenciamento.Classes
             comissao = _comissao;
             observacao = _observacao;
             primarykey = _primarykey;
+        }
+
+        public DadosProduto(decimal _valor, int _mes, int _indice)
+        {
+            valor = _valor;
+            mes = _mes;
+            indice = _indice;
         }
 
         public DadosProduto()

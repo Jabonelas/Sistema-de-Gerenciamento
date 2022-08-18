@@ -69,7 +69,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void BuscarValores()
         {
-            valorContasAReceberAtrasadas = Buscar.BuscarValorContasAReceberAtrasadas(dtpDataInicial.Value, dtpDataFinal.Value);
+            valorContasAReceberAtrasadas = Buscar.BuscarValorContasAReceberAtrasadasPorData(dtpDataInicial.Value, dtpDataFinal.Value);
 
             valorContasAPagarAtrasadas = Buscar.BuscarValorContasComPagamentoAtrasadoPorData(dtpDataInicial.Value, dtpDataFinal.Value);
 
@@ -189,51 +189,134 @@ namespace Sistema_de_Gerenciamento.Forms
             bunifuDataViz1.colorSet.Add(Color.Yellow);
         }
 
+        private struct dadosParaPegarValorLiquido
+        {
+            private decimal valor { get; set; }
+            private int mes { get; set; }
+            private int indice { get; set; }
+
+            public dadosParaPegarValorLiquido(decimal _valor, int _mes, int _indice)
+            {
+                valor = _valor;
+                mes = _mes;
+                indice = _indice;
+            }
+        }
+
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
-            List<DadosEstatiscasFinanceiras> listaValorBruto = new List<DadosEstatiscasFinanceiras>();
+            List<dadosParaPegarValorLiquido> listaDadosParaPegarValorLiquidos = new List<dadosParaPegarValorLiquido>();
+
+            List<DadosNotaFiscalSaida> listaValorBrutoNotaFiscalSaida = new List<DadosNotaFiscalSaida>(); // ok
+
+            List<DadosPagamentoCarne> listaValorBrutoPagamentoCarne = new List<DadosPagamentoCarne>(); // ok
 
             List<DadosEstatiscasFinanceiras> listaValorLiquido = new List<DadosEstatiscasFinanceiras>();
 
-            List<DadosEstatiscasFinanceiras> listaValorProduto = new List<DadosEstatiscasFinanceiras>();
+            List<DadosProduto> listaValorProduto = new List<DadosProduto>(); // ok
 
-            List<DadosEstatiscasFinanceiras> listaValorContasPagas = new List<DadosEstatiscasFinanceiras>();
+            List<DadosEstatiscasFinanceiras> listaValorContasPagas = new List<DadosEstatiscasFinanceiras>(); // ok
 
-            List<DadosEstatiscasFinanceiras> listaValorAPagarContasAtrasadas = new List<DadosEstatiscasFinanceiras>();
+            List<DadosEstatiscasFinanceiras> listaValorAPagarContasAtrasadas = new List<DadosEstatiscasFinanceiras>(); // ok
 
-            List<DadosEstatiscasFinanceiras> listaValorAReceberContasAtrasadas = new List<DadosEstatiscasFinanceiras>();
+            List<DadosContasAReceber> listaValorAReceberContasAtrasadas = new List<DadosContasAReceber>(); // ok
 
             List<DadosEstatiscasFinanceiras> listaCompleta = new List<DadosEstatiscasFinanceiras>();
+
+            listaValorBrutoNotaFiscalSaida = Buscar.BuscarValorBrutoNotaFinalSaidaPorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
+
+            listaValorBrutoPagamentoCarne = Buscar.BuscarValorBrutoCarnePorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
 
             listaValorContasPagas = Buscar.BuscarValorContasPagasPorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
 
             listaValorAPagarContasAtrasadas = Buscar.BuscarValorContasAtrasadasPorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
+
+            listaValorAReceberContasAtrasadas = Buscar.BuscarValorContasAReceberAtrasadasDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
+
+            listaValorProduto = Buscar.BuscarValorProdutoPorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
 
             Canvas canvas = new Canvas();
 
             colunas = new DataPoint(BunifuDataViz._type.Bunifu_column);
 
             int atribuindoValorIndice = 1;
+            //Valor Bruto
+            foreach (var item in listaValorBrutoNotaFiscalSaida)
+            {
+                foreach (var item1 in listaValorBrutoPagamentoCarne)
+                {
+                    if (item.mes == item1.mes)
+                    {
+                        listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
+                        atribuindoValorIndice += 3;
 
+                        break;
+                    }
+                }
+
+                if (listaValorBrutoPagamentoCarne.Count == 0)
+                {
+                    listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
+                    atribuindoValorIndice += 3;
+                }
+            }
+
+            lblValorTotalLiquido.Text = String.Format("{0:c}", (valorBrutoNotaFinalSaida + valorBrutoCarne) - (valorContasPagas + valorProdutos));
+
+            ////Valor Liquido
+            //atribuindoValorIndice = 2;
+            //foreach (DadosEstatiscasFinanceiras item in listaValorContasPagas)
+            //{
+            //    listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
+            //    atribuindoValorIndice += 3;
+            //}
+
+            //Valor Produto
+            atribuindoValorIndice = 2;
+            foreach (DadosProduto item in listaValorProduto)
+            {
+                listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
+                atribuindoValorIndice += 3;
+            }
+
+            //Valor Contas Pagas
+            atribuindoValorIndice = 2;
             foreach (DadosEstatiscasFinanceiras item in listaValorContasPagas)
             {
                 listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
-                atribuindoValorIndice += 2;
+                atribuindoValorIndice += 3;
             }
 
-            atribuindoValorIndice = 2;
-
+            //Valor Contas A Pagar Atrasadas
+            atribuindoValorIndice = 3;
             foreach (DadosEstatiscasFinanceiras item in listaValorAPagarContasAtrasadas)
             {
                 listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
-                atribuindoValorIndice += 2;
+                atribuindoValorIndice += 3;
             }
 
-            int percorrerInidice = 1;
+            //Valor Contas A Receber Atrasadas
+            atribuindoValorIndice = 3;
+            foreach (DadosContasAReceber item in listaValorAReceberContasAtrasadas)
+            {
+                listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
+                atribuindoValorIndice += 3;
+            }
 
             foreach (DadosEstatiscasFinanceiras item in listaCompleta)
             {
-                if (item.indice == percorrerInidice)
+                if (item.indice == 1 || item.indice == 4)
+                {
+                    string valorBruto = item.valor.ToString("N0").Replace(".", "");
+
+                    colunas.addLabely(item.mes.ToString(), valorBruto);
+
+                    bunifuDataViz1.colorSet.Add(Color.Aqua);
+
+                    continue;
+                }
+
+                if (item.indice == 2 || item.indice == 5)
                 {
                     string valorContasPaga = item.valor.ToString("N0").Replace(".", "");
 
@@ -241,12 +324,21 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     bunifuDataViz1.colorSet.Add(Color.Green);
 
-                    percorrerInidice++;
+                    continue;
+                }
+
+                if (item.indice == 3 || item.indice == 6)
+                {
+                    string valorProduto = item.valor.ToString("N0").Replace(".", "");
+
+                    colunas.addLabely(item.mes.ToString(), valorProduto);
+
+                    bunifuDataViz1.colorSet.Add(Color.Red);
 
                     continue;
                 }
 
-                if (item.indice == percorrerInidice)
+                if (item.indice == 4 || item.indice == 6)
                 {
                     string valorContasAPagarAtrasada = item.valor.ToString("N0").Replace(".", "");
 
@@ -254,7 +346,16 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     bunifuDataViz1.colorSet.Add(Color.Gray);
 
-                    percorrerInidice++;
+                    continue;
+                }
+
+                if (item.indice == 6 || item.indice == 6)
+                {
+                    string valorContasAReceberAtrasada = item.valor.ToString("N0").Replace(".", "");
+
+                    colunas.addLabely(item.mes.ToString(), valorContasAReceberAtrasada);
+
+                    bunifuDataViz1.colorSet.Add(Color.Yellow);
 
                     continue;
                 }
