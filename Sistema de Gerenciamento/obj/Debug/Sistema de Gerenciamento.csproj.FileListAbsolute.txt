@@ -103,3 +103,45 @@ C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Ge
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.exe
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.pdb
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.csproj.AssemblyReference.cache
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Charts.v21.2.Core.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Dashboard.v21.2.Core.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Dashboard.v21.2.Win.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Data.Desktop.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Data.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.DataAccess.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.DataAccess.v21.2.UI.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Map.v21.2.Core.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Office.v21.2.Core.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.PivotGrid.v21.2.Core.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Printing.v21.2.Core.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.RichEdit.v21.2.Core.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Sparkline.v21.2.Core.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.TreeMap.v21.2.Core.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Utils.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Utils.v21.2.UI.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Xpo.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraBars.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraCharts.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraCharts.v21.2.UI.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraCharts.v21.2.Wizard.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraEditors.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraGauges.v21.2.Core.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraGauges.v21.2.Presets.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraGauges.v21.2.Win.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraGrid.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraLayout.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraMap.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraPivotGrid.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraPrinting.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraReports.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraRichEdit.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraTreeList.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraTreeMap.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraTreeMap.v21.2.UI.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraDiagram.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Diagram.v21.2.Core.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Pdf.v21.2.Core.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Pdf.v21.2.Drawing.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraVerticalGrid.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraNavBar.v21.2.xml
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.testando.resources

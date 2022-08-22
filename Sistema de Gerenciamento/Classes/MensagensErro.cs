@@ -242,6 +242,15 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Fluxo de Caixa
 
+        #region Editar Pagamento A Receber
+
+        public void ErroAoPegarDadosDoGridView(Exception _e)
+        {
+            MessageBox.Show($"(EPR-PR01) Erro ao Pegar Dados do GridView Para  Preencher Os TextBox \n\nErro: {_e}", "Erro Pegar Dados do GridView!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Editar Pagamento A Receber
+
         #endregion Forms
 
         #region Banco

@@ -17,15 +17,24 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private AtualizacaoNoBanco Atualizar = new AtualizacaoNoBanco();
 
+        private MensagensErro Erro = new MensagensErro();
+
         private List<DadosFinanceiro> dadosFinanceiro = new List<DadosFinanceiro>();
 
         private Forms_PesquisarContasAReceber forms_PesquisarContasAReceber;
 
         private decimal multaAtraso;
-
         private decimal jurosAtraso;
-
         private int QuantidadeDiasAtraso;
+        private string numeroNotaFiscal = string.Empty;
+        private string CpfCnpjCliente = string.Empty;
+        private string nomeCliente = string.Empty;
+        private string dataEmeissao = string.Empty;
+        private string quantidadeParcelas = string.Empty;
+        private string valorTotal = string.Empty;
+        private string vencimento = string.Empty;
+        private string statusPagamento = string.Empty;
+        private string valorParcela = string.Empty;
 
         public Forms_EditarPagamentoAReceber()
         {
@@ -77,21 +86,38 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 btnConfirmarPagamento.Enabled = false;
 
-                txtValorAPagar.Text = string.Format("{0:C}", forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[14].Value);
+                txtValorAPagar.Text = valorParcela;
             }
         }
 
         private void PegarDadosGridView()
         {
-            txtNumeroNotaFiscal.Text = forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[1].Value.ToString();
-            txtCpfCnpj.Text = forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[2].Value.ToString();
-            txtNomeCliente.Text = forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[3].Value.ToString();
-            txtEmissao.Text = Convert.ToDateTime(forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[4].Value).ToShortDateString();
-            txtVencimento.Text = Convert.ToDateTime(forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[5].Value).ToShortDateString();
-            txtQuantParcelas.Text = forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[7].Value.ToString();
-            txtValor.Text = string.Format("{0:C}", forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[10].Value);
-            txtValorParcela.Text = string.Format("{0:C}", forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[11].Value);
-            lblStatusPagamento.Text = forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[16].Value.ToString();
+            try
+            {
+                numeroNotaFiscal = forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[2].Value.ToString();
+                CpfCnpjCliente = forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[3].Value.ToString();
+                nomeCliente = forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[4].Value.ToString();
+                dataEmeissao = Convert.ToDateTime(forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[5].Value).ToShortDateString();
+                quantidadeParcelas = forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[7].Value.ToString();
+                valorTotal = string.Format("{0:C}", forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[10].Value);
+                vencimento = Convert.ToDateTime(forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[11].Value).ToShortDateString();
+                statusPagamento = forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[13].Value.ToString();
+                valorParcela = string.Format("{0:C}", forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[14].Value);
+
+                txtNumeroNotaFiscal.Text = numeroNotaFiscal;
+                txtCpfCnpj.Text = CpfCnpjCliente;
+                txtNomeCliente.Text = nomeCliente;
+                txtEmissao.Text = dataEmeissao;
+                txtQuantParcelas.Text = quantidadeParcelas;
+                txtValorTotal.Text = valorTotal;
+                txtVencimento.Text = vencimento;
+                lblStatusPagamento.Text = statusPagamento;
+                txtValorParcela.Text = valorParcela;
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoPegarDadosDoGridView(ex);
+            }
         }
 
         private void PreencherJurosMultaAtraso()
@@ -171,15 +197,16 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void CalcularMultaAtraso()
         {
-            multaAtraso = Convert.ToDecimal(dadosFinanceiro[0].multaAtrasoCarne *
-            Convert.ToDecimal(forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[10].Value) / 100);
+            decimal valorMultaAtrasoPagamentoCarne = Convert.ToDecimal(dadosFinanceiro[0].multaAtrasoCarne);
+
+            multaAtraso = valorMultaAtrasoPagamentoCarne * Convert.ToDecimal(valorParcela.Replace("R$ ", "")) / 100;
         }
 
         private void CalcularJurosAtraso()
         {
-            jurosAtraso = Convert.ToDecimal(dadosFinanceiro[0].jurosAtrasoCarne *
-            Convert.ToDecimal(forms_PesquisarContasAReceber.gdvContarReceber.SelectedCells[10].Value) / 100)
-            * Convert.ToDecimal(QuantidadeDiasAtraso);
+            decimal valorJurosAtrasoPagamentoCarne = Convert.ToDecimal(dadosFinanceiro[0].jurosAtrasoCarne);
+
+            jurosAtraso = (valorJurosAtrasoPagamentoCarne * Convert.ToDecimal(valorParcela.Replace("R$ ", "")) / 100) * Convert.ToDecimal(QuantidadeDiasAtraso);
         }
     }
 }

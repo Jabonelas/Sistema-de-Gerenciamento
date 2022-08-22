@@ -191,9 +191,9 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private struct dadosParaPegarValorLiquido
         {
-            private decimal valor { get; set; }
-            private int mes { get; set; }
-            private int indice { get; set; }
+            internal decimal valor { get; set; }
+            internal int mes { get; set; }
+            internal int indice { get; set; }
 
             public dadosParaPegarValorLiquido(decimal _valor, int _mes, int _indice)
             {
@@ -223,6 +223,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
             List<DadosEstatiscasFinanceiras> listaCompleta = new List<DadosEstatiscasFinanceiras>();
 
+            List<DadosEstatiscasFinanceiras> listaCompleta1 = new List<DadosEstatiscasFinanceiras>();
+
             listaValorBrutoNotaFiscalSaida = Buscar.BuscarValorBrutoNotaFinalSaidaPorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
 
             listaValorBrutoPagamentoCarne = Buscar.BuscarValorBrutoCarnePorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
@@ -247,8 +249,8 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     if (item.mes == item1.mes)
                     {
-                        listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
-                        atribuindoValorIndice += 3;
+                        listaCompleta.Add(new DadosEstatiscasFinanceiras((item.valor + item1.valor), item.mes, atribuindoValorIndice));
+                        atribuindoValorIndice += 6;
 
                         break;
                     }
@@ -257,55 +259,96 @@ namespace Sistema_de_Gerenciamento.Forms
                 if (listaValorBrutoPagamentoCarne.Count == 0)
                 {
                     listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
-                    atribuindoValorIndice += 3;
+                    atribuindoValorIndice += 6;
                 }
             }
 
+            ////Valor Liquido
             lblValorTotalLiquido.Text = String.Format("{0:c}", (valorBrutoNotaFinalSaida + valorBrutoCarne) - (valorContasPagas + valorProdutos));
 
-            ////Valor Liquido
-            //atribuindoValorIndice = 2;
-            //foreach (DadosEstatiscasFinanceiras item in listaValorContasPagas)
-            //{
-            //    listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
-            //    atribuindoValorIndice += 3;
-            //}
+            int indice = 0;
+            atribuindoValorIndice = 2;
+            // Para Pegar Valor de contas pagas + Valor dos Produtos
+            foreach (var item in listaValorProduto)
+            {
+                foreach (var item1 in listaValorContasPagas)
+                {
+                    if (item.mes == item1.mes)
+                    {
+                        listaDadosParaPegarValorLiquidos.Add(new dadosParaPegarValorLiquido(item.valor, item.mes, indice));
+
+                        break;
+                    }
+                }
+
+                if (listaValorContasPagas.Count == 0)
+                {
+                    listaDadosParaPegarValorLiquidos.Add(new dadosParaPegarValorLiquido(item.valor, item.mes, indice));
+                }
+            }
+
+            //Setando o valor Liquido = (valorBrutoNotaFinalSaida + valorBrutoCarne) - (valorContasPagas + valorProdutos)
+
+            foreach (var item in listaCompleta)
+            {
+                listaCompleta1.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, item.indice));
+            }
+
+            foreach (var item in listaCompleta1)
+            {
+                foreach (var item1 in listaDadosParaPegarValorLiquidos)
+                {
+                    if (item.mes == item1.mes && item.indice == 1 || item.indice == 7 || item.indice == 13)
+                    {
+                        listaCompleta.Add(new DadosEstatiscasFinanceiras((item.valor - item1.valor), item.mes, atribuindoValorIndice));
+                        atribuindoValorIndice += 6;
+
+                        break;
+                    }
+                }
+
+                if (listaValorContasPagas.Count == 0)
+                {
+                    listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
+                    atribuindoValorIndice += 6;
+                }
+            }
 
             //Valor Produto
-            atribuindoValorIndice = 2;
+            atribuindoValorIndice = 3;
             foreach (DadosProduto item in listaValorProduto)
             {
                 listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
-                atribuindoValorIndice += 3;
+                atribuindoValorIndice += 6;
             }
 
             //Valor Contas Pagas
-            atribuindoValorIndice = 2;
+            atribuindoValorIndice = 4;
             foreach (DadosEstatiscasFinanceiras item in listaValorContasPagas)
             {
                 listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
-                atribuindoValorIndice += 3;
+                atribuindoValorIndice += 6;
             }
 
             //Valor Contas A Pagar Atrasadas
-            atribuindoValorIndice = 3;
+            atribuindoValorIndice = 5;
             foreach (DadosEstatiscasFinanceiras item in listaValorAPagarContasAtrasadas)
             {
                 listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
-                atribuindoValorIndice += 3;
+                atribuindoValorIndice += 6;
             }
 
             //Valor Contas A Receber Atrasadas
-            atribuindoValorIndice = 3;
+            atribuindoValorIndice = 6;
             foreach (DadosContasAReceber item in listaValorAReceberContasAtrasadas)
             {
                 listaCompleta.Add(new DadosEstatiscasFinanceiras(item.valor, item.mes, atribuindoValorIndice));
-                atribuindoValorIndice += 3;
+                atribuindoValorIndice += 6;
             }
 
             foreach (DadosEstatiscasFinanceiras item in listaCompleta)
             {
-                if (item.indice == 1 || item.indice == 4)
+                if (item.indice == 1 || item.indice == 7 || item.indice == 13)
                 {
                     string valorBruto = item.valor.ToString("N0").Replace(".", "");
 
@@ -316,7 +359,18 @@ namespace Sistema_de_Gerenciamento.Forms
                     continue;
                 }
 
-                if (item.indice == 2 || item.indice == 5)
+                if (item.indice == 2 || item.indice == 8 || item.indice == 14)
+                {
+                    string valorLiquido = item.valor.ToString("N0").Replace(".", "");
+
+                    colunas.addLabely(item.mes.ToString(), valorLiquido);
+
+                    bunifuDataViz1.colorSet.Add(Color.Black);
+
+                    continue;
+                }
+
+                if (item.indice == 3 || item.indice == 9 || item.indice == 15)
                 {
                     string valorContasPaga = item.valor.ToString("N0").Replace(".", "");
 
@@ -327,7 +381,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     continue;
                 }
 
-                if (item.indice == 3 || item.indice == 6)
+                if (item.indice == 4 || item.indice == 10 || item.indice == 16)
                 {
                     string valorProduto = item.valor.ToString("N0").Replace(".", "");
 
@@ -338,7 +392,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     continue;
                 }
 
-                if (item.indice == 4 || item.indice == 6)
+                if (item.indice == 5 || item.indice == 11 || item.indice == 17)
                 {
                     string valorContasAPagarAtrasada = item.valor.ToString("N0").Replace(".", "");
 
@@ -349,7 +403,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     continue;
                 }
 
-                if (item.indice == 6 || item.indice == 6)
+                if (item.indice == 6 || item.indice == 12 || item.indice == 18)
                 {
                     string valorContasAReceberAtrasada = item.valor.ToString("N0").Replace(".", "");
 

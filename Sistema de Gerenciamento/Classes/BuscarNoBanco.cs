@@ -5325,10 +5325,10 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select SUM(dc_valor_pago),month (dc_emissao) from tb_DespesasCustos " +
+                    string query = "select SUM(dc_valor_pago),month (dc_data_pagamento) from tb_DespesasCustos " +
                         "where dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
                         "and dc_estatus_pagamento = 'Pago' " +
-                        "group by month(dc_emissao)";
+                        "group by month(dc_data_pagamento)";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
@@ -5409,8 +5409,8 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select SUM(ns_valor_pago),month (ns_emissao) from tb_NotaFiscalSaida " +
-                                   "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal " +
+                    string query = "select SUM(ns_valor_pago) as valor,month (ns_emissao) as mes from tb_NotaFiscalSaida " +
+                                   "where ns_emissao between @dataInicial and @dataFinal " +
                                    "and ns_tipo_pagamento<> 'CARNÊ' " +
                                    "group by month(ns_emissao)";
 
