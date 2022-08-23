@@ -2397,7 +2397,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 {
                     string query = "select * " +
                                    "from tb_DespesasCustos " +
-                                   "where dc_codigo = @codigo and dc_emissao >= @dataInicial and dc_vencimento <= @dataFinal " +
+                                   "where dc_codigo = @codigo and dc_emissao between @dataInicial and @dataFinal " +
                                    "order by dc_vencimento asc ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -2443,7 +2443,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 {
                     string query = "select * " +
                                    "from tb_DespesasCustos " +
-                                   "where dc_codigo = @codigo and dc_emissao >= @dataInicial and dc_vencimento <= @dataFinal " +
+                                   "where dc_codigo = @codigo and dc_emissao between @dataInicial and @dataFinal " +
                                    "and dc_estatus_pagamento = @statusPagamento " +
                                    "order by dc_vencimento asc ";
 
@@ -2582,7 +2582,7 @@ namespace Sistema_de_Gerenciamento.Classes
                                    "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento,dc_data_pagamento, dc_desconto_taxas," +
                                    "dc_juros_multa, dc_valor_pago " +
                                    "from tb_DespesasCustos " +
-                                   "where dc_fornecedor_titulo = @titulo and dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                                   "where dc_fornecedor_titulo = @titulo and dc_vencimento between @dataInicial and @dataFinal " +
                                    "order by dc_vencimento asc ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -2631,7 +2631,7 @@ namespace Sistema_de_Gerenciamento.Classes
                                    "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento,dc_data_pagamento, dc_desconto_taxas," +
                                    "dc_juros_multa, dc_valor_pago " +
                                    "from tb_DespesasCustos " +
-                                   "where dc_fornecedor_titulo = @titulo and dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                                   "where dc_fornecedor_titulo = @titulo and dc_vencimento between @dataInicial and @dataFinal " +
                                    "and dc_estatus_pagamento = @statusPagamento " +
                                    "order by dc_vencimento asc ";
 
@@ -2686,7 +2686,7 @@ namespace Sistema_de_Gerenciamento.Classes
                                    "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento,dc_data_pagamento, dc_desconto_taxas," +
                                    "dc_juros_multa, dc_valor_pago " +
                                    "from tb_DespesasCustos " +
-                                   "where dc_descricao like @descricao and dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                                   "where dc_descricao like @descricao and dc_vencimento between @dataInicial and @dataFinal " +
                                    "and dc_estatus_pagamento = @statusPagamento " +
                                    "order by dc_vencimento asc ";
 
@@ -2737,7 +2737,7 @@ namespace Sistema_de_Gerenciamento.Classes
                                    "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento,dc_data_pagamento, dc_desconto_taxas," +
                                    "dc_juros_multa, dc_valor_pago " +
                                    "from tb_DespesasCustos " +
-                                   "where dc_descricao like @descricao and dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                                   "where dc_descricao like @descricao and dc_vencimento between @dataInicial and @dataFinal " +
                                    "order by dc_vencimento asc ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -2790,7 +2790,7 @@ namespace Sistema_de_Gerenciamento.Classes
                                    "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento,dc_data_pagamento, dc_desconto_taxas," +
                                    "dc_juros_multa, dc_valor_pago " +
                                    "from tb_DespesasCustos " +
-                                   "where dc_estatus_pagamento = @estatusPagamento and dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                                   "where dc_estatus_pagamento = @estatusPagamento and dc_vencimento between @dataInicial and @dataFinal " +
                                    "order by dc_vencimento asc ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -2842,7 +2842,7 @@ namespace Sistema_de_Gerenciamento.Classes
                                    "dc_categoria,dc_estatus_pagamento, dc_imagem_pagamento,dc_data_pagamento, dc_desconto_taxas," +
                                    "dc_juros_multa, dc_valor_pago " +
                                    "from tb_DespesasCustos " +
-                                   "where dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                                   "where dc_vencimento between @dataInicial and @dataFinal " +
                                    "order by dc_vencimento asc ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -2890,7 +2890,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 {
                     string query = "select sum(dc_valor_pago) " +
                                    "from tb_DespesasCustos " +
-                                   "where dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal and " +
+                                   "where dc_vencimento between @dataInicial and @dataFinal and " +
                                    "dc_estatus_pagamento = 'Pago'";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -2969,7 +2969,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 {
                     string query = "select sum(dc_valor_parcela) " +
                                    "from tb_DespesasCustos " +
-                                   "where dc_emissao >= @dataInicial and dc_vencimento <= @dataFinal and " +
+                                   "where dc_emissao between @dataInicial and @dataFinal and " +
                                    "dc_estatus_pagamento = 'Nao Pago'";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -3622,7 +3622,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne where pc_numero_nf = @numeroNFSaida and " +
-                        "pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal ";
+                        "pc_vencimento between @dataInicial and @dataFinal ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -3671,7 +3671,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne where pc_numero_nf = @numeroNFSaida and " +
-                        "pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal and " +
+                        "pc_vencimento between @dataInicial and @dataFinal and " +
                         "pc_status = @statusPagamento ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -3721,7 +3721,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne " +
-                        "where pc_cpf_cpnj_cliente = @cpfCnpj and pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal";
+                        "where pc_cpf_cpnj_cliente = @cpfCnpj and pc_vencimento between @dataInicial and @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.Add("@cpfCnpj", _cpfCnpj);
@@ -3768,7 +3768,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne " +
-                        "where pc_cpf_cpnj_cliente = @cpfCnpj and pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal " +
+                        "where pc_cpf_cpnj_cliente = @cpfCnpj and pc_vencimento between @dataInicial and @dataFinal " +
                         "and pc_status = @statusPagamento";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -3817,7 +3817,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne where pc_nome_cliente like @nomeCliente and " +
-                        "pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal";
+                        "pc_vencimento between @dataInicial and @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@nomeCliente", string.Format("%{0}%", _nomeCliente));
@@ -3864,7 +3864,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne where pc_nome_cliente like @nomeCliente and " +
-                        "pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal and pc_status = @statusPagamento";
+                        "pc_vencimento between @dataInicial and @dataFinal and pc_status = @statusPagamento";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@nomeCliente", string.Format("%{0}%", _nomeCliente));
@@ -3912,7 +3912,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne where pc_status = @statusPagamento and " +
-                        "pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal";
+                        "pc_vencimento between @dataInicial and @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@statusPagamento", _statusPagamento);
@@ -3959,7 +3959,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select * from tb_PagamentoCarne " +
-                        "where pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal";
+                        "where pc_vencimento between @dataInicial and @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
@@ -4465,7 +4465,7 @@ namespace Sistema_de_Gerenciamento.Classes
                         "ns_descricao,ns_quantidade,ns_valor_pago " +
                         "from tb_NotaFiscalSaida " +
                         "where ns_vendedor = @vendedor and ns_valor_pago > 0 and " +
-                        "ns_emissao >= @dataInicial and ns_emissao <= @dataFinal";
+                        "ns_emissao between @dataInicial and @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -4514,7 +4514,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 {
                     string query = "select SUM(ns_valor_pago) from tb_NotaFiscalSaida " +
                         "where ns_vendedor = @vendedor and ns_valor_pago > 0 and " +
-                        "ns_emissao >= @dataInicail and ns_emissao <= @dataFinal";
+                        "ns_emissao between @dataInicail and @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.Add("@vendedor", _vendedor);
@@ -4659,7 +4659,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select ns_codigo_produto,ns_valor_pago from tb_NotaFiscalSaida " +
-                        "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal " +
+                        "where ns_emissao between @dataInicial and @dataFinal " +
                         "and ns_vendedor = @vendedor";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -4698,7 +4698,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     string query = "select CAST(ns_emissao as DATE) as 'Data'," +
                             "COUNT(ns_nome_cliente) as 'Qtd Cliente',SUM(ns_quantidade) as 'Qtd Produto'," +
                             "SUM(ns_valor_pago) as 'Valor' from tb_NotaFiscalSaida " +
-                            "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal " +
+                            "where ns_emissao between @dataInicial and @dataFinal " +
                             "group by CAST(ns_emissao as DATE) order by CAST(ns_emissao as DATE) asc";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -4747,7 +4747,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     string query = "select CAST(ns_emissao as DATE) as 'Data', " +
                         "COUNT(ns_nome_cliente) as 'Qtd Cliente', SUM(ns_quantidade) as 'Qtd Produto'," +
                         "SUM(ns_valor_pago) as 'Valor' from tb_NotaFiscalSaida " +
-                        "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal and ns_status = 'Devolucao' " +
+                        "where ns_emissao between @dataInicial and @dataFinal and ns_status = 'Devolucao' " +
                         "group by CAST(ns_emissao as DATE) order by CAST(ns_emissao as DATE) asc";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -4798,7 +4798,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     string query = "select (ns_codigo_produto) as 'Codigo Produto', (ns_descricao) as 'Descricao', " +
                         "COUNT(ns_nome_cliente) as 'Qtd Cliente', " +
                         "SUM(ns_quantidade) as 'Qtd Produto', SUM(ns_valor_pago) as 'Valor' " +
-                        "from tb_NotaFiscalSaida where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal " +
+                        "from tb_NotaFiscalSaida where ns_emissao between @dataInicial and @dataFinal " +
                         "group by(ns_codigo_produto),(ns_descricao) order by SUM(ns_quantidade) desc";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -4848,7 +4848,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     string query = "select (ns_tipo_pagamento) as 'Tipo Pagamento', " +
                             "COUNT(ns_nome_cliente) as 'Qtd Cliente', SUM(ns_quantidade) as 'Qtd Produto'," +
                             "SUM(ns_valor_pago) as 'Valor' from tb_NotaFiscalSaida " +
-                            "where ns_emissao >= '01/08/2022' and ns_emissao <= '30/08/2022' " +
+                            "where ns_emissao between @dataInicial and @dataFinal " +
                             "group by(ns_tipo_pagamento ) " +
                             "order by SUM(ns_valor_pago) desc";
 
@@ -4899,7 +4899,7 @@ namespace Sistema_de_Gerenciamento.Classes
                     string query = "select (ns_vendedor) as 'Usuario'," +
                         "COUNT(ns_nome_cliente) as 'Qtd Cliente', SUM(ns_quantidade) as 'Qtd Produto', " +
                         "SUM(ns_valor_pago) as 'Valor' from tb_NotaFiscalSaida " +
-                        "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal group by(ns_vendedor ) " +
+                        "where ns_emissao between @dataInicial and @dataFinal group by(ns_vendedor ) " +
                         "order by SUM(ns_valor_pago) asc";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -4947,7 +4947,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select SUM(ns_quantidade) from tb_NotaFiscalSaida " +
-                        "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal";
+                        "where ns_emissao between @dataInicial and @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
@@ -4984,7 +4984,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select SUM(ns_valor_pago) from tb_NotaFiscalSaida " +
-                        "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal";
+                        "where ns_emissao between @dataInicial and @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
@@ -5092,7 +5092,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select SUM(ns_valor_pago) from tb_NotaFiscalSaida " +
-                        "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal " +
+                        "where ns_emissao between @dataInicial and @dataFinal " +
                         "and ns_tipo_pagamento <> 'CARNÊ'";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -5131,7 +5131,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select SUM(pc_valor_final_parcela) from tb_PagamentoCarne " +
-                        "where pc_data_pagamento >= @dataInicial and pc_data_pagamento <= @dataFinal";
+                        "where pc_data_pagamento between @dataInicial and  @dataFinal";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -5169,7 +5169,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select SUM(dc_valor_pago) from tb_DespesasCustos " +
-                        "where dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                        "where dc_vencimento between @dataInicial and @dataFinal " +
                         "and dc_estatus_pagamento = 'Pago'";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -5208,7 +5208,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select SUM(dc_valor_parcela) from tb_DespesasCustos " +
-                        "where dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                        "where dc_vencimento between @dataInicial and @dataFinal " +
                         "and dc_estatus_pagamento = 'Nao Pago'";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -5247,7 +5247,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select SUM(pc_valor_parcela) from tb_PagamentoCarne " +
-                        "where pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal " +
+                        "where pc_vencimento between @dataInicial and @dataFinal " +
                         "and pc_status = 'Nao Pago'";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -5287,7 +5287,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 {
                     string query = "select sum(cp_valor_custo*pe.ns_quantidade) from tb_CadastroProdutos as p " +
                         "inner join tb_NotaFiscalSaida pe on p.cp_id = pe.ns_codigo_produto " +
-                        "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal ";
+                        "where ns_emissao between @dataInicial and @dataFinal ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
@@ -5326,7 +5326,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select SUM(dc_valor_pago),month (dc_data_pagamento) from tb_DespesasCustos " +
-                        "where dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                        "where dc_vencimento between @dataInicial and @dataFinal " +
                         "and dc_estatus_pagamento = 'Pago' " +
                         "group by month(dc_data_pagamento)";
 
@@ -5367,10 +5367,10 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select SUM(dc_valor_parcela),month (dc_emissao) from tb_DespesasCustos " +
-                        "where dc_vencimento >= @dataInicial and dc_vencimento <= @dataFinal " +
+                    string query = "select SUM(dc_valor_parcela),month (dc_vencimento) from tb_DespesasCustos " +
+                        "where dc_vencimento between @dataInicial and @dataFinal " +
                         "and dc_estatus_pagamento = 'Nao Pago' " +
-                        "group by month(dc_emissao)";
+                        "group by month(dc_vencimento)";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
@@ -5446,7 +5446,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select SUM(pc_valor_final_parcela),month (pc_data_pagamento) from tb_PagamentoCarne " +
-                                   "where pc_data_pagamento >= @dataInicial and pc_data_pagamento <= @dataFinal " +
+                                   "where pc_data_pagamento between @dataInicial and @dataFinal " +
                                    "group by month(pc_data_pagamento)";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -5481,7 +5481,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select SUM(pc_valor_parcela),month(pc_vencimento) from tb_PagamentoCarne " +
-                                   "where pc_vencimento >= @dataInicial and pc_vencimento <= @dataFinal " +
+                                   "where pc_vencimento between @dataInicial and @dataFinal " +
                                    "and pc_status = 'Nao Pago' " +
                                    "group by month(pc_vencimento)";
 
@@ -5516,9 +5516,9 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select sum(cp_valor_custo*pe.ns_quantidade), month(ns_emissao) from tb_CadastroProdutos as p " +
+                    string query = "select sum(cp_valor_custo*pe.ns_quantidade) as valor, month(ns_emissao) as mes from tb_CadastroProdutos as p " +
                                    "inner join tb_NotaFiscalSaida pe on p.cp_id = pe.ns_codigo_produto " +
-                                   "where ns_emissao >= @dataInicial and ns_emissao <= @dataFinal " +
+                                   "where ns_emissao between @dataInicial and @dataFinal " +
                                    "group by month(ns_emissao)";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
