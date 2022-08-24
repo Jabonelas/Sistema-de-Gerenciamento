@@ -16,8 +16,12 @@ namespace Sistema_de_Gerenciamento.Forms
 {
     public partial class testando : Form
     {
-        private BuscarNoBanco Buscar = new BuscarNoBanco();
+        private List<DadosProduto> listaValorProduto = new List<DadosProduto>();
+        private List<DadosEstatiscasFinanceiras> listaValorContasPagas = new List<DadosEstatiscasFinanceiras>();
+        private List<DadosListaValorBruto> listaDadosListaValorBruto = new List<DadosListaValorBruto>();
 
+        private BuscarNoBanco Buscar = new BuscarNoBanco();
+        private string nomeMesPorExtenco = "";
         private List<DadosNotaFiscalSaida> listaNotaFiscalSaidas = new List<DadosNotaFiscalSaida>();
 
         public testando()
@@ -88,49 +92,16 @@ namespace Sistema_de_Gerenciamento.Forms
             return table;
         }
 
-        private void PercorrerListaValorBruto(DataTable table)
+        private DataTable CreateChartData5()
         {
-            List<DadosNotaFiscalSaida> listaValorBrutoNotaFiscalSaida = new List<DadosNotaFiscalSaida>();
+            DataTable table = new DataTable("Table5");
 
-            List<DadosPagamentoCarne> listaValorBrutoPagamentoCarne = new List<DadosPagamentoCarne>();
+            table.Columns.Add("Argument", typeof(string));
+            table.Columns.Add("Value", typeof(decimal));
 
-            listaValorBrutoNotaFiscalSaida = Buscar.BuscarValorBrutoNotaFinalSaidaPorDataAvancada(dataInicial.Value, dataFinal.Value);
+            PercorrerListaValorLiquido(table);
 
-            listaValorBrutoPagamentoCarne = Buscar.BuscarValorBrutoCarnePorDataAvancada(dataInicial.Value, dataFinal.Value);
-
-            string nomeMesPorExtenco = "";
-
-            DataRow row = null;
-
-            foreach (DadosNotaFiscalSaida item in listaValorBrutoNotaFiscalSaida)
-            {
-                foreach (DadosPagamentoCarne item1 in listaValorBrutoPagamentoCarne)
-                {
-                    if (item.mes == item1.mes)
-                    {
-                        nomeMesPorExtenco = VerificarMesEscreverPorExtenco(item.mes);
-
-                        row = table.NewRow();
-                        row["Argument"] = nomeMesPorExtenco;
-                        //row["Argument"] = item.mes;
-                        row["Value"] = (item.valor + item1.valor);
-                        table.Rows.Add(row);
-
-                        break;
-                    }
-                }
-
-                if (listaValorBrutoPagamentoCarne.Count == 0)
-                {
-                    nomeMesPorExtenco = VerificarMesEscreverPorExtenco(item.mes);
-
-                    row = table.NewRow();
-                    row["Argument"] = nomeMesPorExtenco;
-                    //row["Argument"] = item.mes;
-                    row["Value"] = (item.valor);
-                    table.Rows.Add(row);
-                }
-            }
+            return table;
         }
 
         private string VerificarMesEscreverPorExtenco(int _mes)
@@ -203,91 +174,185 @@ namespace Sistema_de_Gerenciamento.Forms
             return escreverMesPorExtenco;
         }
 
-        private void PercorrerListaValorProduto(DataTable table)
+        private struct DadosListaValorBruto
         {
-            List<DadosProduto> listaValorProduto = new List<DadosProduto>();
+            public int mes { get; set; }
+            public decimal valor { get; set; }
 
-            listaValorProduto = Buscar.BuscarValorProdutoPorDataAvancada(dataInicial.Value, dataFinal.Value);
+            public DadosListaValorBruto(int _mes, decimal _valor)
+            {
+                mes = _mes;
+                valor = _valor;
+            }
+        }
 
-            string nomeMesPorExtenco = "";
+        private void PercorrerListaValorBruto(DataTable table)
+        {
+            List<DadosNotaFiscalSaida> listaValorBrutoNotaFiscalSaida = new List<DadosNotaFiscalSaida>();
+
+            List<DadosPagamentoCarne> listaValorBrutoPagamentoCarne = new List<DadosPagamentoCarne>();
+
+            listaValorBrutoNotaFiscalSaida = Buscar.BuscarValorBrutoNotaFinalSaidaPorDataAvancada(dataInicial.Value, dataFinal.Value);
+
+            listaValorBrutoPagamentoCarne = Buscar.BuscarValorBrutoCarnePorDataAvancada(dataInicial.Value, dataFinal.Value);
 
             DataRow row = null;
 
-            foreach (DadosProduto item in listaValorProduto)
+            foreach (DadosNotaFiscalSaida valorBrutoNotaFiscalSaida in listaValorBrutoNotaFiscalSaida)
             {
-                nomeMesPorExtenco = VerificarMesEscreverPorExtenco(item.mes);
+                foreach (DadosPagamentoCarne valorBrutoPagamentoCarne in listaValorBrutoPagamentoCarne)
+                {
+                    if (valorBrutoNotaFiscalSaida.mes == valorBrutoPagamentoCarne.mes)
+                    {
+                        nomeMesPorExtenco = VerificarMesEscreverPorExtenco(valorBrutoNotaFiscalSaida.mes);
+
+                        row = table.NewRow();
+                        row["Argument"] = nomeMesPorExtenco;
+                        row["Value"] = (valorBrutoNotaFiscalSaida.valor + valorBrutoPagamentoCarne.valor);
+                        table.Rows.Add(row);
+
+                        listaDadosListaValorBruto.Add(new DadosListaValorBruto(valorBrutoNotaFiscalSaida.mes, (valorBrutoNotaFiscalSaida.valor + valorBrutoPagamentoCarne.valor)));
+
+                        break;
+                    }
+                }
+
+                if (listaValorBrutoPagamentoCarne.Count == 0)
+                {
+                    nomeMesPorExtenco = VerificarMesEscreverPorExtenco(valorBrutoNotaFiscalSaida.mes);
+
+                    row = table.NewRow();
+                    row["Argument"] = nomeMesPorExtenco;
+                    row["Value"] = (valorBrutoNotaFiscalSaida.valor);
+                    table.Rows.Add(row);
+
+                    listaDadosListaValorBruto.Add(new DadosListaValorBruto(valorBrutoNotaFiscalSaida.mes, valorBrutoNotaFiscalSaida.valor));
+                }
+            }
+        }
+
+        private void PercorrerListaValorProduto(DataTable table)
+        {
+            listaValorProduto = Buscar.BuscarValorProdutoPorDataAvancada(dataInicial.Value, dataFinal.Value);
+
+            DataRow row = null;
+
+            listaValorProduto.ForEach(valorProduto =>
+            {
+                nomeMesPorExtenco = VerificarMesEscreverPorExtenco(valorProduto.mes);
 
                 row = table.NewRow();
                 row["Argument"] = nomeMesPorExtenco;
-                //row["Argument"] = item.mes;
-                row["Value"] = (item.valor);
+                row["Value"] = (valorProduto.valor);
                 table.Rows.Add(row);
-            }
+            });
         }
 
         private void PercorrerListaContasAtrasadasAReceber(DataTable table)
         {
-            List<DadosContasAReceber> listaValorAReceberContasAtrasadas = new List<DadosContasAReceber>(); // ok
+            List<DadosContasAReceber> listaValorAReceberContasAtrasadasAReceber = new List<DadosContasAReceber>(); // ok
 
-            listaValorAReceberContasAtrasadas = Buscar.BuscarValorContasAReceberAtrasadasDataAvancada(dataInicial.Value, dataFinal.Value);
-
-            string nomeMesPorExtenco = "";
+            listaValorAReceberContasAtrasadasAReceber = Buscar.BuscarValorContasAReceberAtrasadasDataAvancada(dataInicial.Value, dataFinal.Value);
 
             DataRow row = null;
 
-            foreach (DadosContasAReceber item in listaValorAReceberContasAtrasadas)
+            listaValorAReceberContasAtrasadasAReceber.ForEach(contaAtrasadaAReceber =>
             {
-                nomeMesPorExtenco = VerificarMesEscreverPorExtenco(item.mes);
+                nomeMesPorExtenco = VerificarMesEscreverPorExtenco(contaAtrasadaAReceber.mes);
 
                 row = table.NewRow();
                 row["Argument"] = nomeMesPorExtenco;
-                //row["Argument"] = item.mes;
-                row["Value"] = (item.valor);
+                row["Value"] = (contaAtrasadaAReceber.valor);
                 table.Rows.Add(row);
-            }
+            });
         }
 
         private void PercorrerListaContasAtrasadasAPagar(DataTable table)
         {
-            List<DadosEstatiscasFinanceiras> listaValorAPagarContasAtrasadas = new List<DadosEstatiscasFinanceiras>(); // ok
+            List<DadosEstatiscasFinanceiras> listaValorAPagarContasAtrasadasAPagar = new List<DadosEstatiscasFinanceiras>(); // ok
 
-            listaValorAPagarContasAtrasadas = Buscar.BuscarValorContasAtrasadasPorDataAvancada(dataInicial.Value, dataFinal.Value);
-
-            string nomeMesPorExtenco = "";
+            listaValorAPagarContasAtrasadasAPagar = Buscar.BuscarValorContasAtrasadasPorDataAvancada(dataInicial.Value, dataFinal.Value);
 
             DataRow row = null;
 
-            foreach (DadosEstatiscasFinanceiras item in listaValorAPagarContasAtrasadas)
+            listaValorAPagarContasAtrasadasAPagar.ForEach(contasAtrasadaAPagar =>
             {
-                nomeMesPorExtenco = VerificarMesEscreverPorExtenco(item.mes);
+                nomeMesPorExtenco = VerificarMesEscreverPorExtenco(contasAtrasadaAPagar.mes);
 
                 row = table.NewRow();
                 row["Argument"] = nomeMesPorExtenco;
-                //row["Argument"] = item.mes;
-                row["Value"] = (item.valor);
+                row["Value"] = (contasAtrasadaAPagar.valor);
                 table.Rows.Add(row);
-            }
+            });
         }
 
         private void PercorrerListaContasPagas(DataTable table)
         {
-            List<DadosEstatiscasFinanceiras> listaValorContasPagas = new List<DadosEstatiscasFinanceiras>(); // ok
-
             listaValorContasPagas = Buscar.BuscarValorContasPagasPorDataAvancada(dataInicial.Value, dataFinal.Value);
-
-            string nomeMesPorExtenco = "";
 
             DataRow row = null;
 
-            foreach (DadosEstatiscasFinanceiras item in listaValorContasPagas)
+            listaValorContasPagas.ForEach(contasPagas =>
             {
-                nomeMesPorExtenco = VerificarMesEscreverPorExtenco(item.mes);
+                nomeMesPorExtenco = VerificarMesEscreverPorExtenco(contasPagas.mes);
 
                 row = table.NewRow();
                 row["Argument"] = nomeMesPorExtenco;
-                //row["Argument"] = item.mes;
-                row["Value"] = (item.valor);
+                row["Value"] = (contasPagas.valor);
                 table.Rows.Add(row);
+            });
+        }
+
+        private void PercorrerListaValorLiquido(DataTable table)
+        {
+            listaValorProduto = Buscar.BuscarValorProdutoPorDataAvancada(dataInicial.Value, dataFinal.Value);
+
+            listaValorContasPagas = Buscar.BuscarValorContasPagasPorDataAvancada(dataInicial.Value, dataFinal.Value);
+
+            DataRow row = null;
+
+            foreach (var valorproduto in listaValorProduto)
+            {
+                foreach (var valorBruto in listaDadosListaValorBruto)
+                {
+                    foreach (var valorContasPagas in listaValorContasPagas)
+                    {
+                        if (valorproduto.mes == valorContasPagas.mes && valorproduto.mes == valorBruto.mes)
+                        {
+                            nomeMesPorExtenco = VerificarMesEscreverPorExtenco(valorproduto.mes);
+
+                            row = table.NewRow();
+                            row["Argument"] = nomeMesPorExtenco;
+                            row["Value"] = (valorBruto.valor - (valorContasPagas.valor + valorproduto.valor));
+                            table.Rows.Add(row);
+
+                            break;
+                        }
+                    }
+
+                    if (valorproduto.mes == valorBruto.mes)
+                    {
+                        nomeMesPorExtenco = VerificarMesEscreverPorExtenco(valorproduto.mes);
+
+                        row = table.NewRow();
+                        row["Argument"] = nomeMesPorExtenco;
+                        row["Value"] = (valorBruto.valor - valorproduto.valor);
+                        table.Rows.Add(row);
+
+                        break;
+                    }
+                    else if (valorproduto.mes != valorBruto.mes)
+                    {
+                        nomeMesPorExtenco = VerificarMesEscreverPorExtenco(valorproduto.mes);
+
+                        row = table.NewRow();
+                        row["Argument"] = nomeMesPorExtenco;
+                        row["Value"] = (-valorproduto.valor);
+                        table.Rows.Add(row);
+
+                        break;
+                    }
+                }
             }
         }
 
@@ -299,7 +364,7 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 chartControl1.Series.Add(series);
                 series.DataSource = CreateChartData();
-                series.ArgumentScaleType = ScaleType.Numerical;
+                series.ArgumentScaleType = ScaleType.Auto;
                 series.ArgumentDataMember = "Argument";
                 series.ValueScaleType = ScaleType.Numerical;
                 series.ValueDataMembers.AddRange(new string[] { "Value" });
@@ -320,7 +385,7 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 chartControl1.Series.Add(series1);
                 series1.DataSource = CreateChartData1();
-                series1.ArgumentScaleType = ScaleType.Numerical;
+                series1.ArgumentScaleType = ScaleType.Auto;
                 series1.ArgumentDataMember = "Argument";
                 series1.ValueScaleType = ScaleType.Numerical;
                 series1.ValueDataMembers.AddRange(new string[] { "Value" });
@@ -341,7 +406,7 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 chartControl1.Series.Add(series2);
                 series2.DataSource = CreateChartData3();
-                series2.ArgumentScaleType = ScaleType.Numerical;
+                series2.ArgumentScaleType = ScaleType.Auto;
                 series2.ArgumentDataMember = "Argument";
                 series2.ValueScaleType = ScaleType.Numerical;
                 series2.ValueDataMembers.AddRange(new string[] { "Value" });
@@ -362,7 +427,7 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 chartControl1.Series.Add(series3);
                 series3.DataSource = CreateChartData2();
-                series3.ArgumentScaleType = ScaleType.Numerical;
+                series3.ArgumentScaleType = ScaleType.Auto;
                 series3.ArgumentDataMember = "Argument";
                 series3.ValueScaleType = ScaleType.Numerical;
                 series3.ValueDataMembers.AddRange(new string[] { "Value" });
@@ -383,7 +448,7 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 chartControl1.Series.Add(series4);
                 series4.DataSource = CreateChartData4();
-                series4.ArgumentScaleType = ScaleType.Numerical;
+                series4.ArgumentScaleType = ScaleType.Auto;
                 series4.ArgumentDataMember = "Argument";
                 series4.ValueScaleType = ScaleType.Numerical;
                 series4.ValueDataMembers.AddRange(new string[] { "Value" });
@@ -396,6 +461,27 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
+        private void chkValorLiquido_CheckedChanged(object sender, EventArgs e)
+        {
+            Series series5 = new Series("Valor Liquido", ViewType.Bar);
+
+            if (chkValorLiquido.Checked == true)
+            {
+                chartControl1.Series.Add(series5);
+                series5.DataSource = CreateChartData5();
+                series5.ArgumentScaleType = ScaleType.Auto;
+                series5.ArgumentDataMember = "Argument";
+                series5.ValueScaleType = ScaleType.Numerical;
+                series5.ValueDataMembers.AddRange(new string[] { "Value" });
+            }
+            else
+            {
+                var a = chartControl1.Series.First(x => x.Name == "Valor Liquido");
+
+                chartControl1.Series.Remove((Series)a);
+            }
+        }
+
         private void testando_Load(object sender, EventArgs e)
         {
             chkValorProduto.Checked = true;
@@ -403,6 +489,7 @@ namespace Sistema_de_Gerenciamento.Forms
             chkValorContasAPagar.Checked = true;
             chkValorContasAReceber.Checked = true;
             chkValorContasPagas.Checked = true;
+            chkValorLiquido.Checked = true;
         }
     }
 }

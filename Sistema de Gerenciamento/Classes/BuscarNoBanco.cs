@@ -4909,8 +4909,28 @@ namespace Sistema_de_Gerenciamento.Classes
                     DataTable dataTable = new DataTable();
 
                     adapter.Fill(dataTable);
+                    var asa = dataTable.Select();
                     //_tabela.DataSource = null;
-                    _tabela.DataSource = dataTable;
+                    foreach (var VARIABLE in asa)
+                    {
+                        var rows = new List<string[]>();
+
+                        string[] row1 = new string[]
+                        {
+                            VARIABLE["Usuario"].ToString(), VARIABLE["Qtd Cliente"].ToString(), VARIABLE["Qtd Produto"].ToString(),
+                            (VARIABLE["Valor"] = "R$ " + VARIABLE["Valor"]).ToString()
+                        };
+                        rows.Add(row1);
+
+                        //foreach (string[] VARIABLE1 in rows)
+                        //{
+                        //    _tabela.DataSource = VARIABLE1;
+                        //}
+                        _tabela.DataSource = rows;
+                    }
+
+                    //_tabela.DataSource = dataTable;
+
                     _tabela.Refresh();
 
                     SqlDataReader reader;

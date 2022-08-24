@@ -120,6 +120,32 @@ namespace Sistema_de_Gerenciamento.Forms
 
         #region Salvar Despesa
 
+        private int FrequenciaEmDias(string _frequencia)
+        {
+            switch (_frequencia)
+            {
+                case "Semanal":
+                    return 7;
+
+                case "Quinzenal":
+                    return 15;
+
+                case "Mensal":
+                    return 30;
+
+                case "Bimestral":
+                    return 90;
+
+                case "Semestral":
+                    return 180;
+
+                case "Anual":
+                    return 365;
+            }
+
+            return 0;
+        }
+
         private void SalvarDespesa()
         {
             try
@@ -132,12 +158,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     if (listaDespesas.Find(lista => lista.descricao == txtDescricao.Text && lista.forncedorTitulo == cmbFornecedorTitulo.Text) == null)
                     {
-                        bool semanal = cmbFrequencia.Text == "Semanal" ? Convert.ToBoolean(dias = 7) : false;
-                        bool quinzenal = cmbFrequencia.Text == "Quinzenal" ? Convert.ToBoolean(dias = 15) : false;
-                        bool mensal = cmbFrequencia.Text == "Mensal" ? Convert.ToBoolean(dias = 30) : false;
-                        bool bimestral = cmbFrequencia.Text == "Bimestral" ? Convert.ToBoolean(dias = 90) : false;
-                        bool semestral = cmbFrequencia.Text == "Semestral" ? Convert.ToBoolean(dias = 180) : false;
-                        bool anual = cmbFrequencia.Text == "Anual" ? Convert.ToBoolean(dias = 365) : false;
+                        dias = FrequenciaEmDias(cmbFrequencia.Text);
 
                         for (int i = 1; i <= Convert.ToInt32(cmbQuantidadeParcelas.Text.Replace("x", "")); i++)
                         {

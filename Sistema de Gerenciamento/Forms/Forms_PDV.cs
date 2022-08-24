@@ -875,8 +875,6 @@ namespace Sistema_de_Gerenciamento.Forms
 
             txtDesconto.Text = desconto;
 
-            //verificarQuantidade = _dadosProduto.quantidade;
-
             txtInserirQuant.Focus();
 
             _dadosProduto.quantidade -= Convert.ToDecimal(txtInserirQuant.Text);

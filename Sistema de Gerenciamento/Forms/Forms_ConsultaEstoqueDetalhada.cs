@@ -38,7 +38,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             numeroNFEntrada = Convert.ToInt32(forms.gdvConsultarEstoque.SelectedCells[1].Value);
             codigoBarras = Convert.ToInt32(forms.gdvConsultarEstoque.SelectedCells[2].Value);
-            quantidade = Convert.ToDecimal(forms.gdvConsultarEstoque.SelectedCells[5].Value);
+            quantidade = Convert.ToDecimal(forms.gdvConsultarEstoque.SelectedCells[6].Value);
         }
 
         private void PreencherTextBox()

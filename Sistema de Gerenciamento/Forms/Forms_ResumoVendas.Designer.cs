@@ -42,7 +42,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.bunifuGroupBox1 = new Bunifu.UI.WinForms.BunifuGroupBox();
             this.gdvResumoVendas = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.btnPesquisar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.label3 = new System.Windows.Forms.Label();
@@ -151,8 +150,6 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.gdvResumoVendas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.gdvResumoVendas.ColumnHeadersHeight = 40;
-            this.gdvResumoVendas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Valor});
             this.gdvResumoVendas.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.gdvResumoVendas.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.gdvResumoVendas.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -194,13 +191,6 @@
             this.gdvResumoVendas.Size = new System.Drawing.Size(840, 305);
             this.gdvResumoVendas.TabIndex = 280;
             this.gdvResumoVendas.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            // 
-            // Valor
-            // 
-            this.Valor.DataPropertyName = "Valor";
-            this.Valor.HeaderText = "Valor";
-            this.Valor.Name = "Valor";
-            this.Valor.ReadOnly = true;
             // 
             // bunifuSeparator1
             // 
@@ -317,7 +307,6 @@
             this.label3.TabIndex = 285;
             this.label3.Text = "Valor Gasto Com Produtos";
             this.label3.Visible = false;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label55
             // 
@@ -328,7 +317,6 @@
             this.label55.Size = new System.Drawing.Size(117, 15);
             this.label55.TabIndex = 284;
             this.label55.Text = "Valor Bruto Vendido";
-            this.label55.Click += new System.EventHandler(this.label55_Click);
             // 
             // label1
             // 
@@ -387,7 +375,6 @@
             this.lblValorGastoBruto.TabIndex = 292;
             this.lblValorGastoBruto.Text = "R$ 0,00";
             this.lblValorGastoBruto.Visible = false;
-            this.lblValorGastoBruto.Click += new System.EventHandler(this.lblValorGastoBruto_Click);
             // 
             // lblValorBrutoVendido
             // 
@@ -518,7 +505,6 @@
             this.Name = "Forms_ResumoVendas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Resumo Vendas";
-            this.Load += new System.EventHandler(this.Forms_ResumoVendas_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_ResumoVendas_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.gdvResumoVendas)).EndInit();
             this.ResumeLayout(false);
@@ -543,7 +529,6 @@
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.ComboBox cmbTipoPesquisa;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valor;
         private System.Windows.Forms.Label lblQtditensVendidos;
         private System.Windows.Forms.Label lblValorGastoBruto;
         private System.Windows.Forms.Label lblValorBrutoVendido;

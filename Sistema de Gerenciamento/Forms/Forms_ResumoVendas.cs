@@ -20,8 +20,6 @@ namespace Sistema_de_Gerenciamento.Forms
             InitializeComponent();
 
             PreencherDatePicker();
-
-            FormatarGridView();
         }
 
         private void PreencherDatePicker()
@@ -70,11 +68,17 @@ namespace Sistema_de_Gerenciamento.Forms
                 MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
             }
 
-            lblQtditensVendidos.Text = Buscar.BuscarQuantidadeItensVendidos(dtpDataInicial.Value, dtpDataFinal.Value).ToString("N0");
+            string valorGastoBruto = Buscar.BuscarGastosBrutos().ToString("c");
 
-            lblValorBrutoVendido.Text = String.Format("{0:c}", Buscar.BuscarValorBrutoVendido(dtpDataInicial.Value, dtpDataFinal.Value));
+            string valorBrutovendido = Buscar.BuscarValorBrutoVendido(dtpDataInicial.Value, dtpDataFinal.Value).ToString("c");
 
-            lblValorGastoBruto.Text = string.Format("{0:c}", Buscar.BuscarGastosBrutos());
+            string itensVendidos = Buscar.BuscarQuantidadeItensVendidos(dtpDataInicial.Value, dtpDataFinal.Value).ToString("N0");
+
+            lblQtditensVendidos.Text = itensVendidos;
+
+            lblValorBrutoVendido.Text = valorBrutovendido;
+
+            lblValorGastoBruto.Text = valorGastoBruto;
         }
 
         private void MenssagemResultadoNaoEncontrado(bool _isResultadoEncontrado)
@@ -83,11 +87,6 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 MessageBox.Show("Dados Não Encontrado", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
-
-        private void FormatarGridView()
-        {
-            this.gdvResumoVendas.Columns["Valor"].DefaultCellStyle.Format = "c";
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -101,25 +100,6 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 this.Close();
             }
-        }
-
-        private void Forms_ResumoVendas_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void lblValorGastoBruto_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label55_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

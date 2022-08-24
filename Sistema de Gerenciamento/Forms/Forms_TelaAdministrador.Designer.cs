@@ -107,6 +107,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btnContasAPagar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.tabRelatorios = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabConsultas = new System.Windows.Forms.TabPage();
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
@@ -136,7 +137,6 @@
             this.btnVendaConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnPDVConsole = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.TimerVerificarDespesaCustoFixo = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabCadastro.SuspendLayout();
             this.tabMovimentacao.SuspendLayout();
@@ -1995,6 +1995,16 @@
             this.tabRelatorios.Text = "Relatôrios";
             this.tabRelatorios.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(384, 54);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(104, 32);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // tabConsultas
             // 
             this.tabConsultas.Controls.Add(this.panel15);
@@ -3517,16 +3527,6 @@
             this.TimerVerificarDespesaCustoFixo.Interval = 72000000;
             this.TimerVerificarDespesaCustoFixo.Tick += new System.EventHandler(this.TimerVerificarDespesaCustoFixo_Tick);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(384, 54);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 32);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Forms_TelaAdministrador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3538,9 +3538,11 @@
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "Forms_TelaAdministrador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_TelaAdministrador_KeyDown);
             this.tabControl.ResumeLayout(false);
             this.tabCadastro.ResumeLayout(false);
             this.tabCadastro.PerformLayout();

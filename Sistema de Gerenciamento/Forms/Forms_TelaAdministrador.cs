@@ -24,7 +24,7 @@ namespace Sistema_de_Gerenciamento
 
         private List<DadosProduto> ListaProdutosComEstoqueMinimo = new List<DadosProduto>();
 
-        private DadosProduto ProdutoComEstoqueMinimo;
+        //private DadosProduto ProdutoComEstoqueMinimo;
 
         private Forms_Login login;
 
@@ -312,6 +312,7 @@ namespace Sistema_de_Gerenciamento
                     }
                 }
             }
+
             VerificarUsuarioMensagemPagamentoPendente(_despesaCusto);
         }
 
@@ -357,12 +358,32 @@ namespace Sistema_de_Gerenciamento
 
         private void TransformarFrenquenciaEmDias(DadosDespesaCusto _despesaCusto)
         {
-            bool semanal = _despesaCusto.frequencia == "Semanal" ? Convert.ToBoolean(dias = 7) : false;
-            bool quinzenal = _despesaCusto.frequencia == "Quinzenal" ? Convert.ToBoolean(dias = 15) : false;
-            bool mensal = _despesaCusto.frequencia == "Mensal" ? Convert.ToBoolean(dias = 30) : false;
-            bool bimestral = _despesaCusto.frequencia == "Bimestral" ? Convert.ToBoolean(dias = 90) : false;
-            bool semestral = _despesaCusto.frequencia == "Semestral" ? Convert.ToBoolean(dias = 180) : false;
-            bool anual = _despesaCusto.frequencia == "Anual" ? Convert.ToBoolean(dias = 365) : false;
+            switch (_despesaCusto.frequencia)
+            {
+                case "Semanal":
+                    dias = 7;
+                    break;
+
+                case "Quinzenal":
+                    dias = 15;
+                    break;
+
+                case "Mensal":
+                    dias = 30;
+                    break;
+
+                case "Bimestral":
+                    dias = 90;
+                    break;
+
+                case "Semestral":
+                    dias = 180;
+                    break;
+
+                case "Anual":
+                    dias = 365;
+                    break;
+            }
         }
 
         private void InserirDespesaCustosFixosRepeticao(DadosDespesaCusto _despesaCusto)
@@ -377,6 +398,15 @@ namespace Sistema_de_Gerenciamento
         {
             Forms_EstatisticasFinanceiras estatisticasFinanceiras = new Forms_EstatisticasFinanceiras();
             estatisticasFinanceiras.ShowDialog();
+        }
+
+        private void Forms_TelaAdministrador_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                Forms_Sair sair = new Forms_Sair(this, login);
+                sair.ShowDialog();
+            }
         }
     }
 }

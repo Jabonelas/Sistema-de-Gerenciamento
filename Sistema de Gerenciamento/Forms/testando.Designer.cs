@@ -47,6 +47,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.chkValorContasAPagar = new DevExpress.XtraEditors.CheckEdit();
             this.chkValorContasAReceber = new DevExpress.XtraEditors.CheckEdit();
             this.chkValorContasPagas = new DevExpress.XtraEditors.CheckEdit();
+            this.chkValorLiquido = new DevExpress.XtraEditors.CheckEdit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tb_NotaFiscalSaidaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkValorBruto.Properties)).BeginInit();
@@ -54,6 +55,7 @@ namespace Sistema_de_Gerenciamento.Forms
             ((System.ComponentModel.ISupportInitialize)(this.chkValorContasAPagar.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkValorContasAReceber.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkValorContasPagas.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkValorLiquido.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // chartControl1
@@ -140,7 +142,7 @@ namespace Sistema_de_Gerenciamento.Forms
             // 
             // chkValorBruto
             // 
-            this.chkValorBruto.Location = new System.Drawing.Point(3, 52);
+            this.chkValorBruto.Location = new System.Drawing.Point(12, 38);
             this.chkValorBruto.Name = "chkValorBruto";
             this.chkValorBruto.Properties.Caption = "Valor Bruto";
             this.chkValorBruto.Size = new System.Drawing.Size(128, 20);
@@ -149,7 +151,7 @@ namespace Sistema_de_Gerenciamento.Forms
             // 
             // chkValorProduto
             // 
-            this.chkValorProduto.Location = new System.Drawing.Point(165, 52);
+            this.chkValorProduto.Location = new System.Drawing.Point(12, 70);
             this.chkValorProduto.Name = "chkValorProduto";
             this.chkValorProduto.Properties.Caption = "Valor Produto";
             this.chkValorProduto.Size = new System.Drawing.Size(128, 20);
@@ -158,7 +160,7 @@ namespace Sistema_de_Gerenciamento.Forms
             // 
             // chkValorContasAPagar
             // 
-            this.chkValorContasAPagar.Location = new System.Drawing.Point(321, 52);
+            this.chkValorContasAPagar.Location = new System.Drawing.Point(229, 38);
             this.chkValorContasAPagar.Name = "chkValorContasAPagar";
             this.chkValorContasAPagar.Properties.Caption = "Valor Contas A Pagar";
             this.chkValorContasAPagar.Size = new System.Drawing.Size(128, 20);
@@ -167,7 +169,7 @@ namespace Sistema_de_Gerenciamento.Forms
             // 
             // chkValorContasAReceber
             // 
-            this.chkValorContasAReceber.Location = new System.Drawing.Point(486, 52);
+            this.chkValorContasAReceber.Location = new System.Drawing.Point(229, 64);
             this.chkValorContasAReceber.Name = "chkValorContasAReceber";
             this.chkValorContasAReceber.Properties.Caption = "Valor Contas A Receber";
             this.chkValorContasAReceber.Size = new System.Drawing.Size(128, 20);
@@ -176,18 +178,28 @@ namespace Sistema_de_Gerenciamento.Forms
             // 
             // chkValorContasPagas
             // 
-            this.chkValorContasPagas.Location = new System.Drawing.Point(642, 52);
+            this.chkValorContasPagas.Location = new System.Drawing.Point(469, 38);
             this.chkValorContasPagas.Name = "chkValorContasPagas";
             this.chkValorContasPagas.Properties.Caption = "Valor Contas Pagas";
             this.chkValorContasPagas.Size = new System.Drawing.Size(128, 20);
             this.chkValorContasPagas.TabIndex = 7;
             this.chkValorContasPagas.CheckedChanged += new System.EventHandler(this.chkValorContasPagas_CheckedChanged);
             // 
+            // chkValorLiquido
+            // 
+            this.chkValorLiquido.Location = new System.Drawing.Point(469, 64);
+            this.chkValorLiquido.Name = "chkValorLiquido";
+            this.chkValorLiquido.Properties.Caption = "Valor Liquido";
+            this.chkValorLiquido.Size = new System.Drawing.Size(128, 20);
+            this.chkValorLiquido.TabIndex = 8;
+            this.chkValorLiquido.CheckedChanged += new System.EventHandler(this.chkValorLiquido_CheckedChanged);
+            // 
             // testando
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.chkValorLiquido);
             this.Controls.Add(this.chkValorContasPagas);
             this.Controls.Add(this.chkValorContasAReceber);
             this.Controls.Add(this.chkValorContasAPagar);
@@ -206,6 +218,7 @@ namespace Sistema_de_Gerenciamento.Forms
             ((System.ComponentModel.ISupportInitialize)(this.chkValorContasAPagar.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkValorContasAReceber.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkValorContasPagas.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chkValorLiquido.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -221,5 +234,6 @@ namespace Sistema_de_Gerenciamento.Forms
         private DevExpress.XtraEditors.CheckEdit chkValorContasAPagar;
         private DevExpress.XtraEditors.CheckEdit chkValorContasAReceber;
         private DevExpress.XtraEditors.CheckEdit chkValorContasPagas;
+        private DevExpress.XtraEditors.CheckEdit chkValorLiquido;
     }
 }
