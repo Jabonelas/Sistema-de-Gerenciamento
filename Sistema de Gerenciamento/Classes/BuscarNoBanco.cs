@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Navigation;
 using Bunifu.UI.WinForms;
+using DevExpress.Utils.Extensions;
 
 namespace Sistema_de_Gerenciamento.Classes
 {
@@ -4707,15 +4708,21 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     DataTable dataTable = new DataTable();
 
-                    adapter.Fill(dataTable);
-                    //_tabela.DataSource = null;
-                    _tabela.DataSource = dataTable;
-                    _tabela.Refresh();
-
                     SqlDataReader reader;
                     reader = adapter.SelectCommand.ExecuteReader();
 
-                    reader.Read();
+                    dataTable.Columns.Add("Data");
+                    dataTable.Columns.Add("Qtd Cliente");
+                    dataTable.Columns.Add("Qtd Produto");
+                    dataTable.Columns.Add("Valor");
+
+                    while (reader.Read())
+                    {
+                        dataTable.Rows.Add(reader.GetDateTime(0).ToShortDateString(), reader.GetInt32(1), reader.GetDecimal(2).ToString("N0"), reader.GetDecimal(3).ToString("c"));
+                    }
+
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
 
                     if (reader.HasRows == true)
                     {
@@ -4755,17 +4762,23 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
                     adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
 
-                    DataTable dataTable = new DataTable();
-
-                    adapter.Fill(dataTable);
-                    //_tabela.DataSource = null;
-                    _tabela.DataSource = dataTable;
-                    _tabela.Refresh();
-
                     SqlDataReader reader;
                     reader = adapter.SelectCommand.ExecuteReader();
 
-                    reader.Read();
+                    DataTable dataTable = new DataTable();
+                    dataTable.Columns.Add("Data");
+                    dataTable.Columns.Add("Qtd Cliente");
+                    dataTable.Columns.Add("Qtd Produto");
+                    dataTable.Columns.Add("Valor");
+
+                    while (reader.Read())
+                    {
+                        dataTable.Rows.Add(reader.GetDateTime(0).ToShortDateString(), reader.GetInt32(1), reader.GetDecimal(2).ToString("N0"),
+                            reader.GetDecimal(3).ToString("c"));
+                    }
+
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
 
                     if (reader.HasRows == true)
                     {
@@ -4806,17 +4819,24 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
                     adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
 
-                    DataTable dataTable = new DataTable();
-
-                    adapter.Fill(dataTable);
-                    //_tabela.DataSource = null;
-                    _tabela.DataSource = dataTable;
-                    _tabela.Refresh();
-
                     SqlDataReader reader;
                     reader = adapter.SelectCommand.ExecuteReader();
 
-                    reader.Read();
+                    DataTable dataTable = new DataTable();
+
+                    dataTable.Columns.Add("Codigo Produto");
+                    dataTable.Columns.Add("Descrição");
+                    dataTable.Columns.Add("Qtd Cliente");
+                    dataTable.Columns.Add("Qtd Produto");
+                    dataTable.Columns.Add("Valor");
+
+                    while (reader.Read())
+                    {
+                        dataTable.Rows.Add(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetDecimal(3).ToString("N0"), reader.GetDecimal(4).ToString("c"));
+                    }
+
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
 
                     if (reader.HasRows == true)
                     {
@@ -4858,15 +4878,20 @@ namespace Sistema_de_Gerenciamento.Classes
 
                     DataTable dataTable = new DataTable();
 
-                    adapter.Fill(dataTable);
-                    //_tabela.DataSource = null;
-                    _tabela.DataSource = dataTable;
-                    _tabela.Refresh();
+                    dataTable.Columns.Add("Tipo Pagamento");
+                    dataTable.Columns.Add("Qtd Cliente");
+                    dataTable.Columns.Add("Qtd Produto");
+                    dataTable.Columns.Add("Valor");
 
                     SqlDataReader reader;
                     reader = adapter.SelectCommand.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        dataTable.Rows.Add(reader.GetString(0), reader.GetInt32(1), reader.GetDecimal(2).ToString("N0"), reader.GetDecimal(3).ToString("c"));
+                    }
 
-                    reader.Read();
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
 
                     if (reader.HasRows == true)
                     {
@@ -4906,37 +4931,24 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
                     adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
 
-                    DataTable dataTable = new DataTable();
-
-                    adapter.Fill(dataTable);
-                    var asa = dataTable.Select();
-                    //_tabela.DataSource = null;
-                    foreach (var VARIABLE in asa)
-                    {
-                        var rows = new List<string[]>();
-
-                        string[] row1 = new string[]
-                        {
-                            VARIABLE["Usuario"].ToString(), VARIABLE["Qtd Cliente"].ToString(), VARIABLE["Qtd Produto"].ToString(),
-                            (VARIABLE["Valor"] = "R$ " + VARIABLE["Valor"]).ToString()
-                        };
-                        rows.Add(row1);
-
-                        //foreach (string[] VARIABLE1 in rows)
-                        //{
-                        //    _tabela.DataSource = VARIABLE1;
-                        //}
-                        _tabela.DataSource = rows;
-                    }
-
-                    //_tabela.DataSource = dataTable;
-
-                    _tabela.Refresh();
-
                     SqlDataReader reader;
                     reader = adapter.SelectCommand.ExecuteReader();
 
-                    reader.Read();
+                    DataTable dataTable = new DataTable();
+
+                    dataTable.Columns.Add("Usuario");
+                    dataTable.Columns.Add("Qtd Cliente");
+                    dataTable.Columns.Add("Qtd Produto");
+                    dataTable.Columns.Add("Valor");
+
+                    while (reader.Read())
+                    {
+                        dataTable.Rows.Add(reader.GetString(0), reader.GetInt32(1), reader.GetDecimal(2).ToString("N0"), reader.GetDecimal(3).ToString("c"));
+                    }
+
+                    _tabela.DataSource = dataTable;
+
+                    _tabela.Refresh();
 
                     if (reader.HasRows == true)
                     {
