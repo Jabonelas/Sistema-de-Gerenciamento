@@ -204,14 +204,12 @@ namespace Sistema_de_Gerenciamento
             pnlCancelarPagamento.Visible = false;
         }
 
-        private void chbCancelarVenda_CheckedChanged(object sender, EventArgs e)
+        private void Forms_CadastroUsuario_KeyDown(object sender, KeyEventArgs e)
         {
-
-        }
-
-        private void pnlCancelarVenda_Click(object sender, EventArgs e)
-        {
-
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela.DesejaFecharTela(this, e);
+            }
         }
     }
 }

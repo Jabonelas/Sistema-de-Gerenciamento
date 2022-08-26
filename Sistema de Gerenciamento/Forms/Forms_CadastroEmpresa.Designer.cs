@@ -1915,9 +1915,11 @@
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnSalvar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Name = "Forms_CadastroEmpresa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Empresa";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_CadastroEmpresa_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pcbEmpresa)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbQRCodePix)).EndInit();
             this.ResumeLayout(false);

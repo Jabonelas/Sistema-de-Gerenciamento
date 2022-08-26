@@ -1405,9 +1405,11 @@
             this.Controls.Add(this.bunifuGroupBox1);
             this.Controls.Add(this.bunifuGroupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Name = "Forms_PesquisarContasAPagar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisar Contas a Pagar";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_PesquisarContasAPagar_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.gdvContarPagar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

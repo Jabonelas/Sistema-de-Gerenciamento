@@ -32,169 +32,121 @@ namespace Sistema_de_Gerenciamento.Forms
             PreencherDatePicker();
 
             sqlDataSource1.FillAsync();
+
+            ValorBruto();
+
+            ValorLiquido();
+
+            ValorProduto();
+
+            ValorContasPagas();
+
+            ValorContasAPagar();
+
+            ValorContasAReceber();
         }
 
         private void Forms_EstatisticasFinanceiras_Load(object sender, EventArgs e)
         {
-            chkValorProduto.Checked = true;
-            chkValorBruto.Checked = true;
-            chkValorContasAPagar.Checked = true;
-            chkValorContasAReceber.Checked = true;
-            chkValorContasPagas.Checked = true;
-            chkValorLiquido.Checked = true;
         }
 
         private void btnPesquisar_Click_1(object sender, EventArgs e)
         {
-            if (chkValorProduto.Checked == true)
-            {
-                var indeceValorProduto = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Produto");
-                chrEstatisicasFinanceiras.Series.Remove((Series)indeceValorProduto);
+            DeletarColunaValorBruto();
+            ValorBruto();
 
-                Series series3 = new Series("Valor Produto", ViewType.Bar);
-                GerarColunaValorProduto(series3);
-            }
+            DeletarValorLiquido();
+            ValorLiquido();
 
-            if (chkValorBruto.Checked == true)
-            {
-                var indeceValorBruto = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Bruto");
-                chrEstatisicasFinanceiras.Series.Remove((Series)indeceValorBruto);
+            DeletarValorProduto();
+            ValorProduto();
 
-                Series series5 = new Series("Valor Bruto", ViewType.Bar);
-                GerarColunaValorBruto(series5);
-            }
+            DeletarValorContasPagas();
+            ValorContasPagas();
 
-            if (chkValorContasAPagar.Checked == true)
-            {
-                var indiceValorContasAPagar = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Contas A Pagar");
-                chrEstatisicasFinanceiras.Series.Remove((Series)indiceValorContasAPagar);
+            DeletarValorContasAPagar();
+            ValorContasAPagar();
 
-                Series series2 = new Series("Valor Contas A Pagar", ViewType.Bar);
-                GerarColunaValorContasAPagar(series2);
-            }
-
-            if (chkValorContasAReceber.Checked == true)
-            {
-                var indeceValorContasAReceber = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Contas A Receber");
-                chrEstatisicasFinanceiras.Series.Remove((Series)indeceValorContasAReceber);
-
-                Series series6 = new Series("Valor Contas A Receber", ViewType.Bar);
-                GerarColunaValorContasAReceber(series6);
-            }
-
-            if (chkValorContasPagas.Checked == true)
-            {
-                var indeceValorContasPagas = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Contas Pagas");
-                chrEstatisicasFinanceiras.Series.Remove((Series)indeceValorContasPagas);
-
-                Series series1 = new Series("Valor Contas Pagas", ViewType.Bar);
-                GerarColunaValorContasPagas(series1);
-            }
-
-            if (chkValorLiquido.Checked == true)
-            {
-                var indeceValorLiquido = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Liquido");
-                chrEstatisicasFinanceiras.Series.Remove((Series)indeceValorLiquido);
-
-                Series series4 = new Series("Valor Liquido", ViewType.Bar);
-                GerarColunaValorLiquido(series4);
-            }
+            DeletarValorContasAReceber();
+            ValorContasAReceber();
         }
 
-        private void chkValorBruto_CheckedChanged(object sender, EventArgs e)
+        private void DeletarColunaValorBruto()
+        {
+            var indeceValorBruto = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Bruto");
+            chrEstatisicasFinanceiras.Series.Remove((Series)indeceValorBruto);
+        }
+
+        private void DeletarValorLiquido()
+        {
+            var indeceValorLiquido = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Liquido");
+            chrEstatisicasFinanceiras.Series.Remove((Series)indeceValorLiquido);
+        }
+
+        private void DeletarValorProduto()
+        {
+            var indeceValorProduto = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Produto");
+            chrEstatisicasFinanceiras.Series.Remove((Series)indeceValorProduto);
+        }
+
+        private void DeletarValorContasPagas()
+        {
+            var indeceValorContasPagas = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Contas Pagas");
+            chrEstatisicasFinanceiras.Series.Remove((Series)indeceValorContasPagas);
+        }
+
+        private void DeletarValorContasAPagar()
+        {
+            var indiceValorContasAPagar = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Contas A Pagar");
+            chrEstatisicasFinanceiras.Series.Remove((Series)indiceValorContasAPagar);
+        }
+
+        private void DeletarValorContasAReceber()
+        {
+            var indeceValorContasAReceber = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Contas A Receber");
+            chrEstatisicasFinanceiras.Series.Remove((Series)indeceValorContasAReceber);
+        }
+
+        private void ValorBruto()
         {
             Series series = new Series("Valor Bruto", ViewType.Bar);
 
-            if (chkValorBruto.Checked == true)
-            {
-                GerarColunaValorBruto(series);
-            }
-            else
-            {
-                var indeceValorBruto = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Bruto");
-
-                chrEstatisicasFinanceiras.Series.Remove((Series)indeceValorBruto);
-            }
+            GerarColunaValorBruto(series);
         }
 
-        private void chkValorLiquido_CheckedChanged(object sender, EventArgs e)
+        private void ValorLiquido()
         {
             Series series = new Series("Valor Liquido", ViewType.Bar);
 
-            if (chkValorLiquido.Checked == true)
-            {
-                GerarColunaValorLiquido(series);
-            }
-            else
-            {
-                var indeceValorLiquido = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Liquido");
-
-                chrEstatisicasFinanceiras.Series.Remove((Series)indeceValorLiquido);
-            }
+            GerarColunaValorLiquido(series);
         }
 
-        private void chkValorProduto_CheckedChanged(object sender, EventArgs e)
+        private void ValorProduto()
         {
             Series series = new Series("Valor Produto", ViewType.Bar);
 
-            if (chkValorProduto.Checked == true)
-            {
-                GerarColunaValorProduto(series);
-            }
-            else
-            {
-                var indeceValorProduto = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Produto");
-
-                chrEstatisicasFinanceiras.Series.Remove((Series)indeceValorProduto);
-            }
+            GerarColunaValorProduto(series);
         }
 
-        private void chkValorContasPagas_CheckedChanged(object sender, EventArgs e)
+        private void ValorContasPagas()
         {
             Series series = new Series("Valor Contas Pagas", ViewType.Bar);
 
-            if (chkValorContasPagas.Checked == true)
-            {
-                GerarColunaValorContasPagas(series);
-            }
-            else
-            {
-                var indeceValorContasPagas = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Contas Pagas");
-
-                chrEstatisicasFinanceiras.Series.Remove((Series)indeceValorContasPagas);
-            }
+            GerarColunaValorContasPagas(series);
         }
 
-        private void chkValorContasAPagar_CheckedChanged(object sender, EventArgs e)
+        private void ValorContasAPagar()
         {
             Series series = new Series("Valor Contas A Pagar", ViewType.Bar);
 
-            if (chkValorContasAPagar.Checked == true)
-            {
-                GerarColunaValorContasAPagar(series);
-            }
-            else
-            {
-                var indiceValorContasAPagar = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Contas A Pagar");
-
-                chrEstatisicasFinanceiras.Series.Remove((Series)indiceValorContasAPagar);
-            }
+            GerarColunaValorContasAPagar(series);
         }
 
-        private void chkValorContasAReceber_CheckedChanged(object sender, EventArgs e)
+        private void ValorContasAReceber()
         {
             Series series = new Series("Valor Contas A Receber", ViewType.Bar);
 
-            if (chkValorContasAReceber.Checked == true)
-            {
-                GerarColunaValorContasAReceber(series);
-            }
-            else
-            {
-                var indeceValorContasAReceber = chrEstatisicasFinanceiras.Series.First(x => x.Name == "Valor Contas A Receber");
-
-                chrEstatisicasFinanceiras.Series.Remove((Series)indeceValorContasAReceber);
-            }
+            GerarColunaValorContasAReceber(series);
         }
 
         private void PreencherDatePicker()
@@ -370,7 +322,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             List<DadosPagamentoCarne> listaValorBrutoPagamentoCarne = new List<DadosPagamentoCarne>();
 
-            listaValorBrutoNotaFiscalSaida = Buscar.BuscarValorBrutoNotaFinalSaidaPorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
+            listaValorBrutoNotaFiscalSaida = Buscar.BuscarValorBrutoNotaFiscalSaidaPorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
 
             listaValorBrutoPagamentoCarne = Buscar.BuscarValorBrutoCarnePorDataAvancada(dtpDataInicial.Value, dtpDataFinal.Value);
 
@@ -598,7 +550,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                FecharTela.DesejaFecharTela(this, e);
             }
         }
     }

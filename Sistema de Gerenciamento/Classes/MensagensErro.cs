@@ -1317,12 +1317,7 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-EF02) Erro ao Realizar Busca Valor Total Bruto Carne Por Data \n\nErro: {_e}", "Erro Buscar Valor Total Bruto Carne Por Data!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        public void ErroAoBuscaValorTotalContasPagasPorDataNoBanco(Exception _e)
-        {
-            MessageBox.Show($"(BUS-EF03) Erro ao Realizar Busca Valor Total Custos/Despesas Com Pagamentos Realizados \n\nErro: {_e}", "Erro Buscar Valor Total Custos/Despesas Pagos!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        public void ErroAoBuscaValorTotalContasComPagamentosAtrasadosPorDataNoBanco(Exception _e)
+        public void ErroAoBuscaValorContasComPagamentosAtrasadasPorDataNoBanco(Exception _e)
         {
             MessageBox.Show($"(BUS-EF04) Erro ao Realizar Busca Valor Total Custos/Despesas Com Pagamentos Atrasados \n\nErro: {_e}", "Erro Buscar Valor Total Custos/Despesas Atrasados!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

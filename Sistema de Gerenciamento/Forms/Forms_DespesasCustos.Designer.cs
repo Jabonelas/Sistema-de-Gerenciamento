@@ -1383,9 +1383,11 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.cmbFrequencia);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Name = "Forms_DespesasCustos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Despesas";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_DespesasCustos_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pcbStatusPagamento)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

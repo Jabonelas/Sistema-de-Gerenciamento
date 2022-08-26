@@ -547,5 +547,13 @@ namespace Sistema_de_Gerenciamento.Forms
                 cmbFornecedorTitulo.Focus();
             }
         }
+
+        private void Forms_DespesasCustos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela.DesejaFecharTela(this, e);
+            }
+        }
     }
 }

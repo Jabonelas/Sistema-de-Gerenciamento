@@ -4651,41 +4651,6 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Dados Financeiros
 
-        public List<DadosNotaFiscalSaida> BuscarCodigoProdutosVendidos(string _vendedor, DateTime _dataInicial, DateTime _dataFinal)
-        {
-            List<DadosNotaFiscalSaida> ListaCodigoProdutosVendidos = new List<DadosNotaFiscalSaida>();
-
-            try
-            {
-                using (SqlConnection conexaoSQL = AbrirConexao())
-                {
-                    string query = "select ns_codigo_produto,ns_valor_pago from tb_NotaFiscalSaida " +
-                        "where ns_emissao between @dataInicial and @dataFinal " +
-                        "and ns_vendedor = @vendedor";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.Add("@vendedor", _vendedor);
-                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
-                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
-
-                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
-
-                    while (dr.Read())
-                    {
-                        ListaCodigoProdutosVendidos.Add(new DadosNotaFiscalSaida(dr.GetInt32(0), dr.GetDecimal(1)));
-                    }
-
-                    return ListaCodigoProdutosVendidos;
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoBuscarCodigoProdutoVendidosNoBanco(ex);
-
-                return ListaCodigoProdutosVendidos;
-            }
-        }
-
         #region Buscar Resumo Venda
 
         #region Buscar Resumo Venda Por Data
@@ -5115,238 +5080,6 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #region Estatisticas Financeiras
 
-        #region Buscar Valor Bruto Nota Fisal Saida Por Data
-
-        public decimal ValorBrutoNotaFinalSaidaPorData(DateTime _dataInicial, DateTime _dataFinal)
-        {
-            try
-            {
-                using (SqlConnection conexaoSQL = AbrirConexao())
-                {
-                    string query = "select SUM(ns_valor_pago) from tb_NotaFiscalSaida " +
-                        "where ns_emissao between @dataInicial and @dataFinal " +
-                        "and ns_tipo_pagamento <> 'CARNÊ'";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-
-                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
-                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
-
-                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
-
-                    dr.Read();
-
-                    if (dr.IsDBNull(0) == true)
-                    {
-                        return 0;
-                    }
-
-                    return dr.GetDecimal(0);
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoBuscaValorTotalBrutoNotaFiscalPorDataSaidaNoBanco(ex);
-
-                return 0;
-            }
-        }
-
-        #endregion Buscar Valor Bruto Nota Fisal Saida Por Data
-
-        #region Buscar Valor Bruto Carne Por data
-
-        public Decimal BuscarValorBrutoCarnePorData(DateTime _dataInicial, DateTime _dataFinal)
-        {
-            try
-            {
-                using (SqlConnection conexaoSQL = AbrirConexao())
-                {
-                    string query = "select SUM(pc_valor_final_parcela) from tb_PagamentoCarne " +
-                        "where pc_data_pagamento between @dataInicial and  @dataFinal";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-
-                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
-                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
-
-                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
-
-                    dr.Read();
-
-                    if (dr.IsDBNull(0) == true)
-                    {
-                        return 0;
-                    }
-
-                    return dr.GetDecimal(0);
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoBuscaValorTotalBrutoCarnePorDataSaidaNoBanco(ex);
-
-                return 0;
-            }
-        }
-
-        #endregion Buscar Valor Bruto Carne Por data
-
-        #region Buscar Valor Contas Pagas Por Data
-
-        public decimal BuscarValorContasPagasPorData(DateTime _dataInicial, DateTime _dataFinal)
-        {
-            try
-            {
-                using (SqlConnection conexaoSQL = AbrirConexao())
-                {
-                    string query = "select SUM(dc_valor_pago) from tb_DespesasCustos " +
-                        "where dc_vencimento between @dataInicial and @dataFinal " +
-                        "and dc_estatus_pagamento = 'Pago'";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-
-                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
-                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
-
-                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
-
-                    dr.Read();
-
-                    if (dr.IsDBNull(0) == true)
-                    {
-                        return 0;
-                    }
-
-                    return dr.GetDecimal(0);
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoBuscaValorTotalContasPagasPorDataNoBanco(ex);
-
-                return 0;
-            }
-        }
-
-        #endregion Buscar Valor Contas Pagas Por Data
-
-        #region Buscar Valor Contas Com Pagamento Atrasado Por Data
-
-        public decimal BuscarValorContasComPagamentoAtrasadoPorData(DateTime _dataInicial, DateTime _dataFinal)
-        {
-            try
-            {
-                using (SqlConnection conexaoSQL = AbrirConexao())
-                {
-                    string query = "select SUM(dc_valor_parcela) from tb_DespesasCustos " +
-                        "where dc_vencimento between @dataInicial and @dataFinal " +
-                        "and dc_estatus_pagamento = 'Nao Pago'";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-
-                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
-                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
-
-                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
-
-                    dr.Read();
-
-                    if (dr.IsDBNull(0) == true)
-                    {
-                        return 0;
-                    }
-
-                    return dr.GetDecimal(0);
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoBuscaValorTotalContasComPagamentosAtrasadosPorDataNoBanco(ex);
-
-                return 0;
-            }
-        }
-
-        #endregion Buscar Valor Contas Com Pagamento Atrasado Por Data
-
-        #region Buscar Valor Contas a Receber Atrasadas
-
-        public decimal BuscarValorContasAReceberAtrasadasPorData(DateTime _dataInicial, DateTime _dataFinal)
-        {
-            try
-            {
-                using (SqlConnection conexaoSQL = AbrirConexao())
-                {
-                    string query = "select SUM(pc_valor_parcela) from tb_PagamentoCarne " +
-                        "where pc_vencimento between @dataInicial and @dataFinal " +
-                        "and pc_status = 'Nao Pago'";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-
-                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
-                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
-
-                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
-
-                    dr.Read();
-
-                    if (dr.IsDBNull(0) == true)
-                    {
-                        return 0;
-                    }
-
-                    return dr.GetDecimal(0);
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoBuscaValorContasAReceberAtrasadasPorDataNoBanco(ex);
-
-                return 0;
-            }
-        }
-
-        #endregion Buscar Valor Contas a Receber Atrasadas
-
-        #region Buscar Valor Produtos Por Data
-
-        public decimal BuscarValorProdutoPorData(DateTime _dataInicial, DateTime _dataFinal)
-        {
-            try
-            {
-                using (SqlConnection conexaoSQL = AbrirConexao())
-                {
-                    string query = "select sum(cp_valor_custo*pe.ns_quantidade) from tb_CadastroProdutos as p " +
-                        "inner join tb_NotaFiscalSaida pe on p.cp_id = pe.ns_codigo_produto " +
-                        "where ns_emissao between @dataInicial and @dataFinal ";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.Add("@dataInicial", _dataInicial);
-                    adapter.SelectCommand.Parameters.Add("@dataFinal", _dataFinal);
-
-                    SqlDataReader dr = adapter.SelectCommand.ExecuteReader();
-
-                    dr.Read();
-
-                    if (dr.IsDBNull(0) == true)
-                    {
-                        return 0;
-                    }
-
-                    return dr.GetDecimal(0);
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoBuscaValorProdutoPorDadaNoBanco(ex);
-
-                return 0;
-            }
-        }
-
-        #endregion Buscar Valor Produtos Por Data
-
         #region Bucar Valor Contas Pagas Por Data Avancada
 
         public List<DadosEstatiscasFinanceiras> BuscarValorContasPagasPorDataAvancada(DateTime _dataInicial, DateTime _dataFinal)
@@ -5358,7 +5091,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "select SUM(dc_valor_pago),month (dc_data_pagamento) from tb_DespesasCustos " +
-                        "where dc_vencimento between @dataInicial and @dataFinal " +
+                        "where dc_data_pagamento between @dataInicial and @dataFinal " +
                         "and dc_estatus_pagamento = 'Pago' " +
                         "group by month(dc_data_pagamento)";
 
@@ -5390,6 +5123,8 @@ namespace Sistema_de_Gerenciamento.Classes
         }
 
         #endregion Bucar Valor Contas Pagas Por Data Avancada
+
+        #region Buscar Valor Contas Atrasdas Por Data
 
         public List<DadosEstatiscasFinanceiras> BuscarValorContasAtrasadasPorDataAvancada(DateTime _dataInicial, DateTime _dataFinal)
         {
@@ -5425,15 +5160,17 @@ namespace Sistema_de_Gerenciamento.Classes
             }
             catch (Exception ex)
             {
-                Erro.ErroAoBuscaValorContasPagasPorDadaAvancadasNoBanco(ex);
+                Erro.ErroAoBuscaValorContasComPagamentosAtrasadasPorDataNoBanco(ex);
 
                 return listaDadosEstatiscasFinanceiras;
             }
         }
 
-        #endregion Estatisticas Financeiras
+        #endregion Buscar Valor Contas Atrasdas Por Data
 
-        public List<DadosNotaFiscalSaida> BuscarValorBrutoNotaFinalSaidaPorDataAvancada(DateTime _dataInicial, DateTime _dataFinal)
+        #region Buscar Valor Bruto Nota Fiscal Saida Por Data
+
+        public List<DadosNotaFiscalSaida> BuscarValorBrutoNotaFiscalSaidaPorDataAvancada(DateTime _dataInicial, DateTime _dataFinal)
         {
             List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidas = new List<DadosNotaFiscalSaida>();
 
@@ -5469,6 +5206,10 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
+        #endregion Buscar Valor Bruto Nota Fiscal Saida Por Data
+
+        #region Buscar Valor Bruto Carne Por Data
+
         public List<DadosPagamentoCarne> BuscarValorBrutoCarnePorDataAvancada(DateTime _dataInicial, DateTime _dataFinal)
         {
             List<DadosPagamentoCarne> listaDadosPagamentoCarnes = new List<DadosPagamentoCarne>();
@@ -5503,6 +5244,10 @@ namespace Sistema_de_Gerenciamento.Classes
                 return listaDadosPagamentoCarnes;
             }
         }
+
+        #endregion Buscar Valor Bruto Carne Por Data
+
+        #region Buscar Valor Contas A Receber Por Data
 
         public List<DadosContasAReceber> BuscarValorContasAReceberAtrasadasDataAvancada(DateTime _dataInicial, DateTime _dataFinal)
         {
@@ -5540,6 +5285,10 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
+        #endregion Buscar Valor Contas A Receber Por Data
+
+        #region Buscar Valor Produto Por Data
+
         public List<DadosProduto> BuscarValorProdutoPorDataAvancada(DateTime _dataInicial, DateTime _dataFinal)
         {
             List<DadosProduto> listaDadosProdutos = new List<DadosProduto>();
@@ -5574,5 +5323,9 @@ namespace Sistema_de_Gerenciamento.Classes
                 return listaDadosProdutos;
             }
         }
+
+        #endregion Buscar Valor Produto Por Data
+
+        #endregion Estatisticas Financeiras
     }
 }

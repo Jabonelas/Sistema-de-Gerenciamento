@@ -377,5 +377,13 @@ namespace Sistema_de_Gerenciamento
         {
             ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
         }
+
+        private void Forms_CadastroProduto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela.DesejaFecharTela(this, e);
+            }
+        }
     }
 }

@@ -1946,9 +1946,11 @@
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.btnNovoFornecedor);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Name = "Forms_CadastroFornecedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Fornecedor";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_CadastroFornecedor_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pcbFornecedor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

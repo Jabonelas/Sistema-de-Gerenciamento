@@ -144,4 +144,8 @@ C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Ge
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.Pdf.v21.2.Drawing.xml
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraVerticalGrid.v21.2.xml
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\DevExpress.XtraNavBar.v21.2.xml
-C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.testando.resources
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_ConfiguracaoGerencialPagamentoCarne.resources
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_ConfiguracaoGerencialDescontoGrupoSubGrupoProdutos.resources
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_ConfiguracaoGerencialDescontoPorPagamentoAvista.resources
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_ConfiguracaoGerencialComissaoPorProduto.resources
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_ConfiguracaoGerencialJurosPorPagamentoaCredito.resources

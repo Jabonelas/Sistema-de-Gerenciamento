@@ -349,5 +349,13 @@ namespace Sistema_de_Gerenciamento
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
             pcbQRCodePix.Image = qrCodeImage;
         }
+
+        private void Forms_CadastroEmpresa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela.DesejaFecharTela(this, e);
+            }
+        }
     }
 }

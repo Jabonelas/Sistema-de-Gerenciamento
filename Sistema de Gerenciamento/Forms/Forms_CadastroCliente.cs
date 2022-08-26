@@ -565,5 +565,13 @@ namespace Sistema_de_Gerenciamento
         {
             ManipulacaoTextBox.DigitoValidoParaEmail(e);
         }
+
+        private void Forms_CadastroCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela.DesejaFecharTela(this, e);
+            }
+        }
     }
 }

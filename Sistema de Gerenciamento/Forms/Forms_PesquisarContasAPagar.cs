@@ -387,5 +387,13 @@ namespace Sistema_de_Gerenciamento
                 cmbTitulo.Text = String.Empty;
             }
         }
+
+        private void Forms_PesquisarContasAPagar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela.DesejaFecharTela(this, e);
+            }
+        }
     }
 }

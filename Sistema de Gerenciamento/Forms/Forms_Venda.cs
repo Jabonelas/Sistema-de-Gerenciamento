@@ -824,17 +824,17 @@ namespace Sistema_de_Gerenciamento.Forms
             gdvVenda.Focus();
         }
 
-        private void lblValorTotal_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void cmbCliente_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
         private void cmbCliente_TextChanged(object sender, EventArgs e)
         {
             BuscarDadosCliente();
+        }
+
+        private void Forms_Venda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela.DesejaFecharTela(this, e);
+            }
         }
     }
 }

@@ -341,5 +341,13 @@ namespace Sistema_de_Gerenciamento.Forms
 
             this.Size = new Size(958, 554);
         }
+
+        private void Forms_Compras_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela.DesejaFecharTela(this, e);
+            }
+        }
     }
 }

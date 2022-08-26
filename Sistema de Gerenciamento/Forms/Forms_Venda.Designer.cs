@@ -2923,10 +2923,12 @@
             this.Controls.Add(this.grupoBoxAvista);
             this.Controls.Add(this.txtCpfCnpjCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Name = "Forms_Venda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Venda";
             this.Load += new System.EventHandler(this.Forms_Venda_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_Venda_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.gdvVenda)).EndInit();
             this.grupoBoxAvista.ResumeLayout(false);
             this.grupoBoxAvista.PerformLayout();

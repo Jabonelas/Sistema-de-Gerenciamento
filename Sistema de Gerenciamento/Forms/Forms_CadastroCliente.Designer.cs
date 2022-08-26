@@ -2482,9 +2482,11 @@
             this.Controls.Add(this.bunifuSeparator1);
             this.Controls.Add(this.bunifuSeparator2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Name = "Forms_CadastroCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro Cliente";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_CadastroCliente_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pcbCliente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

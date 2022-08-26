@@ -125,7 +125,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                FecharTela.DesejaFecharTela(this, e);
             }
         }
 

@@ -396,8 +396,6 @@ namespace Sistema_de_Gerenciamento
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Forms_EstatisticasFinanceiras estatisticasFinanceiras = new Forms_EstatisticasFinanceiras();
-            estatisticasFinanceiras.ShowDialog();
         }
 
         private void Forms_TelaAdministrador_KeyDown(object sender, KeyEventArgs e)
@@ -407,6 +405,12 @@ namespace Sistema_de_Gerenciamento
                 Forms_Sair sair = new Forms_Sair(this, login);
                 sair.ShowDialog();
             }
+        }
+
+        private void btnEstatisticaFinanceiras_Click(object sender, EventArgs e)
+        {
+            Forms_EstatisticasFinanceiras estatisticasFinanceiras = new Forms_EstatisticasFinanceiras();
+            estatisticasFinanceiras.ShowDialog();
         }
     }
 }

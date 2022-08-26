@@ -121,8 +121,9 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (e.KeyCode == Keys.Escape)
             {
-                FecharTela();
+                Classes.FecharTela.DesejaFecharTela(this, e);
             }
+
             if (e.KeyCode == Keys.Enter)
             {
                 AbrirFormsConsultaDetalhada();

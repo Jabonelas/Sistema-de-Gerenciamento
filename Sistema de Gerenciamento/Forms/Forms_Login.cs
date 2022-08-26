@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema_de_Gerenciamento.Classes;
+using Sistema_de_Gerenciamento.Properties;
 
 namespace Sistema_de_Gerenciamento.Forms
 {
@@ -88,13 +89,13 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 txtSenha.UseSystemPasswordChar = false;
 
-                btnMostraSenha_Login.BackgroundImage = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\eye_50px.png");
+                btnMostraSenha_Login.BackgroundImage = Resources.eye_50px;
             }
             else
             {
                 txtSenha.UseSystemPasswordChar = true;
 
-                btnMostraSenha_Login.BackgroundImage = Image.FromFile(@"C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\Resources\invisible_50px.png");
+                btnMostraSenha_Login.BackgroundImage = Resources.invisible_50px;
             }
         }
 

@@ -1295,9 +1295,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtNumeroNotaFiscal);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Name = "Forms_Compras";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Compras";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_Compras_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.gdvCompra)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvEstoque)).EndInit();
             this.ResumeLayout(false);
