@@ -305,6 +305,7 @@
     <Compile Include="Classes\DadosCadastroFornecedor.cs" />
     <Compile Include="Classes\DadosContasAReceber.cs" />
     <Compile Include="Classes\DadosEstatiscasFinanceiras.cs" />
+    <Compile Include="Classes\DadosMensagemAlerta.cs" />
     <Compile Include="Classes\DadosNotaFiscalSaida.cs" />
     <Compile Include="Classes\DadosCliente.cs" />
     <Compile Include="Classes\DadosCadastroDespesasCusto.cs" />
@@ -944,6 +945,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\estatisticas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\ImagemEstoqueBaixo.png" />
+    <None Include="Resources\ImagemEstoqueBaixo1.png" />
+    <Content Include="Resources\ImagemVencimentoContas.png" />
+    <None Include="Resources\ImagemVencimentoContas1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.5.5\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.5\build\Fody.targets')" />

@@ -251,7 +251,7 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (e.KeyCode == Keys.Escape)
             {
-                FecharTela();
+                Classes.FecharTela.DesejaFecharTela(this, e);
             }
             else if (e.KeyCode == Keys.F10)
             {

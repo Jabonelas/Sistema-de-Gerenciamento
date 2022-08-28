@@ -352,9 +352,9 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void Forms_DevolucaoTroca_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape) // Finalziar tela Esc
+            if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                FecharTela.DesejaFecharTela(this, e);
             }
 
             if (e.KeyCode == Keys.F10) // Confirmar F10

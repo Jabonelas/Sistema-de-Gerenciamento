@@ -3200,7 +3200,11 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexeSQL = AbrirConexao())
                 {
-                    string query = "select * from tb_NotaFiscalSaida where ns_numero_nf = @numeroNotaFiscalSaida";
+                    string query = "select ns_id, ns_numero_nf, ns_cpf_cpnj_cliente, ns_nome_cliente, ns_codigo_produto, ns_descricao, ns_emissao, ns_codigo_barras, ns_vendedor, " +
+                                   "ns_garantia, ns_valor_unitario, ns_quantidade, ns_unidade, ns_tipo_pagamento, ns_quantidade_parcelas, ns_valor_desconto, ns_valor_juros, ns_valor_pago, " +
+                                   "ns_status, ns_troca_vendedor, ns_motivo_troca, ns_nf_entrada " +
+                                   "from tb_NotaFiscalSaida " +
+                                   "where ns_numero_nf = @numeroNotaFiscalSaida";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexeSQL);
 
@@ -3211,10 +3215,10 @@ namespace Sistema_de_Gerenciamento.Classes
                     while (dr.Read())
                     {
                         listadadosNotaFiscalSaidasCompleta.Add(new DadosNotaFiscalSaida(
-                            dr.GetInt32(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3), dr.GetInt32(4), dr.GetString(5), dr.GetDateTime(6),
-                            dr.GetInt32(7), dr.GetString(8), dr.GetDateTime(9), dr.GetDecimal(10), dr.GetDecimal(11), dr.GetString(12), dr.GetString(13),
-                            dr.GetInt32(14), dr.GetDecimal(15), dr.GetDecimal(16), dr.GetDecimal(17), dr.GetString(18), dr.GetString(19), dr.GetString(20),
-                            false, dr.GetInt32(21)));
+                            dr.GetInt32(0), dr.GetInt32(1), dr.GetString(2), dr.GetString(3), dr.GetInt32(4), dr.GetString(5),
+                            dr.GetDateTime(6), dr.GetInt32(7), dr.GetString(8), dr.GetDateTime(9), dr.GetDecimal(10), dr.GetDecimal(11),
+                            dr.GetString(12), dr.GetString(13), dr.GetInt32(14), dr.GetDecimal(15), dr.GetDecimal(16),
+                            dr.GetDecimal(17), dr.GetString(18), dr.GetString(19), dr.GetString(20), false, dr.GetInt32(21)));
                     }
                 }
 

@@ -591,7 +591,7 @@
             // 
             // pnlCancelarVenda
             // 
-            this.pnlCancelarVenda.BackgroundColor = System.Drawing.Color.DodgerBlue;
+            this.pnlCancelarVenda.BackgroundColor = System.Drawing.Color.LightSkyBlue;
             this.pnlCancelarVenda.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlCancelarVenda.BackgroundImage")));
             this.pnlCancelarVenda.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlCancelarVenda.BorderColor = System.Drawing.Color.Transparent;
@@ -604,7 +604,6 @@
             this.pnlCancelarVenda.Size = new System.Drawing.Size(127, 43);
             this.pnlCancelarVenda.TabIndex = 185;
             this.pnlCancelarVenda.Visible = false;
-           
             // 
             // label6
             // 
@@ -620,7 +619,7 @@
             // 
             // pnlCancelarPagamento
             // 
-            this.pnlCancelarPagamento.BackgroundColor = System.Drawing.Color.DodgerBlue;
+            this.pnlCancelarPagamento.BackgroundColor = System.Drawing.Color.LightSkyBlue;
             this.pnlCancelarPagamento.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlCancelarPagamento.BackgroundImage")));
             this.pnlCancelarPagamento.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlCancelarPagamento.BorderColor = System.Drawing.Color.Transparent;
@@ -655,7 +654,6 @@
             this.chbCancelarVenda.TabIndex = 177;
             this.chbCancelarVenda.Text = "Cancelar Venda";
             this.chbCancelarVenda.UseVisualStyleBackColor = true;
-            
             this.chbCancelarVenda.Click += new System.EventHandler(this.chbCancelarVenda_Click);
             this.chbCancelarVenda.MouseEnter += new System.EventHandler(this.chbCancelarVenda_MouseEnter);
             this.chbCancelarVenda.MouseLeave += new System.EventHandler(this.chbCancelarVenda_MouseLeave);
@@ -738,7 +736,7 @@
             // 
             // pnlExcluirItem
             // 
-            this.pnlExcluirItem.BackgroundColor = System.Drawing.Color.DodgerBlue;
+            this.pnlExcluirItem.BackgroundColor = System.Drawing.Color.LightSkyBlue;
             this.pnlExcluirItem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlExcluirItem.BackgroundImage")));
             this.pnlExcluirItem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlExcluirItem.BorderColor = System.Drawing.Color.Transparent;
@@ -766,7 +764,7 @@
             // 
             // pnlTroca
             // 
-            this.pnlTroca.BackgroundColor = System.Drawing.Color.DodgerBlue;
+            this.pnlTroca.BackgroundColor = System.Drawing.Color.LightSkyBlue;
             this.pnlTroca.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlTroca.BackgroundImage")));
             this.pnlTroca.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlTroca.BorderColor = System.Drawing.Color.Transparent;

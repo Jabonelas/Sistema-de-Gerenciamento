@@ -97,5 +97,13 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             ManipulacaoTextBox.DigitoFoiLetrasOuNumeros(e);
         }
+
+        private void Forms_ControleADMIN_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela.DesejaFecharTela(this, e);
+            }
+        }
     }
 }

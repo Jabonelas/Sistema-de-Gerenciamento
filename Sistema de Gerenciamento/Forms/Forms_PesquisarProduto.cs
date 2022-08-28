@@ -340,7 +340,7 @@ namespace Sistema_de_Gerenciamento
         {
             if (e.KeyCode == Keys.Escape)
             {
-                this.Close();
+                FecharTela.DesejaFecharTela(this, e);
             }
         }
     }

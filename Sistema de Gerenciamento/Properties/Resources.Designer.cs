@@ -403,6 +403,26 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ImagemEstoqueBaixo {
+            get {
+                object obj = ResourceManager.GetObject("ImagemEstoqueBaixo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ImagemVencimentoContas {
+            get {
+                object obj = ResourceManager.GetObject("ImagemVencimentoContas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap impressora {
             get {
                 object obj = ResourceManager.GetObject("impressora", resourceCulture);

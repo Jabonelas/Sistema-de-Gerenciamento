@@ -156,5 +156,13 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             ManipulacaoTextBox.DigitoFoiLetras(e);
         }
+
+        private void Forms_PesquisarCadastroDespesaCusto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela.DesejaFecharTela(this, e);
+            }
+        }
     }
 }

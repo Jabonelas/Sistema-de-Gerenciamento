@@ -427,12 +427,7 @@ namespace Sistema_de_Gerenciamento.Forms
             }
             else if (e.KeyCode == Keys.Escape)
             {
-                DialogResult OpcaoDoUsuario = new DialogResult();
-                OpcaoDoUsuario = MessageBox.Show("Deseja Finalizar a Venda?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (OpcaoDoUsuario == DialogResult.Yes)
-                {
-                    this.Close();
-                }
+                FecharTela.DesejaFecharTela(this, e);
             }
         }
 

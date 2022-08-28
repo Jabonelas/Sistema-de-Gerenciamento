@@ -165,5 +165,13 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             Imprimir.ImprimirGridView("Relatorio de Fornecedor", gdvPesquisarFornecedor);
         }
+
+        private void Forms_PesquisarFornecedor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela.DesejaFecharTela(this, e);
+            }
+        }
     }
 }

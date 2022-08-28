@@ -11,6 +11,8 @@ using System.Windows.Forms;
 using Sistema_de_Gerenciamento.Classes;
 using System.Threading;
 using System.IO;
+using DevExpress.XtraEditors;
+using Sistema_de_Gerenciamento.Properties;
 
 namespace Sistema_de_Gerenciamento
 {
@@ -24,7 +26,7 @@ namespace Sistema_de_Gerenciamento
 
         private List<DadosProduto> ListaProdutosComEstoqueMinimo = new List<DadosProduto>();
 
-        //private DadosProduto ProdutoComEstoqueMinimo;
+        private List<DadosDespesaCusto> ListaDadosDespesaCustos = new List<DadosDespesaCusto>();
 
         private Forms_Login login;
 
@@ -39,12 +41,7 @@ namespace Sistema_de_Gerenciamento
         {
             InitializeComponent();
 
-            Task.Run(() =>
-            {
-                Thread.Sleep(1000);
-
-                AutomatizacaoVerificarDespesaCustoEstoqueMinimo();
-            });
+            AutomatizacaoVerificarDespesaCustoEstoqueMinimo();
 
             LayoutUsuario();
 
@@ -238,11 +235,9 @@ namespace Sistema_de_Gerenciamento
             {
                 btnVendaConsole.Location = new Point(93, 100);
                 btnPDVConsole.Location = new Point(245, 100);
-                //btnOrdemServicoConsole.Location = new Point(245, 100);
                 btnProdutoConsole.Location = new Point(394, 100);
                 btnClienteConsole.Location = new Point(546, 100);
                 btnCConsultarEstoqueConsole.Location = new Point(695, 100);
-
                 btnTrocaConsole.Location = new Point(6, 400);
                 btnDespesasConsole.Location = new Point(161, 400);
                 btnComprasConsole.Location = new Point(317, 400);
@@ -264,7 +259,7 @@ namespace Sistema_de_Gerenciamento
 
             foreach (DadosDespesaCusto despesaCusto in listaDespesasCustos)
             {
-                AtumatizaVerificacaoContasDespesas(despesaCusto);
+                AutomatizaVerificacaoContasDespesas(despesaCusto);
             }
 
             VerificarEstoqueMinimo();
@@ -280,13 +275,30 @@ namespace Sistema_de_Gerenciamento
                 {
                     foreach (DadosProduto ProdutoComEstoqueMinimo in ListaProdutosComEstoqueMinimo)
                     {
-                        MessageBox.Show($"Estoque Minimo Atingido! \n\n Código Produto: {ProdutoComEstoqueMinimo.codigoProduto} \n\n Produto: {ProdutoComEstoqueMinimo.descricaoProduto}  ", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        ChamandoAlertaEstoqueBaixo(ProdutoComEstoqueMinimo.descricaoProduto, ProdutoComEstoqueMinimo.codigoProduto);
                     }
                 }
             }
         }
 
-        private void AtumatizaVerificacaoContasDespesas(DadosDespesaCusto _despesaCusto)
+        private void ChamandoAlertaEstoqueBaixo(string _descricaoProdruto, int _codigoProduto)
+        {
+            DadosMensagemAlerta msg = new DadosMensagemAlerta(_descricaoProdruto, _codigoProduto);
+            alertEstoqueMinimo.Show(this, $" { msg.titulo} \n{msg.descricaoProduto}", msg.texto, "", msg.image, msg);
+        }
+
+        private void alertEstoqueMinimo_BeforeFormShow(object sender, DevExpress.XtraBars.Alerter.AlertFormEventArgs e)
+        {
+            e.AlertForm.OpacityLevel = 1;
+        }
+
+        private void alertEstoqueMinimo_AlertClick(object sender, DevExpress.XtraBars.Alerter.AlertClickEventArgs e)
+        {
+            DadosMensagemAlerta msg = e.Info.Tag as DadosMensagemAlerta;
+            XtraMessageBox.Show(msg.texto, msg.descricaoProduto);
+        }
+
+        private void AutomatizaVerificacaoContasDespesas(DadosDespesaCusto _despesaCusto)
         {
             if (_despesaCusto.vencimento <= DateTime.Today && _despesaCusto.verificar == "nok")
             {
@@ -351,9 +363,25 @@ namespace Sistema_de_Gerenciamento
         {
             if (_despesaCusto.vencimento <= DateTime.Today && _despesaCusto.statusPagamento == "Nao Pago" && Global.NomeDeUsuario == "ADMIN")
             {
-                MessageBox.Show($"Despesa/Custo - {_despesaCusto.forncedorTitulo}\n\nVencimento {_despesaCusto.vencimento.ToShortDateString()}",
-                        "Pagamento Pendente Despesa/Custo!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ChamandoAlertaVencimentoContas(_despesaCusto.forncedorTitulo, _despesaCusto.vencimento.ToShortDateString());
             }
+        }
+
+        private void ChamandoAlertaVencimentoContas(string _fonecedorTitulo, string _vencimento)
+        {
+            DadosMensagemAlerta msg = new DadosMensagemAlerta(_fonecedorTitulo, _vencimento);
+            alertEstoqueMinimo.Show(this, $" { msg.titulo} \n{msg.descricaoProduto}", msg.texto, "", msg.image, msg);
+        }
+
+        private void alertVencimentoContas_AlertClick(object sender, DevExpress.XtraBars.Alerter.AlertClickEventArgs e)
+        {
+            DadosMensagemAlerta msg = e.Info.Tag as DadosMensagemAlerta;
+            XtraMessageBox.Show(msg.texto, msg.descricaoProduto);
+        }
+
+        private void alertVencimentoContas_BeforeFormShow(object sender, DevExpress.XtraBars.Alerter.AlertFormEventArgs e)
+        {
+            e.AlertForm.OpacityLevel = 1;
         }
 
         private void TransformarFrenquenciaEmDias(DadosDespesaCusto _despesaCusto)
@@ -392,10 +420,6 @@ namespace Sistema_de_Gerenciamento
                                 _despesaCusto.cnpj, _despesaCusto.emissao, _despesaCusto.vencimento.AddDays(dias), _despesaCusto.frequencia,
                                 _despesaCusto.valor, _despesaCusto.quantidadeParcelas, _despesaCusto.valorParcela, _despesaCusto.categoria,
                                 ptbStatusPagamento.Image);
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
         }
 
         private void Forms_TelaAdministrador_KeyDown(object sender, KeyEventArgs e)

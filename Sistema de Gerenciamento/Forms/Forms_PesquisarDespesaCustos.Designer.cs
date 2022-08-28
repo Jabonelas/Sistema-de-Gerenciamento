@@ -53,22 +53,6 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties24 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             this.label1 = new System.Windows.Forms.Label();
             this.gdvPesquisarDespesa = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cmbTipoDespesa = new System.Windows.Forms.ComboBox();
-            this.lblCategoria = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.txtTitulo = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
-            this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.btnExportarParaExcel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.btnImprimir = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.btnSelecionar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.txtCodigoDespesa = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.btnPesquisar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.txtDescricao = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.lblEstatusPagamento = new System.Windows.Forms.Label();
             this.dc_codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dc_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dc_tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,6 +72,22 @@
             this.dc_desconto_taxas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dc_juros_multa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dc_valor_pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbTipoDespesa = new System.Windows.Forms.ComboBox();
+            this.lblCategoria = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.txtTitulo = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.btnExportarParaExcel = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.btnImprimir = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.btnSelecionar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.txtCodigoDespesa = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.btnPesquisar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.txtDescricao = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.lblEstatusPagamento = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarDespesa)).BeginInit();
             this.SuspendLayout();
             // 
@@ -187,6 +187,154 @@
             this.gdvPesquisarDespesa.TabIndex = 193;
             this.gdvPesquisarDespesa.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.gdvPesquisarDespesa.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.gdvPesquisarDespesa_MouseDoubleClick);
+            // 
+            // dc_codigo
+            // 
+            this.dc_codigo.DataPropertyName = "dc_codigo";
+            this.dc_codigo.HeaderText = "Codigo";
+            this.dc_codigo.Name = "dc_codigo";
+            this.dc_codigo.ReadOnly = true;
+            // 
+            // dc_id
+            // 
+            this.dc_id.DataPropertyName = "dc_id";
+            this.dc_id.HeaderText = "dc_id";
+            this.dc_id.Name = "dc_id";
+            this.dc_id.ReadOnly = true;
+            this.dc_id.Visible = false;
+            // 
+            // dc_tipo
+            // 
+            this.dc_tipo.DataPropertyName = "dc_tipo";
+            this.dc_tipo.HeaderText = "Tipo";
+            this.dc_tipo.Name = "dc_tipo";
+            this.dc_tipo.ReadOnly = true;
+            // 
+            // dc_fornecedor_titulo
+            // 
+            this.dc_fornecedor_titulo.DataPropertyName = "dc_fornecedor_titulo";
+            this.dc_fornecedor_titulo.HeaderText = "Titulo";
+            this.dc_fornecedor_titulo.Name = "dc_fornecedor_titulo";
+            this.dc_fornecedor_titulo.ReadOnly = true;
+            // 
+            // dc_descricao
+            // 
+            this.dc_descricao.DataPropertyName = "dc_descricao";
+            this.dc_descricao.HeaderText = "Descricao";
+            this.dc_descricao.Name = "dc_descricao";
+            this.dc_descricao.ReadOnly = true;
+            // 
+            // dc_emissao
+            // 
+            this.dc_emissao.DataPropertyName = "dc_emissao";
+            this.dc_emissao.HeaderText = "dc_emissao";
+            this.dc_emissao.Name = "dc_emissao";
+            this.dc_emissao.ReadOnly = true;
+            this.dc_emissao.Visible = false;
+            // 
+            // dc_vencimento
+            // 
+            this.dc_vencimento.DataPropertyName = "dc_vencimento";
+            this.dc_vencimento.HeaderText = "dc_vencimento";
+            this.dc_vencimento.Name = "dc_vencimento";
+            this.dc_vencimento.ReadOnly = true;
+            this.dc_vencimento.Visible = false;
+            // 
+            // dc_frequencia
+            // 
+            this.dc_frequencia.DataPropertyName = "dc_frequencia";
+            this.dc_frequencia.HeaderText = "dc_frequencia";
+            this.dc_frequencia.Name = "dc_frequencia";
+            this.dc_frequencia.ReadOnly = true;
+            this.dc_frequencia.Visible = false;
+            // 
+            // dc_valor
+            // 
+            this.dc_valor.DataPropertyName = "dc_valor";
+            this.dc_valor.HeaderText = "Valor";
+            this.dc_valor.Name = "dc_valor";
+            this.dc_valor.ReadOnly = true;
+            // 
+            // dc_quantidade_parcelas
+            // 
+            this.dc_quantidade_parcelas.DataPropertyName = "dc_quantidade_parcelas";
+            this.dc_quantidade_parcelas.HeaderText = "dc_quantidade_parcelas";
+            this.dc_quantidade_parcelas.Name = "dc_quantidade_parcelas";
+            this.dc_quantidade_parcelas.ReadOnly = true;
+            this.dc_quantidade_parcelas.Visible = false;
+            // 
+            // dc_valor_parcela
+            // 
+            this.dc_valor_parcela.DataPropertyName = "dc_valor_parcela";
+            this.dc_valor_parcela.HeaderText = "dc_valor_parcela";
+            this.dc_valor_parcela.Name = "dc_valor_parcela";
+            this.dc_valor_parcela.ReadOnly = true;
+            this.dc_valor_parcela.Visible = false;
+            // 
+            // dc_categoria
+            // 
+            this.dc_categoria.DataPropertyName = "dc_categoria";
+            this.dc_categoria.HeaderText = "dc_categoria";
+            this.dc_categoria.Name = "dc_categoria";
+            this.dc_categoria.ReadOnly = true;
+            this.dc_categoria.Visible = false;
+            // 
+            // dc_cnpj
+            // 
+            this.dc_cnpj.DataPropertyName = "dc_cnpj";
+            this.dc_cnpj.HeaderText = "dc_cnpj";
+            this.dc_cnpj.Name = "dc_cnpj";
+            this.dc_cnpj.ReadOnly = true;
+            this.dc_cnpj.Visible = false;
+            // 
+            // dc_imagem_pagamento
+            // 
+            this.dc_imagem_pagamento.DataPropertyName = "dc_imagem_pagamento";
+            this.dc_imagem_pagamento.HeaderText = "Imagem Pagamento";
+            this.dc_imagem_pagamento.Name = "dc_imagem_pagamento";
+            this.dc_imagem_pagamento.ReadOnly = true;
+            this.dc_imagem_pagamento.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dc_imagem_pagamento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.dc_imagem_pagamento.Visible = false;
+            // 
+            // dc_estatus_pagamento
+            // 
+            this.dc_estatus_pagamento.DataPropertyName = "dc_estatus_pagamento";
+            this.dc_estatus_pagamento.HeaderText = "Pagamento";
+            this.dc_estatus_pagamento.Name = "dc_estatus_pagamento";
+            this.dc_estatus_pagamento.ReadOnly = true;
+            // 
+            // dc_data_pagamento
+            // 
+            this.dc_data_pagamento.DataPropertyName = "dc_data_pagamento";
+            this.dc_data_pagamento.HeaderText = "dc_data_pagamento";
+            this.dc_data_pagamento.Name = "dc_data_pagamento";
+            this.dc_data_pagamento.ReadOnly = true;
+            this.dc_data_pagamento.Visible = false;
+            // 
+            // dc_desconto_taxas
+            // 
+            this.dc_desconto_taxas.DataPropertyName = "dc_desconto_taxas";
+            this.dc_desconto_taxas.HeaderText = "dc_desconto_taxas";
+            this.dc_desconto_taxas.Name = "dc_desconto_taxas";
+            this.dc_desconto_taxas.ReadOnly = true;
+            this.dc_desconto_taxas.Visible = false;
+            // 
+            // dc_juros_multa
+            // 
+            this.dc_juros_multa.DataPropertyName = "dc_juros_multa";
+            this.dc_juros_multa.HeaderText = "dc_juros_multa";
+            this.dc_juros_multa.Name = "dc_juros_multa";
+            this.dc_juros_multa.ReadOnly = true;
+            this.dc_juros_multa.Visible = false;
+            // 
+            // dc_valor_pago
+            // 
+            this.dc_valor_pago.DataPropertyName = "dc_valor_pago";
+            this.dc_valor_pago.HeaderText = "dc_valor_pago";
+            this.dc_valor_pago.Name = "dc_valor_pago";
+            this.dc_valor_pago.ReadOnly = true;
+            this.dc_valor_pago.Visible = false;
             // 
             // label8
             // 
@@ -950,154 +1098,6 @@
             this.lblEstatusPagamento.Text = "Nao Pago";
             this.lblEstatusPagamento.Visible = false;
             // 
-            // dc_codigo
-            // 
-            this.dc_codigo.DataPropertyName = "dc_codigo";
-            this.dc_codigo.HeaderText = "Codigo";
-            this.dc_codigo.Name = "dc_codigo";
-            this.dc_codigo.ReadOnly = true;
-            // 
-            // dc_id
-            // 
-            this.dc_id.DataPropertyName = "dc_id";
-            this.dc_id.HeaderText = "dc_id";
-            this.dc_id.Name = "dc_id";
-            this.dc_id.ReadOnly = true;
-            this.dc_id.Visible = false;
-            // 
-            // dc_tipo
-            // 
-            this.dc_tipo.DataPropertyName = "dc_tipo";
-            this.dc_tipo.HeaderText = "Tipo";
-            this.dc_tipo.Name = "dc_tipo";
-            this.dc_tipo.ReadOnly = true;
-            // 
-            // dc_fornecedor_titulo
-            // 
-            this.dc_fornecedor_titulo.DataPropertyName = "dc_fornecedor_titulo";
-            this.dc_fornecedor_titulo.HeaderText = "Titulo";
-            this.dc_fornecedor_titulo.Name = "dc_fornecedor_titulo";
-            this.dc_fornecedor_titulo.ReadOnly = true;
-            // 
-            // dc_descricao
-            // 
-            this.dc_descricao.DataPropertyName = "dc_descricao";
-            this.dc_descricao.HeaderText = "Descricao";
-            this.dc_descricao.Name = "dc_descricao";
-            this.dc_descricao.ReadOnly = true;
-            // 
-            // dc_emissao
-            // 
-            this.dc_emissao.DataPropertyName = "dc_emissao";
-            this.dc_emissao.HeaderText = "dc_emissao";
-            this.dc_emissao.Name = "dc_emissao";
-            this.dc_emissao.ReadOnly = true;
-            this.dc_emissao.Visible = false;
-            // 
-            // dc_vencimento
-            // 
-            this.dc_vencimento.DataPropertyName = "dc_vencimento";
-            this.dc_vencimento.HeaderText = "dc_vencimento";
-            this.dc_vencimento.Name = "dc_vencimento";
-            this.dc_vencimento.ReadOnly = true;
-            this.dc_vencimento.Visible = false;
-            // 
-            // dc_frequencia
-            // 
-            this.dc_frequencia.DataPropertyName = "dc_frequencia";
-            this.dc_frequencia.HeaderText = "dc_frequencia";
-            this.dc_frequencia.Name = "dc_frequencia";
-            this.dc_frequencia.ReadOnly = true;
-            this.dc_frequencia.Visible = false;
-            // 
-            // dc_valor
-            // 
-            this.dc_valor.DataPropertyName = "dc_valor";
-            this.dc_valor.HeaderText = "Valor";
-            this.dc_valor.Name = "dc_valor";
-            this.dc_valor.ReadOnly = true;
-            // 
-            // dc_quantidade_parcelas
-            // 
-            this.dc_quantidade_parcelas.DataPropertyName = "dc_quantidade_parcelas";
-            this.dc_quantidade_parcelas.HeaderText = "dc_quantidade_parcelas";
-            this.dc_quantidade_parcelas.Name = "dc_quantidade_parcelas";
-            this.dc_quantidade_parcelas.ReadOnly = true;
-            this.dc_quantidade_parcelas.Visible = false;
-            // 
-            // dc_valor_parcela
-            // 
-            this.dc_valor_parcela.DataPropertyName = "dc_valor_parcela";
-            this.dc_valor_parcela.HeaderText = "dc_valor_parcela";
-            this.dc_valor_parcela.Name = "dc_valor_parcela";
-            this.dc_valor_parcela.ReadOnly = true;
-            this.dc_valor_parcela.Visible = false;
-            // 
-            // dc_categoria
-            // 
-            this.dc_categoria.DataPropertyName = "dc_categoria";
-            this.dc_categoria.HeaderText = "dc_categoria";
-            this.dc_categoria.Name = "dc_categoria";
-            this.dc_categoria.ReadOnly = true;
-            this.dc_categoria.Visible = false;
-            // 
-            // dc_cnpj
-            // 
-            this.dc_cnpj.DataPropertyName = "dc_cnpj";
-            this.dc_cnpj.HeaderText = "dc_cnpj";
-            this.dc_cnpj.Name = "dc_cnpj";
-            this.dc_cnpj.ReadOnly = true;
-            this.dc_cnpj.Visible = false;
-            // 
-            // dc_imagem_pagamento
-            // 
-            this.dc_imagem_pagamento.DataPropertyName = "dc_imagem_pagamento";
-            this.dc_imagem_pagamento.HeaderText = "Imagem Pagamento";
-            this.dc_imagem_pagamento.Name = "dc_imagem_pagamento";
-            this.dc_imagem_pagamento.ReadOnly = true;
-            this.dc_imagem_pagamento.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dc_imagem_pagamento.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dc_imagem_pagamento.Visible = false;
-            // 
-            // dc_estatus_pagamento
-            // 
-            this.dc_estatus_pagamento.DataPropertyName = "dc_estatus_pagamento";
-            this.dc_estatus_pagamento.HeaderText = "Pagamento";
-            this.dc_estatus_pagamento.Name = "dc_estatus_pagamento";
-            this.dc_estatus_pagamento.ReadOnly = true;
-            // 
-            // dc_data_pagamento
-            // 
-            this.dc_data_pagamento.DataPropertyName = "dc_data_pagamento";
-            this.dc_data_pagamento.HeaderText = "dc_data_pagamento";
-            this.dc_data_pagamento.Name = "dc_data_pagamento";
-            this.dc_data_pagamento.ReadOnly = true;
-            this.dc_data_pagamento.Visible = false;
-            // 
-            // dc_desconto_taxas
-            // 
-            this.dc_desconto_taxas.DataPropertyName = "dc_desconto_taxas";
-            this.dc_desconto_taxas.HeaderText = "dc_desconto_taxas";
-            this.dc_desconto_taxas.Name = "dc_desconto_taxas";
-            this.dc_desconto_taxas.ReadOnly = true;
-            this.dc_desconto_taxas.Visible = false;
-            // 
-            // dc_juros_multa
-            // 
-            this.dc_juros_multa.DataPropertyName = "dc_juros_multa";
-            this.dc_juros_multa.HeaderText = "dc_juros_multa";
-            this.dc_juros_multa.Name = "dc_juros_multa";
-            this.dc_juros_multa.ReadOnly = true;
-            this.dc_juros_multa.Visible = false;
-            // 
-            // dc_valor_pago
-            // 
-            this.dc_valor_pago.DataPropertyName = "dc_valor_pago";
-            this.dc_valor_pago.HeaderText = "dc_valor_pago";
-            this.dc_valor_pago.Name = "dc_valor_pago";
-            this.dc_valor_pago.ReadOnly = true;
-            this.dc_valor_pago.Visible = false;
-            // 
             // Forms_PesquisarDespesaCustos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1121,9 +1121,11 @@
             this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.label5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.KeyPreview = true;
             this.Name = "Forms_PesquisarDespesaCustos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Pesquisar Despesa";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_PesquisarDespesaCustos_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarDespesa)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
