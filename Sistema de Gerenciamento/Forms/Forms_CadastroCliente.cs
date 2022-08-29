@@ -324,7 +324,24 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCPF_CNPJ_Leave(object sender, EventArgs e)
         {
-            ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtCPF_CNPJ);
+            if (cmbTipo.Text == "Pess. Fisica")
+            {
+                if (ValidacaoCPF.IsCpf(txtCPF_CNPJ.Text) == false)
+                {
+                    ValidacaoCPF.MensagemCPFDigitadoInvalido();
+
+                    txtCPF_CNPJ.Focus();
+                }
+            }
+            else if (cmbTipo.Text == "Pess. Juridica")
+            {
+                if (ValidacaoCNPJ.IsCnpj(txtCPF_CNPJ.Text) == false)
+                {
+                    ValidacaoCNPJ.MensagemCNPJDigitadoInvalido();
+
+                    txtCPF_CNPJ.Focus();
+                }
+            }
         }
 
         private void txtRG_KeyPress_1(object sender, KeyPressEventArgs e)
@@ -572,6 +589,11 @@ namespace Sistema_de_Gerenciamento
             {
                 FecharTela.DesejaFecharTela(this, e);
             }
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            ValidacaoEmail.VerificarPreenchimentoEmail(txtEmail.Text, txtEmail);
         }
     }
 }

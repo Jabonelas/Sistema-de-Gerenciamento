@@ -314,7 +314,11 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCNPJ_Leave(object sender, EventArgs e)
         {
-            ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtCNPJ);
+            if (ValidacaoCNPJ.IsCnpj(txtCNPJ.Text) == false)
+            {
+                ValidacaoCNPJ.MensagemCNPJDigitadoInvalido();
+                txtCNPJ.Focus();
+            }
         }
 
         private void txtRazaoSocial_KeyPress(object sender, KeyPressEventArgs e)
@@ -358,6 +362,12 @@ namespace Sistema_de_Gerenciamento
             {
                 FecharTela.DesejaFecharTela(this, e);
             }
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e)
+        {
+            ValidacaoEmail.VerificarPreenchimentoEmail(txtEmail.Text, txtEmail);
+
         }
     }
 }

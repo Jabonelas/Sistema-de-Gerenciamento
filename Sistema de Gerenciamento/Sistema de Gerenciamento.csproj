@@ -323,6 +323,9 @@
     <Compile Include="Classes\ExportarExcel.cs" />
     <Compile Include="Classes\Imprimir.cs" />
     <Compile Include="Classes\DadosCep.cs" />
+    <Compile Include="Classes\ValidacaoCNPJ.cs" />
+    <Compile Include="Classes\ValidacaoCPF.cs" />
+    <Compile Include="Classes\ValidacaoEmail.cs" />
     <Compile Include="Classes\VerificacaoDeExistencia.cs" />
     <Compile Include="Classes\FecharTela.cs" />
     <Compile Include="Forms\Forms_ConfiguracaoGerencialComissaoPorProduto.cs">
@@ -574,6 +577,12 @@
     <Compile Include="Forms\Forms_Venda.Designer.cs">
       <DependentUpon>Forms_Venda.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\teste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\teste.Designer.cs">
+      <DependentUpon>teste.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\ManipulacaoTextBox.cs" />
     <EmbeddedResource Include="Forms\Forms_CadastroCodigoBarras.resx">
@@ -702,6 +711,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_Venda.resx">
       <DependentUpon>Forms_Venda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\teste.resx">
+      <DependentUpon>teste.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -947,6 +959,10 @@
     <None Include="Resources\estatisticas.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\pasta1.png" />
+    <None Include="Resources\produtos.png" />
+    <None Include="Resources\escritorio.png" />
+    <None Include="Resources\correio-de-entrega.png" />
     <Content Include="Resources\ImagemEstoqueBaixo.png" />
     <None Include="Resources\ImagemEstoqueBaixo1.png" />
     <Content Include="Resources\ImagemVencimentoContas.png" />

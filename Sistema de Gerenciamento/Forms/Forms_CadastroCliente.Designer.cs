@@ -1121,6 +1121,7 @@
             this.txtEmail.UseSystemPasswordChar = false;
             this.txtEmail.WordWrap = true;
             this.txtEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmail_KeyPress);
+            this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
             // txtEndereco
             // 

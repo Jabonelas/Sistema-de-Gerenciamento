@@ -139,6 +139,9 @@
   <data name="procurar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\procurar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ImagemEstoqueBaixo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ImagemEstoqueBaixo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="configuracao" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\configuracao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -195,6 +198,9 @@
   </data>
   <data name="notas-de-banco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\notas-de-banco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="produtos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\produtos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="notas-de-receber" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\notas-de-receber.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -280,8 +286,14 @@
   <data name="servico" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\servico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="correio-de-entrega" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\correio-de-entrega.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="NaoPagamento2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NaoPagamento2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="escritorio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\escritorio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="entregador" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\entregador.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -319,7 +331,7 @@
   <data name="despesas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\despesas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ImagemEstoqueBaixo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ImagemEstoqueBaixo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pasta1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pasta1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

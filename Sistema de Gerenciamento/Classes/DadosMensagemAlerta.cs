@@ -15,7 +15,7 @@ namespace Sistema_de_Gerenciamento.Classes
         public string titulo { get; set; }
         public string texto { get; set; }
         public Bitmap image { get; set; }
-        public string descricaoProduto { get; set; }
+        public string descricao { get; set; }
 
         public DadosMensagemAlerta(string _descricaoProduto, int _codigoProduto)
         {

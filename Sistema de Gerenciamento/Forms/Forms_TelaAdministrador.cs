@@ -284,7 +284,7 @@ namespace Sistema_de_Gerenciamento
         private void ChamandoAlertaEstoqueBaixo(string _descricaoProdruto, int _codigoProduto)
         {
             DadosMensagemAlerta msg = new DadosMensagemAlerta(_descricaoProdruto, _codigoProduto);
-            alertEstoqueMinimo.Show(this, $" { msg.titulo} \n{msg.descricaoProduto}", msg.texto, "", msg.image, msg);
+            alertEstoqueMinimo.Show(this, $" { msg.titulo} \n{msg.descricao}", msg.texto, "", msg.image, msg);
         }
 
         private void alertEstoqueMinimo_BeforeFormShow(object sender, DevExpress.XtraBars.Alerter.AlertFormEventArgs e)
@@ -295,7 +295,7 @@ namespace Sistema_de_Gerenciamento
         private void alertEstoqueMinimo_AlertClick(object sender, DevExpress.XtraBars.Alerter.AlertClickEventArgs e)
         {
             DadosMensagemAlerta msg = e.Info.Tag as DadosMensagemAlerta;
-            XtraMessageBox.Show(msg.texto, msg.descricaoProduto);
+            XtraMessageBox.Show(msg.texto, msg.descricao);
         }
 
         private void AutomatizaVerificacaoContasDespesas(DadosDespesaCusto _despesaCusto)
@@ -370,13 +370,13 @@ namespace Sistema_de_Gerenciamento
         private void ChamandoAlertaVencimentoContas(string _fonecedorTitulo, string _vencimento)
         {
             DadosMensagemAlerta msg = new DadosMensagemAlerta(_fonecedorTitulo, _vencimento);
-            alertEstoqueMinimo.Show(this, $" { msg.titulo} \n{msg.descricaoProduto}", msg.texto, "", msg.image, msg);
+            alertEstoqueMinimo.Show(this, $" { msg.titulo} \n{msg.descricao}", msg.texto, "", msg.image, msg);
         }
 
         private void alertVencimentoContas_AlertClick(object sender, DevExpress.XtraBars.Alerter.AlertClickEventArgs e)
         {
             DadosMensagemAlerta msg = e.Info.Tag as DadosMensagemAlerta;
-            XtraMessageBox.Show(msg.texto, msg.descricaoProduto);
+            XtraMessageBox.Show(msg.texto, msg.descricao);
         }
 
         private void alertVencimentoContas_BeforeFormShow(object sender, DevExpress.XtraBars.Alerter.AlertFormEventArgs e)

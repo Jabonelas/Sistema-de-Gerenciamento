@@ -223,6 +223,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap correio_de_entrega {
+            get {
+                object obj = ResourceManager.GetObject("correio-de-entrega", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap delete {
             get {
                 object obj = ResourceManager.GetObject("delete", resourceCulture);
@@ -316,6 +326,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         internal static System.Drawing.Bitmap equipe2 {
             get {
                 object obj = ResourceManager.GetObject("equipe2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap escritorio {
+            get {
+                object obj = ResourceManager.GetObject("escritorio", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -593,6 +613,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pasta1 {
+            get {
+                object obj = ResourceManager.GetObject("pasta1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pix {
             get {
                 object obj = ResourceManager.GetObject("pix", resourceCulture);
@@ -616,6 +646,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         internal static System.Drawing.Bitmap procurar {
             get {
                 object obj = ResourceManager.GetObject("procurar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap produtos {
+            get {
+                object obj = ResourceManager.GetObject("produtos", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
