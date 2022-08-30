@@ -685,7 +685,7 @@
             this.btnConfirmarPagamento.BackColor1 = System.Drawing.Color.Transparent;
             this.btnConfirmarPagamento.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfirmarPagamento.BackgroundImage")));
             this.btnConfirmarPagamento.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnConfirmarPagamento.ButtonText = "Confirmar Pagamento (F10)";
+            this.btnConfirmarPagamento.ButtonText = "(F10) Confirmar Pagamento";
             this.btnConfirmarPagamento.ButtonTextMarginLeft = 0;
             this.btnConfirmarPagamento.ColorContrastOnClick = 45;
             this.btnConfirmarPagamento.ColorContrastOnHover = 45;
@@ -802,7 +802,7 @@
             this.btnFechar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnFechar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFechar.BackgroundImage")));
             this.btnFechar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnFechar.ButtonText = "Fechar (Esc)";
+            this.btnFechar.ButtonText = "(Esc) Fechar ";
             this.btnFechar.ButtonTextMarginLeft = 0;
             this.btnFechar.ColorContrastOnClick = 45;
             this.btnFechar.ColorContrastOnHover = 45;

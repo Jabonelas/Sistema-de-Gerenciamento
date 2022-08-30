@@ -304,7 +304,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(655, 156);
+            this.label10.Location = new System.Drawing.Point(688, 156);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(99, 15);
             this.label10.TabIndex = 84;
@@ -325,7 +325,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(652, 386);
+            this.label3.Location = new System.Drawing.Point(671, 386);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 42);
             this.label3.TabIndex = 81;
@@ -583,7 +583,7 @@
             this.bunifuSeparator1.Location = new System.Drawing.Point(12, 118);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
             this.bunifuSeparator1.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.bunifuSeparator1.Size = new System.Drawing.Size(790, 20);
+            this.bunifuSeparator1.Size = new System.Drawing.Size(810, 20);
             this.bunifuSeparator1.TabIndex = 159;
             // 
             // btnInserirImagem
@@ -600,7 +600,7 @@
             this.btnInserirImagem.BackColor1 = System.Drawing.Color.Transparent;
             this.btnInserirImagem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInserirImagem.BackgroundImage")));
             this.btnInserirImagem.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnInserirImagem.ButtonText = "Inserir Imagem";
+            this.btnInserirImagem.ButtonText = "(Ctrl + D) Inserir Imagem";
             this.btnInserirImagem.ButtonTextMarginLeft = 0;
             this.btnInserirImagem.ColorContrastOnClick = 45;
             this.btnInserirImagem.ColorContrastOnHover = 45;
@@ -633,7 +633,7 @@
             this.btnInserirImagem.IdleIconLeftImage = null;
             this.btnInserirImagem.IdleIconRightImage = null;
             this.btnInserirImagem.IndicateFocus = false;
-            this.btnInserirImagem.Location = new System.Drawing.Point(642, 343);
+            this.btnInserirImagem.Location = new System.Drawing.Point(652, 343);
             this.btnInserirImagem.Name = "btnInserirImagem";
             this.btnInserirImagem.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnInserirImagem.OnDisabledState.BorderRadius = 1;
@@ -667,7 +667,7 @@
             this.btnInserirImagem.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnInserirImagem.OnPressedState.IconLeftImage = null;
             this.btnInserirImagem.OnPressedState.IconRightImage = null;
-            this.btnInserirImagem.Size = new System.Drawing.Size(146, 39);
+            this.btnInserirImagem.Size = new System.Drawing.Size(170, 39);
             this.btnInserirImagem.TabIndex = 107;
             this.btnInserirImagem.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnInserirImagem.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1511,7 +1511,7 @@
             this.pcbEmpresa.BaseColor = System.Drawing.Color.White;
             this.pcbEmpresa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pcbEmpresa.Image = global::Sistema_de_Gerenciamento.Properties.Resources.camera3;
-            this.pcbEmpresa.Location = new System.Drawing.Point(642, 174);
+            this.pcbEmpresa.Location = new System.Drawing.Point(664, 174);
             this.pcbEmpresa.Name = "pcbEmpresa";
             this.pcbEmpresa.Size = new System.Drawing.Size(146, 163);
             this.pcbEmpresa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1607,7 +1607,7 @@
             this.bntSair.BackColor1 = System.Drawing.Color.Transparent;
             this.bntSair.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntSair.BackgroundImage")));
             this.bntSair.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.bntSair.ButtonText = "Sair";
+            this.bntSair.ButtonText = "(Esc) Sair";
             this.bntSair.ButtonTextMarginLeft = 0;
             this.bntSair.ColorContrastOnClick = 45;
             this.bntSair.ColorContrastOnHover = 45;
@@ -1698,7 +1698,7 @@
             this.btnAlterar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnAlterar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAlterar.BackgroundImage")));
             this.btnAlterar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnAlterar.ButtonText = "Alterar";
+            this.btnAlterar.ButtonText = "(F5) Alterar";
             this.btnAlterar.ButtonTextMarginLeft = 0;
             this.btnAlterar.ColorContrastOnClick = 45;
             this.btnAlterar.ColorContrastOnHover = 45;
@@ -1789,7 +1789,7 @@
             this.btnSalvar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnSalvar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalvar.BackgroundImage")));
             this.btnSalvar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnSalvar.ButtonText = "Salvar";
+            this.btnSalvar.ButtonText = "(F10) Salvar";
             this.btnSalvar.ButtonTextMarginLeft = 0;
             this.btnSalvar.ColorContrastOnClick = 45;
             this.btnSalvar.ColorContrastOnHover = 45;
@@ -1870,7 +1870,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 605);
+            this.ClientSize = new System.Drawing.Size(837, 605);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtChavePix);
             this.Controls.Add(this.label7);

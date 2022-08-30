@@ -45,6 +45,11 @@ namespace Sistema_de_Gerenciamento
 
         private void btnNovoFornecedor_Click(object sender, EventArgs e)
         {
+            NovoCadastroFornecedor();
+        }
+
+        private void NovoCadastroFornecedor()
+        {
             ManipulacaoTextBox.ApagandoTextBox(this);
 
             pcbFornecedor.Image = Resources.imagem_do_usuario_com_fundo_preto;
@@ -362,12 +367,36 @@ namespace Sistema_de_Gerenciamento
             {
                 FecharTela.DesejaFecharTela(this, e);
             }
+            else if (e.KeyCode == Keys.F1)
+            {
+                NovoCadastroFornecedor();
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                SalvarCadastroFornecedor();
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                AtualizarCadastroFornecedor();
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                Forms_PesquisarFornecedor buscarFornecedor = new Forms_PesquisarFornecedor(this);
+                buscarFornecedor.ShowDialog();
+            }
+            else if (e.KeyCode == Keys.F3)
+            {
+                ExcluirCadastroFornecedor();
+            }
+            else if (e.KeyCode == Keys.D && e.Modifiers == Keys.Control)
+            {
+                InserirImagemFornecedor();
+            }
         }
 
         private void txtEmail_Leave(object sender, EventArgs e)
         {
             ValidacaoEmail.VerificarPreenchimentoEmail(txtEmail.Text, txtEmail);
-
         }
     }
 }

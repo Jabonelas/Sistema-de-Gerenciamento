@@ -142,7 +142,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.btnConfirmarGrupo.BackColor1 = System.Drawing.Color.Transparent;
             this.btnConfirmarGrupo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfirmarGrupo.BackgroundImage")));
             this.btnConfirmarGrupo.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnConfirmarGrupo.ButtonText = "Confirmar";
+            this.btnConfirmarGrupo.ButtonText = "(F10) Confirmar";
             this.btnConfirmarGrupo.ButtonTextMarginLeft = 0;
             this.btnConfirmarGrupo.ColorContrastOnClick = 45;
             this.btnConfirmarGrupo.ColorContrastOnHover = 45;

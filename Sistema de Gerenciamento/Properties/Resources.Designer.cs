@@ -263,9 +263,29 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap despesa {
+            get {
+                object obj = ResourceManager.GetObject("despesa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap despesas {
             get {
                 object obj = ResourceManager.GetObject("despesas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap despesas01 {
+            get {
+                object obj = ResourceManager.GetObject("despesas01", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

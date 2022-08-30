@@ -342,6 +342,27 @@ namespace Sistema_de_Gerenciamento
             {
                 FecharTela.DesejaFecharTela(this, e);
             }
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela.DesejaFecharTela(this, e);
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                ConfirmarSelececao();
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                PesquisarProduto();
+            }
+            else if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                Imprimir.ImprimirGridView("Relatorio de Produto", gdvPesquisarProduto);
+            }
+            else if (e.KeyCode == Keys.E && e.Modifiers == Keys.Control)
+            {
+                ExportarExcel.GerarExcel(gdvPesquisarProduto);
+            }
         }
     }
 }

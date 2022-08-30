@@ -792,7 +792,7 @@
             this.btnFechar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnFechar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFechar.BackgroundImage")));
             this.btnFechar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnFechar.ButtonText = "Fechar (Esc)";
+            this.btnFechar.ButtonText = "(Esc) Fechar ";
             this.btnFechar.ButtonTextMarginLeft = 0;
             this.btnFechar.ColorContrastOnClick = 45;
             this.btnFechar.ColorContrastOnHover = 45;
@@ -882,7 +882,7 @@
             this.btnGerarCarne.BackColor1 = System.Drawing.Color.Transparent;
             this.btnGerarCarne.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnGerarCarne.BackgroundImage")));
             this.btnGerarCarne.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnGerarCarne.ButtonText = "Gerar Carnê (F10)";
+            this.btnGerarCarne.ButtonText = "(F10) Gerar Carnê";
             this.btnGerarCarne.ButtonTextMarginLeft = 0;
             this.btnGerarCarne.ColorContrastOnClick = 45;
             this.btnGerarCarne.ColorContrastOnHover = 45;

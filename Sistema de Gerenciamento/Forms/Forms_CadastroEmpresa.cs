@@ -360,6 +360,18 @@ namespace Sistema_de_Gerenciamento
             {
                 FecharTela.DesejaFecharTela(this, e);
             }
+            else if (e.KeyCode == Keys.F10)
+            {
+                SalvarCadastroEmpresa();
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                AtualziarCadastroEmpresa();
+            }
+            else if (e.KeyCode == Keys.D && e.Modifiers == Keys.Control)
+            {
+                InserirImagemEmpresa();
+            }
         }
 
         private void txtEmail_Leave(object sender, EventArgs e)

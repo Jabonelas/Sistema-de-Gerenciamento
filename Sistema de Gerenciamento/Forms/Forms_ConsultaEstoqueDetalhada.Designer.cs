@@ -957,7 +957,7 @@
             this.btnFechar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnFechar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFechar.BackgroundImage")));
             this.btnFechar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnFechar.ButtonText = "Fechar (Esc)";
+            this.btnFechar.ButtonText = "(Esc) Fechar ";
             this.btnFechar.ButtonTextMarginLeft = 0;
             this.btnFechar.ColorContrastOnClick = 45;
             this.btnFechar.ColorContrastOnHover = 45;

@@ -62,7 +62,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             BuscaDadosPreencherItens();
 
-            //FormatoFullScreen();
+            FormatoFullScreen();
         }
 
         private void BuscaDadosPreencherItens()
@@ -714,7 +714,7 @@ namespace Sistema_de_Gerenciamento.Forms
             lblTotaldoItem.Text = "R$ 0,00";
             lblValorUnitario.Text = "R$ 0,00";
             pnlFachada.BackgroundColor = Color.Lime;
-            lblFachada.Location = new Point(97, -9);
+            //lblFachada.Location = new Point(97, -9);
             lblFachada.Text = "CAIXA DISPONÍVEL";
             txtCPF.UseSystemPasswordChar = false;
             txtCodigoDeBarras.Focus();

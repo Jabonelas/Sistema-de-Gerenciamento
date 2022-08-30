@@ -52,6 +52,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnPesquisar_Click_1(object sender, EventArgs e)
         {
+            BuscarEstatisticasFinanceiras();
+        }
+
+        private void BuscarEstatisticasFinanceiras()
+        {
             DeletarColunaValorBruto();
             ValorBruto();
 
@@ -552,6 +557,15 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 FecharTela.DesejaFecharTela(this, e);
             }
+            else if (e.KeyCode == Keys.F2)
+            {
+                BuscarEstatisticasFinanceiras();
+            }
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

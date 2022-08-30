@@ -48,6 +48,11 @@ namespace Sistema_de_Gerenciamento
 
         private void btnNovoCliente_Click(object sender, EventArgs e)
         {
+            NovoCadastroCliente();
+        }
+
+        private void NovoCadastroCliente()
+        {
             ManipulacaoTextBox.ApagandoTextBox(this);
 
             lblTipoDeCliente.Text = "CPF / CNPJ";
@@ -588,6 +593,31 @@ namespace Sistema_de_Gerenciamento
             if (e.KeyCode == Keys.Escape)
             {
                 FecharTela.DesejaFecharTela(this, e);
+            }
+            else if (e.KeyCode == Keys.F1)
+            {
+                NovoCadastroCliente();
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                SalvarCadastroCliente();
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                AtualizarCadastroCliente();
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                Forms_PesquisarCliente buscarCliente = new Forms_PesquisarCliente(this);
+                buscarCliente.ShowDialog();
+            }
+            else if (e.KeyCode == Keys.F3)
+            {
+                ExclucirCadastroCliente();
+            }
+            else if (e.KeyCode == Keys.D && e.Modifiers == Keys.Control)
+            {
+                InserirImagemCliente();
             }
         }
 

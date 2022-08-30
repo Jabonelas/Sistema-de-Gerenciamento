@@ -338,7 +338,7 @@
             this.btnPesquisar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnPesquisar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPesquisar.BackgroundImage")));
             this.btnPesquisar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnPesquisar.ButtonText = "Pesquisar";
+            this.btnPesquisar.ButtonText = "(F2) Pesquisar";
             this.btnPesquisar.ButtonTextMarginLeft = 0;
             this.btnPesquisar.ColorContrastOnClick = 45;
             this.btnPesquisar.ColorContrastOnHover = 45;
@@ -463,7 +463,7 @@
             this.btnFechar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnFechar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFechar.BackgroundImage")));
             this.btnFechar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnFechar.ButtonText = "Fechar (Esc)";
+            this.btnFechar.ButtonText = "(Esc) Fechar";
             this.btnFechar.ButtonTextMarginLeft = 0;
             this.btnFechar.ColorContrastOnClick = 45;
             this.btnFechar.ColorContrastOnHover = 45;

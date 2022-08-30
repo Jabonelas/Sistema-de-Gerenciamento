@@ -304,10 +304,10 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "update tb_CadastroEmpresa set ce_razao_social=@razaoSocial,ce_cnpj=@cnpj," +
-                        "ce_nome_fantasia=@nomeFantasia,ce_cep=@cep,ce_endereco=@endereco,ce_complemento=@complemento," +
-                        "ce_bairro=@bairro,ce_cidade=@cidade,ce_uf=@uf,ce_numero=@numero,ce_telefone=@telefone," +
-                        "ce_email=@email,ce_texto_padrao=@textoPadrao,ce_codigo_pix=@codigoPix,ce_chave_pix= @chavePix " +
+                    string query = "update tb_CadastroEmpresa set ce_razao_social = @razaoSocial, ce_cnpj = @cnpj, " +
+                        "ce_nome_fantasia = @nomeFantasia, ce_cep = @cep, ce_endereco = @endereco, ce_complemento = @complemento, " +
+                        "ce_bairro = @bairro, ce_cidade = @cidade, ce_uf= @uf, ce_numero = @numero, ce_telefone = @telefone, " +
+                        "ce_email = @email, ce_texto_padrao = @textoPadrao, ce_codigo_pix = @codigoPix, ce_chave_pix = @chavePix " +
                         "where ce_id = @ce_id ";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
@@ -322,10 +322,10 @@ namespace Sistema_de_Gerenciamento.Classes
                     adapter.SelectCommand.Parameters.AddWithValue("@uf", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.uf;
                     adapter.SelectCommand.Parameters.AddWithValue("@numero", SqlDbType.Int).Value = _dadosCadastroEmpresa.numero;
                     adapter.SelectCommand.Parameters.AddWithValue("@telefone", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.telefone;
-                    adapter.SelectCommand.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = _dadosCadastroEmpresa;
-                    adapter.SelectCommand.Parameters.AddWithValue("@textoPadrao", SqlDbType.VarChar).Value = _dadosCadastroEmpresa;
-                    adapter.SelectCommand.Parameters.AddWithValue("@codigoPix", SqlDbType.VarChar).Value = _dadosCadastroEmpresa;
-                    adapter.SelectCommand.Parameters.AddWithValue("@chavePix", SqlDbType.VarChar).Value = _dadosCadastroEmpresa;
+                    adapter.SelectCommand.Parameters.AddWithValue("@email", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.email;
+                    adapter.SelectCommand.Parameters.AddWithValue("@textoPadrao", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.textoPadrao;
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigoPix", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.codigoQR;
+                    adapter.SelectCommand.Parameters.AddWithValue("@chavePix", SqlDbType.VarChar).Value = _dadosCadastroEmpresa.chavePix;
                     adapter.SelectCommand.Parameters.AddWithValue("@ce_id", SqlDbType.Int).Value = _dadosCadastroEmpresa.id;
 
                     adapter.SelectCommand.ExecuteNonQuery();
@@ -890,6 +890,10 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Atualizar Quantidade Estoque Depois da Venda
 
+        #region Atualizar Troca
+
+        #region Atualizar Quantidade Pos Troca Nota Fiscal Saida
+
         public void AtualizarQuantidadePosTrocaNotaFiscalSaida(decimal _quantidade, decimal _valorPago, int _numeroNF,
             int _codigoBarras, string _status, string _trocaVendedor, string _motivoTroca, int _id, int _nfEntrada)
         {
@@ -924,6 +928,10 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
+        #endregion Atualizar Quantidade Pos Troca Nota Fiscal Saida
+
+        #region Atualizar Quantidade Estoque Pos Devolucao
+
         public void AtualizarQuantidadeEstoquePosDevolucao(decimal _quantidade, int _codigoBarras, int _nfEntrada)
         {
             try
@@ -947,7 +955,11 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
-        public void AtuazliarPrazoGarantia(int _numeroNF, DateTime _validadeTroca)
+        #endregion Atualizar Quantidade Estoque Pos Devolucao
+
+        #region Atualizar Prazo Garantia
+
+        public void AtualizarPrazoGarantia(int _numeroNF, DateTime _validadeTroca)
         {
             try
             {
@@ -969,6 +981,12 @@ namespace Sistema_de_Gerenciamento.Classes
                 Erro.ErroAoAtualizarGarantiaTrocaoNoBanco(ex);
             }
         }
+
+        #endregion Atualizar Prazo Garantia
+
+        #endregion Atualizar Troca
+
+        #region Atualizar Status Pagamento Nota Fiscal Saida
 
         public void AtualizarImagemStatusPagamentoNotaFiscalSaida(Image _imagem, int _numeroNFSaida, string _parcela)
         {
@@ -998,6 +1016,12 @@ namespace Sistema_de_Gerenciamento.Classes
                 Erro.ErroAoAtualizarImagemStatusPagamentoCarneNoBanco(ex);
             }
         }
+
+        #endregion Atualizar Status Pagamento Nota Fiscal Saida
+
+        #region Atualizar Pagamento Carne
+
+        #region Atualizar Estatus Pagamento Carne
 
         public void AtualizarStatusPagamentoCarne(Image _imagem, string _statusPagamento, int _numeroNF, string _parcela,
             decimal _jurosAtraso, decimal _valorFinalParcela)
@@ -1031,6 +1055,37 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
+        #endregion Atualizar Estatus Pagamento Carne
+
+        #region Atualizar Saldo Cliente Apos Pagamento Parcela Carne
+
+        public void AtualizarSaldoClienteParcelaPagamentoParcelaCarne(decimal _valorPago, string _cpfCNPJ)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "update tb_CadastroClientes set cc_saldo = (cc_saldo+@valorPago) where cc_cpf_cnpj = @cpfCnpj";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.Add("@valorPago", _valorPago);
+                    adapter.SelectCommand.Parameters.Add("@cpfCNPJ", _cpfCNPJ);
+
+                    adapter.SelectCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoAtualizarSaldoClientePosPagamento(ex);
+            }
+        }
+
+        #endregion Atualizar Saldo Cliente Apos Pagamento Parcela Carne
+
+        #endregion Atualizar Pagamento Carne
+
+        #region Atualizar Comissao Diariamente
+
         public void AtualizarComissaoDiariamente(decimal _valorComissao, string _usuario)
         {
             try
@@ -1053,5 +1108,7 @@ namespace Sistema_de_Gerenciamento.Classes
                 Erro.ErroAoAtualizarComissaoUsuarioNoBanco(ex);
             }
         }
+
+        #endregion Atualizar Comissao Diariamente
     }
 }

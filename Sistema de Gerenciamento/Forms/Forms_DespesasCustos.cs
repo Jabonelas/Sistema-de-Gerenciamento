@@ -94,6 +94,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            ExcluirCadastroDespesasCustos();
+        }
+
+        private void ExcluirCadastroDespesasCustos()
+        {
             if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
             {
                 Excluir.ExcluirDespesaCusto(Convert.ToInt32(txtCodigo.Text));
@@ -112,10 +117,10 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             SalvarDespesa();
 
-            if (txtCodigo.Text != string.Empty)
-            {
-                Salvar.InserirImagemPagamentoDespesaCusto(pcbStatusPagamento.Image, Convert.ToInt32(txtCodigo.Text), lblStatusPagamento.Text);
-            }
+            //if (txtCodigo.Text != string.Empty)
+            //{
+            //    Salvar.InserirImagemPagamentoDespesaCusto(pcbStatusPagamento.Image, Convert.ToInt32(txtCodigo.Text), lblStatusPagamento.Text);
+            //}
         }
 
         #region Salvar Despesa
@@ -174,6 +179,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
                                 Atualizar.AlterarCodigoDespesaCusto(Convert.ToInt32(txtCodigo.Text), txtDescricao.Text);
 
+                                Salvar.InserirImagemPagamentoDespesaCusto(pcbStatusPagamento.Image, Convert.ToInt32(txtCodigo.Text), lblStatusPagamento.Text);
+
                                 btnSalvar.Enabled = false;
                             }
                             else
@@ -186,6 +193,8 @@ namespace Sistema_de_Gerenciamento.Forms
                                     Convert.ToDecimal(txtValorParcelas.Text.Replace("R$ ", "")), lblCategoria.Text);
 
                                 Atualizar.AlterarCodigoDespesaCusto(Convert.ToInt32(txtCodigo.Text), txtDescricao.Text);
+
+                                Salvar.InserirImagemPagamentoDespesaCusto(pcbStatusPagamento.Image, Convert.ToInt32(txtCodigo.Text), lblStatusPagamento.Text);
 
                                 cont++;
                             }
@@ -252,6 +261,11 @@ namespace Sistema_de_Gerenciamento.Forms
         #endregion Alterar Despesa
 
         private void btnNovaVenda_Click(object sender, EventArgs e)
+        {
+            NovoCadastroVenda();
+        }
+
+        private void NovoCadastroVenda()
         {
             ManipulacaoTextBox.ApagandoTextBox(this);
 
@@ -553,6 +567,27 @@ namespace Sistema_de_Gerenciamento.Forms
             if (e.KeyCode == Keys.Escape)
             {
                 FecharTela.DesejaFecharTela(this, e);
+            }
+            else if (e.KeyCode == Keys.F1)
+            {
+                NovoCadastroVenda();
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                SalvarDespesa();
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                AlterarDespesa();
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                Forms_PesquisarDespesaCustos pesquisarDespesa = new Forms_PesquisarDespesaCustos(this, this.Text);
+                pesquisarDespesa.ShowDialog();
+            }
+            else if (e.KeyCode == Keys.F3)
+            {
+                ExcluirCadastroDespesasCustos();
             }
         }
     }

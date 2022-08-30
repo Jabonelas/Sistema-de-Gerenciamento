@@ -158,7 +158,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(647, 396);
+            this.label3.Location = new System.Drawing.Point(674, 396);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 42);
             this.label3.TabIndex = 80;
@@ -169,7 +169,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(657, 144);
+            this.label10.Location = new System.Drawing.Point(681, 144);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(110, 15);
             this.label10.TabIndex = 90;
@@ -592,7 +592,7 @@
             this.btnInserirImagemCliente.BackColor1 = System.Drawing.Color.Transparent;
             this.btnInserirImagemCliente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInserirImagemCliente.BackgroundImage")));
             this.btnInserirImagemCliente.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnInserirImagemCliente.ButtonText = "Inserir Imagem";
+            this.btnInserirImagemCliente.ButtonText = "(Ctrl + D) Inserir Imagem";
             this.btnInserirImagemCliente.ButtonTextMarginLeft = 0;
             this.btnInserirImagemCliente.ColorContrastOnClick = 45;
             this.btnInserirImagemCliente.ColorContrastOnHover = 45;
@@ -625,7 +625,7 @@
             this.btnInserirImagemCliente.IdleIconLeftImage = null;
             this.btnInserirImagemCliente.IdleIconRightImage = null;
             this.btnInserirImagemCliente.IndicateFocus = false;
-            this.btnInserirImagemCliente.Location = new System.Drawing.Point(647, 354);
+            this.btnInserirImagemCliente.Location = new System.Drawing.Point(656, 354);
             this.btnInserirImagemCliente.Name = "btnInserirImagemCliente";
             this.btnInserirImagemCliente.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnInserirImagemCliente.OnDisabledState.BorderRadius = 1;
@@ -659,7 +659,7 @@
             this.btnInserirImagemCliente.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnInserirImagemCliente.OnPressedState.IconLeftImage = null;
             this.btnInserirImagemCliente.OnPressedState.IconRightImage = null;
-            this.btnInserirImagemCliente.Size = new System.Drawing.Size(134, 39);
+            this.btnInserirImagemCliente.Size = new System.Drawing.Size(164, 39);
             this.btnInserirImagemCliente.TabIndex = 24;
             this.btnInserirImagemCliente.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnInserirImagemCliente.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1657,7 +1657,7 @@
             this.pcbCliente.BaseColor = System.Drawing.Color.White;
             this.pcbCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pcbCliente.Image = global::Sistema_de_Gerenciamento.Properties.Resources.imagem_do_usuario_com_fundo_preto;
-            this.pcbCliente.Location = new System.Drawing.Point(647, 175);
+            this.pcbCliente.Location = new System.Drawing.Point(671, 175);
             this.pcbCliente.Name = "pcbCliente";
             this.pcbCliente.Size = new System.Drawing.Size(134, 173);
             this.pcbCliente.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1753,7 +1753,7 @@
             this.bntSairCliente.BackColor1 = System.Drawing.Color.Transparent;
             this.bntSairCliente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntSairCliente.BackgroundImage")));
             this.bntSairCliente.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.bntSairCliente.ButtonText = "Sair";
+            this.bntSairCliente.ButtonText = "(Esc) Sair";
             this.bntSairCliente.ButtonTextMarginLeft = 0;
             this.bntSairCliente.ColorContrastOnClick = 45;
             this.bntSairCliente.ColorContrastOnHover = 45;
@@ -1844,7 +1844,7 @@
             this.btnExcluirCliente.BackColor1 = System.Drawing.Color.Transparent;
             this.btnExcluirCliente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExcluirCliente.BackgroundImage")));
             this.btnExcluirCliente.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnExcluirCliente.ButtonText = "Excluir";
+            this.btnExcluirCliente.ButtonText = "(F3) Excluir";
             this.btnExcluirCliente.ButtonTextMarginLeft = 0;
             this.btnExcluirCliente.ColorContrastOnClick = 45;
             this.btnExcluirCliente.ColorContrastOnHover = 45;
@@ -1935,7 +1935,7 @@
             this.btnBuscarCliente.BackColor1 = System.Drawing.Color.Transparent;
             this.btnBuscarCliente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarCliente.BackgroundImage")));
             this.btnBuscarCliente.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnBuscarCliente.ButtonText = "Procurar";
+            this.btnBuscarCliente.ButtonText = "(F2) Procurar";
             this.btnBuscarCliente.ButtonTextMarginLeft = 0;
             this.btnBuscarCliente.ColorContrastOnClick = 45;
             this.btnBuscarCliente.ColorContrastOnHover = 45;
@@ -2026,7 +2026,7 @@
             this.btnAlterarCliente.BackColor1 = System.Drawing.Color.Transparent;
             this.btnAlterarCliente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAlterarCliente.BackgroundImage")));
             this.btnAlterarCliente.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnAlterarCliente.ButtonText = "Alterar";
+            this.btnAlterarCliente.ButtonText = "(F5) Alterar";
             this.btnAlterarCliente.ButtonTextMarginLeft = 0;
             this.btnAlterarCliente.ColorContrastOnClick = 45;
             this.btnAlterarCliente.ColorContrastOnHover = 45;
@@ -2117,7 +2117,7 @@
             this.btnSalvarCliente.BackColor1 = System.Drawing.Color.Transparent;
             this.btnSalvarCliente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalvarCliente.BackgroundImage")));
             this.btnSalvarCliente.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnSalvarCliente.ButtonText = "Salvar";
+            this.btnSalvarCliente.ButtonText = "(F10 )Salvar";
             this.btnSalvarCliente.ButtonTextMarginLeft = 0;
             this.btnSalvarCliente.ColorContrastOnClick = 45;
             this.btnSalvarCliente.ColorContrastOnHover = 45;
@@ -2208,7 +2208,7 @@
             this.btnNovoCliente.BackColor1 = System.Drawing.Color.Transparent;
             this.btnNovoCliente.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNovoCliente.BackgroundImage")));
             this.btnNovoCliente.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnNovoCliente.ButtonText = "Novo";
+            this.btnNovoCliente.ButtonText = "(F1) Novo";
             this.btnNovoCliente.ButtonTextMarginLeft = 0;
             this.btnNovoCliente.ColorContrastOnClick = 45;
             this.btnNovoCliente.ColorContrastOnHover = 45;
@@ -2297,7 +2297,7 @@
             this.bunifuSeparator1.Location = new System.Drawing.Point(12, 111);
             this.bunifuSeparator1.Name = "bunifuSeparator1";
             this.bunifuSeparator1.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.bunifuSeparator1.Size = new System.Drawing.Size(776, 20);
+            this.bunifuSeparator1.Size = new System.Drawing.Size(808, 20);
             this.bunifuSeparator1.TabIndex = 158;
             // 
             // bunifuSeparator2
@@ -2427,7 +2427,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 575);
+            this.ClientSize = new System.Drawing.Size(833, 575);
             this.Controls.Add(this.lblCodigoImagem);
             this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.txtCodigo);

@@ -44,6 +44,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            RealizarLogin();
+        }
+
+        private void RealizarLogin()
+        {
             if (tipo == "Remover Produto")
             {
                 if (txtUsuario.Text == "ADMIN" && Buscar.BuscarUsuario(txtUsuario.Text, txtSenha.Text))
@@ -54,7 +59,6 @@ namespace Sistema_de_Gerenciamento.Forms
                     {
                         telaPDV.RemoverProduto();
 
-                        //forms_PDV.ValorTotal();
                         this.Close();
                     }
                 }
@@ -103,6 +107,10 @@ namespace Sistema_de_Gerenciamento.Forms
             if (e.KeyCode == Keys.Escape)
             {
                 FecharTela.DesejaFecharTela(this, e);
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                RealizarLogin();
             }
         }
     }

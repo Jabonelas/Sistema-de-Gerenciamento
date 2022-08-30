@@ -15,7 +15,6 @@ namespace Sistema_de_Gerenciamento.Forms
     {
         private AtualizacaoNoBanco Atualizacao = new AtualizacaoNoBanco();
 
-
         public Forms_ConfiguracaoGerencialJurosPorPagamentoaCredito()
         {
             InitializeComponent();
@@ -26,6 +25,10 @@ namespace Sistema_de_Gerenciamento.Forms
             if (e.KeyCode == Keys.Escape)
             {
                 FecharTela.DesejaFecharTela(this, e);
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                AtualziacaoPorcentagemJurosCredito();
             }
         }
 
@@ -41,7 +44,6 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             AtualziacaoPorcentagemJurosCredito();
         }
-
 
         private void AtualziacaoPorcentagemJurosCredito()
         {

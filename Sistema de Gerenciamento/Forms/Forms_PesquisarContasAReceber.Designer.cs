@@ -576,7 +576,7 @@
             this.btnPesquisar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnPesquisar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPesquisar.BackgroundImage")));
             this.btnPesquisar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnPesquisar.ButtonText = "Pesquisar";
+            this.btnPesquisar.ButtonText = "(F2) Pesquisar";
             this.btnPesquisar.ButtonTextMarginLeft = 0;
             this.btnPesquisar.ColorContrastOnClick = 45;
             this.btnPesquisar.ColorContrastOnHover = 45;
@@ -666,7 +666,7 @@
             this.btnImprimir.BackColor1 = System.Drawing.Color.Transparent;
             this.btnImprimir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnImprimir.BackgroundImage")));
             this.btnImprimir.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnImprimir.ButtonText = "Imprimir Relação das \r\nContas a Receber";
+            this.btnImprimir.ButtonText = "(Ctrl + P) Imprimir Relação das \r\nContas a Receber";
             this.btnImprimir.ButtonTextMarginLeft = 0;
             this.btnImprimir.ColorContrastOnClick = 45;
             this.btnImprimir.ColorContrastOnHover = 45;
@@ -756,7 +756,7 @@
             this.btnSelecionar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnSelecionar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSelecionar.BackgroundImage")));
             this.btnSelecionar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnSelecionar.ButtonText = "Selecionar";
+            this.btnSelecionar.ButtonText = "(F10) Selecionar";
             this.btnSelecionar.ButtonTextMarginLeft = 0;
             this.btnSelecionar.ColorContrastOnClick = 45;
             this.btnSelecionar.ColorContrastOnHover = 45;
@@ -846,7 +846,7 @@
             this.btnFechar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnFechar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFechar.BackgroundImage")));
             this.btnFechar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnFechar.ButtonText = "Fechar";
+            this.btnFechar.ButtonText = "(Esc) Fechar";
             this.btnFechar.ButtonTextMarginLeft = 0;
             this.btnFechar.ColorContrastOnClick = 45;
             this.btnFechar.ColorContrastOnHover = 45;
@@ -1012,7 +1012,7 @@
             this.btnExportarParaExcel.BackColor1 = System.Drawing.Color.Transparent;
             this.btnExportarParaExcel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExportarParaExcel.BackgroundImage")));
             this.btnExportarParaExcel.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnExportarParaExcel.ButtonText = "Exportar para o Execel \r\nRelação Contas a Receber";
+            this.btnExportarParaExcel.ButtonText = "(Ctrl + E) Exportar para o Execel \r\nRelação Contas a Receber";
             this.btnExportarParaExcel.ButtonTextMarginLeft = 0;
             this.btnExportarParaExcel.ColorContrastOnClick = 45;
             this.btnExportarParaExcel.ColorContrastOnHover = 45;

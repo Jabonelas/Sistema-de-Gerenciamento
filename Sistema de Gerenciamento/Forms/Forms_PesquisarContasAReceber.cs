@@ -44,6 +44,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
+            PesquisarContasAReceber();
+        }
+
+        private void PesquisarContasAReceber()
+        {
             if (txtNumeroNotaFiscal.Text != String.Empty && cmbStatusPagamento.Text == String.Empty)
             {
                 bool isCadastroExiste = Buscar.BuscarCarnePorNumeroNotaFiscalSaida(Convert.ToInt32(txtNumeroNotaFiscal.Text), gdvContarReceber,
@@ -126,6 +131,23 @@ namespace Sistema_de_Gerenciamento.Forms
             if (e.KeyCode == Keys.Escape)
             {
                 FecharTela.DesejaFecharTela(this, e);
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                Forms_EditarPagamentoAReceber editarPagamentoAReceber = new Forms_EditarPagamentoAReceber(this);
+                editarPagamentoAReceber.ShowDialog();
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                PesquisarContasAReceber();
+            }
+            else if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                Imprimir.ImprimirGridView("Relatorio de Contas a Receber", gdvContarReceber);
+            }
+            else if (e.KeyCode == Keys.E && e.Modifiers == Keys.Control)
+            {
+                ExportarExcel.GerarExcel(gdvContarReceber);
             }
         }
 

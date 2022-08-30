@@ -226,7 +226,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.btnConfirmarCarne.BackColor1 = System.Drawing.Color.Transparent;
             this.btnConfirmarCarne.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfirmarCarne.BackgroundImage")));
             this.btnConfirmarCarne.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnConfirmarCarne.ButtonText = "Confirmar";
+            this.btnConfirmarCarne.ButtonText = "(F10) Confirmar";
             this.btnConfirmarCarne.ButtonTextMarginLeft = 0;
             this.btnConfirmarCarne.ColorContrastOnClick = 45;
             this.btnConfirmarCarne.ColorContrastOnHover = 45;

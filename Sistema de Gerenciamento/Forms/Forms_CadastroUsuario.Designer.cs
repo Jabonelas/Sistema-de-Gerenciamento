@@ -89,7 +89,7 @@
             this.bntSair.BackColor1 = System.Drawing.Color.Transparent;
             this.bntSair.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntSair.BackgroundImage")));
             this.bntSair.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.bntSair.ButtonText = "Sair";
+            this.bntSair.ButtonText = "(Esc) Sair";
             this.bntSair.ButtonTextMarginLeft = 0;
             this.bntSair.ColorContrastOnClick = 45;
             this.bntSair.ColorContrastOnHover = 45;
@@ -196,7 +196,7 @@
             this.btnAlterar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnAlterar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAlterar.BackgroundImage")));
             this.btnAlterar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnAlterar.ButtonText = "Alterar";
+            this.btnAlterar.ButtonText = "(F5) Alterar";
             this.btnAlterar.ButtonTextMarginLeft = 0;
             this.btnAlterar.ColorContrastOnClick = 45;
             this.btnAlterar.ColorContrastOnHover = 45;
@@ -287,7 +287,7 @@
             this.btnSalvar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnSalvar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalvar.BackgroundImage")));
             this.btnSalvar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnSalvar.ButtonText = "Salvar";
+            this.btnSalvar.ButtonText = "(F10) Salvar";
             this.btnSalvar.ButtonTextMarginLeft = 0;
             this.btnSalvar.ColorContrastOnClick = 45;
             this.btnSalvar.ColorContrastOnHover = 45;

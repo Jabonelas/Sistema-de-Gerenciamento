@@ -127,7 +127,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.btnConfirmarCredito.BackColor1 = System.Drawing.Color.Transparent;
             this.btnConfirmarCredito.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfirmarCredito.BackgroundImage")));
             this.btnConfirmarCredito.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnConfirmarCredito.ButtonText = "Confirmar";
+            this.btnConfirmarCredito.ButtonText = "(F10) Confirmar";
             this.btnConfirmarCredito.ButtonTextMarginLeft = 0;
             this.btnConfirmarCredito.ColorContrastOnClick = 45;
             this.btnConfirmarCredito.ColorContrastOnHover = 45;

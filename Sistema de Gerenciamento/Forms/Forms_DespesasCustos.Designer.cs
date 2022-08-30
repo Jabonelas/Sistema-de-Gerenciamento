@@ -492,7 +492,7 @@
             this.btnNova.BackColor1 = System.Drawing.Color.Transparent;
             this.btnNova.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNova.BackgroundImage")));
             this.btnNova.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnNova.ButtonText = "Nova \r\n";
+            this.btnNova.ButtonText = "(F1) Nova \r\n";
             this.btnNova.ButtonTextMarginLeft = 0;
             this.btnNova.ColorContrastOnClick = 45;
             this.btnNova.ColorContrastOnHover = 45;
@@ -583,7 +583,7 @@
             this.btnBuscar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnBuscar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscar.BackgroundImage")));
             this.btnBuscar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnBuscar.ButtonText = "Procurar";
+            this.btnBuscar.ButtonText = "(F2) Procurar";
             this.btnBuscar.ButtonTextMarginLeft = 0;
             this.btnBuscar.ColorContrastOnClick = 45;
             this.btnBuscar.ColorContrastOnHover = 45;
@@ -617,7 +617,7 @@
             this.btnBuscar.IdleIconRightImage = null;
             this.btnBuscar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnBuscar.IndicateFocus = false;
-            this.btnBuscar.Location = new System.Drawing.Point(252, 25);
+            this.btnBuscar.Location = new System.Drawing.Point(240, 25);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnBuscar.OnDisabledState.BorderRadius = 1;
@@ -651,7 +651,7 @@
             this.btnBuscar.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnBuscar.OnPressedState.IconLeftImage = null;
             this.btnBuscar.OnPressedState.IconRightImage = null;
-            this.btnBuscar.Size = new System.Drawing.Size(57, 80);
+            this.btnBuscar.Size = new System.Drawing.Size(79, 80);
             this.btnBuscar.TabIndex = 12;
             this.btnBuscar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnBuscar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -841,7 +841,7 @@
             this.btnAlterar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnAlterar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAlterar.BackgroundImage")));
             this.btnAlterar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnAlterar.ButtonText = "Alterar \r\n";
+            this.btnAlterar.ButtonText = "(F5) Alterar \r\n";
             this.btnAlterar.ButtonTextMarginLeft = 0;
             this.btnAlterar.ColorContrastOnClick = 45;
             this.btnAlterar.ColorContrastOnHover = 45;
@@ -875,7 +875,7 @@
             this.btnAlterar.IdleIconRightImage = null;
             this.btnAlterar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnAlterar.IndicateFocus = false;
-            this.btnAlterar.Location = new System.Drawing.Point(170, 25);
+            this.btnAlterar.Location = new System.Drawing.Point(161, 25);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnAlterar.OnDisabledState.BorderRadius = 1;
@@ -909,7 +909,7 @@
             this.btnAlterar.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnAlterar.OnPressedState.IconLeftImage = null;
             this.btnAlterar.OnPressedState.IconRightImage = null;
-            this.btnAlterar.Size = new System.Drawing.Size(57, 80);
+            this.btnAlterar.Size = new System.Drawing.Size(72, 80);
             this.btnAlterar.TabIndex = 11;
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnAlterar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -932,7 +932,7 @@
             this.bntSair.BackColor1 = System.Drawing.Color.Transparent;
             this.bntSair.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntSair.BackgroundImage")));
             this.bntSair.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.bntSair.ButtonText = "Sair";
+            this.bntSair.ButtonText = "(Esc) Sair";
             this.bntSair.ButtonTextMarginLeft = 0;
             this.bntSair.ColorContrastOnClick = 45;
             this.bntSair.ColorContrastOnHover = 45;
@@ -966,7 +966,7 @@
             this.bntSair.IdleIconRightImage = null;
             this.bntSair.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.bntSair.IndicateFocus = false;
-            this.bntSair.Location = new System.Drawing.Point(416, 25);
+            this.bntSair.Location = new System.Drawing.Point(417, 25);
             this.bntSair.Name = "bntSair";
             this.bntSair.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.bntSair.OnDisabledState.BorderRadius = 1;
@@ -1023,7 +1023,7 @@
             this.btnSalvar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnSalvar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalvar.BackgroundImage")));
             this.btnSalvar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnSalvar.ButtonText = "Salvar";
+            this.btnSalvar.ButtonText = "(F10) Salvar";
             this.btnSalvar.ButtonTextMarginLeft = 0;
             this.btnSalvar.ColorContrastOnClick = 45;
             this.btnSalvar.ColorContrastOnHover = 45;
@@ -1057,7 +1057,7 @@
             this.btnSalvar.IdleIconRightImage = null;
             this.btnSalvar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnSalvar.IndicateFocus = false;
-            this.btnSalvar.Location = new System.Drawing.Point(88, 25);
+            this.btnSalvar.Location = new System.Drawing.Point(82, 25);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSalvar.OnDisabledState.BorderRadius = 1;
@@ -1091,7 +1091,7 @@
             this.btnSalvar.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnSalvar.OnPressedState.IconLeftImage = null;
             this.btnSalvar.OnPressedState.IconRightImage = null;
-            this.btnSalvar.Size = new System.Drawing.Size(57, 80);
+            this.btnSalvar.Size = new System.Drawing.Size(67, 80);
             this.btnSalvar.TabIndex = 9;
             this.btnSalvar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSalvar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1114,7 +1114,7 @@
             this.btnExcluir.BackColor1 = System.Drawing.Color.Transparent;
             this.btnExcluir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExcluir.BackgroundImage")));
             this.btnExcluir.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnExcluir.ButtonText = "Excluir";
+            this.btnExcluir.ButtonText = "(F3) Excluir";
             this.btnExcluir.ButtonTextMarginLeft = 0;
             this.btnExcluir.ColorContrastOnClick = 45;
             this.btnExcluir.ColorContrastOnHover = 45;
@@ -1148,7 +1148,7 @@
             this.btnExcluir.IdleIconRightImage = null;
             this.btnExcluir.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.btnExcluir.IndicateFocus = false;
-            this.btnExcluir.Location = new System.Drawing.Point(334, 25);
+            this.btnExcluir.Location = new System.Drawing.Point(329, 25);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnExcluir.OnDisabledState.BorderRadius = 1;
@@ -1182,7 +1182,7 @@
             this.btnExcluir.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnExcluir.OnPressedState.IconLeftImage = null;
             this.btnExcluir.OnPressedState.IconRightImage = null;
-            this.btnExcluir.Size = new System.Drawing.Size(57, 80);
+            this.btnExcluir.Size = new System.Drawing.Size(76, 80);
             this.btnExcluir.TabIndex = 13;
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluir.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;

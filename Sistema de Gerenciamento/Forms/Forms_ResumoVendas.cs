@@ -37,6 +37,14 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
+            BuscarResumoVendas();
+        }
+
+
+        private void BuscarResumoVendas()
+        {
+
+
             if (cmbTipoPesquisa.Text == "Data")
             {
                 bool isResultadoEncontrado = Buscar.BuscarResumoVendaPorData(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
@@ -79,8 +87,9 @@ namespace Sistema_de_Gerenciamento.Forms
             lblValorBrutoVendido.Text = valorBrutovendido;
 
             lblValorGastoBruto.Text = valorGastoBruto;
-        }
 
+
+        }
         private void MenssagemResultadoNaoEncontrado(bool _isResultadoEncontrado)
         {
             if (_isResultadoEncontrado == false)
@@ -99,6 +108,10 @@ namespace Sistema_de_Gerenciamento.Forms
             if (e.KeyCode == Keys.Escape)
             {
                 FecharTela.DesejaFecharTela(this, e);
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                BuscarResumoVendas();
             }
         }
     }

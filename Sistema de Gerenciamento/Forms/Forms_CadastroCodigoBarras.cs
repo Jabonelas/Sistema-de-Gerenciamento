@@ -32,7 +32,32 @@ namespace Sistema_de_Gerenciamento.Forms
             PreenchimentoTextBox();
         }
 
-        #region Preenchimento TextBox
+        private void Forms_CadastroCodigoBarras_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela.DesejaFecharTela(this, e);
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                AdicionarCodigoBarras();
+            }
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnAdicionarCodigoBarras_Click(object sender, EventArgs e)
+        {
+            AdicionarCodigoBarras();
+        }
+
+        private void txtCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiNumero(e);
+        }
 
         private void PreenchimentoTextBox()
         {
@@ -71,28 +96,21 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        #endregion Preenchimento TextBox
-
-        private void txtCodigoBarras_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiNumero(e);
-        }
-
-        private void btnAdicionarCodigoBarras_Click(object sender, EventArgs e)
+        private void AdicionarCodigoBarras()
         {
             if (ManipulacaoTextBox.TextBoxEstaVazio(this) == false)
             {
                 if (Buscar.BuscarCodigoBarras(Convert.ToInt32(txtCodigoBarras.Text)) == true)
                 {
                     if (Buscar.BuscarExistenciaCodigoBarrasComMesmoCodigoProduto(Convert.ToInt32(txtCodigoBarras.Text),
-                        Convert.ToInt32(txtCodigoProduto.Text)) == true)
+                            Convert.ToInt32(txtCodigoProduto.Text)) == true)
                     {
                         InserirProdutoNoEstoque();
                     }
                     else
                     {
                         MessageBox.Show("Codigo de Barras Já Registrado!", "Informarção!", MessageBoxButtons.OK,
-                       MessageBoxIcon.Information);
+                            MessageBoxIcon.Information);
 
                         txtCodigoBarras.Focus();
                     }
@@ -158,19 +176,6 @@ namespace Sistema_de_Gerenciamento.Forms
 
                     this.Close();
                 }
-            }
-        }
-
-        private void btnFechar_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Forms_CadastroCodigoBarras_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-            {
-                FecharTela.DesejaFecharTela(this, e);
             }
         }
     }

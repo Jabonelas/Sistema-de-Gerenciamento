@@ -178,6 +178,24 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 FecharTela.DesejaFecharTela(this, e);
             }
+            else if (e.KeyCode == Keys.F10)
+            {
+                SelecionarGridView();
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                PesquisarDespesa();
+
+                SetarDesignColunaGridView();
+            }
+            else if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                Imprimir.ImprimirGridView("Relatorio de Despesas", gdvPesquisarDespesa);
+            }
+            else if (e.KeyCode == Keys.E && e.Modifiers == Keys.Control)
+            {
+                ExportarExcel.GerarExcel(gdvPesquisarDespesa);
+            }
         }
     }
 }

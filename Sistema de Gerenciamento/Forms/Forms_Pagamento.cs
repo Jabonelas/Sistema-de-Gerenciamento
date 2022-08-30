@@ -109,6 +109,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
+            ConfirmarPagamento();
+        }
+
+        private void ConfirmarPagamento()
+        {
             if (tipoPagamento == "Troca")
             {
                 decimal valorDesconto = Convert.ToDecimal(lblValorDesconto.Text.Replace("R$", "")) / (gdvPagamento.Rows.Count - quantidadeItens);
@@ -199,7 +204,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     }
                 }
 
-                Atualizar.AtuazliarPrazoGarantia(listaDadosNotaFiscalSaidaCompleta[0].numeroNF,
+                Atualizar.AtualizarPrazoGarantia(listaDadosNotaFiscalSaidaCompleta[0].numeroNF,
                     listaDadosNotaFiscalSaidaCompleta[0].validadeTroca.AddDays(30));
 
                 AvisoCantoInferiorDireito.Confirmacao();
@@ -380,7 +385,6 @@ namespace Sistema_de_Gerenciamento.Forms
         private void PagamentoCarne()
         {
             lblValorDebito.Visible = false;
-            txtValorDinheiro.Visible = false;
             lblValorTotal.Text = string.Format("{0:C}", valorBruto);
             cmbParcelas.SelectedIndex = 0;
             lblTituloFormaPagamento.Text = "CARNÊ";
@@ -390,14 +394,14 @@ namespace Sistema_de_Gerenciamento.Forms
             pnlQRCode.Visible = false;
             pnlChavePix.Visible = false;
             LayoutTipoPagamentoCredito(true);
+            txtValorDinheiro.Visible = false;
         }
 
         private void PagamentoCredito()
         {
-            lblValorDebito.Visible = false;
-            txtValorDinheiro.Visible = false;
             lblValorTotal.Text = string.Format("{0:C}", valorBruto);
             cmbParcelas.SelectedIndex = 0;
+            cmbParcelas.Visible = true;
             lblTituloFormaPagamento.Text = "CRÉDITO";
             lblValorDesconto.Text = "R$ 0,00";
             pnlTroco.Visible = false;
@@ -405,6 +409,7 @@ namespace Sistema_de_Gerenciamento.Forms
             pnlQRCode.Visible = false;
             pnlChavePix.Visible = false;
             LayoutTipoPagamentoCredito(true);
+            txtValorDinheiro.Visible = false;
         }
 
         private void PagamentoDebito()
@@ -414,24 +419,23 @@ namespace Sistema_de_Gerenciamento.Forms
             pnlTotalRecebido.Visible = false;
             pnlQRCode.Visible = false;
             pnlChavePix.Visible = false;
-            lblValorDebito.Text = lblValorTotal.Text;
-            lblValorDebito.Visible = true;
-            lblValorDebito.Text = lblValorTotal.Text;
             LayoutTipoPagamentoCredito(false);
             PagamentoComDescontos();
+            lblValorDebito.Visible = true;
+            lblValorDebito.Text = lblValorTotal.Text;
         }
 
         private void PagamentoDinheiro()
         {
             lblTituloFormaPagamento.Text = "DINHEIRO";
             lblValorDebito.Visible = false;
-            txtValorDinheiro.Visible = true;
             pnlTroco.Visible = true;
             pnlTotalRecebido.Visible = true;
             pnlQRCode.Visible = false;
             pnlChavePix.Visible = false;
             LayoutTipoPagamentoCredito(false);
             PagamentoComDescontos();
+            txtValorDinheiro.Visible = true;
         }
 
         private void PagamentoPIX()
@@ -469,9 +473,13 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void Forms_Pagamento_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Escape) // Esc para finalizar
+            if (e.KeyCode == Keys.Escape)
             {
                 this.Close();
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                ConfirmarPagamento();
             }
         }
 

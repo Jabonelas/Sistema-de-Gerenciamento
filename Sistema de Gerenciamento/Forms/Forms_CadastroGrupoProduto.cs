@@ -111,6 +111,14 @@ namespace Sistema_de_Gerenciamento
             {
                 FecharTela.DesejaFecharTela(this, e);
             }
+            else if (e.KeyCode == Keys.F10)
+            {
+                SalvarGrupoProduto();
+            }
+            else if (e.KeyCode == Keys.F3)
+            {
+                SalvarGrupoProduto();
+            }
         }
     }
 }

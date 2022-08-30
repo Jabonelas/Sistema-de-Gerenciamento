@@ -305,7 +305,26 @@ namespace Sistema_de_Gerenciamento
 
         private void Forms_PesquisarCliente_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if (e.KeyCode == Keys.Escape)
+            {
+                FecharTela.DesejaFecharTela(this, e);
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                SelecaoGridViewPreencherTextBox();
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                PesquisarCliente();
+            }
+            else if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                Imprimir.ImprimirGridView("Relatorio de Cliente", gdvPesquisarCliente);
+            }
+            else if (e.KeyCode == Keys.E && e.Modifiers == Keys.Control)
+            {
+                ExportarExcel.GerarExcel(gdvPesquisarCliente);
+            }
         }
     }
 }

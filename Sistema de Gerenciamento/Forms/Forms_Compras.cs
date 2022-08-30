@@ -348,6 +348,21 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 FecharTela.DesejaFecharTela(this, e);
             }
+            else if (e.KeyCode == Keys.F10)
+            {
+                if (SalvarCompras() == true)
+                {
+                    LancarCustos();
+                }
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                AlterarCodigoBarras();
+            }
+            else if (e.KeyCode == Keys.F3)
+            {
+                ExlcuirCompra();
+            }
         }
     }
 }

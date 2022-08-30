@@ -337,7 +337,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(655, 155);
+            this.label10.Location = new System.Drawing.Point(669, 155);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(116, 15);
             this.label10.TabIndex = 69;
@@ -408,7 +408,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gray;
-            this.label3.Location = new System.Drawing.Point(645, 407);
+            this.label3.Location = new System.Drawing.Point(660, 407);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 42);
             this.label3.TabIndex = 57;
@@ -553,7 +553,7 @@
             this.btnInserirImagemProduto.BackColor1 = System.Drawing.Color.Transparent;
             this.btnInserirImagemProduto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnInserirImagemProduto.BackgroundImage")));
             this.btnInserirImagemProduto.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnInserirImagemProduto.ButtonText = "Inserir Imagem";
+            this.btnInserirImagemProduto.ButtonText = "(Ctrl + D) Inserir Imagem";
             this.btnInserirImagemProduto.ButtonTextMarginLeft = 0;
             this.btnInserirImagemProduto.ColorContrastOnClick = 45;
             this.btnInserirImagemProduto.ColorContrastOnHover = 45;
@@ -620,7 +620,7 @@
             this.btnInserirImagemProduto.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnInserirImagemProduto.OnPressedState.IconLeftImage = null;
             this.btnInserirImagemProduto.OnPressedState.IconRightImage = null;
-            this.btnInserirImagemProduto.Size = new System.Drawing.Size(134, 39);
+            this.btnInserirImagemProduto.Size = new System.Drawing.Size(161, 39);
             this.btnInserirImagemProduto.TabIndex = 17;
             this.btnInserirImagemProduto.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnInserirImagemProduto.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1252,7 +1252,7 @@
             this.pcbProduto.BaseColor = System.Drawing.Color.White;
             this.pcbProduto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pcbProduto.Image = global::Sistema_de_Gerenciamento.Properties.Resources.camera3;
-            this.pcbProduto.Location = new System.Drawing.Point(645, 186);
+            this.pcbProduto.Location = new System.Drawing.Point(659, 186);
             this.pcbProduto.Name = "pcbProduto";
             this.pcbProduto.Size = new System.Drawing.Size(134, 173);
             this.pcbProduto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1348,7 +1348,7 @@
             this.bntSair.BackColor1 = System.Drawing.Color.Transparent;
             this.bntSair.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntSair.BackgroundImage")));
             this.bntSair.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.bntSair.ButtonText = "Sair";
+            this.bntSair.ButtonText = "(Esc) Sair";
             this.bntSair.ButtonTextMarginLeft = 0;
             this.bntSair.ColorContrastOnClick = 45;
             this.bntSair.ColorContrastOnHover = 45;
@@ -1439,7 +1439,7 @@
             this.btnExcluirProduto.BackColor1 = System.Drawing.Color.Transparent;
             this.btnExcluirProduto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExcluirProduto.BackgroundImage")));
             this.btnExcluirProduto.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnExcluirProduto.ButtonText = "Excluir";
+            this.btnExcluirProduto.ButtonText = "(F3) Excluir";
             this.btnExcluirProduto.ButtonTextMarginLeft = 0;
             this.btnExcluirProduto.ColorContrastOnClick = 45;
             this.btnExcluirProduto.ColorContrastOnHover = 45;
@@ -1530,7 +1530,7 @@
             this.btnBuscarProduto.BackColor1 = System.Drawing.Color.Transparent;
             this.btnBuscarProduto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscarProduto.BackgroundImage")));
             this.btnBuscarProduto.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnBuscarProduto.ButtonText = "Procurar";
+            this.btnBuscarProduto.ButtonText = "(F2) Procurar";
             this.btnBuscarProduto.ButtonTextMarginLeft = 0;
             this.btnBuscarProduto.ColorContrastOnClick = 45;
             this.btnBuscarProduto.ColorContrastOnHover = 45;
@@ -1621,7 +1621,7 @@
             this.btnAlterarProduto.BackColor1 = System.Drawing.Color.Transparent;
             this.btnAlterarProduto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAlterarProduto.BackgroundImage")));
             this.btnAlterarProduto.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnAlterarProduto.ButtonText = "Alterar";
+            this.btnAlterarProduto.ButtonText = "(F5) Alterar";
             this.btnAlterarProduto.ButtonTextMarginLeft = 0;
             this.btnAlterarProduto.ColorContrastOnClick = 45;
             this.btnAlterarProduto.ColorContrastOnHover = 45;
@@ -1712,7 +1712,7 @@
             this.btnSalvar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnSalvar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalvar.BackgroundImage")));
             this.btnSalvar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnSalvar.ButtonText = "Salvar";
+            this.btnSalvar.ButtonText = "(F10) Salvar";
             this.btnSalvar.ButtonTextMarginLeft = 0;
             this.btnSalvar.ColorContrastOnClick = 45;
             this.btnSalvar.ColorContrastOnHover = 45;
@@ -1803,7 +1803,7 @@
             this.btnNovoProduto.BackColor1 = System.Drawing.Color.Transparent;
             this.btnNovoProduto.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnNovoProduto.BackgroundImage")));
             this.btnNovoProduto.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnNovoProduto.ButtonText = "Novo";
+            this.btnNovoProduto.ButtonText = "(F1) Novo";
             this.btnNovoProduto.ButtonTextMarginLeft = 0;
             this.btnNovoProduto.ColorContrastOnClick = 45;
             this.btnNovoProduto.ColorContrastOnHover = 45;
@@ -1963,7 +1963,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 479);
+            this.ClientSize = new System.Drawing.Size(818, 479);
             this.Controls.Add(this.lblCodigoPrimaryKey);
             this.Controls.Add(this.cmbUn);
             this.Controls.Add(this.cmbGrupo);

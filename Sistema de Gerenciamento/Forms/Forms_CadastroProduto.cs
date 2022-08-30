@@ -384,6 +384,31 @@ namespace Sistema_de_Gerenciamento
             {
                 FecharTela.DesejaFecharTela(this, e);
             }
+            else if (e.KeyCode == Keys.F1)
+            {
+                NovoCadastroProduto();
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                SalvarCadastroProduto();
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                AtualizarCadastroProduto();
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                Forms_PesquisarProduto buscarProduto = new Forms_PesquisarProduto(this, "Cadastro Produto");
+                buscarProduto.ShowDialog();
+            }
+            else if (e.KeyCode == Keys.F3)
+            {
+                ExcluirCadastroProduto();
+            }
+            else if (e.KeyCode == Keys.D && e.Modifiers == Keys.Control)
+            {
+                InserirImagemProduto();
+            }
         }
     }
 }

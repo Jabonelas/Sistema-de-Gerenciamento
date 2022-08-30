@@ -149,6 +149,7 @@
             DevExpress.XtraCharts.UI.CreateBoxPlotChartItem createBoxPlotChartItem1 = new DevExpress.XtraCharts.UI.CreateBoxPlotChartItem();
             DevExpress.Skins.SkinPaddingEdges skinPaddingEdges1 = new DevExpress.Skins.SkinPaddingEdges();
             DevExpress.Skins.SkinPaddingEdges skinPaddingEdges2 = new DevExpress.Skins.SkinPaddingEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.dtpDataFinal = new System.Windows.Forms.DateTimePicker();
@@ -206,6 +207,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.chartBarController1 = new DevExpress.XtraCharts.UI.ChartBarController(this.components);
+            this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             ((System.ComponentModel.ISupportInitialize)(this.tb_NotaFiscalSaidaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chrEstatisicasFinanceiras)).BeginInit();
@@ -347,7 +349,7 @@
             this.btnPesquisar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnPesquisar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPesquisar.BackgroundImage")));
             this.btnPesquisar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnPesquisar.ButtonText = "Pesquisar";
+            this.btnPesquisar.ButtonText = "(F2) Pesquisar";
             this.btnPesquisar.ButtonTextMarginLeft = 0;
             this.btnPesquisar.ColorContrastOnClick = 45;
             this.btnPesquisar.ColorContrastOnHover = 45;
@@ -966,7 +968,7 @@
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 563);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 621);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Size = new System.Drawing.Size(951, 0);
             // 
@@ -976,7 +978,7 @@
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 49);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 514);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 572);
             // 
             // barDockControlRight
             // 
@@ -984,7 +986,7 @@
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
             this.barDockControlRight.Location = new System.Drawing.Point(951, 49);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 514);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 572);
             // 
             // chartBarController1
             // 
@@ -1016,11 +1018,102 @@
             this.chartBarController1.BarItems.Add(this.createExportBaseItem1);
             this.chartBarController1.Control = this.chrEstatisicasFinanceiras;
             // 
+            // btnFechar
+            // 
+            this.btnFechar.AllowAnimations = true;
+            this.btnFechar.AllowMouseEffects = true;
+            this.btnFechar.AllowToggling = false;
+            this.btnFechar.AnimationSpeed = 200;
+            this.btnFechar.AutoGenerateColors = false;
+            this.btnFechar.AutoRoundBorders = false;
+            this.btnFechar.AutoSizeLeftIcon = true;
+            this.btnFechar.AutoSizeRightIcon = true;
+            this.btnFechar.BackColor = System.Drawing.Color.Transparent;
+            this.btnFechar.BackColor1 = System.Drawing.Color.Transparent;
+            this.btnFechar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFechar.BackgroundImage")));
+            this.btnFechar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnFechar.ButtonText = "(Esc) Fechar";
+            this.btnFechar.ButtonTextMarginLeft = 0;
+            this.btnFechar.ColorContrastOnClick = 45;
+            this.btnFechar.ColorContrastOnHover = 45;
+            this.btnFechar.Cursor = System.Windows.Forms.Cursors.Default;
+            borderEdges2.BottomLeft = true;
+            borderEdges2.BottomRight = true;
+            borderEdges2.TopLeft = true;
+            borderEdges2.TopRight = true;
+            this.btnFechar.CustomizableEdges = borderEdges2;
+            this.btnFechar.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnFechar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnFechar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnFechar.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnFechar.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btnFechar.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFechar.ForeColor = System.Drawing.Color.Black;
+            this.btnFechar.IconLeftAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFechar.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnFechar.IconLeftPadding = new System.Windows.Forms.Padding(11, 3, 3, 3);
+            this.btnFechar.IconMarginLeft = 11;
+            this.btnFechar.IconPadding = 10;
+            this.btnFechar.IconRightAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFechar.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnFechar.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnFechar.IconSize = 25;
+            this.btnFechar.IdleBorderColor = System.Drawing.Color.Black;
+            this.btnFechar.IdleBorderRadius = 1;
+            this.btnFechar.IdleBorderThickness = 1;
+            this.btnFechar.IdleFillColor = System.Drawing.Color.Transparent;
+            this.btnFechar.IdleIconLeftImage = null;
+            this.btnFechar.IdleIconRightImage = null;
+            this.btnFechar.IndicateFocus = false;
+            this.btnFechar.Location = new System.Drawing.Point(388, 566);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnFechar.OnDisabledState.BorderRadius = 1;
+            this.btnFechar.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnFechar.OnDisabledState.BorderThickness = 1;
+            this.btnFechar.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnFechar.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnFechar.OnDisabledState.IconLeftImage = null;
+            this.btnFechar.OnDisabledState.IconRightImage = null;
+            this.btnFechar.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnFechar.onHoverState.BorderRadius = 1;
+            this.btnFechar.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnFechar.onHoverState.BorderThickness = 1;
+            this.btnFechar.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnFechar.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnFechar.onHoverState.IconLeftImage = null;
+            this.btnFechar.onHoverState.IconRightImage = null;
+            this.btnFechar.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.btnFechar.OnIdleState.BorderRadius = 1;
+            this.btnFechar.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnFechar.OnIdleState.BorderThickness = 1;
+            this.btnFechar.OnIdleState.FillColor = System.Drawing.Color.Transparent;
+            this.btnFechar.OnIdleState.ForeColor = System.Drawing.Color.Black;
+            this.btnFechar.OnIdleState.IconLeftImage = null;
+            this.btnFechar.OnIdleState.IconRightImage = null;
+            this.btnFechar.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnFechar.OnPressedState.BorderRadius = 1;
+            this.btnFechar.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnFechar.OnPressedState.BorderThickness = 1;
+            this.btnFechar.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnFechar.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnFechar.OnPressedState.IconLeftImage = null;
+            this.btnFechar.OnPressedState.IconRightImage = null;
+            this.btnFechar.Size = new System.Drawing.Size(187, 39);
+            this.btnFechar.TabIndex = 318;
+            this.btnFechar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnFechar.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnFechar.TextMarginLeft = 0;
+            this.btnFechar.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnFechar.UseDefaultRadiusAndThickness = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            // 
             // Forms_EstatisticasFinanceiras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(951, 563);
+            this.ClientSize = new System.Drawing.Size(951, 621);
+            this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.chrEstatisicasFinanceiras);
             this.Controls.Add(this.label10);
@@ -1118,5 +1211,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraCharts.UI.ChartBarController chartBarController1;
         private DevExpress.XtraCharts.ChartControl chrEstatisicasFinanceiras;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnFechar;
     }
 }

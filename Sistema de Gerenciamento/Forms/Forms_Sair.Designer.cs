@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Forms_Sair));
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges2 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges3 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges4 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.btnFinalizar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnTrocarUsuario = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnCancelar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -51,16 +51,16 @@
             this.btnFinalizar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnFinalizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnFinalizar.BackgroundImage")));
             this.btnFinalizar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnFinalizar.ButtonText = "Finalizar";
+            this.btnFinalizar.ButtonText = "(Esc) Finalizar";
             this.btnFinalizar.ButtonTextMarginLeft = 0;
             this.btnFinalizar.ColorContrastOnClick = 45;
             this.btnFinalizar.ColorContrastOnHover = 45;
             this.btnFinalizar.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges1.BottomLeft = true;
-            borderEdges1.BottomRight = true;
-            borderEdges1.TopLeft = true;
-            borderEdges1.TopRight = true;
-            this.btnFinalizar.CustomizableEdges = borderEdges1;
+            borderEdges4.BottomLeft = true;
+            borderEdges4.BottomRight = true;
+            borderEdges4.TopLeft = true;
+            borderEdges4.TopRight = true;
+            this.btnFinalizar.CustomizableEdges = borderEdges4;
             this.btnFinalizar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnFinalizar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnFinalizar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -141,16 +141,16 @@
             this.btnTrocarUsuario.BackColor1 = System.Drawing.Color.Transparent;
             this.btnTrocarUsuario.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTrocarUsuario.BackgroundImage")));
             this.btnTrocarUsuario.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnTrocarUsuario.ButtonText = "Trocar Usuário";
+            this.btnTrocarUsuario.ButtonText = "(Ctrl + L) Trocar Usuário";
             this.btnTrocarUsuario.ButtonTextMarginLeft = 0;
             this.btnTrocarUsuario.ColorContrastOnClick = 45;
             this.btnTrocarUsuario.ColorContrastOnHover = 45;
             this.btnTrocarUsuario.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges2.BottomLeft = true;
-            borderEdges2.BottomRight = true;
-            borderEdges2.TopLeft = true;
-            borderEdges2.TopRight = true;
-            this.btnTrocarUsuario.CustomizableEdges = borderEdges2;
+            borderEdges5.BottomLeft = true;
+            borderEdges5.BottomRight = true;
+            borderEdges5.TopLeft = true;
+            borderEdges5.TopRight = true;
+            this.btnTrocarUsuario.CustomizableEdges = borderEdges5;
             this.btnTrocarUsuario.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnTrocarUsuario.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnTrocarUsuario.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -231,16 +231,16 @@
             this.btnCancelar.BackColor1 = System.Drawing.Color.Transparent;
             this.btnCancelar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCancelar.BackgroundImage")));
             this.btnCancelar.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnCancelar.ButtonText = "Cancelar";
+            this.btnCancelar.ButtonText = "(Ctrl + C) Cancelar";
             this.btnCancelar.ButtonTextMarginLeft = 0;
             this.btnCancelar.ColorContrastOnClick = 45;
             this.btnCancelar.ColorContrastOnHover = 45;
             this.btnCancelar.Cursor = System.Windows.Forms.Cursors.Default;
-            borderEdges3.BottomLeft = true;
-            borderEdges3.BottomRight = true;
-            borderEdges3.TopLeft = true;
-            borderEdges3.TopRight = true;
-            this.btnCancelar.CustomizableEdges = borderEdges3;
+            borderEdges6.BottomLeft = true;
+            borderEdges6.BottomRight = true;
+            borderEdges6.TopLeft = true;
+            borderEdges6.TopRight = true;
+            this.btnCancelar.CustomizableEdges = borderEdges6;
             this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnCancelar.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnCancelar.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
@@ -307,7 +307,7 @@
             this.btnCancelar.UseDefaultRadiusAndThickness = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // Sair
+            // Forms_Sair
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -316,9 +316,11 @@
             this.Controls.Add(this.btnTrocarUsuario);
             this.Controls.Add(this.btnFinalizar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "Sair";
+            this.KeyPreview = true;
+            this.Name = "Forms_Sair";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sair";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_Sair_KeyDown);
             this.ResumeLayout(false);
 
         }

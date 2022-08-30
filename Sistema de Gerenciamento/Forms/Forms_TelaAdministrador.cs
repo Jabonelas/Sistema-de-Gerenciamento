@@ -233,18 +233,34 @@ namespace Sistema_de_Gerenciamento
             }
             else
             {
-                btnVendaConsole.Location = new Point(93, 100);
-                btnPDVConsole.Location = new Point(245, 100);
-                btnProdutoConsole.Location = new Point(394, 100);
-                btnClienteConsole.Location = new Point(546, 100);
-                btnCConsultarEstoqueConsole.Location = new Point(695, 100);
-                btnTrocaConsole.Location = new Point(6, 400);
-                btnDespesasConsole.Location = new Point(161, 400);
-                btnComprasConsole.Location = new Point(317, 400);
-                btnResumoVendasConsole.Location = new Point(472, 400);
-                btnFluxoCaixaConsole.Location = new Point(625, 400);
-                btnSair.Location = new Point(778, 400);
+                btnVendaConsole.Location = new Point(93, 50);
+                btnPDVConsole.Location = new Point(394, 50);
+                btnProdutoConsole.Location = new Point(695, 50);
+                btnClienteConsole.Location = new Point(93, 300);
+                btnCConsultarEstoqueConsole.Location = new Point(394, 300);
+                btnSair.Location = new Point(695, 300);
+                btnTrocaConsole.Visible = false;
+                btnComprasConsole.Visible = false;
+                btnResumoVendasConsole.Visible = false;
+                btnFluxoCaixaConsole.Visible = false;
                 tabControl.Visible = false;
+
+                this.Size = new Size(934, 550);
+
+                //////////////////
+                //btnVendaConsole.Location = new Point(93, 100);
+                //btnPDVConsole.Location = new Point(245, 100);
+                //btnPDVConsole.Location = new Point(245, 100);
+                //btnProdutoConsole.Location = new Point(394, 100);
+                //btnClienteConsole.Location = new Point(546, 100);
+                //btnCConsultarEstoqueConsole.Location = new Point(695, 100);
+                //btnTrocaConsole.Location = new Point(6, 400);
+                //btnDespesasConsole.Location = new Point(161, 400);
+                //btnComprasConsole.Location = new Point(317, 400);
+                //btnResumoVendasConsole.Location = new Point(472, 400);
+                //btnFluxoCaixaConsole.Location = new Point(625, 400);
+                //btnSair.Location = new Point(778, 400);
+                //tabControl.Visible = false;
             }
         }
 

@@ -22,6 +22,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnConfirmarCarne_Click(object sender, EventArgs e)
         {
+            ConfimarPagamento();
+        }
+
+        private void ConfimarPagamento()
+        {
             if (txtPrazoCarne.Text != string.Empty && cmbParcelasCarne.Text != string.Empty && txtJurosCarneParcelas.Text != string.Empty)
             {
                 Atualizacao.JurosPorCarne(Convert.ToInt32(txtPrazoCarne.Text), Convert.ToDecimal(txtJurosCarneParcelas.Text.Replace("%", "")),
@@ -76,6 +81,10 @@ namespace Sistema_de_Gerenciamento.Forms
             if (e.KeyCode == Keys.Escape)
             {
                 FecharTela.DesejaFecharTela(this, e);
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                ConfimarPagamento();
             }
         }
     }

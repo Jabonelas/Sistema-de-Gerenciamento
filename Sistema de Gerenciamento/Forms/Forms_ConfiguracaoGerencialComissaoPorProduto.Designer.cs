@@ -89,7 +89,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.btnConfirmarComissao.BackColor1 = System.Drawing.Color.Transparent;
             this.btnConfirmarComissao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfirmarComissao.BackgroundImage")));
             this.btnConfirmarComissao.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnConfirmarComissao.ButtonText = "Confirmar";
+            this.btnConfirmarComissao.ButtonText = "(F10) Confirmar";
             this.btnConfirmarComissao.ButtonTextMarginLeft = 0;
             this.btnConfirmarComissao.ColorContrastOnClick = 45;
             this.btnConfirmarComissao.ColorContrastOnHover = 45;
@@ -165,7 +165,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.btnConfirmarComissao.UseDefaultRadiusAndThickness = true;
             this.btnConfirmarComissao.Click += new System.EventHandler(this.btnConfirmarComissao_Click);
             // 
-            // Forms_ConfiguracaoGerencialComissãoPorProduto
+            // Forms_ConfiguracaoGerencialComissaoPorProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -175,7 +175,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.Controls.Add(this.label15);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.KeyPreview = true;
-            this.Name = "Forms_ConfiguracaoGerencialComissãoPorProduto";
+            this.Name = "Forms_ConfiguracaoGerencialComissaoPorProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configuração Gerencial Comissão Por Produto";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_ConfiguracaoGerencialComissãoPorProduto_KeyDown);

@@ -55,6 +55,10 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 FecharTela.DesejaFecharTela(this, e);
             }
+            else if (e.KeyCode == Keys.F10)
+            {
+                AtualizacaoPorcentagemAvista();
+            }
         }
     }
 }

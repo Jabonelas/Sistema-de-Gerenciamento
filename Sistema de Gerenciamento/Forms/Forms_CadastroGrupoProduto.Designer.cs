@@ -83,7 +83,7 @@
             this.btnSalvarGrupo.BackColor1 = System.Drawing.Color.Transparent;
             this.btnSalvarGrupo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalvarGrupo.BackgroundImage")));
             this.btnSalvarGrupo.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnSalvarGrupo.ButtonText = "Salvar";
+            this.btnSalvarGrupo.ButtonText = "(F10) Salvar";
             this.btnSalvarGrupo.ButtonTextMarginLeft = 0;
             this.btnSalvarGrupo.ColorContrastOnClick = 45;
             this.btnSalvarGrupo.ColorContrastOnHover = 45;
@@ -344,7 +344,7 @@
             this.bntSair.BackColor1 = System.Drawing.Color.Transparent;
             this.bntSair.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bntSair.BackgroundImage")));
             this.bntSair.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.bntSair.ButtonText = "Sair";
+            this.bntSair.ButtonText = "(Esc) Sair";
             this.bntSair.ButtonTextMarginLeft = 0;
             this.bntSair.ColorContrastOnClick = 45;
             this.bntSair.ColorContrastOnHover = 45;
@@ -435,7 +435,7 @@
             this.btnExcluirGrupo.BackColor1 = System.Drawing.Color.Transparent;
             this.btnExcluirGrupo.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExcluirGrupo.BackgroundImage")));
             this.btnExcluirGrupo.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnExcluirGrupo.ButtonText = "Excluir";
+            this.btnExcluirGrupo.ButtonText = "(F3) Excluir";
             this.btnExcluirGrupo.ButtonTextMarginLeft = 0;
             this.btnExcluirGrupo.ColorContrastOnClick = 45;
             this.btnExcluirGrupo.ColorContrastOnHover = 45;

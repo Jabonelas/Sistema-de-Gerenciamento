@@ -172,6 +172,22 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 FecharTela.DesejaFecharTela(this, e);
             }
+            else if (e.KeyCode == Keys.F10)
+            {
+                SelecaoGridViewPreencherTextBox();
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                PesquisarFornecedor();
+            }
+            else if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                Imprimir.ImprimirGridView("Relatorio de Fornecedor", gdvPesquisarFornecedor);
+            }
+            else if (e.KeyCode == Keys.E && e.Modifiers == Keys.Control)
+            {
+                ExportarExcel.GerarExcel(gdvPesquisarFornecedor);
+            }
         }
     }
 }

@@ -45,6 +45,11 @@ namespace Sistema_de_Gerenciamento
 
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
+            FinalizarAplicacao();
+        }
+
+        private void FinalizarAplicacao()
+        {
             DialogResult OpcaoDoUsuario = new DialogResult();
             OpcaoDoUsuario = MessageBox.Show("Deseja Finalizar o Processo?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (OpcaoDoUsuario == DialogResult.Yes)
@@ -55,9 +60,30 @@ namespace Sistema_de_Gerenciamento
 
         private void btnTrocarUsuario_Click(object sender, EventArgs e)
         {
+            TrocaUsuario();
+        }
+
+        private void TrocaUsuario()
+        {
             fecharAdministrador.Hide();
             this.Hide();
             login.Show();
+        }
+
+        private void Forms_Sair_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
+            {
+                this.Close();
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                FinalizarAplicacao();
+            }
+            else if (e.KeyCode == Keys.L && e.Modifiers == Keys.Control)
+            {
+                TrocaUsuario();
+            }
         }
     }
 }

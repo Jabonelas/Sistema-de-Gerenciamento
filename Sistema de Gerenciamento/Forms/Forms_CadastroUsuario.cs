@@ -210,6 +210,14 @@ namespace Sistema_de_Gerenciamento
             {
                 FecharTela.DesejaFecharTela(this, e);
             }
+            else if (e.KeyCode == Keys.F10)
+            {
+                SalvarUsuario();
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                AlterarUsuario();
+            }
         }
     }
 }

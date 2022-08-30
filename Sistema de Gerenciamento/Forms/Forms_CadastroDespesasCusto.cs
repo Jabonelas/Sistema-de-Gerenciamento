@@ -199,6 +199,23 @@ namespace Sistema_de_Gerenciamento
             {
                 FecharTela.DesejaFecharTela(this, e);
             }
+            else if (e.KeyCode == Keys.F10)
+            {
+                SalvarCastroDespesas();
+            }
+            else if (e.KeyCode == Keys.F5)
+            {
+                AlterarCadastoDespesa();
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                Forms_PesquisarCadastroDespesaCusto buscarDespesasCusto = new Forms_PesquisarCadastroDespesaCusto(this);
+                buscarDespesasCusto.ShowDialog();
+            }
+            else if (e.KeyCode == Keys.F3)
+            {
+                ExcluirCadastroDespesa();
+            }
         }
     }
 }

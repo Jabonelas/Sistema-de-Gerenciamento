@@ -89,7 +89,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.btnConfirmarAvista.BackColor1 = System.Drawing.Color.Transparent;
             this.btnConfirmarAvista.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnConfirmarAvista.BackgroundImage")));
             this.btnConfirmarAvista.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnConfirmarAvista.ButtonText = "Confirmar";
+            this.btnConfirmarAvista.ButtonText = "(F10) Confirmar";
             this.btnConfirmarAvista.ButtonTextMarginLeft = 0;
             this.btnConfirmarAvista.ColorContrastOnClick = 45;
             this.btnConfirmarAvista.ColorContrastOnHover = 45;

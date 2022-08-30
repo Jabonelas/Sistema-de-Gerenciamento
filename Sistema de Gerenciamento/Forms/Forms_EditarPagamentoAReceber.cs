@@ -166,6 +166,10 @@ namespace Sistema_de_Gerenciamento.Forms
                 Convert.ToInt32(txtNumeroNotaFiscal.Text), txtQuantParcelas.Text, jurosAtraso,
                 Convert.ToDecimal(txtValorAPagar.Text.Replace("R$", "")));
 
+
+            Atualizar.AtualizarSaldoClienteParcelaPagamentoParcelaCarne(Convert.ToDecimal(valorParcela.Replace("R$","")), CpfCnpjCliente);
+
+
             AvisoCantoInferiorDireito.Confirmacao();
 
             btnConfirmarPagamento.Enabled = false;

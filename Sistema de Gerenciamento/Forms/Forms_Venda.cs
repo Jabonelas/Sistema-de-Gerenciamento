@@ -211,20 +211,35 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnGerarBoleto_Click(object sender, EventArgs e)
         {
+            Gerarboleto();
+        }
+
+        private void Gerarboleto()
+        {
+
             if (gdvVenda.Rows.Count > 0)
             {
                 PreencherListaNotaFiscalSaida();
 
-                if (Buscar.SaldoDisponivelCliente(txtCpfCnpjCliente.Text) >= Convert.ToDecimal(lblValorTotal.Text.Replace("R$", "")))
+                if (txtCodigoCliente.Text != string.Empty)
                 {
-                    Forms_GerarCarne gerarBoleto = new Forms_GerarCarne(this);
-                    gerarBoleto.ShowDialog();
+                    if (Buscar.SaldoDisponivelCliente(txtCpfCnpjCliente.Text) >= Convert.ToDecimal(lblValorTotal.Text.Replace("R$", "")))
+                    {
+                        Forms_GerarCarne gerarBoleto = new Forms_GerarCarne(this);
+                        gerarBoleto.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cliente Sem Saldo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Cliente Sem Saldo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Cliente Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+
+
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -513,7 +528,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 lblCodCliente.Visible = true;
                 txtCodigoCliente.Visible = true;
                 btnGerarBoleto.Visible = true;
-                btnImprimir.Visible = false;
                 btnConfirmarVenda.Visible = true;
                 btnCancelarVenda.Visible = true;
                 btnAbriCadastroCliente.Visible = true;
@@ -534,7 +548,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtPrecoSemDesconto.Location = new Point(769, 171);
                 btnAdicionar.Location = new Point(901, 162);
                 btnSair.Location = new Point(580, 41);
-                btnImprimir.Location = new Point(392, 41);
 
                 grupoBoxAvista.Visible = false;
                 grupboxCredito.Visible = false;
@@ -580,7 +593,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 lblCodCliente.Visible = false;
                 txtCodigoCliente.Visible = false;
                 btnGerarBoleto.Visible = false;
-                btnImprimir.Visible = true;
                 btnConfirmarVenda.Visible = false;
                 btnCancelarVenda.Visible = false;
                 btnAbriCadastroCliente.Visible = false;
@@ -600,7 +612,6 @@ namespace Sistema_de_Gerenciamento.Forms
                 lblPreco.Location = new Point(679, 153);
                 txtPrecoSemDesconto.Location = new Point(681, 171);
                 btnAdicionar.Location = new Point(814, 162);
-                btnImprimir.Location = new Point(202, 41);
                 btnSair.Location = new Point(297, 41);
 
                 grupoBoxAvista.Visible = true;
@@ -803,6 +814,10 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnConfirmarVenda_Click_1(object sender, EventArgs e)
         {
+        }
+
+        private void ConfirmarVenda()
+        {
             if (gdvVenda.Rows.Count > 0)
             {
                 PreencherListaNotaFiscalSaida();
@@ -834,6 +849,26 @@ namespace Sistema_de_Gerenciamento.Forms
             if (e.KeyCode == Keys.Escape)
             {
                 FecharTela.DesejaFecharTela(this, e);
+            }
+            else if (e.KeyCode == Keys.F1)
+            {
+                NovaVenda();
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                ConfirmarVenda();
+            }
+            else if (e.KeyCode == Keys.R && e.Modifiers == Keys.Control)
+            {
+                RemoverProduto();
+            }
+            else if (e.KeyCode == Keys.W && e.Modifiers == Keys.Control)
+            {
+                CancelarCompra();
+            }
+            else if (e.KeyCode == Keys.G && e.Modifiers == Keys.Control)
+            {
+                Gerarboleto();
             }
         }
     }

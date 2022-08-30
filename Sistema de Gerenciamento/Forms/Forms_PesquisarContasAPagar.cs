@@ -119,6 +119,11 @@ namespace Sistema_de_Gerenciamento
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
+            PesquisarContasAPagar();
+        }
+
+        private void PesquisarContasAPagar()
+        {
             valor = 0;
 
             linhasSelecionadas = 0;
@@ -393,6 +398,22 @@ namespace Sistema_de_Gerenciamento
             if (e.KeyCode == Keys.Escape)
             {
                 FecharTela.DesejaFecharTela(this, e);
+            }
+            else if (e.KeyCode == Keys.F10)
+            {
+                AbrirPreencherEditarPagamento();
+            }
+            else if (e.KeyCode == Keys.F2)
+            {
+                PesquisarContasAPagar();
+            }
+            else if (e.KeyCode == Keys.P && e.Modifiers == Keys.Control)
+            {
+                Imprimir.ImprimirGridView("Relatorio de Despesas/Custos", gdvContarPagar);
+            }
+            else if (e.KeyCode == Keys.E && e.Modifiers == Keys.Control)
+            {
+                ExportarExcel.GerarExcel(gdvContarPagar);
             }
         }
     }
