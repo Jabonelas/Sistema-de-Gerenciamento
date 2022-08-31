@@ -324,7 +324,10 @@ namespace Sistema_de_Gerenciamento
                 {
                     TransformarFrenquenciaEmDias(_despesaCusto);
 
-                    if (_despesaCusto.forncedorTitulo == "Comissao")
+                    bool isComissao = _despesaCusto.forncedorTitulo.Contains("Comissao") ? true : false;
+
+                    //if (_despesaCusto.forncedorTitulo == "Comissao")
+                    if (isComissao == true)
                     {
                         VerificarDiaPagamento(_despesaCusto);
 
@@ -362,7 +365,7 @@ namespace Sistema_de_Gerenciamento
 
         private void VerificarDiasFeriados(DateTime _dataVencimento)
         {
-            const string filePath = @"C:\GitHub\Sistema-de-Gerenciamento\FeriadosNacionais.txt";
+            const string filePath = @"C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\FeriadosNacionais.txt";
 
             string[] data = File.ReadAllLines(filePath);
 

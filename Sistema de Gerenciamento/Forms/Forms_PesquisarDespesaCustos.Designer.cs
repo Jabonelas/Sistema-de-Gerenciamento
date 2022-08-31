@@ -592,7 +592,7 @@
             this.btnExportarParaExcel.BackColor1 = System.Drawing.Color.Transparent;
             this.btnExportarParaExcel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnExportarParaExcel.BackgroundImage")));
             this.btnExportarParaExcel.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.btnExportarParaExcel.ButtonText = "(Ctrl + E) Exportar para o Execel \r\nRelação Nota Fiscal Saida";
+            this.btnExportarParaExcel.ButtonText = "(Ctrl + E) Exportar para o Excel \r\nRelação Nota Fiscal Saida";
             this.btnExportarParaExcel.ButtonTextMarginLeft = 0;
             this.btnExportarParaExcel.ColorContrastOnClick = 45;
             this.btnExportarParaExcel.ColorContrastOnHover = 45;

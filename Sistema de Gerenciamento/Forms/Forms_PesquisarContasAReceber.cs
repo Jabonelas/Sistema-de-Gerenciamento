@@ -134,8 +134,7 @@ namespace Sistema_de_Gerenciamento.Forms
             }
             else if (e.KeyCode == Keys.F10)
             {
-                Forms_EditarPagamentoAReceber editarPagamentoAReceber = new Forms_EditarPagamentoAReceber(this);
-                editarPagamentoAReceber.ShowDialog();
+                SelecionarContasAReceber();
             }
             else if (e.KeyCode == Keys.F2)
             {
@@ -159,8 +158,16 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnSelecionar_Click(object sender, EventArgs e)
         {
-            Forms_EditarPagamentoAReceber editarPagamentoAReceber = new Forms_EditarPagamentoAReceber(this);
-            editarPagamentoAReceber.ShowDialog();
+            SelecionarContasAReceber();
+        }
+
+        private void SelecionarContasAReceber()
+        {
+            if (gdvContarReceber.Rows.Count > 0)
+            {
+                Forms_EditarPagamentoAReceber editarPagamentoAReceber = new Forms_EditarPagamentoAReceber(this);
+                editarPagamentoAReceber.ShowDialog();
+            }
         }
 
         private void btnImprimir_Click(object sender, EventArgs e)

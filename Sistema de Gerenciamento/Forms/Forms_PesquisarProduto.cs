@@ -176,21 +176,24 @@ namespace Sistema_de_Gerenciamento
 
         private void ConfirmarSelececao()
         {
-            if (nomeTelaSolicitacao == "Tela PDV")
+            if (gdvPesquisarProduto.Rows.Count > 0)
             {
-                ConfirmarSelecaoPreencherTelaPDV();
-            }
-            else if (nomeTelaSolicitacao == "Tela Devolucao/Troca")
-            {
-                ConfirmarSelecaoPreencherTelaTroca();
-            }
-            else if (nomeTelaSolicitacao == "Tela Consultar Estoque")
-            {
-                ConfirmarSelecaoPreencherTelaConsultarEstoque();
-            }
-            else if (nomeTelaSolicitacao == "Cadastro Produto")
-            {
-                ConfirmarSelecaoPreencherTelaCadastroProduto();
+                if (nomeTelaSolicitacao == "Tela PDV")
+                {
+                    ConfirmarSelecaoPreencherTelaPDV();
+                }
+                else if (nomeTelaSolicitacao == "Tela Devolucao/Troca")
+                {
+                    ConfirmarSelecaoPreencherTelaTroca();
+                }
+                else if (nomeTelaSolicitacao == "Tela Consultar Estoque")
+                {
+                    ConfirmarSelecaoPreencherTelaConsultarEstoque();
+                }
+                else if (nomeTelaSolicitacao == "Cadastro Produto")
+                {
+                    ConfirmarSelecaoPreencherTelaCadastroProduto();
+                }
             }
         }
 

@@ -142,8 +142,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void AbrirFormsConsultaDetalhada()
         {
-            Forms_ConsultaEstoqueDetalhada exibirConsultaEstoque = new Forms_ConsultaEstoqueDetalhada(this);
-            exibirConsultaEstoque.ShowDialog();
+            if (gdvConsultarEstoque.Rows.Count > 0)
+            {
+                Forms_ConsultaEstoqueDetalhada exibirConsultaEstoque = new Forms_ConsultaEstoqueDetalhada(this);
+                exibirConsultaEstoque.ShowDialog();
+            }
         }
     }
 }

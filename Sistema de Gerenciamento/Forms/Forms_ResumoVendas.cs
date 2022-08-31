@@ -40,56 +40,55 @@ namespace Sistema_de_Gerenciamento.Forms
             BuscarResumoVendas();
         }
 
-
         private void BuscarResumoVendas()
         {
-
-
-            if (cmbTipoPesquisa.Text == "Data")
+            if (cmbTipoPesquisa.Text != string.Empty)
             {
-                bool isResultadoEncontrado = Buscar.BuscarResumoVendaPorData(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+                if (cmbTipoPesquisa.Text == "Data")
+                {
+                    bool isResultadoEncontrado = Buscar.BuscarResumoVendaPorData(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
 
-                MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
+                    MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
+                }
+                else if (cmbTipoPesquisa.Text == "Devolucao")
+                {
+                    bool isResultadoEncontrado = Buscar.BuscarResumoPorDevolucao(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+
+                    MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
+                }
+                else if (cmbTipoPesquisa.Text == "Produtos mais Vendidos")
+                {
+                    bool isResultadoEncontrado = Buscar.BuscarResumoPorProdutoMaisVendido(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+
+                    MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
+                }
+                else if (cmbTipoPesquisa.Text == "Tipo Pagamento")
+                {
+                    bool isResultadoEncontrado = Buscar.BuscarResumoVendaPorTipoPagamento(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+
+                    MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
+                }
+                else if (cmbTipoPesquisa.Text == "Vendedor")
+                {
+                    bool isResultadoEncontrado = Buscar.BuscarResumoVendaPorVendedor(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+
+                    MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
+                }
+
+                string valorGastoBruto = Buscar.BuscarGastosBrutos().ToString("c");
+
+                string valorBrutovendido = Buscar.BuscarValorBrutoVendido(dtpDataInicial.Value, dtpDataFinal.Value).ToString("c");
+
+                string itensVendidos = Buscar.BuscarQuantidadeItensVendidos(dtpDataInicial.Value, dtpDataFinal.Value).ToString("N0");
+
+                lblQtditensVendidos.Text = itensVendidos;
+
+                lblValorBrutoVendido.Text = valorBrutovendido;
+
+                lblValorGastoBruto.Text = valorGastoBruto;
             }
-            else if (cmbTipoPesquisa.Text == "Devolucao")
-            {
-                bool isResultadoEncontrado = Buscar.BuscarResumoPorDevolucao(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
-
-                MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
-            }
-            else if (cmbTipoPesquisa.Text == "Produtos mais Vendidos")
-            {
-                bool isResultadoEncontrado = Buscar.BuscarResumoPorProdutoMaisVendido(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
-
-                MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
-            }
-            else if (cmbTipoPesquisa.Text == "Tipo Pagamento")
-            {
-                bool isResultadoEncontrado = Buscar.BuscarResumoVendaPorTipoPagamento(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
-
-                MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
-            }
-            else if (cmbTipoPesquisa.Text == "Vendedor")
-            {
-                bool isResultadoEncontrado = Buscar.BuscarResumoVendaPorVendedor(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
-
-                MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
-            }
-
-            string valorGastoBruto = Buscar.BuscarGastosBrutos().ToString("c");
-
-            string valorBrutovendido = Buscar.BuscarValorBrutoVendido(dtpDataInicial.Value, dtpDataFinal.Value).ToString("c");
-
-            string itensVendidos = Buscar.BuscarQuantidadeItensVendidos(dtpDataInicial.Value, dtpDataFinal.Value).ToString("N0");
-
-            lblQtditensVendidos.Text = itensVendidos;
-
-            lblValorBrutoVendido.Text = valorBrutovendido;
-
-            lblValorGastoBruto.Text = valorGastoBruto;
-
-
         }
+
         private void MenssagemResultadoNaoEncontrado(bool _isResultadoEncontrado)
         {
             if (_isResultadoEncontrado == false)

@@ -41,13 +41,16 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void BuscarFluxoCaixa()
         {
-            Buscar.BuscarDadosPreencherGridView(cmbUsuario.Text, dtpDataInicial.Value.AddMilliseconds(1), dtpDataFinal.Value.AddHours(23).AddMinutes(59).AddSeconds(59), gdvFluxoCaixa);
+            if (cmbUsuario.Text != string.Empty)
+            {
+                Buscar.BuscarDadosPreencherGridView(cmbUsuario.Text, dtpDataInicial.Value.AddMilliseconds(1), dtpDataFinal.Value.AddHours(23).AddMinutes(59).AddSeconds(59), gdvFluxoCaixa);
 
-            BuscarValorTotal();
+                BuscarValorTotal();
 
-            CalcularComissaoGeral();
+                CalcularComissaoGeral();
 
-            CalcularComissaoPorProduto();
+                CalcularComissaoPorProduto();
+            }
         }
 
         private void btnFechar_Click(object sender, EventArgs e)

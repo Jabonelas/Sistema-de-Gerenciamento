@@ -62,7 +62,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             BuscaDadosPreencherItens();
 
-            FormatoFullScreen();
+            //FormatoFullScreen();
         }
 
         private void BuscaDadosPreencherItens()
