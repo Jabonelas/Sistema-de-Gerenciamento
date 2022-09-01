@@ -365,13 +365,13 @@ namespace Sistema_de_Gerenciamento
 
                 if (Convert.ToBoolean(linha.Cells[0].Value) == true)
                 {
-                    valor += Convert.ToDecimal(linha.Cells[12].Value);
+                    valor += Convert.ToDecimal(linha.Cells[13].Value);
 
                     linhasSelecionadas++;
                 }
                 else
                 {
-                    valor -= Convert.ToDecimal(linha.Cells[12].Value);
+                    valor -= Convert.ToDecimal(linha.Cells[13].Value);
 
                     linhasSelecionadas--;
                 }

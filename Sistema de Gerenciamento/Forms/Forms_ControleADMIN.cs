@@ -17,6 +17,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private Forms_PDV telaPDV;
 
+        private Forms_Venda telaVenda;
+
         private Forms_CadastroCliente cadastroCliente;
 
         private string tipo = "";
@@ -26,6 +28,17 @@ namespace Sistema_de_Gerenciamento.Forms
             InitializeComponent();
 
             telaPDV = _telaPDV;
+
+            tipo = _tipo;
+
+            pcbEmpresa.Image = Buscar.BuscarLogoEmpresa(Convert.ToInt32(lblce_id.Text));
+        }
+
+        public Forms_ControleADMIN(Forms_Venda _telaVenda, string _tipo)
+        {
+            InitializeComponent();
+
+            telaVenda = _telaVenda;
 
             tipo = _tipo;
 

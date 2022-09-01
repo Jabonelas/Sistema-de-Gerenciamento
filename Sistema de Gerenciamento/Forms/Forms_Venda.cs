@@ -29,6 +29,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
         public List<DadosNotaFiscalSaida> listaDadosNotaFiscalSaidaCompleta = new List<DadosNotaFiscalSaida>();
 
+        private List<DadosPermissoes> listaDadosPermissao = new List<DadosPermissoes>();
+
         //private DadosNotaFiscalSaida DadosNotaFiscalSaida;
 
         private DadosProduto produto = null;
@@ -64,6 +66,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             txtNumeroNF.Text = Buscar.BuscarNumeroNotaFiscalSaida().ToString();
 
+            listaDadosPermissao = Buscar.BuscarListaPermissoes(Global.NomeDeUsuario);
             //listaDadosFinanceiro.ForEach(finac => financeiro = finac);
         }
 
@@ -216,7 +219,6 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void Gerarboleto()
         {
-
             if (gdvVenda.Rows.Count > 0)
             {
                 PreencherListaNotaFiscalSaida();
@@ -238,8 +240,6 @@ namespace Sistema_de_Gerenciamento.Forms
                     MessageBox.Show("Cliente Não Encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-
-
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -869,6 +869,27 @@ namespace Sistema_de_Gerenciamento.Forms
             else if (e.KeyCode == Keys.G && e.Modifiers == Keys.Control)
             {
                 Gerarboleto();
+            }
+        }
+
+        private void btnTroca_Click(object sender, EventArgs e)
+        {
+            if (gdvVenda.Rows.Count <= 0)
+            {
+                if (Global.NomeDeUsuario == "ADMIN" || listaDadosPermissao[0].devolucaoTroca == "true")
+                {
+                    Forms_Troca telaDevolucaoTroca = new Forms_Troca();
+                    telaDevolucaoTroca.ShowDialog();
+
+                    return;
+                }
+                else
+                {
+                    Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "Troca");
+                    controleADMIN.ShowDialog();
+
+                    return;
+                }
             }
         }
     }

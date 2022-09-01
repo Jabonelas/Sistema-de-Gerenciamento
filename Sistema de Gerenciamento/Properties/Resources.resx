@@ -145,14 +145,14 @@
   <data name="configuracao" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\configuracao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="despesa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\despesa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="imagem-do-usuario-com-fundo-preto1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagem-do-usuario-com-fundo-preto1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="vendas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\vendas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="new_copy_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\new_copy_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pasta1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pasta1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -310,14 +310,17 @@
   <data name="png-transparent-logo-pharmacy-pills-miscellaneous-trademark-pharmaceutical-drug" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\png-transparent-logo-pharmacy-pills-miscellaneous-trademark-pharmaceutical-drug.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pasta (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pasta (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="new_copy_50px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\new_copy_50px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="carrinho-de-compras" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\carrinho-de-compras.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="venda-rapida" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\venda-rapida.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pasta (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pasta (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NaoPagamento4_24px" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NaoPagamento4_24px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -337,7 +340,7 @@
   <data name="despesas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\despesas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="despesa" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\despesa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="receptor1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\receptor1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

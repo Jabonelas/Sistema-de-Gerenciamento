@@ -950,6 +950,7 @@
     <None Include="Resources\estatisticas.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\receptor1.png" />
     <None Include="Resources\pasta1.png" />
     <None Include="Resources\produtos.png" />
     <None Include="Resources\escritorio.png" />
