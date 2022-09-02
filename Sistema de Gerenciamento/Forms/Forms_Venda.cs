@@ -31,8 +31,6 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private List<DadosPermissoes> listaDadosPermissao = new List<DadosPermissoes>();
 
-        //private DadosNotaFiscalSaida DadosNotaFiscalSaida;
-
         private DadosProduto produto = null;
 
         private decimal valorBruto = 0;
@@ -41,21 +39,23 @@ namespace Sistema_de_Gerenciamento.Forms
 
         public int quantidadeItens = 0;
 
-        //private int cont = 0;
-
         public Forms_Venda()
         {
             InitializeComponent();
 
-            txtData.Text = DateTime.Today.ToShortDateString();
-
-            txtVendedor.Text = Global.NomeDeUsuario;
+            PreenchimentoTextBox();
 
             CarregarDadosBanco();
 
             layoutTelaPagamento();
+        }
 
+        private void PreenchimentoTextBox()
+        {
+            txtData.Text = DateTime.Today.ToShortDateString();
+            txtVendedor.Text = Global.NomeDeUsuario;
             cmbCliente.Text = "CLIENTE";
+            txtCpfCnpjCliente.Text = "-";
         }
 
         private void CarregarDadosBanco()
@@ -74,6 +74,8 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             grupoBoxAvista.Visible = false;
             grupboxCredito.Visible = false;
+
+            btnTroca.Visible = false;
 
             lblNomeValorTotal.Location = new Point(318, 571);
             lblValorTotal.Location = new Point(329, 594);
@@ -184,7 +186,7 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        private void ValorTotal()
+        internal void ValorTotal()
         {
             valorBruto = 0;
 
@@ -327,15 +329,23 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (gdvVenda.RowCount > 0)
             {
-                DialogResult OpcaoDoUsuario = new DialogResult();
-                OpcaoDoUsuario = MessageBox.Show("Deseja Remover O Item?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (OpcaoDoUsuario == DialogResult.Yes)
+                if (Global.NomeDeUsuario == "ADMIN" || listaDadosPermissao[0].cancelarVenda == "true")
                 {
-                    gdvVenda.Rows.RemoveAt(gdvVenda.CurrentRow.Index);
+                    DialogResult OpcaoDoUsuario = new DialogResult();
+                    OpcaoDoUsuario = MessageBox.Show("Deseja Remover O Item?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (OpcaoDoUsuario == DialogResult.Yes)
+                    {
+                        gdvVenda.Rows.RemoveAt(gdvVenda.CurrentRow.Index);
 
-                    ValorTotal();
+                        ValorTotal();
 
-                    ApagandoTextbox();
+                        ApagandoTextbox();
+                    }
+                }
+                else
+                {
+                    Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "Remover Produto Tela Venda");
+                    controleADMIN.ShowDialog();
                 }
             }
         }
@@ -349,19 +359,23 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (gdvVenda.RowCount > 0)
             {
-                DialogResult OpcaoDoUsuario = new DialogResult();
-                OpcaoDoUsuario = MessageBox.Show("Deseja Cancelar a Compra?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (OpcaoDoUsuario == DialogResult.Yes)
+                if (Global.NomeDeUsuario == "ADMIN" || listaDadosPermissao[0].cancelarVenda == "true")
                 {
-                    gdvVenda.Rows.Clear();
+                    DialogResult OpcaoDoUsuario = new DialogResult();
+                    OpcaoDoUsuario = MessageBox.Show("Realmente Cancelar a Venda?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (OpcaoDoUsuario == DialogResult.Yes)
+                    {
+                        gdvVenda.Rows.Clear();
 
-                    ManipulacaoTextBox.ApagandoTextBox(this);
+                        ManipulacaoTextBox.ApagandoTextBox(this);
+                    }
+                }
+                else
+                {
+                    Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "Cancelar Pagamento Tela Venda");
+                    controleADMIN.ShowDialog();
                 }
             }
-        }
-
-        private void btnImprimir_Click(object sender, EventArgs e)
-        {
         }
 
         private void btnNovoVenda_Click(object sender, EventArgs e)
@@ -507,35 +521,16 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        private void chbVenda_Click(object sender, EventArgs e)
-        {
-            VendaSelecionada();
-        }
-
         private void VendaSelecionada()
         {
             if (chbVenda.Checked == true)
             {
-                cmbProduto.Enabled = false;
+                LayoutVendaOrcamento(true);
 
+                btnTroca.Visible = false;
                 chbOrcamento.Checked = false;
-                lblNumeroVenda.Visible = true;
-                txtNumeroNF.Visible = true;
-                lblData.Visible = true;
-                txtData.Visible = true;
-                lblCliente.Visible = true;
-                cmbCliente.Visible = true;
-                lblCodCliente.Visible = true;
-                txtCodigoCliente.Visible = true;
-                btnGerarBoleto.Visible = true;
-                btnConfirmarVenda.Visible = true;
-                btnCancelarVenda.Visible = true;
-                btnAbriCadastroCliente.Visible = true;
                 btnNovaVenda.Text = "Nova \nVeda";
                 btnRemoverItem.Location = new Point(297, 41);
-                lblCodBarras.Visible = true;
-                txtCodBarras.Visible = true;
-                btnBuscar.Visible = true;
                 lblCodProduto.Location = new Point(177, 153);
                 txtCodProduto.Location = new Point(180, 171);
                 lblProduto.Location = new Point(306, 153);
@@ -548,19 +543,12 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtPrecoSemDesconto.Location = new Point(769, 171);
                 btnAdicionar.Location = new Point(901, 162);
                 btnSair.Location = new Point(580, 41);
-
-                grupoBoxAvista.Visible = false;
-                grupboxCredito.Visible = false;
-
                 lblNomeValorTotal.Location = new Point(318, 571);
                 lblValorTotal.Location = new Point(329, 594);
                 lblNomeValorTotalItens.Location = new Point(568, 571);
                 lblTotalItens.Location = new Point(600, 594);
                 gdvVenda.Size = new Size(923, 328);
                 this.Size = new Size(967, 686);
-
-                lblCpfCnpjCliente.Visible = true;
-                txtCpfCnpjCliente.Visible = true;
 
                 listaDadosNotaFiscalSaidaCompleta.Clear();
                 valorBruto = 0;
@@ -573,34 +561,39 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        private void chbOrcamento_Click(object sender, EventArgs e)
+        private void LayoutVendaOrcamento(bool _isVenda)
         {
-            OrcamentoSelecionado();
+            cmbProduto.Enabled = !_isVenda;
+            grupoBoxAvista.Visible = !_isVenda;
+            grupboxCredito.Visible = !_isVenda;
+            lblNumeroVenda.Visible = _isVenda;
+            txtNumeroNF.Visible = _isVenda;
+            lblData.Visible = _isVenda;
+            txtData.Visible = _isVenda;
+            lblCliente.Visible = _isVenda;
+            cmbCliente.Visible = _isVenda;
+            lblCodCliente.Visible = _isVenda;
+            txtCodigoCliente.Visible = _isVenda;
+            btnGerarBoleto.Visible = _isVenda;
+            btnConfirmarVenda.Visible = _isVenda;
+            btnCancelarVenda.Visible = _isVenda;
+            btnAbriCadastroCliente.Visible = _isVenda;
+            lblCodBarras.Visible = _isVenda;
+            txtCodBarras.Visible = _isVenda;
+            btnBuscar.Visible = _isVenda;
+            lblCpfCnpjCliente.Visible = _isVenda;
+            txtCpfCnpjCliente.Visible = _isVenda;
         }
 
         private void OrcamentoSelecionado()
         {
             if (chbOrcamento.Checked == true)
             {
-                cmbProduto.Enabled = true;
+                LayoutVendaOrcamento(false);
+
                 chbVenda.Checked = false;
-                lblNumeroVenda.Visible = false;
-                txtNumeroNF.Visible = false;
-                lblData.Visible = false;
-                txtData.Visible = false;
-                lblCliente.Visible = false;
-                cmbCliente.Visible = false;
-                lblCodCliente.Visible = false;
-                txtCodigoCliente.Visible = false;
-                btnGerarBoleto.Visible = false;
-                btnConfirmarVenda.Visible = false;
-                btnCancelarVenda.Visible = false;
-                btnAbriCadastroCliente.Visible = false;
                 btnNovaVenda.Text = "Novo \n Orçamento";
                 btnRemoverItem.Location = new Point(107, 41);
-                lblCodBarras.Visible = false;
-                txtCodBarras.Visible = false;
-                btnBuscar.Visible = false;
                 lblCodProduto.Location = new Point(90, 153);
                 txtCodProduto.Location = new Point(93, 171);
                 lblProduto.Location = new Point(219, 153);
@@ -613,19 +606,12 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtPrecoSemDesconto.Location = new Point(681, 171);
                 btnAdicionar.Location = new Point(814, 162);
                 btnSair.Location = new Point(297, 41);
-
-                grupoBoxAvista.Visible = true;
-                grupboxCredito.Visible = true;
-
                 lblNomeValorTotal.Location = new Point(318, 420);
                 lblValorTotal.Location = new Point(329, 443);
                 lblNomeValorTotalItens.Location = new Point(568, 422);
                 lblTotalItens.Location = new Point(598, 445);
                 gdvVenda.Size = new Size(923, 190);
                 this.Size = new Size(967, 727);
-
-                lblCpfCnpjCliente.Visible = false;
-                txtCpfCnpjCliente.Visible = false;
 
                 listaDadosNotaFiscalSaidaCompleta.Clear();
                 valorBruto = 0;
@@ -658,31 +644,42 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     txtJurosCredito.Text = string.Format("{0:P}", listaFinanceiro[0].jurosCredito / 100);
 
-                    txtValorParcelaCredito.Text = string.Format("{0:C}", ((Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) +
-                                                                         (Convert.ToDecimal(txtJurosCredito.Text.Replace("%", "")) *
-                                                                             Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) / 100))
-                                                                        / Convert.ToDecimal(cmbParcelaCredito.Text.Replace("x", "")))).ToString();
+                    txtValorParcelaCredito.Text = string.Format("{0:C}", CalculandoValorParcelaCredito());
 
-                    txtValorTotalCredito.Text = string.Format("{0:C}",
-                        ((Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) +
-                          (Convert.ToDecimal(txtJurosCredito.Text.Replace("%", "")) *
-                              Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) / 100)))).ToString();
+                    txtValorTotalCredito.Text = string.Format("{0:C}", CalculandoValorTotalCredito());
                 }
                 else
                 {
                     txtJurosCredito.Text = string.Format("{0:P}", "0,00%");
 
-                    txtValorParcelaCredito.Text = string.Format("{0:C}", ((Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) +
-                                                                           (Convert.ToDecimal(txtJurosCredito.Text.Replace("%", "")) *
-                                                                               Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) / 100))
-                                                                          / Convert.ToDecimal(cmbParcelaCredito.Text.Replace("x", "")))).ToString();
+                    txtValorParcelaCredito.Text = string.Format("{0:C}", CalculandoValorParcelaCredito());
 
-                    txtValorTotalCredito.Text = string.Format("{0:C}",
-                        ((Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) +
-                          (Convert.ToDecimal(txtJurosCredito.Text.Replace("%", "")) *
-                              Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", "")) / 100)))).ToString();
+                    txtValorTotalCredito.Text = string.Format("{0:C}", CalculandoValorTotalCredito());
                 }
             }
+        }
+
+        private decimal CalculandoValorParcelaCredito()
+        {
+            decimal valorParcelaCredito = 0;
+            decimal valorTotal = Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", ""));
+            decimal jurosCredito = Convert.ToDecimal(txtJurosCredito.Text.Replace("%", ""));
+            decimal parcelaCredito = Convert.ToDecimal(cmbParcelaCredito.Text.Replace("x", ""));
+
+            valorParcelaCredito = (valorTotal + ((jurosCredito * valorTotal) / 100)) / parcelaCredito;
+
+            return valorParcelaCredito;
+        }
+
+        private decimal CalculandoValorTotalCredito()
+        {
+            decimal valortotal = 0;
+            decimal valorTotal = Convert.ToDecimal(lblValorTotal.Text.Replace("R$ ", ""));
+            decimal jurosCredito = Convert.ToDecimal(txtJurosCredito.Text.Replace("%", ""));
+
+            valortotal = (valorTotal + (jurosCredito * valorTotal / 100));
+
+            return valortotal;
         }
 
         private void cmbCliente_Enter(object sender, EventArgs e)
@@ -755,8 +752,8 @@ namespace Sistema_de_Gerenciamento.Forms
                 memoriaQuantidade = produto.quantidade;
                 txtQuantidade.Text = "1";
                 //txtQuantidade.Text = produto.quantidade.ToString();
-                txtUnidade.Text = produto.unidade.ToString();
-                txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco).ToString();
+                txtUnidade.Text = produto.unidade;
+                txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco);
             }
             else
             {
@@ -783,14 +780,14 @@ namespace Sistema_de_Gerenciamento.Forms
                 memoriaQuantidade = produto.quantidade;
                 txtQuantidade.Text = "1";
                 //txtQuantidade.Text = produto.quantidade.ToString();
-                txtUnidade.Text = produto.unidade.ToString();
-                txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco).ToString();
+                txtUnidade.Text = produto.unidade;
+                txtPrecoSemDesconto.Text = string.Format("{0:C}", produto.preco);
 
                 txtQuantidade.ReadOnly = false;
             }
         }
 
-        private void ApagandoTextbox()
+        internal void ApagandoTextbox()
         {
             txtCodBarras.Text = string.Empty;
             txtCodProduto.Text = string.Empty;
@@ -814,6 +811,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnConfirmarVenda_Click_1(object sender, EventArgs e)
         {
+            ConfirmarVenda();
         }
 
         private void ConfirmarVenda()
@@ -880,17 +878,23 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     Forms_Troca telaDevolucaoTroca = new Forms_Troca();
                     telaDevolucaoTroca.ShowDialog();
-
-                    return;
                 }
                 else
                 {
                     Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "Troca");
                     controleADMIN.ShowDialog();
-
-                    return;
                 }
             }
+        }
+
+        private void chbVenda_CheckedChanged(object sender, EventArgs e)
+        {
+            VendaSelecionada();
+        }
+
+        private void chbOrcamento_CheckedChanged(object sender, EventArgs e)
+        {
+            OrcamentoSelecionado();
         }
     }
 }

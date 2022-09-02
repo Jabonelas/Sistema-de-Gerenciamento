@@ -166,7 +166,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     }
                     else
                     {
-                        Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "Remover Produto");
+                        Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "Remover Produto Tela PDV");
                         controleADMIN.ShowDialog();
 
                         return;
@@ -269,7 +269,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     }
                     else
                     {
-                        Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "Cancelar Pagamento");
+                        Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "Cancelar Pagamento Tela PDV");
                         controleADMIN.ShowDialog();
                     }
                 }
@@ -642,7 +642,7 @@ namespace Sistema_de_Gerenciamento.Forms
                     }
                     else
                     {
-                        Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "Cancelar Pagamento");
+                        Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "Cancelar Pagamento Tela PDV");
                         controleADMIN.ShowDialog();
 
                         return;

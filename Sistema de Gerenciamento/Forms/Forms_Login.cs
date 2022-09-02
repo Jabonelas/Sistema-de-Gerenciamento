@@ -18,7 +18,6 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private MensagensErro Erro = new MensagensErro();
 
-        private Forms_Sair telaSair;
 
         private Forms_TelaAdministrador telaAdministrador;
 
@@ -26,7 +25,13 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             InitializeComponent();
 
-            telaSair = new Forms_Sair(this);
+
+            PreencherTextBox();
+        }
+
+        private void PreencherTextBox()
+        {
+            txtSenha.UseSystemPasswordChar = true;
 
             txtUsuario.Text = "ADMIN";
             txtSenha.Text = "123";

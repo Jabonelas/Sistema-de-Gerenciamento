@@ -62,7 +62,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void RealizarLogin()
         {
-            if (tipo == "Remover Produto")
+            if (tipo == "Remover Produto Tela PDV")
             {
                 if (txtUsuario.Text == "ADMIN" && Buscar.BuscarUsuario(txtUsuario.Text, txtSenha.Text))
                 {
@@ -83,7 +83,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
                 this.Close();
             }
-            else if (tipo == "Cancelar Pagamento")
+            else if (tipo == "Cancelar Pagamento Tela PDV")
             {
                 DialogResult OpcaoDoUsuario = new DialogResult();
                 OpcaoDoUsuario = MessageBox.Show("Realmente Cancelar a Venda?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -92,6 +92,37 @@ namespace Sistema_de_Gerenciamento.Forms
                     telaPDV.FormatandoParaNovaVenda();
 
                     this.Close();
+                }
+            }
+            else if (tipo == "Cancelar Pagamento Tela Venda")
+            {
+                DialogResult OpcaoDoUsuario = new DialogResult();
+                OpcaoDoUsuario = MessageBox.Show("Realmente Cancelar a Venda?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (OpcaoDoUsuario == DialogResult.Yes)
+                {
+                    telaVenda.gdvVenda.Rows.Clear();
+
+                    ManipulacaoTextBox.ApagandoTextBox(telaVenda);
+
+                    this.Close();
+                }
+            }
+            else if (tipo == "Remover Produto Tela Venda")
+            {
+                if (txtUsuario.Text == "ADMIN" && Buscar.BuscarUsuario(txtUsuario.Text, txtSenha.Text))
+                {
+                    DialogResult OpcaoDoUsuario = new DialogResult();
+                    OpcaoDoUsuario = MessageBox.Show("Realmente Deseja Remover o Porduto da Lista?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (OpcaoDoUsuario == DialogResult.Yes)
+                    {
+                        telaVenda.gdvVenda.Rows.RemoveAt(telaVenda.gdvVenda.CurrentRow.Index);
+
+                        telaVenda.ValorTotal();
+
+                        telaVenda.ApagandoTextbox();
+
+                        this.Close();
+                    }
                 }
             }
         }
