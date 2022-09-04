@@ -1,9 +1,9 @@
 # Sistema-de-Gerenciamento
 Sistema de Gerenciamento - C# - SQL - Server
-<![endif]-->
 
 
-Sistema de gerenciamento de faturamento, clientes, fornecedores,  estoque e controle financeiro.
+
+Sistema de gerenciamento de faturamento, clientes, fornecedores,  estoque e controle financeiro com diferentes níveis de acessos.
 
 
  
@@ -23,7 +23,7 @@ Sistema de gerenciamento de faturamento, clientes, fornecedores,  estoque e cont
 
 Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo seus dados e verificação de estoque baixo para produtos que estão com estoque mínimo (setados pelos ADMIN no Cadastro do produto) esta verificação ocorre a cada 20h se o sistema não for interrompido ou a cada momento em que o ADMIN logar.
 
-![enter image description here](https://imgur.com/6Zo2AbE)
+![enter image description here](https://i.imgur.com/6Zo2AbE.gif)
 
 **Configurações Gerenciais:**
 
@@ -37,7 +37,7 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Gerenciamento Pagamento Carnê: porcentagem dos juros por quantidade de parcelas, porcentagem dos juros por parcela, por pagamento atrasado, prazo para 1ª parcela, porcentagem da multa por atraso de pagamento, quantidade de parcelas a gerar juros.
 
-![enter image description here](https://imgur.com/JhnKi22)
+![enter image description here](https://i.imgur.com/JhnKi22.gif)
 
 **Cadastro Empresa:**
 
@@ -47,7 +47,7 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Atualização de dados.
 
-![enter image description here](https://imgur.com/b8BiKxr)
+![enter image description here](https://i.imgur.com/b8BiKxr.gif)
 
 **Cadastro Usuário:**
 
@@ -55,7 +55,7 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Atualização de dados.
 
-![enter image description here](https://imgur.com/JuoqYc0)
+![!\[enter image description here\](https://imgur.com/JuoqYc0](https://i.imgur.com/JuoqYc0.gif)
 
 **Cadastro Produto:**
 
@@ -67,10 +67,11 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Deletar Cadastro do Produto.
 
-![enter image description here](https://imgur.com/BiwP4nD)
+![enter image description here](https://i.imgur.com/BiwP4nD.gif)
 
 - #1 - Buscar Produto
-![enter image description here](https://imgur.com/iRVqTHO)
+
+![enter image description here](https://i.imgur.com/iRVqTHO.gif)
 
 
 **Cadastro Grupo de Material:**
@@ -79,7 +80,7 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Deletar Cadastro de Grupo e Sub-Grupo.
 
-![enter image description here](https://imgur.com/OcmRvQO)
+![enter image description here](https://i.imgur.com/OcmRvQO.gif)
 
 **Cadastro Fornecedor:**
 
@@ -91,11 +92,11 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Deletar Cadastro do Fornecedor.
 
-![enter image description here](https://imgur.com/tqhKVLX)
+![enter image description here](https://i.imgur.com/tqhKVLX.gif)
 
 - #2 - Buscar Fornecedores
 
-![enter image description here](https://imgur.com/xcXi1wc)
+![enter image description here](https://i.imgur.com/xcXi1wc.gif)
 
 **Cadastro Cliente:**
 
@@ -107,18 +108,18 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Deletar Cadastro do Cliente.
 
-![enter image description here](https://imgur.com/ols4r0W)
+![enter image description here](https://i.imgur.com/ols4r0W.gif)
 
 
 - #3 - Buscar Clientes 
 
-![enter image description here](https://imgur.com/yUT3eg9)
+![enter image description here](https://i.imgur.com/yUT3eg9.gif)
 
 **Cadastro de Despesa/Custos:**
 
 - [x] Cadastro de despesas e custos por título e tipo de despesa.
 
-![enter image description here](https://imgur.com/WFSPnnj)
+![enter image description here](https://i.imgur.com/WFSPnnj.gif)
 
 **Compras:**
 
@@ -126,20 +127,20 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 - Ao dar entrada na NF exibe mensagem questionando ao usuário se deseja cadastra em a NF despesas, caso deseje poderá o usuário deve adicionar os dados como ex: a data de vencimento e em quantas vezes foi parcelada. .
 
 - [x] Feita a verificação em 4 fatores:
--  1º verifica se a NF já foi dada entrada.
--  2º verifica se o fornecedor possui cadastro. 
+- 1º verifica se a NF já foi dada entrada.
+- 2º verifica se o fornecedor possui cadastro. 
 - 3º verifica se os produtos possuem cadastro. 
 - 4º verifica se os preços unitários do produto estão iguais ao preço unitário cadastrado.
 
 - [x] Deletar nota fiscal, caso o saldo não tenha sofrido alteração.
 
-- [x]#4 - Atualizar Códigos de barras, caso o saldo não tenha sofrido alteração.
+- [x] #4 - Atualizar Códigos de barras, caso o saldo não tenha sofrido alteração.
 
-![enter image description here](https://imgur.com/QJuQ5Ay)
+![enter image description here](https://i.imgur.com/QJuQ5Ay.gif)
 
--#4 - Atualizar Códigos de barras
+- #4 - Atualizar Códigos de barras
 
-![enter image description here](https://imgur.com/iKHSAs4)
+![enter image description here](https://i.imgur.com/iKHSAs4.gif)
 
 **Controle de Despesas:**
 
@@ -151,12 +152,12 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Deletar Cadastro de despesa.
 
-![enter image description here](https://imgur.com/gdfqPKB)
+![enter image description here](https://i.imgur.com/gdfqPKB.gif)
 
 
 - Buscar cadastro das despesas
 
-![enter image description here](https://imgur.com/ozuutBX)
+![enter image description here](https://i.imgur.com/ozuutBX.gif)
 
 
 **Contas a Pagar:**
@@ -169,11 +170,11 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Podendo imprimir os resultados ou exportar os dados para o Excel.
 
-![enter image description here](https://imgur.com/qjiWkkA)
+![enter image description here](https://i.imgur.com/qjiWkkA.gif)
 
--#5- Tela Editar Pagamento
+- #5- Tela Editar Pagamento
 
-![enter image description here](https://imgur.com/r6jZpNN)
+![enter image description here](https://i.imgur.com/r6jZpNN.gif)
 
 **Lançar contas a pagar:**
 
@@ -185,12 +186,12 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Deletar Cadastro dos custos.
 
-![enter image description here](https://imgur.com/gAAc0zB)
+![enter image description here](https://i.imgur.com/gAAc0zB.gif)
 
 
 - #6 - Buscar cadastro dos custos
 
-![enter image description here](https://imgur.com/QaHSb3X)
+![enter image description here](https://i.imgur.com/QaHSb3X.gif)
 
 
 
@@ -202,12 +203,12 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Podendo imprimir os resultados ou exportar os dados para o Excel.
 
-![enter image description here](https://imgur.com/LYgIa8k)
+![enter image description here](https://i.imgur.com/LYgIa8k.gif)
 
 
--#7 - Tela de Pagamento a Receber
+- #7 - Tela de Pagamento a Receber
 
-![enter image description here](https://imgur.com/ygHPM7i)
+![enter image description here](https://i.imgur.com/ygHPM7i.gif)
 
 
 **Resumo Vendas:**
@@ -216,7 +217,7 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Exibindo também a quantidade de produtos vendidos e o valor bruto total vendido ambas encontrados na busca.
 
-![enter image description here](https://imgur.com/kCvEYgR)
+![enter image description here](https://i.imgur.com/kCvEYgR.gif)
 
 **Fluxo de Caixa:**
 
@@ -224,7 +225,7 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Exibindo também o valor total de vendas daquele usuário, sua comissão geral (setados pelos ADMIN na tela de Configurações Gerenciais), e sua comissão por produto (setados pelos ADMIN na tela de cadastro produto).
 
-![enter image description here](https://imgur.com/1XQKbbk)
+![enter image description here](https://i.imgur.com/1XQKbbk.gif)
 
 
 **Estatísticas Financeiras:**
@@ -233,7 +234,7 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Podendo imprimir os resultados.
 
-![enter image description here](https://imgur.com/Abk8KU2)
+![enter image description here](https://i.imgur.com/Abk8KU2.gif)
 
 
 ## Acessado apenas pelo ADMIN ou usuários que possuem permissão
@@ -248,7 +249,7 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Selecionar o Produto que deseja realizar (Sendo possível acessar a tela de pesquisa de produtos #1) a troca e a sua quantidade exibira os valores total do produto devolvido e produto da troca e o valor da diferença entre os dois sendo necessário que seja informado o motivo da troca e só podendo realizar a troca caso a diferença seja 0 ou positiva, ao confirmar a troca irar iniciar a tela de pagamento.
 
-![enter image description here](https://imgur.com/qGzydX4)
+![enter image description here](https://i.imgur.com/qGzydX4.gif)
 
 ## Acessado por todos os usuários
 
@@ -256,12 +257,12 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 **Tela de Pagamento**
 
 
-- [x] Possivel selecionar o tipo de pagamento:
+- [x] #8 - Possivel selecionar o tipo de pagamento:
 -  Carnê ou Credito seleciona a quantidade de parcelas e exibe os valores de juros e valor total. 
 - Dinheiro ou Debito informa o desconto (Calcula o desconto baseado com a porcentagem de desconto setada pelo ADMIN na tela de Configurações Gerenciais) inserir o valor recebido e exibe automaticamente o valor. 
 - Pix informa o valor do desconto (Calcula o desconto baseado com a porcentagem de desconto setada pelo ADMIN na tela de Configurações Gerenciais) exibe a chave pix e o QRCode para pagamento.
 
-![enter image description here](https://imgur.com/lCTIprf)
+![enter image description here](https://i.imgur.com/lCTIprf.gif)
 
 **Venda:**
 
@@ -276,8 +277,8 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 
 - [x] Verificação de 2 fatores:
--  1º fator verifica se a nota fiscal informada consta no sistema.
--  2º fator verifica se o produto que está sendo devolvido pertence a nota fiscal informada, esta verificação e feita através do código de barras do produto.
+- 1º fator verifica se a nota fiscal informada consta no sistema.
+- 2º fator verifica se o produto que está sendo devolvido pertence a nota fiscal informada, esta verificação e feita através do código de barras do produto.
 
 - [x] Adição de produto por código de barras e quantidade desejada.
 
@@ -289,7 +290,7 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Acesso a tela de Pagamento.
 
-![enter image description here](https://imgur.com/ypoRXtN)
+![enter image description here](https://i.imgur.com/ypoRXtN.gif)
 
 - Opção Orçamento:
 
@@ -299,7 +300,7 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Opção para tipo de pagamento a vista calculando o desconto, e para pagamento por credito sendo possível colocar a quantidade de parcelas e calculando os seus juros.
 
-![enter image description here](https://imgur.com/XarNx3u)
+![enter image description here](https://i.imgur.com/XarNx3u.gif)
 
 **Pesquisar Cliente:**
 
@@ -331,7 +332,7 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] F6: Inserir Quantidade.
 
-- [x] F7: Pagamento¹.
+- [x] F7: Pagamento (Acesso a Tela de Pagamento #8).
 
 - [x] F8: Cancela Venda (verifica se o usuário possui autorização, caso seja negativo solicita que seja liberado pelo ADMIN)
 
@@ -343,7 +344,7 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] F12: Cancela o Pagamento (verifica se o usuário possui autorização, caso seja negativo solicita que seja liberado pelo ADMIN).
 
-![enter image description here](https://imgur.com/kYIYZXe)
+![enter image description here](https://i.imgur.com/kYIYZXe.gif)
 
 **Pesquisar Produto**
 
@@ -362,4 +363,8 @@ Alerta Inicial informando sobre contas (Despesas e Custos) atrasadas exibindo se
 
 - [x] Acesso a tela de Consulta Detalhada Exibindo nº na nota fiscal, data de entrada, código de barras, código do produto, descrição do produto, quantidade, valor unitário, status, e caso esteja rejeitado o motivo do rejeito.
 
-![enter image description here](https://imgur.com/uDxUoDQ)
+![enter image description here](https://i.imgur.com/uDxUoDQ.gif)
+
+
+
+
