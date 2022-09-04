@@ -79,10 +79,13 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCNPJ_Leave(object sender, EventArgs e)
         {
-            if (ValidacaoCNPJ.IsCnpj(txtCNPJ.Text) == false)
+            if (txtCNPJ.Text != string.Empty)
             {
-                ValidacaoCNPJ.MensagemCNPJDigitadoInvalido();
-                txtCNPJ.Focus();
+                if (ValidacaoCNPJ.IsCnpj(txtCNPJ.Text) == false)
+                {
+                    ValidacaoCNPJ.MensagemCNPJDigitadoInvalido();
+                    txtCNPJ.Focus();
+                }
             }
         }
 
@@ -376,7 +379,10 @@ namespace Sistema_de_Gerenciamento
 
         private void txtEmail_Leave(object sender, EventArgs e)
         {
-            ValidacaoEmail.VerificarPreenchimentoEmail(txtEmail.Text, txtEmail);
+            if (txtEmail.Text != string.Empty)
+            {
+                ValidacaoEmail.VerificarPreenchimentoEmail(txtEmail.Text, txtEmail);
+            }
         }
     }
 }

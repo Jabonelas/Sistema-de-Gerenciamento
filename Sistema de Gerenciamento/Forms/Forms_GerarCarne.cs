@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Sistema_de_Gerenciamento.Classes;
 using System.IO;
+using DevExpress.CodeParser;
 
 namespace Sistema_de_Gerenciamento.Forms
 {
@@ -28,137 +29,53 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private List<DadosCliente> listaDadosCliente = new List<DadosCliente>();
 
-        private decimal valorBruto = 0;
-
-        public Forms_Venda forms_Venda;
-
         public Forms_PDV forms_PDV;
 
         private int NumermoNotaFiscal;
 
+        private decimal valorBruto = 0;
+
         private decimal comissaoPorProduto;
 
-        public Forms_GerarCarne(Forms_Venda _formsVenda)
+        private DateTime dataVencimento;
+
+        public Forms_GerarCarne(List<DadosNotaFiscalSaida> _listaNotaFiscalSaida, decimal _valorBruto, int _indexCmbParcela)
         {
             InitializeComponent();
 
-            listaFinanceiro = Buscar.BuscarListaDadosFinanceiro();
-
-            DadosParaPreenchimentoTextBox();
-
-            forms_Venda = _formsVenda;
-
-            cmbParcelaCarne.SelectedIndex = 0;
-        }
-
-        public Forms_GerarCarne(List<DadosNotaFiscalSaida> _listaNotaFiscalSaida, decimal _valorBruto,
-            int _indexCmbParcela)
-        {
-            InitializeComponent();
-
-            listaDadosNotaFiscalSaidaCompleta = _listaNotaFiscalSaida;
-
-            valorBruto = _valorBruto;
-
-            listaFinanceiro = Buscar.BuscarListaDadosFinanceiro();
-
+            PreencherDados(_listaNotaFiscalSaida, _valorBruto);
             DadosParaPreenchimentoTextBox();
 
             cmbParcelaCarne.SelectedIndex = _indexCmbParcela;
-
-            cmbCliente.Text = listaDadosNotaFiscalSaidaCompleta[0].nomeCliente;
-
-            PreencherListaDadosClientes();
+            HabilitarBotaoConfirmarVenda();
         }
 
-        public Forms_GerarCarne(List<DadosNotaFiscalSaida> _listaNotaFiscalSaida, decimal _valorBruto,
-       int _indexCmbParcela, Forms_PDV _forms_PDV)
+        public Forms_GerarCarne(List<DadosNotaFiscalSaida> _listaNotaFiscalSaida, decimal _valorBruto, int _indexCmbParcela, Forms_PDV _forms_PDV)
         {
             InitializeComponent();
 
+            PreencherDados(_listaNotaFiscalSaida, _valorBruto);
+            DadosParaPreenchimentoTextBox();
             forms_PDV = _forms_PDV;
-
-            listaDadosNotaFiscalSaidaCompleta = _listaNotaFiscalSaida;
-
-            valorBruto = _valorBruto;
-
-            listaFinanceiro = Buscar.BuscarListaDadosFinanceiro();
-
-            DadosParaPreenchimentoTextBox();
-
             cmbParcelaCarne.SelectedIndex = _indexCmbParcela;
-
-            cmbCliente.Text = listaDadosNotaFiscalSaidaCompleta[0].nomeCliente;
-
-            PreencherListaDadosClientes();
+            HabilitarBotaoConfirmarVenda();
         }
 
-        private void PreencherListaDadosClientes()
+        private void Forms_GerarCarne_KeyDown(object sender, KeyEventArgs e)
         {
-            listaDadosCliente = Buscar.BuscarListaDadosCleinte();
-        }
-
-        private void DadosParaPreenchimentoTextBox()
-        {
-            try
+            if (e.KeyCode == Keys.F10 && btnGerarCarne.Enabled == true)
             {
-                txtPrazo.Text = listaFinanceiro[0].prazoCarne.ToString();
-
-                txtParcelasQueGeramJuros.Text = listaFinanceiro[0].parcelasCarne.ToString();
-
-                NumermoNotaFiscal = Convert.ToInt32(Buscar.BuscarNumeroNotaFiscalSaida());
-
-                VerificarDiaPagamento();
+                ConfirmarVenda();
             }
-            catch (Exception ex)
+            else if (e.KeyCode == Keys.Escape)
             {
-                Erro.ErroAoBuscarDadosParaPreencherTextBox(ex);
+                FecharTela.DesejaFecharTela(this, e);
             }
         }
 
-        private void VerificarDiaPagamento()
+        private void btnGerarCarne_Click(object sender, EventArgs e)
         {
-            DateTime dataPrimeiraParcela = DateTime.Today.AddDays(Convert.ToInt32(txtPrazo.Text));
-
-            if (dataPrimeiraParcela.DayOfWeek == DayOfWeek.Saturday)
-            {
-                dataPrimeiraParcela = DateTime.Today.AddDays(2);
-
-                txtPrimeiraParcela.Text = dataPrimeiraParcela.ToShortDateString();
-            }
-            else if (dataPrimeiraParcela.DayOfWeek == DayOfWeek.Sunday)
-            {
-                dataPrimeiraParcela = DateTime.Today.AddDays(1);
-
-                txtPrimeiraParcela.Text = dataPrimeiraParcela.ToShortDateString();
-            }
-            else
-            {
-                txtPrimeiraParcela.Text = dataPrimeiraParcela.ToShortDateString();
-            }
-            VerificarDiasFeriados(dataPrimeiraParcela);
-        }
-
-        private DateTime VerificarDiasFeriados(DateTime _dataPrimeiraParcela)
-        {
-            const string filePath = @"C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\FeriadosNacionais.txt";
-
-            string[] data = File.ReadAllLines(filePath);
-
-            foreach (var item in data)
-            {
-                if (item == _dataPrimeiraParcela.ToShortDateString())
-                {
-                    return _dataPrimeiraParcela.AddDays(1);
-                }
-            }
-
-            return _dataPrimeiraParcela;
-        }
-
-        public Forms_GerarCarne()
-        {
-            InitializeComponent();
+            ConfirmarVenda();
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -173,25 +90,119 @@ namespace Sistema_de_Gerenciamento.Forms
             PreencherGridview();
         }
 
+        private void cmbCliente_Enter(object sender, EventArgs e)
+        {
+            PreencherListaClientes();
+        }
+
+        private void cmbCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.DigitoFoiLetras(e);
+        }
+
+        private void cmbCliente_TextChanged(object sender, EventArgs e)
+        {
+            BuscarDadosCliente();
+
+            if (cmbCliente.Text == string.Empty)
+            {
+                txtCodigoCliente.Text = string.Empty;
+            }
+        }
+
+        private void PreencherDados(List<DadosNotaFiscalSaida> _listaNotaFiscalSaida, decimal _valorBruto)
+        {
+            listaDadosCliente = Buscar.BuscarListaDadosCleinte();
+            listaFinanceiro = Buscar.BuscarListaDadosFinanceiro();
+            listaDadosNotaFiscalSaidaCompleta = _listaNotaFiscalSaida;
+            valorBruto = _valorBruto;
+        }
+
+        private string BuscandoNomeCliente()
+        {
+            string NomeCliente = string.Empty;
+
+            for (int i = 0; i < listaDadosNotaFiscalSaidaCompleta.Count; i++)
+            {
+                if (listaDadosNotaFiscalSaidaCompleta[i].nomeCliente != "CLIENTE")
+                {
+                    NomeCliente = listaDadosNotaFiscalSaidaCompleta[i].nomeCliente;
+
+                    return NomeCliente;
+                }
+            }
+
+            NomeCliente = "CLIENTE";
+
+            return NomeCliente;
+        }
+
+        private void HabilitarBotaoConfirmarVenda()
+        {
+            if (cmbCliente.Text == "CLIENTE" || cmbCliente.Text == "")
+            {
+                btnGerarCarne.Enabled = false;
+            }
+            else
+            {
+                btnGerarCarne.Enabled = true;
+            }
+        }
+
+        private void DadosParaPreenchimentoTextBox()
+        {
+            try
+            {
+                string prazo = listaFinanceiro[0].prazoCarne.ToString();
+                DateTime dataPrimeiraParcela = DateTime.Today.AddDays(listaFinanceiro[0].prazoCarne);
+
+                dataVencimento = dataPrimeiraParcela;
+
+                dataPrimeiraParcela = VerificarDiaPagamento(dataPrimeiraParcela);
+
+                txtPrimeiraParcela.Text = dataPrimeiraParcela.ToShortDateString();
+
+                txtPrazo.Text = prazo;
+
+                NumermoNotaFiscal = Convert.ToInt32(Buscar.BuscarNumeroNotaFiscalSaida());
+
+                cmbCliente.Text = BuscandoNomeCliente();
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarDadosParaPreencherTextBox(ex);
+            }
+        }
+
         private void PreencherGridview()
         {
-            gdvGerarCarne.Rows.Clear();
-
-            int dias = 30;
-
-            int numeroNFSaida = Buscar.BuscarNumeroNotaFiscalSaida();
-
-            for (int quantParcelas = 1; quantParcelas <= Convert.ToInt32(cmbParcelaCarne.Text.Replace("x", "")); quantParcelas++)
+            try
             {
-                gdvGerarCarne.ColumnCount = 4;
+                int dias = 30;
+                int numeroNFSaida = Buscar.BuscarNumeroNotaFiscalSaida();
+                string valorParcelaCarne = txtValorParcelaCarne.Text;
+                int qtdParcelasTotal = Convert.ToInt32(cmbParcelaCarne.Text.Replace("x", ""));
+                dataVencimento = DateTime.Today.AddDays(listaFinanceiro[0].prazoCarne);
 
-                var rows = new List<string[]>();
-                string[] row1 = new string[] { numeroNFSaida.ToString(),
-                    (cmbParcelaCarne.Text.Replace("x","") +"/" + quantParcelas),
-                    txtValorParcelaCarne.Text,
-                    (Convert.ToDateTime(txtPrimeiraParcela.Text).AddDays(dias * quantParcelas)).ToShortDateString()};
+                gdvGerarCarne.Rows.Clear();
 
-                gdvGerarCarne.Rows.Add(row1);
+                for (int quantParcelas = 1; quantParcelas <= qtdParcelasTotal; quantParcelas++)
+                {
+                    dataVencimento = VerificarDiaPagamento(dataVencimento);
+
+                    gdvGerarCarne.ColumnCount = 4;
+
+                    var rows = new List<string[]>();
+                    string[] row1 = new string[] { numeroNFSaida.ToString(), (qtdParcelasTotal + "/" + quantParcelas), valorParcelaCarne, dataVencimento.ToShortDateString() };
+
+                    gdvGerarCarne.Rows.Add(row1);
+
+                    dataVencimento = dataVencimento.AddDays(dias);
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoPreencherGridGerarCarne(ex);
             }
         }
 
@@ -199,7 +210,10 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             try
             {
-                if (Convert.ToInt32(cmbParcelaCarne.Text.Replace("x", "")) > Convert.ToInt32(txtParcelasQueGeramJuros.Text))
+                int qtdParcelas = Convert.ToInt32(cmbParcelaCarne.Text.Replace("x", ""));
+                int qtdParcelasQueGeramJuros = listaFinanceiro[0].parcelasCarne;
+
+                if (qtdParcelas > qtdParcelasQueGeramJuros)
                 {
                     ComJuros();
                 }
@@ -216,89 +230,124 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void ComJuros()
         {
-            txtJurosCarne.Text = string.Format("{0:P}", listaFinanceiro[0].jurosCarne / 100).ToString();
+            decimal valorJuros = listaFinanceiro[0].jurosCarne / 100;
 
-            txtValorTotalCarne.Text = string.Format("{0:C}", (Convert.ToDecimal(txtJurosCarne.Text.Replace("%", "")) *
-                                                                valorBruto / 100) +
-                                                             valorBruto).ToString();
-
-            txtValorParcelaCarne.Text = string.Format("{0:C}",
-                (Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$ ", "")) /
-                 Convert.ToDecimal(cmbParcelaCarne.Text.Replace("x", "")))).ToString();
+            txtJurosCarne.Text = string.Format("{0:P}", valorJuros);
+            txtValorTotalCarne.Text = string.Format("{0:C}", CalcularValorCarne());
+            txtValorParcelaCarne.Text = string.Format("{0:C}", CalcularValorParcela());
         }
 
         private void SemJuros()
         {
             txtJurosCarne.Text = "0,00%";
-
-            txtValorTotalCarne.Text = string.Format("{0:C}", (Convert.ToDecimal(txtJurosCarne.Text.Replace("%", "")) *
-                                                                valorBruto / 100) +
-                                                             valorBruto).ToString();
-
-            txtValorParcelaCarne.Text = string.Format("{0:C}",
-                (Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$ ", "")) /
-                 Convert.ToDecimal(cmbParcelaCarne.Text.Replace("x", "")))).ToString();
+            txtValorTotalCarne.Text = string.Format("{0:C}", CalcularValorCarne());
+            txtValorParcelaCarne.Text = string.Format("{0:C}", CalcularValorParcela());
         }
 
-        private void btnGerarCarne_Click(object sender, EventArgs e)
+        private decimal CalcularValorCarne()
         {
-            ConfirmarVenda();
+            decimal JurosCarne = Convert.ToDecimal(txtJurosCarne.Text.Replace("%", ""));
+            decimal valorTotalCarne = (JurosCarne * valorBruto / 100) + valorBruto;
+
+            return valorTotalCarne;
+        }
+
+        private decimal CalcularValorParcela()
+        {
+            decimal valorTotalCarne = Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$ ", ""));
+            decimal parcelaCarne = Convert.ToDecimal(cmbParcelaCarne.Text.Replace("x", ""));
+            decimal valorParcela = valorTotalCarne / parcelaCarne;
+
+            return valorParcela;
         }
 
         private void ConfirmarVenda()
         {
-            if (Convert.ToDecimal(txtSaldo.Text.Replace("R$", "")) >= Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$", ""))
-              && txtStatus.Text == "Liberado")
+            try
             {
-                decimal saldo = Buscar.SaldoDisponivelCliente(listaDadosNotaFiscalSaidaCompleta[0].cpf);
+                decimal valorTotalCarne = Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$", ""));
+                decimal valorSaldo = Convert.ToDecimal(txtSaldo.Text.Replace("R$", ""));
+                int qtdParcelasCarne = Convert.ToInt32(cmbParcelaCarne.Text.Replace("x", ""));
+                string cpf = listaDadosNotaFiscalSaidaCompleta[0].cpf;
 
-                saldo -= Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$", ""));
-
-                Atualizar.AtualizarSaldoCliente(saldo, listaDadosNotaFiscalSaidaCompleta[0].cpf);
-
-                foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
+                if (valorSaldo >= valorTotalCarne && txtStatus.Text == "Liberado")
                 {
-                    if (txtJurosCarne.Text == "0,00%")
+                    SaldoCliente(cpf, valorTotalCarne);
+
+                    foreach (DadosNotaFiscalSaida item in listaDadosNotaFiscalSaidaCompleta)
                     {
-                        AdicionarNaTabelaNotaFiscalSaidaPagamentoSemJuros(item);
+                        InserindoJuros(item);
 
                         Atualizar.AtualizarQuantidadeEstoquePosVenda(item.quantidade, item.codigoBarras, item.numeroNF);
-                    }
-                    else
-                    {
-                        AdicionarNaTabelaNotaFiscalSaidaPagamentoComJuros(item);
 
-                        Atualizar.AtualizarQuantidadeEstoquePosVenda(item.quantidade, item.codigoBarras, item.numeroNF);
+                        CalcularComissaoPorProduto(item.codigoProduto, item.valorUnitario);
                     }
 
-                    CalcularComissaoPorProduto(item.codigoProduto, item.valorUnitario);
+                    AdicinandoPagamento(qtdParcelasCarne);
+
+                    InserirComissao();
+
+                    ComponentesFormsPDV();
+
+                    btnGerarCarne.Enabled = false;
+
+                    AvisoCantoInferiorDireito.Confirmacao();
                 }
-                for (int i = 1; i <= Convert.ToInt32(cmbParcelaCarne.Text.Replace("x", "")); i++)
+                else
                 {
-                    AdicionarNaTabelaCarne(i);
-
-                    AtualizarImagemStatusPagamentoCarne(i);
+                    MessageBox.Show("SaldoCliente Disponivel Inferior Ao Solicitado/Cliente Com Pendencia Financeira!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoConfirmarVendaGerarCarne(ex);
+            }
+        }
 
-                AvisoCantoInferiorDireito.Confirmacao();
-
-                btnGerarCarne.Enabled = false;
-
-                //Inserir Comissao
-                if (btnGerarCarne.Enabled == false)
-                {
-                    decimal valorComissao = CalcularComissaoGeral() + comissaoPorProduto;
-
-                    Atualizar.AtualizarComissaoDiariamente(valorComissao, Global.NomeDeUsuario);
-
-                    comissaoPorProduto = 0;
-                }
-
-                CompenetesFormsPDV();
+        private void InserindoJuros(DadosNotaFiscalSaida _item)
+        {
+            if (txtJurosCarne.Text == "0,00%")
+            {
+                AdicionarNaTabelaNotaFiscalSaidaPagamentoSemJuros(_item);
             }
             else
             {
-                MessageBox.Show("Saldo Disponivel Inferior Ao Solicitado/Cliente Com Pendencia Financeira!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                AdicionarNaTabelaNotaFiscalSaidaPagamentoComJuros(_item);
+            }
+        }
+
+        private void AdicinandoPagamento(int _qtdParcelasCarne)
+        {
+            for (int i = 1; i <= _qtdParcelasCarne; i++)
+            {
+                AdicinandoPagamentoCarner(i, dataVencimento);
+
+                dataVencimento = dataVencimento.AddDays((30 * i));
+
+                VerificarDiaPagamento(dataVencimento);
+
+                AtualizarImagemStatusPagamentoCarne(i);
+            }
+        }
+
+        private void SaldoCliente(string _cpf, decimal _valorTotalCarne)
+        {
+            decimal saldo = Buscar.SaldoDisponivelCliente(_cpf);
+
+            saldo -= _valorTotalCarne;
+
+            Atualizar.AtualizarSaldoCliente(saldo, _cpf);
+        }
+
+        private void InserirComissao()
+        {
+            if (btnGerarCarne.Enabled == false)
+            {
+                decimal valorComissao = CalcularComissaoGeral() + comissaoPorProduto;
+
+                Atualizar.AtualizarComissaoDiariamente(valorComissao, Global.NomeDeUsuario);
+
+                comissaoPorProduto = 0;
             }
         }
 
@@ -320,43 +369,92 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void AdicionarNaTabelaNotaFiscalSaidaPagamentoSemJuros(DadosNotaFiscalSaida item)
         {
-            Salvar.NotaFiscalSaida(item.cpf, NumermoNotaFiscal, item.codigoProduto,
-                     item.descricao, item.quantidade, item.valorUnitario, item.emissao, item.codigoBarras, item.vendedor,
-                     item.validadeTroca, item.nomeCliente, "CARNÊ", item.valorDesconto,
-                     item.quantidadeParcelas, item.valorJuros, item.valorPago, item.unidade, item.status, item.trocarVendedor,
-                     item.motivoTroca, item.nfEntrada);
+            decimal valorPago = item.valorPago;
+            int qtdParcelas = item.quantidadeParcelas;
+
+            SalvarNotaFiscal(item, valorPago, qtdParcelas);
         }
 
         private void AdicionarNaTabelaNotaFiscalSaidaPagamentoComJuros(DadosNotaFiscalSaida item)
         {
             decimal valorPago = item.valorUnitario + item.valorJuros;
+            int qtdParcelas = Convert.ToInt32(cmbParcelaCarne.Text.Replace("x", ""));
 
-            Salvar.NotaFiscalSaida(item.cpf, NumermoNotaFiscal, item.codigoProduto,
-                  item.descricao, item.quantidade, item.valorUnitario,
-                  item.emissao, item.codigoBarras, item.vendedor, item.validadeTroca, item.nomeCliente, "CARNÊ",
-                  item.valorDesconto, Convert.ToInt32(cmbParcelaCarne.Text.Replace("x", "")),
-                  item.valorJuros,
-                  valorPago, item.unidade, item.status,
-                  item.trocarVendedor, item.motivoTroca, item.nfEntrada);
+            SalvarNotaFiscal(item, valorPago, qtdParcelas);
         }
 
-        private void AdicionarNaTabelaCarne(int i)
+        private void SalvarNotaFiscal(DadosNotaFiscalSaida item, decimal _valorPago, int _qtdParcelas)
         {
-            Salvar.AdicionarPagamentoCarner(NumermoNotaFiscal, txtCpfCnpjCliente.Text, cmbCliente.Text,
-            DateTime.Now, Global.NomeDeUsuario, ($"{cmbParcelaCarne.Text.Replace("x", "")}/{i}"), 0,
-            (Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$", "")) - valorBruto) / Convert.ToInt32(cmbParcelaCarne.Text.Replace("x", "")),
-            Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$", "")),
-            DateTime.Today.AddDays((listaFinanceiro[0].prazoCarne) * i), "-", "Nao Pago",
-            Convert.ToDecimal(txtValorParcelaCarne.Text.Replace("R$", "")));
+            Salvar.NotaFiscalSaida(item.cpf, NumermoNotaFiscal, item.codigoProduto, item.descricao, item.quantidade, item.valorUnitario,
+                item.emissao, item.codigoBarras, item.vendedor, item.validadeTroca, item.nomeCliente, "CARNÊ",
+                item.valorDesconto, _qtdParcelas, item.valorJuros, _valorPago, item.unidade, item.status, item.trocarVendedor,
+                item.motivoTroca, item.nfEntrada);
+        }
+
+        private void AdicinandoPagamentoCarner(int i, DateTime _dataVencimento)
+        {
+            int numeroNotaFiscal = NumermoNotaFiscal;
+            string qtdParcela = cmbParcelaCarne.Text.Replace("x", "");
+            string cliente = cmbCliente.Text;
+            string CpfCnpj = txtCpfCnpjCliente.Text;
+            string nomeVendedor = Global.NomeDeUsuario;
+            string pagamentoVendedor = "-";
+            string status = "Nao Pago";
+            decimal valorDesconto = 0;
+            decimal valorTotalCarne = Convert.ToDecimal(txtValorTotalCarne.Text.Replace("R$", ""));
+            decimal valorJuros = (valorTotalCarne - valorBruto) / Convert.ToInt32(qtdParcela);
+            decimal valorParcela = Convert.ToDecimal(txtValorParcelaCarne.Text.Replace("R$", ""));
+            DateTime emissao = DateTime.Now;
+
+            Salvar.AdicionarPagamentoCarner(numeroNotaFiscal, CpfCnpj, cliente, emissao, nomeVendedor, ($"{qtdParcela}/{i}"), valorDesconto,
+                valorJuros, valorTotalCarne, _dataVencimento, pagamentoVendedor, status, valorParcela);
+        }
+
+        private DateTime VerificarDiaPagamento(DateTime _dataVencimento)
+        {
+            DateTime data = _dataVencimento;
+
+            if (data.DayOfWeek == DayOfWeek.Saturday)
+            {
+                _dataVencimento = _dataVencimento.AddDays(2);
+            }
+            else if (data.DayOfWeek == DayOfWeek.Sunday)
+            {
+                _dataVencimento = _dataVencimento.AddDays(1);
+            }
+
+            _dataVencimento = VerificarDiasFeriados(_dataVencimento);
+
+            return _dataVencimento;
+        }
+
+        private DateTime VerificarDiasFeriados(DateTime _dataParcela)
+        {
+            const string filePath = @"C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\FeriadosNacionais.txt";
+
+            string[] data = File.ReadAllLines(filePath);
+
+            foreach (var item in data)
+            {
+                if (item == _dataParcela.ToShortDateString())
+                {
+                    _dataParcela = _dataParcela.AddDays(1);
+
+                    return _dataParcela;
+                }
+            }
+
+            return _dataParcela;
         }
 
         private void AtualizarImagemStatusPagamentoCarne(int i)
         {
-            Atualizar.AtualizarImagemStatusPagamentoNotaFiscalSaida(pcbStatusPagamento.Image, NumermoNotaFiscal,
-               ($"{cmbParcelaCarne.Text.Replace("x", "")}/{i}"));
+            string qtdParcelas = cmbParcelaCarne.Text.Replace("x", "");
+
+            Atualizar.AtualizarImagemStatusPagamentoNotaFiscalSaida(pcbStatusPagamento.Image, NumermoNotaFiscal, ($"{qtdParcelas}/{i}"));
         }
 
-        private void CompenetesFormsPDV()
+        private void ComponentesFormsPDV()
         {
             if (forms_PDV != null)
             {
@@ -374,24 +472,21 @@ namespace Sistema_de_Gerenciamento.Forms
 
             if (listaCliente.Count != 0)
             {
-                foreach (DadosCliente variable in listaCliente)
+                foreach (DadosCliente item in listaCliente)
                 {
-                    txtCodigoCliente.Text = variable.id.ToString();
-                    txtCpfCnpjCliente.Text = variable.cpfCpnjCliente;
-                    txtCredito.Text = string.Format("{0:c}", variable.credito);
-                    txtSaldo.Text = string.Format("{0:c}", variable.saldo);
-                    txtStatus.Text = variable.status;
+                    txtCodigoCliente.Text = item.id.ToString();
+                    txtCpfCnpjCliente.Text = item.cpfCpnjCliente;
+                    txtCredito.Text = string.Format("{0:c}", item.credito);
+                    txtSaldo.Text = string.Format("{0:c}", item.saldo);
+                    txtStatus.Text = item.status;
+
+                    HabilitarBotaoConfirmarVenda();
                 }
             }
             else
             {
                 txtCodigoCliente.Text = string.Empty;
             }
-        }
-
-        private void cmbCliente_Enter(object sender, EventArgs e)
-        {
-            PreencherListaClientes();
         }
 
         private void PreencherListaClientes()
@@ -402,37 +497,6 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 cmbCliente.Items.Add(item);
             }
-        }
-
-        private void cmbCliente_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.DigitoFoiLetras(e);
-        }
-
-        private void cmbCliente_TextChanged(object sender, EventArgs e)
-        {
-            BuscarDadosCliente();
-
-            if (cmbCliente.Text == string.Empty)
-            {
-                txtCodigoCliente.Text = string.Empty;
-            }
-        }
-
-        private void Forms_GerarCarne_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F10 && btnGerarCarne.Enabled == true)
-            {
-                ConfirmarVenda();
-            }
-            else if (e.KeyCode == Keys.Escape)
-            {
-                FecharTela.DesejaFecharTela(this, e);
-            }
-        }
-
-        private void Forms_GerarCarne_Load(object sender, EventArgs e)
-        {
         }
     }
 }

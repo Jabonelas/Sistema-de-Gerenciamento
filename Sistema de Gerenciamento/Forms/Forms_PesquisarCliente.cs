@@ -34,7 +34,7 @@ namespace Sistema_de_Gerenciamento
 
             this.Text = _formsCliente;
 
-            if (_formsCliente == "Cliente")
+            if (_formsCliente == "Pesquisar Cliente")
             {
                 LayoutCliente();
             }
@@ -127,7 +127,7 @@ namespace Sistema_de_Gerenciamento
 
         private void gdvPesquisarCliente_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (this.Text != "Cliente")
+            if (this.Text != "Pesquisar Cliente")
             {
                 SelecaoGridViewPreencherTextBox();
             }

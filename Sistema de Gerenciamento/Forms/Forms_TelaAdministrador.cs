@@ -148,7 +148,7 @@ namespace Sistema_de_Gerenciamento
 
         private void btnClienteConsole_Click(object sender, EventArgs e)
         {
-            Forms_PesquisarCliente pesquisarCliente = new Forms_PesquisarCliente("Cliente");
+            Forms_PesquisarCliente pesquisarCliente = new Forms_PesquisarCliente("Pesquisar Cliente");
             pesquisarCliente.ShowDialog();
         }
 
@@ -353,17 +353,17 @@ namespace Sistema_de_Gerenciamento
 
             if (data.DayOfWeek == DayOfWeek.Saturday)
             {
-                _despesaCusto.vencimento.AddDays(-1);
+                _despesaCusto.vencimento = _despesaCusto.vencimento.AddDays(-1);
             }
             else if (data.DayOfWeek == DayOfWeek.Sunday)
             {
-                _despesaCusto.vencimento.AddDays(-2);
+                _despesaCusto.vencimento = _despesaCusto.vencimento.AddDays(-2);
             }
 
-            VerificarDiasFeriados(_despesaCusto.vencimento);
+            VerificarDiasFeriados(_despesaCusto);
         }
 
-        private void VerificarDiasFeriados(DateTime _dataVencimento)
+        private void VerificarDiasFeriados(DadosDespesaCusto _despesaCusto)
         {
             const string filePath = @"C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\FeriadosNacionais.txt";
 
@@ -371,9 +371,9 @@ namespace Sistema_de_Gerenciamento
 
             foreach (var item in data)
             {
-                if (item == _dataVencimento.ToShortDateString())
+                if (item == _despesaCusto.vencimento.ToShortDateString())
                 {
-                    _dataVencimento.AddDays(-1);
+                    _despesaCusto.vencimento = _despesaCusto.vencimento.AddDays(-1);
                 }
             }
         }

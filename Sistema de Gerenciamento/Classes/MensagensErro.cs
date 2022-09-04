@@ -184,6 +184,16 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(GEC-VE02) Erro ao Buscar Juros Do Carne \n\nErro: {_e}", "Erro Buscar Juros !", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoPreencherGridGerarCarne(Exception _e)
+        {
+            MessageBox.Show($"(GEC-VE03) Erro ao Preencher GridView Gerar Carne \n\nErro: {_e}", "Erro Preencher GridView !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void ErroAoConfirmarVendaGerarCarne(Exception _e)
+        {
+            MessageBox.Show($"(GEC-VE04) Erro ao Confirmar Venda Gerar Carne \n\nErro: {_e}", "Erro Confirmar Venda !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Gerar Carne
 
         #region Despesa

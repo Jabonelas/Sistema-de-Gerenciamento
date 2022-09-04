@@ -46,10 +46,6 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties12 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.gdvEstoqueContagem = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.ep_nf_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ep_data_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ep_quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ep_valor_unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtUnidade = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtDescricao = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,6 +54,10 @@
             this.txtCodigo = new Bunifu.UI.WinForms.BunifuTextBox();
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.ep_nf_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_data_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_valor_unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gdvEstoqueContagem)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,36 +130,6 @@
             this.gdvEstoqueContagem.Size = new System.Drawing.Size(632, 252);
             this.gdvEstoqueContagem.TabIndex = 195;
             this.gdvEstoqueContagem.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
-            // 
-            // ep_nf_entrada
-            // 
-            this.ep_nf_entrada.DataPropertyName = "ep_nf_entrada";
-            this.ep_nf_entrada.HeaderText = "Nº NF Entrada";
-            this.ep_nf_entrada.Name = "ep_nf_entrada";
-            this.ep_nf_entrada.ReadOnly = true;
-            // 
-            // ep_data_entrada
-            // 
-            this.ep_data_entrada.DataPropertyName = "ep_data_entrada";
-            this.ep_data_entrada.FillWeight = 95.55751F;
-            this.ep_data_entrada.HeaderText = "Data Entrada";
-            this.ep_data_entrada.Name = "ep_data_entrada";
-            this.ep_data_entrada.ReadOnly = true;
-            // 
-            // ep_quantidade
-            // 
-            this.ep_quantidade.DataPropertyName = "ep_quantidade";
-            this.ep_quantidade.FillWeight = 88.05087F;
-            this.ep_quantidade.HeaderText = "Quantidade";
-            this.ep_quantidade.Name = "ep_quantidade";
-            this.ep_quantidade.ReadOnly = true;
-            // 
-            // ep_valor_unitario
-            // 
-            this.ep_valor_unitario.DataPropertyName = "ep_valor_unitario";
-            this.ep_valor_unitario.HeaderText = "Valor Unitario";
-            this.ep_valor_unitario.Name = "ep_valor_unitario";
-            this.ep_valor_unitario.ReadOnly = true;
             // 
             // txtUnidade
             // 
@@ -520,6 +490,36 @@
             this.btnFechar.UseDefaultRadiusAndThickness = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
+            // ep_nf_entrada
+            // 
+            this.ep_nf_entrada.DataPropertyName = "ep_nf_entrada";
+            this.ep_nf_entrada.HeaderText = "Nº NF Entrada";
+            this.ep_nf_entrada.Name = "ep_nf_entrada";
+            this.ep_nf_entrada.ReadOnly = true;
+            // 
+            // ep_data_entrada
+            // 
+            this.ep_data_entrada.DataPropertyName = "ep_data_entrada";
+            this.ep_data_entrada.FillWeight = 95.55751F;
+            this.ep_data_entrada.HeaderText = "Data Emissão";
+            this.ep_data_entrada.Name = "ep_data_entrada";
+            this.ep_data_entrada.ReadOnly = true;
+            // 
+            // ep_quantidade
+            // 
+            this.ep_quantidade.DataPropertyName = "ep_quantidade";
+            this.ep_quantidade.FillWeight = 88.05087F;
+            this.ep_quantidade.HeaderText = "Quantidade";
+            this.ep_quantidade.Name = "ep_quantidade";
+            this.ep_quantidade.ReadOnly = true;
+            // 
+            // ep_valor_unitario
+            // 
+            this.ep_valor_unitario.DataPropertyName = "ep_valor_unitario";
+            this.ep_valor_unitario.HeaderText = "Valor Unitario";
+            this.ep_valor_unitario.Name = "ep_valor_unitario";
+            this.ep_valor_unitario.ReadOnly = true;
+            // 
             // Forms_ConsultaEstoqueContagem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -556,10 +556,10 @@
         private System.Windows.Forms.Label label6;
         public Bunifu.UI.WinForms.BunifuTextBox txtCodigo;
         private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator1;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnFechar;
         private System.Windows.Forms.DataGridViewTextBoxColumn ep_nf_entrada;
         private System.Windows.Forms.DataGridViewTextBoxColumn ep_data_entrada;
         private System.Windows.Forms.DataGridViewTextBoxColumn ep_quantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn ep_valor_unitario;
-        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnFechar;
     }
 }

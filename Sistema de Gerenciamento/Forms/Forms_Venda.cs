@@ -229,7 +229,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     if (Buscar.SaldoDisponivelCliente(txtCpfCnpjCliente.Text) >= Convert.ToDecimal(lblValorTotal.Text.Replace("R$", "")))
                     {
-                        Forms_GerarCarne gerarBoleto = new Forms_GerarCarne(this);
+                        Forms_GerarCarne gerarBoleto = new Forms_GerarCarne(listaDadosNotaFiscalSaidaCompleta, valorBruto, 0);
                         gerarBoleto.ShowDialog();
                     }
                     else

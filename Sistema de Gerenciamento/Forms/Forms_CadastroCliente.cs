@@ -329,22 +329,25 @@ namespace Sistema_de_Gerenciamento
 
         private void txtCPF_CNPJ_Leave(object sender, EventArgs e)
         {
-            if (cmbTipo.Text == "Pess. Fisica")
+            if (txtCPF_CNPJ.Text != string.Empty)
             {
-                if (ValidacaoCPF.IsCpf(txtCPF_CNPJ.Text) == false)
+                if (cmbTipo.Text == "Pess. Fisica")
                 {
-                    ValidacaoCPF.MensagemCPFDigitadoInvalido();
+                    if (ValidacaoCPF.IsCpf(txtCPF_CNPJ.Text) == false)
+                    {
+                        ValidacaoCPF.MensagemCPFDigitadoInvalido();
 
-                    txtCPF_CNPJ.Focus();
+                        txtCPF_CNPJ.Focus();
+                    }
                 }
-            }
-            else if (cmbTipo.Text == "Pess. Juridica")
-            {
-                if (ValidacaoCNPJ.IsCnpj(txtCPF_CNPJ.Text) == false)
+                else if (cmbTipo.Text == "Pess. Juridica")
                 {
-                    ValidacaoCNPJ.MensagemCNPJDigitadoInvalido();
+                    if (ValidacaoCNPJ.IsCnpj(txtCPF_CNPJ.Text) == false)
+                    {
+                        ValidacaoCNPJ.MensagemCNPJDigitadoInvalido();
 
-                    txtCPF_CNPJ.Focus();
+                        txtCPF_CNPJ.Focus();
+                    }
                 }
             }
         }
@@ -390,7 +393,7 @@ namespace Sistema_de_Gerenciamento
         {
             if (cont == 0)
             {
-                if (txtDataNascimento.Text != "----------")
+                if (txtDataNascimento.Text != string.Empty && txtDataNascimento.Text != "----------")
                 {
                     if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtDataNascimento) == true)
                     {
@@ -623,7 +626,10 @@ namespace Sistema_de_Gerenciamento
 
         private void txtEmail_Leave(object sender, EventArgs e)
         {
-            ValidacaoEmail.VerificarPreenchimentoEmail(txtEmail.Text, txtEmail);
+            if (txtEmail.Text != string.Empty)
+            {
+                ValidacaoEmail.VerificarPreenchimentoEmail(txtEmail.Text, txtEmail);
+            }
         }
     }
 }

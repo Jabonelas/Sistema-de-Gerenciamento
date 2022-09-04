@@ -48,11 +48,15 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     bool isResultadoEncontrado = Buscar.BuscarResumoVendaPorData(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
 
+                    SetandoValoresLabels();
+
                     MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
                 }
                 else if (cmbTipoPesquisa.Text == "Devolucao")
                 {
                     bool isResultadoEncontrado = Buscar.BuscarResumoPorDevolucao(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+
+                    SetandoValoresLabels();
 
                     MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
                 }
@@ -60,11 +64,15 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     bool isResultadoEncontrado = Buscar.BuscarResumoPorProdutoMaisVendido(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
 
+                    SetandoValoresLabels();
+
                     MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
                 }
                 else if (cmbTipoPesquisa.Text == "Tipo Pagamento")
                 {
                     bool isResultadoEncontrado = Buscar.BuscarResumoVendaPorTipoPagamento(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
+
+                    SetandoValoresLabels();
 
                     MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
                 }
@@ -72,27 +80,35 @@ namespace Sistema_de_Gerenciamento.Forms
                 {
                     bool isResultadoEncontrado = Buscar.BuscarResumoVendaPorVendedor(dtpDataInicial.Value, dtpDataFinal.Value, gdvResumoVendas);
 
+                    SetandoValoresLabels();
+
                     MenssagemResultadoNaoEncontrado(isResultadoEncontrado);
                 }
-
-                string valorGastoBruto = Buscar.BuscarGastosBrutos().ToString("c");
-
-                string valorBrutovendido = Buscar.BuscarValorBrutoVendido(dtpDataInicial.Value, dtpDataFinal.Value).ToString("c");
-
-                string itensVendidos = Buscar.BuscarQuantidadeItensVendidos(dtpDataInicial.Value, dtpDataFinal.Value).ToString("N0");
-
-                lblQtditensVendidos.Text = itensVendidos;
-
-                lblValorBrutoVendido.Text = valorBrutovendido;
-
-                lblValorGastoBruto.Text = valorGastoBruto;
             }
+        }
+
+        private void SetandoValoresLabels()
+        {
+            string valorGastoBruto = Buscar.BuscarGastosBrutos().ToString("c");
+
+            string valorBrutovendido = Buscar.BuscarValorBrutoVendido(dtpDataInicial.Value, dtpDataFinal.Value).ToString("c");
+
+            string itensVendidos = Buscar.BuscarQuantidadeItensVendidos(dtpDataInicial.Value, dtpDataFinal.Value).ToString("N0");
+
+            lblQtditensVendidos.Text = itensVendidos;
+
+            lblValorBrutoVendido.Text = valorBrutovendido;
+
+            lblValorGastoBruto.Text = valorGastoBruto;
         }
 
         private void MenssagemResultadoNaoEncontrado(bool _isResultadoEncontrado)
         {
             if (_isResultadoEncontrado == false)
             {
+                lblQtditensVendidos.Text = "0";
+                lblValorBrutoVendido.Text = "R$ 0,00";
+
                 MessageBox.Show("Dados Não Encontrado", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

@@ -59,5 +59,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 FecharTela.DesejaFecharTela(this, e);
             }
         }
+
+    
     }
 }

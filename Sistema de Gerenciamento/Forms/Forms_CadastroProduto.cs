@@ -341,7 +341,7 @@ namespace Sistema_de_Gerenciamento
         {
             if (ManipulacaoTextBox.VerificarcaoPreencimentoCompleto(txtValidade) == true)
             {
-                ManipulacaoTextBox.FormatoData(txtValidade);
+                ManipulacaoTextBox.ValidacaoData(txtValidade);
             }
         }
 
