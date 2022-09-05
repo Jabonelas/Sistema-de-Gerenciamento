@@ -72,10 +72,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void layoutTelaPagamento()
         {
-            grupoBoxAvista.Visible = false;
-            grupboxCredito.Visible = false;
-
-            btnTroca.Visible = false;
+            GrupoBoxAvista.Visible = false;
+            GrupboxCredito.Visible = false;
 
             lblNomeValorTotal.Location = new Point(318, 571);
             lblValorTotal.Location = new Point(329, 594);
@@ -103,6 +101,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void PreencherListaNotaFiscalSaida()
         {
+            listaDadosNotaFiscalSaidaCompleta.Clear();
+
             for (int i = 0; i < gdvVenda.Rows.Count; i++)
             {
                 listaDadosNotaFiscalSaidaCompleta.Add(new DadosNotaFiscalSaida(0, Convert.ToInt32(lblNFEntrada.Text), txtCpfCnpjCliente.Text, cmbCliente.Text,
@@ -407,16 +407,6 @@ namespace Sistema_de_Gerenciamento.Forms
             ManipulacaoTextBox.DigitoFoiNumero(e);
         }
 
-        private void txtTotalPago_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            ManipulacaoTextBox.FormatoDinheiro(e, sender, txtTotalPagoAvista);
-        }
-
-        private void txtTotalPago_KeyUp(object sender, KeyEventArgs e)
-        {
-            ValorTroco();
-        }
-
         private void ValorTroco()
         {
             try
@@ -441,9 +431,27 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        private void Avista_CheckedChanged(object sender, EventArgs e)
+        private void CreditoSelecionado()
         {
-            PagamentoAvistaSelecionado();
+            if (gdvVenda.RowCount > 0)
+            {
+                if (chbCredito.Checked == true)
+                {
+                    cmbParcelaCredito.Enabled = true;
+                }
+                else if (chbCredito.Checked == false)
+                {
+                    cmbParcelaCredito.Enabled = false;
+
+                    cmbParcelaCredito.Text = string.Empty;
+
+                    txtJurosCredito.Text = string.Empty;
+
+                    txtValorTotalCredito.Text = string.Empty;
+
+                    txtValorParcelaCredito.Text = string.Empty;
+                }
+            }
         }
 
         private void PagamentoAvistaSelecionado()
@@ -477,57 +485,12 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        private void chbAvista_Click(object sender, EventArgs e)
-        {
-            if (chbAvista.Checked == true)
-            {
-                chbCredito.Checked = false;
-            }
-        }
-
-        private void chbCredito_CheckedChanged(object sender, EventArgs e)
-        {
-            CreditoSelecionado();
-        }
-
-        private void CreditoSelecionado()
-        {
-            if (gdvVenda.RowCount > 0)
-            {
-                if (chbCredito.Checked == true)
-                {
-                    cmbParcelaCredito.Enabled = true;
-                }
-                else if (chbCredito.Checked == false)
-                {
-                    cmbParcelaCredito.Enabled = false;
-
-                    cmbParcelaCredito.Text = string.Empty;
-
-                    txtJurosCredito.Text = string.Empty;
-
-                    txtValorTotalCredito.Text = string.Empty;
-
-                    txtValorParcelaCredito.Text = string.Empty;
-                }
-            }
-        }
-
-        private void chbCredito_Click(object sender, EventArgs e)
-        {
-            if (chbCredito.Checked == true)
-            {
-                chbAvista.Checked = false;
-            }
-        }
-
         private void VendaSelecionada()
         {
             if (chbVenda.Checked == true)
             {
-                LayoutVendaOrcamento(true);
+                MudancaLayoutVendaOrcamento(true);
 
-                btnTroca.Visible = false;
                 chbOrcamento.Checked = false;
                 btnNovaVenda.Text = "Nova \nVeda";
                 btnRemoverItem.Location = new Point(297, 41);
@@ -561,11 +524,11 @@ namespace Sistema_de_Gerenciamento.Forms
             }
         }
 
-        private void LayoutVendaOrcamento(bool _isVenda)
+        private void MudancaLayoutVendaOrcamento(bool _isVenda)
         {
             cmbProduto.Enabled = !_isVenda;
-            grupoBoxAvista.Visible = !_isVenda;
-            grupboxCredito.Visible = !_isVenda;
+            GrupoBoxAvista.Visible = !_isVenda;
+            GrupboxCredito.Visible = !_isVenda;
             lblNumeroVenda.Visible = _isVenda;
             txtNumeroNF.Visible = _isVenda;
             lblData.Visible = _isVenda;
@@ -583,13 +546,17 @@ namespace Sistema_de_Gerenciamento.Forms
             btnBuscar.Visible = _isVenda;
             lblCpfCnpjCliente.Visible = _isVenda;
             txtCpfCnpjCliente.Visible = _isVenda;
+            btnTroca.Visible = _isVenda;
+
+            lblValorTotal.Text = "R$ 0,00";
+            lblTotalItens.Text = "0";
         }
 
         private void OrcamentoSelecionado()
         {
             if (chbOrcamento.Checked == true)
             {
-                LayoutVendaOrcamento(false);
+                MudancaLayoutVendaOrcamento(false);
 
                 chbVenda.Checked = false;
                 btnNovaVenda.Text = "Novo \n Orçamento";
@@ -629,11 +596,6 @@ namespace Sistema_de_Gerenciamento.Forms
                     cmbProduto.Items.Add(item.descricaoProduto);
                 }
             }
-        }
-
-        private void cmbParcelaCredito_SelectedValueChanged(object sender, EventArgs e)
-        {
-            ValorJuros();
         }
 
         private void ValorJuros()
@@ -872,7 +834,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void btnTroca_Click(object sender, EventArgs e)
         {
-            if (gdvVenda.Rows.Count <= 0)
+            if (gdvVenda.Rows.Count >= 0)
             {
                 if (Global.NomeDeUsuario == "ADMIN" || listaDadosPermissao[0].devolucaoTroca == "true")
                 {
@@ -895,6 +857,47 @@ namespace Sistema_de_Gerenciamento.Forms
         private void chbOrcamento_CheckedChanged(object sender, EventArgs e)
         {
             OrcamentoSelecionado();
+        }
+
+        private void txtTotalPagoAvista_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            ManipulacaoTextBox.FormatoDinheiro(e, sender, txtTotalPagoAvista);
+        }
+
+        private void txtTotalPagoAvista_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            ValorTroco();
+        }
+
+        private void cmbParcelaCredito_SelectedValueChanged_1(object sender, EventArgs e)
+        {
+            ValorJuros();
+        }
+
+        private void chbAvista_CheckedChanged(object sender, EventArgs e)
+        {
+            PagamentoAvistaSelecionado();
+        }
+
+        private void chbAvista_Click_1(object sender, EventArgs e)
+        {
+            if (chbAvista.Checked == true)
+            {
+                chbCredito.Checked = false;
+            }
+        }
+
+        private void chbCredito_CheckedChanged_1(object sender, EventArgs e)
+        {
+            CreditoSelecionado();
+        }
+
+        private void chbCredito_Click_1(object sender, EventArgs e)
+        {
+            if (chbCredito.Checked == true)
+            {
+                chbAvista.Checked = false;
+            }
         }
     }
 }

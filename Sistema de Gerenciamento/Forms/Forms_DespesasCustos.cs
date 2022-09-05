@@ -590,5 +590,18 @@ namespace Sistema_de_Gerenciamento.Forms
                 ExcluirCadastroDespesasCustos();
             }
         }
+
+        private void txtCNPJ_Leave(object sender, EventArgs e)
+        {
+            if (txtCNPJ.Text != string.Empty)
+            {
+                if (ValidacaoCNPJ.IsCnpj(txtCNPJ.Text) == false)
+                {
+                    ValidacaoCNPJ.MensagemCNPJDigitadoInvalido();
+
+                    txtCNPJ.Focus();
+                }
+            }
+        }
     }
 }

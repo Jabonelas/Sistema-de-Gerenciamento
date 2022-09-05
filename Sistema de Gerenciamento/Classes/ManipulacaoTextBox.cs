@@ -179,41 +179,24 @@ namespace Sistema_de_Gerenciamento
                 {
                     if (_textBox.Length <= 7 || e.KeyChar.Equals((char)Keys.Back))
                     {
-                        var tipoComponente = _textBox.GetType();
-
-                        if (tipoComponente.Name == "BunifuTextBox")
+                        Guna2TextBox textbox = (Guna2TextBox)sender;
+                        string testoDoTextBox = Regex.Replace(textbox.Text, "[^0-9]", string.Empty);
+                        if (testoDoTextBox == string.Empty)
                         {
-                            Guna2TextBox textbox = (Guna2TextBox)sender;
-                            string testoDoTextBox = Regex.Replace(textbox.Text, "[^0-9]", string.Empty);
-                            if (testoDoTextBox == string.Empty)
-                            {
-                                testoDoTextBox = "0";
-                            }
-
-                            testoDoTextBox += e.KeyChar;
-                            textbox.Text = String.Format("{0:#,##0.00} %", double.Parse(testoDoTextBox) / 100);
-                            textbox.Select(textbox.Text.Length, 0);
+                            testoDoTextBox = "0";
                         }
-                        else
-                        {
-                            TextBox textbox = (TextBox)sender;
-                            string testoDoTextBox = Regex.Replace(textbox.Text, "[^0-9]", string.Empty);
-                            if (testoDoTextBox == string.Empty)
-                            {
-                                testoDoTextBox = "0";
-                            }
 
-                            testoDoTextBox += e.KeyChar;
-                            textbox.Text = String.Format("{0:#,##0.00} %", double.Parse(testoDoTextBox) / 100);
-                            textbox.Select(textbox.Text.Length, 0);
-                        }
+                        testoDoTextBox += e.KeyChar;
+                        textbox.Text = String.Format("{0:#,##0.00} %", double.Parse(testoDoTextBox) / 100);
+                        textbox.Select(textbox.Text.Length, 0);
+
+                
                     }
                 }
                 e.Handled = true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"{ex}");
             }
         }
 

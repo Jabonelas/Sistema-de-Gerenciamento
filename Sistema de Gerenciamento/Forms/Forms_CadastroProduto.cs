@@ -286,19 +286,6 @@ namespace Sistema_de_Gerenciamento
             ManipulacaoTextBox.FormatoDinheiro(e, sender, txtValorDeCusto);
         }
 
-        private void txtPorcentagem_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (ManipulacaoTextBox.DigitoFoiNumero(e))
-            {
-                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtPorcentagem.Text, sender);
-            }
-        }
-
-        private void txtPorcentagem_Leave(object sender, EventArgs e)
-        {
-            GerarValorDeVenda_Lucro();
-        }
-
         private void GerarValorDeVenda_Lucro()
         {
             if (txtValorDeCusto.Text != string.Empty)
@@ -319,14 +306,6 @@ namespace Sistema_de_Gerenciamento
         private void txtPrecoAPrazoAtacado_KeyPress(object sender, KeyPressEventArgs e)
         {
             ManipulacaoTextBox.FormatoDinheiro(e, sender, txtPrecoAtacado);
-        }
-
-        private void txtComissao_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
-            {
-                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtComissao.Text, sender);
-            }
         }
 
         private void txtValidade_KeyPress(object sender, KeyPressEventArgs e)
@@ -408,6 +387,27 @@ namespace Sistema_de_Gerenciamento
             else if (e.KeyCode == Keys.D && e.Modifiers == Keys.Control)
             {
                 InserirImagemProduto();
+            }
+        }
+
+        private void txtPorcentagem_Leave_1(object sender, EventArgs e)
+        {
+            GerarValorDeVenda_Lucro();
+        }
+
+        private void txtPorcentagem_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e))
+            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtPorcentagem.Text, sender);
+            }
+        }
+
+        private void txtComissao_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (ManipulacaoTextBox.DigitoFoiNumero(e) == true)
+            {
+                ManipulacaoTextBox.PreenchimentoPorcentagem(e, txtComissao.Text, sender);
             }
         }
     }

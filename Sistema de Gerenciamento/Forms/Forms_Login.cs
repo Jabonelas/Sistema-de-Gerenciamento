@@ -18,13 +18,11 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private MensagensErro Erro = new MensagensErro();
 
-
         private Forms_TelaAdministrador telaAdministrador;
 
         public Forms_Login()
         {
             InitializeComponent();
-
 
             PreencherTextBox();
         }
@@ -35,6 +33,9 @@ namespace Sistema_de_Gerenciamento.Forms
 
             txtUsuario.Text = "ADMIN";
             txtSenha.Text = "123";
+
+            //txtUsuario.Text = "VENDEDOR2";
+            //txtSenha.Text = "12345";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -105,11 +106,6 @@ namespace Sistema_de_Gerenciamento.Forms
         }
 
         #endregion Mostra ou Esconder Senha
-
-        private void txtSenha_KeyUp(object sender, KeyEventArgs e)
-        {
-            txtSenha.UseSystemPasswordChar = true;
-        }
 
         private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
         {

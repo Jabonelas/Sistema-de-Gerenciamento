@@ -160,14 +160,6 @@
         Q0qV+hdpzTVUjZjESgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="txtComissao.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAEcAAAAcCAYAAAAz+aIrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABzSURBVGhD7dDBCYBADAXR9F/VhpRhGRaghF0QRWYbmIF/
-        +ccXtqmqjjHG5ebaY9FE9GFP7bFoxPkmDiQOJA4kDiQOJA4kDiQOJA4kDiQOJA4kDiQOJA4kDiQOJA4k
-        DiQOJA4kDvTCycyzDzfXHovG/ou4AQ6zY/RqOjrJAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="txtValidade.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAGAAAAAcCAYAAACeeLqCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -206,14 +198,6 @@
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB6SURBVGhD7dGxCcBADARB9V+VHpXhMlyAH4ESt6DdhUsu
         nTBYVfVk5ud2rn2HOqIP21v7DrXY2xMblNigxAYlNiixQYkNSmxQYoMSG5TYoMQGJTYosUGJDUpsUGKD
         EhuU2KDEBiU2KLFBiQ3qh33OeftwO9e+Q22MIi6hoiNHb8lCRwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="txtPorcentagem.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAFYAAAAcCAYAAAD7lUj9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAB4SURBVGhD7dCxDcAwDMRA7T+VDI2RMTJADAFqUtvsSOCb
-        Ly8MrKqezPzc+dpyWCP6sDu15bAKezNhoYSFEhZKWChhoYSFEhZKWChhoYSFEhZKWChhoYSFEhZKWChh
-        oYSFEhZKWChhoYSF+sGutd4+3PnacljtfhEbPTpgELd45egAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="txtValorDeCusto.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

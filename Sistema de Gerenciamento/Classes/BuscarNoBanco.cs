@@ -933,56 +933,6 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Produto Por Descricao
 
-        #region Buscar Produto Por Grupo
-
-        public bool BuscarCadastroProdutoPorGrupo(string _grupo, BunifuDataGridView _tabela)
-        {
-            try
-            {
-                using (SqlConnection conexaoSQL = AbrirConexao())
-                {
-                    string query = "select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda," +
-                                   "cp_lucro,cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo," +
-                                   "cp_garantia,cp_marca,cp_referencia,cp_validade,cp_comissao,cp_observacao " +
-                                   "from tb_CadastroProdutos " +
-                                   "where cp_grupo like @grupo";
-
-                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
-                    adapter.SelectCommand.Parameters.AddWithValue("@grupo", string.Format("%{0}%", _grupo));
-
-                    adapter.SelectCommand.ExecuteNonQuery();
-
-                    DataTable dataTable = new DataTable();
-
-                    adapter.Fill(dataTable);
-                    _tabela.DataSource = dataTable;
-                    _tabela.Refresh();
-
-                    SqlDataReader reader;
-                    reader = adapter.SelectCommand.ExecuteReader();
-
-                    reader.Read();
-
-                    if (reader.HasRows == true)
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Erro.ErroAoBuscarCadastroProdutoPorGrupoNoBanco(ex);
-
-                return false;
-            }
-        }
-
-        #endregion Buscar Produto Por Grupo
-
         #region Buscar Produto Por Sub-Grupo
 
         public bool BuscarCadastroProdutoPorSubGrupo(string _subGrupo, BunifuDataGridView _tabela)

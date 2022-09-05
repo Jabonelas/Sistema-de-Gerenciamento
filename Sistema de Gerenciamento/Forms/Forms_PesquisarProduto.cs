@@ -105,6 +105,8 @@ namespace Sistema_de_Gerenciamento
             cmbGrupo.Items.Clear();
 
             listaGrupo.ForEach(prod => cmbGrupo.Items.Add(prod.grupo));
+
+            cmbGrupo.Items.Add("");
         }
 
         private void btnSelecionar_Click(object sender, EventArgs e)
@@ -259,11 +261,10 @@ namespace Sistema_de_Gerenciamento
 
                 MessagemProdutoNaoEncontrado(isCadastroExiste);
             }
-            else if (cmbGrupo.Text != string.Empty)
+            else if (cmbGrupo.Text != string.Empty && cmbSubGrupo.Text == string.Empty)
             {
-                bool isCadastroExiste = Buscar.BuscarCadastroProdutoPorGrupo(cmbGrupo.Text, gdvPesquisarProduto);
-
-                MessagemProdutoNaoEncontrado(isCadastroExiste);
+                MessageBox.Show("Por Favor Prencher Primeiro o Campo do Sub-Grupo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbSubGrupo.Focus();
             }
             else if (cmbSubGrupo.Text != string.Empty)
             {
@@ -307,6 +308,18 @@ namespace Sistema_de_Gerenciamento
             cmbSubGrupo.Items.Clear();
 
             ListaSubGrupo.ForEach(grupoProduto => cmbSubGrupo.Items.Add(grupoProduto.sub_grupo));
+
+            //cmbSubGrupo.Items.Add("");
+
+            LimpandoSubGrupo();
+        }
+
+        private void LimpandoSubGrupo()
+        {
+            if (cmbGrupo.Text == string.Empty)
+            {
+                cmbSubGrupo.Text = string.Empty;
+            }
         }
 
         private void VerificarPreencimentoComboBoxGrupo()
@@ -365,6 +378,19 @@ namespace Sistema_de_Gerenciamento
             else if (e.KeyCode == Keys.E && e.Modifiers == Keys.Control)
             {
                 ExportarExcel.GerarExcel(gdvPesquisarProduto);
+            }
+        }
+
+        private void Forms_PesquisarProduto_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void cmbSubGrupo_Enter(object sender, EventArgs e)
+        {
+            if (cmbGrupo.Text == string.Empty)
+            {
+                MessageBox.Show("Por Favor Prencher Primeiro o Campo do Grupo!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbGrupo.Focus();
             }
         }
     }

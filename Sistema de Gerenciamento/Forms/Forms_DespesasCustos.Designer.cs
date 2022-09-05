@@ -477,6 +477,7 @@
             this.txtCNPJ.UseSystemPasswordChar = false;
             this.txtCNPJ.WordWrap = true;
             this.txtCNPJ.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCNPJ_KeyPress_1);
+            this.txtCNPJ.Leave += new System.EventHandler(this.txtCNPJ_Leave);
             // 
             // btnNova
             // 

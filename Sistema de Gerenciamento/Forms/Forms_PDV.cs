@@ -62,7 +62,7 @@ namespace Sistema_de_Gerenciamento.Forms
 
             BuscaDadosPreencherItens();
 
-            //FormatoFullScreen();
+            FormatoFullScreen();
         }
 
         private void BuscaDadosPreencherItens()
@@ -80,11 +80,8 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void FormatoFullScreen()
         {
-            this.Height = Screen.PrimaryScreen.Bounds.Height;
-
-            this.Width = Screen.PrimaryScreen.Bounds.Width;
-
-            this.TopMost = true;
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
         }
 
         private void Forms_TelaPDV_KeyDown(object sender, KeyEventArgs e)

@@ -410,6 +410,7 @@ namespace Sistema_de_Gerenciamento.Forms
             pnlChavePix.Visible = false;
             LayoutTipoPagamentoCredito(true);
             txtValorDinheiro.Visible = false;
+            lblValorDebito.Visible = false;
         }
 
         private void PagamentoDebito()
@@ -449,9 +450,9 @@ namespace Sistema_de_Gerenciamento.Forms
             pnlQRCode.BackgroundImage = Buscar.BuscarQrCodePix(1);
             pnlChavePix.Visible = true;
             lblChavePix.Text = Buscar.BuscarChavePix();
-            lblValorDebito.Text = lblValorTotal.Text;
             LayoutTipoPagamentoCredito(false);
             PagamentoComDescontos();
+            lblValorDebito.Text = lblValorTotal.Text;
         }
 
         private void PagamentoComDescontos()
