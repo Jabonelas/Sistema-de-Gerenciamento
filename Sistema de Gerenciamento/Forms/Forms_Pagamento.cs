@@ -116,7 +116,8 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             if (tipoPagamento == "Troca")
             {
-                decimal valorDesconto = Convert.ToDecimal(lblValorDesconto.Text.Replace("R$", "")) / (gdvPagamento.Rows.Count - quantidadeItens);
+                //decimal valorDesconto = Convert.ToDecimal(lblValorDesconto.Text.Replace("R$", "")) / (gdvPagamento.Rows.Count - quantidadeItens);
+                decimal valorDesconto = 0;
                 decimal jurosPorProduto;
 
                 if (lblValorJuros.Text != "0,00%")
