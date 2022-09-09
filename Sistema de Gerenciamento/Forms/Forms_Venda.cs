@@ -550,6 +550,27 @@ namespace Sistema_de_Gerenciamento.Forms
 
             lblValorTotal.Text = "R$ 0,00";
             lblTotalItens.Text = "0";
+
+            lblFormapagamentoAvista.Visible = !_isVenda;
+            chbAvista.Visible = !_isVenda;
+            lblDesconto.Visible = !_isVenda;
+            txtDescontoAvista.Visible = !_isVenda;
+            txtValorAvista.Visible = !_isVenda;
+            lblValorLiquido.Visible = !_isVenda;
+            lblTotalPago.Visible = !_isVenda;
+            txtTotalPagoAvista.Visible = !_isVenda;
+            txtTrocoAvista.Visible = !_isVenda;
+            lblTroco.Visible = !_isVenda;
+            lblFormapagamentoCredito.Visible = !_isVenda;
+            chbCredito.Visible = !_isVenda;
+            lblParcelaCredito.Visible = !_isVenda;
+            cmbParcelaCredito.Visible = !_isVenda;
+            lblJurosCredito.Visible = !_isVenda;
+            txtJurosCredito.Visible = !_isVenda;
+            txtValorParcelaCredito.Visible = !_isVenda;
+            lblValorCredito.Visible = !_isVenda;
+            lblCredito.Visible = !_isVenda;
+            txtValorTotalCredito.Visible = !_isVenda;
         }
 
         private void OrcamentoSelecionado()
