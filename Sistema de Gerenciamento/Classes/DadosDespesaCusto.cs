@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Sistema_de_Gerenciamento.Classes
 {
-    internal class DadosDespesaCusto
+    public class DadosDespesaCusto
     {
         public int codigo { get; set; }
         public string tipo { get; set; }
@@ -40,6 +40,14 @@ namespace Sistema_de_Gerenciamento.Classes
             valorParcela = _valorParcela;
             categoria = _categoria;
             verificar = _verificar;
+            statusPagamento = _statusPàgamento;
+        }
+
+        public DadosDespesaCusto(int _codigo, DateTime _emissao, DateTime _vencimento, string _statusPàgamento)
+        {
+            codigo = _codigo;
+            emissao = _emissao;
+            vencimento = _vencimento;
             statusPagamento = _statusPàgamento;
         }
     }

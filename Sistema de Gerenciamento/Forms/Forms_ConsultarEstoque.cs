@@ -15,6 +15,8 @@ namespace Sistema_de_Gerenciamento.Forms
     {
         private BuscarNoBanco Buscar = new BuscarNoBanco();
 
+        private MensagensErro Erro = new MensagensErro();
+
         private VerificacaoDeExistencia verificacaoDeExistencia = new VerificacaoDeExistencia();
 
         private List<DadosEstoqueProduto> listaDadosEstoqueProdutos = new List<DadosEstoqueProduto>();
@@ -24,6 +26,15 @@ namespace Sistema_de_Gerenciamento.Forms
         public Forms_ConsultarEstoque()
         {
             InitializeComponent();
+        }
+
+        public Forms_ConsultarEstoque(int _codigoProduto)
+        {
+            InitializeComponent();
+
+            txtCodigo.Text = _codigoProduto.ToString();
+
+            ConfirmarBuscaComVerificacao();
         }
 
         private void btnBuscarCodigoProduto_Click(object sender, EventArgs e)
@@ -68,52 +79,59 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void ConfirmarBuscaComVerificacao()
         {
-            if (txtCodigo.Text != string.Empty)
+            try
             {
-                bool isCadastroExiste = verificacaoDeExistencia.VerificarExistenciaCadastroProdutoPorCodigo(Convert.ToInt32(txtCodigo.Text));
-
-                if (isCadastroExiste == true)
+                if (txtCodigo.Text != string.Empty)
                 {
-                    listaDadosEstoqueProdutos.Clear();
+                    bool isCadastroExiste = verificacaoDeExistencia.VerificarExistenciaCadastroProdutoPorCodigo(Convert.ToInt32(txtCodigo.Text));
 
-                    listaDadosEstoqueProdutos = Buscar.BuscarDescricaoUnidadeEstoqueProduto(Convert.ToInt32(txtCodigo.Text));
-
-                    listaDadosEstoqueProdutos.ForEach(x => dadosEstoqueProduto = x);
-
-                    txtDescricao.Text = dadosEstoqueProduto.descricaoProduto;
-
-                    txtUnidade.Text = dadosEstoqueProduto.unidade;
-
-                    txtQuantidadeLiberada.Text = Buscar.BuscarQuantidadeLiberadaEstoqueProduto(Convert.ToInt32(txtCodigo.Text)).ToString();
-
-                    txtQuantidadeRejeitada.Text = Buscar.BuscarQuantidadeRejeitadaEstoqueProduto(Convert.ToInt32(txtCodigo.Text)).ToString();
-
-                    txtQuantidadeEmTransito.Text = Buscar.BuscarQuantidadeEmTransitoEstoqueProduto(Convert.ToInt32(txtCodigo.Text)).ToString();
-
-                    txtQuantidadeEmTerceiros.Text = Buscar.BuscarQuantidadeEmTerceirosEstoqueProduto(Convert.ToInt32(txtCodigo.Text)).ToString();
-
-                    txtQuantidadeTotalEmEstoque.Text = (Convert.ToDecimal(txtQuantidadeLiberada.Text) + Convert.ToDecimal(txtQuantidadeRejeitada.Text)).ToString();
-
-                    Buscar.BuscarEstoqueProdutoCompletoPorCodigo(Convert.ToInt32(txtCodigo.Text), gdvConsultarEstoque);
-
-                    txtQuantidadeEmContagem.Text = Buscar.BuscarQuantidadeItensEmContagem(Convert.ToInt32(txtCodigo.Text)).ToString();
-                }
-                else if (isCadastroExiste == false)
-                {
-                    MessageBox.Show("Codigo do Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    foreach (var item in gdvConsultarEstoque.Rows)
+                    if (isCadastroExiste == true)
                     {
-                        gdvConsultarEstoque.Rows.Remove((DataGridViewRow)item);
-                    }
+                        listaDadosEstoqueProdutos.Clear();
 
-                    if (gdvConsultarEstoque.RowCount > 0)
+                        listaDadosEstoqueProdutos = Buscar.BuscarDescricaoUnidadeEstoqueProduto(Convert.ToInt32(txtCodigo.Text));
+
+                        listaDadosEstoqueProdutos.ForEach(x => dadosEstoqueProduto = x);
+
+                        txtDescricao.Text = dadosEstoqueProduto.descricaoProduto;
+
+                        txtUnidade.Text = dadosEstoqueProduto.unidade;
+
+                        txtQuantidadeLiberada.Text = Buscar.BuscarQuantidadeLiberadaEstoqueProduto(Convert.ToInt32(txtCodigo.Text)).ToString();
+
+                        txtQuantidadeRejeitada.Text = Buscar.BuscarQuantidadeRejeitadaEstoqueProduto(Convert.ToInt32(txtCodigo.Text)).ToString();
+
+                        txtQuantidadeEmTransito.Text = Buscar.BuscarQuantidadeEmTransitoEstoqueProduto(Convert.ToInt32(txtCodigo.Text)).ToString();
+
+                        txtQuantidadeEmTerceiros.Text = Buscar.BuscarQuantidadeEmTerceirosEstoqueProduto(Convert.ToInt32(txtCodigo.Text)).ToString();
+
+                        txtQuantidadeTotalEmEstoque.Text = (Convert.ToDecimal(txtQuantidadeLiberada.Text) + Convert.ToDecimal(txtQuantidadeRejeitada.Text)).ToString();
+
+                        Buscar.BuscarEstoqueProdutoCompletoPorCodigo(Convert.ToInt32(txtCodigo.Text), gdvConsultarEstoque);
+
+                        txtQuantidadeEmContagem.Text = Buscar.BuscarQuantidadeItensEmContagem(Convert.ToInt32(txtCodigo.Text)).ToString();
+                    }
+                    else if (isCadastroExiste == false)
                     {
-                        gdvConsultarEstoque.Rows.RemoveAt(gdvConsultarEstoque.Rows.Count - 1);
-                    }
+                        MessageBox.Show("Codigo do Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    ManipulacaoTextBox.ApagandoTextBox(this);
+                        foreach (DataGridViewRow linha in gdvConsultarEstoque.Rows)
+                        {
+                            gdvConsultarEstoque.Rows.Remove((DataGridViewRow)linha);
+                        }
+
+                        if (gdvConsultarEstoque.RowCount > 0)
+                        {
+                            gdvConsultarEstoque.Rows.RemoveAt(gdvConsultarEstoque.Rows.Count - 1);
+                        }
+
+                        ManipulacaoTextBox.ApagandoTextBox(this);
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoConfirmarBuscaComVerificacaoEmEstoque(ex);
             }
         }
 

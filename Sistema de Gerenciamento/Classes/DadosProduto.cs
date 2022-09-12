@@ -8,7 +8,7 @@ using System.Web.UI.Design.WebControls;
 
 namespace Sistema_de_Gerenciamento.Classes
 {
-    internal class DadosProduto
+    public class DadosProduto
     {
         public int codigoProduto { get; set; }
         public string descricaoProduto { get; set; }

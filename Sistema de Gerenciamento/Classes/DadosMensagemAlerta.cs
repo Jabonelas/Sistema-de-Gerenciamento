@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using DevExpress.DashboardWin.Design;
 using DevExpress.DataProcessing.InMemoryDataProcessor;
 using Sistema_de_Gerenciamento.Properties;
+using Image = System.Drawing.Image;
 
 namespace Sistema_de_Gerenciamento.Classes
 {
@@ -17,18 +18,11 @@ namespace Sistema_de_Gerenciamento.Classes
         public Bitmap image { get; set; }
         public string descricao { get; set; }
 
-        public DadosMensagemAlerta(string _descricaoProduto, int _codigoProduto)
+        public DadosMensagemAlerta(string _tituloAlerta, Bitmap _imagemAlerta)
         {
-            this.titulo = "Extoque Baixo";
-            this.texto = $"Codigo Produto: {_codigoProduto} \nDescrição Produto: {_descricaoProduto}";
-            this.image = Resources.ImagemEstoqueBaixo;
-        }
-
-        public DadosMensagemAlerta(string _fonecedorTitulo, string _vencimento)
-        {
-            this.titulo = "Vencimento Contas";
-            this.texto = $"Fornecedor: {_fonecedorTitulo} \nData Vencimento: {_vencimento}";
-            this.image = Resources.ImagemVencimentoContas;
+            this.titulo = _tituloAlerta;
+            this.texto = $"\nClick Aqui Para Verificar!";
+            this.image = _imagemAlerta;
         }
     }
 }

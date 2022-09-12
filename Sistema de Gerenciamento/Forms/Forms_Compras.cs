@@ -364,5 +364,11 @@ namespace Sistema_de_Gerenciamento.Forms
                 ExlcuirCompra();
             }
         }
+
+        private void btnBuscaAvancadas_Click(object sender, EventArgs e)
+        {
+            Forms_BuscaAvancadaNFEntrada buscaAvancadaNfEntrada = new Forms_BuscaAvancadaNFEntrada();
+            buscaAvancadaNfEntrada.ShowDialog();
+        }
     }
 }

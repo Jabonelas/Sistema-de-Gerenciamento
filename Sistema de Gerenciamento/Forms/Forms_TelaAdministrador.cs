@@ -24,9 +24,9 @@ namespace Sistema_de_Gerenciamento
 
         private AtualizacaoNoBanco Atualizar = new AtualizacaoNoBanco();
 
-        private List<DadosProduto> ListaProdutosComEstoqueMinimo = new List<DadosProduto>();
+        public List<DadosProduto> ListaProdutosComEstoqueMinimo = new List<DadosProduto>();
 
-        private List<DadosDespesaCusto> ListaDadosDespesaCustos = new List<DadosDespesaCusto>();
+        public List<DadosDespesaCusto> ListaDadosDespesaCustosAtrasadas = new List<DadosDespesaCusto>();
 
         private Forms_Login login;
 
@@ -172,9 +172,9 @@ namespace Sistema_de_Gerenciamento
 
         private void btnProdutoConsole_Click(object sender, EventArgs e)
         {
-            Forms_PesquisarProduto pesquisarProduto = new Forms_PesquisarProduto(this);
-            pesquisarProduto.gdvPesquisarProduto.DoubleClick -= pesquisarProduto.gdvPesquisarProduto_DoubleClick;
-            pesquisarProduto.gdvPesquisarProduto.KeyDown -= pesquisarProduto.gdvPesquisarProduto_KeyDown;
+            Forms_PesquisarProduto pesquisarProduto = new Forms_PesquisarProduto(this, "Tela Administrador");
+            //pesquisarProduto.gdvPesquisarProduto.DoubleClick -= pesquisarProduto.gdvPesquisarProduto_DoubleClick;
+            //pesquisarProduto.gdvPesquisarProduto.KeyDown -= pesquisarProduto.gdvPesquisarProduto_KeyDown;
             pesquisarProduto.ShowDialog();
         }
 
@@ -289,17 +289,14 @@ namespace Sistema_de_Gerenciamento
 
                 if (ListaProdutosComEstoqueMinimo.Count != 0)
                 {
-                    foreach (DadosProduto ProdutoComEstoqueMinimo in ListaProdutosComEstoqueMinimo)
-                    {
-                        ChamandoAlertaEstoqueBaixo(ProdutoComEstoqueMinimo.descricaoProduto, ProdutoComEstoqueMinimo.codigoProduto);
-                    }
+                    ChamandoAlertaEstoqueBaixo();
                 }
             }
         }
 
-        private void ChamandoAlertaEstoqueBaixo(string _descricaoProdruto, int _codigoProduto)
+        private void ChamandoAlertaEstoqueBaixo()
         {
-            DadosMensagemAlerta msg = new DadosMensagemAlerta(_descricaoProdruto, _codigoProduto);
+            DadosMensagemAlerta msg = new DadosMensagemAlerta("Estoque Baixo\n", Resources.ImagemEstoqueBaixo);
             alertEstoqueMinimo.Show(this, $" { msg.titulo} \n{msg.descricao}", msg.texto, "", msg.image, msg);
         }
 
@@ -310,8 +307,8 @@ namespace Sistema_de_Gerenciamento
 
         private void alertEstoqueMinimo_AlertClick(object sender, DevExpress.XtraBars.Alerter.AlertClickEventArgs e)
         {
-            DadosMensagemAlerta msg = e.Info.Tag as DadosMensagemAlerta;
-            XtraMessageBox.Show(msg.texto, msg.descricao);
+            Forms_PesquisarProduto pesquisarProduto = new Forms_PesquisarProduto(ListaProdutosComEstoqueMinimo, "Tela Administrador");
+            pesquisarProduto.ShowDialog();
         }
 
         private void AutomatizaVerificacaoContasDespesas(DadosDespesaCusto _despesaCusto)
@@ -326,7 +323,6 @@ namespace Sistema_de_Gerenciamento
 
                     bool isComissao = _despesaCusto.forncedorTitulo.Contains("Comissao") ? true : false;
 
-                    //if (_despesaCusto.forncedorTitulo == "Comissao")
                     if (isComissao == true)
                     {
                         VerificarDiaPagamento(_despesaCusto);
@@ -382,20 +378,25 @@ namespace Sistema_de_Gerenciamento
         {
             if (_despesaCusto.vencimento <= DateTime.Today && _despesaCusto.statusPagamento == "Nao Pago" && Global.NomeDeUsuario == "ADMIN")
             {
-                ChamandoAlertaVencimentoContas(_despesaCusto.forncedorTitulo, _despesaCusto.vencimento.ToShortDateString());
+                ListaDadosDespesaCustosAtrasadas.Add(new DadosDespesaCusto(_despesaCusto.codigo, _despesaCusto.emissao, _despesaCusto.vencimento, _despesaCusto.statusPagamento));
+
+                if (ListaDadosDespesaCustosAtrasadas.Count == 1)
+                {
+                    ChamandoAlertaVencimentoContas();
+                }
             }
         }
 
-        private void ChamandoAlertaVencimentoContas(string _fonecedorTitulo, string _vencimento)
+        private void ChamandoAlertaVencimentoContas()
         {
-            DadosMensagemAlerta msg = new DadosMensagemAlerta(_fonecedorTitulo, _vencimento);
-            alertEstoqueMinimo.Show(this, $" { msg.titulo} \n{msg.descricao}", msg.texto, "", msg.image, msg);
+            DadosMensagemAlerta msg = new DadosMensagemAlerta("Existencia de Contas \nVencidas", Resources.ImagemVencimentoContas);
+            alertVencimentoContas.Show(this, msg.titulo, msg.texto, "", msg.image, msg);
         }
 
         private void alertVencimentoContas_AlertClick(object sender, DevExpress.XtraBars.Alerter.AlertClickEventArgs e)
         {
-            DadosMensagemAlerta msg = e.Info.Tag as DadosMensagemAlerta;
-            XtraMessageBox.Show(msg.texto, msg.descricao);
+            Forms_PesquisarContasAPagar pesquisarContasAPagar = new Forms_PesquisarContasAPagar(ListaDadosDespesaCustosAtrasadas);
+            pesquisarContasAPagar.ShowDialog();
         }
 
         private void alertVencimentoContas_BeforeFormShow(object sender, DevExpress.XtraBars.Alerter.AlertFormEventArgs e)

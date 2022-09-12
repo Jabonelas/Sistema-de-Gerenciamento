@@ -18,6 +18,8 @@ namespace Sistema_de_Gerenciamento
 
         //private Forms_EditarPagamento editarPagamento = new Forms_EditarPagamento();
 
+        //public List<DadosDespesaCusto> ListaDadosDespesaCustosAtrasadas = new List<DadosDespesaCusto>();
+
         public Forms_EditarPagamentoAPagar editarPagamento;
 
         private int linhasSelecionadas = 0;
@@ -29,6 +31,30 @@ namespace Sistema_de_Gerenciamento
             InitializeComponent();
 
             editarPagamento = _editarPagamento;
+        }
+
+        public Forms_PesquisarContasAPagar(List<DadosDespesaCusto> _listaDadosDespesaCustosAtrasadas)
+        {
+            InitializeComponent();
+
+            PreencherDatePicker();
+
+            PreencherGridComDadosContasAtrasadasAcessadoAlerta(_listaDadosDespesaCustosAtrasadas);
+
+            NumeroLancamentosSelecionado();
+
+            TotalPagamento();
+
+            BuscarContasVencidas();
+        }
+
+        private void PreencherGridComDadosContasAtrasadasAcessadoAlerta(List<DadosDespesaCusto> _listaDadosDespesaCustosAtrasadas)
+        {
+            foreach (DadosDespesaCusto item in _listaDadosDespesaCustosAtrasadas)
+            {
+                Buscar.BuscarDespesaCustoPorCogigoStatusPagamentoAlertaPagamentoContasAtrasadas(item.codigo, gdvContarPagar,
+                    item.emissao, item.vencimento, item.statusPagamento);
+            }
         }
 
         public Forms_PesquisarContasAPagar()
@@ -323,11 +349,6 @@ namespace Sistema_de_Gerenciamento
                 editarPagamento.txtQuantParcelas.Text = gdvContarPagar.SelectedCells[indice += 1].Value.ToString();
                 editarPagamento.txtValorParcela.Text = String.Format("{0:C}", (gdvContarPagar.SelectedCells[indice += 1].Value));
                 editarPagamento.lblVerificacaoPagamento.Text = gdvContarPagar.SelectedCells[indice += 2].Value.ToString();
-
-                //for (int i = 1; i < 30; i++)
-                //{
-                //    MessageBox.Show($"{i} = {gdvContarPagar.SelectedCells[i].Value.ToString()}");
-                //}
 
                 //verificar se o pagamento foi realizado
                 if (gdvContarPagar.SelectedCells[20].Value.ToString() == "0,00")

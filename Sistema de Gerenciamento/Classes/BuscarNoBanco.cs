@@ -2385,6 +2385,10 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
+        #endregion Buscar Despesa/Custo Por Codigo
+
+        #region Buscar Despesa e Custos Por Codigo e Status de Pagamento
+
         public bool BuscarDespesaCustoPorCogigoStatusPagamento(int _codigo, BunifuDataGridView _tabela,
             DateTime _dataInicial, DateTime _dataFinal, string _statusPagamento)
         {
@@ -2433,7 +2437,65 @@ namespace Sistema_de_Gerenciamento.Classes
             }
         }
 
-        #endregion Buscar Despesa/Custo Por Codigo
+        #endregion Buscar Despesa e Custos Por Codigo e Status de Pagamento
+
+        #region Buscar Despesas e Custos Por Codigo e Status Pagamento Preenchendo Alerta Contas Atrasadas
+
+        private DataTable dataTable = new DataTable();
+
+        public bool BuscarDespesaCustoPorCogigoStatusPagamentoAlertaPagamentoContasAtrasadas(int _codigo, BunifuDataGridView _tabela,
+            DateTime _dataInicial, DateTime _dataFinal, string _statusPagamento)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select dc_id, dc_codigo, dc_tipo, dc_fornecedor_titulo, dc_descricao, dc_cnpj, dc_emissao, " +
+                                   "dc_vencimento, dc_frequencia, dc_valor, dc_quantidade_parcelas, dc_valor_parcela, " +
+                                   "dc_categoria, dc_estatus_pagamento, dc_imagem_pagamento, dc_data_pagamento, dc_desconto_taxas," +
+                                   "dc_juros_multa, dc_valor_pago  " +
+                                   "from tb_DespesasCustos " +
+                                   //"where dc_codigo = @codigo and dc_emissao between @dataInicial and @dataFinal " +
+                                   "where dc_codigo = @codigo and dc_vencimento = @dataFinal " +
+                                   "and dc_estatus_pagamento = @statusPagamento " +
+                                   "order by dc_vencimento asc ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@codigo", _codigo);
+                    adapter.SelectCommand.Parameters.AddWithValue("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.AddWithValue("@dataFinal", _dataFinal);
+                    adapter.SelectCommand.Parameters.AddWithValue("@statusPagamento", _statusPagamento);
+
+                    //DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    //_tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscarDespesaCustoPorCodigoStatusPagamentoPreencherAlertaNoBanco(ex);
+
+                return false;
+            }
+        }
+
+        #endregion Buscar Despesas e Custos Por Codigo e Status Pagamento Preenchendo Alerta Contas Atrasadas
 
         #region Buscar Lista de Despesas e Custos Fixos
 
@@ -2448,7 +2510,8 @@ namespace Sistema_de_Gerenciamento.Classes
                     string query = "select dc_codigo,dc_tipo, dc_descricao, dc_fornecedor_titulo, dc_cnpj, dc_emissao, dc_vencimento," +
                                    "dc_frequencia,dc_valor,dc_quantidade_parcelas,dc_valor_parcela,dc_categoria,dc_verificar, dc_estatus_pagamento " +
                                    "from tb_DespesasCustos " +
-                                   "where dc_tipo = 'Fixa'";
+                                   "where dc_vencimento < GETDATE() " +
+                                   "order by dc_vencimento asc";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -4999,6 +5062,8 @@ namespace Sistema_de_Gerenciamento.Classes
 
         #endregion Buscar Valor Liquido Vendido
 
+        #region Buscar Valor de Gastos Bruto
+
         public decimal BuscarGastosBrutos()
         {
             try
@@ -5029,6 +5094,8 @@ namespace Sistema_de_Gerenciamento.Classes
                 return 0;
             }
         }
+
+        #endregion Buscar Valor de Gastos Bruto
 
         #endregion Buscar Resumo Venda
 
@@ -5281,5 +5348,55 @@ namespace Sistema_de_Gerenciamento.Classes
         #endregion Buscar Valor Produto Por Data
 
         #endregion Estatisticas Financeiras
+
+        #region Buscar Avancada NF Entrada
+
+        public bool BuscarAvancadaNFEntrada(DateTime _dataInicial, DateTime _dataFinal, BunifuDataGridView _tabela)
+        {
+            try
+            {
+                using (SqlConnection conexaoSQL = AbrirConexao())
+                {
+                    string query = "select ep.ep_nf_entrada,nf.ne_quantidade,nf.ne_valor_unitario,nf.ne_valor_total,ep.ep_codigo_produto,ep.ep_descricao," +
+                                   "ep.ep_unidade, ep.ep_data_entrada,ep.ep_data_exclusao " +
+                                   "from tb_NotaFiscalEntrada as nf " +
+                                   "inner join tb_EstoqueProduto ep on nf.ne_numero_nf = ep.ep_nf_entrada " +
+                                   "and nf.ne_codigo_produto = ep.ep_codigo_produto " +
+                                   "where ep_data_entrada between @dataInicial and @dataFinal " +
+                                   "order by ep.ep_nf_entrada asc ";
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
+                    adapter.SelectCommand.Parameters.AddWithValue("@dataInicial", _dataInicial);
+                    adapter.SelectCommand.Parameters.AddWithValue("@dataFinal", _dataFinal);
+
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+                    _tabela.DataSource = dataTable;
+                    _tabela.Refresh();
+
+                    SqlDataReader reader;
+                    reader = adapter.SelectCommand.ExecuteReader();
+
+                    reader.Read();
+
+                    if (reader.HasRows == true)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Erro.ErroAoBuscaAvancadaNFEntradaNoBanco(ex);
+                return false;
+            }
+        }
+
+        #endregion Buscar Avancada NF Entrada
     }
 }

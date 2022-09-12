@@ -77,13 +77,36 @@ namespace Sistema_de_Gerenciamento
             LayoutApenasSelecionarEFechar();
         }
 
-        public Forms_PesquisarProduto(Forms_TelaAdministrador _forms_telaAdministrador)
+        public Forms_PesquisarProduto(Forms_TelaAdministrador _forms_telaAdministrador, string _nomeTelaSolicitacao)
         {
             InitializeComponent();
 
-            LayoutApenasSelecionarEFechar();
+            nomeTelaSolicitacao = _nomeTelaSolicitacao;
+
+            //LayoutApenasFechar();
 
             PreencherComboBoxGrupo();
+        }
+
+        public Forms_PesquisarProduto(List<DadosProduto> _listaProdutosComEstoqueMinimo, string _nomeTelaSolicitacao)
+        {
+            InitializeComponent();
+
+            nomeTelaSolicitacao = _nomeTelaSolicitacao;
+
+            //LayoutApenasFechar();
+
+            PreencherComboBoxGrupo();
+
+            PreencherGridViewProdutosEstoqueBaixo(_listaProdutosComEstoqueMinimo);
+        }
+
+        private void PreencherGridViewProdutosEstoqueBaixo(List<DadosProduto> _listaProdutosComEstoqueMinimo)
+        {
+            _listaProdutosComEstoqueMinimo.ForEach(produto =>
+            {
+                Buscar.BuscarCadastroProdutoPorCodigo(produto.codigoProduto, gdvPesquisarProduto);
+            });
         }
 
         private void LayoutApenasSelecionarEFechar()
@@ -92,6 +115,15 @@ namespace Sistema_de_Gerenciamento
             btnExportar.Visible = false;
             btnFechar.Location = new Point(447, 437);
             btnSelecionar.Location = new Point(250, 437);
+            btnFechar.TabIndex = 7;
+        }
+
+        private void LayoutApenasFechar()
+        {
+            btnImprimir.Visible = false;
+            btnExportar.Visible = false;
+            btnSelecionar.Visible = false;
+            btnFechar.Location = new Point(343, 437);
             btnFechar.TabIndex = 7;
         }
 
@@ -176,6 +208,14 @@ namespace Sistema_de_Gerenciamento
             this.Close();
         }
 
+        private void ConfirmarSelecaoAbrirTelaConsultarEstoque()
+        {
+            int codigoProduto = Convert.ToInt32(gdvPesquisarProduto.SelectedCells[1].Value);
+
+            Forms_ConsultarEstoque consultarEstoque = new Forms_ConsultarEstoque(codigoProduto);
+            consultarEstoque.ShowDialog();
+        }
+
         private void ConfirmarSelececao()
         {
             if (gdvPesquisarProduto.Rows.Count > 0)
@@ -195,6 +235,10 @@ namespace Sistema_de_Gerenciamento
                 else if (nomeTelaSolicitacao == "Cadastro Produto")
                 {
                     ConfirmarSelecaoPreencherTelaCadastroProduto();
+                }
+                else if (nomeTelaSolicitacao == "Tela Administrador")
+                {
+                    ConfirmarSelecaoAbrirTelaConsultarEstoque();
                 }
             }
         }

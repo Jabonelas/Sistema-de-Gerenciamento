@@ -149,3 +149,4 @@ C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Ge
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_ConfiguracaoGerencialDescontoPorPagamentoAvista.resources
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_ConfiguracaoGerencialComissaoPorProduto.resources
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_ConfiguracaoGerencialJurosPorPagamentoaCredito.resources
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_BuscaAvancadaNFEntrada.resources

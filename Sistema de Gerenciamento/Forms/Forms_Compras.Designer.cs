@@ -61,6 +61,7 @@
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties18 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties19 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
             Bunifu.UI.WinForms.BunifuTextBox.StateProperties stateProperties20 = new Bunifu.UI.WinForms.BunifuTextBox.StateProperties();
+            Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges5 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.txtNumeroNotaFiscal = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnExcluir = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -101,6 +102,7 @@
             this.txtCNPJ = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtTotalItens = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtValorTotal = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.btnBuscaAvancadas = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             ((System.ComponentModel.ISupportInitialize)(this.gdvCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvEstoque)).BeginInit();
             this.SuspendLayout();
@@ -1271,11 +1273,103 @@
             this.txtValorTotal.UseSystemPasswordChar = false;
             this.txtValorTotal.WordWrap = true;
             // 
+            // btnBuscaAvancadas
+            // 
+            this.btnBuscaAvancadas.AllowAnimations = true;
+            this.btnBuscaAvancadas.AllowMouseEffects = true;
+            this.btnBuscaAvancadas.AllowToggling = false;
+            this.btnBuscaAvancadas.AnimationSpeed = 200;
+            this.btnBuscaAvancadas.AutoGenerateColors = false;
+            this.btnBuscaAvancadas.AutoRoundBorders = false;
+            this.btnBuscaAvancadas.AutoSizeLeftIcon = true;
+            this.btnBuscaAvancadas.AutoSizeRightIcon = true;
+            this.btnBuscaAvancadas.BackColor = System.Drawing.Color.Transparent;
+            this.btnBuscaAvancadas.BackColor1 = System.Drawing.Color.Transparent;
+            this.btnBuscaAvancadas.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnBuscaAvancadas.BackgroundImage")));
+            this.btnBuscaAvancadas.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnBuscaAvancadas.ButtonText = "Busca Avançada";
+            this.btnBuscaAvancadas.ButtonTextMarginLeft = 0;
+            this.btnBuscaAvancadas.ColorContrastOnClick = 45;
+            this.btnBuscaAvancadas.ColorContrastOnHover = 45;
+            this.btnBuscaAvancadas.Cursor = System.Windows.Forms.Cursors.Default;
+            borderEdges5.BottomLeft = true;
+            borderEdges5.BottomRight = true;
+            borderEdges5.TopLeft = true;
+            borderEdges5.TopRight = true;
+            this.btnBuscaAvancadas.CustomizableEdges = borderEdges5;
+            this.btnBuscaAvancadas.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.btnBuscaAvancadas.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnBuscaAvancadas.DisabledFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnBuscaAvancadas.DisabledForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnBuscaAvancadas.FocusState = Bunifu.UI.WinForms.BunifuButton.BunifuButton.ButtonStates.Pressed;
+            this.btnBuscaAvancadas.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscaAvancadas.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscaAvancadas.IconLeftAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnBuscaAvancadas.IconLeftCursor = System.Windows.Forms.Cursors.Default;
+            this.btnBuscaAvancadas.IconLeftPadding = new System.Windows.Forms.Padding(11, 1, 3, 3);
+            this.btnBuscaAvancadas.IconMarginLeft = 11;
+            this.btnBuscaAvancadas.IconPadding = 17;
+            this.btnBuscaAvancadas.IconRightAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnBuscaAvancadas.IconRightCursor = System.Windows.Forms.Cursors.Default;
+            this.btnBuscaAvancadas.IconRightPadding = new System.Windows.Forms.Padding(3, 3, 7, 3);
+            this.btnBuscaAvancadas.IconSize = 25;
+            this.btnBuscaAvancadas.IdleBorderColor = System.Drawing.Color.Black;
+            this.btnBuscaAvancadas.IdleBorderRadius = 1;
+            this.btnBuscaAvancadas.IdleBorderThickness = 1;
+            this.btnBuscaAvancadas.IdleFillColor = System.Drawing.Color.Transparent;
+            this.btnBuscaAvancadas.IdleIconLeftImage = null;
+            this.btnBuscaAvancadas.IdleIconRightImage = null;
+            this.btnBuscaAvancadas.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnBuscaAvancadas.IndicateFocus = false;
+            this.btnBuscaAvancadas.Location = new System.Drawing.Point(769, 12);
+            this.btnBuscaAvancadas.Name = "btnBuscaAvancadas";
+            this.btnBuscaAvancadas.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
+            this.btnBuscaAvancadas.OnDisabledState.BorderRadius = 1;
+            this.btnBuscaAvancadas.OnDisabledState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnBuscaAvancadas.OnDisabledState.BorderThickness = 1;
+            this.btnBuscaAvancadas.OnDisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.btnBuscaAvancadas.OnDisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(160)))), ((int)(((byte)(168)))));
+            this.btnBuscaAvancadas.OnDisabledState.IconLeftImage = null;
+            this.btnBuscaAvancadas.OnDisabledState.IconRightImage = null;
+            this.btnBuscaAvancadas.onHoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnBuscaAvancadas.onHoverState.BorderRadius = 1;
+            this.btnBuscaAvancadas.onHoverState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnBuscaAvancadas.onHoverState.BorderThickness = 1;
+            this.btnBuscaAvancadas.onHoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(105)))), ((int)(((byte)(181)))), ((int)(((byte)(255)))));
+            this.btnBuscaAvancadas.onHoverState.ForeColor = System.Drawing.Color.White;
+            this.btnBuscaAvancadas.onHoverState.IconLeftImage = null;
+            this.btnBuscaAvancadas.onHoverState.IconRightImage = null;
+            this.btnBuscaAvancadas.OnIdleState.BorderColor = System.Drawing.Color.Black;
+            this.btnBuscaAvancadas.OnIdleState.BorderRadius = 1;
+            this.btnBuscaAvancadas.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnBuscaAvancadas.OnIdleState.BorderThickness = 1;
+            this.btnBuscaAvancadas.OnIdleState.FillColor = System.Drawing.Color.Transparent;
+            this.btnBuscaAvancadas.OnIdleState.ForeColor = System.Drawing.Color.Black;
+            this.btnBuscaAvancadas.OnIdleState.IconLeftImage = null;
+            this.btnBuscaAvancadas.OnIdleState.IconRightImage = null;
+            this.btnBuscaAvancadas.OnPressedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnBuscaAvancadas.OnPressedState.BorderRadius = 1;
+            this.btnBuscaAvancadas.OnPressedState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
+            this.btnBuscaAvancadas.OnPressedState.BorderThickness = 1;
+            this.btnBuscaAvancadas.OnPressedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(96)))), ((int)(((byte)(144)))));
+            this.btnBuscaAvancadas.OnPressedState.ForeColor = System.Drawing.Color.White;
+            this.btnBuscaAvancadas.OnPressedState.IconLeftImage = null;
+            this.btnBuscaAvancadas.OnPressedState.IconRightImage = null;
+            this.btnBuscaAvancadas.Size = new System.Drawing.Size(147, 19);
+            this.btnBuscaAvancadas.TabIndex = 269;
+            this.btnBuscaAvancadas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBuscaAvancadas.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
+            this.btnBuscaAvancadas.TextMarginLeft = 0;
+            this.btnBuscaAvancadas.TextPadding = new System.Windows.Forms.Padding(0);
+            this.btnBuscaAvancadas.UseDefaultRadiusAndThickness = true;
+            this.btnBuscaAvancadas.Click += new System.EventHandler(this.btnBuscaAvancadas_Click);
+            // 
             // Forms_Compras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(928, 515);
+            this.Controls.Add(this.btnBuscaAvancadas);
             this.Controls.Add(this.txtValorTotal);
             this.Controls.Add(this.txtTotalItens);
             this.Controls.Add(this.txtCNPJ);
@@ -1349,5 +1443,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ne_valor_total;
         private System.Windows.Forms.DataGridViewTextBoxColumn ne_data_emissao;
         private System.Windows.Forms.DataGridViewTextBoxColumn ne_data_lancamento;
+        private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnBuscaAvancadas;
     }
 }

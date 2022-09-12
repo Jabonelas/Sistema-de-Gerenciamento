@@ -266,6 +266,15 @@ namespace Sistema_de_Gerenciamento
 
         #endregion Editar Pagamento A Receber
 
+        #region Consultar Estoque
+
+        public void ErroAoConfirmarBuscaComVerificacaoEmEstoque(Exception _e)
+        {
+            MessageBox.Show($"(COE-CE01) Erro ao Confirmar Buscar de Consulta Estqoue \n\nErro: {_e}", "Erro Confirmar Busca de Consulta Estoque!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Consultar Estoque
+
         #endregion Forms
 
         #region Banco
@@ -1077,6 +1086,11 @@ namespace Sistema_de_Gerenciamento
             MessageBox.Show($"(BUS-DE21) Erro ao Realizar Busca de Despesa e Custo Por Descricao e Status de Pagamento \n\nErro: {_e}", "Erro Busca Despesa e Custos Por Descricao e Status de Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public void ErroAoBuscarDespesaCustoPorCodigoStatusPagamentoPreencherAlertaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUS-DE22) Erro ao Realizar Busca de Despesa e Custo Por Codigo e Status do Pagamento Preenchendo Alerta \n\nErro: {_e}", "Erro Busca Despesa e Custo Por Codigo e Status do Pagamento!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         #endregion Pesquisar Despesa
 
         #region Buscar Cliente Tela PDV
@@ -1353,6 +1367,15 @@ namespace Sistema_de_Gerenciamento
         }
 
         #endregion Estatiscicas Financeiras
+
+        #region Buscar Avancada NF Entrada
+
+        public void ErroAoBuscaAvancadaNFEntradaNoBanco(Exception _e)
+        {
+            MessageBox.Show($"(BUA-BA01) Erro ao Realizar Busca Avançada Por Nota Fiscal de Entrada Por Data \n\nErro: {_e}", "Erro Busca Avançada Por Nota Fiscal de Entrada Por Data!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        #endregion Buscar Avancada NF Entrada
 
         #endregion Buscar No Banco
 

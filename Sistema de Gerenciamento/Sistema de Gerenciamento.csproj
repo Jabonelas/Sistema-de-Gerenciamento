@@ -328,6 +328,12 @@
     <Compile Include="Classes\ValidacaoEmail.cs" />
     <Compile Include="Classes\VerificacaoDeExistencia.cs" />
     <Compile Include="Classes\FecharTela.cs" />
+    <Compile Include="Forms\Forms_BuscaAvancadaNFEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Forms_BuscaAvancadaNFEntrada.Designer.cs">
+      <DependentUpon>Forms_BuscaAvancadaNFEntrada.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Forms_ConfiguracaoGerencialComissaoPorProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -579,6 +585,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\ManipulacaoTextBox.cs" />
+    <EmbeddedResource Include="Forms\Forms_BuscaAvancadaNFEntrada.resx">
+      <DependentUpon>Forms_BuscaAvancadaNFEntrada.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_CadastroCodigoBarras.resx">
       <DependentUpon>Forms_CadastroCodigoBarras.cs</DependentUpon>
     </EmbeddedResource>
