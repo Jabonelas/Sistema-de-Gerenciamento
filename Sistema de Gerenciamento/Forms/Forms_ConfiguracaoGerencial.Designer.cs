@@ -595,6 +595,7 @@
             this.Controls.Add(this.btnConfiguracaoGerencialPagamentoCarne);
             this.Controls.Add(this.btnFechar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Forms_ConfiguracaoGerencial";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

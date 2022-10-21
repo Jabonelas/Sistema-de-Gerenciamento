@@ -559,6 +559,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnSalvarGrupo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Forms_CadastroGrupoProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

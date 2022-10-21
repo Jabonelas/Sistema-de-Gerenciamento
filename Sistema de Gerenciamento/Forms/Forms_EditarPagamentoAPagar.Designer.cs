@@ -1047,6 +1047,7 @@
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label5);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Forms_EditarPagamentoAPagar";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

@@ -771,6 +771,7 @@
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.bunifuSeparator1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Forms_CadastroDespesasCusto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

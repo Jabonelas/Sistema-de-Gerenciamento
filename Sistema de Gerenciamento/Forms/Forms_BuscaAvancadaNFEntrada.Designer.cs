@@ -46,9 +46,6 @@ namespace Sistema_de_Gerenciamento.Forms
             this.bunifuGroupBox1 = new Bunifu.UI.WinForms.BunifuGroupBox();
             this.btnPesquisar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.gdvBuscaAvancadaNFEntrada = new Bunifu.UI.WinForms.BunifuDataGridView();
-            this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.btnExportar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.btnImprimir = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.ep_nf_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ep_codigo_produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ep_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +55,9 @@ namespace Sistema_de_Gerenciamento.Forms
             this.ne_valor_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ep_data_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ep_data_exclusao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.btnExportar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.btnImprimir = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             ((System.ComponentModel.ISupportInitialize)(this.gdvBuscaAvancadaNFEntrada)).BeginInit();
             this.SuspendLayout();
             // 
@@ -296,6 +296,78 @@ namespace Sistema_de_Gerenciamento.Forms
             this.gdvBuscaAvancadaNFEntrada.Size = new System.Drawing.Size(1001, 305);
             this.gdvBuscaAvancadaNFEntrada.TabIndex = 278;
             this.gdvBuscaAvancadaNFEntrada.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
+            // 
+            // ep_nf_entrada
+            // 
+            this.ep_nf_entrada.DataPropertyName = "ep_nf_entrada";
+            this.ep_nf_entrada.FillWeight = 54.82234F;
+            this.ep_nf_entrada.HeaderText = "Nº NF";
+            this.ep_nf_entrada.Name = "ep_nf_entrada";
+            this.ep_nf_entrada.ReadOnly = true;
+            // 
+            // ep_codigo_produto
+            // 
+            this.ep_codigo_produto.DataPropertyName = "ep_codigo_produto";
+            this.ep_codigo_produto.FillWeight = 94.57654F;
+            this.ep_codigo_produto.HeaderText = "Cod. Prod.";
+            this.ep_codigo_produto.Name = "ep_codigo_produto";
+            this.ep_codigo_produto.ReadOnly = true;
+            // 
+            // ep_descricao
+            // 
+            this.ep_descricao.DataPropertyName = "ep_descricao";
+            this.ep_descricao.FillWeight = 116.9625F;
+            this.ep_descricao.HeaderText = "Descriçao";
+            this.ep_descricao.Name = "ep_descricao";
+            this.ep_descricao.ReadOnly = true;
+            // 
+            // ep_unidade
+            // 
+            this.ep_unidade.DataPropertyName = "ep_unidade";
+            this.ep_unidade.FillWeight = 58.10954F;
+            this.ep_unidade.HeaderText = "UN";
+            this.ep_unidade.Name = "ep_unidade";
+            this.ep_unidade.ReadOnly = true;
+            // 
+            // ne_quantidade
+            // 
+            this.ne_quantidade.DataPropertyName = "ne_quantidade";
+            this.ne_quantidade.FillWeight = 107.6792F;
+            this.ne_quantidade.HeaderText = "Qtd.";
+            this.ne_quantidade.Name = "ne_quantidade";
+            this.ne_quantidade.ReadOnly = true;
+            // 
+            // ne_valor_unitario
+            // 
+            this.ne_valor_unitario.DataPropertyName = "ne_valor_unitario";
+            this.ne_valor_unitario.FillWeight = 116.9625F;
+            this.ne_valor_unitario.HeaderText = "Valor Uni.";
+            this.ne_valor_unitario.Name = "ne_valor_unitario";
+            this.ne_valor_unitario.ReadOnly = true;
+            // 
+            // ne_valor_total
+            // 
+            this.ne_valor_total.DataPropertyName = "ne_valor_total";
+            this.ne_valor_total.FillWeight = 116.9625F;
+            this.ne_valor_total.HeaderText = "Valor Total";
+            this.ne_valor_total.Name = "ne_valor_total";
+            this.ne_valor_total.ReadOnly = true;
+            // 
+            // ep_data_entrada
+            // 
+            this.ep_data_entrada.DataPropertyName = "ep_data_entrada";
+            this.ep_data_entrada.FillWeight = 116.9625F;
+            this.ep_data_entrada.HeaderText = "Data Entrada";
+            this.ep_data_entrada.Name = "ep_data_entrada";
+            this.ep_data_entrada.ReadOnly = true;
+            // 
+            // ep_data_exclusao
+            // 
+            this.ep_data_exclusao.DataPropertyName = "ep_data_exclusao";
+            this.ep_data_exclusao.FillWeight = 116.9625F;
+            this.ep_data_exclusao.HeaderText = "Data Exclusão";
+            this.ep_data_exclusao.Name = "ep_data_exclusao";
+            this.ep_data_exclusao.ReadOnly = true;
             // 
             // btnFechar
             // 
@@ -567,78 +639,6 @@ namespace Sistema_de_Gerenciamento.Forms
             this.btnImprimir.UseDefaultRadiusAndThickness = true;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
-            // ep_nf_entrada
-            // 
-            this.ep_nf_entrada.DataPropertyName = "ep_nf_entrada";
-            this.ep_nf_entrada.FillWeight = 54.82234F;
-            this.ep_nf_entrada.HeaderText = "Nº NF";
-            this.ep_nf_entrada.Name = "ep_nf_entrada";
-            this.ep_nf_entrada.ReadOnly = true;
-            // 
-            // ep_codigo_produto
-            // 
-            this.ep_codigo_produto.DataPropertyName = "ep_codigo_produto";
-            this.ep_codigo_produto.FillWeight = 94.57654F;
-            this.ep_codigo_produto.HeaderText = "Cod. Prod.";
-            this.ep_codigo_produto.Name = "ep_codigo_produto";
-            this.ep_codigo_produto.ReadOnly = true;
-            // 
-            // ep_descricao
-            // 
-            this.ep_descricao.DataPropertyName = "ep_descricao";
-            this.ep_descricao.FillWeight = 116.9625F;
-            this.ep_descricao.HeaderText = "Descriçao";
-            this.ep_descricao.Name = "ep_descricao";
-            this.ep_descricao.ReadOnly = true;
-            // 
-            // ep_unidade
-            // 
-            this.ep_unidade.DataPropertyName = "ep_unidade";
-            this.ep_unidade.FillWeight = 58.10954F;
-            this.ep_unidade.HeaderText = "UN";
-            this.ep_unidade.Name = "ep_unidade";
-            this.ep_unidade.ReadOnly = true;
-            // 
-            // ne_quantidade
-            // 
-            this.ne_quantidade.DataPropertyName = "ne_quantidade";
-            this.ne_quantidade.FillWeight = 107.6792F;
-            this.ne_quantidade.HeaderText = "Qtd.";
-            this.ne_quantidade.Name = "ne_quantidade";
-            this.ne_quantidade.ReadOnly = true;
-            // 
-            // ne_valor_unitario
-            // 
-            this.ne_valor_unitario.DataPropertyName = "ne_valor_unitario";
-            this.ne_valor_unitario.FillWeight = 116.9625F;
-            this.ne_valor_unitario.HeaderText = "Valor Uni.";
-            this.ne_valor_unitario.Name = "ne_valor_unitario";
-            this.ne_valor_unitario.ReadOnly = true;
-            // 
-            // ne_valor_total
-            // 
-            this.ne_valor_total.DataPropertyName = "ne_valor_total";
-            this.ne_valor_total.FillWeight = 116.9625F;
-            this.ne_valor_total.HeaderText = "Valor Total";
-            this.ne_valor_total.Name = "ne_valor_total";
-            this.ne_valor_total.ReadOnly = true;
-            // 
-            // ep_data_entrada
-            // 
-            this.ep_data_entrada.DataPropertyName = "ep_data_entrada";
-            this.ep_data_entrada.FillWeight = 116.9625F;
-            this.ep_data_entrada.HeaderText = "Data Entrada";
-            this.ep_data_entrada.Name = "ep_data_entrada";
-            this.ep_data_entrada.ReadOnly = true;
-            // 
-            // ep_data_exclusao
-            // 
-            this.ep_data_exclusao.DataPropertyName = "ep_data_exclusao";
-            this.ep_data_exclusao.FillWeight = 116.9625F;
-            this.ep_data_exclusao.HeaderText = "Data Exclusão";
-            this.ep_data_exclusao.Name = "ep_data_exclusao";
-            this.ep_data_exclusao.ReadOnly = true;
-            // 
             // Forms_BuscaAvancadaNFEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -657,6 +657,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.Controls.Add(this.label7);
             this.Controls.Add(this.bunifuGroupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Forms_BuscaAvancadaNFEntrada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

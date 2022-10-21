@@ -127,10 +127,10 @@ namespace Sistema_de_Gerenciamento
 
         private void gdvPesquisarCliente_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            if (this.Text != "Pesquisar Cliente")
-            {
-                SelecaoGridViewPreencherTextBox();
-            }
+            //if (this.Text != "Pesquisar Cliente")
+            //{
+            SelecaoGridViewPreencherTextBox();
+            //}
         }
 
         #region Selecionar Linha No Gridview Para Preencher TextBox na Tela De Cadastro de Cliente

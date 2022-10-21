@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Forms_Aviso));
             this.lblAlerta = new System.Windows.Forms.Label();
             this.lblInformacao = new System.Windows.Forms.Label();
             this.pcbImagem = new Bunifu.UI.WinForms.BunifuPictureBox();
@@ -84,7 +85,7 @@
             this.timerDesaparecer.Interval = 150;
             this.timerDesaparecer.Tick += new System.EventHandler(this.timerDesaparecer_Tick);
             // 
-            // AvisoCantoInferiorDireito
+            // Forms_Aviso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -94,8 +95,9 @@
             this.Controls.Add(this.pcbImagem);
             this.Controls.Add(this.lblAlerta);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Location = new System.Drawing.Point(750, 600);
-            this.Name = "Aviso";
+            this.Name = "Forms_Aviso";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

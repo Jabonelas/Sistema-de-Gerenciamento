@@ -2436,6 +2436,7 @@
             this.Controls.Add(this.bunifuPanel6);
             this.Controls.Add(this.pnlTelaInicial1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Forms_PDV";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

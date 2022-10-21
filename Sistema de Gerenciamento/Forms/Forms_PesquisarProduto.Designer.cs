@@ -1135,6 +1135,7 @@
             this.Controls.Add(this.btnSelecionar);
             this.Controls.Add(this.bunifuGroupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Forms_PesquisarProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

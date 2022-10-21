@@ -214,6 +214,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Forms_ConfiguracaoGerencialJurosPorPagamentoaCredito";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

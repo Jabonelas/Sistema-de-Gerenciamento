@@ -79,6 +79,18 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.gdvConsultarEstoque = new Bunifu.UI.WinForms.BunifuDataGridView();
+            this.ep_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_nf_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_codigo_barras = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_codigo_produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_data_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_unidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_valor_unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_desconto_por_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ep_data_exclusao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.btnBuscarItensEmContagem = new Guna.UI.WinForms.GunaButton();
             this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -95,17 +107,6 @@
             this.txtDescricao = new Bunifu.UI.WinForms.BunifuTextBox();
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.txtCodigo = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.ep_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ep_nf_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ep_codigo_barras = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ep_codigo_produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ep_descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ep_quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ep_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ep_data_entrada = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ep_unidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ep_valor_unitario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ep_desconto_por_item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gdvConsultarEstoque)).BeginInit();
             this.SuspendLayout();
             // 
@@ -223,7 +224,8 @@
             this.ep_data_entrada,
             this.ep_unidade,
             this.ep_valor_unitario,
-            this.ep_desconto_por_item});
+            this.ep_desconto_por_item,
+            this.ep_data_exclusao});
             this.gdvConsultarEstoque.CurrentTheme.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
             this.gdvConsultarEstoque.CurrentTheme.AlternatingRowsStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.gdvConsultarEstoque.CurrentTheme.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Black;
@@ -266,6 +268,102 @@
             this.gdvConsultarEstoque.TabIndex = 194;
             this.gdvConsultarEstoque.Theme = Bunifu.UI.WinForms.BunifuDataGridView.PresetThemes.Light;
             this.gdvConsultarEstoque.DoubleClick += new System.EventHandler(this.gdvContarPagar_DoubleClick);
+            // 
+            // ep_id
+            // 
+            this.ep_id.DataPropertyName = "ep_id";
+            this.ep_id.HeaderText = "ep_id";
+            this.ep_id.Name = "ep_id";
+            this.ep_id.ReadOnly = true;
+            this.ep_id.Visible = false;
+            // 
+            // ep_nf_entrada
+            // 
+            this.ep_nf_entrada.DataPropertyName = "ep_nf_entrada";
+            this.ep_nf_entrada.HeaderText = "ep_nf_entrada";
+            this.ep_nf_entrada.Name = "ep_nf_entrada";
+            this.ep_nf_entrada.ReadOnly = true;
+            this.ep_nf_entrada.Visible = false;
+            // 
+            // ep_codigo_barras
+            // 
+            this.ep_codigo_barras.DataPropertyName = "ep_codigo_barras";
+            this.ep_codigo_barras.FillWeight = 91.37056F;
+            this.ep_codigo_barras.HeaderText = "Codigo Barras";
+            this.ep_codigo_barras.Name = "ep_codigo_barras";
+            this.ep_codigo_barras.ReadOnly = true;
+            // 
+            // ep_codigo_produto
+            // 
+            this.ep_codigo_produto.DataPropertyName = "ep_codigo_produto";
+            this.ep_codigo_produto.HeaderText = "ep_codigo_produto";
+            this.ep_codigo_produto.Name = "ep_codigo_produto";
+            this.ep_codigo_produto.ReadOnly = true;
+            this.ep_codigo_produto.Visible = false;
+            // 
+            // ep_descricao
+            // 
+            this.ep_descricao.DataPropertyName = "ep_descricao";
+            this.ep_descricao.HeaderText = "ep_descricao";
+            this.ep_descricao.Name = "ep_descricao";
+            this.ep_descricao.ReadOnly = true;
+            this.ep_descricao.Visible = false;
+            // 
+            // ep_quantidade
+            // 
+            this.ep_quantidade.DataPropertyName = "ep_quantidade";
+            this.ep_quantidade.FillWeight = 88.05087F;
+            this.ep_quantidade.HeaderText = "Quantidade";
+            this.ep_quantidade.Name = "ep_quantidade";
+            this.ep_quantidade.ReadOnly = true;
+            // 
+            // ep_status
+            // 
+            this.ep_status.DataPropertyName = "ep_status";
+            this.ep_status.FillWeight = 125.0211F;
+            this.ep_status.HeaderText = "Status";
+            this.ep_status.Name = "ep_status";
+            this.ep_status.ReadOnly = true;
+            // 
+            // ep_data_entrada
+            // 
+            this.ep_data_entrada.DataPropertyName = "ep_data_entrada";
+            this.ep_data_entrada.FillWeight = 95.55751F;
+            this.ep_data_entrada.HeaderText = "Data Entrada";
+            this.ep_data_entrada.Name = "ep_data_entrada";
+            this.ep_data_entrada.ReadOnly = true;
+            // 
+            // ep_unidade
+            // 
+            this.ep_unidade.DataPropertyName = "ep_unidade";
+            this.ep_unidade.HeaderText = "ep_unidade";
+            this.ep_unidade.Name = "ep_unidade";
+            this.ep_unidade.ReadOnly = true;
+            this.ep_unidade.Visible = false;
+            // 
+            // ep_valor_unitario
+            // 
+            this.ep_valor_unitario.DataPropertyName = "ep_valor_unitario";
+            this.ep_valor_unitario.HeaderText = "ep_valor_unitario";
+            this.ep_valor_unitario.Name = "ep_valor_unitario";
+            this.ep_valor_unitario.ReadOnly = true;
+            this.ep_valor_unitario.Visible = false;
+            // 
+            // ep_desconto_por_item
+            // 
+            this.ep_desconto_por_item.DataPropertyName = "ep_desconto_por_item";
+            this.ep_desconto_por_item.HeaderText = "ep_desconto_por_item";
+            this.ep_desconto_por_item.Name = "ep_desconto_por_item";
+            this.ep_desconto_por_item.ReadOnly = true;
+            this.ep_desconto_por_item.Visible = false;
+            // 
+            // ep_data_exclusao
+            // 
+            this.ep_data_exclusao.DataPropertyName = "ep_data_exclusao";
+            this.ep_data_exclusao.HeaderText = "ep_data_exclusao";
+            this.ep_data_exclusao.Name = "ep_data_exclusao";
+            this.ep_data_exclusao.ReadOnly = true;
+            this.ep_data_exclusao.Visible = false;
             // 
             // label9
             // 
@@ -1219,94 +1317,6 @@
             this.txtCodigo.WordWrap = true;
             this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
             // 
-            // ep_id
-            // 
-            this.ep_id.DataPropertyName = "ep_id";
-            this.ep_id.HeaderText = "ep_id";
-            this.ep_id.Name = "ep_id";
-            this.ep_id.ReadOnly = true;
-            this.ep_id.Visible = false;
-            // 
-            // ep_nf_entrada
-            // 
-            this.ep_nf_entrada.DataPropertyName = "ep_nf_entrada";
-            this.ep_nf_entrada.HeaderText = "ep_nf_entrada";
-            this.ep_nf_entrada.Name = "ep_nf_entrada";
-            this.ep_nf_entrada.ReadOnly = true;
-            this.ep_nf_entrada.Visible = false;
-            // 
-            // ep_codigo_barras
-            // 
-            this.ep_codigo_barras.DataPropertyName = "ep_codigo_barras";
-            this.ep_codigo_barras.FillWeight = 91.37056F;
-            this.ep_codigo_barras.HeaderText = "Codigo Barras";
-            this.ep_codigo_barras.Name = "ep_codigo_barras";
-            this.ep_codigo_barras.ReadOnly = true;
-            // 
-            // ep_codigo_produto
-            // 
-            this.ep_codigo_produto.DataPropertyName = "ep_codigo_produto";
-            this.ep_codigo_produto.HeaderText = "ep_codigo_produto";
-            this.ep_codigo_produto.Name = "ep_codigo_produto";
-            this.ep_codigo_produto.ReadOnly = true;
-            this.ep_codigo_produto.Visible = false;
-            // 
-            // ep_descricao
-            // 
-            this.ep_descricao.DataPropertyName = "ep_descricao";
-            this.ep_descricao.HeaderText = "ep_descricao";
-            this.ep_descricao.Name = "ep_descricao";
-            this.ep_descricao.ReadOnly = true;
-            this.ep_descricao.Visible = false;
-            // 
-            // ep_quantidade
-            // 
-            this.ep_quantidade.DataPropertyName = "ep_quantidade";
-            this.ep_quantidade.FillWeight = 88.05087F;
-            this.ep_quantidade.HeaderText = "Quantidade";
-            this.ep_quantidade.Name = "ep_quantidade";
-            this.ep_quantidade.ReadOnly = true;
-            // 
-            // ep_status
-            // 
-            this.ep_status.DataPropertyName = "ep_status";
-            this.ep_status.FillWeight = 125.0211F;
-            this.ep_status.HeaderText = "Status";
-            this.ep_status.Name = "ep_status";
-            this.ep_status.ReadOnly = true;
-            // 
-            // ep_data_entrada
-            // 
-            this.ep_data_entrada.DataPropertyName = "ep_data_entrada";
-            this.ep_data_entrada.FillWeight = 95.55751F;
-            this.ep_data_entrada.HeaderText = "Data Entrada";
-            this.ep_data_entrada.Name = "ep_data_entrada";
-            this.ep_data_entrada.ReadOnly = true;
-            // 
-            // ep_unidade
-            // 
-            this.ep_unidade.DataPropertyName = "ep_unidade";
-            this.ep_unidade.HeaderText = "ep_unidade";
-            this.ep_unidade.Name = "ep_unidade";
-            this.ep_unidade.ReadOnly = true;
-            this.ep_unidade.Visible = false;
-            // 
-            // ep_valor_unitario
-            // 
-            this.ep_valor_unitario.DataPropertyName = "ep_valor_unitario";
-            this.ep_valor_unitario.HeaderText = "ep_valor_unitario";
-            this.ep_valor_unitario.Name = "ep_valor_unitario";
-            this.ep_valor_unitario.ReadOnly = true;
-            this.ep_valor_unitario.Visible = false;
-            // 
-            // ep_desconto_por_item
-            // 
-            this.ep_desconto_por_item.DataPropertyName = "ep_desconto_por_item";
-            this.ep_desconto_por_item.HeaderText = "ep_desconto_por_item";
-            this.ep_desconto_por_item.Name = "ep_desconto_por_item";
-            this.ep_desconto_por_item.ReadOnly = true;
-            this.ep_desconto_por_item.Visible = false;
-            // 
             // Forms_ConsultarEstoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1338,6 +1348,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtCodigo);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Forms_ConsultarEstoque";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1386,5 +1397,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ep_unidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn ep_valor_unitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn ep_desconto_por_item;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ep_data_exclusao;
     }
 }

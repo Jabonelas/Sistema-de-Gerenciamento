@@ -488,6 +488,7 @@
             this.Controls.Add(this.pcbProduto);
             this.Controls.Add(this.txtCodigoBarras);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Forms_CadastroCodigoBarras";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

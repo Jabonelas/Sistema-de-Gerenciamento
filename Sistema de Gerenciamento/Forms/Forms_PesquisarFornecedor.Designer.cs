@@ -1018,6 +1018,7 @@
             this.Controls.Add(this.txtCNPJ);
             this.Controls.Add(this.txtNomeFantasia);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Forms_PesquisarFornecedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

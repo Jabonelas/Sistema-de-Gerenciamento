@@ -148,8 +148,10 @@ namespace Sistema_de_Gerenciamento
 
         private void btnClienteConsole_Click(object sender, EventArgs e)
         {
-            Forms_PesquisarCliente pesquisarCliente = new Forms_PesquisarCliente("Pesquisar Cliente");
-            pesquisarCliente.ShowDialog();
+            //Forms_PesquisarCliente pesquisarCliente = new Forms_PesquisarCliente("Pesquisar Cliente");
+            Forms_CadastroCliente cadastroCliente = new Forms_CadastroCliente();
+            cadastroCliente.ShowDialog();
+            //pesquisarCliente.ShowDialog();
         }
 
         private void btnPDV_Click(object sender, EventArgs e)
@@ -297,7 +299,7 @@ namespace Sistema_de_Gerenciamento
         private void ChamandoAlertaEstoqueBaixo()
         {
             DadosMensagemAlerta msg = new DadosMensagemAlerta("Estoque Baixo\n", Resources.ImagemEstoqueBaixo);
-            alertEstoqueMinimo.Show(this, $" { msg.titulo} \n{msg.descricao}", msg.texto, "", msg.image, msg);
+            alertEstoqueMinimo.Show(this, $" {msg.titulo} \n{msg.descricao}", msg.texto, "", msg.image, msg);
         }
 
         private void alertEstoqueMinimo_BeforeFormShow(object sender, DevExpress.XtraBars.Alerter.AlertFormEventArgs e)
@@ -455,6 +457,17 @@ namespace Sistema_de_Gerenciamento
         {
             Forms_EstatisticasFinanceiras estatisticasFinanceiras = new Forms_EstatisticasFinanceiras();
             estatisticasFinanceiras.ShowDialog();
+        }
+
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
+        {
+            var contextMenu = new ContextMenu();
+            contextMenu.MenuItems.Add(new MenuItem("Fechar", btnSair_Click));
+            notifyIcon1.ContextMenu = contextMenu;
+        }
+
+        private void Forms_TelaAdministrador_Load(object sender, EventArgs e)
+        {
         }
     }
 }

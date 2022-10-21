@@ -37,6 +37,10 @@
     <WarningLevel>4</WarningLevel>
     <LangVersion>9</LangVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>painel-de-controle.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="Bunifu.Licensing">
       <HintPath>..\..\..\Bunifu UI WinForms v4.1.1\Bunifu.Licensing.dll</HintPath>
@@ -966,6 +970,7 @@
     <None Include="Resources\correio-de-entrega.png" />
     <None Include="Resources\despesas01.png" />
     <None Include="Resources\despesa.png" />
+    <Content Include="painel-de-controle.ico" />
     <Content Include="Resources\ImagemEstoqueBaixo.png" />
     <None Include="Resources\ImagemEstoqueBaixo1.png" />
     <Content Include="Resources\ImagemVencimentoContas.png" />

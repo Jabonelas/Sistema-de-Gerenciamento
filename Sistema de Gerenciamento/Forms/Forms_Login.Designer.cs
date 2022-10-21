@@ -461,6 +461,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtUsuario);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "Forms_Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
