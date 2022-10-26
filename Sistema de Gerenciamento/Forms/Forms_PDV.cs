@@ -478,17 +478,23 @@ namespace Sistema_de_Gerenciamento.Forms
 
         private void txtCodigoProduto_TextChange(object sender, EventArgs e)
         {
-            if (txtCodigoProduto.Text != string.Empty)
+            if (cont == 0 && txtCodigoProduto.Text != "")
             {
+                cont++;
+
                 BuscarProdutoPorCodigoProduto();
 
                 pcbPDV.Image = Buscar.BuscarImagemProduto(Convert.ToInt32(txtCodigo.Text));
+            }
+            else
+            {
+                cont = 0;
             }
         }
 
         private void txtCodigoProduto_Leave(object sender, EventArgs e)
         {
-            if (cont == 0 && txtCodigoProduto.Text != "")
+            if (cont == 0 && txtCodigoProduto.Text != string.Empty)
             {
                 cont++;
 
@@ -832,6 +838,8 @@ namespace Sistema_de_Gerenciamento.Forms
                         {
                             MessageBox.Show($"Saldo Insuficiênte!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
+                            txtInserirQuant.Focus();
+
                             return false;
                         }
 
@@ -941,6 +949,10 @@ namespace Sistema_de_Gerenciamento.Forms
                     else if (isCadastroExiste == false)
                     {
                         MessageBox.Show("Codigo do Produto Não Encontrado ", "Não Encontrado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        cont = 0;
+
+                        txtCodigoProduto.Focus();
                     }
                 }
             }
@@ -1124,6 +1136,9 @@ namespace Sistema_de_Gerenciamento.Forms
                 txtInserirQuant.Visible = false;
 
                 txtInserirQuant.Text = "1";
+            }
+            else
+            {
             }
         }
     }

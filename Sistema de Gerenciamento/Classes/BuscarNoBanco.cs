@@ -841,11 +841,20 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda," +
-                                   "cp_lucro,cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo," +
-                                   "cp_garantia,cp_marca,cp_referencia,cp_validade,cp_comissao,cp_observacao " +
-                                   "from tb_CadastroProdutos " +
-                                   "where cp_id = @cp_id";
+                    string query = "select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda,cp_lucro,cp_preco_atacado," +
+                                   "cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo,cp_garantia,cp_marca,cp_referencia,cp_validade,cp_comissao," +
+                                   "cp_observacao,sum(ep_quantidade) as qtdTotal " +
+                                   "from tb_CadastroProdutos inner join tb_EstoqueProduto on cp_id = ep_codigo_produto " +
+                                   "where cp_id = @cp_id " +
+                                   "group by (cp_id),(cp_descricao),(cp_un),(cp_valor_custo),(cp_porcentagem),(cp_valor_venda),(cp_lucro)," +
+                                   "(cp_preco_atacado),(cp_grupo),(cp_sub_grupo),(cp_fonecedor),(cp_estoque_minimo),(cp_garantia),(cp_marca)," +
+                                   "(cp_referencia),(cp_validade),(cp_comissao),(cp_observacao)";
+
+                    //"select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda," +
+                    //           "cp_lucro,cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo," +
+                    //           "cp_garantia,cp_marca,cp_referencia,cp_validade,cp_comissao,cp_observacao " +
+                    //           "from tb_CadastroProdutos " +
+                    //           "where cp_id = @cp_id";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@cp_id", _cp_id);
@@ -891,11 +900,22 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda," +
-                                   "cp_lucro,cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo," +
-                                   "cp_garantia,cp_marca,cp_referencia,cp_validade,cp_comissao,cp_observacao " +
-                                   "from tb_CadastroProdutos " +
-                                   "where cp_descricao like @descricao";
+                    string query =
+
+                        "select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda,cp_lucro,cp_preco_atacado," +
+                        "cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo,cp_garantia,cp_marca,cp_referencia,cp_validade,cp_comissao," +
+                        "cp_observacao,sum(ep_quantidade) as qtdTotal " +
+                        "from tb_CadastroProdutos inner join tb_EstoqueProduto on cp_id = ep_codigo_produto " +
+                        "where cp_descricao like @descricao " +
+                        "group by (cp_id),(cp_descricao),(cp_un),(cp_valor_custo),(cp_porcentagem),(cp_valor_venda),(cp_lucro)," +
+                        "(cp_preco_atacado),(cp_grupo),(cp_sub_grupo),(cp_fonecedor),(cp_estoque_minimo),(cp_garantia),(cp_marca)," +
+                        "(cp_referencia),(cp_validade),(cp_comissao),(cp_observacao)";
+
+                    //"select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda," +
+                    //               "cp_lucro,cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo," +
+                    //               "cp_garantia,cp_marca,cp_referencia,cp_validade,cp_comissao,cp_observacao " +
+                    //               "from tb_CadastroProdutos " +
+                    //               "where cp_descricao like @descricao";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@descricao", string.Format("%{0}%", _descricao));
@@ -941,11 +961,22 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda,cp_lucro," +
-                                   "cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo,cp_garantia,cp_marca," +
-                                   "cp_referencia,cp_validade,cp_comissao,cp_observacao " +
-                                   "from tb_CadastroProdutos " +
-                                   "where cp_sub_grupo like @subGrupo";
+                    string query =
+
+                        "select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda,cp_lucro,cp_preco_atacado," +
+                        "cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo,cp_garantia,cp_marca,cp_referencia,cp_validade,cp_comissao," +
+                        "cp_observacao,sum(ep_quantidade) as qtdTotal " +
+                        "from tb_CadastroProdutos inner join tb_EstoqueProduto on cp_id = ep_codigo_produto " +
+                        "where cp_sub_grupo like @subGrupo " +
+                        "group by (cp_id),(cp_descricao),(cp_un),(cp_valor_custo),(cp_porcentagem),(cp_valor_venda),(cp_lucro)," +
+                        "(cp_preco_atacado),(cp_grupo),(cp_sub_grupo),(cp_fonecedor),(cp_estoque_minimo),(cp_garantia),(cp_marca)," +
+                        "(cp_referencia),(cp_validade),(cp_comissao),(cp_observacao)";
+
+                    //"select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda,cp_lucro," +
+                    //               "cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo,cp_garantia,cp_marca," +
+                    //               "cp_referencia,cp_validade,cp_comissao,cp_observacao " +
+                    //               "from tb_CadastroProdutos " +
+                    //               "where cp_sub_grupo like @subGrupo";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@subGrupo", string.Format("%{0}%", _subGrupo));
@@ -991,11 +1022,22 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda," +
-                                   "cp_lucro,cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo," +
-                                   "cp_garantia,cp_marca,cp_referencia,cp_validade,cp_comissao,cp_observacao " +
-                                   "from tb_CadastroProdutos " +
-                                   "where cp_marca like @marca";
+                    string query =
+
+                        "select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda,cp_lucro,cp_preco_atacado," +
+                        "cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo,cp_garantia,cp_marca,cp_referencia,cp_validade,cp_comissao," +
+                        "cp_observacao,sum(ep_quantidade) as qtdTotal " +
+                        "from tb_CadastroProdutos inner join tb_EstoqueProduto on cp_id = ep_codigo_produto " +
+                        "where cp_marca like @marca " +
+                        "group by (cp_id),(cp_descricao),(cp_un),(cp_valor_custo),(cp_porcentagem),(cp_valor_venda),(cp_lucro)," +
+                        "(cp_preco_atacado),(cp_grupo),(cp_sub_grupo),(cp_fonecedor),(cp_estoque_minimo),(cp_garantia),(cp_marca)," +
+                        "(cp_referencia),(cp_validade),(cp_comissao),(cp_observacao)";
+
+                    //"select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda," +
+                    //               "cp_lucro,cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo," +
+                    //               "cp_garantia,cp_marca,cp_referencia,cp_validade,cp_comissao,cp_observacao " +
+                    //               "from tb_CadastroProdutos " +
+                    //               "where cp_marca like @marca";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
                     adapter.SelectCommand.Parameters.AddWithValue("@marca", string.Format("%{0}%", _marca));
@@ -1041,10 +1083,18 @@ namespace Sistema_de_Gerenciamento.Classes
             {
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
-                    string query = "select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda," +
-                                   "cp_lucro,cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo," +
-                                   "cp_garantia,cp_marca,cp_referencia,cp_validade,cp_comissao,cp_observacao " +
-                                   "from tb_CadastroProdutos ";
+                    string query = "Select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda,cp_lucro,cp_preco_atacado," +
+                                   "cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo,cp_garantia,cp_marca,cp_referencia,cp_validade," +
+                                   "cp_comissao,cp_observacao,sum(ep_quantidade) as qtdTotal " +
+                                   "from tb_CadastroProdutos inner join tb_EstoqueProduto on cp_id = ep_codigo_produto " +
+                                   "group by (cp_id),(cp_descricao),(cp_un),(cp_valor_custo),(cp_porcentagem),(cp_valor_venda),(cp_lucro)," +
+                                   "(cp_preco_atacado),(cp_grupo),(cp_sub_grupo),(cp_fonecedor),(cp_estoque_minimo),(cp_garantia),(cp_marca)," +
+                                   "(cp_referencia),(cp_validade),(cp_comissao),(cp_observacao)";
+
+                    //"select cp_id,cp_descricao,cp_un,cp_valor_custo,cp_porcentagem,cp_valor_venda," +
+                    //               "cp_lucro,cp_preco_atacado,cp_grupo,cp_sub_grupo,cp_fonecedor,cp_estoque_minimo," +
+                    //               "cp_garantia,cp_marca,cp_referencia,cp_validade,cp_comissao,cp_observacao " +
+                    //               "from tb_CadastroProdutos";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 
@@ -1344,11 +1394,11 @@ namespace Sistema_de_Gerenciamento.Classes
                 using (SqlConnection conexaoSQL = AbrirConexao())
                 {
                     string query = "SELECT ep.ep_codigo_produto,ep.ep_descricao from tb_EstoqueProduto as ep " +
-                        "inner join tb_CadastroProdutos cp on ep.ep_codigo_produto = cp.cp_id " +
-                        "and(select SUM(ep_quantidade) from tb_EstoqueProduto " +
-                        "where ep_codigo_produto = cp.cp_id) <= cp.cp_estoque_minimo and " +
-                        "ep.ep_quantidade <> 0 " +
-                        "group by(ep.ep_codigo_produto),(ep.ep_descricao)";
+                                   "inner join tb_CadastroProdutos cp on ep.ep_codigo_produto = cp.cp_id " +
+                                   "and(select SUM(ep_quantidade) from tb_EstoqueProduto " +
+                                   "where ep_codigo_produto = cp.cp_id) <= cp.cp_estoque_minimo and " +
+                                   "ep.ep_quantidade <> 0 " +
+                                   "group by(ep.ep_codigo_produto),(ep.ep_descricao)";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conexaoSQL);
 

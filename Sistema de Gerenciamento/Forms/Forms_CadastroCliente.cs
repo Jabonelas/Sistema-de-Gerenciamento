@@ -14,8 +14,10 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Correios;
+using DevExpress.CodeParser;
 using Sistema_de_Gerenciamento.Classes.QuickType;
 using Sistema_de_Gerenciamento.Properties;
+using System.Windows.Documents;
 
 namespace Sistema_de_Gerenciamento
 {
@@ -38,6 +40,10 @@ namespace Sistema_de_Gerenciamento
         private int qntCEPexecutado = 0;
 
         private bool IsCpfCnpjExiste = false;
+
+        private decimal ValorSaldo = 0;
+
+        private decimal ValorCredito = 0;
 
         public Forms_CadastroCliente()
         {
@@ -171,6 +177,9 @@ namespace Sistema_de_Gerenciamento
         {
             Forms_PesquisarCliente buscarCliente = new Forms_PesquisarCliente(this);
             buscarCliente.ShowDialog();
+
+            ValorSaldo = Convert.ToDecimal(txtSaldo.Text.Replace("R$ ", ""));
+            ValorCredito = Convert.ToDecimal(txtCredito.Text.Replace("R$ ", ""));
         }
 
         private void btnExcluirCliente_Click(object sender, EventArgs e)
@@ -629,6 +638,46 @@ namespace Sistema_de_Gerenciamento
             if (txtEmail.Text != string.Empty)
             {
                 ValidacaoEmail.VerificarPreenchimentoEmail(txtEmail.Text, txtEmail);
+            }
+        }
+
+        private decimal diferencaCredito = 0;
+        private decimal diferencaSaldo = 0;
+
+        private void txtCredito_Leave(object sender, EventArgs e)
+        {
+            decimal ValorSaldo = 0;
+
+            if (cont == 0 && txtSaldo.Text == String.Empty)
+            {
+                cont++;
+
+                txtSaldo.Text = txtCredito.Text;
+            }
+            else if (cont == 0)
+            {
+                CalculandoValorSaldo();
+            }
+            else
+            {
+                cont = 0;
+            }
+        }
+
+        private void CalculandoValorSaldo()
+        {
+            diferencaCredito = Convert.ToDecimal(txtCredito.Text.Replace("R$ ", "")) - ValorCredito;
+            diferencaSaldo = diferencaCredito + ValorSaldo;
+
+            if (diferencaSaldo > 0)
+            {
+                txtSaldo.Text = diferencaSaldo.ToString("c");
+            }
+            else
+            {
+                MessageBox.Show("Saldo não pode fica negativo!!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                txtCredito.Focus();
             }
         }
     }

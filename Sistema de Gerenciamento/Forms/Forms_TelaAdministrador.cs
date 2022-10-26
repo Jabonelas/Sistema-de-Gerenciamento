@@ -35,6 +35,8 @@ namespace Sistema_de_Gerenciamento
         public Forms_TelaAdministrador()
         {
             InitializeComponent();
+            this.MouseDown += new MouseEventHandler(Forms_TelaAdministrador_MouseDown);
+            this.MouseMove += new MouseEventHandler(Forms_TelaAdministrador_MouseMove);
         }
 
         public Forms_TelaAdministrador(Forms_Login _login)
@@ -48,6 +50,23 @@ namespace Sistema_de_Gerenciamento
             TimerVerificarDespesaCustoFixo.Enabled = true;
 
             login = _login;
+        }
+
+        private int X = 0;
+        private int Y = 0;
+
+        private void Forms_TelaAdministrador_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            X = this.Left - MousePosition.X;
+            Y = this.Top - MousePosition.Y;
+        }
+
+        private void Forms_TelaAdministrador_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            this.Left = X + MousePosition.X;
+            this.Top = Y + MousePosition.Y;
         }
 
         private void btnCadastroProduto_Click(object sender, EventArgs e)

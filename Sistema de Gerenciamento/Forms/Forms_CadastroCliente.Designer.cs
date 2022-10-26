@@ -840,6 +840,7 @@
             this.txtSaldo.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtSaldo.DefaultFont = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSaldo.DefaultText = "";
+            this.txtSaldo.Enabled = false;
             this.txtSaldo.FillColor = System.Drawing.Color.White;
             this.txtSaldo.HideSelection = true;
             this.txtSaldo.IconLeft = null;
@@ -878,7 +879,7 @@
             this.txtSaldo.PasswordChar = '\0';
             this.txtSaldo.PlaceholderForeColor = System.Drawing.Color.Silver;
             this.txtSaldo.PlaceholderText = "";
-            this.txtSaldo.ReadOnly = false;
+            this.txtSaldo.ReadOnly = true;
             this.txtSaldo.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txtSaldo.SelectedText = "";
             this.txtSaldo.SelectionLength = 0;
@@ -1046,6 +1047,7 @@
             this.txtCredito.UseSystemPasswordChar = false;
             this.txtCredito.WordWrap = true;
             this.txtCredito.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCredito_KeyPress);
+            this.txtCredito.Leave += new System.EventHandler(this.txtCredito_Leave);
             // 
             // txtEmail
             // 
