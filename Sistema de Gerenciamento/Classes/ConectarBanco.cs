@@ -20,8 +20,8 @@ namespace Sistema_de_Gerenciamento
                 //string conexaoString = @"Server=ISRAEL\SQLEXPRESS;Database=SistemaGerenciamento;User Id=sa;Password=12345;";
                 //string conexaoString = @"Server=localhost\SQLEXPRESS;Database=SistemaGerenciamento;User Id=sa;Password=123adr;";
                 //string conexaoString = @"Server=localhost\SQLEXPRESS;Database=SistemaGerenciamento;User Id=sa;Password=12345;";
-                string conexaoString = @"Server=localhost\SQLEXPRESS;Database=SistemaGerenciamento; Integrated Security=True;";
                 //string conexaoString = @"Server=MICHEL-DESKTOP\MSSQLSERVER01;Database=SistemaGerenciamento; Integrated Security=True;";
+                string conexaoString = @"Server=localhost\SQLEXPRESS;Database=SistemaGerenciamento; Integrated Security=True;";
 
                 con = new SqlConnection(conexaoString);
                 con.Open();

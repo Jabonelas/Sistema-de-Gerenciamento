@@ -52,6 +52,8 @@ C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\ob
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.Forms.Forms_EstatisticasFinanceiras.resources
 C:\Users\israe\source\repos\Sistema de Gerenciamento\Sistema de Gerenciamento\bin\Debug\BunifuDataViz.xml
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\Sistema de Gerenciamento.exe.config
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\Sistema de Gerenciamento.exe.manifest
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\Sistema de Gerenciamento.application
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\Sistema de Gerenciamento.exe
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\Sistema de Gerenciamento.pdb
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\BunifuDataViz.xml
@@ -148,10 +150,8 @@ C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Ge
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.exe.licenses
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.csproj.CoreCompileInputs.cache
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.csproj.Fody.CopyLocal.cache
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.exe.manifest
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.application
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.csproj.CopyComplete
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.exe
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.pdb
-C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\Sistema de Gerenciamento.exe.manifest
-C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\bin\Debug\Sistema de Gerenciamento.application
-C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.exe.manifest
-C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.application

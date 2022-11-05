@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Sistema_de_Gerenciamento.Classes;
 using System.Threading;
 using System.IO;
+using DevExpress.Utils.Helpers;
 using DevExpress.XtraEditors;
 using Sistema_de_Gerenciamento.Properties;
 
@@ -404,6 +405,8 @@ namespace Sistema_de_Gerenciamento
                 if (ListaDadosDespesaCustosAtrasadas.Count == 1)
                 {
                     ChamandoAlertaVencimentoContas();
+
+                    btnNotificações.Visible = true;
                 }
             }
         }
@@ -485,8 +488,16 @@ namespace Sistema_de_Gerenciamento
             notifyIcon1.ContextMenu = contextMenu;
         }
 
-        private void Forms_TelaAdministrador_Load(object sender, EventArgs e)
+        private void btnNotificações_Click(object sender, EventArgs e)
         {
+            if (alertVencimentoContas.AlertFormList.Count == 0)
+            {
+                ListaDadosDespesaCustosAtrasadas.Clear();
+
+                AutomatizacaoVerificarDespesaCustoEstoqueMinimo();
+            }
         }
+
+ 
     }
 }
