@@ -88,6 +88,7 @@
             this.btnPesquisar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.txtDescricao = new Bunifu.UI.WinForms.BunifuTextBox();
             this.lblEstatusPagamento = new System.Windows.Forms.Label();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarDespesa)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1098,11 +1099,19 @@
             this.lblEstatusPagamento.Text = "Nao Pago";
             this.lblEstatusPagamento.Visible = false;
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(762, 487);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 253;
+            // 
             // Forms_PesquisarDespesaCustos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(871, 502);
+            this.ClientSize = new System.Drawing.Size(871, 528);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.lblEstatusPagamento);
             this.Controls.Add(this.txtTitulo);
             this.Controls.Add(this.lblCategoria);
@@ -1171,5 +1180,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dc_desconto_taxas;
         private System.Windows.Forms.DataGridViewTextBoxColumn dc_juros_multa;
         private System.Windows.Forms.DataGridViewTextBoxColumn dc_valor_pago;
+        private LogoSistema logoSistema1;
     }
 }

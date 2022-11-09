@@ -133,6 +133,7 @@
             this.bntSair = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnAlterar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnSalvar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.pcbQRCodePix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEmpresa)).BeginInit();
             this.SuspendLayout();
@@ -565,10 +566,10 @@
             this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuSeparator2.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded;
             this.bunifuSeparator2.LineThickness = 3;
-            this.bunifuSeparator2.Location = new System.Drawing.Point(12, 578);
+            this.bunifuSeparator2.Location = new System.Drawing.Point(12, 583);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
             this.bunifuSeparator2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.bunifuSeparator2.Size = new System.Drawing.Size(790, 20);
+            this.bunifuSeparator2.Size = new System.Drawing.Size(708, 20);
             this.bunifuSeparator2.TabIndex = 160;
             // 
             // bunifuSeparator1
@@ -1866,11 +1867,19 @@
             this.btnSalvar.UseDefaultRadiusAndThickness = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(726, 577);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 169;
+            // 
             // Forms_CadastroEmpresa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(837, 605);
+            this.ClientSize = new System.Drawing.Size(837, 619);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtChavePix);
             this.Controls.Add(this.label7);
@@ -1975,5 +1984,6 @@
         private Bunifu.UI.WinForms.BunifuTextBox txtChavePix;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblce_id;
+        private LogoSistema logoSistema1;
     }
 }

@@ -93,6 +93,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cmbTipoReceberPagamento = new System.Windows.Forms.ComboBox();
             this.bunifuGroupBox2 = new Bunifu.UI.WinForms.BunifuGroupBox();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.gdvContarReceber)).BeginInit();
             this.bunifuGroupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -1206,11 +1207,19 @@
             this.bunifuGroupBox2.TabIndex = 338;
             this.bunifuGroupBox2.TabStop = false;
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(819, 634);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 339;
+            // 
             // Forms_PesquisarContasAReceber
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 656);
+            this.ClientSize = new System.Drawing.Size(941, 675);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.cmbTipoReceberPagamento);
             this.Controls.Add(this.txtNomeCliente);
             this.Controls.Add(this.btnExportarParaExcel);
@@ -1297,5 +1306,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbTipoReceberPagamento;
         private Bunifu.UI.WinForms.BunifuGroupBox bunifuGroupBox2;
+        private LogoSistema logoSistema1;
     }
 }

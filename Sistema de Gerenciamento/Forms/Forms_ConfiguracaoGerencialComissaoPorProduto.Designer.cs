@@ -34,6 +34,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.txtComissao = new Guna.UI2.WinForms.Guna2TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.btnConfirmarComissao = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             this.SuspendLayout();
             // 
             // txtComissao
@@ -165,11 +166,19 @@ namespace Sistema_de_Gerenciamento.Forms
             this.btnConfirmarComissao.UseDefaultRadiusAndThickness = true;
             this.btnConfirmarComissao.Click += new System.EventHandler(this.btnConfirmarComissao_Click);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(233, 189);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 255;
+            // 
             // Forms_ConfiguracaoGerencialComissaoPorProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(340, 212);
+            this.ClientSize = new System.Drawing.Size(340, 229);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.txtComissao);
             this.Controls.Add(this.btnConfirmarComissao);
             this.Controls.Add(this.label15);
@@ -190,5 +199,6 @@ namespace Sistema_de_Gerenciamento.Forms
         private Guna.UI2.WinForms.Guna2TextBox txtComissao;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnConfirmarComissao;
         private System.Windows.Forms.Label label15;
+        private LogoSistema logoSistema1;
     }
 }

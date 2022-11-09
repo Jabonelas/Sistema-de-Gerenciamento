@@ -425,9 +425,7 @@ namespace Sistema_de_Gerenciamento
             }
         }
 
-        private void Forms_PesquisarProduto_Load(object sender, EventArgs e)
-        {
-        }
+  
 
         private void cmbSubGrupo_Enter(object sender, EventArgs e)
         {

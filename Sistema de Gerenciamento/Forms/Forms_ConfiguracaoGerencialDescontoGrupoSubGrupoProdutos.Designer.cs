@@ -38,6 +38,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.label2 = new System.Windows.Forms.Label();
             this.cmbGrupoProduto = new System.Windows.Forms.ComboBox();
             this.btnConfirmarGrupo = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             this.SuspendLayout();
             // 
             // txtDescontoPorGrupo
@@ -218,11 +219,19 @@ namespace Sistema_de_Gerenciamento.Forms
             this.btnConfirmarGrupo.UseDefaultRadiusAndThickness = true;
             this.btnConfirmarGrupo.Click += new System.EventHandler(this.btnConfirmarGrupo_Click);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(286, 236);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 261;
+            // 
             // Forms_ConfiguracaoGerencialDescontoGrupoSubGrupoProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(393, 264);
+            this.ClientSize = new System.Drawing.Size(393, 275);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.btnConfirmarGrupo);
             this.Controls.Add(this.txtDescontoPorGrupo);
             this.Controls.Add(this.label4);
@@ -251,5 +260,6 @@ namespace Sistema_de_Gerenciamento.Forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.ComboBox cmbGrupoProduto;
+        private LogoSistema logoSistema1;
     }
 }

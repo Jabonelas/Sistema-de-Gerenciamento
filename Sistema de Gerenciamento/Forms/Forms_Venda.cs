@@ -512,6 +512,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 lblTotalItens.Location = new Point(600, 594);
                 gdvVenda.Size = new Size(923, 328);
                 this.Size = new Size(967, 686);
+                logoSistema1.Location = new Point(832, 589);
 
                 listaDadosNotaFiscalSaidaCompleta.Clear();
                 valorBruto = 0;
@@ -571,6 +572,7 @@ namespace Sistema_de_Gerenciamento.Forms
             lblValorCredito.Visible = !_isVenda;
             lblCredito.Visible = !_isVenda;
             txtValorTotalCredito.Visible = !_isVenda;
+            logoSistema1.Location = new Point(832, 641);
         }
 
         private void OrcamentoSelecionado()

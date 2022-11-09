@@ -124,6 +124,7 @@
             this.lblCodigoPrimaryKey = new System.Windows.Forms.Label();
             this.txtPorcentagem = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtComissao = new Guna.UI2.WinForms.Guna2TextBox();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.pcbProduto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -630,10 +631,10 @@
             this.bunifuSeparator2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.bunifuSeparator2.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded;
             this.bunifuSeparator2.LineThickness = 3;
-            this.bunifuSeparator2.Location = new System.Drawing.Point(12, 455);
+            this.bunifuSeparator2.Location = new System.Drawing.Point(12, 464);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
             this.bunifuSeparator2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.bunifuSeparator2.Size = new System.Drawing.Size(776, 20);
+            this.bunifuSeparator2.Size = new System.Drawing.Size(689, 20);
             this.bunifuSeparator2.TabIndex = 160;
             // 
             // txtValidade
@@ -1859,11 +1860,19 @@
             this.txtComissao.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtComissao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtComissao_KeyPress_1);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(707, 451);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 257;
+            // 
             // Forms_CadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(818, 479);
+            this.ClientSize = new System.Drawing.Size(818, 492);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.txtComissao);
             this.Controls.Add(this.txtPorcentagem);
             this.Controls.Add(this.lblCodigoPrimaryKey);
@@ -1999,5 +2008,6 @@
         private System.Windows.Forms.Label lblCodigoPrimaryKey;
         public Guna.UI2.WinForms.Guna2TextBox txtPorcentagem;
         public Guna.UI2.WinForms.Guna2TextBox txtComissao;
+        private LogoSistema logoSistema1;
     }
 }

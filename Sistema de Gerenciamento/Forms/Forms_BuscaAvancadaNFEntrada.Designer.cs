@@ -58,6 +58,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnExportar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnImprimir = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.gdvBuscaAvancadaNFEntrada)).BeginInit();
             this.SuspendLayout();
             // 
@@ -639,11 +640,19 @@ namespace Sistema_de_Gerenciamento.Forms
             this.btnImprimir.UseDefaultRadiusAndThickness = true;
             this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(910, 481);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 283;
+            // 
             // Forms_BuscaAvancadaNFEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1025, 525);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.btnImprimir);
@@ -692,5 +701,6 @@ namespace Sistema_de_Gerenciamento.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn ne_valor_total;
         private System.Windows.Forms.DataGridViewTextBoxColumn ep_data_entrada;
         private System.Windows.Forms.DataGridViewTextBoxColumn ep_data_exclusao;
+        private LogoSistema logoSistema1;
     }
 }

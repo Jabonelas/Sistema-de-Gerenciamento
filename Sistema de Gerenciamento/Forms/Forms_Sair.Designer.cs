@@ -35,6 +35,7 @@
             this.btnFinalizar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnTrocarUsuario = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnCancelar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             this.SuspendLayout();
             // 
             // btnFinalizar
@@ -307,11 +308,19 @@
             this.btnCancelar.UseDefaultRadiusAndThickness = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(330, 219);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 10;
+            // 
             // Forms_Sair
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(439, 240);
+            this.ClientSize = new System.Drawing.Size(439, 260);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnTrocarUsuario);
             this.Controls.Add(this.btnFinalizar);
@@ -331,5 +340,6 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnFinalizar;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnTrocarUsuario;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnCancelar;
+        private LogoSistema logoSistema1;
     }
 }

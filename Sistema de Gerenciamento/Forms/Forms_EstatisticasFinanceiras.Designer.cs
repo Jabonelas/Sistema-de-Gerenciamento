@@ -208,6 +208,7 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.chartBarController1 = new DevExpress.XtraCharts.UI.ChartBarController(this.components);
             this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.tb_NotaFiscalSaidaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chrEstatisicasFinanceiras)).BeginInit();
@@ -1108,11 +1109,19 @@
             this.btnFechar.UseDefaultRadiusAndThickness = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(842, 580);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 323;
+            // 
             // Forms_EstatisticasFinanceiras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(951, 621);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.chrEstatisicasFinanceiras);
@@ -1213,5 +1222,6 @@
         private DevExpress.XtraCharts.UI.ChartBarController chartBarController1;
         private DevExpress.XtraCharts.ChartControl chrEstatisicasFinanceiras;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnFechar;
+        private LogoSistema logoSistema1;
     }
 }

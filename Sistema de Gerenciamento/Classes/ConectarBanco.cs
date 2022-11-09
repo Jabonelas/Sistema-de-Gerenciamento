@@ -29,7 +29,7 @@ namespace Sistema_de_Gerenciamento
             }
             catch (Exception x)
             {
-                MessageBox.Show(x.Message.ToString());
+                MessageBox.Show($"Erro ao conectar com o banco de dados! \\n{x}");
                 return con;
             }
         }

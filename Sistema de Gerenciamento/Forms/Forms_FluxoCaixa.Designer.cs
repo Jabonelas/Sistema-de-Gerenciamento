@@ -60,6 +60,7 @@
             this.lblComissaoPorProduto = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.gdvFluxoCaixa)).BeginInit();
             this.SuspendLayout();
             // 
@@ -539,11 +540,19 @@
             this.btnFechar.UseDefaultRadiusAndThickness = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(739, 591);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 299;
+            // 
             // Forms_FluxoCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 631);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lblComissaoPorProduto);
@@ -604,5 +613,6 @@
         private System.Windows.Forms.Label lblComissaoPorProduto;
         private System.Windows.Forms.Label label5;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnFechar;
+        private LogoSistema logoSistema1;
     }
 }

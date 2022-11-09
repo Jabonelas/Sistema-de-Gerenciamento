@@ -87,5 +87,9 @@ namespace Sistema_de_Gerenciamento.Forms
                 FecharTela.DesejaFecharTela(this, e);
             }
         }
+
+        private void Forms_ConsultaEstoqueDetalhada_Load(object sender, EventArgs e)
+        {
+        }
     }
 }

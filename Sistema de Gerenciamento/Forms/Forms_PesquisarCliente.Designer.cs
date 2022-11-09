@@ -99,6 +99,7 @@
             this.E_mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Observacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fk_imagem_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             this.bunifuGroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarCliente)).BeginInit();
             this.SuspendLayout();
@@ -1271,11 +1272,19 @@
             this.fk_imagem_id.ReadOnly = true;
             this.fk_imagem_id.Visible = false;
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(828, 483);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 171;
+            // 
             // Forms_PesquisarCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(943, 506);
+            this.ClientSize = new System.Drawing.Size(943, 524);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbTipo);
             this.Controls.Add(this.bunifuSeparator1);
@@ -1355,5 +1364,6 @@
         public Bunifu.UI.WinForms.BunifuButton.BunifuButton btnExportarParaExcel;
         public Bunifu.UI.WinForms.BunifuButton.BunifuButton btnImprimir;
         public Bunifu.UI.WinForms.BunifuButton.BunifuButton btnSelecionar;
+        private LogoSistema logoSistema1;
     }
 }

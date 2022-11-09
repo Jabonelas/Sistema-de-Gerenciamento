@@ -498,5 +498,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 cmbCliente.Items.Add(item);
             }
         }
+
+      
     }
 }

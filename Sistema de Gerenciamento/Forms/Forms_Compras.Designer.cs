@@ -103,6 +103,7 @@
             this.txtTotalItens = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtValorTotal = new Bunifu.UI.WinForms.BunifuTextBox();
             this.btnBuscaAvancadas = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.gdvCompra)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gdvEstoque)).BeginInit();
             this.SuspendLayout();
@@ -1364,11 +1365,19 @@
             this.btnBuscaAvancadas.UseDefaultRadiusAndThickness = true;
             this.btnBuscaAvancadas.Click += new System.EventHandler(this.btnBuscaAvancadas_Click);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(810, 500);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 270;
+            // 
             // Forms_Compras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(928, 515);
+            this.ClientSize = new System.Drawing.Size(928, 541);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.btnBuscaAvancadas);
             this.Controls.Add(this.txtValorTotal);
             this.Controls.Add(this.txtTotalItens);
@@ -1445,5 +1454,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ne_data_emissao;
         private System.Windows.Forms.DataGridViewTextBoxColumn ne_data_lancamento;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnBuscaAvancadas;
+        private LogoSistema logoSistema1;
     }
 }

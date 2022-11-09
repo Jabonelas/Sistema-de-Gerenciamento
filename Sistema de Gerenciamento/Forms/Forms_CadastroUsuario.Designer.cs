@@ -69,6 +69,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.pnlTroca = new Bunifu.UI.WinForms.BunifuPanel();
             this.label5 = new System.Windows.Forms.Label();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             this.pnlCancelarVenda.SuspendLayout();
             this.pnlCancelarPagamento.SuspendLayout();
             this.pnlExcluirItem.SuspendLayout();
@@ -790,11 +791,19 @@
             this.label5.Text = "Permite que o Usuário \r\npossa realizar troca\r\nde produtos";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(328, 289);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 187;
+            // 
             // Forms_CadastroUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 305);
+            this.ClientSize = new System.Drawing.Size(437, 330);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.pnlTroca);
             this.Controls.Add(this.pnlCancelarVenda);
             this.Controls.Add(this.pnlCancelarPagamento);
@@ -871,5 +880,6 @@
         private System.Windows.Forms.Label label6;
         private Bunifu.UI.WinForms.BunifuPanel pnlTroca;
         private System.Windows.Forms.Label label5;
+        private LogoSistema logoSistema1;
     }
 }

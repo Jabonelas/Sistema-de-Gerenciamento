@@ -266,6 +266,7 @@ namespace Sistema_de_Gerenciamento
                 btnResumoVendasConsole.Visible = false;
                 btnFluxoCaixaConsole.Visible = false;
                 tabControl.Visible = false;
+                pcbLogo.Location = new Point(820, 495);
 
                 this.Size = new Size(934, 550);
 
@@ -497,7 +498,5 @@ namespace Sistema_de_Gerenciamento
                 AutomatizacaoVerificarDespesaCustoEstoqueMinimo();
             }
         }
-
- 
     }
 }

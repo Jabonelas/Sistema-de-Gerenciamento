@@ -107,6 +107,7 @@
             this.txtDescricao = new Bunifu.UI.WinForms.BunifuTextBox();
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.txtCodigo = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.gdvConsultarEstoque)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1317,11 +1318,19 @@
             this.txtCodigo.WordWrap = true;
             this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(502, 532);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 303;
+            // 
             // Forms_ConsultarEstoque
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(610, 539);
+            this.ClientSize = new System.Drawing.Size(610, 573);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.btnBuscarItensEmContagem);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnSelecionar);
@@ -1398,5 +1407,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ep_valor_unitario;
         private System.Windows.Forms.DataGridViewTextBoxColumn ep_desconto_por_item;
         private System.Windows.Forms.DataGridViewTextBoxColumn ep_data_exclusao;
+        private LogoSistema logoSistema1;
     }
 }

@@ -47,6 +47,7 @@
             this.btnLogin = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.txtSenha = new Bunifu.UI.WinForms.BunifuTextBox();
             this.lblce_id = new System.Windows.Forms.Label();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.pcbEmpresa)).BeginInit();
             this.SuspendLayout();
             // 
@@ -420,11 +421,19 @@
             this.lblce_id.Text = "1";
             this.lblce_id.Visible = false;
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(408, 216);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 13;
+            // 
             // Forms_ControleADMIN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 231);
+            this.ClientSize = new System.Drawing.Size(516, 256);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.lblce_id);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.btnCancelar);
@@ -456,5 +465,6 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnLogin;
         private Bunifu.UI.WinForms.BunifuTextBox txtSenha;
         private System.Windows.Forms.Label lblce_id;
+        private LogoSistema logoSistema1;
     }
 }

@@ -51,6 +51,7 @@
             this.btnExcluirGrupo = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.bunifuSeparator2 = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             this.SuspendLayout();
             // 
             // panel4
@@ -539,14 +540,22 @@
             this.bunifuSeparator2.Location = new System.Drawing.Point(5, 255);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
             this.bunifuSeparator2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.bunifuSeparator2.Size = new System.Drawing.Size(360, 20);
+            this.bunifuSeparator2.Size = new System.Drawing.Size(264, 20);
             this.bunifuSeparator2.TabIndex = 160;
+            // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(275, 250);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 161;
             // 
             // Forms_CadastroGrupoProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(383, 289);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.bunifuSeparator2);
             this.Controls.Add(this.bunifuSeparator1);
             this.Controls.Add(this.bntSair);
@@ -582,5 +591,6 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnExcluirGrupo;
         private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator1;
         private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator2;
+        private LogoSistema logoSistema1;
     }
 }

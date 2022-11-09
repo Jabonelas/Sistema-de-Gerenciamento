@@ -77,6 +77,7 @@
             this.txtValorPago = new Bunifu.UI.WinForms.BunifuTextBox();
             this.lblVerificacaoPagamento = new System.Windows.Forms.Label();
             this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.pcbStatusPagamento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1004,11 +1005,19 @@
             this.btnFechar.UseDefaultRadiusAndThickness = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(501, 401);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 327;
+            // 
             // Forms_EditarPagamentoAPagar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(610, 427);
+            this.ClientSize = new System.Drawing.Size(610, 442);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.lblVerificacaoPagamento);
             this.Controls.Add(this.txtValorPago);
@@ -1098,5 +1107,6 @@
         public Bunifu.UI.WinForms.BunifuTextBox txtDataPagamento;
         public Guna.UI2.WinForms.Guna2TextBox txtDescontoTaxas;
         public Guna.UI2.WinForms.Guna2TextBox txtJurosMulta;
+        private LogoSistema logoSistema1;
     }
 }

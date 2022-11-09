@@ -615,6 +615,12 @@
     <Compile Include="Forms\Forms_Venda.Designer.cs">
       <DependentUpon>Forms_Venda.cs</DependentUpon>
     </Compile>
+    <Compile Include="LogoSistema.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="LogoSistema.Designer.cs">
+      <DependentUpon>LogoSistema.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\ManipulacaoTextBox.cs" />
     <EmbeddedResource Include="Forms\Forms_BuscaAvancadaNFEntrada.resx">
@@ -746,6 +752,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Forms_Venda.resx">
       <DependentUpon>Forms_Venda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogoSistema.resx">
+      <DependentUpon>LogoSistema.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -1003,6 +1012,7 @@
     <None Include="Resources\alerta.png" />
     <None Include="Resources\alerta %281%29.png" />
     <None Include="Resources\icons8-lembrete-de-compromissos.gif" />
+    <None Include="Resources\GerEsp.png" />
     <Content Include="Resources\ImagemEstoqueBaixo.png" />
     <None Include="Resources\ImagemEstoqueBaixo1.png" />
     <Content Include="Resources\ImagemVencimentoContas.png" />
@@ -1020,6 +1030,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.5.5\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.5\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

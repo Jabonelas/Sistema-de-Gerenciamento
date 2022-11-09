@@ -124,6 +124,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtCodigo = new Guna.UI.WinForms.GunaTextBox();
             this.lblForeignKey = new System.Windows.Forms.Label();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.pcbFornecedor)).BeginInit();
             this.SuspendLayout();
             // 
@@ -378,7 +379,7 @@
             this.bunifuSeparator2.Location = new System.Drawing.Point(12, 475);
             this.bunifuSeparator2.Name = "bunifuSeparator2";
             this.bunifuSeparator2.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
-            this.bunifuSeparator2.Size = new System.Drawing.Size(776, 20);
+            this.bunifuSeparator2.Size = new System.Drawing.Size(699, 20);
             this.bunifuSeparator2.TabIndex = 160;
             // 
             // bunifuSeparator1
@@ -1893,11 +1894,19 @@
             this.lblForeignKey.Text = "9";
             this.lblForeignKey.Visible = false;
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(717, 456);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 170;
+            // 
             // Forms_CadastroFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(829, 498);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.lblForeignKey);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label6);
@@ -2009,5 +2018,6 @@
         public Bunifu.UI.WinForms.BunifuTextBox txtCNPJ;
         public Bunifu.UI.WinForms.BunifuTextBox txtRazaoSocial;
         private System.Windows.Forms.Label lblForeignKey;
+        private LogoSistema logoSistema1;
     }
 }

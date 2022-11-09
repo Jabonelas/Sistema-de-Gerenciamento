@@ -89,6 +89,7 @@
             this.btnExcluir = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.txtVencimento = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtDescricao = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.pcbStatusPagamento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1344,11 +1345,19 @@
             this.txtDescricao.WordWrap = true;
             this.txtDescricao.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEmpresa_KeyPress);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(375, 481);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 273;
+            // 
             // Forms_DespesasCustos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(484, 494);
+            this.ClientSize = new System.Drawing.Size(484, 522);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.dtpEmissao);
             this.Controls.Add(this.dtpVencimento);
             this.Controls.Add(this.lblStatusPagamento);
@@ -1432,5 +1441,6 @@
         private System.Windows.Forms.Label lblStatusPagamento;
         private Bunifu.UI.WinForms.BunifuDatePicker dtpVencimento;
         private Bunifu.UI.WinForms.BunifuDatePicker dtpEmissao;
+        private LogoSistema logoSistema1;
     }
 }

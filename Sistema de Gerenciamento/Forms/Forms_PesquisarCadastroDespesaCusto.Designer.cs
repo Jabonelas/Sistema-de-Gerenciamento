@@ -69,6 +69,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarDespesaCusto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -916,11 +917,19 @@
             this.cmbCategoria.Size = new System.Drawing.Size(142, 23);
             this.cmbCategoria.TabIndex = 187;
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(764, 485);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 188;
+            // 
             // Forms_PesquisarCadastroDespesaCusto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(871, 502);
+            this.ClientSize = new System.Drawing.Size(871, 526);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.cmbCategoria);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bunifuSeparator1);
@@ -969,5 +978,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cd_descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn cd_tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn cd_categoria;
+        private LogoSistema logoSistema1;
     }
 }

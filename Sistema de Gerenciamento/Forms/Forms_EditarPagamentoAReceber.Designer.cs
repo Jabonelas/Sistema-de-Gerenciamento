@@ -72,6 +72,7 @@
             this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.label10 = new System.Windows.Forms.Label();
             this.txtMultaAtraso = new Guna.UI2.WinForms.Guna2TextBox();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.pcbStatusPagamento)).BeginInit();
             this.SuspendLayout();
             // 
@@ -915,11 +916,19 @@
             this.txtMultaAtraso.Size = new System.Drawing.Size(103, 28);
             this.txtMultaAtraso.TabIndex = 365;
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(502, 396);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 366;
+            // 
             // Forms_EditarPagamentoAReceber
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(610, 427);
+            this.ClientSize = new System.Drawing.Size(610, 438);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.txtMultaAtraso);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btnFechar);
@@ -998,5 +1007,6 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnFechar;
         private System.Windows.Forms.Label label10;
         public Guna.UI2.WinForms.Guna2TextBox txtMultaAtraso;
+        private LogoSistema logoSistema1;
     }
 }

@@ -110,6 +110,7 @@
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.lblStatusPagamento = new System.Windows.Forms.Label();
             this.pcbStatusPagamento = new System.Windows.Forms.PictureBox();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.gdvGerarCarne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pcbStatusPagamento)).BeginInit();
             this.SuspendLayout();
@@ -1354,11 +1355,20 @@
             this.pcbStatusPagamento.TabStop = false;
             this.pcbStatusPagamento.Visible = false;
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(591, 431);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 273;
+            // 
+
             // Forms_GerarCarne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 439);
+            this.ClientSize = new System.Drawing.Size(700, 473);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.lblStatusPagamento);
             this.Controls.Add(this.pcbStatusPagamento);
             this.Controls.Add(this.bunifuSeparator1);
@@ -1441,5 +1451,6 @@
         private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator1;
         private System.Windows.Forms.Label lblStatusPagamento;
         private System.Windows.Forms.PictureBox pcbStatusPagamento;
+        private LogoSistema logoSistema1;
     }
 }

@@ -34,8 +34,8 @@ namespace Sistema_de_Gerenciamento.Forms
             txtUsuario.Text = "ADMIN";
             txtSenha.Text = "123";
 
-            //txtUsuario.Text = "VENDEDOR2";
-            //txtSenha.Text = "12345";
+            //txtUsuario.Text = "VENDEDOR1";
+            //txtSenha.Text = "123";
         }
 
         private void btnLogin_Click(object sender, EventArgs e)

@@ -155,3 +155,4 @@ C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Ge
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.csproj.CopyComplete
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.exe
 C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema de Gerenciamento.pdb
+C:\Users\israe\Documents\@GitHub Projetos\Sistema-de-Gerenciamento\Sistema de Gerenciamento\obj\Debug\Sistema_de_Gerenciamento.LogoSistema.resources

@@ -46,6 +46,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.cmbParcelasCarne = new System.Windows.Forms.ComboBox();
             this.btnConfirmarCarne = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.txtPrazoCarne = new Bunifu.UI.WinForms.BunifuTextBox();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             this.SuspendLayout();
             // 
             // txtMultaCarneAtrasoPagamento
@@ -377,11 +378,19 @@ namespace Sistema_de_Gerenciamento.Forms
             this.txtPrazoCarne.WordWrap = true;
             this.txtPrazoCarne.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrazoCarne_KeyPress);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(420, 296);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 277;
+            // 
             // Forms_ConfiguracaoGerencialPagamentoCarne
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 314);
+            this.ClientSize = new System.Drawing.Size(529, 336);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.txtMultaCarneAtrasoPagamento);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.txtJurosCarneAtrasoPagamento);
@@ -418,5 +427,6 @@ namespace Sistema_de_Gerenciamento.Forms
         public Bunifu.UI.WinForms.BunifuTextBox txtPrazoCarne;
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.ComboBox cmbParcelasCarne;
+        private LogoSistema logoSistema1;
     }
 }

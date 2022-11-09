@@ -150,6 +150,7 @@
             this.txtCodigo = new Guna.UI.WinForms.GunaTextBox();
             this.txtNumero = new Bunifu.UI.WinForms.BunifuTextBox();
             this.lblCodigoImagem = new System.Windows.Forms.Label();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.pcbCliente)).BeginInit();
             this.SuspendLayout();
             // 
@@ -2425,11 +2426,19 @@
             this.lblCodigoImagem.Text = "6";
             this.lblCodigoImagem.Visible = false;
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(713, 515);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 166;
+            // 
             // Forms_CadastroCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(833, 575);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.lblCodigoImagem);
             this.Controls.Add(this.txtNumero);
             this.Controls.Add(this.txtCodigo);
@@ -2552,5 +2561,6 @@
         public Guna.UI.WinForms.GunaTextBox txtCodigo;
         public Bunifu.UI.WinForms.BunifuTextBox txtNumero;
         private System.Windows.Forms.Label lblCodigoImagem;
+        private LogoSistema logoSistema1;
     }
 }

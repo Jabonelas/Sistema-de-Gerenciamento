@@ -443,6 +443,16 @@ namespace Sistema_de_Gerenciamento.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GerEsp {
+            get {
+                object obj = ResourceManager.GetObject("GerEsp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_lembrete_de_compromissos {
             get {
                 object obj = ResourceManager.GetObject("icons8-lembrete-de-compromissos", resourceCulture);

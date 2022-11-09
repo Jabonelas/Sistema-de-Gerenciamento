@@ -188,6 +188,7 @@
             this.txtValorParcelaCredito = new Bunifu.UI.WinForms.BunifuTextBox();
             this.lblValorCredito = new System.Windows.Forms.Label();
             this.GrupboxCredito = new Bunifu.UI.WinForms.BunifuSeparator();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.gdvVenda)).BeginInit();
             this.SuspendLayout();
             // 
@@ -2163,7 +2164,7 @@
             this.txtTrocoAvista.IconRight = null;
             this.txtTrocoAvista.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTrocoAvista.Lines = new string[0];
-            this.txtTrocoAvista.Location = new System.Drawing.Point(745, 527);
+            this.txtTrocoAvista.Location = new System.Drawing.Point(745, 510);
             this.txtTrocoAvista.MaxLength = 100;
             this.txtTrocoAvista.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtTrocoAvista.Modified = false;
@@ -2215,7 +2216,7 @@
             // 
             this.lblTotalPago.AutoSize = true;
             this.lblTotalPago.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPago.Location = new System.Drawing.Point(592, 509);
+            this.lblTotalPago.Location = new System.Drawing.Point(592, 492);
             this.lblTotalPago.Name = "lblTotalPago";
             this.lblTotalPago.Size = new System.Drawing.Size(75, 15);
             this.lblTotalPago.TabIndex = 257;
@@ -2226,7 +2227,7 @@
             // 
             this.lblTroco.AutoSize = true;
             this.lblTroco.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTroco.Location = new System.Drawing.Point(795, 509);
+            this.lblTroco.Location = new System.Drawing.Point(795, 492);
             this.lblTroco.Name = "lblTroco";
             this.lblTroco.Size = new System.Drawing.Size(45, 15);
             this.lblTroco.TabIndex = 258;
@@ -2261,7 +2262,7 @@
             this.txtTotalPagoAvista.IconRight = null;
             this.txtTotalPagoAvista.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtTotalPagoAvista.Lines = new string[0];
-            this.txtTotalPagoAvista.Location = new System.Drawing.Point(555, 527);
+            this.txtTotalPagoAvista.Location = new System.Drawing.Point(555, 510);
             this.txtTotalPagoAvista.MaxLength = 100;
             this.txtTotalPagoAvista.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtTotalPagoAvista.Modified = false;
@@ -2315,7 +2316,7 @@
             // 
             this.lblFormapagamentoAvista.AutoSize = true;
             this.lblFormapagamentoAvista.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFormapagamentoAvista.Location = new System.Drawing.Point(19, 498);
+            this.lblFormapagamentoAvista.Location = new System.Drawing.Point(19, 481);
             this.lblFormapagamentoAvista.Name = "lblFormapagamentoAvista";
             this.lblFormapagamentoAvista.Size = new System.Drawing.Size(139, 15);
             this.lblFormapagamentoAvista.TabIndex = 261;
@@ -2350,7 +2351,7 @@
             this.txtValorAvista.IconRight = null;
             this.txtValorAvista.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtValorAvista.Lines = new string[0];
-            this.txtValorAvista.Location = new System.Drawing.Point(367, 527);
+            this.txtValorAvista.Location = new System.Drawing.Point(367, 510);
             this.txtValorAvista.MaxLength = 100;
             this.txtValorAvista.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtValorAvista.Modified = false;
@@ -2402,7 +2403,7 @@
             // 
             this.lblDesconto.AutoSize = true;
             this.lblDesconto.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDesconto.Location = new System.Drawing.Point(220, 509);
+            this.lblDesconto.Location = new System.Drawing.Point(220, 492);
             this.lblDesconto.Name = "lblDesconto";
             this.lblDesconto.Size = new System.Drawing.Size(67, 15);
             this.lblDesconto.TabIndex = 266;
@@ -2413,7 +2414,7 @@
             // 
             this.lblValorLiquido.AutoSize = true;
             this.lblValorLiquido.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorLiquido.Location = new System.Drawing.Point(394, 509);
+            this.lblValorLiquido.Location = new System.Drawing.Point(394, 492);
             this.lblValorLiquido.Name = "lblValorLiquido";
             this.lblValorLiquido.Size = new System.Drawing.Size(93, 15);
             this.lblValorLiquido.TabIndex = 263;
@@ -2448,7 +2449,7 @@
             this.txtDescontoAvista.IconRight = null;
             this.txtDescontoAvista.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtDescontoAvista.Lines = new string[0];
-            this.txtDescontoAvista.Location = new System.Drawing.Point(181, 527);
+            this.txtDescontoAvista.Location = new System.Drawing.Point(181, 510);
             this.txtDescontoAvista.MaxLength = 100;
             this.txtDescontoAvista.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtDescontoAvista.Modified = false;
@@ -2500,7 +2501,7 @@
             // 
             this.chbAvista.AutoSize = true;
             this.chbAvista.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbAvista.Location = new System.Drawing.Point(36, 527);
+            this.chbAvista.Location = new System.Drawing.Point(36, 510);
             this.chbAvista.Name = "chbAvista";
             this.chbAvista.Size = new System.Drawing.Size(101, 28);
             this.chbAvista.TabIndex = 264;
@@ -2519,7 +2520,7 @@
             this.GrupoBoxAvista.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.GrupoBoxAvista.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded;
             this.GrupoBoxAvista.LineThickness = 3;
-            this.GrupoBoxAvista.Location = new System.Drawing.Point(14, 482);
+            this.GrupoBoxAvista.Location = new System.Drawing.Point(14, 465);
             this.GrupoBoxAvista.Name = "GrupoBoxAvista";
             this.GrupoBoxAvista.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.GrupoBoxAvista.Size = new System.Drawing.Size(923, 10);
@@ -2530,7 +2531,7 @@
             // 
             this.lblJurosCredito.AutoSize = true;
             this.lblJurosCredito.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblJurosCredito.Location = new System.Drawing.Point(422, 616);
+            this.lblJurosCredito.Location = new System.Drawing.Point(422, 581);
             this.lblJurosCredito.Name = "lblJurosCredito";
             this.lblJurosCredito.Size = new System.Drawing.Size(41, 15);
             this.lblJurosCredito.TabIndex = 278;
@@ -2565,7 +2566,7 @@
             this.txtJurosCredito.IconRight = null;
             this.txtJurosCredito.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtJurosCredito.Lines = new string[0];
-            this.txtJurosCredito.Location = new System.Drawing.Point(367, 634);
+            this.txtJurosCredito.Location = new System.Drawing.Point(367, 599);
             this.txtJurosCredito.MaxLength = 100;
             this.txtJurosCredito.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtJurosCredito.Modified = false;
@@ -2617,7 +2618,7 @@
             // 
             this.lblFormapagamentoCredito.AutoSize = true;
             this.lblFormapagamentoCredito.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFormapagamentoCredito.Location = new System.Drawing.Point(19, 607);
+            this.lblFormapagamentoCredito.Location = new System.Drawing.Point(19, 572);
             this.lblFormapagamentoCredito.Name = "lblFormapagamentoCredito";
             this.lblFormapagamentoCredito.Size = new System.Drawing.Size(139, 15);
             this.lblFormapagamentoCredito.TabIndex = 275;
@@ -2628,7 +2629,7 @@
             // 
             this.chbCredito.AutoSize = true;
             this.chbCredito.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbCredito.Location = new System.Drawing.Point(36, 634);
+            this.chbCredito.Location = new System.Drawing.Point(36, 599);
             this.chbCredito.Name = "chbCredito";
             this.chbCredito.Size = new System.Drawing.Size(112, 28);
             this.chbCredito.TabIndex = 276;
@@ -2659,7 +2660,7 @@
             "10x",
             "11x",
             "12x"});
-            this.cmbParcelaCredito.Location = new System.Drawing.Point(220, 639);
+            this.cmbParcelaCredito.Location = new System.Drawing.Point(220, 604);
             this.cmbParcelaCredito.Name = "cmbParcelaCredito";
             this.cmbParcelaCredito.Size = new System.Drawing.Size(56, 23);
             this.cmbParcelaCredito.TabIndex = 269;
@@ -2670,7 +2671,7 @@
             // 
             this.lblParcelaCredito.AutoSize = true;
             this.lblParcelaCredito.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblParcelaCredito.Location = new System.Drawing.Point(220, 617);
+            this.lblParcelaCredito.Location = new System.Drawing.Point(220, 582);
             this.lblParcelaCredito.Name = "lblParcelaCredito";
             this.lblParcelaCredito.Size = new System.Drawing.Size(61, 15);
             this.lblParcelaCredito.TabIndex = 274;
@@ -2705,7 +2706,7 @@
             this.txtValorTotalCredito.IconRight = null;
             this.txtValorTotalCredito.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtValorTotalCredito.Lines = new string[0];
-            this.txtValorTotalCredito.Location = new System.Drawing.Point(745, 634);
+            this.txtValorTotalCredito.Location = new System.Drawing.Point(745, 599);
             this.txtValorTotalCredito.MaxLength = 100;
             this.txtValorTotalCredito.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtValorTotalCredito.Modified = false;
@@ -2757,7 +2758,7 @@
             // 
             this.lblCredito.AutoSize = true;
             this.lblCredito.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCredito.Location = new System.Drawing.Point(772, 616);
+            this.lblCredito.Location = new System.Drawing.Point(772, 581);
             this.lblCredito.Name = "lblCredito";
             this.lblCredito.Size = new System.Drawing.Size(81, 15);
             this.lblCredito.TabIndex = 271;
@@ -2792,7 +2793,7 @@
             this.txtValorParcelaCredito.IconRight = null;
             this.txtValorParcelaCredito.IconRightCursor = System.Windows.Forms.Cursors.IBeam;
             this.txtValorParcelaCredito.Lines = new string[0];
-            this.txtValorParcelaCredito.Location = new System.Drawing.Point(555, 634);
+            this.txtValorParcelaCredito.Location = new System.Drawing.Point(555, 599);
             this.txtValorParcelaCredito.MaxLength = 100;
             this.txtValorParcelaCredito.MinimumSize = new System.Drawing.Size(1, 1);
             this.txtValorParcelaCredito.Modified = false;
@@ -2844,7 +2845,7 @@
             // 
             this.lblValorCredito.AutoSize = true;
             this.lblValorCredito.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorCredito.Location = new System.Drawing.Point(583, 616);
+            this.lblValorCredito.Location = new System.Drawing.Point(583, 581);
             this.lblValorCredito.Name = "lblValorCredito";
             this.lblValorCredito.Size = new System.Drawing.Size(95, 15);
             this.lblValorCredito.TabIndex = 272;
@@ -2860,18 +2861,26 @@
             this.GrupboxCredito.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.GrupboxCredito.LineStyle = Bunifu.UI.WinForms.BunifuSeparator.LineStyles.DoubleEdgeFaded;
             this.GrupboxCredito.LineThickness = 3;
-            this.GrupboxCredito.Location = new System.Drawing.Point(14, 594);
+            this.GrupboxCredito.Location = new System.Drawing.Point(14, 559);
             this.GrupboxCredito.Name = "GrupboxCredito";
             this.GrupboxCredito.Orientation = Bunifu.UI.WinForms.BunifuSeparator.LineOrientation.Horizontal;
             this.GrupboxCredito.Size = new System.Drawing.Size(923, 10);
             this.GrupboxCredito.TabIndex = 279;
             this.GrupboxCredito.Visible = false;
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(832, 572);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 280;
+            // 
             // Forms_Venda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(951, 688);
+            this.ClientSize = new System.Drawing.Size(951, 679);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.GrupboxCredito);
             this.Controls.Add(this.lblJurosCredito);
             this.Controls.Add(this.txtJurosCredito);
@@ -3036,5 +3045,6 @@
         public Bunifu.UI.WinForms.BunifuTextBox txtValorParcelaCredito;
         private System.Windows.Forms.Label lblValorCredito;
         private Bunifu.UI.WinForms.BunifuSeparator GrupboxCredito;
+        private LogoSistema logoSistema1;
     }
 }

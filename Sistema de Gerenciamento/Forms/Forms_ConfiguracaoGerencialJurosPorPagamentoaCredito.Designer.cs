@@ -36,6 +36,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.btnConfirmarCredito = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             this.SuspendLayout();
             // 
             // txtJurosCredito
@@ -203,11 +204,19 @@ namespace Sistema_de_Gerenciamento.Forms
             this.btnConfirmarCredito.UseDefaultRadiusAndThickness = true;
             this.btnConfirmarCredito.Click += new System.EventHandler(this.btnConfirmarCredito_Click);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(280, 191);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 256;
+            // 
             // Forms_ConfiguracaoGerencialJurosPorPagamentoaCredito
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(389, 231);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.txtJurosCredito);
             this.Controls.Add(this.btnConfirmarCredito);
             this.Controls.Add(this.cmbParcelasCredito);
@@ -232,5 +241,6 @@ namespace Sistema_de_Gerenciamento.Forms
         public System.Windows.Forms.ComboBox cmbParcelasCredito;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
+        private LogoSistema logoSistema1;
     }
 }

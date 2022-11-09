@@ -41,6 +41,7 @@
             this.btnConfiguracaoGerencialPagamentoCarne = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnJurosPorPagamentoaCredito = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             this.SuspendLayout();
             // 
             // btnComissaoPorProduto
@@ -583,11 +584,19 @@
             this.btnJurosPorPagamentoaCredito.UseDefaultRadiusAndThickness = true;
             this.btnJurosPorPagamentoaCredito.Click += new System.EventHandler(this.btnJurosPorPagamentoaCredito_Click);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(273, 462);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 257;
+            // 
             // Forms_ConfiguracaoGerencial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(381, 487);
+            this.ClientSize = new System.Drawing.Size(381, 501);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.btnJurosPorPagamentoaCredito);
             this.Controls.Add(this.btnComissaoPorProduto);
             this.Controls.Add(this.btnDescontoPoPagamentoAvista);
@@ -612,5 +621,6 @@
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnDescontoPoPagamentoAvista;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnComissaoPorProduto;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnJurosPorPagamentoaCredito;
+        private LogoSistema logoSistema1;
     }
 }

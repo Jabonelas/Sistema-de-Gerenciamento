@@ -91,6 +91,7 @@
             this.txtStatus = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtRejeitatoPor = new Bunifu.UI.WinForms.BunifuTextBox();
             this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             this.SuspendLayout();
             // 
             // label2
@@ -1033,11 +1034,19 @@
             this.btnFechar.UseDefaultRadiusAndThickness = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(407, 289);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 210;
+            // 
             // Forms_ConsultaEstoqueDetalhada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(516, 328);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.txtRejeitatoPor);
             this.Controls.Add(this.txtStatus);
@@ -1065,6 +1074,7 @@
             this.Name = "Forms_ConsultaEstoqueDetalhada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta Detalhada";
+            this.Load += new System.EventHandler(this.Forms_ConsultaEstoqueDetalhada_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Forms_ConsultaEstoqueDetalhada_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1094,5 +1104,6 @@
         private Bunifu.UI.WinForms.BunifuTextBox txtStatus;
         private Bunifu.UI.WinForms.BunifuTextBox txtRejeitatoPor;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnFechar;
+        private LogoSistema logoSistema1;
     }
 }

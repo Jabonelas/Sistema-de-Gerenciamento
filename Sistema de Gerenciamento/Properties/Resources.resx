@@ -250,9 +250,6 @@
   <data name="mao" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mao.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="despesas1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\despesas1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="salve-" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\salve-.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -295,6 +292,9 @@
   <data name="invisible_50px1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\invisible_50px1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="equipe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\equipe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="servico" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\servico.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -310,8 +310,8 @@
   <data name="entregador" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\entregador.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="equipe" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\equipe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="despesas1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\despesas1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="png-transparent-logo-pharmacy-pills-miscellaneous-trademark-pharmaceutical-drug" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\png-transparent-logo-pharmacy-pills-miscellaneous-trademark-pharmaceutical-drug.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -321,6 +321,9 @@
   </data>
   <data name="receptor1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\receptor1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-lembrete-de-compromissos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-lembrete-de-compromissos.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="carrinho-de-compras" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\carrinho-de-compras.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -349,7 +352,7 @@
   <data name="despesas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\despesas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-lembrete-de-compromissos" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-lembrete-de-compromissos.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GerEsp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GerEsp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

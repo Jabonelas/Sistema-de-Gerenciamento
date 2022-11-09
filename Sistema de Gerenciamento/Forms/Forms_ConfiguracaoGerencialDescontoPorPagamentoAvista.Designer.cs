@@ -34,6 +34,7 @@ namespace Sistema_de_Gerenciamento.Forms
             this.txtDescontoAvista = new Guna.UI2.WinForms.Guna2TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnConfirmarAvista = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             this.SuspendLayout();
             // 
             // txtDescontoAvista
@@ -165,11 +166,19 @@ namespace Sistema_de_Gerenciamento.Forms
             this.btnConfirmarAvista.UseDefaultRadiusAndThickness = true;
             this.btnConfirmarAvista.Click += new System.EventHandler(this.btnConfirmarAvista_Click);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(230, 183);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 256;
+            // 
             // Forms_ConfiguracaoGerencialDescontoPorPagamentoAvista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 212);
+            this.ClientSize = new System.Drawing.Size(337, 224);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.txtDescontoAvista);
             this.Controls.Add(this.btnConfirmarAvista);
             this.Controls.Add(this.label5);
@@ -190,5 +199,6 @@ namespace Sistema_de_Gerenciamento.Forms
         private Guna.UI2.WinForms.Guna2TextBox txtDescontoAvista;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnConfirmarAvista;
         private System.Windows.Forms.Label label5;
+        private LogoSistema logoSistema1;
     }
 }

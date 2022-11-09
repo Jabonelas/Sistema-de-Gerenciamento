@@ -189,5 +189,7 @@ namespace Sistema_de_Gerenciamento.Forms
                 ExportarExcel.GerarExcel(gdvPesquisarFornecedor);
             }
         }
+
+     
     }
 }

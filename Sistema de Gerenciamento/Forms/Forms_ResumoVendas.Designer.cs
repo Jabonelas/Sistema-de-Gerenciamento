@@ -53,6 +53,7 @@
             this.lblValorGastoBruto = new System.Windows.Forms.Label();
             this.lblValorBrutoVendido = new System.Windows.Forms.Label();
             this.btnFechar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.gdvResumoVendas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -476,11 +477,19 @@
             this.btnFechar.UseDefaultRadiusAndThickness = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(748, 597);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 300;
+            // 
             // Forms_ResumoVendas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(861, 637);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.lblValorBrutoVendido);
             this.Controls.Add(this.lblValorGastoBruto);
@@ -534,5 +543,6 @@
         private System.Windows.Forms.Label lblValorGastoBruto;
         private System.Windows.Forms.Label lblValorBrutoVendido;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnFechar;
+        private LogoSistema logoSistema1;
     }
 }

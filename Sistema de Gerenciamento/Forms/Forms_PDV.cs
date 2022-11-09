@@ -63,6 +63,8 @@ namespace Sistema_de_Gerenciamento.Forms
             BuscaDadosPreencherItens();
 
             FormatoFullScreen();
+
+            ModificarLocalLogo();
         }
 
         private void BuscaDadosPreencherItens()
@@ -82,6 +84,14 @@ namespace Sistema_de_Gerenciamento.Forms
         {
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
+        }
+
+        private void ModificarLocalLogo()
+        {
+            this.StartPosition = FormStartPosition.Manual;
+
+            pcbLogo.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - this.Width + 807,
+            Screen.PrimaryScreen.WorkingArea.Height - this.Height + 728);
         }
 
         private void Forms_TelaPDV_KeyDown(object sender, KeyEventArgs e)

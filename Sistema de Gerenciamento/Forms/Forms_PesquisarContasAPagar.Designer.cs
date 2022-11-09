@@ -108,6 +108,7 @@
             this.bunifuSeparator1 = new Bunifu.UI.WinForms.BunifuSeparator();
             this.btnPesquisar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.lblNumeroLancamentosSelecionados = new System.Windows.Forms.Label();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.gdvContarPagar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1357,11 +1358,19 @@
             this.lblNumeroLancamentosSelecionados.TabIndex = 290;
             this.lblNumeroLancamentosSelecionados.Text = "0";
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(832, 710);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 291;
+            // 
             // Forms_PesquisarContasAPagar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 730);
+            this.ClientSize = new System.Drawing.Size(941, 749);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.lblNumeroLancamentosSelecionados);
             this.Controls.Add(this.bunifuSeparator2);
             this.Controls.Add(this.cmbTitulo);
@@ -1481,5 +1490,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dc_desconto_taxas;
         private System.Windows.Forms.DataGridViewTextBoxColumn dc_juros_multa;
         private System.Windows.Forms.DataGridViewTextBoxColumn dc_verificar;
+        private LogoSistema logoSistema1;
     }
 }

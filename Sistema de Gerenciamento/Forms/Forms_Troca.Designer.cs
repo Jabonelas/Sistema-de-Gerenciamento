@@ -161,6 +161,7 @@
             this.btnAdicionarTroca = new Guna.UI.WinForms.GunaCircleButton();
             this.lblStatus = new System.Windows.Forms.Label();
             this.btnAdicionarDevolucao = new Guna.UI.WinForms.GunaCircleButton();
+            this.logoSistema2 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.gdvDevolucaoTroca)).BeginInit();
             this.pnlValorPrudutoTroca.SuspendLayout();
             this.pnlValorAPagar.SuspendLayout();
@@ -543,7 +544,7 @@
             this.btnFechar.IdleIconLeftImage = null;
             this.btnFechar.IdleIconRightImage = null;
             this.btnFechar.IndicateFocus = false;
-            this.btnFechar.Location = new System.Drawing.Point(538, 683);
+            this.btnFechar.Location = new System.Drawing.Point(538, 659);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnFechar.OnDisabledState.BorderRadius = 1;
@@ -633,7 +634,7 @@
             this.btnConfirmar.IdleIconLeftImage = null;
             this.btnConfirmar.IdleIconRightImage = null;
             this.btnConfirmar.IndicateFocus = false;
-            this.btnConfirmar.Location = new System.Drawing.Point(150, 683);
+            this.btnConfirmar.Location = new System.Drawing.Point(150, 659);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnConfirmar.OnDisabledState.BorderRadius = 1;
@@ -689,14 +690,14 @@
             this.pnlValorPrudutoTroca.Location = new System.Drawing.Point(344, 542);
             this.pnlValorPrudutoTroca.Name = "pnlValorPrudutoTroca";
             this.pnlValorPrudutoTroca.ShowBorders = true;
-            this.pnlValorPrudutoTroca.Size = new System.Drawing.Size(238, 118);
+            this.pnlValorPrudutoTroca.Size = new System.Drawing.Size(238, 98);
             this.pnlValorPrudutoTroca.TabIndex = 283;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(44, 21);
+            this.label3.Location = new System.Drawing.Point(44, 12);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(158, 26);
             this.label3.TabIndex = 234;
@@ -706,7 +707,7 @@
             // 
             this.lblValorProdTroca.AutoSize = true;
             this.lblValorProdTroca.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorProdTroca.Location = new System.Drawing.Point(55, 56);
+            this.lblValorProdTroca.Location = new System.Drawing.Point(55, 47);
             this.lblValorProdTroca.Name = "lblValorProdTroca";
             this.lblValorProdTroca.Size = new System.Drawing.Size(105, 36);
             this.lblValorProdTroca.TabIndex = 281;
@@ -749,14 +750,14 @@
             this.pnlValorAPagar.Location = new System.Drawing.Point(650, 542);
             this.pnlValorAPagar.Name = "pnlValorAPagar";
             this.pnlValorAPagar.ShowBorders = true;
-            this.pnlValorAPagar.Size = new System.Drawing.Size(238, 118);
+            this.pnlValorAPagar.Size = new System.Drawing.Size(238, 98);
             this.pnlValorAPagar.TabIndex = 284;
             // 
             // lblValorAPagar
             // 
             this.lblValorAPagar.AutoSize = true;
             this.lblValorAPagar.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorAPagar.Location = new System.Drawing.Point(61, 56);
+            this.lblValorAPagar.Location = new System.Drawing.Point(61, 46);
             this.lblValorAPagar.Name = "lblValorAPagar";
             this.lblValorAPagar.Size = new System.Drawing.Size(105, 36);
             this.lblValorAPagar.TabIndex = 284;
@@ -766,7 +767,7 @@
             // 
             this.lblTituloValorAPagar.AutoSize = true;
             this.lblTituloValorAPagar.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTituloValorAPagar.Location = new System.Drawing.Point(59, 21);
+            this.lblTituloValorAPagar.Location = new System.Drawing.Point(59, 11);
             this.lblTituloValorAPagar.Name = "lblTituloValorAPagar";
             this.lblTituloValorAPagar.Size = new System.Drawing.Size(124, 26);
             this.lblTituloValorAPagar.TabIndex = 283;
@@ -785,14 +786,14 @@
             this.pnlValorProdutoDevolvido.Location = new System.Drawing.Point(36, 542);
             this.pnlValorProdutoDevolvido.Name = "pnlValorProdutoDevolvido";
             this.pnlValorProdutoDevolvido.ShowBorders = true;
-            this.pnlValorProdutoDevolvido.Size = new System.Drawing.Size(238, 118);
+            this.pnlValorProdutoDevolvido.Size = new System.Drawing.Size(238, 98);
             this.pnlValorProdutoDevolvido.TabIndex = 282;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(20, 21);
+            this.label4.Location = new System.Drawing.Point(20, 12);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(199, 26);
             this.label4.TabIndex = 235;
@@ -802,7 +803,7 @@
             // 
             this.lblValorProdDevolvido.AutoSize = true;
             this.lblValorProdDevolvido.Font = new System.Drawing.Font("Calibri", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorProdDevolvido.Location = new System.Drawing.Point(48, 56);
+            this.lblValorProdDevolvido.Location = new System.Drawing.Point(48, 47);
             this.lblValorProdDevolvido.Name = "lblValorProdDevolvido";
             this.lblValorProdDevolvido.Size = new System.Drawing.Size(105, 36);
             this.lblValorProdDevolvido.TabIndex = 237;
@@ -2140,11 +2141,19 @@
             this.btnAdicionarDevolucao.TabIndex = 301;
             this.btnAdicionarDevolucao.Click += new System.EventHandler(this.btnAdcionarDevolucao_Click);
             // 
+            // logoSistema2
+            // 
+            this.logoSistema2.Location = new System.Drawing.Point(817, 682);
+            this.logoSistema2.Name = "logoSistema2";
+            this.logoSistema2.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema2.TabIndex = 303;
+            // 
             // Forms_Troca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(924, 734);
+            this.ClientSize = new System.Drawing.Size(924, 724);
+            this.Controls.Add(this.logoSistema2);
             this.Controls.Add(this.btnAdicionarDevolucao);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.btnAdicionarTroca);
@@ -2280,5 +2289,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ns_status;
         private Guna.UI.WinForms.GunaCircleButton btnAdicionarDevolucao;
         public System.Windows.Forms.Label lblValorAPagar;
+        private LogoSistema logoSistema2;
     }
 }

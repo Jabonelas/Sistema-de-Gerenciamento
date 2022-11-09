@@ -58,6 +58,7 @@
             this.lblCategoria = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             this.SuspendLayout();
             // 
             // bntSair
@@ -745,11 +746,19 @@
             this.cmbTipo.Size = new System.Drawing.Size(108, 21);
             this.cmbTipo.TabIndex = 241;
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(627, 237);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 242;
+            // 
             // Forms_CadastroDespesasCusto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(743, 256);
+            this.ClientSize = new System.Drawing.Size(743, 279);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.cmbTipo);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblCategoria);
@@ -804,5 +813,6 @@
         public System.Windows.Forms.CheckBox chbCusto;
         public System.Windows.Forms.CheckBox chbDespesa;
         public System.Windows.Forms.ComboBox cmbTipo;
+        private LogoSistema logoSistema1;
     }
 }

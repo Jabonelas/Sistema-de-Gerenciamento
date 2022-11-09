@@ -78,6 +78,7 @@
             this.txtCNPJ = new Bunifu.UI.WinForms.BunifuTextBox();
             this.txtNomeFantasia = new Bunifu.UI.WinForms.BunifuTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.logoSistema1 = new Sistema_de_Gerenciamento.LogoSistema();
             ((System.ComponentModel.ISupportInitialize)(this.gdvPesquisarFornecedor)).BeginInit();
             this.SuspendLayout();
             // 
@@ -999,11 +1000,19 @@
             this.label1.TabIndex = 184;
             this.label1.Text = "CNPJ";
             // 
+            // logoSistema1
+            // 
+            this.logoSistema1.Location = new System.Drawing.Point(755, 481);
+            this.logoSistema1.Name = "logoSistema1";
+            this.logoSistema1.Size = new System.Drawing.Size(107, 39);
+            this.logoSistema1.TabIndex = 185;
+            // 
             // Forms_PesquisarFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(878, 502);
+            this.ClientSize = new System.Drawing.Size(878, 523);
+            this.Controls.Add(this.logoSistema1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bunifuSeparator1);
             this.Controls.Add(this.btnFechar);
@@ -1059,5 +1068,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cf_telefone;
         private System.Windows.Forms.DataGridViewTextBoxColumn cf_email;
         private System.Windows.Forms.DataGridViewTextBoxColumn cf_observacoes;
+        private LogoSistema logoSistema1;
     }
 }
