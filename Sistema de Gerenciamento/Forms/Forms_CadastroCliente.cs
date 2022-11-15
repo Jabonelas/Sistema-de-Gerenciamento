@@ -178,8 +178,11 @@ namespace Sistema_de_Gerenciamento
             Forms_PesquisarCliente buscarCliente = new Forms_PesquisarCliente(this);
             buscarCliente.ShowDialog();
 
-            ValorSaldo = Convert.ToDecimal(txtSaldo.Text.Replace("R$ ", ""));
-            ValorCredito = Convert.ToDecimal(txtCredito.Text.Replace("R$ ", ""));
+            if (txtSaldo.Text != string.Empty)
+            {
+                ValorSaldo = Convert.ToDecimal(txtSaldo.Text.Replace("R$ ", ""));
+                ValorCredito = Convert.ToDecimal(txtCredito.Text.Replace("R$ ", ""));
+            }
         }
 
         private void btnExcluirCliente_Click(object sender, EventArgs e)

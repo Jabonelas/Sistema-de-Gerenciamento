@@ -55,6 +55,7 @@ namespace Sistema_de_Gerenciamento.Forms
         private void btnJurosPorPagamentoaCredito_Click(object sender, EventArgs e)
         {
             Forms_ConfiguracaoGerencialJurosPorPagamentoaCredito jurosPorPagamentoaCredito = new Forms_ConfiguracaoGerencialJurosPorPagamentoaCredito();
+            jurosPorPagamentoaCredito.Show();
             jurosPorPagamentoaCredito.ShowDialog();
         }
 
