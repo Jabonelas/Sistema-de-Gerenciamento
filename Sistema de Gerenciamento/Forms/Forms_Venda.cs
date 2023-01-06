@@ -887,11 +887,6 @@ namespace Sistema_de_Gerenciamento.Forms
             ManipulacaoTextBox.FormatoDinheiro(e, sender, txtTotalPagoAvista);
         }
 
-        private void txtTotalPagoAvista_KeyDown_1(object sender, KeyEventArgs e)
-        {
-            ValorTroco();
-        }
-
         private void cmbParcelaCredito_SelectedValueChanged_1(object sender, EventArgs e)
         {
             ValorJuros();
@@ -921,6 +916,11 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 chbAvista.Checked = false;
             }
+        }
+
+        private void txtTotalPagoAvista_KeyUp(object sender, KeyEventArgs e)
+        {
+            ValorTroco();
         }
     }
 }

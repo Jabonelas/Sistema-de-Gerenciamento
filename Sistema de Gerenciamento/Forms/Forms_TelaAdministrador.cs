@@ -1,19 +1,12 @@
-﻿using Sistema_de_Gerenciamento.Forms;
+﻿using Sistema_de_Gerenciamento.Classes;
+using Sistema_de_Gerenciamento.Forms;
+using Sistema_de_Gerenciamento.Properties;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Sistema_de_Gerenciamento.Classes;
-using System.Threading;
 using System.IO;
-using DevExpress.Utils.Helpers;
-using DevExpress.XtraEditors;
-using Sistema_de_Gerenciamento.Properties;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace Sistema_de_Gerenciamento
 {
@@ -28,6 +21,8 @@ namespace Sistema_de_Gerenciamento
         public List<DadosProduto> ListaProdutosComEstoqueMinimo = new List<DadosProduto>();
 
         public List<DadosDespesaCusto> ListaDadosDespesaCustosAtrasadas = new List<DadosDespesaCusto>();
+
+        private string housse = string.Empty;
 
         private Forms_Login login;
 
@@ -320,7 +315,7 @@ namespace Sistema_de_Gerenciamento
         private void ChamandoAlertaEstoqueBaixo()
         {
             DadosMensagemAlerta msg = new DadosMensagemAlerta("Estoque Baixo\n", Resources.ImagemEstoqueBaixo);
-            alertEstoqueMinimo.Show(this, $" {msg.titulo} \n{msg.descricao}", msg.texto, "", msg.image, msg);
+            alertEstoqueMinimo.Show(this, $" {msg.titulo} \n{msg.descricao}", msg.texto, string.Empty, msg.image, msg);
         }
 
         private void alertEstoqueMinimo_BeforeFormShow(object sender, DevExpress.XtraBars.Alerter.AlertFormEventArgs e)
@@ -415,7 +410,7 @@ namespace Sistema_de_Gerenciamento
         private void ChamandoAlertaVencimentoContas()
         {
             DadosMensagemAlerta msg = new DadosMensagemAlerta("Existencia de Contas \nVencidas", Resources.ImagemVencimentoContas);
-            alertVencimentoContas.Show(this, msg.titulo, msg.texto, "", msg.image, msg);
+            alertVencimentoContas.Show(this, msg.titulo, msg.texto, string.Empty, msg.image, msg);
         }
 
         private void alertVencimentoContas_AlertClick(object sender, DevExpress.XtraBars.Alerter.AlertClickEventArgs e)

@@ -125,6 +125,19 @@ namespace Sistema_de_Gerenciamento.Forms
                     }
                 }
             }
+            else if (tipo == "Sair")
+            {
+                if (txtUsuario.Text == "ADMIN" && Buscar.BuscarUsuario(txtUsuario.Text, txtSenha.Text))
+                {
+                    DialogResult OpcaoDoUsuario = new DialogResult();
+                    OpcaoDoUsuario = MessageBox.Show("Realmente Deseja Sair da Tela de PDV?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (OpcaoDoUsuario == DialogResult.Yes)
+                    {
+                        telaPDV.Close();
+                        this.Close();
+                    }
+                }
+            }
         }
 
         private void txtUsuario_KeyUp(object sender, KeyEventArgs e)

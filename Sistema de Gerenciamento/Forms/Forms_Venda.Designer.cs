@@ -2309,8 +2309,8 @@
             this.txtTotalPagoAvista.UseSystemPasswordChar = false;
             this.txtTotalPagoAvista.Visible = false;
             this.txtTotalPagoAvista.WordWrap = true;
-            this.txtTotalPagoAvista.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotalPagoAvista_KeyDown_1);
             this.txtTotalPagoAvista.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTotalPagoAvista_KeyPress_1);
+            this.txtTotalPagoAvista.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTotalPagoAvista_KeyUp);
             // 
             // lblFormapagamentoAvista
             // 

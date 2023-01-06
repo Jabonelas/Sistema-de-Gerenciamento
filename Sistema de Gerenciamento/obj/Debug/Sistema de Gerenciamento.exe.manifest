@@ -1639,14 +1639,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sistema de Gerenciamento.exe" size="66040240">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sistema de Gerenciamento.exe" size="66044848">
       <assemblyIdentity name="Sistema de Gerenciamento" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>D2G0KKYAUdUkU1A5VpiqY+0jcmCmnGNoMM1J5vSS5/o=</dsig:DigestValue>
+        <dsig:DigestValue>LIZ4J75cPmWSHxqfJEQJ+DDnOCv0CXIdC+S3sRcmCuc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

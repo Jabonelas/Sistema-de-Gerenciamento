@@ -127,11 +127,23 @@ namespace Sistema_de_Gerenciamento.Forms
             {
                 if (lblDescricaoItem.Text != "PAGAMENTO" || gdvPDV.Rows.Count <= 0 || lblNumeroNotaFiscalSaida.Visible == true)
                 {
-                    DialogResult OpcaoDoUsuario = new DialogResult();
-                    OpcaoDoUsuario = MessageBox.Show("Realmente Deseja Sair da Tela de PDV?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (OpcaoDoUsuario == DialogResult.Yes)
+                    if (Global.NomeDeUsuario == "ADMIN" || listaDadosPermissao[0].devolucaoTroca == "true")
                     {
-                        this.Close();
+                        DialogResult OpcaoDoUsuario = new DialogResult();
+                        OpcaoDoUsuario = MessageBox.Show("Realmente Deseja Sair da Tela de PDV?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                        if (OpcaoDoUsuario == DialogResult.Yes)
+                        {
+                            this.Close();
+                        }
+
+                        return;
+                    }
+                    else
+                    {
+                        Forms_ControleADMIN controleADMIN = new Forms_ControleADMIN(this, "Sair");
+                        controleADMIN.ShowDialog();
+
+                        return;
                     }
                 }
             }
